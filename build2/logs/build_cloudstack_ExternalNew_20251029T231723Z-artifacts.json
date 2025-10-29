@@ -1,0 +1,25 @@
+{
+  "job_id": "build_cloudstack_ExternalNew_20251029T231723Z",
+  "server": "build2",
+  "commit": "d8e22ab0af",
+  "finished_at": "2025-10-29T23:22:20Z",
+  "total_time": "04:54 min (Wall Clock)",
+  "artifacts_dir": "/root/artifacts/build2/build_cloudstack_ExternalNew_20251029T231723Z",
+  "artifacts": [
+    {
+      "file": "cloud-client-ui-4.21.0.0-SNAPSHOT.jar",
+      "size": 143629928,
+      "sha256": "4e10c578beecd472f712fc162b751632e55c625443269e484660570daa5adb8b"
+    },
+    {
+      "file": "cloud-server-4.21.0.0-SNAPSHOT.jar",
+      "size": 4273030,
+      "sha256": "c2b89bee1c1c73785d504faa1a7f625e1c606a98ada59ff93be94c77fceace62"
+    },
+    {
+      "file": "engine.war",
+      "size": 87029868,
+      "sha256": "c43d85733a155acf0d1c18faece0c66820926624d8587f53769d11dd95bdb78e"
+    }
+  ]
+}
