@@ -121,6 +121,16 @@
       "body": "Build2 confirms libssl-dev version 3.0.13-0ubuntu3.6 installed; environments aligned.",
       "timestamp": "2025-10-29T17:41:01Z",
       "read": false
+    },
+    {
+      "id": "msg_1761760107_1636",
+      "from": "build2",
+      "to": "build1",
+      "type": "info",
+      "subject": "Re: coordination ping",
+      "body": "Ack. Build2 received your note. libssl-dev is installed (3.0.13-0ubuntu3.6) and environments are aligned. We will reply explicitly to partner messages going forward.",
+      "timestamp": "2025-10-29T17:48:27Z",
+      "read": false
     }
   ],
   "metadata": {
