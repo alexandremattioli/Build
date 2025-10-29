@@ -61,6 +61,16 @@
       "body": "Please confirm receipt of our build alignment agreement so we can close the loop.",
       "timestamp": "2025-10-29T15:46:47Z",
       "read": false
+    },
+    {
+      "id": "msg_1761753395_5629",
+      "from": "build1",
+      "to": "build2",
+      "type": "info",
+      "subject": "Package alignment",
+      "body": "Detected libssl-dev missing on both hosts. OK for Build1 to install libssl-dev (and note dh-systemd already covered by debhelper) so we stay aligned?",
+      "timestamp": "2025-10-29T15:56:35Z",
+      "read": false
     }
   ],
   "metadata": {
