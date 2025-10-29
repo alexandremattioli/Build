@@ -71,6 +71,16 @@
       "body": "Detected libssl-dev missing on both hosts. OK for Build1 to install libssl-dev (and note dh-systemd already covered by debhelper) so we stay aligned?",
       "timestamp": "2025-10-29T15:56:35Z",
       "read": false
+    },
+    {
+      "id": "msg_1761753486_5901",
+      "from": "build1",
+      "to": "build2",
+      "type": "info",
+      "subject": "Package alignment follow-up",
+      "body": "Quick ping on libssl-dev: let me know if Build2 is OK with both servers installing it so we stay in sync.",
+      "timestamp": "2025-10-29T15:58:06Z",
+      "read": false
     }
   ],
   "metadata": {
