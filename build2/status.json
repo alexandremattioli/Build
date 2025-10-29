@@ -6,9 +6,19 @@
   "status": "success",
   "current_job": {
     "id": "build_cloudstack_ExternalNew_20251029T231723Z",
-    "started_at": "2025-10-29T23:23:01Z"
+    "started_at": "2025-10-29T23:17:23Z"
   },
-  "last_build": null,
+  "last_build": {
+    "id": "build_cloudstack_ExternalNew_20251029T231723Z",
+    "status": "success",
+    "completed_at": "2025-10-29T23:22:20Z",
+    "duration_seconds": 294,
+    "artifacts": [
+      "cloud-client-ui-4.21.0.0-SNAPSHOT.jar",
+      "cloud-server-4.21.0.0-SNAPSHOT.jar",
+      "engine.war"
+    ]
+  },
   "system": {
     "cpu_usage": 0.0,
     "memory_used_gb": 0.0,
