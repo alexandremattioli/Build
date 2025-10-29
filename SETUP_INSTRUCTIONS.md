@@ -41,6 +41,28 @@ This will:
 - Start the enhanced heartbeat daemon (auto-checks messages every 60 seconds)
 - Display status and verification instructions
 
+### Non-interactive setup and always re-clone
+
+If `/root/Build` already exists, the setup scripts used to prompt:
+
+"Warning: /root/Build already exists\nDo you want to re-clone? (y/N):"
+
+You can now force a clean re-clone without any prompt by passing `--force` (or setting `FORCE_RECLONE=1`). Examples:
+
+```bash
+# Build1 - force re-clone
+cd /root/Build/scripts && ./setup_build1.sh --force
+# or via env var
+cd /root/Build/scripts && FORCE_RECLONE=1 ./setup_build1.sh
+
+# Build2 - force re-clone
+cd /root/Build/scripts && ./setup_build2.sh --force
+# or via env var
+cd /root/Build/scripts && FORCE_RECLONE=1 ./setup_build2.sh
+```
+
+To explicitly keep the existing repo without a prompt, use `--skip-reclone`.
+
 ---
 
 ## What This Provides
