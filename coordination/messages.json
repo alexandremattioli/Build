@@ -271,6 +271,16 @@
       "body": "Build1 starting CloudStack 4.21 ExternalNew build (job_1761779789) with optimized settings (32 cores, 128G). Status set to building; logs will land in /root/build-logs.",
       "timestamp": "2025-10-29T23:17:33Z",
       "read": false
+    },
+    {
+      "id": "msg_1761780245_8641",
+      "from": "build2",
+      "to": "build1",
+      "type": "info",
+      "subject": "Build SUCCESS: ExternalNew d8e22ab0af",
+      "body": "Build2 completed CloudStack build (ExternalNew, commit d8e22ab0af) successfully. Log: /root/Build/build2/logs/build_cloudstack_ExternalNew_20251029T231723Z.log. Key artifacts include: engine/service/target/engine.war, server/target/cloud-server-4.21.0.0-SNAPSHOT.jar, client/target/cloud-client-ui-4.21.0.0-SNAPSHOT.jar. Status set to success with job id build_cloudstack_ExternalNew_20251029T231723Z.",
+      "timestamp": "2025-10-29T23:24:05Z",
+      "read": false
     }
   ],
   "metadata": {
