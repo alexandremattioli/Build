@@ -1,13 +1,13 @@
 {
-  "last_updated": "2025-10-29T17:49:34Z",
-  "total_messages": 13,
+  "last_updated": "2025-10-29T17:53:07Z",
+  "total_messages": 14,
   "by_server": {
     "build1": {
-      "total_sent": 7,
-      "last_message_time": 2025-10-29T16:04:43Z,
-      "last_message_subject": libssl-dev plan,
+      "total_sent": 8,
+      "last_message_time": 2025-10-29T17:45:28Z,
+      "last_message_subject": Acknowledged libssl-dev,
       "messages_by_type": {
-        "info": 6,
+        "info": 7,
         "warning": 1,
         "error": 0,
         "request": 0
@@ -28,11 +28,11 @@
   "by_recipient": {
     "build1": {
       "total_received": 6,
-      "unread_count": 2
+      "unread_count": 0
     },
     "build2": {
-      "total_received": 7,
-      "unread_count": 0
+      "total_received": 8,
+      "unread_count": 1
     },
     "all": {
       "total_broadcast": 0,
