@@ -74,12 +74,14 @@ chmod +x scripts/*.sh
 echo "✓ Scripts are executable"
 
 # 4. Stop existing heartbeat daemon (if running)
-echo "[4/5] Checking for existing heartbeat daemon..."
-if pgrep -f "heartbeat_daemon.sh build1" > /dev/null; then
-    echo "  Stopping existing heartbeat daemon..."
-    pkill -f "heartbeat_daemon.sh build1" || true
-    sleep 2
-fi
+echo "[4/5] Checking for existing heartbeat daemons..."
+for PROC in "heartbeat_daemon.sh build1" "enhanced_heartbeat_daemon.sh build1"; do
+    if pgrep -f "$PROC" > /dev/null; then
+        echo "  Stopping existing $PROC..."
+        pkill -f "$PROC" || true
+        sleep 1
+    fi
+done
 
 # 5. Start heartbeat daemon
 echo "[5/5] Starting enhanced heartbeat daemon..."
