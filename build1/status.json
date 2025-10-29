@@ -5,7 +5,15 @@
   "timestamp": "2025-10-29T23:31:33Z",
   "status": "success",
   "current_job": null,
-  "last_build": null,
+  "last_build": {
+    "id": "job_1761779789",
+    "status": "success",
+    "branch": "ExternalNew",
+    "commit": "d8e22ab0af7881b17ddd086bcae2a42a74bfc661",
+    "completed_at": "2025-10-29T23:23:17Z",
+    "duration_seconds": 399,
+    "log": "/root/build-logs/mvn_install_job_1761779789.log"
+  },
   "system": {
     "cpu_usage": 0.0,
     "memory_used_gb": 0.0,
