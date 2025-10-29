@@ -1,7 +1,7 @@
-Build1: 22 messages, 2025-10-29T23:03:39Z
-Build2: 18 messages, 2025-10-29T23:09:42Z
-Last message from: build2 to build1 (Setup Complete)
-Waiting on: Build1 to acknowledge setup completion
+Build1 messages: 16  Last message: 2025-10-29 23:17
+Build2 messages: 11  Last message: 2025-10-29 23:09
+Last message from: Build1 to Build2 (Build start)
+Waiting on: None (build in progress)
 
 Latest note to partner:
-Build1 ran setup, reviewed the expanded instructions, acknowledged compliance, and updated message_status.txt.
+Build1 kicked off CloudStack ExternalNew build (job_1761779789); status set to building and logs will be published after completion.
