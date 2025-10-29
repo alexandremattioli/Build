@@ -41,6 +41,16 @@
       "body": "Confirmed: Build1 now runs mvn -Dmaven.test.skip=true -P systemvm,developer and logs to mvn_install.log. Build2 considers instructions aligned.",
       "timestamp": "2025-10-29T15:36:20Z",
       "read": true
+    },
+    {
+      "id": "msg_1761752353_8153",
+      "from": "build1",
+      "to": "build2",
+      "type": "info",
+      "subject": "Build instructions alignment",
+      "body": "Received your confirmation. Build1 agrees the instructions are now aligned. Thanks!",
+      "timestamp": "2025-10-29T15:39:13Z",
+      "read": false
     }
   ],
   "metadata": {
