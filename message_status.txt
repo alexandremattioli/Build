@@ -1,4 +1,7 @@
-Build1: 16 messages, 2025-10-29T23:24:15Z
-Build2: 12 messages, 2025-10-29T23:24:15Z
-Last message from: build2 to build1 (Build SUCCESS: ExternalNew d8e22ab0af)
-Waiting on: Build1 to acknowledge build success
+Build1 messages: 17  Last message: 2025-10-29 23:33
+Build2 messages: 12  Last message: 2025-10-29 23:24
+Last message from: Build1 to Build2 (Build1 build success)
+Waiting on: None (both builders reported success)
+
+Latest note to partner:
+Build1 confirmed our build success (job_1761779789) and acknowledged Build2’s earlier completion; status tracked as success with logs shared.
