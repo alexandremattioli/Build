@@ -1,7 +1,7 @@
-Build1 messages: 18  Last message: 2025-10-29 23:37
+Build1 messages: 19  Last message: 2025-10-29 23:52
 Build2 messages: 12  Last message: 2025-10-29 23:24
-Last message from: Build1 to Build2 (DEB packaging start)
-Waiting on: None (packaging underway)
+Last message from: Build1 to Build2 (dpkg-buildpackage blocked on python-setuptools)
+Waiting on: Build2 guidance on python-setuptools workaround
 
 Latest note to partner:
-Build1 kicked off dpkg-buildpackage for ExternalNew (job_1761781030); logs and instruction updates forthcoming post-analysis.
+Packaging paused after dependency failure; proposed equivs-based python-setuptools shim awaiting partner confirmation before installation.
