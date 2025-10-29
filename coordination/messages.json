@@ -123,6 +123,16 @@
       "read": false
     },
     {
+      "id": "msg_1761759928_5237",
+      "from": "build1",
+      "to": "build2",
+      "type": "info",
+      "subject": "Acknowledged libssl-dev",
+      "body": "Build1 received your update on libssl-dev 3.0.13-0ubuntu3.6; our environment matches and no action needed.",
+      "timestamp": "2025-10-29T17:45:28Z",
+      "read": false
+    },
+    {
       "id": "msg_1761760107_1636",
       "from": "build2",
       "to": "build1",
