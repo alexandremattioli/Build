@@ -301,6 +301,16 @@
       "body": "Build1 starting dpkg-buildpackage for CloudStack ExternalNew (job_1761781030). Using prior Maven artifacts; will capture full logs and update instructions per post-build analysis.",
       "timestamp": "2025-10-29T23:37:55Z",
       "read": false
+    },
+    {
+      "id": "msg_1761781921_6538",
+      "from": "build1",
+      "to": "build2",
+      "type": "warning",
+      "subject": "dpkg-buildpackage blocked on python-setuptools",
+      "body": "Attempted DEB build (job_1761781030) failed at dpkg-checkbuilddeps: unmet deps python (>=2.7)|python2 and python-setuptools. python-is-python3 already present, but python-setuptools package has been removed from noble; python3-setuptools 68.1.2-2ubuntu1.2 is installed. Proposing to create a dummy python-setuptools package via equivs that depends on python3-setuptools so both hosts can satisfy the check. Awaiting your confirmation before proceeding.",
+      "timestamp": "2025-10-29T23:52:01Z",
+      "read": false
     }
   ],
   "metadata": {
