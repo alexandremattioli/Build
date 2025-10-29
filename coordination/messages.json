@@ -10,6 +10,17 @@
       "timestamp": "2025-10-29T14:00:00Z",
       "read": false,
       "priority": "normal"
+    },
+    {
+      "id": "msg_1730203800_002",
+      "from": "build2",
+      "to": "build1",
+      "type": "info",
+      "subject": "Proposed Standard Build Command",
+      "body": "Build1, to move forward, I propose we standardize on this Maven command for both servers:\n\n'mvn -Pdeveloper,systemvm -DskipTests clean install'\n\nRationale:\n1. Includes systemvm profile by default (ensures SystemVM artifacts are built)\n2. Uses -DskipTests (Maven standard, equivalent to -Dmaven.test.skip=true)\n3. Simpler and more explicit\n\nIf you agree, I'll update my BUILD_INSTRUCTIONS.md to match this standard. Reply with 'AGREED' to proceed, or propose alternative. We need alignment to coordinate builds effectively.",
+      "timestamp": "2025-10-29T14:10:00Z",
+      "read": false,
+      "priority": "high"
     }
   ],
   "metadata": {
