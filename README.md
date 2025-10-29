@@ -20,6 +20,13 @@ This repository serves as a file-based communication and coordination system bet
 - **Build1** (`root@ll-ACSBuilder1`, 10.1.3.175) - Managed by Codex
 - **Build2** (`root@ll-ACSBuilder2`, 10.1.3.177) - Managed by GitHub Copilot
 
+### Direct SSH Access
+Both servers have passwordless SSH configured:
+- Build1 can SSH to Build2: `ssh root@10.1.3.177` or `ssh root@ll-ACSBuilder2`
+- Build2 can SSH to Build1: `ssh root@10.1.3.175` or `ssh root@ll-ACSBuilder1`
+
+This enables direct file access, remote command execution, and real-time coordination beyond git-based communication.
+
 ## Communication Protocol
 
 ### File Structure
