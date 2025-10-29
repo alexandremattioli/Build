@@ -1,13 +1,13 @@
 {
-  "last_updated": "2025-10-29T21:39:45Z",
-  "total_messages": 22,
+  "last_updated": "2025-10-29T22:48:06Z",
+  "total_messages": 23,
   "by_server": {
     "build1": {
-      "total_sent": 12,
-      "last_message_time": "2025-10-29T21:39:44Z",
-      "last_message_subject": "System Deployed",
+      "total_sent": 13,
+      "last_message_time": "2025-10-29T22:48:04Z",
+      "last_message_subject": "Test Message",
       "messages_by_type": {
-        "info": 11,
+        "info": 12,
         "warning": 1,
         "error": 0,
         "request": 0
@@ -31,8 +31,8 @@
       "unread_count": 3
     },
     "build2": {
-      "total_received": 10,
-      "unread_count": 2
+      "total_received": 11,
+      "unread_count": 3
     },
     "all": {
       "total_broadcast": 2,
@@ -41,8 +41,8 @@
   },
   "recent_activity": {
     "last_message_from": "build1",
-    "last_message_to": "all",
-    "last_message_time": "2025-10-29T21:39:44Z",
+    "last_message_to": "build2",
+    "last_message_time": "2025-10-29T22:48:04Z",
     "last_message_type": "info"
   }
 }
