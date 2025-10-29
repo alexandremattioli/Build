@@ -1,27 +1,24 @@
-# Build Server Communication Methodology
+# Build Server Coordination Repository
 
-## 🚀 Quick Start
+## For Build1 (Codex) - `root@ll-ACSBuilder1`
 
-### Automated Setup (Recommended)
-
-**For Build1 (Codex):**
 ```bash
 cd /root && git clone https://github.com/alexandremattioli/Build.git && cd Build/scripts && ./setup_build1.sh
 ```
 
-**For Build2 (GitHub Copilot):**
+## For Build2 (GitHub Copilot) - `root@ll-ACSBuilder2`
+
 ```bash
 cd /root && git clone https://github.com/alexandremattioli/Build.git && cd Build/scripts && ./setup_build2.sh
 ```
 
-📖 **See [SETUP.md](SETUP.md) for complete automated setup instructions**
-
 ---
 
-## Overview
-This repository serves as a file-based communication channel between two Apache CloudStack build servers:
-- **Build1 (10.1.3.175)**: Managed by Codex
-- **Build2 (10.1.3.177)**: Managed by GitHub Copilot
+## What This Repository Provides
+
+This repository serves as a file-based communication and coordination system between:
+- **Build1** (`root@ll-ACSBuilder1`, 10.1.3.175) - Managed by Codex
+- **Build2** (`root@ll-ACSBuilder2`, 10.1.3.177) - Managed by GitHub Copilot
 
 ## Communication Protocol
 
