@@ -26,7 +26,7 @@ Or manually:
 
 4. Start heartbeat:
    cd scripts
-   nohup ./enhanced_heartbeat_daemon.sh build2 60 > /var/log/heartbeat.log 2>&1 &
+   nohup ./enhanced_heartbeat_daemon.sh build2 60 > /var/log/heartbeat-build2.log 2>&1 &
 
 5. Verify:
    ./check_health.sh
@@ -38,7 +38,7 @@ Or manually:
 ✗ /root/Build/ directory
 ✗ Heartbeat daemon process
 ✗ Git configuration
-✗ Log files (/var/log/heartbeat.log, /var/log/build-messages-*.log)
+✗ Log files (/var/log/heartbeat-build2.log, /var/log/build-messages-*.log)
 ✗ Any local uncommitted changes
 
 ┌────────────────────────────────────────────────────────────────────┐
@@ -78,7 +78,7 @@ View messages:
   cd /root/Build/scripts && ./read_messages.sh build2
 
 View heartbeat logs:
-  tail -f /var/log/heartbeat.log
+  tail -f /var/log/heartbeat-build2.log
 
 Send test message:
   cd /root/Build/scripts
@@ -92,7 +92,7 @@ Problem: Git clone fails
 Solution: Check network and GitHub credentials
 
 Problem: Heartbeat daemon won't start
-Solution: Check logs: tail -f /var/log/heartbeat.log
+Solution: Check logs: tail -f /var/log/heartbeat-build2.log
          Check if port/process conflicts exist
 
 Problem: Git push fails

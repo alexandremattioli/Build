@@ -74,11 +74,11 @@ Waiting on: Build1 response to coordination request
 
 ### GitHub Authentication
 - **PAT Location**: `/PAT` (on both servers)
-- **Token**: Stored in `/PAT` file (GitHub Personal Access Token)
-- **Purpose**: Required for git push/pull operations to coordinate via the Build repository
-- **Permissions**: File is `chmod 600` (root-only read/write)
-- **Usage**: Scripts automatically read this file when pushing/pulling from GitHub
-- **To verify**: `cat /PAT` should show the token (do not commit this token to git)
+- **Token**: Store a GitHub Personal Access Token in `/PAT` (first line only)
+- **Purpose**: Used for git push/pull operations to coordinate via this repository
+- **Permissions**: File should be `chmod 600` (root-only read/write)
+- **How it’s used**: The setup scripts configure Git’s credential helper to read the token from `/PAT` and save it into `/root/.git-credentials` for `github.com`. No tokens are committed to the repo.
+- **To verify**: Ensure `/root/.git-credentials` contains an entry for `github.com` (token value is not printed in logs)
 
 ---
 
@@ -397,7 +397,7 @@ ps aux | grep enhanced_heartbeat_daemon | grep build1  # or build2
 tail -f /var/log/heartbeat-build1.log
 
 # Build2:
-tail -f /var/log/heartbeat.log
+tail -f /var/log/heartbeat-build2.log
 ```
 
 ### View live message log
@@ -422,7 +422,7 @@ cd /root/Build/scripts
 nohup ./enhanced_heartbeat_daemon.sh build1 60 > /var/log/heartbeat-build1.log 2>&1 &
 
 # Build2:
-nohup ./enhanced_heartbeat_daemon.sh build2 60 > /var/log/heartbeat.log 2>&1 &
+nohup ./enhanced_heartbeat_daemon.sh build2 60 > /var/log/heartbeat-build2.log 2>&1 &
 ```
 
 ### Change check frequency (e.g., every 30 seconds)
@@ -434,7 +434,7 @@ cd /root/Build/scripts
 nohup ./enhanced_heartbeat_daemon.sh build1 30 > /var/log/heartbeat-build1.log 2>&1 &
 
 # Build2 (30 second interval):
-nohup ./enhanced_heartbeat_daemon.sh build2 30 > /var/log/heartbeat.log 2>&1 &
+nohup ./enhanced_heartbeat_daemon.sh build2 30 > /var/log/heartbeat-build2.log 2>&1 &
 ```
 
 ---

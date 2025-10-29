@@ -65,6 +65,25 @@ echo "[2/5] Configuring git..."
 cd /root/Build
 git config user.name "Build2 Copilot"
 git config user.email "copilot@build2.local"
+
+# Configure GitHub authentication if /PAT exists
+if [ -f "/PAT" ] && [ -s "/PAT" ]; then
+    echo "  Configuring GitHub auth from /PAT"
+    TOKEN=$(head -n1 /PAT | tr -d '\r\n')
+    chmod 600 /PAT 2>/dev/null || true
+    git config credential.helper store
+    CRED_FILE="/root/.git-credentials"
+    touch "$CRED_FILE"
+    chmod 600 "$CRED_FILE"
+    if grep -q "github.com" "$CRED_FILE"; then
+        sed -i '/github.com/d' "$CRED_FILE"
+    fi
+    printf "https://x-access-token:%s@github.com\n" "$TOKEN" >> "$CRED_FILE"
+    echo "✓ GitHub auth configured via credential helper"
+else
+    echo "⚠️  /PAT not found or empty; pushes may require interactive auth or SSH keys"
+fi
+
 echo "✓ Git configured"
 
 # 3. Make scripts executable
@@ -81,7 +100,7 @@ sleep 1
 # 5. Start heartbeat daemon
 echo "[5/5] Starting enhanced heartbeat daemon..."
 cd /root/Build/scripts
-nohup ./enhanced_heartbeat_daemon.sh build2 60 > /var/log/heartbeat.log 2>&1 &
+nohup ./enhanced_heartbeat_daemon.sh build2 60 > /var/log/heartbeat-build2.log 2>&1 &
 DAEMON_PID=$!
 sleep 2
 
@@ -90,7 +109,7 @@ if ps -p $DAEMON_PID > /dev/null; then
     echo "✓ Heartbeat daemon started (PID: $DAEMON_PID)"
 else
     echo "⚠️  Warning: Heartbeat daemon may not have started properly"
-    echo "  Check logs: tail -f /var/log/heartbeat.log"
+    echo "  Check logs: tail -f /var/log/heartbeat-build2.log"
 fi
 
 echo ""
@@ -100,13 +119,13 @@ echo "Status:"
 echo "  Repository: /root/Build"
 echo "  Heartbeat: Running (every 60 seconds)"
 echo "  Messages: Auto-checked with heartbeat"
-echo "  Logs: /var/log/heartbeat.log"
+echo "  Logs: /var/log/heartbeat-build2.log"
 echo ""
 echo "Verify with:"
 echo "  cd /root/Build/scripts && ./check_health.sh"
 echo ""
 echo "View heartbeat logs:"
-echo "  tail -f /var/log/heartbeat.log"
+echo "  tail -f /var/log/heartbeat-build2.log"
 echo ""
 echo "View messages:"
 echo "  cd /root/Build/scripts && ./read_messages.sh build2"

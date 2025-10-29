@@ -55,7 +55,7 @@ mv tmp.json "$STATUS_FILE"
 
 # Commit and push
 git add "$STATUS_FILE"
-git commit -m "[$SERVER_ID] Status: $STATUS at $TIMESTAMP"
-git push origin main
+git commit -m "[$SERVER_ID] Status: $STATUS at $TIMESTAMP" >/dev/null 2>&1 || true
+git push origin main >/dev/null 2>&1 || true
 
 echo "Status updated: $SERVER_ID -> $STATUS"

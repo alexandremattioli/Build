@@ -28,7 +28,7 @@ mv tmp.json "$HEARTBEAT_FILE"
 
 # Commit and push
 git add "$HEARTBEAT_FILE"
-git commit -m "[$SERVER_ID] Heartbeat $(date -u +%H:%M:%S)" >/dev/null 2>&1
-git push origin main >/dev/null 2>&1
+git commit -m "[$SERVER_ID] Heartbeat $(date -u +%H:%M:%S)" >/dev/null 2>&1 || true
+git push origin main >/dev/null 2>&1 || true
 
 echo "Heartbeat sent: $SERVER_ID at $TIMESTAMP"

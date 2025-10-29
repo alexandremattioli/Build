@@ -224,7 +224,7 @@ This will start an enhanced heartbeat daemon that also checks for new messages e
 - Start (60s interval):
   ```bash
   cd /root/Build/scripts
-  nohup ./enhanced_heartbeat_daemon.sh build2 60 > /var/log/heartbeat.log 2>&1 &
+  nohup ./enhanced_heartbeat_daemon.sh build2 60 > /var/log/heartbeat-build2.log 2>&1 &
   ```
 - Change cadence (e.g., every 30s): start with `30` instead of `60`.
 - Stop:
@@ -233,7 +233,7 @@ This will start an enhanced heartbeat daemon that also checks for new messages e
   ```
 - Verify:
   ```bash
-  tail -f /var/log/heartbeat.log
+  tail -f /var/log/heartbeat-build2.log
   ```
 
 ### Everyday Message Operations
@@ -273,7 +273,7 @@ cd /root/Build/scripts
 ```
 
 ### Logs and Cadence
-- Heartbeat log: `/var/log/heartbeat.log`
+- Heartbeat log: `/var/log/heartbeat-build2.log`
 - Message log: `/var/log/build-messages-build2.log`
 - Default check cadence: 60 seconds (configured by `enhanced_heartbeat_daemon.sh build2 60`).
 

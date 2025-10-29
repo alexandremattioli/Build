@@ -50,7 +50,7 @@ nohup ./enhanced_heartbeat_daemon.sh build1 60 > /var/log/heartbeat-build1.log 2
 On Build2:
 ```bash
 cd /root/Build/scripts
-nohup ./enhanced_heartbeat_daemon.sh build2 60 > /var/log/heartbeat.log 2>&1 &
+nohup ./enhanced_heartbeat_daemon.sh build2 60 > /var/log/heartbeat-build2.log 2>&1 &
 ```
 
 ## Basic Operations
@@ -222,12 +222,12 @@ Add to crontab:
 ps aux | grep heartbeat_daemon
 
 # Check logs
-tail -f /var/log/heartbeat.log
+tail -f /var/log/heartbeat-build2.log
 
 # Restart daemon
 pkill -f heartbeat_daemon
 cd /root/Build/scripts
-nohup ./heartbeat_daemon.sh build2 60 > /var/log/heartbeat.log 2>&1 &
+nohup ./heartbeat_daemon.sh build2 60 > /var/log/heartbeat-build2.log 2>&1 &
 ```
 
 ### Git Push Conflicts

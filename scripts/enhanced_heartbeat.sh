@@ -28,7 +28,7 @@ mv tmp.json "$HEARTBEAT_FILE"
 
 # Commit and push heartbeat
 git add "$HEARTBEAT_FILE"
-git commit -m "[$SERVER_ID] Heartbeat $(date -u +%H:%M:%S)" >/dev/null 2>&1
+git commit -m "[$SERVER_ID] Heartbeat $(date -u +%H:%M:%S)" >/dev/null 2>&1 || true
 git push origin main >/dev/null 2>&1 || echo "Warning: Heartbeat push failed"
 
 # Check for new messages
