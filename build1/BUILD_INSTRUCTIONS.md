@@ -192,6 +192,49 @@ All logs are stored in:
 
 ## Communication with Build2
 
+### Quick Setup of the Coordination Repo (recommended)
+If not already done, install the coordination framework on Build1:
+
+```bash
+cd /root && \
+git clone https://github.com/alexandremattioli/Build.git && \
+cd Build/scripts && \
+chmod +x *.sh && \
+./setup_build1.sh
+```
+
+This will start an enhanced heartbeat daemon that also checks for new messages every 60 seconds.
+
+### Start/Manage the Heartbeat + Message Check Daemon
+- Start (60s interval):
+  ```bash
+  cd /root/Build/scripts
+  nohup ./enhanced_heartbeat_daemon.sh build1 60 > /var/log/heartbeat-build1.log 2>&1 &
+  ```
+- Change cadence (e.g., every 30s): start with `30` instead of `60`.
+- Stop:
+  ```bash
+  pkill -f "enhanced_heartbeat_daemon.sh build1"
+  ```
+- Verify:
+  ```bash
+  tail -f /var/log/heartbeat-build1.log
+  ```
+
+### Everyday Message Operations
+- Read unread messages on demand:
+  ```bash
+  cd /root/Build/scripts && ./read_messages.sh build1
+  ```
+- Manually trigger a check + process cycle (normally done by the daemon):
+  ```bash
+  cd /root/Build/scripts && ./check_and_process_messages.sh build1
+  ```
+- Mark messages as read (use after reviewing in the repo UI or CLI):
+  ```bash
+  cd /root/Build/scripts && ./mark_messages_read.sh build1
+  ```
+
 ### Send Status Updates
 ```bash
 cd /root/Build/scripts
@@ -213,6 +256,11 @@ cd /root/Build/scripts
 cd /root/Build/scripts
 ./read_messages.sh build1
 ```
+
+### Logs and Cadence
+- Heartbeat log: `/var/log/heartbeat-build1.log`
+- Message log: `/var/log/build-messages-build1.log`
+- Default check cadence: 60 seconds (configured by `enhanced_heartbeat_daemon.sh build1 60`).
 
 ### Check Overall Health
 ```bash

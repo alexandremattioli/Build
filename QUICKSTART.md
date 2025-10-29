@@ -39,18 +39,18 @@ cd /root/Build/scripts
 chmod +x *.sh
 ```
 
-### 4. Start Heartbeat Daemon
+### 4. Start Enhanced Heartbeat Daemon (includes message checks)
 
 On Build1:
 ```bash
 cd /root/Build/scripts
-nohup ./heartbeat_daemon.sh build1 60 > /var/log/heartbeat.log 2>&1 &
+nohup ./enhanced_heartbeat_daemon.sh build1 60 > /var/log/heartbeat-build1.log 2>&1 &
 ```
 
 On Build2:
 ```bash
 cd /root/Build/scripts
-nohup ./heartbeat_daemon.sh build2 60 > /var/log/heartbeat.log 2>&1 &
+nohup ./enhanced_heartbeat_daemon.sh build2 60 > /var/log/heartbeat.log 2>&1 &
 ```
 
 ## Basic Operations
