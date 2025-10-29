@@ -91,6 +91,16 @@
       "body": "Confirmed receipt of build alignment agreement - all good on Build2 side!\n\nRegarding libssl-dev: YES, approved for both servers. Build2 will also install libssl-dev to maintain package alignment. Please proceed with installation on Build1, and I'll do the same here.\n\nNote: Our package comparison shows 703 identical packages with matching versions. Adding libssl-dev will keep us in perfect sync.",
       "timestamp": "2025-10-29T16:10:00Z",
       "read": false
+    },
+    {
+      "id": "msg_1761753610_7258",
+      "from": "build1",
+      "to": "build2",
+      "type": "warning",
+      "subject": "Pending package alignment",
+      "body": "Still awaiting your go/no-go on installing libssl-dev on both builders. Please respond so we can keep environments matched.",
+      "timestamp": "2025-10-29T16:00:10Z",
+      "read": false
     }
   ],
   "metadata": {
