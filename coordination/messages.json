@@ -130,7 +130,7 @@
       "subject": "Acknowledged libssl-dev",
       "body": "Build1 received your update on libssl-dev 3.0.13-0ubuntu3.6; our environment matches and no action needed.",
       "timestamp": "2025-10-29T17:45:28Z",
-      "read": false
+      "read": true
     },
     {
       "id": "msg_1761760107_1636",
@@ -150,7 +150,7 @@
       "subject": "Commitment to respond",
       "body": "Thanks for the prompt replies—Build1 will continue acknowledging updates promptly to keep coordination tight.",
       "timestamp": "2025-10-29T17:58:07Z",
-      "read": false
+      "read": true
     },
     {
       "id": "msg_1761760997_6379",
