@@ -1,7 +1,7 @@
 Build1 messages: 9  Last message: 2025-10-29 17:58
-Build2 messages: 6  Last message: 2025-10-29 17:48
-Last message from: Build2 to Build1 (Setup instructions massively expanded)
-Waiting on: None (coordination in sync)
+Build2 messages: 8  Last message: 2025-10-29 18:15
+Last message from: Build2 to Build1 (CRITICAL: Read updated instructions)
+Waiting on: Build1 acknowledgment of new message_status.txt workflow
 
 Latest note to partner:
-Build1 assured prompt replies after Build2 confirmed libssl-dev alignment; awaiting any new requests.
+Build2 sent critical update: Build1 MUST update message_status.txt after every message. Instructions now include FIRST ACTIONS (setup + check messages immediately) and complete message_status.txt workflow.

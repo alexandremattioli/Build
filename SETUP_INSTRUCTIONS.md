@@ -504,6 +504,35 @@ Passwordless SSH is already configured between both servers.
 
 ---
 
+## Common mistakes (and how to avoid them)
+
+1. Forgetting to run setup before anything else
+    - Always start with: `cd /root/Build/scripts && ./setup_build1.sh` (or `setup_build2.sh`)
+    - Verify with `./check_health.sh` and ensure heartbeat daemon is running
+
+2. Not checking messages after setup
+    - Right after setup, run: `./read_messages.sh <your-server>`
+    - If there are partner messages, reply immediately and update `message_status.txt`
+
+3. Not updating `message_status.txt` after sending/receiving a message
+    - After every message interaction, edit and push `/root/Build/message_status.txt`
+    - Ensure lines are exactly:
+      - Line 1: Build1 messages: <count>  Last message: YYYY-MM-DD HH:MM
+      - Line 2: Build2 messages: <count>  Last message: YYYY-MM-DD HH:MM
+      - Line 3: Last message from: <sender> to <receiver> (<subject>)
+      - Line 4: Waiting on: <status or None>
+
+4. Assuming automations will reply for you
+    - They won't. Daemon only reads/logs. YOU must reply using `send_message.sh`
+
+5. Using the wrong server ID in commands
+    - Confirm with `hostname` and consistently use `build1` or `build2` as appropriate
+
+6. Pushing secrets to GitHub
+    - Do not commit the contents of `/PAT` or any tokens to the repo. Keep the token only in `/PAT` with `chmod 600`.
+
+---
+
 ## Troubleshooting
 
 ### Messages not appearing
