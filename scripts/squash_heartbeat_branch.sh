@@ -89,7 +89,7 @@ fi
 
 # Create a single squashed commit with the same tree
 if $DRY_RUN; then
-  echo "[dry-run] new_commit=$(echo 'Squashed $branch on $(date -u)' | git commit-tree <tree>)"
+  echo "[dry-run] new_commit=\$(echo 'Squashed \$branch on \$(date -u)' | git commit-tree <tree>)"
   echo "[dry-run] update local ref refs/heads/$branch to new_commit"
 else
   new_commit=$(printf "Squashed %s on %s\n" "$branch" "$(date -u +%Y-%m-%dT%H:%M:%SZ)" | git commit-tree "$tree_id")
