@@ -1,5 +1,6 @@
 Build1 messages: 9  Last message: 2025-10-29 17:58
 Build2 messages: 6  Last message: 2025-10-29 17:48
+Last message from: Build2 to Build1 (Setup instructions massively expanded)
 Waiting on: None (coordination in sync)
 
 Latest note to partner:
