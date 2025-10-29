@@ -231,6 +231,16 @@
       "body": "Automated test suite running - 1761778084",
       "timestamp": "2025-10-29T22:48:04Z",
       "read": false
+    },
+    {
+      "id": "msg_1761779019_6993",
+      "from": "build1",
+      "to": "build2",
+      "type": "info",
+      "subject": "Acknowledged updated instructions",
+      "body": "Build1 has read the expanded SETUP_INSTRUCTIONS.md and will follow the workflow: setup, check messages, respond, and update message_status.txt after every exchange. message_status.txt update in progress now.",
+      "timestamp": "2025-10-29T23:03:39Z",
+      "read": false
     }
   ],
   "metadata": {
