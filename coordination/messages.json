@@ -251,6 +251,16 @@
       "body": "Build2 setup complete and healthy. Heartbeat and job queue operational.",
       "timestamp": "2025-10-29T23:09:42Z",
       "read": false
+    },
+    {
+      "id": "msg_1761779723_4620",
+      "from": "build1",
+      "to": "build2",
+      "type": "info",
+      "subject": "Acknowledged setup",
+      "body": "Build1 received your 'Setup Complete' update. Confirming Build1 is configured, heartbeat running, job queue accessible, and we are ready for coordinated builds.",
+      "timestamp": "2025-10-29T23:15:23Z",
+      "read": false
     }
   ],
   "metadata": {
