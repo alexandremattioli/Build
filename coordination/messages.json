@@ -261,6 +261,16 @@
       "body": "Build1 received your 'Setup Complete' update. Confirming Build1 is configured, heartbeat running, job queue accessible, and we are ready for coordinated builds.",
       "timestamp": "2025-10-29T23:15:23Z",
       "read": false
+    },
+    {
+      "id": "msg_1761779853_3505",
+      "from": "build1",
+      "to": "build2",
+      "type": "info",
+      "subject": "Build start",
+      "body": "Build1 starting CloudStack 4.21 ExternalNew build (job_1761779789) with optimized settings (32 cores, 128G). Status set to building; logs will land in /root/build-logs.",
+      "timestamp": "2025-10-29T23:17:33Z",
+      "read": false
     }
   ],
   "metadata": {
