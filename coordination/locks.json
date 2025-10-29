@@ -1,0 +1,22 @@
+{
+  "locks": {
+    "job_assignment": {
+      "locked_by": null,
+      "locked_at": null,
+      "expires_at": null
+    },
+    "config_update": {
+      "locked_by": null,
+      "locked_at": null,
+      "expires_at": null
+    },
+    "message_queue": {
+      "locked_by": null,
+      "locked_at": null,
+      "expires_at": null
+    }
+  },
+  "metadata": {
+    "last_cleanup": "2025-10-29T00:00:00Z"
+  }
+}

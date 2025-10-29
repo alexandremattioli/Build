@@ -1,0 +1,25 @@
+{
+  "timestamp": "2025-10-29T00:00:00Z",
+  "overall_status": "healthy",
+  "servers": {
+    "build1": {
+      "status": "idle",
+      "healthy": true,
+      "last_heartbeat": "2025-10-29T00:00:00Z",
+      "heartbeat_age_seconds": 0
+    },
+    "build2": {
+      "status": "idle",
+      "healthy": true,
+      "last_heartbeat": "2025-10-29T00:00:00Z",
+      "heartbeat_age_seconds": 0
+    }
+  },
+  "jobs": {
+    "queued": 0,
+    "running": 0,
+    "completed_today": 0,
+    "failed_today": 0
+  },
+  "alerts": []
+}

@@ -1,0 +1,31 @@
+# Build artifacts
+*.deb
+*.rpm
+*.tar.gz
+*.zip
+
+# Temporary files
+tmp.json
+*.tmp
+*.bak
+
+# Logs (keep structure, not content)
+# Logs are tracked but should be cleaned periodically
+build1/logs/*.log
+build2/logs/*.log
+!build1/logs/README.md
+!build2/logs/README.md
+
+# Local environment
+.env
+*.local
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db

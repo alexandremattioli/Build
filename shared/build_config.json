@@ -1,0 +1,23 @@
+{
+  "cloudstack": {
+    "version": "4.21.0.0",
+    "branch": "ExternalNew",
+    "repository": "https://github.com/apache/cloudstack.git"
+  },
+  "build": {
+    "maven_opts": "-Xms2g -Xmx12g -XX:ActiveProcessorCount=32 -XX:+UseG1GC",
+    "profiles": ["systemvm", "developer"],
+    "skip_tests": true,
+    "parallel_builds": false
+  },
+  "java": {
+    "version": "17",
+    "home": "/usr/lib/jvm/java-17-openjdk-amd64"
+  },
+  "notifications": {
+    "on_success": true,
+    "on_failure": true,
+    "notify_via": "messages"
+  },
+  "last_updated": "2025-10-29T00:00:00Z"
+}
