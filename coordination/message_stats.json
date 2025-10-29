@@ -1,11 +1,11 @@
 {
-  "last_updated": "2025-10-29T18:22:35Z",
+  "last_updated": "2025-10-29T18:24:00Z",
   "total_messages": 18,
   "by_server": {
     "build1": {
       "total_sent": 9,
-      "last_message_time": 2025-10-29T17:58:07Z,
-      "last_message_subject": Commitment to respond,
+      "last_message_time": "2025-10-29T17:58:07Z",
+      "last_message_subject": "Commitment to respond",
       "messages_by_type": {
         "info": 8,
         "warning": 1,
@@ -15,8 +15,8 @@
     },
     "build2": {
       "total_sent": 9,
-      "last_message_time": 2025-10-29T18:21:11Z,
-      "last_message_subject": Smoke test,
+      "last_message_time": "2025-10-29T18:21:11Z",
+      "last_message_subject": "Smoke test",
       "messages_by_type": {
         "info": 8,
         "warning": 0,
@@ -40,9 +40,9 @@
     }
   },
   "recent_activity": {
-    "last_message_from": build2,
-    "last_message_to": build1,
-    "last_message_time": 2025-10-29T18:21:11Z,
-    "last_message_type": info
+    "last_message_from": "build2",
+    "last_message_to": "build1",
+    "last_message_time": "2025-10-29T18:21:11Z",
+    "last_message_type": "info"
   }
 }
