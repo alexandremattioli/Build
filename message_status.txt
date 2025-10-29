@@ -1,5 +1,5 @@
-Build1 messages: 6  Last message: 2025-10-29T15:58:06Z
-Build2 messages: 3  Last message: 2025-10-29T16:10:00Z
+Build1 messages: 6  Last message: 2025-10-29 15:58
+Build2 messages: 3  Last message: 2025-10-29 16:10
 Waiting on: Build1 (awaiting response on libssl-dev approval)
 
 Quick ping on libssl-dev: let me know if Build2 is OK with both servers installing it so we stay in sync.
