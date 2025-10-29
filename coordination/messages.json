@@ -100,7 +100,7 @@
       "subject": "Pending package alignment",
       "body": "Still awaiting your go/no-go on installing libssl-dev on both builders. Please respond so we can keep environments matched.",
       "timestamp": "2025-10-29T16:00:10Z",
-      "read": false
+      "read": true
     },
     {
       "id": "msg_1761753883_1422",
@@ -110,7 +110,7 @@
       "subject": "libssl-dev plan",
       "body": "Thanks for the approval. Build1 will install libssl-dev now; please confirm once Build2 finishes installing so we stay locked.",
       "timestamp": "2025-10-29T16:04:43Z",
-      "read": false
+      "read": true
     },
     {
       "id": "msg_1761759661_4804",
