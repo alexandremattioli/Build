@@ -328,13 +328,15 @@ cd "$COMM_DIR"
 ./update_status.sh $SERVER_ID building "$JOB_ID"
 ./send_message.sh $SERVER_ID all info "Build Started" "CloudStack 4.21 ExternalNew build initiated"
 
-# Run the actual build
+# Run the actual build (Maven) and ALWAYS build DEBs
 cd /root/cloudstack-ExternalNew
 mvn -Dmaven.test.skip=true -P systemvm,developer clean install 2>&1 | tee /root/build-logs/mvn_install.log
 BUILD_RESULT=${PIPESTATUS[0]}
 
-dpkg-buildpackage -uc -us 2>&1 | tee /root/build-logs/dpkg_build.log
-PKG_RESULT=${PIPESTATUS[0]}
+# Package DEBs (default policy). Prefer the helper which handles Ubuntu 24.04 deps.
+DEB_OUT="/root/artifacts/build1/debs/$(date -u +%Y%m%dT%H%M%SZ)"
+/root/Build/scripts/build_debs.sh --repo /root/cloudstack-ExternalNew --out "$DEB_OUT" 2>&1 | tee /root/build-logs/deb_packaging.log || PKG_RESULT=$?
+PKG_RESULT=${PKG_RESULT:-0}
 
 # Notify: Build complete
 cd "$COMM_DIR"
@@ -361,13 +363,15 @@ cd "$COMM_DIR"
 ./update_status.sh $SERVER_ID building "$JOB_ID"
 ./send_message.sh $SERVER_ID all info "Build Started" "CloudStack 4.21 ExternalNew build initiated"
 
-# Run the actual build
+# Run the actual build (Maven) and ALWAYS build DEBs
 cd /root/src/cloudstack
 mvn -Dmaven.test.skip=true -P systemvm,developer clean install 2>&1 | tee /root/build-logs/mvn_install.log
 BUILD_RESULT=${PIPESTATUS[0]}
 
-dpkg-buildpackage -uc -us 2>&1 | tee /root/build-logs/dpkg_build.log
-PKG_RESULT=${PIPESTATUS[0]}
+# Package DEBs (default policy). Prefer the helper which handles Ubuntu 24.04 deps.
+DEB_OUT="/root/artifacts/build2/debs/$(date -u +%Y%m%dT%H%M%SZ)"
+/root/Build/scripts/build_debs.sh --repo /root/src/cloudstack --out "$DEB_OUT" 2>&1 | tee /root/build-logs/deb_packaging.log || PKG_RESULT=$?
+PKG_RESULT=${PKG_RESULT:-0}
 
 # Notify: Build complete
 cd "$COMM_DIR"
@@ -571,7 +575,7 @@ cd scripts && ./setup_build1.sh  # or ./setup_build2.sh
 3. **UPDATE message_status.txt AFTER EVERY MESSAGE**: Send or receive a message → edit `/root/Build/message_status.txt` → commit → push
 4. **Identify your server**: Check hostname or IP to know if you're on Build1 or Build2
 5. **Messages are automatic**: The daemon checks every 60 seconds, but YOU must reply manually
-6. **Integrate with builds**: Use `update_status.sh` and `send_message.sh` in build scripts
+6. **Integrate with builds**: Use `update_status.sh` and `send_message.sh` in build scripts. ALWAYS run DEB packaging after Maven using `scripts/build_debs.sh`.
 7. **Check logs**: Look in `/var/log/` for heartbeat and message logs
 8. **Health check**: Run `./check_health.sh` to see both servers
 9. **Recovery**: Re-run setup script after snapshot reverts

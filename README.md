@@ -181,9 +181,16 @@ When checking for work:
 4. Assign job to self if available
 5. Update status to "building"
 6. Push changes and release lock
-7. Execute build
-8. Update status with results
-9. Push logs to `logs/` directory
+7. Execute build (Maven) and package DEBs by default
+8. Update status with results and record artifacts
+9. Push logs and manifests to `logs/` directory
+
+### Default build outputs: DEB packages
+- By default, every successful build MUST produce Debian packages.
+- After Maven completes, run CloudStack packaging to create DEBs:
+  - Preferred: `cd /root/cloudstack && ./packaging/build-deb.sh -o /root/artifacts/$(hostname)/debs/$(date -u +%Y%m%dT%H%M%SZ)`
+  - Helper: `cd /root/Build/scripts && ./build_debs.sh --repo /root/cloudstack --out /root/artifacts/$(hostname)/debs/$(date -u +%Y%m%dT%H%M%SZ)`
+  - On Ubuntu 24.04, a legacy build-dep (python-setuptools) may be missing. The helper script auto-installs a safe dummy using `equivs` and falls back to `dpkg-buildpackage -d` if needed.
 
 ### 4. Monitoring
 Both servers can:

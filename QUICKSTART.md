@@ -55,6 +55,22 @@ nohup ./enhanced_heartbeat_daemon.sh build2 300 > /var/log/heartbeat-build2.log 
 ```
 
 ## Basic Operations
+\n+### Default build includes DEB packages
+After a successful Maven build you MUST produce DEB packages by default.
+
+- Preferred helper (handles Ubuntu 24.04 quirks automatically):
+```bash
+cd /root/Build/scripts
+./build_debs.sh --repo /root/cloudstack --out /root/artifacts/$(hostname)/debs/$(date -u +%Y%m%dT%H%M%SZ)
+```
+
+- Direct packaging command (advanced users):
+```bash
+cd /root/cloudstack
+./packaging/build-deb.sh -o /root/artifacts/$(hostname)/debs/$(date -u +%Y%m%dT%H%M%SZ)
+```
+
+On Ubuntu 24.04, the legacy dependency 'python-setuptools' may be missing; the helper script installs a safe dummy using 'equivs' and, if necessary, falls back to 'dpkg-buildpackage -d'.
 
 ### Update Status
 
