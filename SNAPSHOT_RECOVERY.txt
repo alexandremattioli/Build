@@ -1,0 +1,123 @@
+╔════════════════════════════════════════════════════════════════════╗
+║          BUILD2 SNAPSHOT RECOVERY - QUICK REFERENCE               ║
+╚════════════════════════════════════════════════════════════════════╝
+
+After reverting Build2 to a previous snapshot, run:
+
+  bash /root/recover_build2_communication.sh
+
+Or manually:
+
+┌────────────────────────────────────────────────────────────────────┐
+│ MANUAL RECOVERY (5 minutes)                                        │
+└────────────────────────────────────────────────────────────────────┘
+
+1. Clone repository:
+   cd /root
+   git clone https://github.com/alexandremattioli/Build.git
+
+2. Configure git:
+   cd Build
+   git config user.name "Build2 Copilot"
+   git config user.email "copilot@build2.local"
+
+3. Setup scripts:
+   chmod +x scripts/*.sh
+
+4. Start heartbeat:
+   cd scripts
+   nohup ./enhanced_heartbeat_daemon.sh build2 60 > /var/log/heartbeat.log 2>&1 &
+
+5. Verify:
+   ./check_health.sh
+
+┌────────────────────────────────────────────────────────────────────┐
+│ WHAT'S LOST IN SNAPSHOT REVERT                                     │
+└────────────────────────────────────────────────────────────────────┘
+
+✗ /root/Build/ directory
+✗ Heartbeat daemon process
+✗ Git configuration
+✗ Log files (/var/log/heartbeat.log, /var/log/build-messages-*.log)
+✗ Any local uncommitted changes
+
+┌────────────────────────────────────────────────────────────────────┐
+│ WHAT'S PRESERVED (IN GITHUB)                                       │
+└────────────────────────────────────────────────────────────────────┘
+
+✓ All scripts and framework
+✓ Message history
+✓ Status tracking
+✓ Job queue
+✓ Build1 communication continues unaffected
+
+┌────────────────────────────────────────────────────────────────────┐
+│ RECOVERY FILES LOCATION                                            │
+└────────────────────────────────────────────────────────────────────┘
+
+Recovery Script:
+  /root/recover_build2_communication.sh
+
+This Guide:
+  /root/SNAPSHOT_RECOVERY.txt
+
+GitHub Repository:
+  https://github.com/alexandremattioli/Build
+
+┌────────────────────────────────────────────────────────────────────┐
+│ VERIFICATION COMMANDS                                              │
+└────────────────────────────────────────────────────────────────────┘
+
+Check if heartbeat is running:
+  ps aux | grep heartbeat_daemon
+
+Check health status:
+  cd /root/Build/scripts && ./check_health.sh
+
+View messages:
+  cd /root/Build/scripts && ./read_messages.sh build2
+
+View heartbeat logs:
+  tail -f /var/log/heartbeat.log
+
+Send test message:
+  cd /root/Build/scripts
+  ./send_message.sh build2 build1 info "Test" "Recovery successful"
+
+┌────────────────────────────────────────────────────────────────────┐
+│ TROUBLESHOOTING                                                    │
+└────────────────────────────────────────────────────────────────────┘
+
+Problem: Git clone fails
+Solution: Check network and GitHub credentials
+
+Problem: Heartbeat daemon won't start
+Solution: Check logs: tail -f /var/log/heartbeat.log
+         Check if port/process conflicts exist
+
+Problem: Git push fails
+Solution: Verify git credentials are configured
+         Try: git pull --rebase, then git push
+
+Problem: Can't see messages
+Solution: Run: cd /root/Build/scripts && ./check_and_process_messages.sh build2
+
+┌────────────────────────────────────────────────────────────────────┐
+│ IMPORTANT NOTES                                                    │
+└────────────────────────────────────────────────────────────────────┘
+
+• Recovery takes ~5 minutes
+• No data loss (everything is in GitHub)
+• Build1 continues working during Build2 recovery
+• Messages sent during downtime will be received after recovery
+• Heartbeat will show as stale until recovery completes
+
+┌────────────────────────────────────────────────────────────────────┐
+│ CONTACT                                                            │
+└────────────────────────────────────────────────────────────────────┘
+
+Repository: https://github.com/alexandremattioli/Build
+Build2 IP: 10.1.3.177
+Build1 IP: 10.1.3.175
+
+═══════════════════════════════════════════════════════════════════════

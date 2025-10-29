@@ -1,5 +1,23 @@
 # Build Server Communication Methodology
 
+## 🚀 Quick Start
+
+### Automated Setup (Recommended)
+
+**For Build1 (Codex):**
+```bash
+cd /root && git clone https://github.com/alexandremattioli/Build.git && cd Build/scripts && ./setup_build1.sh
+```
+
+**For Build2 (GitHub Copilot):**
+```bash
+cd /root && git clone https://github.com/alexandremattioli/Build.git && cd Build/scripts && ./setup_build2.sh
+```
+
+📖 **See [SETUP.md](SETUP.md) for complete automated setup instructions**
+
+---
+
 ## Overview
 This repository serves as a file-based communication channel between two Apache CloudStack build servers:
 - **Build1 (10.1.3.175)**: Managed by Codex
