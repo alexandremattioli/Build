@@ -1,6 +1,17 @@
+
 #!/bin/bash
-# check_health.sh - Monitor health of all servers
+################################################################################
+# Script: check_health.sh
+# Purpose: Monitor health of all servers and job/message status
 # Usage: ./check_health.sh
+#
+# Exit Codes:
+#   0 - Success
+#   1 - Validation error
+#   2 - Git operation failed
+#
+# Dependencies: jq, git
+################################################################################
 
 set -euo pipefail
 
@@ -31,6 +42,10 @@ for SERVER in build1 build2; do
         
         if [ $AGE -gt 300 ]; then
             echo "  ⚠️  WARNING: Heartbeat is stale (>5 minutes)"
+            if [ "${LOCAL_SERVER_ID:-}" = "$SERVER" ] && [ -f scripts/recover_stale_heartbeat.sh ]; then
+                echo "  → Attempting recovery via recover_stale_heartbeat.sh ($SERVER)"
+                bash scripts/recover_stale_heartbeat.sh "$SERVER" || echo "  ! Recovery attempt failed"
+            fi
         elif [ $AGE -gt 120 ]; then
             echo "  ⚠️  CAUTION: Heartbeat is aging (>2 minutes)"
         else
@@ -64,10 +79,17 @@ done
 
 # Check job queue
 echo "[Job Queue]"
-QUEUED=$(jq '[.jobs[] | select(.status == "queued")] | length' coordination/jobs.json)
-RUNNING=$(jq '[.jobs[] | select(.status == "running")] | length' coordination/jobs.json)
-COMPLETED=$(jq '[.jobs[] | select(.status == "completed")] | length' coordination/jobs.json)
-FAILED=$(jq '[.jobs[] | select(.status == "failed")] | length' coordination/jobs.json)
+
+TMP_FILE=$(mktemp)
+jq '[.jobs[] | select(.status == "queued")] | length' coordination/jobs.json > "$TMP_FILE"
+QUEUED=$(cat "$TMP_FILE")
+jq '[.jobs[] | select(.status == "running")] | length' coordination/jobs.json > "$TMP_FILE"
+RUNNING=$(cat "$TMP_FILE")
+jq '[.jobs[] | select(.status == "completed")] | length' coordination/jobs.json > "$TMP_FILE"
+COMPLETED=$(cat "$TMP_FILE")
+jq '[.jobs[] | select(.status == "failed")] | length' coordination/jobs.json > "$TMP_FILE"
+FAILED=$(cat "$TMP_FILE")
+rm "$TMP_FILE"
 
 echo "  Queued: $QUEUED"
 echo "  Running: $RUNNING"

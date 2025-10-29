@@ -1,0 +1,29 @@
+#!/bin/bash
+# Pre-commit hook to validate JSON files
+set -euo pipefail
+
+# Get list of staged files
+STAGED=$(git diff --cached --name-only --diff-filter=ACM)
+
+STATUS=0
+for f in $STAGED; do
+  case "$f" in
+    *.json)
+      if [ -f "$f" ]; then
+        echo "Validating JSON: $f"
+        if ! jq empty "$f" >/dev/null 2>&1; then
+          echo "ERROR: Invalid JSON: $f" >&2
+          STATUS=1
+          continue
+        fi
+        if [ -f scripts/validate_json.sh ]; then
+          if ! bash scripts/validate_json.sh "$f"; then
+            STATUS=1
+          fi
+        fi
+      fi
+      ;;
+  esac
+done
+
+exit $STATUS

@@ -5,7 +5,7 @@
 set -euo pipefail
 
 SERVER_ID="${1:-build2}"
-INTERVAL="${2:-60}"
+INTERVAL="${2:-300}"
 
 echo "Starting enhanced heartbeat daemon for $SERVER_ID (interval: ${INTERVAL}s)"
 echo "This will check for messages on each heartbeat cycle"

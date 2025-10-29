@@ -1,6 +1,15 @@
 #!/bin/bash
-# update_message_stats.sh - Update message statistics from messages.json
-# This should be called after sending a message
+################################################################################
+# Script: update_message_stats.sh
+# Purpose: Update message statistics from messages.json
+# Usage: ./update_message_stats.sh
+#
+# Exit Codes:
+#   0 - Success
+#   2 - Git operation failed
+#
+# Dependencies: jq, git
+################################################################################
 
 set -euo pipefail
 
@@ -134,11 +143,40 @@ jq -n \
       last_message_time: $last_time,
       last_message_type: $last_type
     }
-  }' > "$STATS_FILE"
+  }' > "$STATS_FILE.tmp"
+
+# Move atomically
+mv "$STATS_FILE.tmp" "$STATS_FILE"
+
+# Validate JSON
+if [ -f scripts/validate_json.sh ]; then
+    bash scripts/validate_json.sh "$STATS_FILE" || exit 2
+fi
 
 # Commit and push
 git add "$STATS_FILE"
 git commit -m "Update message statistics: $(date -u +%H:%M:%S)" >/dev/null 2>&1 || true
-git push origin main >/dev/null 2>&1 || true
+
+# Retry git push with exponential backoff
+push_with_retry() {
+  local max_attempts=5
+  local attempt=1
+  local delay=1
+  while [ $attempt -le $max_attempts ]; do
+    if git push origin main 2>/dev/null; then
+      return 0
+    fi
+    echo "Push failed (attempt $attempt/$max_attempts), retrying in ${delay}s..."
+    sleep $delay
+    git pull origin main --rebase --autostash
+    delay=$((delay * 2))
+    attempt=$((attempt + 1))
+  done
+  [ -f scripts/log_error.sh ] && bash scripts/log_error.sh "update_message_stats" "git push failed after $max_attempts attempts"
+  echo "ERROR: git push failed after $max_attempts attempts" >&2
+  return 1
+}
+
+push_with_retry || true
 
 echo "Message statistics updated: $TOTAL total messages"

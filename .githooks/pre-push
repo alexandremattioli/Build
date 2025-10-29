@@ -1,0 +1,24 @@
+#!/bin/bash
+# pre-push hook: fast safety checks before pushing
+set -euo pipefail
+
+# Repo root detection
+REPO_DIR=$(git rev-parse --show-toplevel)
+cd "$REPO_DIR"
+
+# 1) Bash syntax check for scripts
+if ls scripts/*.sh >/dev/null 2>&1; then
+  for f in scripts/*.sh; do
+    bash -n "$f"
+  done
+fi
+
+# 2) JSON validation if script exists
+if [ -x scripts/validate_json.sh ]; then
+  while IFS= read -r f; do
+    bash scripts/validate_json.sh "$f"
+  done < <(git ls-files '*.json')
+fi
+
+# All good
+exit 0

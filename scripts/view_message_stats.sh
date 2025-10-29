@@ -1,6 +1,17 @@
+
 #!/bin/bash
-# view_message_stats.sh - View current message statistics
+################################################################################
+# Script: view_message_stats.sh
+# Purpose: View current message statistics for all servers
 # Usage: ./view_message_stats.sh
+#
+# Exit Codes:
+#   0 - Success
+#   1 - Validation error
+#   2 - Git operation failed
+#
+# Dependencies: jq, git
+################################################################################
 
 REPO_DIR="/root/Build"
 
@@ -10,6 +21,7 @@ if [ ! -d "$REPO_DIR" ]; then
 fi
 
 cd "$REPO_DIR"
+
 git pull origin main --quiet 2>/dev/null || true
 
 STATS_FILE="coordination/message_stats.json"
@@ -21,8 +33,12 @@ fi
 
 echo "=== Message Statistics ==="
 echo ""
-echo "Last Updated: $(jq -r '.last_updated' "$STATS_FILE")"
-echo "Total Messages: $(jq -r '.total_messages' "$STATS_FILE")"
+TMP_FILE=$(mktemp)
+jq -r '.last_updated' "$STATS_FILE" > "$TMP_FILE"
+echo "Last Updated: $(cat "$TMP_FILE")"
+jq -r '.total_messages' "$STATS_FILE" > "$TMP_FILE"
+echo "Total Messages: $(cat "$TMP_FILE")"
+rm "$TMP_FILE"
 echo ""
 
 echo "--- Build1 (Codex) ---"

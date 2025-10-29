@@ -1,10 +1,36 @@
+
 #!/bin/bash
-# check_and_process_messages.sh - Check for new messages and process them
+################################################################################
+# Script: check_and_process_messages.sh
+# Purpose: Check for new messages and process them for a server
 # Usage: ./check_and_process_messages.sh <server_id>
+#
+# Arguments:
+#   server_id - build1 or build2
+#
+# Exit Codes:
+#   0 - Success
+#   1 - Validation error
+#   2 - Git operation failed
+#
+# Dependencies: jq, git
+################################################################################
 
 set -euo pipefail
 
+
 SERVER_ID="${1:-build2}"
+
+# Input validation
+validate_server_id() {
+    local server="$1"
+    if [[ ! "$server" =~ ^(build1|build2)$ ]]; then
+        echo "ERROR: Invalid server ID: $server" >&2
+        exit 1
+    fi
+}
+
+validate_server_id "$SERVER_ID"
 REPO_DIR="/root/Build"
 
 cd "$REPO_DIR"
@@ -16,7 +42,10 @@ git pull origin main --quiet 2>/dev/null || {
 }
 
 # Get unread messages for this server
-MESSAGES=$(jq --arg server "$SERVER_ID" '[.messages[] | select((.to == $server or .to == "all") and .read == false)]' coordination/messages.json)
+TMP_FILE=$(mktemp)
+jq --arg server "$SERVER_ID" '[.messages[] | select((.to == $server or .to == "all") and .read == false)]' coordination/messages.json > "$TMP_FILE"
+MESSAGES=$(cat "$TMP_FILE")
+rm "$TMP_FILE"
 COUNT=$(echo "$MESSAGES" | jq 'length')
 
 if [ "$COUNT" -eq 0 ]; then

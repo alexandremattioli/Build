@@ -44,13 +44,14 @@ chmod +x *.sh
 On Build1:
 ```bash
 cd /root/Build/scripts
-nohup ./enhanced_heartbeat_daemon.sh build1 60 > /var/log/heartbeat-build1.log 2>&1 &
+# Default interval is 300s if omitted; here we use 300 explicitly
+nohup ./enhanced_heartbeat_daemon.sh build1 300 > /var/log/heartbeat-build1.log 2>&1 &
 ```
 
 On Build2:
 ```bash
 cd /root/Build/scripts
-nohup ./enhanced_heartbeat_daemon.sh build2 60 > /var/log/heartbeat-build2.log 2>&1 &
+nohup ./enhanced_heartbeat_daemon.sh build2 300 > /var/log/heartbeat-build2.log 2>&1 &
 ```
 
 ## Basic Operations
@@ -297,6 +298,33 @@ cd /root/Build/scripts
 cd /root/Build/scripts
 ./heartbeat.sh build2
 ./check_health.sh
+```
+
+## Heartbeat tuning
+
+You can control heartbeat push behavior via environment variables (applies to both `heartbeat.sh` and `enhanced_heartbeat.sh`):
+
+- HEARTBEAT_PUSH_EVERY: Batch pushes every N heartbeats. Example: `HEARTBEAT_PUSH_EVERY=5` (default if unset).
+- HEARTBEAT_BRANCH: Push to a dedicated remote branch to reduce noise on `main`.
+    - Set to a branch name (e.g., `heartbeat-build2`) or
+    - Set to `1` or `auto` to use `heartbeat-$SERVER_ID` automatically.
+
+Example one-off run to push to a heartbeat branch every 5 beats:
+```bash
+cd /root/Build/scripts
+HEARTBEAT_PUSH_EVERY=5 HEARTBEAT_BRANCH=auto ./heartbeat.sh build2
+```
+
+## Heartbeat history maintenance
+
+To compact heartbeat branches and keep `main` clean, use:
+
+- `./scripts/squash_heartbeat_branch.sh --server build2 --backup`
+- `./scripts/squash_heartbeat_branch.sh --branch heartbeat-build2 --backup`
+
+Optional cron example (daily at 02:00 UTC):
+```bash
+0 2 * * * /root/Build/scripts/squash_heartbeat_branch.sh --server build2 --backup >> /var/log/heartbeat-squash.log 2>&1
 ```
 
 ## Next Steps

@@ -255,3 +255,31 @@ If git push fails due to conflicts:
 - Monitor repository size
 - Consider git LFS for large artifacts
 - Review and clean completed jobs monthly
+
+## Heartbeat behavior controls
+
+You can tune heartbeat commit behavior via environment variables (applies to both `scripts/heartbeat.sh` and `scripts/enhanced_heartbeat.sh`):
+
+- HEARTBEAT_PUSH_EVERY: Batch commits and only push after N heartbeats. Example: `HEARTBEAT_PUSH_EVERY=5` (default if unset).
+- HEARTBEAT_BRANCH: Push heartbeats to a specific remote branch without changing your local branch. Set to:
+  - a branch name (e.g., `heartbeat-build2`) to push `HEAD:heartbeat-build2`, or
+  - `1` or `auto` to automatically use `heartbeat-$SERVER_ID`.
+
+When using a heartbeat branch, you can periodically squash or prune that branch on the server to keep history compact without affecting `main`.
+
+### Squash heartbeat branch history
+
+Use `scripts/squash_heartbeat_branch.sh` to reduce a heartbeat branch to a single commit (current snapshot) and optionally create a remote backup:
+
+- Squash automatic branch for a server: `./scripts/squash_heartbeat_branch.sh --server build2 --backup`
+- Squash specific branch: `./scripts/squash_heartbeat_branch.sh --branch heartbeat-build2 --backup`
+
+Notes:
+- Uses a force-with-lease push to update the heartbeat branch only.
+- If `--backup` is set, a `backup/<branch>-<timestamp>` ref is pushed before squashing.
+- Add to cron (e.g., daily) if you want continuous compaction.
+
+### Local write locks
+
+Writers to `coordination/messages.json` and `coordination/jobs.json` now use local `flock` locks to avoid concurrent edits on the same host. This complements git-based conflict handling across hosts and reduces transient merge churn.
+
