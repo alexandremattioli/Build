@@ -20,12 +20,12 @@ TOTAL=$(jq '.messages | length' "$MESSAGES_FILE")
 BUILD1_TOTAL=$(jq '[.messages[] | select(.from == "build1")] | length' "$MESSAGES_FILE")
 BUILD2_TOTAL=$(jq '[.messages[] | select(.from == "build2")] | length' "$MESSAGES_FILE")
 
-# Get last message from each server
-BUILD1_LAST_TIME=$(jq -r '[.messages[] | select(.from == "build1")] | sort_by(.timestamp) | last | .timestamp // null' "$MESSAGES_FILE")
-BUILD1_LAST_SUBJECT=$(jq -r '[.messages[] | select(.from == "build1")] | sort_by(.timestamp) | last | .subject // null' "$MESSAGES_FILE")
+# Get last message from each server (preserve JSON nulls/strings)
+BUILD1_LAST_TIME=$(jq -c '[.messages[] | select(.from == "build1")] | sort_by(.timestamp) | last // {} | .timestamp // null' "$MESSAGES_FILE")
+BUILD1_LAST_SUBJECT=$(jq -c '[.messages[] | select(.from == "build1")] | sort_by(.timestamp) | last // {} | .subject // null' "$MESSAGES_FILE")
 
-BUILD2_LAST_TIME=$(jq -r '[.messages[] | select(.from == "build2")] | sort_by(.timestamp) | last | .timestamp // null' "$MESSAGES_FILE")
-BUILD2_LAST_SUBJECT=$(jq -r '[.messages[] | select(.from == "build2")] | sort_by(.timestamp) | last | .subject // null' "$MESSAGES_FILE")
+BUILD2_LAST_TIME=$(jq -c '[.messages[] | select(.from == "build2")] | sort_by(.timestamp) | last // {} | .timestamp // null' "$MESSAGES_FILE")
+BUILD2_LAST_SUBJECT=$(jq -c '[.messages[] | select(.from == "build2")] | sort_by(.timestamp) | last // {} | .subject // null' "$MESSAGES_FILE")
 
 # Count by type for each server
 BUILD1_INFO=$(jq '[.messages[] | select(.from == "build1" and .type == "info")] | length' "$MESSAGES_FILE")
@@ -48,69 +48,93 @@ BUILD1_UNREAD=$(jq '[.messages[] | select((.to == "build1" or .to == "all") and 
 BUILD2_UNREAD=$(jq '[.messages[] | select((.to == "build2" or .to == "all") and .read == false)] | length' "$MESSAGES_FILE")
 
 # Get last broadcast time
-LAST_BROADCAST_TIME=$(jq -r '[.messages[] | select(.to == "all")] | sort_by(.timestamp) | last | .timestamp // null' "$MESSAGES_FILE")
+LAST_BROADCAST_TIME=$(jq -c '[.messages[] | select(.to == "all")] | sort_by(.timestamp) | last // {} | .timestamp // null' "$MESSAGES_FILE")
 
 # Get overall last message info
-LAST_MSG=$(jq -r '.messages | sort_by(.timestamp) | last' "$MESSAGES_FILE")
-LAST_FROM=$(echo "$LAST_MSG" | jq -r '.from // null')
-LAST_TO=$(echo "$LAST_MSG" | jq -r '.to // null')
-LAST_TIME=$(echo "$LAST_MSG" | jq -r '.timestamp // null')
-LAST_TYPE=$(echo "$LAST_MSG" | jq -r '.type // null')
+LAST_FROM=$(jq -c '.messages | sort_by(.timestamp) | last // {} | .from // null' "$MESSAGES_FILE")
+LAST_TO=$(jq -c '.messages | sort_by(.timestamp) | last // {} | .to // null' "$MESSAGES_FILE")
+LAST_TIME=$(jq -c '.messages | sort_by(.timestamp) | last // {} | .timestamp // null' "$MESSAGES_FILE")
+LAST_TYPE=$(jq -c '.messages | sort_by(.timestamp) | last // {} | .type // null' "$MESSAGES_FILE")
 
 # Current timestamp
 NOW=$(date -u +%Y-%m-%dT%H:%M:%SZ)
 
 # Build stats JSON
-cat > "$STATS_FILE" <<EOF
-{
-  "last_updated": "$NOW",
-  "total_messages": $TOTAL,
-  "by_server": {
-    "build1": {
-      "total_sent": $BUILD1_TOTAL,
-      "last_message_time": $BUILD1_LAST_TIME,
-      "last_message_subject": $BUILD1_LAST_SUBJECT,
-      "messages_by_type": {
-        "info": $BUILD1_INFO,
-        "warning": $BUILD1_WARNING,
-        "error": $BUILD1_ERROR,
-        "request": $BUILD1_REQUEST
+jq -n \
+  --arg now "$NOW" \
+  --argjson total "$TOTAL" \
+  --argjson build1_total "$BUILD1_TOTAL" \
+  --argjson build2_total "$BUILD2_TOTAL" \
+  --argjson build1_last_time "$BUILD1_LAST_TIME" \
+  --argjson build1_last_subject "$BUILD1_LAST_SUBJECT" \
+  --argjson build2_last_time "$BUILD2_LAST_TIME" \
+  --argjson build2_last_subject "$BUILD2_LAST_SUBJECT" \
+  --argjson build1_info "$BUILD1_INFO" \
+  --argjson build1_warning "$BUILD1_WARNING" \
+  --argjson build1_error "$BUILD1_ERROR" \
+  --argjson build1_request "$BUILD1_REQUEST" \
+  --argjson build2_info "$BUILD2_INFO" \
+  --argjson build2_warning "$BUILD2_WARNING" \
+  --argjson build2_error "$BUILD2_ERROR" \
+  --argjson build2_request "$BUILD2_REQUEST" \
+  --argjson build1_received "$BUILD1_RECEIVED" \
+  --argjson build2_received "$BUILD2_RECEIVED" \
+  --argjson all_broadcast "$ALL_BROADCAST" \
+  --argjson build1_unread "$BUILD1_UNREAD" \
+  --argjson build2_unread "$BUILD2_UNREAD" \
+  --argjson last_broadcast_time "$LAST_BROADCAST_TIME" \
+  --argjson last_from "$LAST_FROM" \
+  --argjson last_to "$LAST_TO" \
+  --argjson last_time "$LAST_TIME" \
+  --argjson last_type "$LAST_TYPE" \
+  '{
+    last_updated: $now,
+    total_messages: $total,
+    by_server: {
+      build1: {
+        total_sent: $build1_total,
+        last_message_time: $build1_last_time,
+        last_message_subject: $build1_last_subject,
+        messages_by_type: {
+          info: $build1_info,
+          warning: $build1_warning,
+          error: $build1_error,
+          request: $build1_request
+        }
+      },
+      build2: {
+        total_sent: $build2_total,
+        last_message_time: $build2_last_time,
+        last_message_subject: $build2_last_subject,
+        messages_by_type: {
+          info: $build2_info,
+          warning: $build2_warning,
+          error: $build2_error,
+          request: $build2_request
+        }
       }
     },
-    "build2": {
-      "total_sent": $BUILD2_TOTAL,
-      "last_message_time": $BUILD2_LAST_TIME,
-      "last_message_subject": $BUILD2_LAST_SUBJECT,
-      "messages_by_type": {
-        "info": $BUILD2_INFO,
-        "warning": $BUILD2_WARNING,
-        "error": $BUILD2_ERROR,
-        "request": $BUILD2_REQUEST
+    by_recipient: {
+      build1: {
+        total_received: $build1_received,
+        unread_count: $build1_unread
+      },
+      build2: {
+        total_received: $build2_received,
+        unread_count: $build2_unread
+      },
+      all: {
+        total_broadcast: $all_broadcast,
+        last_broadcast_time: $last_broadcast_time
       }
-    }
-  },
-  "by_recipient": {
-    "build1": {
-      "total_received": $BUILD1_RECEIVED,
-      "unread_count": $BUILD1_UNREAD
     },
-    "build2": {
-      "total_received": $BUILD2_RECEIVED,
-      "unread_count": $BUILD2_UNREAD
-    },
-    "all": {
-      "total_broadcast": $ALL_BROADCAST,
-      "last_broadcast_time": $LAST_BROADCAST_TIME
+    recent_activity: {
+      last_message_from: $last_from,
+      last_message_to: $last_to,
+      last_message_time: $last_time,
+      last_message_type: $last_type
     }
-  },
-  "recent_activity": {
-    "last_message_from": $LAST_FROM,
-    "last_message_to": $LAST_TO,
-    "last_message_time": $LAST_TIME,
-    "last_message_type": $LAST_TYPE
-  }
-}
-EOF
+  }' > "$STATS_FILE"
 
 # Commit and push
 git add "$STATS_FILE"

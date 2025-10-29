@@ -88,6 +88,16 @@ cd /root/Build/scripts
 ./send_message.sh build2 build1 error "Build Failed" "Maven compilation error in module X"
 ```
 
+### Refresh Message Metrics
+
+After sending or reading messages, regenerate the aggregated statistics to keep `coordination/message_stats.json` valid and up to date:
+
+```bash
+cd /root/Build/scripts
+./update_message_stats.sh
+./view_message_stats.sh
+```
+
 ### Read Messages
 
 ```bash

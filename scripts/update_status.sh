@@ -25,7 +25,24 @@ if [ "$JOB_ID" != "null" ]; then
     jq --arg ts "$TIMESTAMP" \
        --arg status "$STATUS" \
        --arg job "$JOB_ID" \
-       '.timestamp = $ts | .status = $status | .current_job.id = $job | .current_job.started_at = $ts' \
+       '. as $orig
+        | .timestamp = $ts
+        | .status = $status
+        | .current_job = (
+            if ($orig.current_job // null) and (($orig.current_job.id // null) == $job) then
+                $orig.current_job
+            else
+                {}
+            end
+          )
+        | .current_job.id = $job
+        | .current_job.started_at = (
+            if ($orig.current_job // null) and (($orig.current_job.id // null) == $job) and ($orig.current_job.started_at // null) then
+                $orig.current_job.started_at
+            else
+                $ts
+            end
+          )' \
        "$STATUS_FILE" > tmp.json
 else
     jq --arg ts "$TIMESTAMP" \
