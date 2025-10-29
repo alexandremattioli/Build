@@ -54,7 +54,8 @@
     }
   ],
   "metadata": {
-    "last_cleanup": "2025-10-29T00:00:00Z",
-    "retention_days": 7
+    "last_cleanup": "Never - messages kept forever",
+    "retention_policy": "permanent",
+    "note": "All messages between Build1 and Build2 are retained indefinitely for audit trail and coordination history"
   }
 }
