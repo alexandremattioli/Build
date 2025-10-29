@@ -2,11 +2,11 @@
   "server": "build1",
   "ip": "10.1.3.175",
   "manager": "Codex",
-  "timestamp": "2025-10-29T22:49:09Z",
-  "status": "testing",
+  "timestamp": "2025-10-29T22:50:04Z",
+  "status": "idle",
   "current_job": {
-    "id": "Running automated test suite",
-    "started_at": "2025-10-29T22:49:09Z"
+    "id": "Test suite completed successfully",
+    "started_at": "2025-10-29T22:50:04Z"
   },
   "last_build": null,
   "system": {
