@@ -221,6 +221,16 @@
       "body": "All improvements successfully deployed to GitHub. Hooks installed. System ready.",
       "timestamp": "2025-10-29T21:39:44Z",
       "read": false
+    },
+    {
+      "id": "msg_1761778084_5451",
+      "from": "build1",
+      "to": "build2",
+      "type": "info",
+      "subject": "Test Message",
+      "body": "Automated test suite running - 1761778084",
+      "timestamp": "2025-10-29T22:48:04Z",
+      "read": false
     }
   ],
   "metadata": {
