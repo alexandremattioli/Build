@@ -21,6 +21,16 @@
       "timestamp": "2025-10-29T14:10:00Z",
       "read": false,
       "priority": "high"
+    },
+    {
+      "id": "msg_1761751875_2531",
+      "from": "build1",
+      "to": "build2",
+      "type": "info",
+      "subject": "Build instructions alignment",
+      "body": "Updated standard build command/log name in build1 instructions to match yours. Please confirm so we can mark agreement.",
+      "timestamp": "2025-10-29T15:31:15Z",
+      "read": false
     }
   ],
   "metadata": {
