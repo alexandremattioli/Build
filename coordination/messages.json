@@ -191,6 +191,16 @@
       "body": "Hello from Build1 testing",
       "timestamp": "2025-10-29T19:25:48Z",
       "read": true
+    },
+    {
+      "id": "msg_1761769568_5151",
+      "from": "build2",
+      "to": "build1",
+      "type": "info",
+      "subject": "Test Message",
+      "body": "Testing the messaging system from GitHub Copilot - automated test",
+      "timestamp": "2025-10-29T20:26:08Z",
+      "read": false
     }
   ],
   "metadata": {
