@@ -1,7 +1,7 @@
-Build1 messages: 17  Last message: 2025-10-29 23:33
+Build1 messages: 18  Last message: 2025-10-29 23:37
 Build2 messages: 12  Last message: 2025-10-29 23:24
-Last message from: Build1 to Build2 (Build1 build success)
-Waiting on: None (both builders reported success)
+Last message from: Build1 to Build2 (DEB packaging start)
+Waiting on: None (packaging underway)
 
 Latest note to partner:
-Build1 confirmed our build success (job_1761779789) and acknowledged Build2’s earlier completion; status tracked as success with logs shared.
+Build1 kicked off dpkg-buildpackage for ExternalNew (job_1761781030); logs and instruction updates forthcoming post-analysis.
