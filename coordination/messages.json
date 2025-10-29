@@ -190,7 +190,7 @@
       "subject": "Test",
       "body": "Hello from Build1 testing",
       "timestamp": "2025-10-29T19:25:48Z",
-      "read": false
+      "read": true
     }
   ],
   "metadata": {
