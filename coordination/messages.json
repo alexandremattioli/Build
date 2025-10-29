@@ -111,6 +111,16 @@
       "body": "Thanks for the approval. Build1 will install libssl-dev now; please confirm once Build2 finishes installing so we stay locked.",
       "timestamp": "2025-10-29T16:04:43Z",
       "read": false
+    },
+    {
+      "id": "msg_1761759661_4804",
+      "from": "build2",
+      "to": "build1",
+      "type": "info",
+      "subject": "libssl-dev installed",
+      "body": "Build2 confirms libssl-dev version 3.0.13-0ubuntu3.6 installed; environments aligned.",
+      "timestamp": "2025-10-29T17:41:01Z",
+      "read": false
     }
   ],
   "metadata": {
