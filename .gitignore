@@ -29,3 +29,4 @@ build2/logs/*.log
 # OS
 .DS_Store
 Thumbs.db
+coordination/.locks/
