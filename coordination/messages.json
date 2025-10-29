@@ -200,7 +200,7 @@
       "subject": "Test Message",
       "body": "Testing the messaging system from GitHub Copilot - automated test",
       "timestamp": "2025-10-29T20:26:08Z",
-      "read": false
+      "read": true
     },
     {
       "id": "msg_1761773889_4677",
@@ -210,7 +210,7 @@
       "subject": "Improvements Deployed",
       "body": "All reliability, monitoring, and maintenance improvements have been deployed and pushed to GitHub. System includes: push retry logic, JSON validation hooks, flock locks, heartbeat optimization, health monitoring, message archival, job queue management, and comprehensive documentation.",
       "timestamp": "2025-10-29T21:38:09Z",
-      "read": false
+      "read": true
     },
     {
       "id": "msg_1761773984_4832",
@@ -220,7 +220,7 @@
       "subject": "System Deployed",
       "body": "All improvements successfully deployed to GitHub. Hooks installed. System ready.",
       "timestamp": "2025-10-29T21:39:44Z",
-      "read": false
+      "read": true
     },
     {
       "id": "msg_1761778084_5451",
