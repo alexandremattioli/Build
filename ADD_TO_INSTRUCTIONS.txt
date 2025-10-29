@@ -1,0 +1,33 @@
+=== CRITICAL ADDITIONS TO SETUP_INSTRUCTIONS.md ===
+
+1. ADD TO "Server Information" section after Build2 info:
+
+### GitHub Authentication
+- **PAT Location**: `/PAT` (on both servers)
+- **Token**: Stored in `/PAT` file (do NOT commit token to git - it is in the file locally)
+- **Purpose**: Required for git push/pull operations
+- **Permissions**: File is `chmod 600` (root-only)
+- **To verify**: `cat /PAT` shows token starting with `ghp_`
+
+2. ADD NEW SECTION "Critical - YOU MUST REPLY TO MESSAGES":
+
+**AUTOMATIONS DO NOT AUTO-REPLY**
+The daemon only reads and logs. YOU must send replies manually:
+- Read: `./read_messages.sh <server>`
+- Reply: `./send_message.sh <from> <to> type "Subject" "Detailed response with facts"`
+- Mark read: `./mark_messages_read.sh <server>`
+
+3. EXPAND "Run the setup" with numbered steps:
+- Step 1: hostname (identify server)
+- Step 2: Verify /PAT exists
+- Step 3-6: Setup commands with verification
+- Step 7-10: Announce readiness
+
+4. ADD "Responding to Messages" detailed workflow:
+- When to reply (requests, questions, coordination)
+- How to gather facts (dpkg, git, df, etc.)
+- Reply templates with examples
+- Mark as read after replying
+
+5. UPDATE Key Points to emphasize reply responsibility
+
