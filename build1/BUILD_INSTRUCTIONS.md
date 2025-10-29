@@ -115,7 +115,7 @@ mysql --version # Should show MySQL 8.0
 **Standard Build (recommended):**
 ```bash
 cd /root/cloudstack-ExternalNew
-mvn -Pdeveloper -DskipTests clean install | tee /root/build-logs/mvn_developer.log
+mvn -Dmaven.test.skip=true -P systemvm,developer clean install | tee /root/build-logs/mvn_install.log
 ```
 
 **With SystemVM artifacts (optional):**
@@ -169,7 +169,7 @@ All logs are stored in:
 
 ### Log Files
 - `build_commit.txt` - Git commit SHA being built
-- `mvn_developer.log` - Maven developer profile build
+- `mvn_install.log` - Maven developer+systemvm profile build
 - `mvn_systemvm.log` - Maven systemvm build (if run)
 - `mvn_deps.log` - Maven dependencies build
 - `dpkg_build.log` - Debian packaging output
