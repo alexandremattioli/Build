@@ -43,25 +43,35 @@ This will:
 
 ### Non-interactive setup and always re-clone
 
-If `/root/Build` already exists, the setup scripts used to prompt:
-
-"Warning: /root/Build already exists\nDo you want to re-clone? (y/N):"
-
-You can now force a clean re-clone without any prompt by passing `--force` (or setting `FORCE_RECLONE=1`). Examples:
+**Default behavior (recommended):** The setup scripts now **automatically re-clone** `/root/Build` to ensure you always have the latest code. No prompts, no intervention needed.
 
 ```bash
-# Build1 - force re-clone
-cd /root/Build/scripts && ./setup_build1.sh --force
-# or via env var
-cd /root/Build/scripts && FORCE_RECLONE=1 ./setup_build1.sh
+# Build1 - auto re-clone (default)
+cd /root/Build/scripts && ./setup_build1.sh
 
-# Build2 - force re-clone
-cd /root/Build/scripts && ./setup_build2.sh --force
-# or via env var
-cd /root/Build/scripts && FORCE_RECLONE=1 ./setup_build2.sh
+# Build2 - auto re-clone (default)
+cd /root/Build/scripts && ./setup_build2.sh
 ```
 
-To explicitly keep the existing repo without a prompt, use `--skip-reclone`.
+If you want to **keep the existing repo** and just pull updates instead:
+
+```bash
+# Build1 - keep existing repo
+cd /root/Build/scripts && ./setup_build1.sh --skip-reclone
+
+# Build2 - keep existing repo
+cd /root/Build/scripts && ./setup_build2.sh --skip-reclone
+```
+
+You can also use the environment variable to control behavior:
+
+```bash
+# Disable auto-reclone (keep existing repo)
+FORCE_RECLONE=0 ./setup_build1.sh
+
+# Force re-clone (this is the default, so usually unnecessary)
+FORCE_RECLONE=1 ./setup_build1.sh
+```
 
 ---
 

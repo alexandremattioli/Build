@@ -5,33 +5,31 @@
 set -euo pipefail
 
 # Flags
-# - Use FORCE_RECLONE=1 env var or --force to always re-clone /root/Build if it exists
-# - Use --skip-reclone to keep existing repo without prompt
-FORCE_RECLONE_ENV="${FORCE_RECLONE:-0}"
-FORCE_RECLONE=0
+# - Default behavior: ALWAYS re-clone for latest code (recommended for automation)
+# - Use --skip-reclone to keep existing repo and just pull updates
+# - Use FORCE_RECLONE=0 env var to prevent auto-reclone
+FORCE_RECLONE_ENV="${FORCE_RECLONE:-1}"
+FORCE_RECLONE=1
 SKIP_RECLONE=0
 
 while [[ ${1:-} =~ ^- ]]; do
     case "$1" in
-        --force|-f)
-            FORCE_RECLONE=1
-            shift
-            ;;
         --skip-reclone)
             SKIP_RECLONE=1
+            FORCE_RECLONE=0
             shift
             ;;
         *)
             echo "Unknown option: $1" >&2
-            echo "Usage: $0 [--force|-f] [--skip-reclone]" >&2
+            echo "Usage: $0 [--skip-reclone]" >&2
             exit 2
             ;;
     esac
 done
 
-# Env var override
-if [[ "$FORCE_RECLONE_ENV" == "1" ]]; then
-    FORCE_RECLONE=1
+# Env var override (allow disabling auto-reclone)
+if [[ "$FORCE_RECLONE_ENV" == "0" ]]; then
+    FORCE_RECLONE=0
 fi
 
 echo "=== Build2 Communication Framework Setup/Recovery ==="
@@ -42,22 +40,13 @@ echo ""
 if [ -d "/root/Build/.git" ]; then
     echo "⚠️  Warning: /root/Build already exists"
     if [[ $FORCE_RECLONE -eq 1 ]]; then
-        echo "--force specified (or FORCE_RECLONE=1). Re-cloning repository..."
+        echo "Re-cloning repository for latest code (default behavior)..."
+        echo "Use --skip-reclone to keep existing repo."
         rm -rf /root/Build
     elif [[ $SKIP_RECLONE -eq 1 ]]; then
         echo "--skip-reclone specified. Using existing repository."
         cd /root/Build
         git pull --rebase origin main
-    else
-        read -p "Do you want to re-clone? (y/N): " -n 1 -r
-        echo
-        if [[ ! $REPLY =~ ^[Yy]$ ]]; then
-            echo "Skipping clone. Using existing repository."
-            cd /root/Build
-            git pull --rebase origin main
-        else
-            rm -rf /root/Build
-        fi
     fi
 fi
 
