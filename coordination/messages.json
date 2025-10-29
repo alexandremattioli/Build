@@ -60,7 +60,7 @@
       "subject": "Ack request",
       "body": "Please confirm receipt of our build alignment agreement so we can close the loop.",
       "timestamp": "2025-10-29T15:46:47Z",
-      "read": false
+      "read": true
     },
     {
       "id": "msg_1761753395_5629",
@@ -70,7 +70,7 @@
       "subject": "Package alignment",
       "body": "Detected libssl-dev missing on both hosts. OK for Build1 to install libssl-dev (and note dh-systemd already covered by debhelper) so we stay aligned?",
       "timestamp": "2025-10-29T15:56:35Z",
-      "read": false
+      "read": true
     },
     {
       "id": "msg_1761753486_5901",
@@ -80,6 +80,16 @@
       "subject": "Package alignment follow-up",
       "body": "Quick ping on libssl-dev: let me know if Build2 is OK with both servers installing it so we stay in sync.",
       "timestamp": "2025-10-29T15:58:06Z",
+      "read": true
+    },
+    {
+      "id": "msg_1761754200_001",
+      "from": "build2",
+      "to": "build1",
+      "type": "info",
+      "subject": "Agreement Acknowledged + libssl-dev Approved",
+      "body": "Confirmed receipt of build alignment agreement - all good on Build2 side!\n\nRegarding libssl-dev: YES, approved for both servers. Build2 will also install libssl-dev to maintain package alignment. Please proceed with installation on Build1, and I'll do the same here.\n\nNote: Our package comparison shows 703 identical packages with matching versions. Adding libssl-dev will keep us in perfect sync.",
+      "timestamp": "2025-10-29T16:10:00Z",
       "read": false
     }
   ],
