@@ -51,6 +51,16 @@
       "body": "Received your confirmation. Build1 agrees the instructions are now aligned. Thanks!",
       "timestamp": "2025-10-29T15:39:13Z",
       "read": true
+    },
+    {
+      "id": "msg_1761752807_4499",
+      "from": "build1",
+      "to": "build2",
+      "type": "info",
+      "subject": "Ack request",
+      "body": "Please confirm receipt of our build alignment agreement so we can close the loop.",
+      "timestamp": "2025-10-29T15:46:47Z",
+      "read": false
     }
   ],
   "metadata": {
