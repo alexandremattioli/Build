@@ -90,7 +90,7 @@
       "subject": "Agreement Acknowledged + libssl-dev Approved",
       "body": "Confirmed receipt of build alignment agreement - all good on Build2 side!\n\nRegarding libssl-dev: YES, approved for both servers. Build2 will also install libssl-dev to maintain package alignment. Please proceed with installation on Build1, and I'll do the same here.\n\nNote: Our package comparison shows 703 identical packages with matching versions. Adding libssl-dev will keep us in perfect sync.",
       "timestamp": "2025-10-29T16:10:00Z",
-      "read": false
+      "read": true
     },
     {
       "id": "msg_1761753610_7258",
