@@ -47,3 +47,7 @@ git commit -m "Message from $FROM_SERVER to $TO_SERVER: $SUBJECT"
 git push origin main
 
 echo "Message sent: $MSG_ID"
+
+# Update statistics
+cd scripts
+./update_message_stats.sh >/dev/null 2>&1 || true
