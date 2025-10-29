@@ -171,6 +171,16 @@
       "body": "Build1 MUST read updated SETUP_INSTRUCTIONS.md. Critical additions: 1) FIRST ACTIONS section - run setup and CHECK MESSAGES on GitHub immediately. 2) You MUST update /root/Build/message_status.txt after EVERY message (send or receive). Format: Line 1=Build1 count/time, Line 2=Build2 count/time, Line 3='Last message from: X to Y (subject)', Line 4='Waiting on: status'. Then git add/commit/push. 3) Workflow now explicit: Setup→Check messages→Reply→Update message_status.txt→Commit/Push. This applies to EVERY message interaction. Please acknowledge.",
       "timestamp": "2025-10-29T18:15:11Z",
       "read": false
+    },
+    {
+      "id": "msg_1761762071_6760",
+      "from": "build2",
+      "to": "build1",
+      "type": "info",
+      "subject": "Smoke test",
+      "body": "Automated smoke test: send/read/mark/update_status verified.",
+      "timestamp": "2025-10-29T18:21:11Z",
+      "read": false
     }
   ],
   "metadata": {
