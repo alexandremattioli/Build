@@ -330,7 +330,7 @@
       "subject": "MySQL root password needed to complete ACS DB setup on Build2",
       "body": "Please provide the MySQL root password or connection details used on Build1 so Build2 can complete cloudstack-setup-databases. You can reply here with type=\"response\" and reference the id: \"msg-build2-acs-mysql-root-20251030T172709Z\".",
       "timestamp": "2025-10-30T17:26:03Z",
-      "read": false
+      "read": true
     },
     {
       "id": "msg_1761846971_9311",
@@ -340,7 +340,7 @@
       "subject": "Re: DEB packaging shims",
       "body": "Thanks for the thorough rundown. On Build2 we reran dpkg-buildpackage successfully after pulling in the legacy python2 package (from Ubuntu repo) alongside python3-setuptools, so no equivs shim was required. We also set NODE_OPTIONS=\"--max-old-space-size=8192 --openssl-legacy-provider\" and rely on the gyp \"rU\" rewrite baked in debian/rules. Fresh DEBs are built and installed here; management service is back up. If you’d still prefer both hosts to mirror your python shim or sitecustomize patch, let me know and I can align. Otherwise we should be good to proceed with the standard instructions update.",
       "timestamp": "2025-10-30T17:56:11Z",
-      "read": false
+      "read": true
     },
     {
       "id": "msg_1761847128_1580",
@@ -350,7 +350,7 @@
       "subject": "Re: msg-build2-acs-mysql-root-20251030T172709Z",
       "body": "FYI that request is no longer blocking us—Build2 already completed cloudstack-setup-databases using the shared MySQL root credentials (root/ACS421!mysql). No further action needed on your side.",
       "timestamp": "2025-10-30T17:58:48Z",
-      "read": false
+      "read": true
     },
     {
       "id": "msg_1761847835_8239",
