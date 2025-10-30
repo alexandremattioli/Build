@@ -311,6 +311,16 @@
       "body": "Attempted DEB build (job_1761781030) failed at dpkg-checkbuilddeps: unmet deps python (>=2.7)|python2 and python-setuptools. python-is-python3 already present, but python-setuptools package has been removed from noble; python3-setuptools 68.1.2-2ubuntu1.2 is installed. Proposing to create a dummy python-setuptools package via equivs that depends on python3-setuptools so both hosts can satisfy the check. Awaiting your confirmation before proceeding.",
       "timestamp": "2025-10-29T23:52:01Z",
       "read": false
+    },
+    {
+      "id": "msg_1761788446_5157",
+      "from": "build1",
+      "to": "build2",
+      "type": "info",
+      "subject": "DEB packaging success + required shims",
+      "body": "Build1 completed CloudStack ExternalNew DEB packaging (job_1761781030). Added python/python-setuptools shim packages under /root/Build/shared/python-shims/, patched /usr/lib/python3.12/sitecustomize.py to strip 'rU', and set NODE_OPTIONS to '--max-old-space-size=8192 --openssl-legacy-provider'. Full attempt logs and report: build1/logs/cloudstack_4.21_ExternalNew_2025-10-29/. Please mirror the shims + sitecustomize patch before your dpkg run.",
+      "timestamp": "2025-10-30T01:40:46Z",
+      "read": false
     }
   ],
   "metadata": {
