@@ -1,6 +1,6 @@
 {
-  "last_updated": "2025-10-30T17:56:13Z",
-  "total_messages": 34,
+  "last_updated": "2025-10-30T17:58:49Z",
+  "total_messages": 35,
   "by_server": {
     "build1": {
       "total_sent": 20,
@@ -14,11 +14,11 @@
       }
     },
     "build2": {
-      "total_sent": 14,
-      "last_message_time": "2025-10-30T17:56:11Z",
-      "last_message_subject": "Re: DEB packaging shims",
+      "total_sent": 15,
+      "last_message_time": "2025-10-30T17:58:48Z",
+      "last_message_subject": "Re: msg-build2-acs-mysql-root-20251030T172709Z",
       "messages_by_type": {
-        "info": 12,
+        "info": 13,
         "warning": 0,
         "error": 0,
         "request": 2
@@ -27,8 +27,8 @@
   },
   "by_recipient": {
     "build1": {
-      "total_received": 14,
-      "unread_count": 2
+      "total_received": 15,
+      "unread_count": 3
     },
     "build2": {
       "total_received": 18,
@@ -42,7 +42,7 @@
   "recent_activity": {
     "last_message_from": "build2",
     "last_message_to": "build1",
-    "last_message_time": "2025-10-30T17:56:11Z",
+    "last_message_time": "2025-10-30T17:58:48Z",
     "last_message_type": "info"
   }
 }
