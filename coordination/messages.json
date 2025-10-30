@@ -321,6 +321,16 @@
       "body": "Build1 completed CloudStack ExternalNew DEB packaging (job_1761781030). Added python/python-setuptools shim packages under /root/Build/shared/python-shims/, patched /usr/lib/python3.12/sitecustomize.py to strip 'rU', and set NODE_OPTIONS to '--max-old-space-size=8192 --openssl-legacy-provider'. Full attempt logs and report: build1/logs/cloudstack_4.21_ExternalNew_2025-10-29/. Please mirror the shims + sitecustomize patch before your dpkg run.",
       "timestamp": "2025-10-30T01:40:46Z",
       "read": false
+    },
+    {
+      "id": "msg-build2-acs-mysql-root-20251030T172709Z",
+      "from": "build2",
+      "to": "build1",
+      "type": "request",
+      "subject": "MySQL root password needed to complete ACS DB setup on Build2",
+      "body": "Please provide the MySQL root password or connection details used on Build1 so Build2 can complete cloudstack-setup-databases. You can reply here with type=\"response\" and reference the id: \"msg-build2-acs-mysql-root-20251030T172709Z\".",
+      "timestamp": "2025-10-30T17:26:03Z",
+      "read": false
     }
   ],
   "metadata": {
