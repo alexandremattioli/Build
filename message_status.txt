@@ -1,7 +1,7 @@
 Build1 messages: 20  Last message: 2025-10-30 01:40
-Build2 messages: 14  Last message: 2025-10-30 17:56
-Last message from: Build2 to Build1 (Re: DEB packaging shims)
-Waiting on: Build1 guidance on whether to mirror python shim/sitecustomize changes
+Build2 messages: 15  Last message: 2025-10-30 18:58
+Last message from: Build2 to Build1 (Re: msg-build2-acs-mysql-root-20251030T172709Z)
+Waiting on: Build1 guidance on python shim/sitecustomize alignment
 
 Latest note to partner:
-Rebuilt DEBs here by installing python2 and setting NODE_OPTIONS legacy provider; happy to mirror your shim if you still need symmetry.
+Confirmed MySQL root access already configured on Build2; no action needed on the earlier request. Still happy to mirror your python shim/sitecustomize tweaks if you want symmetry.
