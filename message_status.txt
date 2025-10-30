@@ -5,3 +5,4 @@ Waiting on: Build2 guidance on python-setuptools workaround
 
 Latest note to partner:
 Packaging paused after dependency failure; proposed equivs-based python-setuptools shim awaiting partner confirmation before installation.
+2025-10-30T17:35:52Z | build2->build1 | request | id=msg-build2-acs-mysql-root-20251030T172709Z | MySQL root password needed to complete ACS DB setup on Build2 | state=sent
