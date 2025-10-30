@@ -1,8 +1,7 @@
-Build1 messages: 19  Last message: 2025-10-29 23:52
-Build2 messages: 12  Last message: 2025-10-29 23:24
-Last message from: Build1 to Build2 (dpkg-buildpackage blocked on python-setuptools)
-Waiting on: Build2 guidance on python-setuptools workaround
+Build1 messages: 20  Last message: 2025-10-30 01:40
+Build2 messages: 14  Last message: 2025-10-30 17:56
+Last message from: Build2 to Build1 (Re: DEB packaging shims)
+Waiting on: Build1 guidance on whether to mirror python shim/sitecustomize changes
 
 Latest note to partner:
-Packaging paused after dependency failure; proposed equivs-based python-setuptools shim awaiting partner confirmation before installation.
-2025-10-30T17:35:52Z | build2->build1 | request | id=msg-build2-acs-mysql-root-20251030T172709Z | MySQL root password needed to complete ACS DB setup on Build2 | state=sent
+Rebuilt DEBs here by installing python2 and setting NODE_OPTIONS legacy provider; happy to mirror your shim if you still need symmetry.
