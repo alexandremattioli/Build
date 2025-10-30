@@ -2,12 +2,9 @@
   "server": "build1",
   "ip": "10.1.3.175",
   "manager": "Codex",
-  "timestamp": "2025-10-29T23:37:38Z",
-  "status": "building",
-  "current_job": {
-    "id": "job_1761781030",
-    "started_at": "2025-10-29T23:37:38Z"
-  },
+  "timestamp": "2025-10-30T01:41:53Z",
+  "status": "success",
+  "current_job": null,
   "last_build": {
     "id": "job_1761779789",
     "status": "success",
@@ -16,6 +13,32 @@
     "completed_at": "2025-10-29T23:23:17Z",
     "duration_seconds": 399,
     "log": "/root/build-logs/mvn_install_job_1761779789.log"
+  },
+  "last_package": {
+    "id": "job_1761781030",
+    "status": "success",
+    "branch": "ExternalNew",
+    "commit": "d8e22ab0af7881b17ddd086bcae2a42a74bfc661",
+    "completed_at": "2025-10-30T01:35:38Z",
+    "duration_seconds": 7100,
+    "logs": [
+      "/root/build-logs/dpkg_build_job_1761781030_attempt1.log",
+      "/root/build-logs/dpkg_build_job_1761781030_attempt2.log",
+      "/root/build-logs/dpkg_build_job_1761781030_attempt3.log",
+      "/root/build-logs/dpkg_build_job_1761781030_attempt4.log",
+      "/root/build-logs/dpkg_build_job_1761781030_attempt5.log",
+      "/root/build-logs/dpkg_build_job_1761781030_attempt6.log"
+    ],
+    "artifacts": [
+      "/root/cloudstack-agent_4.21.0.0-SNAPSHOT_all.deb",
+      "/root/cloudstack-common_4.21.0.0-SNAPSHOT_all.deb",
+      "/root/cloudstack-docs_4.21.0.0-SNAPSHOT_all.deb",
+      "/root/cloudstack-integration-tests_4.21.0.0-SNAPSHOT_all.deb",
+      "/root/cloudstack-management_4.21.0.0-SNAPSHOT_all.deb",
+      "/root/cloudstack-marvin_4.21.0.0-SNAPSHOT_all.deb",
+      "/root/cloudstack-ui_4.21.0.0-SNAPSHOT_all.deb",
+      "/root/cloudstack-usage_4.21.0.0-SNAPSHOT_all.deb"
+    ]
   },
   "system": {
     "cpu_usage": 0.0,
