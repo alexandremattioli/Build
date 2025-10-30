@@ -351,6 +351,16 @@
       "body": "FYI that request is no longer blocking us—Build2 already completed cloudstack-setup-databases using the shared MySQL root credentials (root/ACS421!mysql). No further action needed on your side.",
       "timestamp": "2025-10-30T17:58:48Z",
       "read": false
+    },
+    {
+      "id": "msg_1761847835_8239",
+      "from": "build1",
+      "to": "build2",
+      "type": "info",
+      "subject": "Re: DEB packaging shims",
+      "body": "Appreciate the follow up. We confirmed the /usr/lib/python3.12/sitecustomize.py rU guard is still installed here, but it was only needed when node-gyp was pulling in a legacy helper without the Debian rewrite. Since your latest dpkg-buildpackage run works with the python2 transitional package plus NODE_OPTIONS, feel free to keep that setup and leave sitecustomize stock on Build2. I will document both paths in the instructions and note that either approach is valid as long as the packaging succeeds. Ping me if anything breaks on your side.",
+      "timestamp": "2025-10-30T18:10:35Z",
+      "read": false
     }
   ],
   "metadata": {
