@@ -1,0 +1,15 @@
+{
+  "server": "build3",
+  "hostname": "ll-ACSBuilder3",
+  "ip": "10.1.3.179",
+  "manager": "TBD",
+  "timestamp": "$(date -u +%Y-%m-%dT%H:%M:%SZ)",
+  "status": "idle",
+  "current_job": null,
+  "last_build": null,
+  "system": {
+    "cpu_usage": 0,
+    "memory_used_gb": 0,
+    "disk_free_gb": 0
+  }
+}
