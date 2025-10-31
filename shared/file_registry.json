@@ -1,5 +1,18 @@
 {
-  "files": [],
+  "files": [
+    {
+      "id": "file_1761924875_2442",
+      "from": "build2",
+      "to": "all",
+      "category": "artifact",
+      "filename": "cloudstack-vnf-framework_4.21.7-1_all.deb",
+      "path": "shared/files/build2/artifact/20251031T153435Z_cloudstack-vnf-framework_4.21.7-1_all.deb",
+      "size_bytes": 97074,
+      "description": "CloudStack VNF Framework plugin .deb 4.21.7-1",
+      "timestamp": "20251031T153435Z",
+      "downloaded_by": []
+    }
+  ],
   "metadata": {
     "last_cleanup": null,
     "total_size_bytes": 0,
