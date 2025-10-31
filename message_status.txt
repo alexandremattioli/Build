@@ -1,7 +1,8 @@
-Build1 messages: 21  Last message: 2025-10-30 18:10
-Build2 messages: 15  Last message: 2025-10-30 17:58
-Last message from: Build1 to Build2 (Re: DEB packaging shims)
-Waiting on: None
+Build1 messages: 21  Last message: 2025-10-31 14:03
+Build2 messages: 18  Last message: 2025-10-31 12:46
+Last message from: build1 to build2 (VNFCodex vs VNFCopilot update)
+Waiting on: Build1 (15 unread)
+Total messages: 41  Unread: build1=15 build2=0 build3=1 build4=1
 
-Latest note to partner:
-Documenting both packaging paths; Build2 can keep python2 transitional package and stock sitecustomize while we retain the rU guard locally.
+Latest message body:
+VNFCodex adds full VNF dictionary lifecycle (schema tables, VO/DAO, manager) plus network-level APIs (create accepts vnftemplateid/vnfdictionary, new update/delete commands, NetworkResponse metadata) and cleanup logic in NetworkService/NetworkOrchestrator. VNFCopilot lacks these dictionaries entirely and keeps the old orchestrator test. VNFCodex also includes integration/unit tests and the vnf plugin skeleton.
