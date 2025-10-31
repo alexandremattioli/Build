@@ -52,16 +52,16 @@ fi
 
 # 1. Clone repository
 if [ ! -d "/root/Build/.git" ]; then
-    echo "[1/5] Cloning communication repository..."
+    echo "[1/7] Cloning communication repository..."
     cd /root
     git clone https://github.com/alexandremattioli/Build.git
     echo "✓ Repository cloned"
 else
-    echo "[1/5] Repository already exists"
+    echo "[1/7] Repository already exists"
 fi
 
 # 2. Configure git
-echo "[2/5] Configuring git..."
+echo "[2/7] Configuring git..."
 cd /root/Build
 git config user.name "Build2 Copilot"
 git config user.email "copilot@build2.local"
@@ -87,18 +87,53 @@ fi
 echo "✓ Git configured"
 
 # 3. Make scripts executable
-echo "[3/5] Setting script permissions..."
+echo "[3/7] Setting script permissions..."
 chmod +x scripts/*.sh
 echo "✓ Scripts are executable"
 
-# 4. Stop existing heartbeat daemon (if running)
-echo "[4/5] Checking for existing heartbeat daemons..."
+# 4. Read entire conversation thread (REQUIRED on first setup)
+echo "[4/7] Reading conversation thread..."
+echo "════════════════════════════════════════════════════════════════"
+echo " IMPORTANT: Build servers must read the entire conversation"
+echo " history to understand context and previous communications."
+echo "════════════════════════════════════════════════════════════════"
+cd /root/Build/scripts
+./read_conversation_thread.sh build2 --limit 10
+echo ""
+echo "✓ Conversation thread reviewed (showing last 10 messages)"
+echo ""
+echo "To read full conversation history, run:"
+echo "  cd /root/Build/scripts && ./read_conversation_thread.sh build2"
+echo ""
+
+# 5. Check for unread messages
+echo "[5/7] Checking for unread messages..."
+cd /root/Build/scripts
+if ./check_unread_messages.sh build2; then
+    echo "✓ No unread messages"
+else
+    echo ""
+    echo "════════════════════════════════════════════════════════════════"
+    echo " ⚠️  YOU HAVE UNREAD MESSAGES!"
+    echo " Please review and respond to unread messages before proceeding."
+    echo "════════════════════════════════════════════════════════════════"
+    echo ""
+    echo "To view all unread messages:"
+    echo "  cd /root/Build/scripts && ./read_conversation_thread.sh build2 --unread-only"
+    echo ""
+    echo "To mark messages as read after reviewing:"
+    echo "  cd /root/Build/scripts && ./mark_messages_read.sh build2"
+    echo ""
+fi
+
+# 6. Stop existing heartbeat daemon (if running)
+echo "[6/7] Checking for existing heartbeat daemons..."
 pkill -f "heartbeat_daemon.sh build2" 2>/dev/null || true
 pkill -f "enhanced_heartbeat_daemon.sh build2" 2>/dev/null || true
 sleep 1
 
-# 5. Start heartbeat daemon
-echo "[5/5] Starting enhanced heartbeat daemon..."
+# 7. Start heartbeat daemon
+echo "[7/7] Starting enhanced heartbeat daemon..."
 cd /root/Build/scripts
 nohup ./enhanced_heartbeat_daemon.sh build2 60 > /var/log/heartbeat-build2.log 2>&1 &
 DAEMON_PID=$!
@@ -121,12 +156,29 @@ echo "  Heartbeat: Running (every 60 seconds)"
 echo "  Messages: Auto-checked with heartbeat"
 echo "  Logs: /var/log/heartbeat-build2.log"
 echo ""
-echo "Verify with:"
-echo "  cd /root/Build/scripts && ./check_health.sh"
+echo "IMPORTANT COMMANDS:"
+echo "  Check unread messages:"
+echo "    cd /root/Build/scripts && ./check_unread_messages.sh build2"
+echo ""
+echo "  Read full conversation thread:"
+echo "    cd /root/Build/scripts && ./read_conversation_thread.sh build2"
+echo ""
+echo "  View only unread messages:"
+echo "    cd /root/Build/scripts && ./read_conversation_thread.sh build2 --unread-only"
+echo ""
+echo "  Mark messages as read:"
+echo "    cd /root/Build/scripts && ./mark_messages_read.sh build2"
+echo ""
+echo "  Send a message:"
+echo "    cd /root/Build/scripts && ./send_message.sh build2 build1 info \"Subject\" \"Message body\""
+echo ""
+echo "  Update message status:"
+echo "    cd /root/Build/scripts && ./update_message_status_txt.sh"
+echo ""
+echo "  Check system health:"
+echo "    cd /root/Build/scripts && ./check_health.sh"
 echo ""
 echo "View heartbeat logs:"
 echo "  tail -f /var/log/heartbeat-build2.log"
 echo ""
-echo "View messages:"
-echo "  cd /root/Build/scripts && ./read_messages.sh build2"
-echo ""
+
