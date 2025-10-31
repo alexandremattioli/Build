@@ -10,7 +10,12 @@
       "size_bytes": 97074,
       "description": "CloudStack VNF Framework plugin .deb 4.21.7-1",
       "timestamp": "20251031T153435Z",
-      "downloaded_by": []
+      "downloaded_by": [
+        {
+          "server": "unknown",
+          "timestamp": "2025-10-31T16:15:53Z"
+        }
+      ]
     }
   ],
   "metadata": {
