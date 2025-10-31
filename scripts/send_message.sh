@@ -6,11 +6,16 @@
 # Usage: ./send_message.sh <from> <to> <type> <subject> <body>
 #
 # Arguments:
-#   from    - Source server ID (build1, build2)
-#   to      - Destination server ID (build1, build2, all)
+#   from    - Source server ID (build1, build2, build3, build4)
+#   to      - Destination server ID (build1, build2, build3, build4, all)
 #   type    - Message type (info, warning, error, request)
-#   subject - Message subject line (max 100 chars)
-#   body    - Message body text
+#   subject - Message subject line (max 100 chars, enforced)
+#   body    - Message body text (max 10000 chars, enforced)
+#
+# Size Limits:
+#   Subject: 100 characters maximum (hard limit)
+#   Body: 10,000 characters maximum (hard limit)
+#   Warning: Displayed when body exceeds 5,000 characters
 #
 # Examples:
 #   ./send_message.sh build1 build2 info "Build Complete" "Build finished successfully"
@@ -26,6 +31,10 @@
 
 set -euo pipefail
 
+# Size limits
+MAX_SUBJECT_LENGTH=100
+MAX_BODY_LENGTH=10000
+WARN_BODY_LENGTH=5000
 
 FROM_SERVER="$1"
 TO_SERVER="$2"
@@ -36,8 +45,9 @@ BODY="$5"
 # Input validation
 validate_server_id() {
     local server="$1"
-    if [[ ! "$server" =~ ^(build1|build2|all)$ ]]; then
+    if [[ ! "$server" =~ ^(build1|build2|build3|build4|all)$ ]]; then
         echo "ERROR: Invalid server ID: $server" >&2
+        echo "Valid values: build1, build2, build3, build4, all" >&2
         exit 1
     fi
 }
@@ -46,13 +56,50 @@ validate_message_type() {
     local type="$1"
     if [[ ! "$type" =~ ^(info|warning|error|request)$ ]]; then
         echo "ERROR: Invalid message type: $type" >&2
+        echo "Valid values: info, warning, error, request" >&2
         exit 1
+    fi
+}
+
+validate_message_size() {
+    local subject="$1"
+    local body="$2"
+    
+    local subject_len=${#subject}
+    local body_len=${#body}
+    
+    # Check subject length
+    if [ "$subject_len" -gt "$MAX_SUBJECT_LENGTH" ]; then
+        echo "ERROR: Subject too long: $subject_len characters (max: $MAX_SUBJECT_LENGTH)" >&2
+        echo "Subject: ${subject:0:50}..." >&2
+        exit 1
+    fi
+    
+    # Check body length
+    if [ "$body_len" -gt "$MAX_BODY_LENGTH" ]; then
+        echo "ERROR: Message body too long: $body_len characters (max: $MAX_BODY_LENGTH)" >&2
+        echo "Please split into multiple messages or reduce content." >&2
+        exit 1
+    fi
+    
+    # Warn if body is getting large
+    if [ "$body_len" -gt "$WARN_BODY_LENGTH" ]; then
+        echo "WARNING: Message body is large: $body_len characters" >&2
+        echo "Consider splitting into multiple messages for better readability." >&2
+        echo "Proceeding in 2 seconds... (Ctrl+C to cancel)" >&2
+        sleep 2
+    fi
+    
+    # Display size info for large messages
+    if [ "$body_len" -gt 1000 ]; then
+        echo "Message size: Subject=$subject_len chars, Body=$body_len chars" >&2
     fi
 }
 
 validate_server_id "$FROM_SERVER"
 validate_server_id "$TO_SERVER"
 validate_message_type "$MSG_TYPE"
+validate_message_size "$SUBJECT" "$BODY"
 
 REPO_DIR="/root/Build"
 cd "$REPO_DIR"
@@ -130,6 +177,8 @@ if [ -f scripts/validate_json.sh ]; then
 fi
 
 echo "Message sent: $MSG_ID"
+echo "  Subject: $SUBJECT (${#SUBJECT} chars)"
+echo "  Body: ${#BODY} characters"
 
 # Update statistics
 cd scripts
