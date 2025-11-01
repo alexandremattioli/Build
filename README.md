@@ -12,6 +12,18 @@ cd /root && git clone https://github.com/alexandremattioli/Build.git && cd Build
 cd /root && git clone https://github.com/alexandremattioli/Build.git && cd Build/scripts && ./setup_build2.sh
 ```
 
+## For Build3 - `root@ll-ACSBuilder3`
+
+```bash
+cd /root && git clone https://github.com/alexandremattioli/Build.git && cd Build/scripts && ./setup_build3.sh
+```
+
+## For Build4 - `root@ll-ACSBuilder4`
+
+```bash
+cd /root && git clone https://github.com/alexandremattioli/Build.git && cd Build/scripts && ./setup_build4.sh
+```
+
 ---
 
 ## What This Repository Provides
@@ -19,11 +31,15 @@ cd /root && git clone https://github.com/alexandremattioli/Build.git && cd Build
 This repository serves as a file-based communication and coordination system between:
 - **Build1** (`root@ll-ACSBuilder1`, 10.1.3.175) - Managed by Codex
 - **Build2** (`root@ll-ACSBuilder2`, 10.1.3.177) - Managed by GitHub Copilot
+- **Build3** (`root@ll-ACSBuilder3`, 10.1.3.179) - Managed by TBD
+- **Build4** (`root@ll-ACSBuilder4`, 10.1.3.181) - Managed by TBD
 
 ### Direct SSH Access
-Both servers have passwordless SSH configured:
-- Build1 can SSH to Build2: `ssh root@10.1.3.177` or `ssh root@ll-ACSBuilder2`
-- Build2 can SSH to Build1: `ssh root@10.1.3.175` or `ssh root@ll-ACSBuilder1`
+All servers have passwordless SSH configured between each other:
+- Build1: `ssh root@10.1.3.175` or `ssh root@ll-ACSBuilder1`
+- Build2: `ssh root@10.1.3.177` or `ssh root@ll-ACSBuilder2`
+- Build3: `ssh root@10.1.3.179` or `ssh root@ll-ACSBuilder3`
+- Build4: `ssh root@10.1.3.181` or `ssh root@ll-ACSBuilder4`
 
 This enables direct file access, remote command execution, and real-time coordination beyond git-based communication.
 
@@ -44,6 +60,16 @@ This enables direct file access, remote command execution, and real-time coordin
 │   ├── heartbeat.json          # Last update timestamp
 │   └── logs/                   # Build logs and reports
 │       └── [timestamp].log
+├── build3/
+│   ├── status.json             # Build3 current status
+│   ├── heartbeat.json          # Last update timestamp
+│   └── logs/                   # Build logs and reports
+│       └── [timestamp].log
+├── build4/
+│   ├── status.json             # Build4 current status
+│   ├── heartbeat.json          # Last update timestamp
+│   └── logs/                   # Build logs and reports
+│       └── [timestamp].log
 ├── coordination/
 │   ├── jobs.json               # Job queue
 │   ├── locks.json              # Coordination locks
@@ -58,9 +84,9 @@ This enables direct file access, remote command execution, and real-time coordin
 Each server maintains a `status.json` file:
 ```json
 {
-  "server": "build1|build2",
+  "server": "build1|build2|build3|build4",
   "ip": "10.1.3.x",
-  "manager": "Codex|GitHub Copilot",
+  "manager": "Codex|GitHub Copilot|TBD",
   "timestamp": "2025-10-29T12:00:00Z",
   "status": "idle|building|failed|success",
   "current_job": {
@@ -89,7 +115,7 @@ Each server maintains a `status.json` file:
 Each server updates `heartbeat.json` every minute:
 ```json
 {
-  "server": "build1|build2",
+  "server": "build1|build2|build3|build4",
   "timestamp": "2025-10-29T12:00:00Z",
   "uptime_seconds": 86400,
   "healthy": true
@@ -108,7 +134,7 @@ The `coordination/jobs.json` file manages work distribution:
       "priority": 1,
       "branch": "ExternalNew",
       "commit": "sha",
-      "assigned_to": "build1|build2|null",
+      "assigned_to": "build1|build2|build3|build4|null",
       "status": "queued|running|completed|failed",
       "created_at": "timestamp",
       "started_at": "timestamp",
@@ -125,12 +151,12 @@ The `coordination/locks.json` file prevents race conditions:
 {
   "locks": {
     "job_assignment": {
-      "locked_by": "build1|build2|null",
+      "locked_by": "build1|build2|build3|build4|null",
       "locked_at": "timestamp",
       "expires_at": "timestamp"
     },
     "config_update": {
-      "locked_by": "build1|build2|null",
+      "locked_by": "build1|build2|build3|build4|null",
       "locked_at": "timestamp",
       "expires_at": "timestamp"
     }
@@ -146,8 +172,8 @@ The `coordination/messages.json` enables inter-server communication:
   "messages": [
     {
       "id": "msg_uuid",
-      "from": "build1|build2",
-      "to": "build1|build2|all",
+      "from": "build1|build2|build3|build4",
+      "to": "build1|build2|build3|build4|all",
       "type": "info|warning|error|request",
       "subject": "Brief description",
       "body": "Detailed message",
