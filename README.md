@@ -17,6 +17,34 @@ A Git-based coordination hub for distributed Apache CloudStack build servers man
 - Documentation: ./docs/
 - **Features: ./Features/** — Feature descriptions and specifications for build servers
 
+
+## Features Directory
+
+The Features/ directory contains detailed specifications and documentation for new features being developed for Apache CloudStack builds. Each feature has its own subdirectory containing:
+
+- **Design documents** - Detailed technical specifications and architecture documentation
+- **Implementation notes** - Guidelines for build servers on how to implement the feature
+- **Configuration files** - Any necessary configuration or setup files
+- **Test specifications** - Testing requirements and procedures
+
+### Structure
+``nFeatures/
+ DualSNAT/          # Dual Source NAT feature
+ VNFramework/       # VNF Framework feature
+    VNF_Framework_Design_CloudStack_4_21_7.txt
+ [FeatureName]/     # Each feature in its own directory
+``n
+### For Build Servers
+
+When implementing new features:
+1. Check the Features/ directory for the latest feature specifications
+2. Each subdirectory represents a distinct feature or capability
+3. Read all documentation files within the feature directory before implementation
+4. Follow the specifications exactly as documented
+5. Report any issues or clarifications needed via the coordination system
+
+> **Important:** Feature directories contain authoritative documentation that build servers should reference during development and testing.
+
 ## What this repo is
 
 - Single source of truth for build coordination and status
