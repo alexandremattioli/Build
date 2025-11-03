@@ -11,14 +11,14 @@ This document clarifies which CloudStack branches are owned by each builder and 
 
 - Build2 (Copilot) OWNED branches:
   - `Copilot`
-  - `VNFCoPilot`
+  - `VNFCoPilot` (current working branch)
 
 - Build1 (Codex) OWNED branches:
   - `VNFCodex`
 
 - Shared/baseline branches:
   - `main` (baseline)
-  - `ExternalNew` (working branch used by Build2 per instructions)
+  - `VNFCopilot` (Build2 working branch per instructions)
 
 Notes:
 - Build2 currently works from `origin/ExternalNew` as per Build2 instructions (`/root/Build/build2/BUILD_INSTRUCTIONS.md`).
@@ -40,10 +40,10 @@ Check out a Copilot-owned branch locally and set tracking:
 git checkout -B Copilot origin/Copilot
 ```
 
-Return to ExternalNew (Build2 working branch):
+Return to VNFCopilot (Build2 working branch):
 
 ```bash
-git checkout -B ExternalNew origin/ExternalNew
+git checkout -B VNFCopilot origin/VNFCopilot
 ```
 
 Track upstream main for baseline sync:

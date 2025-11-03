@@ -2,9 +2,9 @@
 
 **Server**: Build2 - `root@ll-ACSBuilder2` (10.1.3.177)  
 **Manager**: GitHub Copilot  
-**Branch**: ExternalNew  
+**Branch**: VNFCopilot  
 See also: `docs/BRANCH_OWNERSHIP.md` for which branches are owned by Copilot vs Codex and how to switch.
-**Last Updated**: 2025-10-29
+**Last Updated**: 2025-11-03
 
 ---
 
@@ -76,18 +76,22 @@ Per debian/control:
 ### Initial Clone (if needed)
 ```bash
 cd /root/src
-git clone https://github.com/apache/cloudstack.git
+git clone https://github.com/alexandremattioli/cloudstack.git
 cd cloudstack
-git checkout ExternalNew
+git checkout -B VNFCopilot origin/VNFCopilot
 ```
 
 ### Update to Latest
 ```bash
 cd /root/src/cloudstack
-git fetch origin ExternalNew
-git reset --hard origin/ExternalNew
+git fetch origin VNFCopilot
+git checkout -B VNFCopilot origin/VNFCopilot
+git reset --hard origin/VNFCopilot
 git rev-parse HEAD > /root/build-logs/build_commit.txt
 ```
+
+Reference branch URL:
+- https://github.com/alexandremattioli/cloudstack/tree/VNFCopilot
 
 ---
 
