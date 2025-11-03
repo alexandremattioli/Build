@@ -1,0 +1,37 @@
+name: Aggregate Messages
+
+on:
+  push:
+    paths:
+      - 'messages/**'
+      - 'scripts/aggregate_messages.sh'
+  workflow_dispatch: {}
+  schedule:
+    - cron: '*/15 * * * *'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Aggregate messages
+        run: |
+          chmod +x scripts/aggregate_messages.sh
+          ./scripts/aggregate_messages.sh
+
+      - name: Commit changes if any
+        run: |
+          set -e
+          if [[ -n "$(git status --porcelain MESSAGES_STATUS.md MESSAGES_ALL.txt)" ]]; then
+            git config user.name "github-actions"
+            git config user.email "github-actions@github.com"
+            git add MESSAGES_STATUS.md MESSAGES_ALL.txt
+            git commit -m "chore(messages): update aggregated status and archive"
+            git push
+          else
+            echo "No changes to commit."
+          fi

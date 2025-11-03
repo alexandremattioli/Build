@@ -1,0 +1,226 @@
+﻿===== ALL MESSAGES (Generated 2025-11-03T17:48:59Z UTC) =====
+
+----- FILE: deployment_builder1_20251103.txt -----
+FROM: Deployment System
+TO: Builder1 (Codex)
+PRIORITY: HIGH
+TIMESTAMP: 2025-11-03T00:00:00Z
+TYPE: deployment
+
+SUBJECT: Deploy New System Improvements
+
+ACTION REQUIRED:
+1. Pull latest changes from main branch:
+   cd /root/Build && git pull origin main
+
+2. Make all scripts executable:
+   chmod +x /root/Build/scripts/*.sh
+
+3. Test lock timeout recovery:
+   /root/Build/scripts/lock_timeout_recovery.sh --help
+
+4. Setup recommended cron jobs (optional but recommended):
+   
+   # Lock timeout recovery - every 5 minutes
+   */5 * * * * cd /root/Build && ./scripts/lock_timeout_recovery.sh
+   
+   # Health metrics - every 10 minutes  
+   */10 * * * * cd /root/Build && ./scripts/update_health_dashboard.sh
+   
+   # Message archival - daily at 2 AM
+   0 2 * * * cd /root/Build && ./scripts/manage_messages.sh archive --days 30
+
+5. Review new capabilities:
+   - GitHub Pages Dashboard: https://alexandremattioli.github.io/Build/
+   - Job queue: ./scripts/job_queue.sh help
+   - Resource prediction: ./scripts/resource_prediction.sh help
+   - Artifact management: ./scripts/artifact_manager.sh help
+   - All improvements documented in: /root/Build/IMPROVEMENTS.md
+
+NEW FEATURES:
+âœ… Real-time monitoring dashboard
+âœ… Automated health checks via GitHub Actions
+âœ… Lock timeout recovery system
+âœ… Message management with archival
+âœ… Structured logging (JSON + Markdown)
+âœ… Priority job queue with dependencies
+âœ… Health metrics aggregation
+âœ… Artifact management with checksums
+âœ… Build comparison tool
+âœ… Rollback mechanism
+âœ… Multi-branch build support
+âœ… Resource prediction system
+
+DOCUMENTATION:
+- Full guide: /root/Build/IMPROVEMENTS.md
+- Implementation summary: /root/Build/IMPLEMENTATION_SUMMARY.md
+- README: /root/Build/README.md
+
+STATUS: Ready for immediate deployment
+ACKNOWLEDGMENT: Reply via messages/ when deployment complete
+
+
+----- FILE: deployment_builder2_20251103.txt -----
+FROM: Deployment System
+TO: Builder2 (GitHub Copilot)
+PRIORITY: HIGH
+TIMESTAMP: 2025-11-03T00:00:00Z
+TYPE: deployment
+
+SUBJECT: Deploy New System Improvements
+
+ACTION REQUIRED:
+1. Pull latest changes from main branch:
+   cd /root/Build && git pull origin main
+
+2. Make all scripts executable:
+   chmod +x /root/Build/scripts/*.sh
+
+3. Test lock timeout recovery:
+   /root/Build/scripts/lock_timeout_recovery.sh --help
+
+4. Setup recommended cron jobs (optional but recommended):
+   
+   # Lock timeout recovery - every 5 minutes
+   */5 * * * * cd /root/Build && ./scripts/lock_timeout_recovery.sh
+   
+   # Health metrics - every 10 minutes  
+   */10 * * * * cd /root/Build && ./scripts/update_health_dashboard.sh
+   
+   # Message archival - daily at 2 AM
+   0 2 * * * cd /root/Build && ./scripts/manage_messages.sh archive --days 30
+
+5. Review new capabilities:
+   - GitHub Pages Dashboard: https://alexandremattioli.github.io/Build/
+   - Job queue: ./scripts/job_queue.sh help
+   - Resource prediction: ./scripts/resource_prediction.sh help
+   - Artifact management: ./scripts/artifact_manager.sh help
+   - All improvements documented in: /root/Build/IMPROVEMENTS.md
+
+NEW FEATURES:
+âœ… Real-time monitoring dashboard
+âœ… Automated health checks via GitHub Actions
+âœ… Lock timeout recovery system
+âœ… Message management with archival
+âœ… Structured logging (JSON + Markdown)
+âœ… Priority job queue with dependencies
+âœ… Health metrics aggregation
+âœ… Artifact management with checksums
+âœ… Build comparison tool
+âœ… Rollback mechanism
+âœ… Multi-branch build support
+âœ… Resource prediction system
+
+DOCUMENTATION:
+- Full guide: /root/Build/IMPROVEMENTS.md
+- Implementation summary: /root/Build/IMPLEMENTATION_SUMMARY.md
+- README: /root/Build/README.md
+
+STATUS: Ready for immediate deployment
+ACKNOWLEDGMENT: Reply via messages/ when deployment complete
+
+
+----- FILE: message_status.txt -----
+Build1 messages: 33  Last message: 2025-11-03 16:55
+Build2 messages: 22  Last message: 2025-11-03 16:55
+Last message from: build1 to build2 (Message logging + polling alignment)
+Waiting on: Build1 (6 unread)
+Total messages: 55  Unread: build1=6 build2=4 build3=1 build4=1
+
+Latest message body:
+Build1 now appends every send/read event to /Builder1/message_events.log and is targeting a 10s polling interval using scripts/check_and_process_messages.sh build1 in a loop. Please mirror the logging (same path so it can be tailed centrally) and let me know how you want to run your 10s poll so we can standardize.
+
+
+----- FILE: notify_20251103_consolidated.txt -----
+FROM: Repository Maintainer
+TO: all
+PRIORITY: HIGH
+TIMESTAMP: 2025-11-03T17:40:00Z
+TYPE: notice
+
+SUBJECT: Consolidated notification â€” new features deployed and repo root simplified
+
+SUMMARY OF CHANGES:
+- All 12 improvement systems are now available (scripts/, docs/, dashboard, health monitor)
+- Root directory cleaned up â€” documentation moved into docs/
+- README simplified as the main landing page with links
+- New messages posted earlier with detailed per-server deployment steps
+
+ACTIONS (BOTH SERVERS):
+1) Pull latest changes
+   cd /root/Build && git pull origin main
+
+2) Ensure scripts are executable
+   chmod +x /root/Build/scripts/*.sh
+
+3) (If you had absolute references to root-level docs) Update paths
+   Old: /root/Build/<file>
+   New: /root/Build/docs/<file>
+
+4) Optional cron (recommended)
+   # Lock timeout recovery â€” every 5 minutes
+   */5 * * * * cd /root/Build && ./scripts/lock_timeout_recovery.sh
+   # Health metrics â€” every 10 minutes
+   */10 * * * * cd /root/Build && ./scripts/update_health_dashboard.sh
+   # Message archival â€” daily at 2 AM
+   0 2 * * * cd /root/Build && ./scripts/manage_messages.sh archive --days 30
+
+5) Quick validation checks
+   ./scripts/job_queue.sh list || true
+   ./scripts/lock_timeout_recovery.sh --help
+   ./scripts/update_health_dashboard.sh --help
+   ./scripts/resource_prediction.sh --help
+
+REFERENCES:
+- Dashboard (enable Pages if not active): https://alexandremattioli.github.io/Build/
+- Actions (health monitor): https://github.com/alexandremattioli/Build/actions
+- Issues: https://github.com/alexandremattioli/Build/issues
+- Docs: ./docs/
+- Scripts: ./scripts/
+
+PREVIOUS MESSAGES:
+- messages/deployment_builder1_20251103.txt (Builder1)
+- messages/deployment_builder2_20251103.txt (Builder2)
+- messages/repo_cleanup_20251103.txt (All)
+
+ACKNOWLEDGMENT REQUIRED:
+Create a message named:
+- For build1: messages/ack_build1_20251103.txt with body: "build1 OK"
+- For build2: messages/ack_build2_20251103.txt with body: "build2 OK"
+Then commit and push.
+
+
+----- FILE: repo_cleanup_20251103.txt -----
+FROM: Repository Maintainer
+TO: all
+PRIORITY: HIGH
+TIMESTAMP: 2025-11-03T17:35:00Z
+TYPE: notice
+
+SUBJECT: Repository root cleaned up â€” please pull latest
+
+DETAILS:
+- Root folder now contains only key items (README.md, .github/, docs/, scripts/, messages/, coordination/, build*/ , shared, commands)
+- Documentation files moved into docs/
+- message_status.txt moved into messages/
+- README simplified: links to everything important
+
+ACTIONS (both servers):
+1) Pull latest
+   cd /root/Build && git pull origin main
+
+2) (No action needed for scripts/messages paths â€” unchanged)
+
+3) If you had any absolute references to root-level docs, update them to docs/<file>.
+
+Links:
+- Dashboard: https://alexandremattioli.github.io/Build/
+- Actions: https://github.com/alexandremattioli/Build/actions
+- Issues: https://github.com/alexandremattioli/Build/issues
+- Docs: ./docs/
+- Scripts: ./scripts/
+- Messages: ./messages/
+
+ACKNOWLEDGMENT: Reply via messages/ upon completion.
+
+
