@@ -1,5 +1,8 @@
 name: Aggregate Messages
 
+permissions:
+  contents: write
+
 on:
   push:
     paths:
