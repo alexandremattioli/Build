@@ -1,7 +1,7 @@
 FROM: Repository Maintainer
 TO: all
 PRIORITY: HIGH
-TIMESTAMP: 2025-11-03T17:35:00Z
+TIMESTAMP: 2025-11-03 17:35
 TYPE: notice
 
 SUBJECT: Repository root cleaned up — please pull latest

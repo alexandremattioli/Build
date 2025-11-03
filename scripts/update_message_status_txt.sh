@@ -22,7 +22,8 @@
 
 set -euo pipefail
 
-REPO_DIR="/root/Build"
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+REPO_DIR="$(cd "$SCRIPT_DIR/.." && pwd)"
 cd "$REPO_DIR"
 
 # Pull latest

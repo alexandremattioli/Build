@@ -18,6 +18,19 @@ function Get-Field {
   ($Content -split "`n" | Where-Object { $_ -match "^$Key\s*:\s*" } | Select-Object -First 1 | ForEach-Object { ($_ -replace "^$Key\s*:\s*", '') -replace "\r$", '' })
 }
 
+function Format-Timestamp {
+  param([string]$Timestamp)
+  if ([string]::IsNullOrWhiteSpace($Timestamp) -or $Timestamp -eq 'null') {
+    return ''
+  }
+  try {
+    $parsed = [DateTime]::Parse($Timestamp, $null, [System.Globalization.DateTimeStyles]::AssumeUniversal)
+    return $parsed.ToUniversalTime().ToString('yyyy-MM-dd HH:mm')
+  } catch {
+    return $Timestamp
+  }
+}
+
 $files = Get-ChildItem -Path $MsgDir -File -Filter *.txt | Sort-Object Name
 $coordMessages = @()
 if (Test-Path $CoordFile) {
@@ -47,6 +60,7 @@ foreach ($f in $files) {
   $prio = Get-Field -Content $c -Key 'PRIORITY'
   $type = Get-Field -Content $c -Key 'TYPE'
   $ts = Get-Field -Content $c -Key 'TIMESTAMP'
+  $ts = Format-Timestamp $ts
   $subj = Get-Field -Content $c -Key 'SUBJECT'
   if ($null -ne $subj) { $subj = $subj -replace '\|', '\|' }
   $lines += "| $($f.Name) | $to | $from | $prio | $type | $ts | $subj |"
@@ -70,7 +84,8 @@ if ($coordMessages.Count -gt 0) {
     $priority = if ($null -ne $msg.priority -and $msg.priority -ne '') { $msg.priority } else { 'normal' }
     $subject = if ($null -ne $msg.subject) { $msg.subject -replace '\|', '\|' } else { '' }
     $readFlag = if ($msg.read) { 'yes' } else { 'no' }
-    $lines += "| $($msg.id) | $($msg.from) | $($msg.to) | $($msg.type) | $priority | $($msg.timestamp) | $subject | $readFlag |"
+    $ts = Format-Timestamp $msg.timestamp
+    $lines += "| $($msg.id) | $($msg.from) | $($msg.to) | $($msg.type) | $priority | $ts | $subject | $readFlag |"
   }
 }
 Set-Content -Path $StatusFile -Value $lines -NoNewline:$false -Encoding UTF8
@@ -89,18 +104,19 @@ foreach ($f in $files) {
 if ($coordMessages.Count -gt 0) {
   $out += '--- COORDINATION THREAD (coordination/messages.json) ---'
   $out += ''
-  foreach ($msg in $coordMessages) {
-    $priority = if ($null -ne $msg.priority -and $msg.priority -ne '') { $msg.priority } else { 'normal' }
-    $readFlag = if ($msg.read) { 'yes' } else { 'no' }
-    $out += ('----- MESSAGE: ' + $msg.id + ' -----')
-    $out += ('FROM: ' + $msg.from)
-    $out += ('TO: ' + $msg.to)
-    $out += ('TYPE: ' + $msg.type)
-    $out += ('PRIORITY: ' + $priority)
-    $out += ('TIMESTAMP: ' + $msg.timestamp)
-    $out += ('READ: ' + $readFlag)
-    $out += ''
-    $out += ('SUBJECT: ' + ($msg.subject))
+foreach ($msg in $coordMessages) {
+  $priority = if ($null -ne $msg.priority -and $msg.priority -ne '') { $msg.priority } else { 'normal' }
+  $readFlag = if ($msg.read) { 'yes' } else { 'no' }
+  $ts = Format-Timestamp $msg.timestamp
+  $out += ('----- MESSAGE: ' + $msg.id + ' -----')
+  $out += ('FROM: ' + $msg.from)
+  $out += ('TO: ' + $msg.to)
+  $out += ('TYPE: ' + $msg.type)
+  $out += ('PRIORITY: ' + $priority)
+  $out += ('TIMESTAMP: ' + $ts)
+  $out += ('READ: ' + $readFlag)
+  $out += ''
+  $out += ('SUBJECT: ' + ($msg.subject))
     $out += ''
     if ([string]::IsNullOrWhiteSpace($msg.body)) {
       $out += 'BODY: (empty)'

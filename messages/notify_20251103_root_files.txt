@@ -1,7 +1,7 @@
 FROM: Repository Maintainer
 TO: all
 PRIORITY: NORMAL
-TIMESTAMP: 2025-11-03T17:48:00Z
+TIMESTAMP: 2025-11-03 17:48
 TYPE: notice
 
 SUBJECT: New root files — messages status and full archive

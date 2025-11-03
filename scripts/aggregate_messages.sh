@@ -24,6 +24,15 @@ extract_field() {
   grep -i -m1 -E "^${key}:[[:space:]]*" "$file" | sed -E "s/^${key}:[[:space:]]*//I" | tr -d '\r'
 }
 
+format_timestamp() {
+  local ts="$1"
+  if [[ -z "$ts" || "$ts" == "null" ]]; then
+    echo ""
+    return
+  fi
+  date -ud "$ts" "+%Y-%m-%d %H:%M" 2>/dev/null || echo "$ts"
+}
+
 # Build status markdown header
 {
   echo "# Messages Status"
@@ -45,13 +54,14 @@ extract_field() {
     base=$(basename "$f")
     to=$(extract_field "$f" "TO" || true)
     from=$(extract_field "$f" "FROM" || true)
-    prio=$(extract_field "$f" "PRIORITY" || true)
+  	prio=$(extract_field "$f" "PRIORITY" || true)
     type=$(extract_field "$f" "TYPE" || true)
     ts=$(extract_field "$f" "TIMESTAMP" || true)
+    ts_fmt=$(format_timestamp "$ts")
     subj=$(extract_field "$f" "SUBJECT" || true)
     # Escape pipes in subject
     subj=${subj//|/\|}
-    echo "| $base | ${to:-} | ${from:-} | ${prio:-} | ${type:-} | ${ts:-} | ${subj:-} |"
+    echo "| $base | ${to:-} | ${from:-} | ${prio:-} | ${type:-} | ${ts_fmt:-} | ${subj:-} |"
   done < <(find "$MSG_DIR" -maxdepth 1 -type f -name "*.txt" -print0 | sort -z)
 
   if [[ -f "$COORD_FILE" ]]; then
@@ -68,24 +78,18 @@ extract_field() {
     echo
     echo "| ID | FROM | TO | TYPE | PRIORITY | TIMESTAMP | SUBJECT | READ |"
     echo "|----|------|----|------|----------|-----------|---------|------|"
-    jq -r '
-      .messages
-      | sort_by(.timestamp)
-      | .[]
-      | [
-          .id,
-          .from,
-          .to,
-          .type,
-          (.priority // "normal"),
-          (.timestamp // ""),
-          (.subject // ""),
-          (if .read == true then "yes" else "no" end)
-        ]
-      | @tsv
-    ' "$COORD_FILE" | while IFS=$'\t' read -r id from to type priority ts subject read; do
+    jq -c '.messages | sort_by(.timestamp) | .[]' "$COORD_FILE" | while read -r row; do
+      id=$(jq -r '.id // ""' <<<"$row")
+      from=$(jq -r '.from // ""' <<<"$row")
+      to=$(jq -r '.to // ""' <<<"$row")
+      type=$(jq -r '.type // ""' <<<"$row")
+      priority=$(jq -r '.priority // "normal"' <<<"$row")
+      ts=$(jq -r '.timestamp // ""' <<<"$row")
+      ts_fmt=$(format_timestamp "$ts")
+      subject=$(jq -r '.subject // ""' <<<"$row")
       subject_escaped=${subject//|/\\|}
-      echo "| ${id:-} | ${from:-} | ${to:-} | ${type:-} | ${priority:-} | ${ts:-} | ${subject_escaped:-} | ${read:-} |"
+      read_flag=$(jq -r 'if .read == true then "yes" else "no" end' <<<"$row")
+      echo "| ${id:-} | ${from:-} | ${to:-} | ${type:-} | ${priority:-} | ${ts_fmt:-} | ${subject_escaped:-} | ${read_flag:-} |"
     done
   fi
 } > "$STATUS_FILE"
@@ -105,26 +109,36 @@ extract_field() {
   if [[ -f "$COORD_FILE" ]]; then
     echo "--- COORDINATION THREAD (coordination/messages.json) ---"
     echo
-    jq -r '
-      .messages
-      | sort_by(.timestamp)
-      | .[]
-      | [
-          "----- MESSAGE: " + (.id // "unknown") + " -----",
-          "FROM: " + (.from // ""),
-          "TO: " + (.to // ""),
-          "TYPE: " + (.type // ""),
-          "PRIORITY: " + (.priority // "normal"),
-          "TIMESTAMP: " + (.timestamp // ""),
-          "READ: " + (if .read == true then "yes" else "no" end),
-          "",
-          "SUBJECT: " + (.subject // ""),
-          "",
-          (if (.body // "") == "" then "BODY: (empty)" else "BODY:\n" + (.body // "") end),
-          ""
-        ]
-      | join("\n")
-    ' "$COORD_FILE"
+    jq -c '.messages | sort_by(.timestamp) | .[]' "$COORD_FILE" | while read -r row; do
+      id=$(jq -r '.id // "unknown"' <<<"$row")
+      from=$(jq -r '.from // ""' <<<"$row")
+      to=$(jq -r '.to // ""' <<<"$row")
+      type=$(jq -r '.type // ""' <<<"$row")
+      priority=$(jq -r '.priority // "normal"' <<<"$row")
+      ts=$(jq -r '.timestamp // ""' <<<"$row")
+      ts_fmt=$(format_timestamp "$ts")
+      read_flag=$(jq -r 'if .read == true then "yes" else "no" end' <<<"$row")
+      subject=$(jq -r '.subject // ""' <<<"$row")
+      body=$(jq -r '.body // ""' <<<"$row")
+
+      echo "----- MESSAGE: $id -----"
+      echo "FROM: $from"
+      echo "TO: $to"
+      echo "TYPE: $type"
+      echo "PRIORITY: $priority"
+      echo "TIMESTAMP: $ts_fmt"
+      echo "READ: $read_flag"
+      echo
+      echo "SUBJECT: $subject"
+      echo
+      if [[ -z "$body" || "$body" == "null" ]]; then
+        echo "BODY: (empty)"
+      else
+        echo "BODY:"
+        printf '%s\n' "$body"
+      fi
+      echo
+    done
   fi
 } > "$ALL_FILE"
 

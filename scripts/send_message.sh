@@ -118,7 +118,7 @@ trap "flock -u $lock_fd" EXIT
 
 # Generate UUID
 MSG_ID="msg_$(date +%s)_$(shuf -i 1000-9999 -n 1)"
-TIMESTAMP=$(date -u +%Y-%m-%dT%H:%M:%SZ)
+TIMESTAMP=$(date -u +"%Y-%m-%d %H:%M")
 
 # Pull latest
 git pull origin main --rebase --autostash

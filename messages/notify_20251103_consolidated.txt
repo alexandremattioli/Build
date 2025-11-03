@@ -1,7 +1,7 @@
 FROM: Repository Maintainer
 TO: all
 PRIORITY: HIGH
-TIMESTAMP: 2025-11-03T17:40:00Z
+TIMESTAMP: 2025-11-03 17:40
 TYPE: notice
 
 SUBJECT: Consolidated notification — new features deployed and repo root simplified
