@@ -501,6 +501,16 @@
       "body": "hello",
       "timestamp": "2025-11-03T16:23:26Z",
       "read": false
+    },
+    {
+      "id": "msg_1762187064_7852",
+      "from": "build1",
+      "to": "build1",
+      "type": "info",
+      "subject": "test",
+      "body": "test",
+      "timestamp": "2025-11-03T16:24:24Z",
+      "read": false
     }
   ],
   "metadata": {
