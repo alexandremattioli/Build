@@ -1,0 +1,21 @@
+FROM: Repository Maintainer
+TO: all
+PRIORITY: NORMAL
+TIMESTAMP: 2025-11-03T17:48:00Z
+TYPE: notice
+
+SUBJECT: New root files — messages status and full archive
+
+DETAILS:
+- Two files are now present at repository root and will auto-update when messages change (via CI):
+  - MESSAGES_STATUS.md — summary table of all messages (TO, FROM, PRIORITY, TYPE, TIMESTAMP, SUBJECT)
+  - MESSAGES_ALL.txt — concatenated full contents of all messages
+- Automation: .github/workflows/messages-aggregate.yml
+- Script: scripts/aggregate_messages.sh
+
+ACTIONS (optional):
+- Pull latest: cd /root/Build && git pull origin main
+- View status: cat /root/Build/MESSAGES_STATUS.md
+- View full archive: less /root/Build/MESSAGES_ALL.txt
+
+ACK: Not required.
