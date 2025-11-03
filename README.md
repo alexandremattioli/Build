@@ -351,3 +351,23 @@ Notes:
 ### Local write locks
 
 Writers to `coordination/messages.json` and `coordination/jobs.json` now use local `flock` locks to avoid concurrent edits on the same host. This complements git-based conflict handling across hosts and reduces transient merge churn.
+
+## Shared message watcher (recommended)
+
+Use the repository-provided watcher to standardize message polling and logging on both hosts:
+
+- Script: `scripts/watch_messages.py`
+- Auto target: resolves `build1`/`build2` via `scripts/server_id.sh`
+- Recommended: 10-second polling and centralized log file
+
+Example:
+
+```bash
+python3 scripts/watch_messages.py --target auto --interval 10 --log /root/Build/messages.log
+```
+
+Details:
+- Filters messages to the resolved target and `to=all`
+- Appends single-line `[READ]` entries to the specified log
+- Tracks seen message IDs in `/root/Build/.watch_messages_state.json` to avoid duplicates
+- Safe to run under a supervisor or cron
