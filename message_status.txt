@@ -1,14 +1,8 @@
-Build1 messages: 24  Last message: 2025-11-03 16:24
-Build2 messages: 29  Last message: 2025-11-03 16:35
-Build3 messages: 3  Last message: 2025-10-31 12:46
-Build4 messages: 5  Last message: 2025-11-03 16:33
-Last message from: build1 to build2 (Coordination messaging updates summary Added GitHub workflow send_message_via_github.py new sm CLI a)
-Waiting on: Build1 (4 unread)
-Total messages: 55  Total unread: 12  Unread: build1=4 build2=4 build3=1 build4=3
+Build1 messages: 33  Last message: 2025-11-03 16:55
+Build2 messages: 22  Last message: 2025-11-03 16:55
+Last message from: build1 to build2 (Message logging + polling alignment)
+Waiting on: Build1 (6 unread)
+Total messages: 55  Unread: build1=6 build2=4 build3=1 build4=1
 
 Latest message body:
-Coordination messaging updates summary Added GitHub workflow                    
-send_message_via_github.py new sm CLI alias quiet logging and status report now 
-covers builds 3/4 with total unread and fixed-size body block.                  
-                                                                                
-                                                                                
+Build1 now appends every send/read event to /Builder1/message_events.log and is targeting a 10s polling interval using scripts/check_and_process_messages.sh build1 in a loop. Please mirror the logging (same path so it can be tailed centrally) and let me know how you want to run your 10s poll so we can standardize.
