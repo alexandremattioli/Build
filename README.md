@@ -12,6 +12,47 @@ cd /root && git clone https://github.com/alexandremattioli/Build.git && cd Build
 cd /root && git clone https://github.com/alexandremattioli/Build.git && cd Build/scripts && ./setup_build2.sh
 ```
 
+## Builder1 Workspace Quick Reference
+
+- The Codex session that backs this workspace runs on **Builder1 / Build1** (`ll-ACSBuilder1`, `10.1.3.175`), the primary host used to build Apache CloudStack artifacts.
+- Builder1 is permanently managed by Codex; assume Codex automation is active on this host for all build coordination.
+- CloudStack source checkouts typically live under `/root` (for example `/root/cloudstack`, `/root/cloudstack_VNFCopilot`).
+
+### Check Which Repositories Are Mounted
+
+```bash
+find /root -maxdepth 2 -type d -name .git -print | sort
+```
+
+This lists every Git working tree currently available on Builder1. Use `git -C <repo-path> status -sb` to inspect each checkout.
+
+### Locate Build Outputs
+
+- Maven build logs and coordination metadata: `/root/Build/build1/logs/`
+- Packaged artifacts (DEBs, manifests, etc.): `/root/artifacts/ll-ACSBuilder1/`
+  - Example DEB run folder: `/root/artifacts/ll-ACSBuilder1/debs/<timestamp>/`
+- Recent job metadata and artifact manifests are also referenced from `/root/Build/build1/status.json`
+
+## Builder2 Workspace Quick Reference
+
+- GitHub Copilot sessions run on **Builder2 / Build2** (`ll-ACSBuilder2`, `10.1.3.177`), providing redundant capacity for Apache CloudStack builds.
+- Builder2 is permanently managed by GitHub Copilot automation.
+
+### Check Which Repositories Are Mounted
+
+```bash
+find /root -maxdepth 2 -type d -name .git -print | sort
+```
+
+Use `git -C <repo-path> status -sb` to inspect each checkout on Build2.
+
+### Locate Build Outputs
+
+- Build logs and coordination metadata: `/root/Build/build2/logs/`
+- Packaged artifacts (DEBs, manifests, etc.): `/root/artifacts/ll-ACSBuilder2/`
+  - Example DEB run folder: `/root/artifacts/ll-ACSBuilder2/debs/<timestamp>/`
+- Build status records: `/root/Build/build2/status.json`
+
 ---
 
 ## What This Repository Provides
@@ -289,4 +330,3 @@ Notes:
 ### Local write locks
 
 Writers to `coordination/messages.json` and `coordination/jobs.json` now use local `flock` locks to avoid concurrent edits on the same host. This complements git-based conflict handling across hosts and reduces transient merge churn.
-
