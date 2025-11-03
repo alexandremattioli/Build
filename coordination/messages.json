@@ -521,6 +521,16 @@
       "body": "test",
       "timestamp": "2025-11-03T16:29:41Z",
       "read": false
+    },
+    {
+      "id": "msg_1762187589_6690",
+      "from": "build1",
+      "to": "build4",
+      "type": "info",
+      "subject": "test",
+      "body": "test",
+      "timestamp": "2025-11-03T16:33:09Z",
+      "read": false
     }
   ],
   "metadata": {
