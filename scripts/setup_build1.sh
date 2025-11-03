@@ -53,16 +53,16 @@ fi
 
 # 1. Clone repository
 if [ ! -d "/root/Build/.git" ]; then
-    echo "[1/7] Cloning communication repository..."
+    echo "[1/8] Cloning communication repository..."
     cd /root
     git clone https://github.com/alexandremattioli/Build.git
     echo "✓ Repository cloned"
 else
-    echo "[1/7] Repository already exists"
+    echo "[1/8] Repository already exists"
 fi
 
 # 2. Configure git
-echo "[2/7] Configuring git..."
+echo "[2/8] Configuring git..."
 cd /root/Build
 git config user.name "Build1 Codex"
 git config user.email "codex@build1.local"
@@ -88,12 +88,25 @@ fi
 echo "✓ Git configured"
 
 # 3. Make scripts executable
-echo "[3/7] Setting script permissions..."
+echo "[3/8] Setting script permissions..."
 chmod +x scripts/*.sh
+chmod +x scripts/sendmessages 2>/dev/null || true
 echo "✓ Scripts are executable"
 
-# 4. Read entire conversation thread (REQUIRED on first setup)
-echo "[4/7] Reading conversation thread..."
+# 4. Install messaging helper + alias
+echo "[4/8] Installing messaging helper and alias..."
+HELPER_SRC="/root/Build/scripts/sendmessages"
+HELPER_DST="/usr/local/bin/sendmessages"
+ln -sf "$HELPER_SRC" "$HELPER_DST"
+ln -sf "$HELPER_DST" /usr/local/bin/sm
+cat <<'EOF' >/etc/profile.d/build-messaging.sh
+alias sm='sendmessages'
+EOF
+chmod 644 /etc/profile.d/build-messaging.sh 2>/dev/null || true
+echo "✓ Messaging helper installed (use 'sm')."
+
+# 5. Read entire conversation thread (REQUIRED on first setup)
+echo "[5/8] Reading conversation thread..."
 echo "════════════════════════════════════════════════════════════════"
 echo " IMPORTANT: Build servers must read the entire conversation"
 echo " history to understand context and previous communications."
@@ -107,8 +120,8 @@ echo "To read full conversation history, run:"
 echo "  cd /root/Build/scripts && ./read_conversation_thread.sh build1"
 echo ""
 
-# 5. Check for unread messages
-echo "[5/7] Checking for unread messages..."
+# 6. Check for unread messages
+echo "[6/8] Checking for unread messages..."
 cd /root/Build/scripts
 if ./check_unread_messages.sh build1; then
     echo "✓ No unread messages"
@@ -127,8 +140,8 @@ else
     echo ""
 fi
 
-# 6. Stop existing heartbeat daemon (if running)
-echo "[6/7] Checking for existing heartbeat daemons..."
+# 7. Stop existing heartbeat daemon (if running)
+echo "[7/8] Checking for existing heartbeat daemons..."
 for PROC in "heartbeat_daemon.sh build1" "enhanced_heartbeat_daemon.sh build1"; do
     if pgrep -f "$PROC" > /dev/null; then
         echo "  Stopping existing $PROC..."
@@ -137,8 +150,8 @@ for PROC in "heartbeat_daemon.sh build1" "enhanced_heartbeat_daemon.sh build1"; 
     fi
 done
 
-# 7. Start heartbeat daemon
-echo "[7/7] Starting enhanced heartbeat daemon..."
+# 8. Start heartbeat daemon
+echo "[8/8] Starting enhanced heartbeat daemon..."
 cd /root/Build/scripts
 nohup ./enhanced_heartbeat_daemon.sh build1 60 > /var/log/heartbeat-build1.log 2>&1 &
 DAEMON_PID=$!
@@ -177,7 +190,7 @@ echo "  Mark messages as read:"
 echo "    cd /root/Build/scripts && ./mark_messages_read.sh build1"
 echo ""
 echo "  Send a message:"
-echo "    cd /root/Build/scripts && ./send_message.sh build1 build2 info \"Subject\" \"Message body\""
+echo "    sm 2 \"Subject\" \"Body text\"  # Alias for sendmessages helper"
 echo ""
 echo "  Update message status:"
 echo "    cd /root/Build/scripts && ./update_message_status_txt.sh"
@@ -188,4 +201,3 @@ echo ""
 echo "View heartbeat logs:"
 echo "  tail -f /var/log/heartbeat-build1.log"
 echo ""
-

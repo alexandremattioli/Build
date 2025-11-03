@@ -9,6 +9,18 @@ REPO_DIR="/root/Build"
 
 echo "Setting up Build3 coordination..."
 
+HELPER_SRC="$REPO_DIR/scripts/sendmessages"
+if [ -f "$HELPER_SRC" ]; then
+    chmod +x "$HELPER_SRC" 2>/dev/null || true
+    ln -sf "$HELPER_SRC" /usr/local/bin/sendmessages
+    ln -sf /usr/local/bin/sendmessages /usr/local/bin/sm
+    cat <<'EOF' >/etc/profile.d/build-messaging.sh
+alias sm='sendmessages'
+EOF
+    chmod 644 /etc/profile.d/build-messaging.sh 2>/dev/null || true
+    echo "✓ Messaging helper installed (use 'sm')."
+fi
+
 # Configure git
 git config user.email "build3@coordination.local"
 git config user.name "Build3-ACSBuilder3"
