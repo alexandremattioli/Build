@@ -7,6 +7,7 @@ set -euo pipefail
 
 ROOT_DIR="$(cd "$(dirname "$0")/.." && pwd)"
 MSG_DIR="$ROOT_DIR/messages"
+COORD_FILE="$ROOT_DIR/coordination/messages.json"
 STATUS_FILE="$ROOT_DIR/MESSAGES_STATUS.md"
 ALL_FILE="$ROOT_DIR/MESSAGES_ALL.txt"
 
@@ -30,7 +31,11 @@ extract_field() {
   echo "Generated: $(date -u +%Y-%m-%dT%H:%M:%SZ) (UTC)"
   echo
   total=$(find "$MSG_DIR" -maxdepth 1 -type f -name "*.txt" | wc -l | tr -d ' ')
-  echo "Total messages: $total"
+  echo "Text message files: $total"
+  if [[ -f "$COORD_FILE" ]]; then
+    coord_total=$(jq '.messages | length' "$COORD_FILE")
+    echo "Coordination messages: $coord_total"
+  fi
   echo
   echo "| File | TO | FROM | PRIORITY | TYPE | TIMESTAMP | SUBJECT |"
   echo "|------|----|------|----------|------|-----------|---------|"
@@ -48,17 +53,79 @@ extract_field() {
     subj=${subj//|/\|}
     echo "| $base | ${to:-} | ${from:-} | ${prio:-} | ${type:-} | ${ts:-} | ${subj:-} |"
   done < <(find "$MSG_DIR" -maxdepth 1 -type f -name "*.txt" -print0 | sort -z)
+
+  if [[ -f "$COORD_FILE" ]]; then
+    echo
+    echo "## Coordination Thread (coordination/messages.json)"
+    echo
+    coord_total=${coord_total:-$(jq '.messages | length' "$COORD_FILE")}
+    unread_build1=$(jq '[.messages[] | select((.to == "build1" or .to == "all") and (.read != true))] | length' "$COORD_FILE")
+    unread_build2=$(jq '[.messages[] | select((.to == "build2" or .to == "all") and (.read != true))] | length' "$COORD_FILE")
+    unread_build3=$(jq '[.messages[] | select((.to == "build3" or .to == "all") and (.read != true))] | length' "$COORD_FILE")
+    unread_build4=$(jq '[.messages[] | select((.to == "build4" or .to == "all") and (.read != true))] | length' "$COORD_FILE")
+    echo "Total messages: $coord_total"
+    echo "Unread: build1=$unread_build1 build2=$unread_build2 build3=$unread_build3 build4=$unread_build4"
+    echo
+    echo "| ID | FROM | TO | TYPE | PRIORITY | TIMESTAMP | SUBJECT | READ |"
+    echo "|----|------|----|------|----------|-----------|---------|------|"
+    jq -r '
+      .messages
+      | sort_by(.timestamp)
+      | .[]
+      | [
+          .id,
+          .from,
+          .to,
+          .type,
+          (.priority // "normal"),
+          (.timestamp // ""),
+          (.subject // ""),
+          (if .read == true then "yes" else "no" end)
+        ]
+      | @tsv
+    ' "$COORD_FILE" | while IFS=$'\t' read -r id from to type priority ts subject read; do
+      subject_escaped=${subject//|/\\|}
+      echo "| ${id:-} | ${from:-} | ${to:-} | ${type:-} | ${priority:-} | ${ts:-} | ${subject_escaped:-} | ${read:-} |"
+    done
+  fi
 } > "$STATUS_FILE"
 
 # Build concatenated full messages
 {
   echo "===== ALL MESSAGES (Generated $(date -u +%Y-%m-%dT%H:%M:%SZ) UTC) ====="
   echo
+  echo "--- TEXT FILES (messages/*.txt) ---"
+  echo
   while IFS= read -r -d '' f; do
     echo "----- FILE: $(basename "$f") -----"
     cat "$f"
     echo
   done < <(find "$MSG_DIR" -maxdepth 1 -type f -name "*.txt" -print0 | sort -z)
+
+  if [[ -f "$COORD_FILE" ]]; then
+    echo "--- COORDINATION THREAD (coordination/messages.json) ---"
+    echo
+    jq -r '
+      .messages
+      | sort_by(.timestamp)
+      | .[]
+      | [
+          "----- MESSAGE: " + (.id // "unknown") + " -----",
+          "FROM: " + (.from // ""),
+          "TO: " + (.to // ""),
+          "TYPE: " + (.type // ""),
+          "PRIORITY: " + (.priority // "normal"),
+          "TIMESTAMP: " + (.timestamp // ""),
+          "READ: " + (if .read == true then "yes" else "no" end),
+          "",
+          "SUBJECT: " + (.subject // ""),
+          "",
+          (if (.body // "") == "" then "BODY: (empty)" else "BODY:\n" + (.body // "") end),
+          ""
+        ]
+      | join("\n")
+    ' "$COORD_FILE"
+  fi
 } > "$ALL_FILE"
 
 echo "Wrote:" >&2
