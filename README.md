@@ -1,6 +1,6 @@
 # Build Server Coordination Repository
 
-> Quick note for operators: if you just tell the agent “follow the instructions”, it will execute the exact checklist below automatically. The steps are documented here so you don’t need to repeat them next time.
+> Quick note for operators: if you just tell the agent "follow the instructions", it will execute the exact checklist below automatically. The steps are documented here so you don't need to repeat them next time.
 
 ## For Build1 (Codex) - `root@ll-ACSBuilder1`
 
@@ -23,6 +23,49 @@ Every setup script installs a helper so builds can send coordination messages wi
 - Source: `scripts/sendmessages` (wraps `scripts/send_message.sh`)
 
 Run `sendmessages --help` for all options. Targets accept digits (`1`, `12`, `4`) or `all`; subjects are auto-derived from the first line of the body.
+
+---
+
+## Features Directory
+
+The `Features/` directory contains detailed specifications and documentation for new features being developed for Apache CloudStack builds. Each feature has its own subdirectory containing:
+
+- **Design documents** - Detailed technical specifications and architecture documentation
+- **Implementation notes** - Guidelines for build servers on how to implement the feature
+- **Configuration files** - Any necessary configuration or setup files
+- **Test specifications** - Testing requirements and procedures
+
+### Structure
+
+```
+Features/
+├── DualSNAT/          # Dual Source NAT feature
+└── VNFramework/       # VNF Framework feature
+    ├── README.md      # Implementation guide
+    ├── PACKAGE-SUMMARY.md
+    ├── database/      # Database schema
+    ├── api-specs/     # OpenAPI specifications
+    ├── java-classes/  # Java interfaces and implementations
+    ├── python-broker/ # VR broker service
+    ├── dictionaries/  # Vendor YAML dictionaries
+    ├── tests/         # Test suite
+    ├── config/        # Configuration
+    └── ui-specs/      # UI components and workflows
+```
+
+### For Build Servers
+
+When implementing new features:
+
+1. Check the `Features/` directory for the latest feature specifications
+2. Each subdirectory represents a distinct feature or capability
+3. Read all documentation files within the feature directory before implementation
+4. Follow the specifications exactly as documented
+5. Report any issues or clarifications needed via the coordination system
+
+> **Important:** Feature directories contain authoritative documentation that build servers should reference during development and testing.
+
+---
 
 ## Builder1 Workspace Quick Reference
 
@@ -186,4 +229,136 @@ The `coordination/locks.json` file prevents race conditions:
 }
 ```
 
-...
+## Workflow Examples
+
+### Starting a Build
+
+1. Builder creates job in `coordination/jobs.json`
+2. Builder acquires lock in `coordination/locks.json`
+3. Builder updates own `status.json` to "building"
+4. Builder writes log to `build[1|2]/logs/[timestamp].log`
+5. Builder updates `status.json` on completion
+6. Builder releases lock
+
+### Checking Other Builder Status
+
+```bash
+# From Build1, check Build2 status
+ssh root@10.1.3.177 'cat /root/Build/build2/status.json'
+
+# Or via git if repo is synced
+cat build2/status.json
+```
+
+### Messaging Between Builders
+
+```bash
+# Build1 sends message to Build2
+./scripts/send_message.sh build1 build2 "Starting build on ExternalNew branch"
+
+# Message appears in coordination/messages.json
+```
+
+---
+
+## Setup Instructions
+
+### Initial Setup (One-time)
+
+On each builder:
+
+```bash
+cd /root
+git clone https://github.com/alexandremattioli/Build.git
+cd Build
+git config user.name "Build[1|2] [Manager]"
+git config user.email "[manager]@build[1|2].local"
+```
+
+### Regular Updates
+
+```bash
+cd /root/Build
+git pull
+# Make changes
+git add .
+git commit -m "Update from build[1|2]"
+git push
+```
+
+### Automated Sync (Optional)
+
+Add to crontab:
+```bash
+*/5 * * * * cd /root/Build && git pull && git add -A && git commit -m "[build1] Heartbeat $(date +\%H:\%M:\%S)" && git push
+```
+
+---
+
+## Troubleshooting
+
+### Git Push Conflicts
+
+```bash
+cd /root/Build
+git pull --rebase
+git push
+```
+
+### Stale Locks
+
+If a lock is held too long:
+```bash
+# Manually clear lock in coordination/locks.json
+# Remove the lock entry or update timestamp
+```
+
+### Missing Status Files
+
+```bash
+# Recreate status.json
+cat > build1/status.json << 'EOF'
+{
+  "server": "build1",
+  "status": "idle",
+  "timestamp": "$(date -u +%Y-%m-%dT%H:%M:%SZ)"
+}
+EOF
+```
+
+---
+
+## Best Practices
+
+1. **Always pull before push** to avoid conflicts
+2. **Update status.json** at each state change
+3. **Log extensively** for debugging
+4. **Use locks** for any shared resource access
+5. **Heartbeat regularly** so other builders know you're alive
+6. **Clean up old logs** to save space
+7. **Document all jobs** in coordination/jobs.json
+
+---
+
+## Security Notes
+
+- Repository is private (only accessible to authorized users)
+- SSH keys required for git operations
+- No sensitive credentials stored in git
+- All passwords/tokens in environment variables or config files excluded from git
+
+---
+
+## Future Enhancements
+
+- [ ] Automated health checks via GitHub Actions
+- [ ] Web dashboard for status visualization  
+- [ ] Slack/Teams integration for notifications
+- [ ] Build artifact storage and distribution
+- [ ] Historical metrics and performance tracking
+
+---
+
+**Repository:** https://github.com/alexandremattioli/Build  
+**Maintainer:** Alexandre Mattioli (@alexandremattioli)  
+**Last Updated:** November 4, 2025
