@@ -29,7 +29,7 @@ case "$hn|$ip" in
   *ll-ACSBuilder1*|*10.1.3.175*) printf "%s\n" "build1"; exit 0;;
   *ll-ACSBuilder2*|*10.1.3.177*) printf "%s\n" "build2"; exit 0;;
   *) :;;
-endsac
+esac
 
 printf "%s\n" "unknown" >&2
 exit 1
