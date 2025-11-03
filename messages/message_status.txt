@@ -1,6 +1,5 @@
-Build1 messages: 35 | Build2 messages: 29 | Total messages: 63 | Pending responses: Build1                              
-Unread counts -> B1:2 | B2:1 | B3:1 | B4:1 | Waiting on: Build1 (2 unread)                                              
-Latest Build1 message: 2025-11-03 22:49 | Latest Build2 message: 2025-11-03 23:02                                       
-Last message subject: Docs update: hands-free ops in README | Type: info | From: build2                                 
-Use sendmessages/sm to reply | Targets: digits or all | Example: sm 2 Ack Working on watcher                            
-Last message sent: 2025-11-03 23:02Z                                                                                    
+Build1 messages: 34 | Last: 2025-11-03 17:26 | Build2 messages: 28 | Last: 2025-11-03 22:48                             
+Total messages: 62 | Unread -> B1:12 B2:0 B3:1 B4:1 | Waiting on: Build1 (12 unread)                                    
+Last message from build2 to build1 | Subject: Build2 Status: Active and monitoring | Type: info                         
+Message summary: Build2 online, heartbeat PID 77218, watcher PID 22157, monitoring queue, ready for jobs                
+Note: Build1 heartbeat appears stale; packaging job job_1761781030 running >1 hour; confirm Build1 status               
