@@ -1,0 +1,86 @@
+name: Validate Repository
+
+on:
+  push:
+    branches: [ main, feature/* ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Install dependencies
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y jq shellcheck
+        
+    - name: Validate JSON files
+      run: |
+        echo "Validating JSON files..."
+        EXIT_CODE=0
+        for file in $(find . -name "*.json" -not -path "./.git/*"); do
+          echo "Checking $file..."
+          if ! jq empty "$file" 2>/dev/null; then
+            echo "❌ Invalid JSON: $file"
+            EXIT_CODE=1
+          else
+            echo "✓ Valid: $file"
+          fi
+        done
+        exit $EXIT_CODE
+        
+    - name: Run validation script
+      run: |
+        if [ -f scripts/validate_all.sh ]; then
+          chmod +x scripts/validate_all.sh
+          ./scripts/validate_all.sh
+        else
+          echo "⚠️ validate_all.sh not found, skipping"
+        fi
+        
+    - name: Check shell scripts with shellcheck
+      run: |
+        echo "Running shellcheck on shell scripts..."
+        EXIT_CODE=0
+        for script in $(find scripts -name "*.sh" 2>/dev/null); do
+          echo "Checking $script..."
+          if shellcheck "$script"; then
+            echo "✓ $script passed"
+          else
+            echo "❌ $script has issues"
+            EXIT_CODE=1
+          fi
+        done
+        exit $EXIT_CODE
+      continue-on-error: true
+        
+    - name: Verify script permissions
+      run: |
+        echo "Checking script executability..."
+        for script in scripts/*.sh; do
+          if [ -f "$script" ]; then
+            if [ -x "$script" ]; then
+              echo "✓ $script is executable"
+            else
+              echo "⚠️ $script is not executable"
+            fi
+          fi
+        done
+        
+    - name: Validate directory structure
+      run: |
+        echo "Validating directory structure..."
+        REQUIRED_DIRS="build1 build2 coordination shared scripts"
+        for dir in $REQUIRED_DIRS; do
+          if [ -d "$dir" ]; then
+            echo "✓ $dir exists"
+          else
+            echo "❌ Missing directory: $dir"
+            exit 1
+          fi
+        done
