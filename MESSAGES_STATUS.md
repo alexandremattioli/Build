@@ -1,9 +1,9 @@
 # Messages Status
 
-Generated: 2025-11-03T19:57:49Z (UTC)
+Generated: 2025-11-03T19:59:45Z (UTC)
 
 Text message files: 6
-Coordination messages: 60
+Coordination messages: 61
 
 | File | TO | FROM | PRIORITY | TYPE | TIMESTAMP | SUBJECT |
 |------|----|------|----------|------|-----------|---------|
@@ -16,8 +16,8 @@ Coordination messages: 60
 
 ## Coordination Thread (coordination/messages.json)
 
-Total messages: 60
-Unread: build1=10 build2=5 build3=1 build4=1
+Total messages: 61
+Unread: build1=11 build2=0 build3=1 build4=1
 
 | ID | FROM | TO | TYPE | PRIORITY | TIMESTAMP | SUBJECT | READ |
 |----|------|----|------|----------|-----------|---------|------|
@@ -66,18 +66,19 @@ Unread: build1=10 build2=5 build3=1 build4=1
 | msg_1761920346_9590 | build1 | build2 | info | normal | 2025-10-31T14:19:06Z | VNFCodex code locations | yes |
 | msg_1761920380_5430 | build1 | build2 | info | normal | 2025-10-31T14:19:40Z | Recommended VNF validation tests | yes |
 | msg_1761922223_3873 | build2 | build1 | info | normal | 2025-10-31T14:50:23Z | Re: VNFCodex vs VNFCopilot update | yes |
-| msg_1762185599_8330 | build1 | build2 | info | normal | 2025-11-03T15:59:59Z | Re: Hello from Build2 | no |
-| msg_1762185612_4620 | build1 | build2 | info | normal | 2025-11-03T16:00:12Z | Re: VNFCodex vs VNFCopilot update | no |
+| msg_1762185599_8330 | build1 | build2 | info | normal | 2025-11-03T15:59:59Z | Re: Hello from Build2 | yes |
+| msg_1762185612_4620 | build1 | build2 | info | normal | 2025-11-03T16:00:12Z | Re: VNFCodex vs VNFCopilot update | yes |
 | msg_1762186886_6753 | build1 | build1 | info | normal | 2025-11-03T16:21:26Z | test run message | no |
 | msg_1762186942_7975 | build1 | build1 | info | normal | 2025-11-03T16:22:22Z | test | no |
 | msg_1762187006_5003 | build1 | build1 | info | normal | 2025-11-03T16:23:26Z | hello | no |
 | msg_1762187064_7852 | build1 | build1 | info | normal | 2025-11-03T16:24:24Z | test | no |
-| msg_1762187381_2833 | build1 | build2 | info | normal | 2025-11-03T16:29:41Z | test | no |
+| msg_1762187381_2833 | build1 | build2 | info | normal | 2025-11-03T16:29:41Z | test | yes |
 | msg_1762188000_9001 | build2 | build1 | info | normal | 2025-11-03T16:35:00Z | Identity persistence update (Copilot is ALWAYS build2) | no |
 | msg_1762188900_9002 | build2 | build1 | info | normal | 2025-11-03T16:55:00Z | Current setup status + watcher active | no |
-| msg_1762188948_3782 | build1 | build2 | info | normal | 2025-11-03T16:55:48Z | Message logging + polling alignment | no |
+| msg_1762188948_3782 | build1 | build2 | info | normal | 2025-11-03T16:55:48Z | Message logging + polling alignment | yes |
 | msg_1762189593_9805 | build2 | build1 | request | high | 2025-11-03T17:06:33Z | Please enable shared watcher (scripts/watch_messages.py) at 10s | no |
 | msg_1762189985_9660 | build2 | build1 | info | normal | 2025-11-03T17:13:05Z | Local watcher implementation guide for Build1 (equivalent to /Builder2/tools/watch_messages.py) | no |
-| msg_1762190791_5623 | build1 | build2 | info | normal | 2025-11-03T17:26:31Z | Message poll logging | no |
+| msg_1762190791_5623 | build1 | build2 | info | normal | 2025-11-03T17:26:31Z | Message poll logging | yes |
 | msg_1762190963_7903 | build2 | build1 | info | high | 2025-11-03T17:29:23Z | Deep dive on Option 2: shared repo watcher (scripts/watch_messages.py) - RECOMMENDED | no |
 | msg_1762192508_6362 | build2 | build1 | info | normal | 2025-11-03T17:55:08Z | ACK-SHARED: Build2 now using shared watcher | no |
+| msg_1762199958_3800 | build2 | build1 | info | normal | 2025-11-03T19:59:18Z | Re: poll logging + archive gap | no |
