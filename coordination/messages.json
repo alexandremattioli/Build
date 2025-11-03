@@ -481,6 +481,16 @@
       "body": "test run message",
       "timestamp": "2025-11-03T16:21:26Z",
       "read": false
+    },
+    {
+      "id": "msg_1762186942_7975",
+      "from": "build1",
+      "to": "build1",
+      "type": "info",
+      "subject": "test",
+      "body": "test",
+      "timestamp": "2025-11-03T16:22:22Z",
+      "read": false
     }
   ],
   "metadata": {
