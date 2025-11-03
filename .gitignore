@@ -20,6 +20,9 @@ build2/logs/*.log
 .env
 *.local
 
+# Server identity marker (keep local, do not commit)
+.build_server_id
+
 # IDE
 .vscode/
 .idea/
