@@ -1,0 +1,234 @@
+name: Build Server Health Monitor
+
+on:
+  schedule:
+    # Run every 5 minutes
+    - cron: '*/5 * * * *'
+  workflow_dispatch:  # Allow manual trigger
+
+jobs:
+  health-check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Check Server Heartbeats
+        id: heartbeat-check
+        run: |
+          echo "Checking server heartbeats..."
+          
+          check_heartbeat() {
+            local server=$1
+            local file="build${server}/heartbeat.json"
+            
+            if [ ! -f "$file" ]; then
+              echo "❌ $file not found"
+              echo "alert_build${server}=missing" >> $GITHUB_OUTPUT
+              return 1
+            fi
+            
+            local timestamp=$(jq -r '.timestamp' "$file")
+            local healthy=$(jq -r '.healthy' "$file")
+            
+            if [ "$timestamp" = "null" ]; then
+              echo "❌ Build$server: No timestamp found"
+              echo "alert_build${server}=no_timestamp" >> $GITHUB_OUTPUT
+              return 1
+            fi
+            
+            # Calculate age in seconds
+            local ts_epoch=$(date -d "$timestamp" +%s 2>/dev/null || echo 0)
+            local now_epoch=$(date +%s)
+            local age=$((now_epoch - ts_epoch))
+            
+            echo "Build$server heartbeat age: ${age}s"
+            
+            # Alert if older than 5 minutes (300s)
+            if [ $age -gt 300 ]; then
+              echo "❌ Build$server: Heartbeat is ${age}s old (> 300s)"
+              echo "alert_build${server}=stale" >> $GITHUB_OUTPUT
+              echo "age_build${server}=${age}" >> $GITHUB_OUTPUT
+              return 1
+            fi
+            
+            if [ "$healthy" != "true" ]; then
+              echo "❌ Build$server: Marked as unhealthy"
+              echo "alert_build${server}=unhealthy" >> $GITHUB_OUTPUT
+              return 1
+            fi
+            
+            echo "✅ Build$server: Healthy"
+            return 0
+          }
+          
+          build1_ok=true
+          build2_ok=true
+          
+          check_heartbeat 1 || build1_ok=false
+          check_heartbeat 2 || build2_ok=false
+          
+          if [ "$build1_ok" = false ] || [ "$build2_ok" = false ]; then
+            echo "has_alerts=true" >> $GITHUB_OUTPUT
+          else
+            echo "has_alerts=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Check Build Status
+        id: build-check
+        run: |
+          echo "Checking build status..."
+          
+          check_build_status() {
+            local server=$1
+            local file="build${server}/status.json"
+            
+            if [ ! -f "$file" ]; then
+              echo "⚠️ $file not found"
+              return 0
+            fi
+            
+            local status=$(jq -r '.status' "$file")
+            local last_build_status=$(jq -r '.last_build.status' "$file")
+            
+            echo "Build$server status: $status"
+            echo "Build$server last_build: $last_build_status"
+            
+            if [ "$last_build_status" = "failed" ]; then
+              echo "❌ Build$server: Last build failed"
+              echo "failed_build${server}=true" >> $GITHUB_OUTPUT
+              
+              local job_id=$(jq -r '.last_build.id' "$file")
+              local completed_at=$(jq -r '.last_build.completed_at' "$file")
+              echo "failed_job_build${server}=${job_id}" >> $GITHUB_OUTPUT
+              echo "failed_time_build${server}=${completed_at}" >> $GITHUB_OUTPUT
+            fi
+          }
+          
+          check_build_status 1
+          check_build_status 2
+
+      - name: Create Issue on Alert
+        if: steps.heartbeat-check.outputs.has_alerts == 'true'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const alerts = [];
+            
+            if (process.env.ALERT_BUILD1) {
+              const type = process.env.ALERT_BUILD1;
+              const age = process.env.AGE_BUILD1 || 'unknown';
+              alerts.push(`🔴 **Build1 (10.1.3.175)**: ${type} (age: ${age}s)`);
+            }
+            
+            if (process.env.ALERT_BUILD2) {
+              const type = process.env.ALERT_BUILD2;
+              const age = process.env.AGE_BUILD2 || 'unknown';
+              alerts.push(`🔴 **Build2 (10.1.3.177)**: ${type} (age: ${age}s)`);
+            }
+            
+            if (alerts.length === 0) return;
+            
+            const body = `## 🚨 Build Server Health Alert
+            
+            ${alerts.join('\n')}
+            
+            **Timestamp**: ${new Date().toISOString()}
+            
+            ### Actions Needed
+            - Check server connectivity
+            - Review server logs
+            - Restart heartbeat service if needed
+            
+            ### Quick Commands
+            \`\`\`bash
+            # Build1
+            ssh root@10.1.3.175 "cd /root/Build && git status"
+            
+            # Build2
+            ssh root@10.1.3.177 "cd /root/Build && git status"
+            \`\`\`
+            
+            This issue was automatically created by the health monitoring workflow.`;
+            
+            // Check if there's already an open alert issue
+            const issues = await github.rest.issues.listForRepo({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              state: 'open',
+              labels: ['health-alert', 'automated']
+            });
+            
+            if (issues.data.length === 0) {
+              // Create new issue
+              await github.rest.issues.create({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                title: '🚨 Build Server Health Alert',
+                body: body,
+                labels: ['health-alert', 'automated', 'priority-high']
+              });
+            } else {
+              // Update existing issue
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: issues.data[0].number,
+                body: body
+              });
+            }
+        env:
+          ALERT_BUILD1: ${{ steps.heartbeat-check.outputs.alert_build1 }}
+          ALERT_BUILD2: ${{ steps.heartbeat-check.outputs.alert_build2 }}
+          AGE_BUILD1: ${{ steps.heartbeat-check.outputs.age_build1 }}
+          AGE_BUILD2: ${{ steps.heartbeat-check.outputs.age_build2 }}
+
+      - name: Comment on Failed Builds
+        if: steps.build-check.outputs.failed_build1 == 'true' || steps.build-check.outputs.failed_build2 == 'true'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const failures = [];
+            
+            if (process.env.FAILED_BUILD1 === 'true') {
+              failures.push(`🔴 **Build1**: Job ${process.env.FAILED_JOB_BUILD1} failed at ${process.env.FAILED_TIME_BUILD1}`);
+            }
+            
+            if (process.env.FAILED_BUILD2 === 'true') {
+              failures.push(`🔴 **Build2**: Job ${process.env.FAILED_JOB_BUILD2} failed at ${process.env.FAILED_TIME_BUILD2}`);
+            }
+            
+            if (failures.length === 0) return;
+            
+            const body = `## ❌ Build Failure Alert
+            
+            ${failures.join('\n')}
+            
+            **Detected**: ${new Date().toISOString()}
+            
+            Check the build logs for details.`;
+            
+            // Check for open failure issues
+            const issues = await github.rest.issues.listForRepo({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              state: 'open',
+              labels: ['build-failure', 'automated']
+            });
+            
+            if (issues.data.length === 0) {
+              await github.rest.issues.create({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                title: '❌ Build Failure Detected',
+                body: body,
+                labels: ['build-failure', 'automated']
+              });
+            }
+        env:
+          FAILED_BUILD1: ${{ steps.build-check.outputs.failed_build1 }}
+          FAILED_BUILD2: ${{ steps.build-check.outputs.failed_build2 }}
+          FAILED_JOB_BUILD1: ${{ steps.build-check.outputs.failed_job_build1 }}
+          FAILED_JOB_BUILD2: ${{ steps.build-check.outputs.failed_job_build2 }}
+          FAILED_TIME_BUILD1: ${{ steps.build-check.outputs.failed_time_build1 }}
+          FAILED_TIME_BUILD2: ${{ steps.build-check.outputs.failed_time_build2 }}
