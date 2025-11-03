@@ -1,10 +1,10 @@
-Build1 messages: 32  Last message: 2025-11-03 16:29
+Build1 messages: 34  Last message: 2025-11-03 16:33
 Build2 messages: 20  Last message: 2025-10-31 14:50
 Build3 messages: 0  Last message: Never
 Build4 messages: 0  Last message: Never
-Last message from: build1 to build2 (test)
+Last message from: build1 to build4 (test)
 Waiting on: Build1 (4 unread)
-Total messages: 52  Total unread: 9  Unread: build1=4 build2=3 build3=1 build4=1
+Total messages: 54  Total unread: 11  Unread: build1=4 build2=3 build3=1 build4=3
 
 Latest message body:
 test                                                                            
