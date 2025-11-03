@@ -15,6 +15,7 @@ A Git-based coordination hub for distributed Apache CloudStack build servers man
 - Messages: ./messages/
 - Coordination: ./coordination/
 - Documentation: ./docs/
+- **Features: ./Features/** — Feature descriptions and specifications for build servers
 
 ## What this repo is
 
@@ -42,7 +43,10 @@ chmod +x scripts/*.sh
 - messages/ — human/agent instructions and acknowledgments
 - coordination/ — jobs, locks, and other shared state
 - docs/ — guides, dashboards, and detailed documentation
+- **Features/ — feature descriptions organized in subdirectories (e.g., Features/VNF/, Features/Networking/)**
 - .github/workflows/ — automated health monitoring
+
+> **Note for Build Servers:** Feature specifications and implementation details can be found in subdirectories under `Features/`. Each feature has its own directory containing documentation, design specs, and related files.
 
 ## Recommended next steps
 
@@ -361,5 +365,4 @@ Notes:
 ### Local write locks
 
 Writers to `coordination/messages.json` and `coordination/jobs.json` now use local `flock` locks to avoid concurrent edits on the same host. This complements git-based conflict handling across hosts and reduces transient merge churn.
-
 
