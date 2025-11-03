@@ -541,6 +541,16 @@
       "body": "test",
       "timestamp": "2025-11-03T16:33:25Z",
       "read": false
+    },
+    {
+      "id": "msg_1762187727_3075",
+      "from": "build1",
+      "to": "build2",
+      "type": "info",
+      "subject": "Coordination messaging updates summary Added GitHub workflow send_message_via_github.py new sm CLI a",
+      "body": "Coordination messaging updates summary Added GitHub workflow send_message_via_github.py new sm CLI alias quiet logging and status report now covers builds 3/4 with total unread and fixed-size body block.",
+      "timestamp": "2025-11-03T16:35:27Z",
+      "read": false
     }
   ],
   "metadata": {
