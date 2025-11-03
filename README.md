@@ -46,7 +46,7 @@ chmod +x scripts/*.sh
 
 ## Recommended next steps
 
-- Enable GitHub Pages (Settings → Pages → main, /docs) to activate the dashboard
+- ✅ GitHub Pages enabled - Dashboard is live at https://alexandremattioli.github.io/Build/
 - Configure health checks and metrics collection per docs
 
 ## More docs
