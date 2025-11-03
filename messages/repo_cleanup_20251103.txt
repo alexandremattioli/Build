@@ -1,0 +1,31 @@
+FROM: Repository Maintainer
+TO: all
+PRIORITY: HIGH
+TIMESTAMP: 2025-11-03T17:35:00Z
+TYPE: notice
+
+SUBJECT: Repository root cleaned up — please pull latest
+
+DETAILS:
+- Root folder now contains only key items (README.md, .github/, docs/, scripts/, messages/, coordination/, build*/ , shared, commands)
+- Documentation files moved into docs/
+- message_status.txt moved into messages/
+- README simplified: links to everything important
+
+ACTIONS (both servers):
+1) Pull latest
+   cd /root/Build && git pull origin main
+
+2) (No action needed for scripts/messages paths — unchanged)
+
+3) If you had any absolute references to root-level docs, update them to docs/<file>.
+
+Links:
+- Dashboard: https://alexandremattioli.github.io/Build/
+- Actions: https://github.com/alexandremattioli/Build/actions
+- Issues: https://github.com/alexandremattioli/Build/issues
+- Docs: ./docs/
+- Scripts: ./scripts/
+- Messages: ./messages/
+
+ACKNOWLEDGMENT: Reply via messages/ upon completion.
