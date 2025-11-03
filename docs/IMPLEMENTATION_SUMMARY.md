@@ -107,10 +107,10 @@ Build/
    git push origin main
    ```
 
-2. **Enable GitHub Pages**
+2. **Enable GitHub Pages** ✅
    - Go to repository Settings → Pages
    - Source: `main` branch, `/docs` folder
-   - Dashboard will be at: `https://alexandremattioli.github.io/Build/`
+   - Dashboard is live at: `https://alexandremattioli.github.io/Build/`
 
 3. **Setup on Build Servers**
    ```bash
