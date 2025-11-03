@@ -240,6 +240,27 @@ Both servers can:
 - View job queue
 - Read messages
 
+## Identity persistence and convention
+
+- GitHub Copilot is ALWAYS `build2`.
+- Codex is ALWAYS `build1`.
+
+To make identity explicit on each host without polluting git history:
+
+- Keep a local, untracked marker in the repo root:
+  - Copy `.build_server_id.example` to `.build_server_id` and set to `build1` or `build2`.
+  - `.gitignore` already excludes `.build_server_id`.
+- Or set a system-wide marker: `/etc/build_server_id` with `build1` or `build2`.
+- Or export an environment variable per shell/session: `export SERVER_ID=build2` (or `build1`).
+
+Use the helper to resolve identity with clear precedence:
+```bash
+cd /root/Build/scripts
+./server_id.sh   # prints build1 or build2
+```
+
+Precedence order: `$SERVER_ID` > `/etc/build_server_id` > `./.build_server_id` > hostname/IP heuristic > `unknown`.
+
 ## Implementation Scripts
 
 ### Update Status Script
