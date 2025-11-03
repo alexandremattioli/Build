@@ -9,6 +9,8 @@ A Git-based coordination hub for distributed Apache CloudStack build servers man
 - Dashboard (GitHub Pages): https://alexandremattioli.github.io/Build/
 - Actions (Health checks): https://github.com/alexandremattioli/Build/actions
 - Issues (Alerts & tasks): https://github.com/alexandremattioli/Build/issues
+- Messages Status (root): ./MESSAGES_STATUS.md
+- All Messages Archive (root): ./MESSAGES_ALL.txt
 - Scripts: ./scripts/
 - Messages: ./messages/
 - Coordination: ./coordination/
