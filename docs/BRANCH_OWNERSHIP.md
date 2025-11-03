@@ -15,6 +15,7 @@ This document clarifies which CloudStack branches are owned by each builder and 
 
 - Build1 (Codex) OWNED branches:
   - `VNFCodex`
+  - **Naming convention:** any new Codex-owned branch must include `Codex` in the branch name (e.g., `feature/Codex-sync-fixes`) so ownership is obvious in shared tooling.
 
 - Shared/baseline branches:
   - `main` (baseline)
