@@ -1,8 +1,6 @@
-Build1 messages: 35  Last message: 2025-11-03 23:02
-Build2 messages: 29  Last message: 2025-11-03 23:02
-Last message from: build2 to build1 (Docs update: hands-free ops in README)
-Waiting on: Build1 (2 unread)
-Total messages: 63  Unread: build1=2 build2=1 build3=1 build4=1
-
-Latest message body:
-Added a hands‑free bootstrap & daily ops section to README with identity setup, safe pull/stash, setup script, heartbeat, messages, health checks, logs, and conflict handling. This reduces operator prompting. Pushed to main just now.
+Build1 messages: 35 | Build2 messages: 29 | Total messages: 63 | Pending responses: Build1                              
+Unread counts -> B1:2 | B2:1 | B3:1 | B4:1 | Waiting on: Build1 (2 unread)                                              
+Latest Build1 message: 2025-11-03 22:49 | Latest Build2 message: 2025-11-03 23:02                                       
+Last message subject: Docs update: hands-free ops in README | Type: info | From: build2                                 
+Use sendmessages/sm to reply | Targets: digits or all | Example: sm 2 Ack Working on watcher                            
+Last message sent: 2025-11-03 23:02Z                                                                                    
