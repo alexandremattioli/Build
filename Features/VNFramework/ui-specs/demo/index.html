@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>VNF Framework Mock UI Demo</title>
+  <link rel="stylesheet" href="https://unpkg.com/ant-design-vue@4/dist/antd.min.css" />
+  <style>
+    body { margin: 0; background: #f5f5f5; }
+    .app-shell { max-width: 1200px; margin: 24px auto; padding: 16px; }
+    .page-header { margin-bottom: 16px; }
+    .footer { margin-top: 24px; color: #888; font-size: 12px; text-align: center; }
+    pre { background: #fafafa; padding: 12px; border: 1px solid #eee; border-radius: 6px; overflow: auto; }
+  </style>
+</head>
+<body>
+  <div id="app" class="app-shell">
+    <a-page-header class="page-header" title="VNF Framework Mock UI" sub-title="Static demo (Vue 3 + Ant Design Vue via CDN)"></a-page-header>
+
+    <a-card>
+      <a-tabs v-model:activeKey="activeKey">
+        <a-tab-pane key="vnfs" tab="VNF Instances">
+          <a-table :columns="vnfColumns" :data-source="mock.vnfInstances" :pagination="{ pageSize: 5 }" row-key="id" />
+        </a-tab-pane>
+        <a-tab-pane key="templates" tab="VNF Templates">
+          <a-table :columns="templateColumns" :data-source="mock.vnfTemplates" :pagination="{ pageSize: 5 }" row-key="id" />
+        </a-tab-pane>
+        <a-tab-pane key="dictionaries" tab="Vendor Dictionaries">
+          <a-collapse accordion>
+            <a-collapse-panel v-for="dict in mock.dictionaries" :key="dict.vendor" :header="dict.vendor + ' ' + dict.model">
+              <a-descriptions :column="1" size="small" bordered>
+                <a-descriptions-item label="Vendor">{{ dict.vendor }}</a-descriptions-item>
+                <a-descriptions-item label="Model">{{ dict.model }}</a-descriptions-item>
+                <a-descriptions-item label="Version">{{ dict.version }}</a-descriptions-item>
+                <a-descriptions-item label="Capabilities">
+                  <a-tag v-for="cap in dict.capabilities" :key="cap" color="blue" style="margin-bottom: 6px;">{{ cap }}</a-tag>
+                </a-descriptions-item>
+                <a-descriptions-item label="Sample Config">
+                  <pre>{{ JSON.stringify(dict.sampleConfig, null, 2) }}</pre>
+                </a-descriptions-item>
+              </a-descriptions>
+            </a-collapse-panel>
+          </a-collapse>
+        </a-tab-pane>
+      </a-tabs>
+    </a-card>
+
+    <div class="footer">
+      Data is embedded mock data for demo purposes. See ui-specs/mock-data/vnf-mock-data.json for full scenarios.
+    </div>
+  </div>
+
+  <script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
+  <script src="https://unpkg.com/ant-design-vue@4/dist/antd.min.js"></script>
+  <script>
+    const { createApp, ref } = Vue;
+
+    // Minimal representative mock data (for full data see ui-specs/mock-data/vnf-mock-data.json)
+    const mock = {
+      vnfInstances: [
+        { id: 'vnf-1001', name: 'PFsense-Edge-01', vendor: 'pfSense', status: 'Running', template: 'pfSense-NAT-GW', zone: 'Zone-A' },
+        { id: 'vnf-1002', name: 'Forti-DC-01', vendor: 'FortiGate', status: 'Stopped', template: 'FortiGate-IPS', zone: 'Zone-B' },
+      ],
+      vnfTemplates: [
+        { id: 'tmpl-2001', name: 'pfSense-NAT-GW', vendor: 'pfSense', version: '2.7', useCase: 'Dual SNAT', lastUpdated: '2025-10-08' },
+        { id: 'tmpl-2002', name: 'FortiGate-IPS', vendor: 'FortiGate', version: '7.0', useCase: 'IPS/IDS', lastUpdated: '2025-10-02' },
+      ],
+      dictionaries: [
+        {
+          vendor: 'pfSense', model: 'Netgate-6100', version: '2.7',
+          capabilities: ['NAT', 'Firewall', 'IPSec'],
+          sampleConfig: { nat: { mode: 'dual-snat', wanA: '203.0.113.10', wanB: '198.51.100.5' } }
+        },
+        {
+          vendor: 'FortiGate', model: 'FG-100F', version: '7.0',
+          capabilities: ['Firewall', 'IPS', 'Routing'],
+          sampleConfig: { policy: [{ id: 1, action: 'allow', src: '10.0.0.0/24', dst: '0.0.0.0/0' }] }
+        }
+      ]
+    };
+
+    createApp({
+      setup() {
+        const activeKey = ref('vnfs');
+        const vnfColumns = [
+          { title: 'ID', dataIndex: 'id' },
+          { title: 'Name', dataIndex: 'name' },
+          { title: 'Vendor', dataIndex: 'vendor' },
+          { title: 'Status', dataIndex: 'status' },
+          { title: 'Template', dataIndex: 'template' },
+          { title: 'Zone', dataIndex: 'zone' },
+        ];
+        const templateColumns = [
+          { title: 'ID', dataIndex: 'id' },
+          { title: 'Name', dataIndex: 'name' },
+          { title: 'Vendor', dataIndex: 'vendor' },
+          { title: 'Version', dataIndex: 'version' },
+          { title: 'Use Case', dataIndex: 'useCase' },
+          { title: 'Last Updated', dataIndex: 'lastUpdated' },
+        ];
+        return { mock, activeKey, vnfColumns, templateColumns };
+      }
+    }).use(antd).mount('#app');
+  </script>
+</body>
+</html>

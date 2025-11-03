@@ -1,0 +1,148 @@
+# =====================================================
+# pfSense VNF Dictionary for CloudStack
+# =====================================================
+# This dictionary enables CloudStack to manage a pfSense firewall/router
+# via its REST API (requires pfSense API package installed)
+#
+# pfSense API Documentation: https://docs.netgate.com/pfsense/en/latest/api/
+
+version: "1.0"
+vendor: "Netgate"
+product: "pfSense"
+firmware_version: "2.7+"
+
+# Access configuration
+access:
+  protocol: https
+  port: 443
+  basePath: /api/v1
+  authType: token
+  tokenRef: API_TOKEN
+  tokenHeader: Authorization
+  # Token format in header: "Bearer <token>"
+
+# Service definitions
+services:
+  # Firewall service
+  Firewall:
+    create:
+      method: POST
+      endpoint: /firewall/rule
+      headers:
+        Content-Type: application/json
+      body: |
+        {
+          "interface": "wan",
+          "type": "pass",
+          "ipprotocol": "inet",
+          "protocol": "${protocol}",
+          "src": "${sourceCidr}",
+          "dst": "any",
+          "dstport": "${startPort}",
+          "descr": "CloudStack rule ${ruleId}",
+          "disabled": false
+        }
+      responseMapping:
+        successCode: 201
+        idPath: $.data.id
+    
+    delete:
+      method: DELETE
+      endpoint: /firewall/rule/${externalId}
+      responseMapping:
+        successCode: 200
+    
+    list:
+      method: GET
+      endpoint: /firewall/rule
+      responseMapping:
+        successCode: 200
+        listPath: $.data
+        item:
+          idPath: $.id
+          srcPath: $.src
+          dstportPath: $.dstport
+          protoPath: $.protocol
+  
+  # NAT / Port Forwarding
+  NAT:
+    create:
+      method: POST
+      endpoint: /firewall/nat/port_forward
+      headers:
+        Content-Type: application/json
+      body: |
+        {
+          "interface": "wan",
+          "protocol": "${protocol}",
+          "src": "any",
+          "dst": "${publicIp}",
+          "dstport": "${publicPort}",
+          "target": "${privateIp}",
+          "local-port": "${privatePort}",
+          "descr": "CloudStack NAT ${ruleId}",
+          "disabled": false
+        }
+      responseMapping:
+        successCode: 201
+        idPath: $.data.id
+    
+    delete:
+      method: DELETE
+      endpoint: /firewall/nat/port_forward/${externalId}
+      responseMapping:
+        successCode: 200
+    
+    list:
+      method: GET
+      endpoint: /firewall/nat/port_forward
+      responseMapping:
+        successCode: 200
+        listPath: $.data
+        item:
+          idPath: $.id
+          publicIpPath: $.dst
+          publicPortPath: $.dstport
+          privateIpPath: $.target
+          privatePortPath: $["local-port"]
+  
+  # Static Routes (optional)
+  Routing:
+    create:
+      method: POST
+      endpoint: /routing/gateway
+      headers:
+        Content-Type: application/json
+      body: |
+        {
+          "name": "route_${ruleId}",
+          "gateway": "${nextHop}",
+          "ipprotocol": "inet",
+          "descr": "CloudStack static route"
+        }
+      responseMapping:
+        successCode: 201
+        idPath: $.data.id
+    
+    delete:
+      method: DELETE
+      endpoint: /routing/gateway/${externalId}
+      responseMapping:
+        successCode: 200
+
+# Metadata
+capabilities:
+  - firewall
+  - nat
+  - portforwarding
+  - routing
+  
+notes: |
+  pfSense requires the pfSense-API package to be installed.
+  Install via: pkg install pfSense-pkg-API
+  
+  Generate API token at: System > API > Create Token
+  
+  Default credentials:
+  - Username: admin
+  - Password: pfsense (change after first login)

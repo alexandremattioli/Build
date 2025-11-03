@@ -1,0 +1,520 @@
+{
+  "templates": [
+    {
+      "id": "template-001",
+      "name": "pfSense 2.7.0 Community Edition",
+      "vendor": "pfSense",
+      "version": "2.7.0",
+      "vnfReady": true,
+      "apiType": "REST",
+      "services": ["firewall", "nat", "routing"],
+      "dictionary": {
+        "version": "2.1.0",
+        "lastUpdated": "2025-11-01T10:00:00Z",
+        "metadata": {
+          "vendor": "pfSense",
+          "version": "2.7.0",
+          "api_type": "REST",
+          "api_version": "v2"
+        }
+      },
+      "description": "Open-source firewall and router platform"
+    },
+    {
+      "id": "template-002",
+      "name": "FortiGate 7.4.0",
+      "vendor": "Fortinet",
+      "version": "7.4.0",
+      "vnfReady": true,
+      "apiType": "REST",
+      "services": ["firewall", "nat", "loadbalancer", "vpn"],
+      "dictionary": {
+        "version": "1.5.0",
+        "lastUpdated": "2025-10-15T14:30:00Z",
+        "metadata": {
+          "vendor": "Fortinet",
+          "version": "7.4.0",
+          "api_type": "REST",
+          "api_version": "v2"
+        }
+      },
+      "description": "Enterprise-grade network security appliance"
+    },
+    {
+      "id": "template-003",
+      "name": "Palo Alto PAN-OS 11.0",
+      "vendor": "Palo Alto Networks",
+      "version": "11.0",
+      "vnfReady": true,
+      "apiType": "XML",
+      "services": ["firewall", "nat", "vpn", "threat-prevention"],
+      "dictionary": {
+        "version": "1.0.0",
+        "lastUpdated": "2025-09-20T09:15:00Z",
+        "metadata": {
+          "vendor": "Palo Alto Networks",
+          "version": "11.0",
+          "api_type": "XML",
+          "api_version": "10.1"
+        }
+      },
+      "description": "Next-generation firewall with advanced threat protection"
+    },
+    {
+      "id": "template-004",
+      "name": "VyOS 1.4 Rolling",
+      "vendor": "VyOS",
+      "version": "1.4",
+      "vnfReady": true,
+      "apiType": "SSH",
+      "services": ["firewall", "nat", "routing", "vpn"],
+      "dictionary": {
+        "version": "1.2.0",
+        "lastUpdated": "2025-10-05T16:45:00Z",
+        "metadata": {
+          "vendor": "VyOS",
+          "version": "1.4",
+          "api_type": "SSH",
+          "protocol": "CLI"
+        }
+      },
+      "description": "Open-source network OS based on Debian"
+    }
+  ],
+  
+  "vnfStatus": {
+    "networkId": "network-123",
+    "healthStatus": "healthy",
+    "connectivity": true,
+    "syncedRules": 12,
+    "totalRules": 12,
+    "lastReconcile": "2025-11-04T12:30:00Z",
+    "apiLatency": 45,
+    "vnfDetails": {
+      "name": "pfSense-Network-123",
+      "template": "pfSense 2.7.0 Community Edition",
+      "managementIp": "192.168.1.10",
+      "dictionary": "pfSense v2.1.0",
+      "broker": "VR-123-456 (192.168.100.5:8445)"
+    },
+    "driftCount": 0,
+    "driftDetails": []
+  },
+
+  "vnfStatusDegraded": {
+    "networkId": "network-124",
+    "healthStatus": "degraded",
+    "connectivity": true,
+    "syncedRules": 9,
+    "totalRules": 12,
+    "lastReconcile": "2025-11-04T10:00:00Z",
+    "apiLatency": 230,
+    "vnfDetails": {
+      "name": "FortiGate-Network-124",
+      "template": "FortiGate 7.4.0",
+      "managementIp": "192.168.1.20",
+      "dictionary": "FortiGate v1.5.0",
+      "broker": "VR-789-012 (192.168.100.6:8445)"
+    },
+    "driftCount": 3,
+    "driftDetails": [
+      "Firewall rule 'Allow-SSH' missing on device",
+      "Port forward 80→8080 has wrong target IP (expected: 10.1.1.100, found: 10.1.1.101)",
+      "Static route 10.0.0.0/8 not found on device"
+    ]
+  },
+
+  "vnfStatusUnreachable": {
+    "networkId": "network-125",
+    "healthStatus": "unreachable",
+    "connectivity": false,
+    "syncedRules": 0,
+    "totalRules": 8,
+    "lastReconcile": "2025-11-03T18:00:00Z",
+    "apiLatency": 0,
+    "vnfDetails": {
+      "name": "PaloAlto-Network-125",
+      "template": "Palo Alto PAN-OS 11.0",
+      "managementIp": "192.168.1.30",
+      "dictionary": "Palo Alto v1.0.0",
+      "broker": "VR-345-678 (192.168.100.7:8445)"
+    },
+    "driftCount": 8,
+    "driftDetails": [
+      "VNF appliance unreachable - last successful connection 12 hours ago",
+      "Broker reports connection timeout after 10 seconds"
+    ]
+  },
+
+  "connectivityTestSuccess": {
+    "success": true,
+    "steps": [
+      {
+        "success": true,
+        "description": "VNF VM is running (192.168.1.10)"
+      },
+      {
+        "success": true,
+        "description": "Broker service reachable (VR-123-456:8445)"
+      },
+      {
+        "success": true,
+        "description": "JWT token is valid (expires in 4 minutes)"
+      },
+      {
+        "success": true,
+        "description": "VNF API responding on HTTPS (port 443)"
+      },
+      {
+        "success": true,
+        "description": "API authentication successful"
+      },
+      {
+        "success": true,
+        "description": "Test rule created and deleted successfully"
+      }
+    ],
+    "metrics": {
+      "totalLatency": 45,
+      "brokerLatency": 12,
+      "apiLatency": 33
+    }
+  },
+
+  "connectivityTestFailed": {
+    "success": false,
+    "steps": [
+      {
+        "success": true,
+        "description": "VNF VM is running"
+      },
+      {
+        "success": true,
+        "description": "Broker service reachable"
+      },
+      {
+        "success": true,
+        "description": "JWT token is valid"
+      },
+      {
+        "success": false,
+        "description": "VNF API not responding on HTTPS (port 443)",
+        "error": "Connection timeout after 10 seconds",
+        "troubleshooting": [
+          "Check VNF firewall allows access from broker IP (192.168.100.5)",
+          "Verify API service is running on VNF appliance",
+          "Confirm management network connectivity",
+          "Check VNF logs for errors: /var/log/api.log"
+        ]
+      },
+      {
+        "success": false,
+        "description": "Skipped - API unreachable"
+      },
+      {
+        "success": false,
+        "description": "Skipped - API unreachable"
+      }
+    ],
+    "metrics": {
+      "totalLatency": 0,
+      "brokerLatency": 12,
+      "apiLatency": 0
+    }
+  },
+
+  "auditLog": [
+    {
+      "id": "log-001",
+      "timestamp": "2025-11-04T14:32:00Z",
+      "operation": "reconcile",
+      "status": "success",
+      "details": "12 rules checked, all in sync",
+      "executionTime": 2340,
+      "request": null,
+      "response": {
+        "summary": {
+          "totalRules": 12,
+          "inSync": 12,
+          "created": 0,
+          "deleted": 0,
+          "errors": 0
+        }
+      }
+    },
+    {
+      "id": "log-002",
+      "timestamp": "2025-11-04T14:15:23Z",
+      "operation": "addFirewallRule",
+      "status": "success",
+      "details": "Created firewall rule: Allow-HTTPS",
+      "executionTime": 127,
+      "request": {
+        "method": "POST",
+        "url": "/api/v2/firewall/rules",
+        "body": {
+          "action": "pass",
+          "protocol": "tcp",
+          "source": "any",
+          "destination": "10.1.1.100",
+          "port": "443",
+          "description": "Allow-HTTPS"
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "id": "5e3a4b2c1d",
+          "status": "created"
+        }
+      },
+      "externalRuleId": "5e3a4b2c1d"
+    },
+    {
+      "id": "log-003",
+      "timestamp": "2025-11-04T14:10:45Z",
+      "operation": "deleteFirewallRule",
+      "status": "success",
+      "details": "Deleted firewall rule: Deny-Telnet",
+      "executionTime": 95,
+      "request": {
+        "method": "DELETE",
+        "url": "/api/v2/firewall/rules/3f2a9b1c8e",
+        "body": null
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "status": "deleted"
+        }
+      },
+      "externalRuleId": "3f2a9b1c8e"
+    },
+    {
+      "id": "log-004",
+      "timestamp": "2025-11-04T12:05:12Z",
+      "operation": "testConnectivity",
+      "status": "success",
+      "details": "All connectivity tests passed, latency: 45ms",
+      "executionTime": 1850,
+      "request": null,
+      "response": {
+        "allTestsPassed": true,
+        "metrics": {
+          "totalLatency": 45,
+          "brokerLatency": 12,
+          "apiLatency": 33
+        }
+      }
+    },
+    {
+      "id": "log-005",
+      "timestamp": "2025-11-04T10:00:00Z",
+      "operation": "reconcile",
+      "status": "warning",
+      "details": "1 rule out of sync - auto-fixed",
+      "executionTime": 3120,
+      "request": null,
+      "response": {
+        "summary": {
+          "totalRules": 12,
+          "inSync": 11,
+          "created": 1,
+          "deleted": 0,
+          "errors": 0
+        },
+        "changes": [
+          {
+            "action": "created",
+            "rule": "Firewall: Allow-SSH",
+            "status": "success"
+          }
+        ]
+      }
+    },
+    {
+      "id": "log-006",
+      "timestamp": "2025-11-04T08:30:00Z",
+      "operation": "addPortForward",
+      "status": "success",
+      "details": "Created port forward: 80 → 8080",
+      "executionTime": 143,
+      "request": {
+        "method": "POST",
+        "url": "/api/v2/nat/portforward",
+        "body": {
+          "protocol": "tcp",
+          "external_port": "80",
+          "internal_ip": "10.1.1.100",
+          "internal_port": "8080",
+          "description": "Web-to-AppServer"
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "id": "7d4c2a9f3e",
+          "status": "created"
+        }
+      },
+      "externalRuleId": "7d4c2a9f3e"
+    },
+    {
+      "id": "log-007",
+      "timestamp": "2025-11-03T16:45:00Z",
+      "operation": "reconcile",
+      "status": "error",
+      "details": "Reconciliation failed - VNF unreachable",
+      "executionTime": 10500,
+      "request": null,
+      "response": {
+        "error": "Connection timeout after 10 seconds",
+        "suggestion": "Check VNF appliance is running and network is accessible"
+      }
+    }
+  ],
+
+  "reconciliationResults": {
+    "jobId": "job-12345",
+    "status": "completed",
+    "success": true,
+    "summary": {
+      "totalRules": 19,
+      "inSync": 16,
+      "created": 2,
+      "deleted": 1,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "action": "created",
+        "ruleType": "firewall",
+        "ruleName": "Allow-SSH",
+        "status": "success",
+        "externalId": "8e5b3c2d1a"
+      },
+      {
+        "action": "created",
+        "ruleType": "firewall",
+        "ruleName": "Allow-HTTPS",
+        "status": "success",
+        "externalId": "9f6c4d3e2b"
+      },
+      {
+        "action": "deleted",
+        "ruleType": "portforward",
+        "ruleName": "80→8080 (old)",
+        "status": "success",
+        "externalId": "7d4c2a9f3e"
+      }
+    ],
+    "phases": [
+      {
+        "phase": 1,
+        "name": "Query CloudStack State",
+        "status": "completed",
+        "details": [
+          "Found 12 firewall rules in database",
+          "Found 5 port forwarding rules in database",
+          "Found 2 static routes in database"
+        ]
+      },
+      {
+        "phase": 2,
+        "name": "Query VNF Device State",
+        "status": "completed",
+        "details": [
+          "Retrieved 11 firewall rules from device",
+          "Retrieved 5 port forwarding rules from device",
+          "Retrieved 2 static routes from device"
+        ]
+      },
+      {
+        "phase": 3,
+        "name": "Compare and Identify Drift",
+        "status": "completed",
+        "details": [
+          "Found 3 discrepancies"
+        ]
+      },
+      {
+        "phase": 4,
+        "name": "Apply Fixes",
+        "status": "completed",
+        "details": [
+          "Created 2 missing rules",
+          "Deleted 1 obsolete rule"
+        ]
+      }
+    ],
+    "nextReconciliation": "2025-11-04T20:32:00Z"
+  },
+
+  "dictionaryVersionHistory": [
+    {
+      "id": "v3",
+      "version": "2.1.0",
+      "date": "2025-11-04T10:00:00Z",
+      "updatedBy": "admin",
+      "changes": "Added support for load balancer service"
+    },
+    {
+      "id": "v2",
+      "version": "2.0.0",
+      "date": "2025-10-01T14:30:00Z",
+      "updatedBy": "admin",
+      "changes": "Updated API endpoints for pfSense 2.7"
+    },
+    {
+      "id": "v1",
+      "version": "1.0.0",
+      "date": "2025-09-01T09:00:00Z",
+      "updatedBy": "admin",
+      "changes": "Initial dictionary for pfSense 2.6"
+    }
+  ],
+
+  "validationResults": {
+    "valid": true,
+    "results": [
+      {
+        "level": "success",
+        "message": "Metadata section is valid"
+      },
+      {
+        "level": "success",
+        "message": "Services section is valid (3 services defined)"
+      },
+      {
+        "level": "warning",
+        "message": "No 'loadbalancer' service defined - this is optional"
+      },
+      {
+        "level": "success",
+        "message": "All placeholders use valid CloudStack context"
+      },
+      {
+        "level": "success",
+        "message": "Authentication configuration is valid"
+      }
+    ]
+  },
+
+  "validationResultsError": {
+    "valid": false,
+    "results": [
+      {
+        "level": "error",
+        "message": "YAML parsing error: unexpected token at line 15"
+      },
+      {
+        "level": "error",
+        "message": "Required field 'metadata.vendor' is missing"
+      },
+      {
+        "level": "warning",
+        "message": "Service 'firewall.create' uses undefined placeholder: {invalid.placeholder}"
+      }
+    ]
+  }
+}

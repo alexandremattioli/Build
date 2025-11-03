@@ -1,0 +1,162 @@
+# =====================================================
+# VyOS VNF Dictionary for CloudStack
+# =====================================================
+# This dictionary enables CloudStack to manage VyOS routers via SSH/CLI
+# VyOS is an open-source network OS based on Debian
+#
+# VyOS Documentation: https://docs.vyos.io/
+
+version: "1.0"
+vendor: "VyOS"
+product: "VyOS"
+firmware_version: "1.4+"
+
+# Access configuration
+access:
+  protocol: ssh
+  port: 22
+  authType: ssh_password
+  usernameRef: SSH_USER
+  passwordRef: SSH_PASSWORD
+  # Alternatively use SSH_KEY for key-based auth
+
+# Service definitions
+services:
+  # Firewall rules
+  Firewall:
+    create:
+      method: SSH
+      endpoint: |
+        configure
+        set firewall name WAN_LOCAL rule ${ruleId} action accept
+        set firewall name WAN_LOCAL rule ${ruleId} protocol ${protocol}
+        set firewall name WAN_LOCAL rule ${ruleId} source address ${sourceCidr}
+        set firewall name WAN_LOCAL rule ${ruleId} destination port ${startPort}
+        set firewall name WAN_LOCAL rule ${ruleId} description "CloudStack rule ${ruleId}"
+        commit
+        save
+        exit
+      successPattern: "Saving configuration to"
+    
+    delete:
+      method: SSH
+      endpoint: |
+        configure
+        delete firewall name WAN_LOCAL rule ${externalId}
+        commit
+        save
+        exit
+      successPattern: "Saving configuration to"
+    
+    list:
+      method: SSH
+      endpoint: show configuration commands | grep "firewall name WAN_LOCAL rule"
+      # Output parsing would be needed to extract rule details
+  
+  # NAT rules
+  NAT:
+    create:
+      method: SSH
+      endpoint: |
+        configure
+        set nat destination rule ${ruleId} description "CloudStack NAT ${ruleId}"
+        set nat destination rule ${ruleId} inbound-interface eth0
+        set nat destination rule ${ruleId} destination address ${publicIp}
+        set nat destination rule ${ruleId} destination port ${publicPort}
+        set nat destination rule ${ruleId} protocol ${protocol}
+        set nat destination rule ${ruleId} translation address ${privateIp}
+        set nat destination rule ${ruleId} translation port ${privatePort}
+        commit
+        save
+        exit
+      successPattern: "Saving configuration to"
+    
+    delete:
+      method: SSH
+      endpoint: |
+        configure
+        delete nat destination rule ${externalId}
+        commit
+        save
+        exit
+      successPattern: "Saving configuration to"
+    
+    list:
+      method: SSH
+      endpoint: show nat destination rules
+  
+  # Source NAT (outbound)
+  SourceNAT:
+    create:
+      method: SSH
+      endpoint: |
+        configure
+        set nat source rule ${ruleId} outbound-interface eth0
+        set nat source rule ${ruleId} source address ${privateNetwork}
+        set nat source rule ${ruleId} translation address masquerade
+        set nat source rule ${ruleId} description "CloudStack SNAT"
+        commit
+        save
+        exit
+      successPattern: "Saving configuration to"
+    
+    delete:
+      method: SSH
+      endpoint: |
+        configure
+        delete nat source rule ${externalId}
+        commit
+        save
+        exit
+      successPattern: "Saving configuration to"
+  
+  # Static routes
+  Routing:
+    create:
+      method: SSH
+      endpoint: |
+        configure
+        set protocols static route ${destNetwork} next-hop ${nextHop}
+        commit
+        save
+        exit
+      successPattern: "Saving configuration to"
+    
+    delete:
+      method: SSH
+      endpoint: |
+        configure
+        delete protocols static route ${destNetwork}
+        commit
+        save
+        exit
+      successPattern: "Saving configuration to"
+
+# Metadata
+capabilities:
+  - firewall
+  - nat
+  - portforwarding
+  - routing
+  - bgp
+  - ospf
+  - ipsec-vpn
+  - openvpn
+
+notes: |
+  VyOS uses CLI configuration via SSH.
+  
+  Default credentials:
+  - Username: vyos
+  - Password: vyos (change after first login)
+  
+  VyOS uses a commit/save model:
+  - Changes are made in configure mode
+  - Must be committed to take effect
+  - Must be saved to persist across reboots
+  
+  For SSH key authentication, add public key:
+  set system login user vyos authentication public-keys <name> key <key>
+  set system login user vyos authentication public-keys <name> type ssh-rsa
+  
+  CLI commands in this dictionary include 'commit' and 'save' automatically.

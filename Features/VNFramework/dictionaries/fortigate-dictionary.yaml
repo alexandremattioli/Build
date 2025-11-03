@@ -1,0 +1,149 @@
+# =====================================================
+# FortiGate VNF Dictionary for CloudStack
+# =====================================================
+# This dictionary enables CloudStack to manage FortiGate firewalls
+# via the FortiOS REST API
+#
+# FortiOS API Documentation: https://docs.fortinet.com/
+
+version: "1.0"
+vendor: "Fortinet"
+product: "FortiGate"
+firmware_version: "7.0+"
+
+# Access configuration
+access:
+  protocol: https
+  port: 443
+  basePath: /api/v2
+  authType: token
+  tokenRef: API_TOKEN
+  tokenHeader: Authorization
+  # Token format: "Bearer <token>"
+
+# Service definitions
+services:
+  # Firewall Policy
+  Firewall:
+    create:
+      method: POST
+      endpoint: /cmdb/firewall/policy
+      headers:
+        Content-Type: application/json
+      body: |
+        {
+          "name": "CloudStack_${ruleId}",
+          "srcintf": [{"name": "any"}],
+          "dstintf": [{"name": "any"}],
+          "srcaddr": [{"name": "all"}],
+          "dstaddr": [{"name": "all"}],
+          "action": "accept",
+          "schedule": "always",
+          "service": [{"name": "HTTP"}],
+          "comments": "Created by CloudStack"
+        }
+      responseMapping:
+        successCode: 200
+        idPath: $.results.policyid
+    
+    delete:
+      method: DELETE
+      endpoint: /cmdb/firewall/policy/${externalId}
+      responseMapping:
+        successCode: 200
+    
+    list:
+      method: GET
+      endpoint: /cmdb/firewall/policy
+      responseMapping:
+        successCode: 200
+        listPath: $.results
+        item:
+          idPath: $.policyid
+          namePath: $.name
+          actionPath: $.action
+  
+  # Virtual IP (for NAT/Port Forwarding)
+  NAT:
+    create:
+      method: POST
+      endpoint: /cmdb/firewall/vip
+      headers:
+        Content-Type: application/json
+      body: |
+        {
+          "name": "vip_${ruleId}",
+          "extip": "${publicIp}",
+          "mappedip": [{"range": "${privateIp}"}],
+          "extintf": "wan1",
+          "portforward": "enable",
+          "protocol": "${protocol}",
+          "extport": "${publicPort}",
+          "mappedport": "${privatePort}",
+          "comment": "CloudStack NAT"
+        }
+      responseMapping:
+        successCode: 200
+        idPath: $.results.name
+    
+    delete:
+      method: DELETE
+      endpoint: /cmdb/firewall/vip/${externalId}
+      responseMapping:
+        successCode: 200
+    
+    list:
+      method: GET
+      endpoint: /cmdb/firewall/vip
+      responseMapping:
+        successCode: 200
+        listPath: $.results
+        item:
+          idPath: $.name
+          publicIpPath: $.extip
+          privateIpPath: $.mappedip[0].range
+  
+  # Load Balancer (Virtual Server)
+  LoadBalancer:
+    create:
+      method: POST
+      endpoint: /cmdb/firewall/vip
+      headers:
+        Content-Type: application/json
+      body: |
+        {
+          "name": "lb_${lbName}",
+          "extip": "${vipIp}",
+          "extintf": "wan1",
+          "server-type": "http",
+          "ldb-method": "${algorithm}",
+          "comment": "CloudStack LB"
+        }
+      responseMapping:
+        successCode: 200
+        idPath: $.results.name
+    
+    delete:
+      method: DELETE
+      endpoint: /cmdb/firewall/vip/${externalId}
+      responseMapping:
+        successCode: 200
+
+# Metadata
+capabilities:
+  - firewall
+  - nat
+  - portforwarding
+  - loadbalancer
+  - ipsec-vpn
+  - ssl-vpn
+
+notes: |
+  FortiGate API requires an API user with appropriate permissions.
+  
+  To create API user:
+  1. System > Administrators > Create New > REST API Admin
+  2. Generate API token
+  3. Assign appropriate profiles (Super_Admin for full access)
+  
+  API token should be stored in CloudStack template details as API_TOKEN.

@@ -1,0 +1,105 @@
+# =====================================================
+# Palo Alto Networks VNF Dictionary for CloudStack
+# =====================================================
+# This dictionary enables CloudStack to manage Palo Alto Networks firewalls
+# via the PAN-OS XML API
+#
+# PAN-OS API Documentation: https://docs.paloaltonetworks.com/
+
+version: "1.0"
+vendor: "Palo Alto Networks"
+product: "PA-VM Series"
+firmware_version: "10.0+"
+
+# Access configuration
+access:
+  protocol: https
+  port: 443
+  basePath: /api
+  authType: token
+  tokenRef: API_KEY
+  tokenHeader: X-PAN-KEY
+  # API key generated from web UI or via keygen API
+
+# Service definitions
+services:
+  # Security Policy
+  Firewall:
+    create:
+      method: POST
+      endpoint: /?type=config&action=set&xpath=/config/devices/entry[@name='localhost.localdomain']/vsys/entry[@name='vsys1']/rulebase/security/rules/entry[@name='CloudStack_${ruleId}']
+      headers:
+        Content-Type: application/x-www-form-urlencoded
+      body: |
+        &element=<source><member>any</member></source><destination><member>any</member></destination><service><member>application-default</member></service><application><member>any</member></application><action>allow</action><description>CloudStack rule ${ruleId}</description>
+      responseMapping:
+        successCode: 200
+        # PAN-OS returns XML, need to parse for success
+        successPattern: "<response status=\"success\">"
+    
+    delete:
+      method: POST
+      endpoint: /?type=config&action=delete&xpath=/config/devices/entry[@name='localhost.localdomain']/vsys/entry[@name='vsys1']/rulebase/security/rules/entry[@name='${externalId}']
+      responseMapping:
+        successCode: 200
+        successPattern: "<response status=\"success\">"
+    
+    list:
+      method: GET
+      endpoint: /?type=config&action=get&xpath=/config/devices/entry[@name='localhost.localdomain']/vsys/entry[@name='vsys1']/rulebase/security/rules
+      responseMapping:
+        successCode: 200
+        # XML response, would need XML parser
+  
+  # NAT Policy
+  NAT:
+    create:
+      method: POST
+      endpoint: /?type=config&action=set&xpath=/config/devices/entry[@name='localhost.localdomain']/vsys/entry[@name='vsys1']/rulebase/nat/rules/entry[@name='NAT_${ruleId}']
+      headers:
+        Content-Type: application/x-www-form-urlencoded
+      body: |
+        &element=<source-translation><dynamic-ip-and-port><interface-address><interface>ethernet1/1</interface></interface-address></dynamic-ip-and-port></source-translation><destination><member>any</member></destination><service>any</service><to><member>untrust</member></to><from><member>trust</member></from>
+      responseMapping:
+        successCode: 200
+        successPattern: "<response status=\"success\">"
+    
+    delete:
+      method: POST
+      endpoint: /?type=config&action=delete&xpath=/config/devices/entry[@name='localhost.localdomain']/vsys/entry[@name='vsys1']/rulebase/nat/rules/entry[@name='${externalId}']
+      responseMapping:
+        successCode: 200
+        successPattern: "<response status=\"success\">"
+  
+  # Commit changes (required after modifications)
+  System:
+    commit:
+      method: POST
+      endpoint: /?type=commit&cmd=<commit></commit>
+      responseMapping:
+        successCode: 200
+        successPattern: "<response status=\"success\">"
+
+# Metadata
+capabilities:
+  - firewall
+  - nat
+  - portforwarding
+  - application-control
+  - threat-prevention
+  - ipsec-vpn
+  - ssl-vpn
+
+notes: |
+  Palo Alto Networks firewalls use XML API.
+  
+  To generate API key:
+  1. Login to web UI
+  2. Go to Device > API Key
+  3. Or use keygen API: https://<firewall>/api/?type=keygen&user=<user>&password=<pass>
+  
+  IMPORTANT: After any configuration change, a COMMIT operation is required.
+  CloudStack should call System.commit after each rule operation.
+  
+  This dictionary uses simplified XPath. Production use would require proper
+  XML escaping and more sophisticated zone/interface mappings.

@@ -1,0 +1,709 @@
+openapi: 3.0.3
+info:
+  title: CloudStack VNF Framework API
+  description: |
+    API specification for Virtual Network Function (VNF) framework in CloudStack 4.21.7.
+    This API extends CloudStack's existing network management APIs to support third-party
+    network appliances as alternatives to the built-in Virtual Router.
+  version: 1.0.0
+  contact:
+    name: CloudStack Development
+    url: https://cloudstack.apache.org
+
+servers:
+  - url: https://{management-server}:8080/client/api
+    description: CloudStack Management Server
+    variables:
+      management-server:
+        default: localhost
+
+tags:
+  - name: VNF Templates
+    description: Operations for managing VNF templates and dictionaries
+  - name: VNF Networks
+    description: Operations for creating and managing VNF-backed networks
+  - name: VNF Operations
+    description: Operations on VNF appliances (testing, reconciliation, health)
+  - name: Network Services
+    description: Standard network operations (firewall, NAT, etc.) that work with VNF
+
+paths:
+  # ================================================================
+  # VNF TEMPLATE MANAGEMENT
+  # ================================================================
+  
+  /updateTemplateDictionary:
+    get:
+      tags:
+        - VNF Templates
+      summary: Upload or update YAML dictionary for a VNF template
+      description: |
+        Associates a YAML dictionary with a VNF template. The dictionary defines how CloudStack
+        should translate network operations into vendor-specific API or CLI commands.
+      parameters:
+        - name: id
+          in: query
+          required: true
+          description: The ID of the VNF template
+          schema:
+            type: string
+            format: uuid
+        - name: yaml
+          in: query
+          required: false
+          description: The YAML dictionary content (URL-encoded). Mutually exclusive with yamlurl.
+          schema:
+            type: string
+        - name: yamlurl
+          in: query
+          required: false
+          description: URL to fetch the YAML dictionary from. Mutually exclusive with yaml.
+          schema:
+            type: string
+            format: uri
+        - name: validate
+          in: query
+          required: false
+          description: Whether to validate the YAML before storing (default true)
+          schema:
+            type: boolean
+            default: true
+      responses:
+        '200':
+          description: Dictionary uploaded successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UpdateTemplateDictionaryResponse'
+        '400':
+          description: Invalid YAML or validation failed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: Template not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+  /getTemplateDictionary:
+    get:
+      tags:
+        - VNF Templates
+      summary: Retrieve the YAML dictionary for a VNF template
+      description: Returns the currently associated dictionary for a given template
+      parameters:
+        - name: id
+          in: query
+          required: true
+          description: The ID of the VNF template
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: Dictionary retrieved successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetTemplateDictionaryResponse'
+        '404':
+          description: Template or dictionary not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+  /deleteTemplateDictionary:
+    get:
+      tags:
+        - VNF Templates
+      summary: Remove dictionary from a VNF template
+      description: Removes the associated dictionary from a template
+      parameters:
+        - name: id
+          in: query
+          required: true
+          description: The ID of the VNF template
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: Dictionary deleted successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuccessResponse'
+
+  # ================================================================
+  # VNF NETWORK MANAGEMENT
+  # ================================================================
+  
+  /createNetwork:
+    get:
+      tags:
+        - VNF Networks
+      summary: Create a new network (EXTENDED for VNF support)
+      description: |
+        Standard createNetwork API extended with VNF parameters. When vnftemplateid is provided,
+        CloudStack will deploy a VNF appliance as the network gateway instead of using only VR.
+      parameters:
+        - name: name
+          in: query
+          required: true
+          description: Network name
+          schema:
+            type: string
+        - name: displaytext
+          in: query
+          required: true
+          description: Network description
+          schema:
+            type: string
+        - name: networkofferingid
+          in: query
+          required: true
+          description: Network offering ID (must support VNF provider if using VNF)
+          schema:
+            type: string
+            format: uuid
+        - name: zoneid
+          in: query
+          required: true
+          description: Zone ID where network will be created
+          schema:
+            type: string
+            format: uuid
+        - name: vnftemplateid
+          in: query
+          required: false
+          description: VNF template ID to use as network gateway (enables VNF mode)
+          schema:
+            type: string
+            format: uuid
+        - name: vnfdictionary
+          in: query
+          required: false
+          description: Optional YAML dictionary override for this network (URL-encoded)
+          schema:
+            type: string
+        - name: vnfserviceofferingid
+          in: query
+          required: false
+          description: Service offering for the VNF VM (CPU/RAM specs)
+          schema:
+            type: string
+            format: uuid
+        - name: gateway
+          in: query
+          required: false
+          description: Network gateway CIDR
+          schema:
+            type: string
+        - name: netmask
+          in: query
+          required: false
+          description: Network netmask
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Network creation initiated (async job)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreateNetworkResponse'
+        '400':
+          description: Invalid parameters or VNF template not configured
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+  /listVnfAppliances:
+    get:
+      tags:
+        - VNF Networks
+      summary: List all VNF appliances
+      description: Returns list of deployed VNF appliance VMs
+      parameters:
+        - name: networkid
+          in: query
+          required: false
+          description: Filter by network ID
+          schema:
+            type: string
+            format: uuid
+        - name: state
+          in: query
+          required: false
+          description: Filter by state (Running, Stopped, Error)
+          schema:
+            type: string
+            enum: [Deploying, Running, Stopped, Error, Destroyed]
+        - name: page
+          in: query
+          schema:
+            type: integer
+            default: 1
+        - name: pagesize
+          in: query
+          schema:
+            type: integer
+            default: 20
+      responses:
+        '200':
+          description: List of VNF appliances
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListVnfAppliancesResponse'
+
+  # ================================================================
+  # VNF OPERATIONS
+  # ================================================================
+  
+  /testVnfConnectivity:
+    get:
+      tags:
+        - VNF Operations
+      summary: Test connectivity to a VNF appliance
+      description: |
+        Performs a connectivity test to verify CloudStack can communicate with the VNF device.
+        Typically sends a simple API call or ping through the broker.
+      parameters:
+        - name: networkid
+          in: query
+          required: true
+          description: Network ID containing the VNF
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: Test completed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TestVnfConnectivityResponse'
+        '400':
+          description: Invalid network or not VNF-enabled
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+  /reconcileVnfNetwork:
+    get:
+      tags:
+        - VNF Operations
+      summary: Manually trigger reconciliation for a VNF network
+      description: |
+        Compares CloudStack's desired state with actual VNF device state and attempts to
+        synchronize them. Reports any drift detected.
+      parameters:
+        - name: networkid
+          in: query
+          required: true
+          description: Network ID to reconcile
+          schema:
+            type: string
+            format: uuid
+        - name: dryrun
+          in: query
+          required: false
+          description: If true, only report drift without fixing (default false)
+          schema:
+            type: boolean
+            default: false
+      responses:
+        '200':
+          description: Reconciliation completed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ReconcileVnfNetworkResponse'
+
+  /getVnfHealth:
+    get:
+      tags:
+        - VNF Operations
+      summary: Get health status of VNF appliance
+      description: Returns current health metrics and connectivity status
+      parameters:
+        - name: networkid
+          in: query
+          required: true
+          description: Network ID
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: Health status retrieved
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetVnfHealthResponse'
+
+  /updateNetworkDictionary:
+    get:
+      tags:
+        - VNF Networks
+      summary: Update dictionary override for a specific network
+      description: |
+        Sets or updates a custom dictionary for a VNF-backed network, overriding the template's
+        default dictionary. Triggers reconciliation after update.
+      parameters:
+        - name: networkid
+          in: query
+          required: true
+          description: Network ID
+          schema:
+            type: string
+            format: uuid
+        - name: yaml
+          in: query
+          required: true
+          description: YAML dictionary content (URL-encoded)
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Dictionary updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuccessResponse'
+
+  # ================================================================
+  # EXISTING NETWORK SERVICES (No API changes, behavior changes)
+  # ================================================================
+  # These existing APIs work unchanged but route to VNF for VNF-backed networks
+  
+  /createFirewallRule:
+    get:
+      tags:
+        - Network Services
+      summary: Create firewall rule (works with VNF)
+      description: |
+        Existing API - no changes to parameters or response. When network uses VNF, CloudStack
+        translates this to vendor-specific API/CLI call based on dictionary.
+      parameters:
+        - name: ipaddressid
+          in: query
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: protocol
+          in: query
+          required: true
+          schema:
+            type: string
+            enum: [tcp, udp, icmp]
+        - name: cidrlist
+          in: query
+          required: false
+          schema:
+            type: string
+        - name: startport
+          in: query
+          required: false
+          schema:
+            type: integer
+        - name: endport
+          in: query
+          required: false
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Firewall rule created (async)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AsyncJobResponse'
+
+# ================================================================
+# COMPONENTS / SCHEMAS
+# ================================================================
+
+components:
+  schemas:
+    UpdateTemplateDictionaryResponse:
+      type: object
+      properties:
+        updatetemplatedictionaryresponse:
+          type: object
+          properties:
+            success:
+              type: boolean
+            dictionaryid:
+              type: string
+              format: uuid
+            message:
+              type: string
+            validation:
+              type: object
+              properties:
+                valid:
+                  type: boolean
+                errors:
+                  type: array
+                  items:
+                    type: string
+                warnings:
+                  type: array
+                  items:
+                    type: string
+                servicesFound:
+                  type: array
+                  items:
+                    type: string
+                  description: List of services defined in dictionary (e.g., Firewall, NAT)
+                version:
+                  type: string
+                vendor:
+                  type: string
+                product:
+                  type: string
+
+    GetTemplateDictionaryResponse:
+      type: object
+      properties:
+        gettemplatedictionaryresponse:
+          type: object
+          properties:
+            dictionary:
+              type: object
+              properties:
+                id:
+                  type: string
+                  format: uuid
+                templateid:
+                  type: string
+                  format: uuid
+                yaml:
+                  type: string
+                  description: The YAML dictionary content
+                version:
+                  type: string
+                vendor:
+                  type: string
+                product:
+                  type: string
+                created:
+                  type: string
+                  format: date-time
+                updated:
+                  type: string
+                  format: date-time
+
+    CreateNetworkResponse:
+      type: object
+      properties:
+        createnetworkresponse:
+          type: object
+          properties:
+            jobid:
+              type: string
+              format: uuid
+              description: Async job ID (poll with queryAsyncJobResult)
+            jobstatus:
+              type: integer
+            jobprocstatus:
+              type: integer
+
+    ListVnfAppliancesResponse:
+      type: object
+      properties:
+        listvnfappliancesresponse:
+          type: object
+          properties:
+            count:
+              type: integer
+            vnfappliance:
+              type: array
+              items:
+                $ref: '#/components/schemas/VnfAppliance'
+
+    VnfAppliance:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        networkid:
+          type: string
+          format: uuid
+        networkname:
+          type: string
+        vminstanceid:
+          type: string
+          format: uuid
+        vmname:
+          type: string
+        templateid:
+          type: string
+          format: uuid
+        templatename:
+          type: string
+        vendor:
+          type: string
+        product:
+          type: string
+        state:
+          type: string
+          enum: [Deploying, Running, Stopped, Error, Destroyed]
+        healthstatus:
+          type: string
+          enum: [Healthy, Unhealthy, Unknown]
+        managementip:
+          type: string
+        guestip:
+          type: string
+        publicip:
+          type: string
+        lastcontact:
+          type: string
+          format: date-time
+        created:
+          type: string
+          format: date-time
+
+    TestVnfConnectivityResponse:
+      type: object
+      properties:
+        testvnfconnectivityresponse:
+          type: object
+          properties:
+            success:
+              type: boolean
+            reachable:
+              type: boolean
+            latencyms:
+              type: integer
+              description: Latency in milliseconds
+            method:
+              type: string
+              description: Test method used (e.g., "HTTP GET /api/status")
+            responsecode:
+              type: integer
+              description: HTTP status code or exit code
+            message:
+              type: string
+              description: Additional details or error message
+
+    ReconcileVnfNetworkResponse:
+      type: object
+      properties:
+        reconcilevnfnetworkresponse:
+          type: object
+          properties:
+            success:
+              type: boolean
+            networkid:
+              type: string
+              format: uuid
+            reconciliationid:
+              type: string
+              format: uuid
+            driftdetected:
+              type: boolean
+            summary:
+              type: object
+              properties:
+                ruleschecked:
+                  type: integer
+                missingrules:
+                  type: integer
+                  description: Rules in CloudStack but not on device
+                extrarules:
+                  type: integer
+                  description: Rules on device but not in CloudStack
+                rulesreapplied:
+                  type: integer
+                rulesremoved:
+                  type: integer
+            details:
+              type: array
+              items:
+                type: object
+                properties:
+                  service:
+                    type: string
+                    example: Firewall
+                  action:
+                    type: string
+                    enum: [Reapplied, Removed, Flagged]
+                  ruleid:
+                    type: string
+                  description:
+                    type: string
+
+    GetVnfHealthResponse:
+      type: object
+      properties:
+        getvnfhealthresponse:
+          type: object
+          properties:
+            networkid:
+              type: string
+              format: uuid
+            vnfapplianceid:
+              type: string
+              format: uuid
+            healthstatus:
+              type: string
+              enum: [Healthy, Unhealthy, Unknown]
+            vmstate:
+              type: string
+            lastcontact:
+              type: string
+              format: date-time
+            minutessincecontact:
+              type: integer
+            brokerstatus:
+              type: string
+              description: Status of VR broker VM
+            metrics:
+              type: object
+              properties:
+                successfuloperations:
+                  type: integer
+                  description: Count of successful operations in last hour
+                failedoperations:
+                  type: integer
+                averagelatencyms:
+                  type: integer
+
+    AsyncJobResponse:
+      type: object
+      properties:
+        jobid:
+          type: string
+          format: uuid
+        jobstatus:
+          type: integer
+
+    SuccessResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+        displaytext:
+          type: string
+
+    ErrorResponse:
+      type: object
+      properties:
+        errorcode:
+          type: integer
+        errortext:
+          type: string
+        cserrorcode:
+          type: integer
