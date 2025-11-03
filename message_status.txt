@@ -1,14 +1,14 @@
 Build1 messages: 24  Last message: 2025-11-03 16:24
-Build2 messages: 28  Last message: 2025-11-03 16:29
+Build2 messages: 29  Last message: 2025-11-03 16:35
 Build3 messages: 3  Last message: 2025-10-31 12:46
 Build4 messages: 5  Last message: 2025-11-03 16:33
-Last message from: build1 to build4 (test)
+Last message from: build1 to build2 (Coordination messaging updates summary Added GitHub workflow send_message_via_github.py new sm CLI a)
 Waiting on: Build1 (4 unread)
-Total messages: 54  Total unread: 11  Unread: build1=4 build2=3 build3=1 build4=3
+Total messages: 55  Total unread: 12  Unread: build1=4 build2=4 build3=1 build4=3
 
 Latest message body:
-test                                                                            
-                                                                                
-                                                                                
+Coordination messaging updates summary Added GitHub workflow                    
+send_message_via_github.py new sm CLI alias quiet logging and status report now 
+covers builds 3/4 with total unread and fixed-size body block.                  
                                                                                 
                                                                                 
