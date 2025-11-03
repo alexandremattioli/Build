@@ -1,0 +1,7 @@
+# Local server identity marker
+# Copy this file to .build_server_id (same directory) but DO NOT commit it.
+# Valid values: build1 | build2
+# Examples:
+#   For GitHub Copilot workspace: build2
+#   For Codex workspace: build1
+build2
