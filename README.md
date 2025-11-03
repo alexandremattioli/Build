@@ -54,6 +54,7 @@ chmod +x scripts/*.sh
 - docs/IMPROVEMENTS.md — All features and how to use them
 - docs/IMPLEMENTATION_SUMMARY.md — Overview of recent enhancements
 - docs/QUICKSTART.md — Minimal bootstrap for new servers
+- docs/BRANCH_OWNERSHIP.md — CloudStack branch ownership and usage (Copilot vs Codex)
 
 ---
 

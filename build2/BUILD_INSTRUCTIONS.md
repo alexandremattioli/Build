@@ -3,6 +3,7 @@
 **Server**: Build2 - `root@ll-ACSBuilder2` (10.1.3.177)  
 **Manager**: GitHub Copilot  
 **Branch**: ExternalNew  
+See also: `docs/BRANCH_OWNERSHIP.md` for which branches are owned by Copilot vs Codex and how to switch.
 **Last Updated**: 2025-10-29
 
 ---
