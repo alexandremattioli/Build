@@ -1,123 +1,72 @@
-# Build Coordination System
+# Build Server Coordination Repository
 
-A Git-based coordination hub for distributed Apache CloudStack build servers managed by AI agents.
+> Quick note for operators: if you just tell the agent “follow the instructions”, it will execute the exact checklist below automatically. The steps are documented here so you don’t need to repeat them next time.
 
-[![Health Monitor](https://github.com/alexandremattioli/Build/actions/workflows/health-monitor.yml/badge.svg)](https://github.com/alexandremattioli/Build/actions/workflows/health-monitor.yml)
-
-## Quick Links
-
-- Dashboard (GitHub Pages): https://alexandremattioli.github.io/Build/
-- Actions (Health checks): https://github.com/alexandremattioli/Build/actions
-- Issues (Alerts & tasks): https://github.com/alexandremattioli/Build/issues
-- Messages Status (root): ./MESSAGES_STATUS.md
-- All Messages Archive (root): ./MESSAGES_ALL.txt
-- Scripts: ./scripts/
-- Messages: ./messages/
-- Coordination: ./coordination/
-- Documentation: ./docs/
-- **Features: ./Features/** — Feature descriptions and specifications for build servers
-
-
-## Features Directory
-
-The Features/ directory contains detailed specifications and documentation for new features being developed for Apache CloudStack builds. Each feature has its own subdirectory containing:
-
-- **Design documents** - Detailed technical specifications and architecture documentation
-- **Implementation notes** - Guidelines for build servers on how to implement the feature
-- **Configuration files** - Any necessary configuration or setup files
-- **Test specifications** - Testing requirements and procedures
-
-### Structure
-``nFeatures/
- DualSNAT/          # Dual Source NAT feature
- VNFramework/       # VNF Framework feature
-    VNF_Framework_Design_CloudStack_4_21_7.txt
- [FeatureName]/     # Each feature in its own directory
-``n
-### For Build Servers
-
-When implementing new features:
-1. Check the Features/ directory for the latest feature specifications
-2. Each subdirectory represents a distinct feature or capability
-3. Read all documentation files within the feature directory before implementation
-4. Follow the specifications exactly as documented
-5. Report any issues or clarifications needed via the coordination system
-
-> **Important:** Feature directories contain authoritative documentation that build servers should reference during development and testing.
-
-## What this repo is
-
-- Single source of truth for build coordination and status
-- File-based messaging, locks, job queue, and metrics
-- Designed for 2–4 servers with ~30–60s coordination latency
-
-## Get started on a server
+## For Build1 (Codex) - `root@ll-ACSBuilder1`
 
 ```bash
-# One-time clone
-cd /root
-git clone https://github.com/alexandremattioli/Build.git
-cd Build
-
-# Make tools executable
-chmod +x scripts/*.sh
-
-# Optional: set up cron (see docs/IMPROVEMENTS.md)
+cd /root && git clone https://github.com/alexandremattioli/Build.git && cd Build/scripts && ./setup_build1.sh
 ```
 
-## Key components
-
-- scripts/ — automation (queue, locks, artifacts, metrics, rollback, etc.)
-- messages/ — human/agent instructions and acknowledgments
-- coordination/ — jobs, locks, and other shared state
-- docs/ — guides, dashboards, and detailed documentation
-- **Features/ — feature descriptions organized in subdirectories (e.g., Features/VNF/, Features/Networking/)**
-- .github/workflows/ — automated health monitoring
-
-> **Note for Build Servers:** Feature specifications and implementation details can be found in subdirectories under `Features/`. Each feature has its own directory containing documentation, design specs, and related files.
-
-## Recommended next steps
-
-- ✅ GitHub Pages enabled - Dashboard is live at https://alexandremattioli.github.io/Build/
-- Configure health checks and metrics collection per docs
-
-## More docs
-
-- docs/IMPROVEMENTS.md — All features and how to use them
-- docs/IMPLEMENTATION_SUMMARY.md — Overview of recent enhancements
-- docs/QUICKSTART.md — Minimal bootstrap for new servers
-- docs/BRANCH_OWNERSHIP.md — CloudStack branch ownership and usage (Copilot vs Codex)
-
-## For Build3 - `root@ll-ACSBuilder3`
+## For Build2 (GitHub Copilot) - `root@ll-ACSBuilder2`
 
 ```bash
-cd /root && git clone https://github.com/alexandremattioli/Build.git && cd Build/scripts && ./setup_build3.sh
+cd /root && git clone https://github.com/alexandremattioli/Build.git && cd Build/scripts && ./setup_build2.sh
 ```
 
-## For Build4 - `root@ll-ACSBuilder4`
+## Builder1 Workspace Quick Reference
+
+- The Codex session that backs this workspace runs on **Builder1 / Build1** (`ll-ACSBuilder1`, `10.1.3.175`), the primary host used to build Apache CloudStack artifacts.
+- Builder1 is permanently managed by Codex; assume Codex automation is active on this host for all build coordination.
+- CloudStack source checkouts typically live under `/root` (for example `/root/cloudstack`, `/root/cloudstack_VNFCopilot`).
+
+### Check Which Repositories Are Mounted
 
 ```bash
-cd /root && git clone https://github.com/alexandremattioli/Build.git && cd Build/scripts && ./setup_build4.sh
+find /root -maxdepth 2 -type d -name .git -print | sort
 ```
+
+This lists every Git working tree currently available on Builder1. Use `git -C <repo-path> status -sb` to inspect each checkout.
+
+### Locate Build Outputs
+
+- Maven build logs and coordination metadata: `/root/Build/build1/logs/`
+- Packaged artifacts (DEBs, manifests, etc.): `/root/artifacts/ll-ACSBuilder1/`
+  - Example DEB run folder: `/root/artifacts/ll-ACSBuilder1/debs/<timestamp>/`
+- Recent job metadata and artifact manifests are also referenced from `/root/Build/build1/status.json`
+
+## Builder2 Workspace Quick Reference
+
+- GitHub Copilot sessions run on **Builder2 / Build2** (`ll-ACSBuilder2`, `10.1.3.177`), providing redundant capacity for Apache CloudStack builds.
+- Builder2 is permanently managed by GitHub Copilot automation.
+
+### Check Which Repositories Are Mounted
+
+```bash
+find /root -maxdepth 2 -type d -name .git -print | sort
+```
+
+Use `git -C <repo-path> status -sb` to inspect each checkout on Build2.
+
+### Locate Build Outputs
+
+- Build logs and coordination metadata: `/root/Build/build2/logs/`
+- Packaged artifacts (DEBs, manifests, etc.): `/root/artifacts/ll-ACSBuilder2/`
+  - Example DEB run folder: `/root/artifacts/ll-ACSBuilder2/debs/<timestamp>/`
+- Build status records: `/root/Build/build2/status.json`
 
 ---
-
-Maintained by Alexandre Mattioli — see Issues for support and tasks.
 
 ## What This Repository Provides
 
 This repository serves as a file-based communication and coordination system between:
 - **Build1** (`root@ll-ACSBuilder1`, 10.1.3.175) - Managed by Codex
 - **Build2** (`root@ll-ACSBuilder2`, 10.1.3.177) - Managed by GitHub Copilot
-- **Build3** (`root@ll-ACSBuilder3`, 10.1.3.179) - Managed by TBD
-- **Build4** (`root@ll-ACSBuilder4`, 10.1.3.181) - Managed by TBD
 
 ### Direct SSH Access
-All servers have passwordless SSH configured between each other:
-- Build1: `ssh root@10.1.3.175` or `ssh root@ll-ACSBuilder1`
-- Build2: `ssh root@10.1.3.177` or `ssh root@ll-ACSBuilder2`
-- Build3: `ssh root@10.1.3.179` or `ssh root@ll-ACSBuilder3`
-- Build4: `ssh root@10.1.3.181` or `ssh root@ll-ACSBuilder4`
+Both servers have passwordless SSH configured:
+- Build1 can SSH to Build2: `ssh root@10.1.3.177` or `ssh root@ll-ACSBuilder2`
+- Build2 can SSH to Build1: `ssh root@10.1.3.175` or `ssh root@ll-ACSBuilder1`
 
 This enables direct file access, remote command execution, and real-time coordination beyond git-based communication.
 
@@ -138,16 +87,6 @@ This enables direct file access, remote command execution, and real-time coordin
 │   ├── heartbeat.json          # Last update timestamp
 │   └── logs/                   # Build logs and reports
 │       └── [timestamp].log
-├── build3/
-│   ├── status.json             # Build3 current status
-│   ├── heartbeat.json          # Last update timestamp
-│   └── logs/                   # Build logs and reports
-│       └── [timestamp].log
-├── build4/
-│   ├── status.json             # Build4 current status
-│   ├── heartbeat.json          # Last update timestamp
-│   └── logs/                   # Build logs and reports
-│       └── [timestamp].log
 ├── coordination/
 │   ├── jobs.json               # Job queue
 │   ├── locks.json              # Coordination locks
@@ -162,9 +101,9 @@ This enables direct file access, remote command execution, and real-time coordin
 Each server maintains a `status.json` file:
 ```json
 {
-  "server": "build1|build2|build3|build4",
+  "server": "build1|build2",
   "ip": "10.1.3.x",
-  "manager": "Codex|GitHub Copilot|TBD",
+  "manager": "Codex|GitHub Copilot",
   "timestamp": "2025-10-29T12:00:00Z",
   "status": "idle|building|failed|success",
   "current_job": {
@@ -193,7 +132,7 @@ Each server maintains a `status.json` file:
 Each server updates `heartbeat.json` every minute:
 ```json
 {
-  "server": "build1|build2|build3|build4",
+  "server": "build1|build2",
   "timestamp": "2025-10-29T12:00:00Z",
   "uptime_seconds": 86400,
   "healthy": true
@@ -203,6 +142,7 @@ Each server updates `heartbeat.json` every minute:
 ### Job Queue Format
 
 The `coordination/jobs.json` file manages work distribution:
+
 ```json
 {
   "jobs": [
@@ -212,7 +152,7 @@ The `coordination/jobs.json` file manages work distribution:
       "priority": 1,
       "branch": "ExternalNew",
       "commit": "sha",
-      "assigned_to": "build1|build2|build3|build4|null",
+      "assigned_to": "build1|build2|null",
       "status": "queued|running|completed|failed",
       "created_at": "timestamp",
       "started_at": "timestamp",
@@ -225,16 +165,17 @@ The `coordination/jobs.json` file manages work distribution:
 ### Lock Mechanism
 
 The `coordination/locks.json` file prevents race conditions:
+
 ```json
 {
   "locks": {
     "job_assignment": {
-      "locked_by": "build1|build2|build3|build4|null",
+      "locked_by": "build1|build2|null",
       "locked_at": "timestamp",
       "expires_at": "timestamp"
     },
     "config_update": {
-      "locked_by": "build1|build2|build3|build4|null",
+      "locked_by": "build1|build2|null",
       "locked_at": "timestamp",
       "expires_at": "timestamp"
     }
@@ -245,13 +186,14 @@ The `coordination/locks.json` file prevents race conditions:
 ### Message Queue Format
 
 The `coordination/messages.json` enables inter-server communication:
+
 ```json
 {
   "messages": [
     {
       "id": "msg_uuid",
-      "from": "build1|build2|build3|build4",
-      "to": "build1|build2|build3|build4|all",
+      "from": "build1|build2",
+      "to": "build1|build2|all",
       "type": "info|warning|error|request",
       "subject": "Brief description",
       "body": "Detailed message",
@@ -261,6 +203,100 @@ The `coordination/messages.json` enables inter-server communication:
   ]
 }
 ```
+
+## Hands‑free bootstrap and daily ops (Build2)
+
+The Copilot agent on Build2 will perform these actions when asked to “follow the instructions”. You can also run them manually.
+
+### 0) Identity and repo state
+
+```bash
+# Ensure identity (one of the three options below)
+echo "build2" > /root/Build/.build_server_id 2>/dev/null || true
+# Or:
+# echo "build2" > /etc/build_server_id
+# export SERVER_ID=build2
+
+# If repository already exists, make local changes safe before pulling
+cd /root/Build 2>/dev/null && git stash --include-untracked || true
+
+# Get latest code or clone fresh
+[ -d /root/Build/.git ] && git -C /root/Build pull origin main || (cd /root && git clone https://github.com/alexandremattioli/Build.git)
+
+# Ensure scripts are executable
+chmod +x /root/Build/scripts/*.sh || true
+
+# Verify identity helper
+/root/Build/scripts/server_id.sh || true
+```
+
+### 1) One-shot setup/recovery
+
+```bash
+cd /root/Build/scripts && ./setup_build2.sh
+```
+
+This will: clone/refresh the repo (unless already up-to-date), set permissions, read the recent conversation, start the heartbeat daemon, and check messages each cycle.
+
+### 2) Background processes (verify or start)
+
+```bash
+# Start/verify heartbeat daemon (60s interval)
+nohup /root/Build/scripts/enhanced_heartbeat_daemon.sh build2 60 > /var/log/heartbeat-build2.out 2>&1 &
+
+# (Optional) Classic heartbeat instead of the daemon
+# nohup /root/Build/scripts/heartbeat_daemon.sh build2 60 > /var/log/heartbeat-build2.out 2>&1 &
+
+# Check processes
+ps aux | grep -E "(heartbeat|watch_messages)" | grep -v grep
+```
+
+### 3) Messages and coordination
+
+```bash
+# Check unread
+cd /root/Build/scripts && ./check_unread_messages.sh build2
+
+# Read the recent conversation thread
+./read_conversation_thread.sh build2
+
+# Update message status summary files
+./update_message_status_txt.sh
+
+# Send an ACK/status to Build1
+./send_message.sh build2 build1 info "Build2 online and monitoring" "Setup completed; heartbeat active; ready for jobs."
+```
+
+### 4) Health and jobs
+
+```bash
+# Overall health (heartbeats, queue summary, unread counts)
+./check_health.sh
+
+# Job queue is kept in coordination/jobs.json; assignment is performed under locks.
+# (If you maintain jobs from this host, always pull first and respect locks.)
+git -C /root/Build pull --ff-only || true
+```
+
+### 5) Logs and status locations
+
+- Heartbeat log: `/var/log/heartbeat-build2.log` (or `/var/log/heartbeat-build2.out` if started via nohup)
+- Message summaries: `/root/Build/MESSAGES_STATUS.md` and `/root/Build/MESSAGES_ALL.txt`
+- Build2 status JSON: `/root/Build/build2/status.json`
+- Build2 logs: `/root/Build/build2/logs/`
+- Message watcher logs (if enabled by the setup): `/root/Build/messages.log`
+
+### Conflict handling (safe defaults)
+
+When a pull is blocked by local edits, the agent will:
+
+```bash
+cd /root/Build && git stash && git pull --ff-only && git stash pop || true
+```
+
+If merges are required repeatedly, changes will be logged to `coordination/messages.json` using `send_message.sh` for operator visibility.
+
+ 
 
 ## Usage Workflow
 
@@ -302,6 +338,27 @@ Both servers can:
 - Check heartbeats for health
 - View job queue
 - Read messages
+
+## Identity persistence and convention
+
+- GitHub Copilot is ALWAYS `build2`.
+- Codex is ALWAYS `build1`.
+
+To make identity explicit on each host without polluting git history:
+
+- Keep a local, untracked marker in the repo root:
+  - Copy `.build_server_id.example` to `.build_server_id` and set to `build1` or `build2`.
+  - `.gitignore` already excludes `.build_server_id`.
+- Or set a system-wide marker: `/etc/build_server_id` with `build1` or `build2`.
+- Or export an environment variable per shell/session: `export SERVER_ID=build2` (or `build1`).
+
+Use the helper to resolve identity with clear precedence:
+```bash
+cd /root/Build/scripts
+./server_id.sh   # prints build1 or build2
+```
+
+Precedence order: `$SERVER_ID` > `/etc/build_server_id` > `./.build_server_id` > hostname/IP heuristic > `unknown`.
 
 ## Implementation Scripts
 
@@ -393,4 +450,3 @@ Notes:
 ### Local write locks
 
 Writers to `coordination/messages.json` and `coordination/jobs.json` now use local `flock` locks to avoid concurrent edits on the same host. This complements git-based conflict handling across hosts and reduces transient merge churn.
-
