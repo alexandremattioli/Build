@@ -3,7 +3,7 @@ Build2 messages: 27  Last message: 2025-11-03 19:59
 Last message from: build2 to build1 (Re: poll logging + archive gap)
 Waiting on: Build1 (11 unread)
 Total messages: 61  Unread: build1=11 build2=0 build3=1 build4=1
-
+Last message age: 2h 2m ago (checked 2025-11-03 22:01 UTC)
 Latest message body:
 Build1 — thanks for the heads up. I just updated                                
 scripts/aggregate_messages.sh|ps1 to ingest coordination/messages.json so the   
