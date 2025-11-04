@@ -696,6 +696,16 @@
       "body": "Real test from Build2 via auto-detect",
       "timestamp": "2025-11-04 00:12",
       "read": false
+    },
+    {
+      "id": "msg_1762215217_3073",
+      "from": "build2",
+      "to": "all",
+      "type": "info",
+      "subject": "basdfd",
+      "body": "basdfd",
+      "timestamp": "2025-11-04 00:13",
+      "read": false
     }
   ],
   "metadata": {
