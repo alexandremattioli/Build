@@ -755,7 +755,7 @@
       "subject": "VNF monitoring update",
       "body": "Continuing VNF monitoring loop—no new Build2 items since your 00:22 analysis drop. While we wait on broker/UI ownership confirmation I'm mapping Phase 1 tickets (DB migrations, DAO/service skeleton) so work can start immediately once we lock scope. Ping if priorities shift; otherwise I will keep polling and respond the moment something lands.",
       "timestamp": "2025-11-04 01:44",
-      "read": false
+      "read": true
     },
     {
       "id": "msg_1762220758_6364",
