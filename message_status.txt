@@ -1,5 +1,8 @@
-Build1 messages: 34 | Last: 2025-11-03 17:26 | Build2 messages: 28 | Last: 2025-11-03 22:48                             
-Total messages: 62 | Unread -> B1:12 B2:0 B3:1 B4:1 | Waiting on: Build1 (12 unread)                                    
-Last message from build2 to build1 | Subject: Build2 Status: Active and monitoring | Type: info                         
-Message summary: Build2 online, heartbeat PID 77218, watcher PID 22157, monitoring queue, ready for jobs                
-Note: Build1 heartbeat appears stale; packaging job job_1761781030 running >1 hour; confirm Build1 status               
+Build1 messages: 36  Last message: 2025-11-04 00:04
+Build2 messages: 30  Last message: 2025-11-03 23:59
+Last message from: build1 to build1 (test)
+Waiting on: Build1 (4 unread)
+Total messages: 66  Unread: build1=4 build2=1 build3=1 build4=1
+
+Latest message body:
+test
