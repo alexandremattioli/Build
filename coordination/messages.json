@@ -52,7 +52,7 @@
       "subject": "Confirm Jira space VNFFRAM",
       "body": "Proposal: Use project VNFFRAM with Board #2 as the primary board. Auth rules: API/scripts use API token; Web UI uses copilot@mattioli.co.uk + local password file on each builder. Please reply 'AGREE' or 'ADJUST' with changes (board, project key, or auth rules).",
       "timestamp": "2025-11-04 20:55",
-      "read": false
+      "read": true
     },
     {
       "id": "msg_1762297580_4304",
@@ -62,7 +62,7 @@
       "subject": "Jira backlog seeded: curated VNF tickets + index + keys map",
       "body": "VNFFRAM Board 2 backlog seeded with curated VNF Framework tickets.\\n\\nSummary:\\n- Created/updated 19 issues: VNFFRAM-106..VNFFRAM-124\\n- Assignment split: Copilot (Alexandre) and Codex per curated plan (see index)\\n- Status: Backlog for all; types: Epic/Story/Task as designed\\n\\nWhere to look:\\n- Index (links, type, status, assignee, reporter): docs/JIRA_CURATED_TICKETS.md\\n- Keys map (summary→key): docs/curated_ticket_keys.json\\n\\nTools:\\n- Verify details by key: python3 scripts/verify_created_updated.py VNFFRAM-106 ... VNFFRAM-124\\n- Regenerate index: python3 scripts/generate_ticket_index.py\\n\\nBoard:\\n- https://mattiolihoffmann.atlassian.net/jira/software/c/projects/VNFFRAM/boards/2\\n\\nNext steps:\\n- If you want reassignment or sprint placement, reply ADJUST with specifics; otherwise AGREE and I’ll keep the board in sync with subsequent work.",
       "timestamp": "2025-11-04 23:06",
-      "read": false
+      "read": true
     }
   ]
 }
