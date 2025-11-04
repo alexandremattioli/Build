@@ -61,8 +61,34 @@ ssh -o ConnectTimeout=5 -o StrictHostKeyChecking=no "$BUILD1_HOST" \
 
 # Method 3: Check if there's an auto-responder running
 echo "Checking for auto-responder on Build1..."
+AUTO_RESPONDER_PID=$(ssh -o ConnectTimeout=5 -o StrictHostKeyChecking=no "$BUILD1_HOST" \
+    "pgrep -f 'auto_respond' || echo '0'")
+
+if [ "$AUTO_RESPONDER_PID" != "0" ]; then
+    echo "  Auto-responder is running (PID: $AUTO_RESPONDER_PID)"
+    echo "  Sending SIGUSR1 to trigger immediate check..."
+    ssh -o ConnectTimeout=5 -o StrictHostKeyChecking=no "$BUILD1_HOST" \
+        "kill -USR1 $AUTO_RESPONDER_PID 2>/dev/null && echo '  Signal sent successfully' || echo '  Signal failed'"
+else
+    echo "  No auto-responder running"
+fi
+
+# Method 4: Create a notification file that VS Code can detect
+echo "Creating notification marker for VS Code..."
 ssh -o ConnectTimeout=5 -o StrictHostKeyChecking=no "$BUILD1_HOST" \
-    "pgrep -f 'auto_respond' && echo '  Auto-responder is running' || echo '  No auto-responder running'"
+    "echo '[$TIMESTAMP] New messages from Build2 - CHECK MESSAGES!' > $BUILD1_BUILD_DIR/.NEW_MESSAGES_ALERT && \
+     echo 'Subject: ALERT - New Messages from Build2' >> $BUILD1_BUILD_DIR/.NEW_MESSAGES_ALERT && \
+     echo 'Priority: HIGH' >> $BUILD1_BUILD_DIR/.NEW_MESSAGES_ALERT && \
+     echo 'Action Required: Run read_messages.sh or check messages/' >> $BUILD1_BUILD_DIR/.NEW_MESSAGES_ALERT && \
+     echo '' >> $BUILD1_BUILD_DIR/.NEW_MESSAGES_ALERT && \
+     ls -1t $BUILD1_BUILD_DIR/messages/*.txt 2>/dev/null | head -5 >> $BUILD1_BUILD_DIR/.NEW_MESSAGES_ALERT || true"
+echo "  ✓ Created .NEW_MESSAGES_ALERT file (visible in VS Code)"
+
+# Method 5: Send terminal bell/notification if interactive terminal exists
+echo "Attempting to send terminal notification..."
+ssh -o ConnectTimeout=5 -o StrictHostKeyChecking=no "$BUILD1_HOST" \
+    "for tty in /dev/pts/*; do [ -w \$tty ] && echo -e '\a\n*** NEW MESSAGES FROM BUILD2 ***\n' > \$tty 2>/dev/null || true; done"
+echo "  ✓ Terminal notifications sent (if any active terminals)"
 
 echo ""
 echo "✓ Build1 notified successfully!"
