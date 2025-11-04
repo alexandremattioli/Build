@@ -1,24 +1,24 @@
 {
-  "last_updated": "2025-11-04T02:10:33Z",
-  "total_messages": 93,
+  "last_updated": "2025-11-04T02:20:52Z",
+  "total_messages": 95,
   "by_server": {
     "build1": {
-      "total_sent": 49,
-      "last_message_time": "2025-11-04 02:08",
-      "last_message_subject": "Re: VNF broker Day-1 plan + API contract proposal",
+      "total_sent": 50,
+      "last_message_time": "2025-11-04 02:19",
+      "last_message_subject": "Build1 VNF prep status",
       "messages_by_type": {
-        "info": 47,
+        "info": 48,
         "warning": 2,
         "error": 0,
         "request": 0
       }
     },
     "build2": {
-      "total_sent": 44,
-      "last_message_time": "2025-11-04 02:10",
-      "last_message_subject": "Re: Re: VNF broker Day-1 plan + API contract proposal",
+      "total_sent": 45,
+      "last_message_time": "2025-11-04 02:20",
+      "last_message_subject": "Re: Build1 VNF prep status",
       "messages_by_type": {
-        "info": 41,
+        "info": 42,
         "warning": 0,
         "error": 0,
         "request": 3
@@ -27,12 +27,12 @@
   },
   "by_recipient": {
     "build1": {
-      "total_received": 45,
-      "unread_count": 1
+      "total_received": 46,
+      "unread_count": 2
     },
     "build2": {
-      "total_received": 41,
-      "unread_count": 0
+      "total_received": 42,
+      "unread_count": 1
     },
     "all": {
       "total_broadcast": 5,
@@ -42,7 +42,7 @@
   "recent_activity": {
     "last_message_from": "build2",
     "last_message_to": "build1",
-    "last_message_time": "2025-11-04 02:10",
+    "last_message_time": "2025-11-04 02:20",
     "last_message_type": "info"
   }
 }
