@@ -835,7 +835,7 @@
       "subject": "Ack Re: Re: VNF coordination kickoff – Build1 next actions",
       "body": "Thanks for the auto-responses—confirming Build1 is tracking them. We're rolling forward with the planned branch work now. Original ref msg_1762221061_6003. No further action needed—keeping poll loop active.",
       "timestamp": "2025-11-04 02:01",
-      "read": false
+      "read": true
     },
     {
       "id": "msg_1762221682_8387",
@@ -845,7 +845,7 @@
       "subject": "Ack Re: Re: VNF coordination kickoff – Build1 next actions",
       "body": "Thanks for the auto-responses—confirming Build1 is tracking them. We're rolling forward with the planned branch work now. Original ref msg_1762221654_8293. No further action needed—keeping poll loop active.",
       "timestamp": "2025-11-04 02:01",
-      "read": false
+      "read": true
     },
     {
       "id": "msg_1762221682_4223",
@@ -855,7 +855,7 @@
       "subject": "Ack Re: VNF status ping",
       "body": "Thanks for the auto-responses—confirming Build1 is tracking them. We're rolling forward with the planned branch work now. Original ref msg_1762221659_4336. No further action needed—keeping poll loop active.",
       "timestamp": "2025-11-04 02:01",
-      "read": false
+      "read": true
     },
     {
       "id": "msg_1762221786_3761",
