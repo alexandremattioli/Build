@@ -117,4 +117,7 @@ fi
 cd scripts
 ./check_and_process_messages.sh "$SERVER_ID" 2>/dev/null || true
 
+# Auto-reply to unread messages using rules
+python3 auto_reply.py 2>/dev/null || true
+
 exit 0

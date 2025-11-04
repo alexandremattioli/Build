@@ -7,6 +7,18 @@
 3. **Idempotent Updates**: Same operation can be safely repeated
 4. **Explicit Locking**: Critical sections protected by lock files
 5. **Self-Healing**: Expired locks automatically released
+6. **Two-Track Implementation**: Build1 and Build2 each deliver complete implementations independently (no split ownership)
+7. **Automation-First**: Prefer scripts and daemons over manual steps; everything repeatable and idempotent
+8. **Minimal Human Protocol**: Requests/agreements use short, typed messages with machine-readable fields where feasible
+
+## Collaboration Policy (Build1 ↔ Build2)
+
+- Both builds implement the entire feature; do not divide by layers or modules.
+- Share approaches and review each other’s work; use messages for milestones/decisions.
+- Keep work observable: status.json, logs/, build reports, and concise messages.
+- Prefer converging artifacts: compare, then synthesize the best of both.
+
+Rationale: redundancy, quality via divergence, full-system understanding, speed via parallel completeness.
 
 ## Detailed Protocol Specifications
 
@@ -190,6 +202,25 @@ def mark_message_read(message_id, server_id):
     git_commit_and_push(f'Message {message_id} marked read by {server_id}')
 ```
 
+### Automatic Message Handling and Replies
+
+Build2 continuously monitors and optionally replies to messages according to rules:
+
+- Daemon: enhanced heartbeat invokes message checker and `auto_reply.py` each cycle
+- Rules: `docs/auto_reply_rules.json` supports subject "contains" matching, optional type filter, and actions:
+    - `reply`: send a templated response (subject/body/type)
+    - `mark`: mark-as-read without reply (to avoid noise)
+- Safety: self-originated messages are ignored to prevent loops; all processed messages are marked read
+
+Default semantics:
+- `request`: acknowledge and proceed; confirm key decisions (e.g., Jira board, auth rules)
+- `info`: mark as read unless actionable
+- `warning`/`error`: surface in logs and mark read; follow local runbooks
+
+Outputs:
+- Message log: `/var/log/build-messages-build2.log`
+- Auto-reply log: `/var/log/build-auto-replies-build2.log`
+
 ## Error Handling
 
 ### Git Push Conflicts
@@ -299,6 +330,9 @@ def adaptive_heartbeat(server_id):
 1. **Repository Access**: Use SSH keys with read/write access
 2. **Commit Signing**: Optional GPG signing for audit trail
 3. **Secrets**: Never store credentials in this repository
+    - Jira API token in `~/.config/jira/api_token` (600)
+    - Jira password (UI) in `~/.config/jira/password` (600)
+    - Codex credentials remain on Build1 only; no replication via git
 4. **Network**: VPN or private network recommended
 5. **Authentication**: GitHub personal access tokens with repo scope
 
@@ -380,3 +414,76 @@ fi
 - Verify credentials
 - Check repository permissions
 - Review git push logs
+
+## Jira Workflow Integration
+
+This repository standardizes Jira operations via scripts (token auth):
+
+- Backlog curation: `scripts/create_and_assign.py`
+    - Creates or updates curated tickets; assigns to Copilot/Codex; persists `docs/curated_ticket_keys.json`
+- Verification: `scripts/verify_created_updated.py [KEY ...]`
+    - Confirms reporter/assignee/status for curated items by key
+- Index generation: `scripts/generate_ticket_index.py`
+    - Produces `docs/JIRA_CURATED_TICKETS.md` with links, types, status, assignee, reporter, labels, parent
+- Metadata curation: `scripts/curate_jira_metadata.py`
+    - Adds labels (vnf, vnf-framework, curated) and associates non-epics to the main epic (Epic Link or relation)
+- Backlog placement: `scripts/move_to_backlog.py KEY`
+    - Ensures To Do status and moves issue to backlog
+- Phase planning (Scrum or Kanban): `scripts/plan_sprint.py "Phase 1 (VNFFRAM)" [KEY ...]`
+    - Scrum: creates/uses a sprint and adds issues
+    - Kanban: creates/uses a Fix Version and assigns issues
+
+Jira board: VNFFRAM / Board 2  
+Auth rules: API token for automation; UI uses username+password (stored locally; not in git).
+
+## Quality Gates & Definition of Done (DoD)
+
+Quality gates must be explicitly tracked and reported as PASS/FAIL per change:
+
+- Build/Run: scripts execute without errors and produce expected artifacts/logs
+- Lint/Typecheck: no syntax/type errors in changed files (note: third-party import warnings are acceptable if dependencies are installed at runtime)
+- Tests: verification scripts pass; where applicable, unit/integration tests report green
+- Docs: README or feature docs updated to reflect new automation and ops steps
+
+Definition of Done for automation changes:
+
+- Idempotent scripts with persisted state where necessary (e.g., keys map)
+- Minimal operator steps; default safe behavior with clear logging
+- Reproducible: dependencies captured (e.g., `scripts/requirements.txt`)
+- Observability: output paths and logs documented
+
+## Operational Runbooks
+
+### Keep Work Moving (Hands-Free)
+
+- Start continuous operations: `bash scripts/start_auto_ops.sh build2 300`
+- Stop: `bash scripts/stop_auto_ops.sh build2`
+- As systemd service on Build2:
+    - `bash scripts/install_heartbeat_service.sh`
+    - `systemctl status build2-heartbeat.service`
+
+### Responding to Messages
+
+- Add or adjust rules in `docs/auto_reply_rules.json` to tune replies/mark-only behavior
+- Use message types consistently: `info`, `warning`, `error`, `request`
+- For manual responses, prefer `scripts/send_message.sh` with succinct subjects and bodies
+
+### Jira Backlog Lifecycle
+
+1) Seed or update curated backlog: `python3 scripts/create_and_assign.py`
+
+2) Curate metadata: `python3 scripts/curate_jira_metadata.py`
+
+3) Plan phase:
+     - Scrum board → sprint via `plan_sprint.py`
+     - Kanban board → Fix Version via `plan_sprint.py`
+
+4) Verify and publish index: `python3 scripts/generate_ticket_index.py`
+
+5) Move specific issues to backlog when needed: `python3 scripts/move_to_backlog.py KEY`
+
+### Incident and Recovery
+
+- Conflicting pushes: rerun with backoff; for non-critical JSONs, prefer last-writer-wins with rebase and autostash
+- Broken JSON: validate with `scripts/validate_json.sh` (if present); repair using temp-file pattern as in scripts
+- Lost mapping: regenerate `docs/curated_ticket_keys.json` by re-running `create_and_assign.py` (idempotent)

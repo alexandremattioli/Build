@@ -100,7 +100,17 @@ validate_server_id "$TO_SERVER"
 validate_message_type "$MSG_TYPE"
 validate_message_size "$SUBJECT" "$BODY"
 
-REPO_DIR="/root/Build"
+# Resolve repository root relative to this script, falling back to /root/Build
+SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
+DEFAULT_REPO_DIR="${SCRIPT_DIR%/scripts}"
+if [ -d "$DEFAULT_REPO_DIR/.git" ]; then
+    REPO_DIR="$DEFAULT_REPO_DIR"
+elif [ -d "/root/Build/.git" ]; then
+    REPO_DIR="/root/Build"
+else
+    echo "ERROR: Could not locate repository root (looked in $DEFAULT_REPO_DIR and /root/Build)" >&2
+    exit 2
+fi
 cd "$REPO_DIR"
 
 # Acquire local write lock for messages to avoid concurrent edits on this host

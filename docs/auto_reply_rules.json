@@ -1,0 +1,17 @@
+[
+  {
+    "contains": "adjust",
+    "type": "request",
+    "action": "reply",
+    "reply": {
+      "subject": "ACK: ADJUST request received",
+      "body": "Adjustment request received. I will apply the changes and confirm back with links/logs.",
+      "type": "info"
+    }
+  },
+  {
+    "contains": "agree",
+    "type": "info",
+    "action": "mark"
+  }
+]

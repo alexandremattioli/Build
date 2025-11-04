@@ -10,12 +10,23 @@ and this project adheres to semantic versioning for coordination protocol change
 ## [Unreleased]
 
 ### Added
+- Jira curation helpers: `scripts/create_and_assign.py` now persists a local
+  summary→key map at `docs/curated_ticket_keys.json` and a last-run report.
+- Verification tooling: `scripts/verify_created_updated.py` to validate
+  reporter/assignee/status for curated tickets by key or by project scan.
+- Documentation index: `scripts/generate_ticket_index.py` generates
+  `docs/JIRA_CURATED_TICKETS.md` with links, types, status, assignees, and reporters.
+- Jira metadata curation and epic linking: `scripts/curate_jira_metadata.py` adds labels and associates to the main epic
+- Phase planning automation: `scripts/plan_sprint.py` supports Scrum sprints and Kanban Fix Versions ("Phase 1 (VNFFRAM)")
+- Automatic monitoring and replies: heartbeat-integrated `scripts/auto_reply.py`, daemonized via `scripts/enhanced_heartbeat_daemon.sh`
+- Operational docs: Methodology expanded with collaboration policy, auto-ops rules, Jira workflow integration, and DoD
 - DEB packaging helper script `scripts/build_debs.sh` to handle Ubuntu 24.04 compatibility issues
 - Comprehensive build report template with detailed analysis sections
 - Artifact manifest generation with SHA256 checksums
 - Build status tracking with last_build metadata in status.json
 
 ### Changed
+- Methodology updated to codify two-track implementation, automation-first, message semantics, and runbooks
 - Updated default build workflow to include DEB packaging by default
 - Enhanced status.json to include last_build with duration_seconds and artifacts array
 - Improved artifact preservation to dedicated /root/artifacts directory structure

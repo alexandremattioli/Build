@@ -1,0 +1,21 @@
+{
+  "VNF Framework - Epic: Architecture & Delivery": "VNFFRAM-106",
+  "Completed: Java Plugin Implementation": "VNFFRAM-107",
+  "Completed: Python Broker Service": "VNFFRAM-108",
+  "Completed: Messaging Infrastructure between Builds": "VNFFRAM-109",
+  "Completed: Jira Integration & Scripts": "VNFFRAM-110",
+  "pfSense Lab Integration Testing": "VNFFRAM-111",
+  "CloudStack Integration Tests": "VNFFRAM-112",
+  "User Documentation": "VNFFRAM-113",
+  "Developer Guide": "VNFFRAM-114",
+  "API Context Object": "VNFFRAM-115",
+  "New Error Code: VNF_RATE_LIMIT": "VNFFRAM-116",
+  "JWT Migration to RS256": "VNFFRAM-117",
+  "Redis Idempotency Layer": "VNFFRAM-118",
+  "mTLS for Broker\u2192VNF": "VNFFRAM-119",
+  "Production Deployment of Broker": "VNFFRAM-120",
+  "CI/CD Pipeline Setup": "VNFFRAM-121",
+  "Monitoring & Alerting": "VNFFRAM-122",
+  "Multi-Vendor Support": "VNFFRAM-123",
+  "Advanced Orchestration": "VNFFRAM-124"
+}

@@ -398,6 +398,74 @@ git pull --rebase
 git push
 ```
 
+---
+
+## Jira Access (Copilot)
+
+- Username (alias): `copilot@mattioli.co.uk` (alias of `alexandre@mattioli.co.uk`)
+- Password file (local, not in git): `~/.config/jira/password`
+  - Permissions: `600` (owner read/write only)
+  - This file is created locally on Builder2 and must never be committed
+- API token (preferred for automation) remains in: `~/.config/jira/api_token`
+- Project key: `VNFFRAM`
+
+Notes:
+- Use the password file only where basic auth is required; otherwise prefer the API token.
+- Scripts in `scripts/` read Jira config from `~/.config/jira/config` and credentials from the token/password files as needed.
+
+### Jira curation quick links
+- Board: https://mattiolihoffmann.atlassian.net/jira/software/c/projects/VNFFRAM/boards/2
+- Curated tickets index (links, type, status, assignee, reporter): `docs/JIRA_CURATED_TICKETS.md`
+- Summary→Key map for curated set: `docs/curated_ticket_keys.json`
+
+### Jira scripts (automation)
+- Create/assign curated tickets (idempotent via keys map):
+  - `python3 scripts/create_and_assign.py`
+- Verify created/updated tickets:
+  - `python3 scripts/verify_created_updated.py <ISSUE_KEY> [ISSUE_KEY ...]`
+- Regenerate the curated index:
+  - `python3 scripts/generate_ticket_index.py`
+- Move an issue to backlog (ensures To Do/Backlog status):
+  - `python3 scripts/move_to_backlog.py <ISSUE_KEY>`
+- Phase planning (Kanban-friendly):
+  - `python3 scripts/plan_sprint.py "Phase 1 (VNFFRAM)"`
+    - If the board supports sprints (Scrum), creates/adds to a sprint
+    - If the board is Kanban (no sprints), creates/assigns a Fix Version instead
+
+Dependencies for scripts: `pip3 install -r scripts/requirements.txt` (installs `requests`).
+
+### Automatic monitoring and replies
+- Heartbeat with auto-monitoring and auto-replies:
+  - Run continuously: `bash scripts/enhanced_heartbeat_daemon.sh build2 300`
+  - Each cycle will:
+    - Update heartbeat
+    - Pull new messages and log to `/var/log/build-messages-build2.log`
+    - Auto-reply to unread messages using `scripts/auto_reply.py` and mark them read
+  - Manual one-shot:
+    - `bash scripts/enhanced_heartbeat.sh build2`
+  - Convenience start/stop wrappers:
+    - Start: `bash scripts/start_auto_ops.sh [build2] [interval_seconds]`
+    - Stop:  `bash scripts/stop_auto_ops.sh [build2]`
+  - Optional systemd service:
+    - Template: `scripts/build2-heartbeat.service.example`
+    - Install helper (root): `bash scripts/install_heartbeat_service.sh`
+    - Then: `systemctl status build2-heartbeat.service`
+
+#### Auto-reply rules
+- Default built-in rules handle Jira space confirmation and generic requests.
+- You can add custom rules in `docs/auto_reply_rules.json`:
+  - Fields: `contains` (substring match on subject), optional `type` (info|warning|error|request), `action` (reply|mark)
+  - `reply` object: `subject`, `body`, optional `type` (defaults to info)
+  - Example provided in the file.
+
+### Authentication rules
+- API and scripts: use the API token.
+  - Auth is email + API token (Basic), token file: `~/.config/jira/api_token`.
+  - This is what all helper scripts use by default.
+- Web UI login: use username + password.
+  - Username: `copilot@mattioli.co.uk`
+  - Password: stored locally in `~/.config/jira/password` (600 perms); do not commit.
+
 ### Stale Locks
 
 If a lock is held too long:

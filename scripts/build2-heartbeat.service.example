@@ -1,0 +1,17 @@
+[Unit]
+Description=Build2 Enhanced Heartbeat Daemon
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/root/Build
+ExecStart=/bin/bash /root/Build/scripts/enhanced_heartbeat_daemon.sh build2 300
+Restart=always
+RestartSec=5
+StandardOutput=append:/var/log/enhanced_heartbeat_build2.log
+StandardError=append:/var/log/enhanced_heartbeat_build2.log
+
+[Install]
+WantedBy=multi-user.target
