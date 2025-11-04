@@ -9,7 +9,8 @@
 
 set -euo pipefail
 
-REPO_DIR="/Builder2/Build"
+# Canonical repository location for production runs
+REPO_DIR="/root/Build"
 STATE_FILE="$REPO_DIR/coordination/auto_responder_state_build2.json"
 SLEEP_SECONDS=60
 
@@ -76,8 +77,16 @@ main_loop() {
   init_state
 
   while true; do
-    # Sync latest repo state
-    (cd "$REPO_DIR" && git pull origin main --quiet || true)
+    # Sync latest repo state (defensive against partial rebases)
+    (
+      cd "$REPO_DIR" || exit 0
+      # If a rebase is stuck, abort it to unblock pulls
+      if [ -d .git/rebase-merge ] || [ -d .git/rebase-apply ]; then
+        git rebase --abort >/dev/null 2>&1 || true
+      fi
+      # Autostash local changes and rebase
+      git pull origin main --rebase --autostash --no-edit --no-stat >/dev/null 2>&1 || true
+    )
 
     # Find unread messages from build1 to build2 (or broadcast 'all')
     mapfile -t items < <(jq -r '

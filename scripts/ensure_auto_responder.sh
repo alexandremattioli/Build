@@ -7,17 +7,20 @@
 ################################################################################
 set -euo pipefail
 
-# Resolve repository directory (prefer /root/Build in production)
-if [ -d "/root/Build" ]; then
-  REPO_DIR="/root/Build"
-else
-  REPO_DIR="/Builder2/Build"
+# Enforce canonical repository directory
+REPO_DIR="/root/Build"
+if [ ! -d "$REPO_DIR" ]; then
+  echo "[$(date '+%Y-%m-%d %H:%M:%S')] ERROR: $REPO_DIR not found; cannot start auto-responder" >&2
+  exit 1
 fi
 
 SCRIPT="$REPO_DIR/scripts/auto_respond_build1.sh"
 LOG_FILE="/var/log/auto_respond_build1.log"
 
 mkdir -p /var/log || true
+
+# Kill any stray responder started from non-canonical paths
+pgrep -af "auto_respond_build1\.sh" | grep -v "$SCRIPT" | awk '{print $1}' | xargs -r kill -9 >/dev/null 2>&1 || true
 
 if pgrep -f "bash $SCRIPT" >/dev/null 2>&1 || pgrep -f "$SCRIPT" >/dev/null 2>&1; then
   echo "[$(date '+%Y-%m-%d %H:%M:%S')] auto-responder already running" 
