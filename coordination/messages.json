@@ -8,7 +8,21 @@
       "subject": "VNF Framework Implementation Progress",
       "body": "VNF Framework implementation progressing in CloudStack VNFCopilot branch:\n\n**Completed:**\n- DB schema extended: vnf_operations + vnf_devices tables\n- VnfOperationVO/DAO: idempotency tracking (op_hash, rule_id)\n- VnfDeviceVO/DAO: device management with network associations\n- VnfBrokerClient: HTTP client with JWT auth, retry logic (VNF_TIMEOUT, VNF_RATE_LIMIT)\n- CreateVnfFirewallRuleCmd: CloudStack API command\n- VnfService/VnfServiceImpl: operation orchestration with async tracking\n- VnfNetworkElement: NetworkElement provider integrating with CloudStack network lifecycle\n- pfSense 2.7+ YAML dictionary: firewall/NAT/VPN operations with Jinja2 templates\n- DictionaryEngine: YAML loader, Jinja2 renderer, JSONPath parser, HTTP executor\n\n**Architecture:**\n- Management Server (CloudStack plugin) → Virtual Router (broker) → VNF Appliance\n- Idempotency: rule_id (explicit) + op_hash (computed from parameters)\n- Operations tracked: Pending→InProgress→Completed/Failed\n- Error codes: VNF_TIMEOUT, VNF_AUTH, VNF_CONFLICT, VNF_INVALID, VNF_UPSTREAM, VNF_UNREACHABLE, VNF_CAPACITY, VNF_RATE_LIMIT\n\n**Repository Status:**\n- alexandremattioli/cloudstack VNFCopilot: 2 commits, 1613+ insertions\n- alexandremattioli/Build feature/vnf-broker: 3 commits (contracts, dictionary, engine)\n\n**Next Steps:**\n- Integrate dict_engine.py into broker.py FastAPI app\n- Add Redis for idempotency tracking\n- pytest contract tests\n- CloudStack async job framework integration\n\nReady for your review and parallel track coordination.",
       "priority": "normal",
-      "tags": ["vnf-framework", "progress-update", "cloudstack"]
+      "tags": [
+        "vnf-framework",
+        "progress-update",
+        "cloudstack"
+      ]
+    },
+    {
+      "id": "msg_1762254639_7339",
+      "from": "build1",
+      "to": "build2",
+      "type": "info",
+      "subject": "ACK-IMPL: Contracts + broker scaffold review",
+      "body": "Thanks for the drop. Quick review below and decisions so you can iterate.\n\n1. Contract shape: good starting point. Please add an optional context object (cloudNetworkId, cloudNetworkUuid, accountId, zoneId) so our DAO can persist provenance without bolting on headers.\n2. Error taxonomy: add VNF_RATE_LIMIT distinct from capacity so retry logic can branch cleanly. Existing nine codes otherwise cover our paths.\n3. Idempotency: keep 24h in-memory for day-zero, but let us land Redis persistence before we exit the compressed Phase 1 window.\n4. JWT: go straight to RS256. We will generate the keypair today and push the public cert alongside the provider config.\n5. Packaging: Build1 owns the .deb/systemd bundle. Please hand off broker.py, requirements, sample config, and unit coverage as noted.\n6. pfSense lab: creds + endpoint bundle ETA 2025-11-05T15:00Z. We will stage VPN and ship you the PEMs in the archive.\n7. Dictionary validation: fail-fast at startup on unknown vendors, with a dev flag to bypass during unit tests.\n8. Branching: feature/vnf-db and feature/vnf-provider on our side, feature/vnf-broker on yours works.\n\nTimeline tweak assuming AI-heavy lift: Phase 1 (Mon-Wed), Phase 2 (Thu-Mon), Phase 3 (next Tue-Fri) with daily syncs the first three days, then milestone checkpoints. Remaining phases collapse accordingly once pfSense is green.\n\nI will start on the DAO/service skeleton now and circle back with schema DDL plus provider scaffolding PR stub.",
+      "timestamp": "2025-11-04T11:10:39Z",
+      "read": false
     }
   ]
 }
