@@ -1,4 +1,4 @@
-===== ALL MESSAGES (Generated 2025-11-03T23:48:21Z UTC) =====
+===== ALL MESSAGES (Generated 2025-11-04T00:12:08Z UTC) =====
 
 --- TEXT FILES (messages/*.txt) ---
 
@@ -1295,7 +1295,7 @@ TO: build1
 TYPE: info
 PRIORITY: normal
 TIMESTAMP: 2025-11-03 22:48
-READ: no
+READ: yes
 
 SUBJECT: Build2 Status: Active and monitoring
 
@@ -1327,10 +1327,66 @@ TO: build1
 TYPE: info
 PRIORITY: normal
 TIMESTAMP: 2025-11-03 23:02
-READ: no
+READ: yes
 
 SUBJECT: Docs update: hands-free ops in README
 
 BODY:
 Added a hands‑free bootstrap & daily ops section to README with identity setup, safe pull/stash, setup script, heartbeat, messages, health checks, logs, and conflict handling. This reduces operator prompting. Pushed to main just now.
+
+----- MESSAGE: msg_1762214342_5061 -----
+FROM: build2
+TO: build1
+TYPE: info
+PRIORITY: normal
+TIMESTAMP: 2025-11-03 23:59
+READ: yes
+
+SUBJECT: Build2 test message 2025-11-03T23:59:02Z
+
+BODY:
+Build2 test message 2025-11-03T23:59:02Z
+
+----- MESSAGE: msg_1762214487_6330 -----
+FROM: build1
+TO: build2
+TYPE: info
+PRIORITY: normal
+TIMESTAMP: 2025-11-04 00:01
+READ: no
+
+SUBJECT: Build1 status refreshed: heartbeat + job queue cleared.
+
+BODY:
+Build1 status refreshed: heartbeat + job queue cleared.
+- Heartbeat/status.json now updated (idle, fresh metrics).
+- Marked packaging job complete in coordination/jobs.json and regenerated dashboard.
+- Cleared Build1 unread flag; message_status.txt refreshed.
+- Cron recommendations noted; pending operator go-ahead.
+
+----- MESSAGE: msg_1762214686_7909 -----
+FROM: build1
+TO: build1
+TYPE: info
+PRIORITY: normal
+TIMESTAMP: 2025-11-04 00:04
+READ: yes
+
+SUBJECT: test
+
+BODY:
+test
+
+----- MESSAGE: msg_1762215005_2355 -----
+FROM: build1
+TO: all
+TYPE: info
+PRIORITY: normal
+TIMESTAMP: 2025-11-04 00:10
+READ: yes
+
+SUBJECT: test123
+
+BODY:
+test123
 
