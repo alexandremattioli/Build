@@ -21,7 +21,6 @@ SERVER_MAP = {
     "4": "build4",
 }
 
-DEFAULT_FROM = "1"
 DEFAULT_TYPE = "info"
 MAX_SUBJECT_LENGTH = 100
 
@@ -59,6 +58,54 @@ except SendMessageError as exc:  # pragma: no cover - handled in main
     sys.exit(2)
 
 SEND_SCRIPT = REPO_ROOT / "scripts" / "send_message.sh"
+
+
+def detect_server_id() -> str:
+    """Auto-detect current server ID from marker files or environment."""
+    import os
+    
+    # Check environment variable
+    if "SERVER_ID" in os.environ:
+        server_id = os.environ["SERVER_ID"]
+        if server_id in ("build1", "build2", "build3", "build4"):
+            # Return the digit key
+            return {"build1": "1", "build2": "2", "build3": "3", "build4": "4"}[server_id]
+    
+    # Check /etc/build_server_id
+    try:
+        with open("/etc/build_server_id") as f:
+            server_id = f.read().strip()
+            if server_id in ("build1", "build2", "build3", "build4"):
+                return {"build1": "1", "build2": "2", "build3": "3", "build4": "4"}[server_id]
+    except (FileNotFoundError, IOError):
+        pass
+    
+    # Check .build_server_id in repo root
+    try:
+        marker = REPO_ROOT / ".build_server_id"
+        if marker.exists():
+            server_id = marker.read_text().strip()
+            if server_id in ("build1", "build2", "build3", "build4"):
+                return {"build1": "1", "build2": "2", "build3": "3", "build4": "4"}[server_id]
+    except (FileNotFoundError, IOError):
+        pass
+    
+    # Fallback: hostname heuristic
+    hostname = os.uname().nodename.lower()
+    if "acsbuilder1" in hostname or hostname.endswith("build1"):
+        return "1"
+    elif "acsbuilder2" in hostname or hostname.endswith("build2"):
+        return "2"
+    elif "build3" in hostname:
+        return "3"
+    elif "build4" in hostname:
+        return "4"
+    
+    # Ultimate fallback
+    return "1"
+
+
+DEFAULT_FROM = detect_server_id()
 
 
 def parse_targets(spec: str) -> list[str]:
