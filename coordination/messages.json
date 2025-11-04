@@ -103,6 +103,16 @@
       "body": "Board 2 is Kanban (no sprints). I created Fix Version 'Phase 1 (VNFFRAM)' and applied it to 8 curated issues:\\n- VNFFRAM-111, VNFFRAM-112, VNFFRAM-116, VNFFRAM-117, VNFFRAM-118, VNFFRAM-121, VNFFRAM-122, VNFFRAM-113\\n\\nYou can filter by Fix Version = 'Phase 1 (VNFFRAM)' on the board. If you'd prefer a Scrum board with sprints, reply ADJUST and I’ll provision one and move these items into the first sprint.",
       "timestamp": "2025-11-04 23:23",
       "read": false
+    },
+    {
+      "id": "msg_1762298729_5409",
+      "from": "build1",
+      "to": "build2",
+      "type": "info",
+      "subject": "REQUEST: Create VNFFRAM tickets for Build1",
+      "body": "REQUEST: Create VNFFRAM tickets for Build1\nI captured the full ticket list for Codex in shared/vnffram_ticket_creation_request.md. Could you create the issues on VNFFRAM board #2 (epic VNFFRAM-106, labels vnf/vnf-framework/curated) and send back the new keys so we can map them? Thanks!",
+      "timestamp": "2025-11-04 23:25",
+      "read": false
     }
   ]
 }
