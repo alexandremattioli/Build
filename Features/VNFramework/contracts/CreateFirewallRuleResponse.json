@@ -1,0 +1,141 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://vnf.example.com/schemas/CreateFirewallRuleResponse.json",
+  "title": "CreateFirewallRuleResponse",
+  "description": "Response after creating a firewall rule via the broker",
+  "type": "object",
+  "required": ["ok", "ruleId", "appliedAt"],
+  "properties": {
+    "ok": {
+      "type": "boolean",
+      "description": "True if the rule was created successfully, false otherwise"
+    },
+    "ruleId": {
+      "type": "string",
+      "description": "The rule identifier (client-supplied or broker-generated)",
+      "minLength": 1,
+      "maxLength": 128
+    },
+    "vendorRef": {
+      "type": "string",
+      "description": "Vendor-specific rule identifier or UUID from the VNF appliance",
+      "maxLength": 256
+    },
+    "warnings": {
+      "type": "array",
+      "description": "Non-fatal warnings (e.g., 'rule enabled but firewall reload pending')",
+      "items": {
+        "type": "string"
+      }
+    },
+    "appliedAt": {
+      "type": "string",
+      "format": "date-time",
+      "description": "ISO 8601 timestamp when the rule was applied on the VNF"
+    },
+    "diagnostics": {
+      "type": "object",
+      "description": "Performance and execution diagnostics",
+      "properties": {
+        "latencyMs": {
+          "type": "integer",
+          "description": "Total time in milliseconds to complete the operation",
+          "minimum": 0
+        },
+        "retries": {
+          "type": "integer",
+          "description": "Number of retries attempted before success",
+          "minimum": 0
+        },
+        "vendorLatencyMs": {
+          "type": "integer",
+          "description": "Time spent waiting for vendor API response",
+          "minimum": 0
+        }
+      }
+    },
+    "error": {
+      "type": "object",
+      "description": "Error details if ok=false",
+      "required": ["code", "message"],
+      "properties": {
+        "code": {
+          "type": "string",
+          "enum": [
+            "VNF_TIMEOUT",
+            "VNF_AUTH",
+            "VNF_CONFLICT",
+            "VNF_INVALID",
+            "VNF_UPSTREAM",
+            "VNF_UNREACHABLE",
+            "VNF_CAPACITY",
+            "BROKER_INVALID_REQUEST",
+            "BROKER_INTERNAL"
+          ],
+          "description": "Standard error code for categorization and retry logic"
+        },
+        "message": {
+          "type": "string",
+          "description": "Human-readable error message",
+          "maxLength": 1024
+        },
+        "vendorReason": {
+          "type": "string",
+          "description": "Raw error message or code from the VNF vendor API",
+          "maxLength": 2048
+        },
+        "retryable": {
+          "type": "boolean",
+          "description": "True if the client should retry this operation",
+          "default": false
+        },
+        "traceId": {
+          "type": "string",
+          "description": "Broker trace ID for support and debugging",
+          "pattern": "^[a-f0-9-]+$"
+        }
+      }
+    }
+  },
+  "additionalProperties": false,
+  "examples": [
+    {
+      "ok": true,
+      "ruleId": "rule-allow-web-dmz",
+      "vendorRef": "pfsense-rule-5a3f9e2c",
+      "appliedAt": "2025-11-04T02:15:30Z",
+      "diagnostics": {
+        "latencyMs": 342,
+        "retries": 0,
+        "vendorLatencyMs": 298
+      }
+    },
+    {
+      "ok": false,
+      "ruleId": "rule-invalid-cidr",
+      "appliedAt": "2025-11-04T02:16:45Z",
+      "error": {
+        "code": "VNF_INVALID",
+        "message": "Invalid source CIDR format: '300.0.0.0/8'",
+        "vendorReason": "API error: invalid_network_address",
+        "retryable": false,
+        "traceId": "7e9a2c4b-3f1d-4a8e-9c7b-1d5e8f2a3b4c"
+      }
+    },
+    {
+      "ok": false,
+      "ruleId": "rule-timeout-test",
+      "appliedAt": "2025-11-04T02:17:20Z",
+      "error": {
+        "code": "VNF_TIMEOUT",
+        "message": "VNF appliance did not respond within 20s",
+        "retryable": true,
+        "traceId": "9f1a3b5c-2e4d-4c6e-8a7b-3d9e1f5a2c4b"
+      },
+      "diagnostics": {
+        "latencyMs": 20534,
+        "retries": 2
+      }
+    }
+  ]
+}
