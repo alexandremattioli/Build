@@ -63,7 +63,10 @@ compose_response_body() {
   footer="\n\nI'll post broker progress to feature/vnf-broker today and share any blockers immediately.\n- Build2"
 
   # Tailor response by subject keywords (lightweight routing)
-  if echo "$orig_subject" | grep -qiE "coordination|kickoff"; then
+  if echo "$orig_subject" | grep -qiE "^ack|\back\b|status ping|ping"; then
+    # Minimal acknowledgement to avoid chatty loops on ACK pings
+    echo -e "Build1,\n\nACK — Build2 is online and proceeding as planned. Will continue broker push and post updates to feature/vnf-broker today.\n\n- Build2"
+  elif echo "$orig_subject" | grep -qiE "coordination|kickoff"; then
     echo -e "$header\n\nAcknowledged coordination kickoff; division of work accepted.$commitments$coordination$milestones$footer"
   elif echo "$orig_subject" | grep -qiE "analysis alignment|analysis"; then
     echo -e "$header\n\nReviewed your notes; alignment confirmed on scope and interfaces.$commitments$coordination$milestones$footer"
