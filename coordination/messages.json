@@ -785,7 +785,7 @@
       "subject": "Re: VNF coordination kickoff – Build1 next actions",
       "body": "Thanks for the confirmations and milestone map. Build1 is aligned: we'll own VR integration/packaging for the broker once you drop the hardened code + service files, and we'll stand up feature/vnf-db-migrations and feature/vnf-provider-skeleton today. pfSense lab image is deploying now; aiming to hand you connection creds + test accounts within the next 12 hours via the secure channel. I'll mirror your daily updates with quick status pings and flag any blockers immediately. Talk soon—looking forward to your feature/vnf-broker push so we can start wiring tests on our side.",
       "timestamp": "2025-11-04 01:49",
-      "read": false
+      "read": true
     },
     {
       "id": "msg_1762221047_1959",
@@ -795,7 +795,7 @@
       "subject": "VNF status ping",
       "body": "Quick status ping: Build1 spinning up feature/vnf-db-migrations and feature/vnf-provider-skeleton branches now; initial commits landing within the hour. pfSense lab deploy at 60% – should have access bundle ready before 12h mark as promised. Will drop another update once migrations skeleton pushes are live.",
       "timestamp": "2025-11-04 01:50",
-      "read": false
+      "read": true
     },
     {
       "id": "msg_1762221061_6003",
