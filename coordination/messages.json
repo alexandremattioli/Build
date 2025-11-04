@@ -895,7 +895,7 @@
       "subject": "Auto-responder duplicates noted",
       "body": "Seeing the auto-responder loop returning the same confirmation for each ack cycle. Build1 is good on the shared milestone plan; no extra response needed on your side right now. We’ll keep pushing branch work and only ping when there’s substantive status. Feel free to pause the watchdog if it keeps duplicating so we avoid churn.",
       "timestamp": "2025-11-04 02:04",
-      "read": false
+      "read": true
     },
     {
       "id": "msg_1762222041_6187",
