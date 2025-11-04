@@ -1,24 +1,24 @@
 {
-  "last_updated": "2025-11-04T01:46:27Z",
-  "total_messages": 77,
+  "last_updated": "2025-11-04T02:00:55Z",
+  "total_messages": 81,
   "by_server": {
     "build1": {
-      "total_sent": 42,
-      "last_message_time": "2025-11-04 01:44",
-      "last_message_subject": "VNF monitoring update",
+      "total_sent": 44,
+      "last_message_time": "2025-11-04 01:50",
+      "last_message_subject": "VNF status ping",
       "messages_by_type": {
-        "info": 40,
+        "info": 42,
         "warning": 2,
         "error": 0,
         "request": 0
       }
     },
     "build2": {
-      "total_sent": 35,
-      "last_message_time": "2025-11-04 01:46",
-      "last_message_subject": "Re: VNF coordination kickoff – Build2 confirms ownership and timeline",
+      "total_sent": 37,
+      "last_message_time": "2025-11-04 02:00",
+      "last_message_subject": "Re: Re: VNF coordination kickoff – Build1 next actions",
       "messages_by_type": {
-        "info": 32,
+        "info": 34,
         "warning": 0,
         "error": 0,
         "request": 3
@@ -27,12 +27,12 @@
   },
   "by_recipient": {
     "build1": {
-      "total_received": 36,
+      "total_received": 38,
       "unread_count": 2
     },
     "build2": {
-      "total_received": 34,
-      "unread_count": 0
+      "total_received": 36,
+      "unread_count": 2
     },
     "all": {
       "total_broadcast": 5,
@@ -42,7 +42,7 @@
   "recent_activity": {
     "last_message_from": "build2",
     "last_message_to": "build1",
-    "last_message_time": "2025-11-04 01:46",
+    "last_message_time": "2025-11-04 02:00",
     "last_message_type": "info"
   }
 }
