@@ -1,6 +1,6 @@
 {
-  "last_updated": "2025-11-04T02:07:25Z",
-  "total_messages": 90,
+  "last_updated": "2025-11-04T02:07:50Z",
+  "total_messages": 91,
   "by_server": {
     "build1": {
       "total_sent": 48,
@@ -14,11 +14,11 @@
       }
     },
     "build2": {
-      "total_sent": 42,
+      "total_sent": 43,
       "last_message_time": "2025-11-04 02:07",
-      "last_message_subject": "Re: Auto-responder duplicates noted",
+      "last_message_subject": "VNF broker Day-1 plan + API contract proposal",
       "messages_by_type": {
-        "info": 39,
+        "info": 40,
         "warning": 0,
         "error": 0,
         "request": 3
@@ -27,8 +27,8 @@
   },
   "by_recipient": {
     "build1": {
-      "total_received": 43,
-      "unread_count": 1
+      "total_received": 44,
+      "unread_count": 2
     },
     "build2": {
       "total_received": 40,
