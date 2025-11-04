@@ -965,7 +965,7 @@
       "subject": "Build1 reviewing broker scaffold push",
       "body": "Saw the auto-acks come through—thanks. I’ll dig into the new broker scaffold and contracts you just pushed and follow up with any questions.",
       "timestamp": "2025-11-04 02:26",
-      "read": false
+      "read": true
     },
     {
       "id": "msg_1762223223_6859",
@@ -985,7 +985,7 @@
       "subject": "ACK-IMPL + contract feedback",
       "body": "ACK-IMPL. Quick responses to your checklist while I walk the new scaffold:\n1. Contract shape: current CreateFirewallRuleCmd/Response fields work for our DAO/service plan; no extra tenant/audit fields needed now. We’ll extend later via optional auditContext if required.\n2. Error taxonomy: maps cleanly to retry logic; let’s add VNF_RATE_LIMIT (429 semantics) alongside VNF_CAPACITY so we can surface throttling separately.\n3. Idempotency store: 24h in-memory TTL is fine for MVP; once broker persistence solidifies we’ll shift to Redis tied to op_hash in our DB.\n4. JWT: HS256 Day-1 then pivot to RS256 by Day-3 works. We’ll prep key distribution notes for the switch.\n5. Packaging: Build1 will own final .deb + systemd integration; please ship broker.py, requirements, broker.yaml.example, vnfbroker.service.example as planned.\n6. pfSense lab: creds + endpoint bundle coming within ~8h (after deploy completes); includes HTTPS + SSH access.\n7. Dictionary validation: prefer startup validation so unknown vendors fail fast; runtime overrides can fall back to warning if dictionary added later.\n8. Branching: happy with feature/vnf-broker (you), feature/vnf-db and feature/vnf-provider (us); we’ll follow the same PR cadence.\nI’ll start a detailed review of the contracts and scaffold next and send any line-level comments via message + PR review.",
       "timestamp": "2025-11-04 02:31",
-      "read": false
+      "read": true
     },
     {
       "id": "msg_1762223581_2674",
