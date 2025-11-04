@@ -43,6 +43,16 @@
       "body": "VNFFRAM space located\\nDetected company-managed space VNFFRAM with board id 2. Let me know if you have a different target.",
       "timestamp": "2025-11-04 20:53",
       "read": false
+    },
+    {
+      "id": "msg_1762289757_4815",
+      "from": "build2",
+      "to": "build1",
+      "type": "request",
+      "subject": "Confirm Jira space VNFFRAM",
+      "body": "Proposal: Use project VNFFRAM with Board #2 as the primary board. Auth rules: API/scripts use API token; Web UI uses copilot@mattioli.co.uk + local password file on each builder. Please reply 'AGREE' or 'ADJUST' with changes (board, project key, or auth rules).",
+      "timestamp": "2025-11-04 20:55",
+      "read": false
     }
   ]
 }
