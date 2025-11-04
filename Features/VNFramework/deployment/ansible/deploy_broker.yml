@@ -1,0 +1,170 @@
+---
+# Ansible playbook to deploy VNF Broker to Virtual Router
+# Usage: ansible-playbook -i inventory.ini deploy_broker.yml
+
+- name: Deploy VNF Broker Service
+  hosts: virtual_routers
+  become: yes
+  vars:
+    broker_version: "1.0.0"
+    broker_user: "vnfbroker"
+    broker_home: "/opt/vnfbroker"
+    broker_port: 8443
+    redis_host: "localhost"
+    redis_port: 6379
+    jwt_secret: "{{ lookup('env', 'BROKER_JWT_SECRET') }}"
+    
+  tasks:
+    - name: Create VNF Broker user
+      user:
+        name: "{{ broker_user }}"
+        system: yes
+        home: "{{ broker_home }}"
+        shell: /bin/bash
+        state: present
+        
+    - name: Install system dependencies
+      apt:
+        name:
+          - python3.11
+          - python3.11-venv
+          - python3-pip
+          - redis-server
+          - nginx
+        state: present
+        update_cache: yes
+        
+    - name: Create broker directories
+      file:
+        path: "{{ item }}"
+        state: directory
+        owner: "{{ broker_user }}"
+        group: "{{ broker_user }}"
+        mode: '0755'
+      loop:
+        - "{{ broker_home }}"
+        - "{{ broker_home }}/app"
+        - "{{ broker_home }}/dictionaries"
+        - "{{ broker_home }}/tls"
+        - "{{ broker_home }}/logs"
+        - /etc/vnfbroker
+        - /etc/vnfbroker/dictionaries
+        - /etc/vnfbroker/tls
+        
+    - name: Copy broker application files
+      copy:
+        src: "{{ item.src }}"
+        dest: "{{ broker_home }}/app/{{ item.dest }}"
+        owner: "{{ broker_user }}"
+        group: "{{ broker_user }}"
+        mode: '0644'
+      loop:
+        - { src: '../../broker-scaffold/broker_integrated.py', dest: 'broker.py' }
+        - { src: '../../broker-scaffold/dict_engine.py', dest: 'dict_engine.py' }
+        - { src: '../../broker-scaffold/redis_store.py', dest: 'redis_store.py' }
+        - { src: '../../broker-scaffold/requirements.txt', dest: 'requirements.txt' }
+        
+    - name: Copy VNF dictionaries
+      copy:
+        src: "{{ item }}"
+        dest: "/etc/vnfbroker/dictionaries/"
+        owner: "{{ broker_user }}"
+        group: "{{ broker_user }}"
+        mode: '0644'
+      with_fileglob:
+        - "../../dictionaries/*.yaml"
+        
+    - name: Create Python virtual environment
+      command: python3.11 -m venv {{ broker_home }}/venv
+      args:
+        creates: "{{ broker_home }}/venv"
+      become_user: "{{ broker_user }}"
+      
+    - name: Install Python dependencies
+      pip:
+        requirements: "{{ broker_home }}/app/requirements.txt"
+        virtualenv: "{{ broker_home }}/venv"
+        virtualenv_python: python3.11
+      become_user: "{{ broker_user }}"
+      
+    - name: Generate self-signed TLS certificate (if not provided)
+      command: >
+        openssl req -x509 -nodes -days 365 -newkey rsa:2048
+        -keyout /etc/vnfbroker/tls/key.pem
+        -out /etc/vnfbroker/tls/cert.pem
+        -subj "/C=US/ST=State/L=City/O=Organization/CN={{ ansible_hostname }}"
+      args:
+        creates: /etc/vnfbroker/tls/cert.pem
+        
+    - name: Set TLS certificate permissions
+      file:
+        path: "{{ item }}"
+        owner: "{{ broker_user }}"
+        group: "{{ broker_user }}"
+        mode: '0600'
+      loop:
+        - /etc/vnfbroker/tls/key.pem
+        - /etc/vnfbroker/tls/cert.pem
+        
+    - name: Configure Redis
+      lineinfile:
+        path: /etc/redis/redis.conf
+        regexp: "{{ item.regexp }}"
+        line: "{{ item.line }}"
+        state: present
+      loop:
+        - { regexp: '^bind', line: 'bind 127.0.0.1' }
+        - { regexp: '^maxmemory-policy', line: 'maxmemory-policy allkeys-lru' }
+        - { regexp: '^maxmemory', line: 'maxmemory 256mb' }
+      notify: Restart Redis
+      
+    - name: Create broker configuration file
+      template:
+        src: broker_config.env.j2
+        dest: /etc/vnfbroker/broker.env
+        owner: "{{ broker_user }}"
+        group: "{{ broker_user }}"
+        mode: '0600'
+        
+    - name: Install systemd service
+      template:
+        src: vnfbroker.service.j2
+        dest: /etc/systemd/system/vnfbroker.service
+        mode: '0644'
+      notify: Reload systemd
+      
+    - name: Enable and start VNF Broker service
+      systemd:
+        name: vnfbroker
+        enabled: yes
+        state: started
+        daemon_reload: yes
+        
+    - name: Wait for broker to be ready
+      uri:
+        url: "https://localhost:{{ broker_port }}/health"
+        validate_certs: no
+        status_code: 200
+      register: result
+      until: result.status == 200
+      retries: 10
+      delay: 3
+      
+    - name: Display broker status
+      debug:
+        msg: "VNF Broker is running at https://{{ ansible_hostname }}:{{ broker_port }}"
+        
+  handlers:
+    - name: Restart Redis
+      systemd:
+        name: redis-server
+        state: restarted
+        
+    - name: Reload systemd
+      systemd:
+        daemon_reload: yes
+        
+    - name: Restart VNF Broker
+      systemd:
+        name: vnfbroker
+        state: restarted

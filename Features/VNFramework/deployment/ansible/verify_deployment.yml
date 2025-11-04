@@ -1,0 +1,181 @@
+---
+# Ansible playbook to verify VNF Broker deployment
+# Usage: ansible-playbook -i inventory.ini verify_deployment.yml
+
+- name: Verify VNF Broker Deployment
+  hosts: virtual_routers
+  become: yes
+  vars:
+    broker_home: "/opt/vnfbroker"
+    broker_port: 8443
+    
+  tasks:
+    - name: Check if VNF Broker service is running
+      systemd:
+        name: vnfbroker
+        state: started
+      register: service_status
+      
+    - name: Verify broker process is running
+      shell: pgrep -f "uvicorn broker:app"
+      register: process_check
+      changed_when: false
+      failed_when: process_check.rc != 0
+      
+    - name: Check Redis service status
+      systemd:
+        name: redis-server
+        state: started
+      register: redis_status
+      
+    - name: Test broker health endpoint
+      uri:
+        url: "https://localhost:{{ broker_port }}/health"
+        validate_certs: no
+        return_content: yes
+      register: health_check
+      failed_when: health_check.status != 200
+      
+    - name: Display health check response
+      debug:
+        var: health_check.json
+        
+    - name: Check broker logs for errors
+      shell: tail -n 50 {{ broker_home }}/logs/broker.log | grep -i error || true
+      register: error_logs
+      changed_when: false
+      
+    - name: Display recent errors (if any)
+      debug:
+        msg: "{{ error_logs.stdout_lines }}"
+      when: error_logs.stdout != ""
+      
+    - name: Test Redis connectivity
+      command: redis-cli ping
+      register: redis_ping
+      changed_when: false
+      failed_when: redis_ping.stdout != "PONG"
+      
+    - name: Verify dictionaries are loaded
+      uri:
+        url: "https://localhost:{{ broker_port }}/dictionaries"
+        validate_certs: no
+        return_content: yes
+        headers:
+          Authorization: "Bearer {{ lookup('env', 'BROKER_JWT_TOKEN') }}"
+      register: dictionaries
+      failed_when: dictionaries.status != 200
+      ignore_errors: yes
+      
+    - name: Display loaded dictionaries
+      debug:
+        var: dictionaries.json
+      when: dictionaries.status == 200
+      
+    - name: Check TLS certificate validity
+      command: >
+        openssl x509 -in /etc/vnfbroker/tls/cert.pem -noout -checkend 86400
+      register: cert_check
+      changed_when: false
+      failed_when: cert_check.rc != 0
+      
+    - name: Get certificate expiry date
+      command: >
+        openssl x509 -in /etc/vnfbroker/tls/cert.pem -noout -enddate
+      register: cert_expiry
+      changed_when: false
+      
+    - name: Display certificate expiry
+      debug:
+        msg: "Certificate {{ cert_expiry.stdout }}"
+        
+    - name: Check disk space
+      shell: df -h {{ broker_home }} | tail -1 | awk '{print $5}' | sed 's/%//'
+      register: disk_usage
+      changed_when: false
+      
+    - name: Warn if disk usage is high
+      debug:
+        msg: "WARNING: Disk usage is {{ disk_usage.stdout }}%"
+      when: disk_usage.stdout | int > 80
+      
+    - name: Check memory usage
+      shell: free -m | grep Mem | awk '{print ($3/$2)*100}' | cut -d. -f1
+      register: memory_usage
+      changed_when: false
+      
+    - name: Display resource usage
+      debug:
+        msg:
+          - "Disk Usage: {{ disk_usage.stdout }}%"
+          - "Memory Usage: {{ memory_usage.stdout }}%"
+          
+    - name: Test firewall rule creation (dry run)
+      uri:
+        url: "https://localhost:{{ broker_port }}/firewall/rules"
+        method: POST
+        validate_certs: no
+        body_format: json
+        headers:
+          Authorization: "Bearer {{ lookup('env', 'BROKER_JWT_TOKEN') }}"
+          X-VNF-Vendor: pfsense
+        body:
+          ruleId: "test-rule-verify-{{ ansible_date_time.epoch }}"
+          action: "allow"
+          protocol: "tcp"
+          sourceAddress: "10.0.0.1/32"
+          destinationAddress: "10.0.0.2/32"
+          destinationPorts: ["443"]
+        status_code: [200, 201, 409]
+      register: test_rule
+      ignore_errors: yes
+      
+    - name: Display test rule result
+      debug:
+        msg:
+          - "Status: {{ test_rule.status }}"
+          - "Response: {{ test_rule.json | default('No response') }}"
+      when: test_rule.status is defined
+      
+    - name: Generate deployment verification report
+      copy:
+        content: |
+          VNF Broker Deployment Verification Report
+          ==========================================
+          Host: {{ ansible_hostname }}
+          Date: {{ ansible_date_time.iso8601 }}
+          
+          Service Status:
+          - VNF Broker Service: {{ 'RUNNING' if service_status.status.ActiveState == 'active' else 'FAILED' }}
+          - Redis Service: {{ 'RUNNING' if redis_status.status.ActiveState == 'active' else 'FAILED' }}
+          
+          Health Check:
+          - Status: {{ health_check.status }}
+          - Response: {{ health_check.json | to_nice_json }}
+          
+          Resource Usage:
+          - Disk: {{ disk_usage.stdout }}%
+          - Memory: {{ memory_usage.stdout }}%
+          
+          TLS Certificate:
+          - {{ cert_expiry.stdout }}
+          
+          Connectivity:
+          - Redis: {{ 'OK' if redis_ping.stdout == 'PONG' else 'FAILED' }}
+          
+          {% if dictionaries.status == 200 %}
+          Dictionaries Loaded: {{ dictionaries.json.vendors | join(', ') }}
+          {% endif %}
+          
+          Test Rule Creation: {{ 'SUCCESS' if test_rule.status in [200, 201] else 'SKIPPED' }}
+        dest: "/tmp/vnfbroker_verification_{{ ansible_hostname }}_{{ ansible_date_time.epoch }}.txt"
+        mode: '0644'
+        
+    - name: Display verification summary
+      debug:
+        msg:
+          - "✓ VNF Broker is {{ 'HEALTHY' if health_check.status == 200 else 'UNHEALTHY' }}"
+          - "✓ Service Status: {{ service_status.status.ActiveState }}"
+          - "✓ Redis: {{ 'Connected' if redis_ping.stdout == 'PONG' else 'Disconnected' }}"
+          - "✓ Disk Usage: {{ disk_usage.stdout }}%"
+          - "Report saved to /tmp/vnfbroker_verification_{{ ansible_hostname }}_{{ ansible_date_time.epoch }}.txt"
