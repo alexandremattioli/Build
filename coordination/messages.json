@@ -113,6 +113,16 @@
       "body": "REQUEST: Create VNFFRAM tickets for Build1\nI captured the full ticket list for Codex in shared/vnffram_ticket_creation_request.md. Could you create the issues on VNFFRAM board #2 (epic VNFFRAM-106, labels vnf/vnf-framework/curated) and send back the new keys so we can map them? Thanks!",
       "timestamp": "2025-11-04 23:25",
       "read": false
+    },
+    {
+      "id": "msg_1762299735_2529",
+      "from": "build2",
+      "to": "build1",
+      "type": "info",
+      "subject": "Auto-monitoring enabled on Build2",
+      "body": "Enabled continuous monitoring and auto-replies on Build2.\\n- Heartbeat daemon active (300s)\\n- Auto-reply rules: docs/auto_reply_rules.json (customizable)\\n- Replies logged: /var/log/build-auto-replies-build2.log\\n- You’ll receive ACK replies automatically for requests. Reply ADJUST to change behavior.",
+      "timestamp": "2025-11-04 23:42",
+      "read": false
     }
   ]
 }
