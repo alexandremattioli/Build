@@ -1,0 +1,167 @@
+#!/bin/bash
+# VNF Broker Production Dictionary for pfSense
+# This dictionary maps generic VNF operations to pfSense 2.7+ REST API calls
+
+vendor: "pfSense"
+version: "2.7+"
+api_base_url: "https://{{ vnf_mgmt_ip }}/api/v1"
+authentication:
+  type: "basic"
+  credentials:
+    username: "{{ vnf_username }}"
+    password: "{{ vnf_password }}"
+timeout_seconds: 30
+retry_attempts: 3
+
+operations:
+  # Firewall Rule Operations
+  create_firewall_rule:
+    method: "POST"
+    endpoint: "/firewall/rule"
+    request_template: |
+      {
+        "type": "{{ 'pass' if action == 'allow' else 'block' }}",
+        "interface": "wan",
+        "ipprotocol": "inet",
+        "protocol": "{{ protocol if protocol != 'any' else 'any' }}",
+        "src": "{{ sourceAddressing }}",
+        "dst": "{{ destinationAddressing }}",
+        {% if sourcePorts and sourcePorts != 'any' %}
+        "srcport": "{{ sourcePorts }}",
+        {% endif %}
+        {% if destinationPorts and destinationPorts != 'any' %}
+        "dstport": "{{ destinationPorts }}",
+        {% endif %}
+        "descr": "{{ description | default('VNF managed rule') }}",
+        "disabled": false,
+        "log": true,
+        "tracker": "{{ ruleId }}"
+      }
+    response_mapping:
+      vendor_ref: "$.data.id"
+      success_indicator: "$.code == 200"
+    error_mapping:
+      400: "VNF_INVALID"
+      401: "VNF_AUTH"
+      403: "VNF_AUTH"
+      404: "VNF_INVALID"
+      409: "VNF_CONFLICT"
+      429: "VNF_RATE_LIMIT"
+      500: "VNF_UPSTREAM"
+      502: "VNF_UNREACHABLE"
+      503: "VNF_CAPACITY"
+      504: "VNF_TIMEOUT"
+
+  delete_firewall_rule:
+    method: "DELETE"
+    endpoint: "/firewall/rule/{{ ruleId }}"
+    request_template: "{}"
+    response_mapping:
+      success_indicator: "$.code == 200"
+    error_mapping:
+      400: "VNF_INVALID"
+      401: "VNF_AUTH"
+      404: "VNF_INVALID"
+      500: "VNF_UPSTREAM"
+      504: "VNF_TIMEOUT"
+
+  # NAT Rule Operations
+  create_nat_rule:
+    method: "POST"
+    endpoint: "/firewall/nat/port_forward"
+    request_template: |
+      {
+        "interface": "wan",
+        "protocol": "{{ protocol }}",
+        "src": "{{ sourceAddress }}",
+        "dst": "{{ destinationAddress }}",
+        "dstport": "{{ port }}",
+        "target": "{{ translatedAddress }}",
+        "local-port": "{{ translatedPort }}",
+        "descr": "{{ description | default('VNF managed NAT') }}",
+        "disabled": false,
+        "tracker": "{{ ruleId }}"
+      }
+    response_mapping:
+      vendor_ref: "$.data.id"
+      success_indicator: "$.code == 200"
+    error_mapping:
+      400: "VNF_INVALID"
+      401: "VNF_AUTH"
+      409: "VNF_CONFLICT"
+      429: "VNF_RATE_LIMIT"
+      500: "VNF_UPSTREAM"
+      503: "VNF_CAPACITY"
+      504: "VNF_TIMEOUT"
+
+  delete_nat_rule:
+    method: "DELETE"
+    endpoint: "/firewall/nat/port_forward/{{ ruleId }}"
+    request_template: "{}"
+    response_mapping:
+      success_indicator: "$.code == 200"
+    error_mapping:
+      400: "VNF_INVALID"
+      401: "VNF_AUTH"
+      404: "VNF_INVALID"
+      500: "VNF_UPSTREAM"
+
+  # VPN Connection Operations (IPsec)
+  create_vpn_connection:
+    method: "POST"
+    endpoint: "/vpn/ipsec/phase1"
+    request_template: |
+      {
+        "iketype": "ikev2",
+        "protocol": "inet",
+        "interface": "wan",
+        "remote-gateway": "{{ remoteGateway }}",
+        "authentication_method": "pre_shared_key",
+        "preshared_key": "{{ preSharedKey }}",
+        "myid_type": "address",
+        "myid_data": "{{ localId }}",
+        "peerid_type": "address",
+        "peerid_data": "{{ remoteId }}",
+        "encryption": [{"name": "aes256", "keylen": "256"}],
+        "hash": ["sha256"],
+        "dhgroup": ["14"],
+        "lifetime": "28800",
+        "descr": "{{ description | default('VNF managed VPN') }}",
+        "disabled": false
+      }
+    response_mapping:
+      vendor_ref: "$.data.ikeid"
+      success_indicator: "$.code == 200"
+    error_mapping:
+      400: "VNF_INVALID"
+      401: "VNF_AUTH"
+      409: "VNF_CONFLICT"
+      500: "VNF_UPSTREAM"
+      504: "VNF_TIMEOUT"
+
+  delete_vpn_connection:
+    method: "DELETE"
+    endpoint: "/vpn/ipsec/phase1/{{ vendorRef }}"
+    request_template: "{}"
+    response_mapping:
+      success_indicator: "$.code == 200"
+    error_mapping:
+      400: "VNF_INVALID"
+      401: "VNF_AUTH"
+      404: "VNF_INVALID"
+      500: "VNF_UPSTREAM"
+
+# Apply configuration changes (pfSense requires explicit apply)
+post_operation_hooks:
+  - name: "apply_changes"
+    method: "POST"
+    endpoint: "/firewall/apply"
+    condition: "operation in ['create_firewall_rule', 'delete_firewall_rule', 'create_nat_rule', 'delete_nat_rule']"
+    ignore_errors: false
+
+# Health check endpoint
+health_check:
+  endpoint: "/system/status"
+  method: "GET"
+  success_indicator: "$.code == 200"
+  timeout_seconds: 5
