@@ -69,10 +69,11 @@
             "VNF_UPSTREAM",
             "VNF_UNREACHABLE",
             "VNF_CAPACITY",
+            "VNF_RATE_LIMIT",
             "BROKER_INVALID_REQUEST",
             "BROKER_INTERNAL"
           ],
-          "description": "Standard error code for categorization and retry logic"
+          "description": "Standard error code for categorization and retry logic. VNF_RATE_LIMIT indicates HTTP 429 throttling responses."
         },
         "message": {
           "type": "string",

@@ -1,0 +1,146 @@
+# VNF Broker Configuration
+# Production configuration for the VNF broker service
+# Copy to /etc/vnfbroker/broker.yaml and customize
+
+server:
+  host: "0.0.0.0"
+  port: 8443
+  workers: 4
+  reload: false
+  
+  # TLS configuration (mTLS termination)
+  tls:
+    enabled: true
+    cert: "/etc/vnfbroker/tls/server.crt"
+    key: "/etc/vnfbroker/tls/server.key"
+    # Client CA bundle for mutual TLS
+    clientCA: "/etc/vnfbroker/ca/clients/ca-bundle.crt"
+    # Verify client certificates
+    verifyClient: true
+
+auth:
+  # JWT algorithm: HS256 (symmetric) or RS256 (asymmetric)
+  jwtAlgorithm: "RS256"
+  
+  # For HS256 (Day-1 testing):
+  # jwtSecret: "${BROKER_JWT_SECRET}"
+  
+  # For RS256 (production):
+  jwtPrivateKey: "/etc/vnfbroker/jwt/private.pem"
+  jwtPublicKey: "/etc/vnfbroker/jwt/public.pem"
+  
+  # Token expiry in seconds
+  jwtExpiry: 300  # 5 minutes
+  
+  # Required scopes
+  readScope: "vnf:r"
+  writeScope: "vnf:rw"
+
+dictionaries:
+  # Path to vendor dictionary files
+  path: "/etc/vnfbroker/dictionaries"
+  
+  # List of supported vendors (must have corresponding .yaml files)
+  vendors:
+    - pfsense
+    - fortigate
+    - paloalto
+    - vyos
+  
+  # Validation mode
+  # - startup: Fail if any vendor dictionary is missing or invalid
+  # - runtime: Warn on startup, fail on first use of invalid dict
+  validation: "startup"
+  
+  # Auto-reload dictionaries on file change (dev mode only)
+  autoReload: false
+
+idempotency:
+  # Backend: memory (dev) or redis (production)
+  backend: "redis"
+  
+  # TTL for idempotency keys (seconds)
+  ttl: 86400  # 24 hours
+  
+  # Redis configuration (when backend=redis)
+  redis:
+    url: "redis://localhost:6379/0"
+    password: ""
+    maxConnections: 10
+    socketTimeout: 5
+    socketConnectTimeout: 3
+
+logging:
+  # Log level: DEBUG, INFO, WARNING, ERROR, CRITICAL
+  level: "INFO"
+  
+  # Log format: json or text
+  format: "json"
+  
+  # Log outputs
+  output: "/var/log/vnfbroker/broker.log"
+  accessLog: "/var/log/vnfbroker/access.log"
+  
+  # Redact secrets in logs (passwords, tokens, keys)
+  redactSecrets: true
+  
+  # Include trace IDs for request correlation
+  includeTraceId: true
+  
+  # Log rotation (handled by logrotate externally)
+  # See /etc/logrotate.d/vnfbroker
+
+timeouts:
+  # Connection timeout (ms)
+  connect: 3000
+  
+  # Read timeout (ms)
+  read: 10000
+  
+  # Total request timeout (ms)
+  total: 20000
+
+retries:
+  # Maximum retry attempts for retryable errors
+  maxAttempts: 2
+  
+  # Exponential backoff delays (ms)
+  backoffMs: [100, 500, 1500]
+  
+  # Jitter factor (0.0-1.0) to randomize backoff
+  jitter: 0.1
+  
+  # HTTP status codes that trigger retries
+  retryableCodes: [429, 500, 502, 503, 504]
+
+vnf:
+  # Default VNF connection settings (can be overridden per-vendor)
+  defaultHost: "${VNF_HOST}"
+  defaultPort: 443
+  
+  # Verify SSL certificates for VNF connections
+  verifySsl: true
+  
+  # CA bundle for VNF certificate verification
+  caBundle: "/etc/vnfbroker/ca/vnf/ca-bundle.crt"
+
+metrics:
+  # Enable Prometheus metrics endpoint
+  enabled: true
+  
+  # Metrics endpoint path
+  path: "/metrics"
+  
+  # Include detailed per-vendor metrics
+  perVendorMetrics: true
+
+health:
+  # Health check endpoint
+  path: "/health"
+  
+  # Include detailed component health
+  detailed: true
+
+# Environment-specific overrides
+# Use ${VAR} syntax to reference environment variables
+# Example: jwtSecret: "${BROKER_JWT_SECRET}"

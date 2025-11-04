@@ -1,0 +1,51 @@
+[Unit]
+Description=VNF Broker Service
+Documentation=https://github.com/alexandremattioli/Build/tree/main/Features/VNFramework
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=vnf
+Group=vnf
+WorkingDirectory=/opt/vnfbroker
+
+# Environment
+Environment="PYTHONUNBUFFERED=1"
+Environment="BROKER_CONFIG=/etc/vnfbroker/broker.yaml"
+EnvironmentFile=-/etc/default/vnfbroker
+
+# Security
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/var/log/vnfbroker
+
+# Resource limits
+LimitNOFILE=65536
+MemoryLimit=1G
+
+# Execution
+ExecStart=/opt/vnfbroker/venv/bin/python -m uvicorn broker:app \
+    --host 0.0.0.0 \
+    --port 8443 \
+    --ssl-keyfile /etc/vnfbroker/tls/server.key \
+    --ssl-certfile /etc/vnfbroker/tls/server.crt \
+    --ssl-ca-certs /etc/vnfbroker/ca/clients/ca-bundle.crt \
+    --workers 4 \
+    --log-config /etc/vnfbroker/logging.yaml
+
+# Restart policy
+Restart=on-failure
+RestartSec=5s
+StartLimitInterval=300s
+StartLimitBurst=5
+
+# Graceful shutdown
+KillMode=mixed
+KillSignal=SIGTERM
+TimeoutStopSec=30s
+
+[Install]
+WantedBy=multi-user.target
