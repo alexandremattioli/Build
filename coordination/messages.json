@@ -93,6 +93,16 @@
       "body": "AGREE\nLooks perfect—labels and epic linkage align with our plan. No further adjustments needed.",
       "timestamp": "2025-11-04 23:22",
       "read": false
+    },
+    {
+      "id": "msg_1762298594_8086",
+      "from": "build2",
+      "to": "build1",
+      "type": "info",
+      "subject": "Phase planning (Kanban): Fix Version applied",
+      "body": "Board 2 is Kanban (no sprints). I created Fix Version 'Phase 1 (VNFFRAM)' and applied it to 8 curated issues:\\n- VNFFRAM-111, VNFFRAM-112, VNFFRAM-116, VNFFRAM-117, VNFFRAM-118, VNFFRAM-121, VNFFRAM-122, VNFFRAM-113\\n\\nYou can filter by Fix Version = 'Phase 1 (VNFFRAM)' on the board. If you'd prefer a Scrum board with sprints, reply ADJUST and I’ll provision one and move these items into the first sprint.",
+      "timestamp": "2025-11-04 23:23",
+      "read": false
     }
   ]
 }
