@@ -99,11 +99,13 @@ HELPER_SRC="/root/Build/scripts/sendmessages"
 HELPER_DST="/usr/local/bin/sendmessages"
 ln -sf "$HELPER_SRC" "$HELPER_DST"
 ln -sf "$HELPER_DST" /usr/local/bin/sm
+ln -sf /root/Build/scripts/cm /usr/local/bin/cm
 cat <<'EOF' >/etc/profile.d/build-messaging.sh
 alias sm='sendmessages'
+alias cm='/root/Build/scripts/cm'
 EOF
 chmod 644 /etc/profile.d/build-messaging.sh 2>/dev/null || true
-echo "✓ Messaging helper installed (use 'sm')."
+echo "✓ Messaging helpers installed (use 'sm' and 'cm')."
 
 # 5. Read entire conversation thread (REQUIRED on first setup)
 echo "[5/8] Reading conversation thread..."

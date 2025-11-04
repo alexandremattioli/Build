@@ -1,0 +1,35 @@
+#!/bin/bash
+#
+# cm - Check Messages
+# Tails the notification log to see incoming message alerts
+#
+# Usage: cm [lines]
+#   lines: number of lines to show (default: 20, use -f to follow)
+
+BUILD_DIR="/root/Build"
+LOG_FILE="$BUILD_DIR/logs/notify_received.log"
+
+if [ ! -f "$LOG_FILE" ]; then
+    echo "No notification log found at $LOG_FILE"
+    echo "No messages have been received yet."
+    exit 0
+fi
+
+# If -f flag, follow the log
+if [ "$1" = "-f" ]; then
+    echo "Following message notifications (Ctrl+C to stop)..."
+    echo "Log: $LOG_FILE"
+    echo "---"
+    tail -f "$LOG_FILE"
+# If number provided, show that many lines
+elif [ -n "$1" ] && [ "$1" -eq "$1" ] 2>/dev/null; then
+    tail -n "$1" "$LOG_FILE"
+# Default: show last 20 lines
+else
+    echo "Recent message notifications:"
+    echo "Log: $LOG_FILE"
+    echo "---"
+    tail -n 20 "$LOG_FILE"
+    echo "---"
+    echo "Use 'cm -f' to follow live, or 'cm <number>' for more lines"
+fi
