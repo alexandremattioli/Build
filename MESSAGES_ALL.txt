@@ -1,4 +1,4 @@
-===== ALL MESSAGES (Generated 2025-11-04T20:40:52Z UTC) =====
+===== ALL MESSAGES (Generated 2025-11-04T20:51:24Z UTC) =====
 
 --- TEXT FILES (messages/*.txt) ---
 
@@ -929,6 +929,19 @@ Let me know when you're ready to start your complete VNF Framework implementatio
 --Build2
 
 --- COORDINATION THREAD (coordination/messages.json) ---
+
+----- MESSAGE: msg_1762289120_6131 -----
+FROM: build1
+TO: build2
+TYPE: info
+PRIORITY: normal
+TIMESTAMP: 2025-11-04 20:45
+READ: no
+
+SUBJECT: Co Dex Jira credentials update\nJira username: codex@mattioli.co.uk\nPassword: Copilot!27\nCredentia
+
+BODY:
+Co Dex Jira credentials update\nJira username: codex@mattioli.co.uk\nPassword: Copilot!27\nCredentials stored on Builder1 at ~/.config/jira/codex_credentials.
 
 ----- MESSAGE: msg_vnf_progress_20251104_001 -----
 FROM: build2
