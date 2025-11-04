@@ -167,8 +167,8 @@ update_heartbeat() {
        --arg disk "$DISK_FREE" \
        --arg server "$SERVER_ID" \
        '.server = $server |
-        .timestamp = $ts | \
-        .uptime_seconds = ($uptime | tonumber) | \
+        .timestamp = $ts |
+        .uptime_seconds = ($uptime | tonumber) |
         .healthy = true |
         .system.cpu_usage = ($cpu | tonumber) |
         .system.memory_used_gb = ($mem | tonumber) |

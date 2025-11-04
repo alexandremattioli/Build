@@ -1,17 +1,17 @@
 {
-  "timestamp": "2025-10-29T00:00:00Z",
+  "timestamp": "2025-11-04T00:06:54Z",
   "overall_status": "healthy",
   "servers": [
     {
       "server": "build1",
-      "status": "success",
+      "status": "idle",
       "ip": "10.1.3.175",
       "manager": "Codex",
-      "healthy": false,
+      "healthy": true,
       "metrics": {
-        "cpu_usage": 0.0,
-        "memory_used_gb": 0.0,
-        "disk_free_gb": 0.0
+        "cpu_usage": 0.3,
+        "memory_used_gb": 7,
+        "disk_free_gb": 25
       }
     },
     {
@@ -21,9 +21,9 @@
       "manager": "GitHub Copilot",
       "healthy": true,
       "metrics": {
-        "cpu_usage": 0.0,
-        "memory_used_gb": 0.0,
-        "disk_free_gb": 0.0
+        "cpu_usage": 0,
+        "memory_used_gb": 0,
+        "disk_free_gb": 0
       }
     },
     {
@@ -52,7 +52,7 @@
     }
   ],
   "jobs": {
-    "queued": 0,
+    "queued": 1,
     "running": 0,
     "completed_today": 0,
     "failed_today": 0
@@ -62,22 +62,36 @@
     "total_builds": 2,
     "successful_builds": 2,
     "failed_builds": 0,
-    "success_rate": 100.00,
+    "success_rate": 100.0,
     "avg_build_time_seconds": 346,
-    "servers_online": 1,
+    "servers_online": 2,
     "servers_total": 4,
-    "avg_cpu_usage": 0,
-    "avg_memory_gb": 0,
+    "avg_cpu_usage": 0.07,
+    "avg_memory_gb": 1.75,
     "queued_jobs": 1,
-    "running_jobs": 1
+    "running_jobs": 0
   },
-  "updated_at": "2025-11-03T23:54:21Z",
+  "updated_at": "2025-11-04T00:06:54Z",
   "history": [
     {
       "timestamp": "2025-11-03T23:54:21Z",
       "servers_online": 1,
-      "success_rate": 100.00,
+      "success_rate": 100.0,
       "avg_cpu": 0,
+      "queued_jobs": 1
+    },
+    {
+      "timestamp": "2025-11-03T23:58:19Z",
+      "servers_online": 2,
+      "success_rate": 100.0,
+      "avg_cpu": 0.07,
+      "queued_jobs": 1
+    },
+    {
+      "timestamp": "2025-11-04T00:06:54Z",
+      "servers_online": 2,
+      "success_rate": 100.0,
+      "avg_cpu": 0.07,
       "queued_jobs": 1
     }
   ]
