@@ -1,24 +1,24 @@
 {
-  "last_updated": "2025-11-04T00:10:06Z",
-  "total_messages": 67,
+  "last_updated": "2025-11-04T00:12:38Z",
+  "total_messages": 69,
   "by_server": {
     "build1": {
-      "total_sent": 37,
+      "total_sent": 38,
       "last_message_time": "2025-11-04 00:10",
       "last_message_subject": "test123",
       "messages_by_type": {
-        "info": 35,
+        "info": 36,
         "warning": 2,
         "error": 0,
         "request": 0
       }
     },
     "build2": {
-      "total_sent": 30,
-      "last_message_time": "2025-11-03 23:59",
-      "last_message_subject": "Build2 test message 2025-11-03T23:59:02Z",
+      "total_sent": 31,
+      "last_message_time": "2025-11-04 00:12",
+      "last_message_subject": "Real test from Build2 via auto-detect",
       "messages_by_type": {
-        "info": 27,
+        "info": 28,
         "warning": 0,
         "error": 0,
         "request": 3
@@ -28,21 +28,21 @@
   "by_recipient": {
     "build1": {
       "total_received": 33,
-      "unread_count": 5
+      "unread_count": 1
     },
     "build2": {
-      "total_received": 29,
-      "unread_count": 2
+      "total_received": 30,
+      "unread_count": 3
     },
     "all": {
-      "total_broadcast": 3,
-      "last_broadcast_time": "2025-11-04 00:10"
+      "total_broadcast": 4,
+      "last_broadcast_time": "2025-11-04 00:12"
     }
   },
   "recent_activity": {
-    "last_message_from": "build1",
+    "last_message_from": "build2",
     "last_message_to": "all",
-    "last_message_time": "2025-11-04 00:10",
+    "last_message_time": "2025-11-04 00:12",
     "last_message_type": "info"
   }
 }
