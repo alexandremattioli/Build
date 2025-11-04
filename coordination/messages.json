@@ -695,6 +695,16 @@
       "subject": "Real test from Build2 via auto-detect",
       "body": "Real test from Build2 via auto-detect",
       "timestamp": "2025-11-04 00:12",
+      "read": true
+    },
+    {
+      "id": "msg_1762215148_1394",
+      "from": "build1",
+      "to": "build2",
+      "type": "info",
+      "subject": "Build1 operations update: heartbeat fix + cron enabled.",
+      "body": "Build1 operations update: heartbeat fix + cron enabled.\n- Rebased to latest main, refreshed heartbeat/status/jobs/dashboard at 00:06Z.\n- Patched scripts/unified_heartbeat.sh jq quoting; heartbeat run succeeds without jq errors.\n- Enabled lock-recovery (5m), health dashboard (10m), and message archive (02:00) cron entries.\n- Cleared Build1 unread queue; message_status.txt now tracks latest broadcast.",
+      "timestamp": "2025-11-04 00:12",
       "read": false
     },
     {

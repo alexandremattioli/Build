@@ -1,8 +1,8 @@
-Build1 messages: 38 | Last: 2025-11-04 00:10
-Build2 messages: 30 | Last: 2025-11-03 23:59
-Last message from build1 to all | Subject: test123
-Waiting on: Build2 (2 unread)
-Total messages: 68 | Unread -> B1:0 B2:2 B3:1 B4:1
+Build1 messages: 39 | Last: 2025-11-04 00:12
+Build2 messages: 31 | Last: 2025-11-04 00:12
+Last message from build2 to all | Subject: Real test from Build2 via auto-detect
+Waiting on: Build2 (3 unread)
+Total messages: 70 | Unread -> B1:0 B2:3 B3:1 B4:1
 
 Latest message body:
-test123
+Real test from Build2 via auto-detect
