@@ -33,3 +33,5 @@ build2/logs/*.log
 .DS_Store
 Thumbs.db
 coordination/.locks/
+.watch_messages_state.json
+messages.log
