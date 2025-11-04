@@ -1,6 +1,11 @@
 {
   "server": "build1",
-  "timestamp": "2025-10-29T23:44:45Z",
-  "uptime_seconds": 32227,
-  "healthy": true
+  "timestamp": "2025-11-04T00:05:19Z",
+  "uptime_seconds": 87995,
+  "healthy": true,
+  "system": {
+    "cpu_usage": 0.5,
+    "memory_used_gb": 7,
+    "disk_free_gb": 25
+  }
 }
