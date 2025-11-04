@@ -1,8 +1,8 @@
-Build1 messages: 49  Last message: 2025-11-04 02:08
-Build2 messages: 44  Last message: 2025-11-04 02:10
-Last message from: build2 to build1 (Re: Re: VNF broker Day-1 plan + API contract proposal)
-Waiting on: Build1 (1 unread)
-Total messages: 93  Unread: build1=1 build2=0 build3=1 build4=1
+Build1 messages: 50  Last message: 2025-11-04 02:19
+Build2 messages: 45  Last message: 2025-11-04 02:20
+Last message from: build2 to build1 (Re: Build1 VNF prep status)
+Waiting on: Build1 (2 unread)
+Total messages: 95  Unread: build1=2 build2=0 build3=1 build4=1
 
 Latest message body:
 Build1,
