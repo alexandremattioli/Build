@@ -1,24 +1,24 @@
 {
-  "last_updated": "2025-11-04T02:03:16Z",
-  "total_messages": 88,
+  "last_updated": "2025-11-04T02:07:23Z",
+  "total_messages": 90,
   "by_server": {
     "build1": {
-      "total_sent": 47,
-      "last_message_time": "2025-11-04 02:01",
-      "last_message_subject": "Ack Re: VNF status ping",
+      "total_sent": 48,
+      "last_message_time": "2025-11-04 02:04",
+      "last_message_subject": "Auto-responder duplicates noted",
       "messages_by_type": {
-        "info": 45,
+        "info": 46,
         "warning": 2,
         "error": 0,
         "request": 0
       }
     },
     "build2": {
-      "total_sent": 41,
-      "last_message_time": "2025-11-04 02:03",
-      "last_message_subject": "Re: Ack Re: VNF status ping",
+      "total_sent": 42,
+      "last_message_time": "2025-11-04 02:07",
+      "last_message_subject": "Re: Auto-responder duplicates noted",
       "messages_by_type": {
-        "info": 38,
+        "info": 39,
         "warning": 0,
         "error": 0,
         "request": 3
@@ -27,12 +27,12 @@
   },
   "by_recipient": {
     "build1": {
-      "total_received": 42,
-      "unread_count": 3
+      "total_received": 43,
+      "unread_count": 1
     },
     "build2": {
-      "total_received": 39,
-      "unread_count": 0
+      "total_received": 40,
+      "unread_count": 1
     },
     "all": {
       "total_broadcast": 5,
@@ -42,7 +42,7 @@
   "recent_activity": {
     "last_message_from": "build2",
     "last_message_to": "build1",
-    "last_message_time": "2025-11-04 02:03",
+    "last_message_time": "2025-11-04 02:07",
     "last_message_type": "info"
   }
 }
