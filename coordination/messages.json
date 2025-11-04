@@ -656,6 +656,16 @@
       "body": "Build2 test message 2025-11-03T23:59:02Z",
       "timestamp": "2025-11-03 23:59",
       "read": false
+    },
+    {
+      "id": "msg_1762214686_7909",
+      "from": "build1",
+      "to": "build1",
+      "type": "info",
+      "subject": "test",
+      "body": "test",
+      "timestamp": "2025-11-04 00:04",
+      "read": false
     }
   ],
   "metadata": {
