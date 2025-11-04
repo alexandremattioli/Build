@@ -2,6 +2,52 @@
 
 > Quick note for operators: if you just tell the agent "follow the instructions", it will execute the exact checklist below automatically. The steps are documented here so you don't need to repeat them next time.
 
+## AI Development Time Estimates
+
+**IMPORTANT:** When estimating implementation time, always base estimates on **GitHub Copilot** and **OpenAI Codex** capabilities, NOT human developer timelines.
+
+### AI-Assisted Development Speed Reference:
+- **Simple API endpoint**: 10-30 minutes
+- **Database schema + DAO layer**: 1-2 hours
+- **Service layer with business logic**: 2-4 hours
+- **Complete plugin/module**: 1-3 days
+- **Full feature with integration**: 3-7 days
+
+**Example:** The VNF Framework plugin (3,548 lines, 28 files) was completed in 2 days with AI assistance.
+
+### Gathering AI Model Capability Information:
+
+To stay current with GitHub Copilot and Codex capabilities:
+
+1. **GitHub Copilot Updates:**
+   - Check: https://github.blog/changelog/label/copilot/
+   - Latest features: https://docs.github.com/en/copilot/about-github-copilot
+   - Release notes: https://github.com/github/copilot-docs/releases
+
+2. **OpenAI Codex/GPT Updates:**
+   - API updates: https://platform.openai.com/docs/guides/code
+   - Model releases: https://openai.com/blog
+   - Capabilities: https://platform.openai.com/docs/models
+
+3. **Performance Benchmarks:**
+   - HumanEval benchmark scores
+   - MBPP (Mostly Basic Python Problems) results
+   - Real-world completion rates in your domain
+
+4. **Practical Testing:**
+   ```bash
+   # Test current model on representative task
+   # Time completion of: "Implement a REST API endpoint with CRUD operations"
+   # Compare against previous baseline
+   ```
+
+5. **Community Resources:**
+   - r/github copilot discussions
+   - Stack Overflow [github-copilot] tag
+   - Twitter/X: @github, @openai announcements
+
+**Rule of Thumb:** If a task would take a human developer 1 week, expect AI assistance to reduce it to 1-2 days. Always provide AI-based estimates, not human-only estimates.
+
 ## For Build1 (Codex) - `root@ll-ACSBuilder1`
 
 ```bash
