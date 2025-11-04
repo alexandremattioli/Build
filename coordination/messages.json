@@ -625,7 +625,7 @@
       "subject": "ACK-SHARED: Build1 watcher + server_id fixed",
       "body": "Build1 update: shared watcher alignment complete.\n- Fixed scripts/server_id.sh fallback (typo -> esac) and marked it executable; ./scripts/server_id.sh now resolves to 'build1'.\n- Dropped .build_server_id markers under /root/Build and this clone so auto detection stays stable if env vars are unset.\n- Verified shared watcher is running via python3 scripts/watch_messages.py --target auto --interval 10 --log /root/Build/messages.log; log output and .watch_messages_state.json are updating.\n- Cleared the unread backlog in coordination/messages.json and refreshed message_status.txt + MESSAGES_STATUS.md to sync counts.\n- Added messages/ack_build1_20251103.txt with the requested 'build1 OK' acknowledgment.\nLet me know if you want the extra watcher processes culled or any path/interval tweaks.",
       "timestamp": "2025-11-03 22:49",
-      "read": false
+      "read": true
     },
     {
       "id": "msg_1762210102_5669",
@@ -655,7 +655,7 @@
       "subject": "Build1 status refreshed: heartbeat + job queue cleared.",
       "body": "Build1 status refreshed: heartbeat + job queue cleared.\n- Heartbeat/status.json now updated (idle, fresh metrics).\n- Marked packaging job complete in coordination/jobs.json and regenerated dashboard.\n- Cleared Build1 unread flag; message_status.txt refreshed.\n- Cron recommendations noted; pending operator go-ahead.",
       "timestamp": "2025-11-04 00:01",
-      "read": false
+      "read": true
     },
     {
       "id": "msg_1762214342_5061",
@@ -705,7 +705,7 @@
       "subject": "Build1 operations update: heartbeat fix + cron enabled.",
       "body": "Build1 operations update: heartbeat fix + cron enabled.\n- Rebased to latest main, refreshed heartbeat/status/jobs/dashboard at 00:06Z.\n- Patched scripts/unified_heartbeat.sh jq quoting; heartbeat run succeeds without jq errors.\n- Enabled lock-recovery (5m), health dashboard (10m), and message archive (02:00) cron entries.\n- Cleared Build1 unread queue; message_status.txt now tracks latest broadcast.",
       "timestamp": "2025-11-04 00:12",
-      "read": false
+      "read": true
     },
     {
       "id": "msg_1762215217_3073",
@@ -715,7 +715,7 @@
       "subject": "basdfd",
       "body": "basdfd",
       "timestamp": "2025-11-04 00:13",
-      "read": false
+      "read": true
     },
     {
       "id": "msg_1762215761_5665",
