@@ -4,7 +4,7 @@
 **Repository:** alexandremattioli/cloudstack (VNFCopilot branch) + alexandremattioli/Build (feature/vnf-broker branch)  
 **Start Date:** November 3, 2025  
 **Last Updated:** November 4, 2025  
-**Status:** In Progress - Core Implementation Phase
+**Status:** In Progress - Testing & Deployment Phase
 
 ---
 
@@ -498,6 +498,12 @@ Commit history:
 10. [ ] Add FortiGate dictionary (dictionaries/fortigate.yaml)
 11. [ ] Add Palo Alto dictionary (dictionaries/paloalto.yaml)
 
+### Short-term (Nov 5-10, 2025)
+8. [✅] Create Ansible deployment playbooks for Virtual Router
+9. [✅] Add Java JUnit tests for CloudStack components
+10. [ ] Execute integration tests (end-to-end validation)
+11. [ ] Integrate CloudStack AsyncJob framework for long-running operations
+
 ### Medium-term (Nov 11-20, 2025)
 12. [ ] Implement VPN operations (CreateVnfVpnConnectionCmd)
 13. [ ] Implement NAT operations (CreateVnfNatRuleCmd)
@@ -545,6 +551,76 @@ Commit history:
 | Database query time | < 50ms | vnf_operations queries |
 | Memory usage (broker) | < 256MB | Python process RSS |
 | CPU usage (broker) | < 20% | Under normal load |
+
+---
+
+## Recent Updates
+
+### November 4, 2025 - Deployment Automation & Testing
+**Commits:**
+- alexandremattioli/Build: 97dce39 (7 files, 849+ insertions)
+- alexandremattioli/cloudstack: 52fe43b581 (3 files, 841+ insertions)
+
+**Deliverables:**
+1. **Ansible Deployment Automation**
+   - `deploy_broker.yml` - Complete deployment playbook with:
+     - System setup (vnfbroker user, Python 3.11, Redis)
+     - Application deployment (broker files, dictionaries, virtualenv)
+     - TLS configuration (self-signed certificate generation)
+     - Redis configuration (localhost binding, memory limits)
+     - Systemd service with security hardening
+   - `verify_deployment.yml` - Comprehensive verification:
+     - Service health checks
+     - Health endpoint validation
+     - Redis connectivity testing
+     - TLS certificate validation
+     - Resource usage monitoring
+     - Test rule creation
+   - `broker_config.env.j2` - Environment configuration template
+   - `vnfbroker.service.j2` - Systemd service with security policies:
+     - NoNewPrivileges, PrivateTmp, ProtectSystem=strict
+     - Memory limit 512M, CPU quota 200%
+     - Resource limits and restart policies
+   - `inventory.ini` - Sample inventory for Virtual Routers
+   - `README.md` - Complete deployment documentation (600+ lines)
+   - `logging.yaml` - Structured logging configuration
+
+2. **Java Unit Tests**
+   - `VnfOperationDaoImplTest.java` (220+ lines):
+     - findByOpHash/findByRuleId tests
+     - listByVnfInstanceId/listByState tests
+     - Idempotency validation tests
+     - Operation state transition tests
+     - Error code persistence tests
+   - `VnfServiceImplTest.java` (350+ lines):
+     - createFirewallRule with ruleId tests
+     - Idempotency by ruleId and opHash tests
+     - computeOperationHash validation (SHA-256)
+     - deleteFirewallRule tests
+     - Broker error handling tests
+     - JWT token extraction tests
+     - Operation state transition tests
+   - `VnfBrokerClientTest.java` (270+ lines):
+     - createFirewallRule success/retry tests
+     - Exponential backoff calculation tests
+     - Authentication failure tests
+     - Rate limit handling tests (VNF_RATE_LIMIT)
+     - JWT token and vendor header tests
+     - Conflict and validation error tests
+
+**Progress:**
+- Deployment automation complete with production-ready security hardening
+- Java unit tests provide comprehensive test coverage for CloudStack components
+- Ansible verification playbook enables automated deployment validation
+- Systemd service includes resource limits and security isolation
+- Total implementation: 4700+ lines of code, 31+ files
+
+**Next Steps:**
+- Execute integration tests (end-to-end validation)
+- Deploy broker to test Virtual Router using Ansible
+- Validate complete CloudStack → Broker → pfSense flow
+- Integrate CloudStack AsyncJob framework
+- Add ListVnfOperationsCmd and GetVnfOperationCmd API commands
 
 ---
 
