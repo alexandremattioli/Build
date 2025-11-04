@@ -6,18 +6,37 @@
 # Usage: cm [lines]
 #   lines: number of lines to show (default: 20, use -f to follow)
 
-BUILD_DIR="/root/Build"
-LOG_FILE="$BUILD_DIR/logs/notify_received.log"
+# Detect if we're on Builder2 (different path)
+if [ -d "/Builder2/Build" ]; then
+    BUILD_DIR="/Builder2/Build"
+else
+    BUILD_DIR="/root/Build"
+fi
 
-if [ ! -f "$LOG_FILE" ]; then
-    echo "No notification log found at $LOG_FILE"
-    echo "No messages have been received yet."
+RECEIVED_LOG="$BUILD_DIR/logs/notify_received.log"
+SENT_LOG="$BUILD_DIR/logs/notify_build1.log"
+
+# Determine which log to show
+LOG_FILE=""
+if [ -f "$RECEIVED_LOG" ]; then
+    LOG_FILE="$RECEIVED_LOG"
+    LOG_TYPE="Received notifications"
+elif [ -f "$SENT_LOG" ]; then
+    LOG_FILE="$SENT_LOG"
+    LOG_TYPE="Sent notifications"
+fi
+
+if [ -z "$LOG_FILE" ]; then
+    echo "No notification logs found."
+    echo "Expected locations:"
+    echo "  - $RECEIVED_LOG (incoming)"
+    echo "  - $SENT_LOG (outgoing)"
     exit 0
 fi
 
 # If -f flag, follow the log
 if [ "$1" = "-f" ]; then
-    echo "Following message notifications (Ctrl+C to stop)..."
+    echo "Following $LOG_TYPE (Ctrl+C to stop)..."
     echo "Log: $LOG_FILE"
     echo "---"
     tail -f "$LOG_FILE"
@@ -26,7 +45,7 @@ elif [ -n "$1" ] && [ "$1" -eq "$1" ] 2>/dev/null; then
     tail -n "$1" "$LOG_FILE"
 # Default: show last 20 lines
 else
-    echo "Recent message notifications:"
+    echo "$LOG_TYPE:"
     echo "Log: $LOG_FILE"
     echo "---"
     tail -n 20 "$LOG_FILE"
