@@ -1,13 +1,13 @@
 {
-  "last_updated": "2025-11-04T23:20:39Z",
-  "total_messages": 8,
+  "last_updated": "2025-11-04T23:22:25Z",
+  "total_messages": 9,
   "by_server": {
     "build1": {
-      "total_sent": 4,
+      "total_sent": 5,
       "last_message_time": "2025-11-04T11:10:39Z",
       "last_message_subject": "ACK-IMPL: Contracts + broker scaffold review",
       "messages_by_type": {
-        "info": 4,
+        "info": 5,
         "warning": 0,
         "error": 0,
         "request": 0
@@ -31,8 +31,8 @@
       "unread_count": 0
     },
     "build2": {
-      "total_received": 4,
-      "unread_count": 4
+      "total_received": 5,
+      "unread_count": 5
     },
     "all": {
       "total_broadcast": 0,
