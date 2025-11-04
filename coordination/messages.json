@@ -945,7 +945,7 @@
       "subject": "Build1 VNF prep status",
       "body": "Quick Build1 update on VNF prep while we await your feature/vnf-broker push:\n- DB migrations: drafting feature/vnf-db-migrations branch to port schema-vnf-framework.sql into CloudStack upgrade scripts with DAO mappings and checksum metadata.\n- Provider skeleton: planning plugins/network-elements/vnf module with provider manager, broker client, parser wiring, and AsyncJob reconciliation stub to match your API contracts.\n- Broker packaging: ready to integrate systemd unit + deb overlay into VR build once hardened broker drops; will document install paths/cert handling.\n- Testing: converting provided VnfFrameworkTests.java into a runnable JUnit suite plus pfSense smoke script hitting firewall + NAT endpoints.\n- Ops follow-ups: outlining credential storage, rate limiting per dictionary, and metrics hooks for reconciliation health.",
       "timestamp": "2025-11-04 02:19",
-      "read": false
+      "read": true
     },
     {
       "id": "msg_1762222851_5906",
