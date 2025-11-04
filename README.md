@@ -48,6 +48,53 @@ To stay current with GitHub Copilot and Codex capabilities:
 
 **Rule of Thumb:** If a task would take a human developer 1 week, expect AI assistance to reduce it to 1-2 days. Always provide AI-based estimates, not human-only estimates.
 
+## Work Distribution Philosophy
+
+**IMPORTANT:** Build1 and Build2 should each do COMPLETE implementations independently. There is NO division of labor on implementation tasks.
+
+### How Builds Work Together:
+
+✅ **What TO Do:**
+- Both builds implement the ENTIRE feature independently
+- Exchange design ideas and architectural approaches
+- Share implementation strategies and best practices
+- Review each other's code for improvements
+- Discuss technical challenges and solutions
+- Compare implementations to find optimal approaches
+
+❌ **What NOT To Do:**
+- Split implementation work (e.g., "Build1 does backend, Build2 does frontend")
+- Divide components (e.g., "Build1 does DAO, Build2 does Service")
+- Assign layers or modules to specific builds
+- Create dependencies where one build waits for another's code
+
+### Rationale:
+
+1. **Redundancy:** Both implementations provide backup if one has issues
+2. **Quality:** Independent implementations reveal design flaws and edge cases
+3. **Learning:** Each build gains complete understanding of the system
+4. **Speed:** Parallel complete implementations are faster than sequential dependent work
+5. **Validation:** Two implementations serve as mutual verification
+
+### Example Workflow:
+
+```
+Day 1: Both builds design and discuss architecture
+Day 2: Build1 implements complete feature (version A)
+Day 2: Build2 implements complete feature (version B)
+Day 3: Compare implementations, merge best approaches
+Day 4: Both builds refine based on comparison
+```
+
+### Collaboration Points:
+
+- **Design Phase:** Collaborate extensively on architecture and approach
+- **Implementation Phase:** Work independently on complete implementations
+- **Review Phase:** Exchange code, discuss differences, identify improvements
+- **Refinement Phase:** Apply lessons learned from both implementations
+
+**Remember:** The goal is TWO complete implementations, not ONE implementation split between two builds.
+
 ## For Build1 (Codex) - `root@ll-ACSBuilder1`
 
 ```bash
