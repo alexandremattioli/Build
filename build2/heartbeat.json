@@ -1,6 +1,7 @@
 {
   "server": "build2",
-  "timestamp": "2025-11-04T11:05:38Z",
-  "uptime_seconds": 127575,
-  "healthy": true
+  "timestamp": "2025-11-05T13:31:35Z",
+  "status": "idle",
+  "uptime_seconds": 2592000,
+  "last_activity": "Dashboard status update"
 }
