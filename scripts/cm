@@ -1,27 +1,69 @@
 #!/bin/bash
 #
 # cm - Check Messages
-# Tails the notification log to see incoming message alerts
+# View recent processed message entries or follow logs for Build servers
 #
-# Usage: cm [lines]
-#   lines: number of lines to show (default: 20, use -f to follow)
+# Usage: cm [-f|lines]
+#   -f      Follow the selected log (tail -f)
+#   lines   Number of lines to show (default: 20)
+# Environment:
+#   CM_SERVER=build2 cm …   # Override which server's processed message log to display
 
-# Detect if we're on Builder2 (different path)
-if [ -d "/Builder2/Build" ]; then
+# Detect build directory and default server id
+if [ -d "/Builder1/Build" ]; then
+    BUILD_DIR="/Builder1/Build"
+    DEFAULT_SERVER="build1"
+elif [ -d "/Builder2/Build" ]; then
     BUILD_DIR="/Builder2/Build"
+    DEFAULT_SERVER="build2"
 else
     BUILD_DIR="/root/Build"
+    DEFAULT_SERVER=""
 fi
+
+if [ -z "$DEFAULT_SERVER" ]; then
+    host_lower=$(hostname | tr '[:upper:]' '[:lower:]')
+    if [[ "$host_lower" == *"build1"* ]]; then
+        DEFAULT_SERVER="build1"
+    elif [[ "$host_lower" == *"build2"* ]]; then
+        DEFAULT_SERVER="build2"
+    else
+        DEFAULT_SERVER="build1"
+    fi
+fi
+
+SERVER_ID="${CM_SERVER:-$DEFAULT_SERVER}"
 
 RECEIVED_LOG="$BUILD_DIR/logs/notify_received.log"
 SENT_LOG="$BUILD_DIR/logs/notify_build1.log"
 
-# Determine which log to show
 LOG_FILE=""
-if [ -f "$RECEIVED_LOG" ]; then
+LOG_TYPE=""
+
+format_timestamps() {
+    perl -pe 's/(\d{4}-\d{2}-\d{2})T(\d{2}:\d{2}:\d{2})Z/\1 @ \2 /g'
+}
+
+PRIMARY_LOG="/var/log/build-messages-${SERVER_ID}.log"
+if [ -n "$SERVER_ID" ] && [ -f "$PRIMARY_LOG" ]; then
+    LOG_FILE="$PRIMARY_LOG"
+    LOG_TYPE="Processed messages for ${SERVER_ID}"
+fi
+
+if [ -z "$LOG_FILE" ] && [ "$SERVER_ID" != "build1" ] && [ -f "/var/log/build-messages-build1.log" ]; then
+    LOG_FILE="/var/log/build-messages-build1.log"
+    LOG_TYPE="Processed messages for build1"
+fi
+
+if [ -z "$LOG_FILE" ] && [ "$SERVER_ID" != "build2" ] && [ -f "/var/log/build-messages-build2.log" ]; then
+    LOG_FILE="/var/log/build-messages-build2.log"
+    LOG_TYPE="Processed messages for build2"
+fi
+
+if [ -z "$LOG_FILE" ] && [ -f "$RECEIVED_LOG" ]; then
     LOG_FILE="$RECEIVED_LOG"
     LOG_TYPE="Received notifications"
-elif [ -f "$SENT_LOG" ]; then
+elif [ -z "$LOG_FILE" ] && [ -f "$SENT_LOG" ]; then
     LOG_FILE="$SENT_LOG"
     LOG_TYPE="Sent notifications"
 fi
@@ -29,8 +71,10 @@ fi
 if [ -z "$LOG_FILE" ]; then
     echo "No notification logs found."
     echo "Expected locations:"
-    echo "  - $RECEIVED_LOG (incoming)"
-    echo "  - $SENT_LOG (outgoing)"
+    echo "  - /var/log/build-messages-build1.log (processed Build1 queue)"
+    echo "  - /var/log/build-messages-build2.log (processed Build2 queue)"
+    echo "  - $RECEIVED_LOG (incoming, legacy)"
+    echo "  - $SENT_LOG (outgoing, legacy)"
     exit 0
 fi
 
@@ -39,16 +83,20 @@ if [ "$1" = "-f" ]; then
     echo "Following $LOG_TYPE (Ctrl+C to stop)..."
     echo "Log: $LOG_FILE"
     echo "---"
-    tail -f "$LOG_FILE"
+    tail -f "$LOG_FILE" | format_timestamps
 # If number provided, show that many lines
 elif [ -n "$1" ] && [ "$1" -eq "$1" ] 2>/dev/null; then
-    tail -n "$1" "$LOG_FILE"
+    tail -n "$1" "$LOG_FILE" | format_timestamps
 # Default: show last 20 lines
 else
     echo "$LOG_TYPE:"
     echo "Log: $LOG_FILE"
+    if [ -n "$CM_SERVER" ]; then
+        echo "Server override via CM_SERVER=$CM_SERVER"
+    fi
     echo "---"
-    tail -n 20 "$LOG_FILE"
+    tail -n 20 "$LOG_FILE" | format_timestamps
     echo "---"
     echo "Use 'cm -f' to follow live, or 'cm <number>' for more lines"
+    echo "Set CM_SERVER=build2 to view Build2 entries."
 fi
