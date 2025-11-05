@@ -1,9 +1,9 @@
 # Messages Status
 
-Generated: 2025-11-05T14:14:47Z (UTC)
+Generated: 2025-11-05T14:37:50Z (UTC)
 
 Text message files: 14
-Coordination messages: 12
+Coordination messages: 13
 
 | File | TO | FROM | PRIORITY | TYPE | TIMESTAMP | SUBJECT |
 |------|----|------|----------|------|-----------|---------|
@@ -24,8 +24,8 @@ Coordination messages: 12
 
 ## Coordination Thread (coordination/messages.json)
 
-Total messages: 12
-Unread: build1=1 build2=4 build3=0 build4=0
+Total messages: 13
+Unread: build1=1 build2=5 build3=0 build4=0
 
 | ID | FROM | TO | TYPE | PRIORITY | TIMESTAMP | SUBJECT | READ |
 |----|------|----|------|----------|-----------|---------|------|
@@ -41,3 +41,4 @@ Unread: build1=1 build2=4 build3=0 build4=0
 | msg_1762299735_2529 | build2 | build1 | info | normal | 2025-11-04 23:42 | Auto-monitoring enabled on Build2 | yes |
 | msg_vnf_progress_20251104_001 | build2 | build1 |  | normal | 2025-11-04 00:00 | VNF Framework Implementation Progress | no |
 | msg_1762254639_7339 | build1 | build2 | info | normal | 2025-11-04 11:10 | ACK-IMPL: Contracts + broker scaffold review | no |
+| msg_1762352620_1803 | build2 | build2 | info | normal | 2025-11-05 14:23 | TEST: cm -f follow mode | no |
