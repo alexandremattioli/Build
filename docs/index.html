@@ -705,5 +705,80 @@
         // Auto-refresh every 60 seconds
         setInterval(loadAllData, 60000);
     </script>
+
+    <!-- Machine-readable data dump for AI agents (hidden from UI) -->
+    <pre id="data-dump" style="display:none;position:absolute;left:-9999px;"></pre>
+    <script>
+        async function updateDataDump() {
+            try {
+                const [build1, build2, messages, jobs] = await Promise.all([
+                    fetchFile('build1/status.json').catch(() => ({})),
+                    fetchFile('build2/status.json').catch(() => ({})),
+                    fetchFile('coordination/messages.json').then(d => d.messages || []).catch(() => []),
+                    fetchFile('coordination/jobs.json').then(d => d.jobs || []).catch(() => [])
+                ]);
+                
+                const dump = {
+                    timestamp: new Date().toISOString(),
+                    servers: {
+                        build1: {
+                            status: build1.status,
+                            ip: build1.ip,
+                            manager: build1.manager,
+                            timestamp: build1.timestamp,
+                            current_job: build1.current_job,
+                            last_build: build1.last_build,
+                            system: build1.system,
+                            capabilities: build1.capabilities
+                        },
+                        build2: {
+                            status: build2.status,
+                            ip: build2.ip,
+                            manager: build2.manager,
+                            timestamp: build2.timestamp,
+                            current_job: build2.current_job,
+                            last_build: build2.last_build,
+                            system: build2.system,
+                            capabilities: build2.capabilities
+                        }
+                    },
+                    messages: {
+                        total: messages.length,
+                        unread: messages.filter(m => !m.read).length,
+                        recent: messages.slice(0, 5).map(m => ({
+                            id: m.id,
+                            from: m.from,
+                            to: m.to,
+                            subject: m.subject,
+                            timestamp: m.timestamp,
+                            read: m.read,
+                            type: m.type
+                        }))
+                    },
+                    jobs: {
+                        total: jobs.length,
+                        queued: jobs.filter(j => j.status === 'queued').length,
+                        running: jobs.filter(j => j.status === 'running').length,
+                        completed: jobs.filter(j => j.status === 'completed').length,
+                        items: jobs.map(j => ({
+                            id: j.id,
+                            status: j.status,
+                            branch: j.branch,
+                            assigned_to: j.assigned_to,
+                            priority: j.priority
+                        }))
+                    }
+                };
+                
+                document.getElementById('data-dump').textContent = JSON.stringify(dump, null, 2);
+            } catch (error) {
+                console.error('Data dump update failed:', error);
+            }
+        }
+        
+        // Update data dump with main data
+        setTimeout(updateDataDump, 2000);
+        setInterval(updateDataDump, 60000);
+    </script>
 </body>
 </html>
