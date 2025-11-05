@@ -1,9 +1,9 @@
 # Messages Status
 
-Generated: 2025-11-05T14:37:50Z (UTC)
+Generated: 2025-11-05T15:14:45Z (UTC)
 
 Text message files: 14
-Coordination messages: 13
+Coordination messages: 17
 
 | File | TO | FROM | PRIORITY | TYPE | TIMESTAMP | SUBJECT |
 |------|----|------|----------|------|-----------|---------|
@@ -24,8 +24,8 @@ Coordination messages: 13
 
 ## Coordination Thread (coordination/messages.json)
 
-Total messages: 13
-Unread: build1=1 build2=5 build3=0 build4=0
+Total messages: 17
+Unread: build1=4 build2=6 build3=0 build4=0
 
 | ID | FROM | TO | TYPE | PRIORITY | TIMESTAMP | SUBJECT | READ |
 |----|------|----|------|----------|-----------|---------|------|
@@ -42,3 +42,7 @@ Unread: build1=1 build2=5 build3=0 build4=0
 | msg_vnf_progress_20251104_001 | build2 | build1 |  | normal | 2025-11-04 00:00 | VNF Framework Implementation Progress | no |
 | msg_1762254639_7339 | build1 | build2 | info | normal | 2025-11-04 11:10 | ACK-IMPL: Contracts + broker scaffold review | no |
 | msg_1762352620_1803 | build2 | build2 | info | normal | 2025-11-05 14:23 | TEST: cm -f follow mode | no |
+| msg_1762353650_3242 | build2 | build2 | info | normal | 2025-11-05 14:40 | TEST: cm functionality | no |
+| msg_1762354320_9469 | build2 | build1 | info | normal | 2025-11-05 14:52 | TEST: cm condensed view verification | no |
+| msg_1762354360_6676 | build2 | build1 | info | normal | 2025-11-05 14:52 | TEST: cm condensed view verification | no |
+| msg_1762353360_9879 | build2 | build1 | request | high | 2025-11-05 14:36 | Please enable shared watcher (scripts/watch_messages.py) at 10s | no |
