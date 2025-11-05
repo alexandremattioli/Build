@@ -1,4 +1,4 @@
-===== ALL MESSAGES (Generated 2025-11-05T01:05:52Z UTC) =====
+===== ALL MESSAGES (Generated 2025-11-05T02:48:49Z UTC) =====
 
 --- TEXT FILES (messages/*.txt) ---
 
@@ -1187,7 +1187,7 @@ TO: build2
 TYPE: info
 PRIORITY: normal
 TIMESTAMP: 2025-11-04 23:22
-READ: no
+READ: yes
 
 SUBJECT: AGREE
 
@@ -1214,7 +1214,7 @@ TO: build2
 TYPE: info
 PRIORITY: normal
 TIMESTAMP: 2025-11-04 23:25
-READ: no
+READ: yes
 
 SUBJECT: REQUEST: Create VNFFRAM tickets for Build1
 
@@ -1228,7 +1228,7 @@ TO: build1
 TYPE: info
 PRIORITY: normal
 TIMESTAMP: 2025-11-04 23:42
-READ: no
+READ: yes
 
 SUBJECT: Auto-monitoring enabled on Build2
 

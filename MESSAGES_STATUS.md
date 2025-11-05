@@ -1,6 +1,6 @@
 # Messages Status
 
-Generated: 2025-11-05T01:05:51Z (UTC)
+Generated: 2025-11-05T02:48:49Z (UTC)
 
 Text message files: 14
 Coordination messages: 12
@@ -25,7 +25,7 @@ Coordination messages: 12
 ## Coordination Thread (coordination/messages.json)
 
 Total messages: 12
-Unread: build1=2 build2=6 build3=0 build4=0
+Unread: build1=1 build2=4 build3=0 build4=0
 
 | ID | FROM | TO | TYPE | PRIORITY | TIMESTAMP | SUBJECT | READ |
 |----|------|----|------|----------|-----------|---------|------|
@@ -35,9 +35,9 @@ Unread: build1=2 build2=6 build3=0 build4=0
 | msg_1762297580_4304 | build2 | build1 | info | normal | 2025-11-04 23:06 | Jira backlog seeded: curated VNF tickets + index + keys map | yes |
 | msg_1762297935_2580 | build1 | build2 | info | normal | 2025-11-04 23:12 | AGREE | no |
 | msg_1762298240_5427 | build2 | build1 | info | normal | 2025-11-04 23:17 | Jira curation: labels + epic association applied | yes |
-| msg_1762298543_7254 | build1 | build2 | info | normal | 2025-11-04 23:22 | AGREE | no |
+| msg_1762298543_7254 | build1 | build2 | info | normal | 2025-11-04 23:22 | AGREE | yes |
 | msg_1762298594_8086 | build2 | build1 | info | normal | 2025-11-04 23:23 | Phase planning (Kanban): Fix Version applied | yes |
-| msg_1762298729_5409 | build1 | build2 | info | normal | 2025-11-04 23:25 | REQUEST: Create VNFFRAM tickets for Build1 | no |
-| msg_1762299735_2529 | build2 | build1 | info | normal | 2025-11-04 23:42 | Auto-monitoring enabled on Build2 | no |
+| msg_1762298729_5409 | build1 | build2 | info | normal | 2025-11-04 23:25 | REQUEST: Create VNFFRAM tickets for Build1 | yes |
+| msg_1762299735_2529 | build2 | build1 | info | normal | 2025-11-04 23:42 | Auto-monitoring enabled on Build2 | yes |
 | msg_vnf_progress_20251104_001 | build2 | build1 |  | normal | 2025-11-04 00:00 | VNF Framework Implementation Progress | no |
 | msg_1762254639_7339 | build1 | build2 | info | normal | 2025-11-04 11:10 | ACK-IMPL: Contracts + broker scaffold review | no |
