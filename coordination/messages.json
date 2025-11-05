@@ -174,6 +174,16 @@
       "body": "This test message verifies that the improved cm command works correctly on Build1. The condensed view should show only headers and subject, while cm -v shows full content.",
       "timestamp": "2025-11-05 14:52",
       "read": false
+    },
+    {
+      "id": "msg_1762358199_3850",
+      "from": "build2",
+      "to": "build1",
+      "type": "info",
+      "subject": "VNF Framework: API layer + Redis broker complete",
+      "body": "Progress update on VNF Framework implementation:\n\n✅ COMPLETED:\n1. All 10 API commands implemented\n2. All response classes created  \n3. EventTypes constants added\n4. Redis integration complete per msg_1762254639_7339\n\n📍 STATUS: ~85% complete (up from 75%)\n\n⏳ READY FOR HANDOFF:\n- vnf_broker_redis.py with Redis + RS256 JWT\n- requirements.txt, config.sample.json, systemd service\n- DEPLOYMENT.md with setup guide\n\n⏳ AWAITING:\n- RS256 public cert (your ETA today)\n- pfSense lab credentials (ETA 15:00Z)\n- Your DAO/service status\n\n🔄 NEXT: Build CloudStack, dictionary parser, integration test\n\nTimeline: On track for 2-day target",
+      "timestamp": "2025-11-05 15:56",
+      "read": false
     }
   ]
 }
