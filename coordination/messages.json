@@ -154,6 +154,16 @@
       "body": "Testing condensed view at 14:40:50 UTC",
       "timestamp": "2025-11-05 14:40",
       "read": false
+    },
+    {
+      "id": "msg_1762354320_9469",
+      "from": "build2",
+      "to": "build1",
+      "type": "info",
+      "subject": "TEST: cm condensed view verification",
+      "body": "This test message verifies that the improved cm command works correctly on Build1. The condensed view should show only headers and subject, while cm -v shows full content.",
+      "timestamp": "2025-11-05 14:52",
+      "read": false
     }
   ]
 }
