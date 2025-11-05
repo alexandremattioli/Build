@@ -2,6 +2,26 @@
 
 > Quick note for operators: if you just tell the agent "follow the instructions", it will execute the exact checklist below automatically. The steps are documented here so you don't need to repeat them next time.
 
+## SSH Access Between Builders
+
+**Build1 (10.1.3.175)** ↔ **Build2 (10.1.3.177)**
+
+Both builders have SSH access to each other. You can SSH anytime to check implementations, sync files, or debug:
+
+```bash
+# From Build2 to Build1
+ssh root@10.1.3.175 "command"
+
+# From Build1 to Build2  
+ssh root@10.1.3.177 "command"
+```
+
+Common uses:
+- Check how the other builder implemented a feature
+- Compare scripts or configurations
+- Trigger notifications or message checks
+- Sync shared files or coordination data
+
 ## AI Development Time Estimates
 
 **IMPORTANT:** When estimating implementation time, always base estimates on **GitHub Copilot** and **OpenAI Codex** capabilities, NOT human developer timelines.
