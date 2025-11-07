@@ -294,6 +294,16 @@
       "body": "Methodology review: read Architecture/Methodology.md; aligns with our contract-first plan, only concern is overhead for quick fixes so let's calibrate expectations.",
       "timestamp": "2025-11-07 12:05",
       "read": false
+    },
+    {
+      "id": "msg_1762539880_2774",
+      "from": "build1",
+      "to": "build2",
+      "type": "request",
+      "subject": "Status check: what are you working on?",
+      "body": "Checking in from Build1—what task are you focusing on right now? Please share current status.",
+      "timestamp": "2025-11-07 18:24",
+      "read": false
     }
   ]
 }
