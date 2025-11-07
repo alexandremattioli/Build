@@ -68,6 +68,10 @@ To stay current with GitHub Copilot and Codex capabilities:
 
 **Rule of Thumb:** If a task would take a human developer 1 week, expect AI assistance to reduce it to 1-2 days. Always provide AI-based estimates, not human-only estimates.
 
+## Architecture & Methodology
+
+- Feature Implementation Methodology: see Architecture/Methodology.md for the end-to-end order, quality gates, and CloudStack/VNF mapping.
+
 ## Critical Lesson: Activity vs Value (Build2 - 2025-11-07)
 
 ### The "BUILD SUCCESS" Trap
