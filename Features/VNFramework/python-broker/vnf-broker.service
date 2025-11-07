@@ -1,0 +1,26 @@
+[Unit]
+Description=VNF Broker Service for CloudStack Virtual Router
+After=network.target redis.service
+Requires=redis.service
+Documentation=https://github.com/alexandremattioli/cloudstack
+
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/opt/vnf-broker
+ExecStart=/usr/bin/python3 /opt/vnf-broker/vnf_broker_redis.py
+Restart=always
+RestartSec=10
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=vnf-broker
+
+# Security
+PrivateTmp=true
+NoNewPrivileges=true
+
+# Environment
+Environment="PYTHONUNBUFFERED=1"
+
+[Install]
+WantedBy=multi-user.target

@@ -1,102 +1,60 @@
 #!/bin/bash
-#
 # cm - Check Messages
-# View recent processed message entries or follow logs for Build servers
-#
-# Usage: cm [-f|lines]
-#   -f      Follow the selected log (tail -f)
-#   lines   Number of lines to show (default: 20)
-# Environment:
-#   CM_SERVER=build2 cm …   # Override which server's processed message log to display
 
-# Detect build directory and default server id
+# Detect server
 if [ -d "/Builder1/Build" ]; then
-    BUILD_DIR="/Builder1/Build"
-    DEFAULT_SERVER="build1"
+    SERVER="build1"
 elif [ -d "/Builder2/Build" ]; then
-    BUILD_DIR="/Builder2/Build"
-    DEFAULT_SERVER="build2"
+    SERVER="build2"
 else
-    BUILD_DIR="/root/Build"
-    DEFAULT_SERVER=""
+    SERVER="build1"
 fi
 
-if [ -z "$DEFAULT_SERVER" ]; then
-    host_lower=$(hostname | tr '[:upper:]' '[:lower:]')
-    if [[ "$host_lower" == *"build1"* ]]; then
-        DEFAULT_SERVER="build1"
-    elif [[ "$host_lower" == *"build2"* ]]; then
-        DEFAULT_SERVER="build2"
+LOG="/var/log/build-messages-${SERVER}.log"
+
+# Format timestamps
+fmt() { perl -pe 's/(\d{4}-\d{2}-\d{2})T(\d{2}:\d{2}:\d{2})Z/\1 @ \2 /g'; }
+
+# Condense to headers only
+condense() { grep -E "^===|^\[INFO\]|^\[WARN\]|^\[ERROR\]|^Subject:|^Time:|^---"; }
+
+# Parse args
+VERBOSE=false
+FOLLOW=false
+LINES=20
+
+while [ $# -gt 0 ]; do
+    case "$1" in
+        -f) FOLLOW=true; shift ;;
+        -v) VERBOSE=true; shift ;;
+        -fv|-vf) FOLLOW=true; VERBOSE=true; shift ;;
+        [0-9]*) LINES="$1"; shift ;;
+        *) shift ;;
+    esac
+done
+
+# Execute
+if [ "$FOLLOW" = true ]; then
+    if [ "$VERBOSE" = true ]; then
+        echo "Following messages for ${SERVER} in VERBOSE mode (Ctrl+C to stop)..."
+        echo "--- Recent messages ---"
+        tail -n 20 "$LOG" | fmt
+        echo ""
+        echo "--- Following new messages ---"
+        tail -f "$LOG" | fmt
     else
-        DEFAULT_SERVER="build1"
+        echo "Following messages for ${SERVER} (Ctrl+C to stop)..."
+        echo "--- Recent messages ---"
+        tail -n 20 "$LOG" | fmt | condense
+        echo ""
+        echo "--- Following new messages ---"
+        tail -f "$LOG" | fmt | condense --line-buffered
     fi
-fi
-
-SERVER_ID="${CM_SERVER:-$DEFAULT_SERVER}"
-
-RECEIVED_LOG="$BUILD_DIR/logs/notify_received.log"
-SENT_LOG="$BUILD_DIR/logs/notify_build1.log"
-
-LOG_FILE=""
-LOG_TYPE=""
-
-format_timestamps() {
-    perl -pe 's/(\d{4}-\d{2}-\d{2})T(\d{2}:\d{2}:\d{2})Z/\1 @ \2 /g'
-}
-
-PRIMARY_LOG="/var/log/build-messages-${SERVER_ID}.log"
-if [ -n "$SERVER_ID" ] && [ -f "$PRIMARY_LOG" ]; then
-    LOG_FILE="$PRIMARY_LOG"
-    LOG_TYPE="Processed messages for ${SERVER_ID}"
-fi
-
-if [ -z "$LOG_FILE" ] && [ "$SERVER_ID" != "build1" ] && [ -f "/var/log/build-messages-build1.log" ]; then
-    LOG_FILE="/var/log/build-messages-build1.log"
-    LOG_TYPE="Processed messages for build1"
-fi
-
-if [ -z "$LOG_FILE" ] && [ "$SERVER_ID" != "build2" ] && [ -f "/var/log/build-messages-build2.log" ]; then
-    LOG_FILE="/var/log/build-messages-build2.log"
-    LOG_TYPE="Processed messages for build2"
-fi
-
-if [ -z "$LOG_FILE" ] && [ -f "$RECEIVED_LOG" ]; then
-    LOG_FILE="$RECEIVED_LOG"
-    LOG_TYPE="Received notifications"
-elif [ -z "$LOG_FILE" ] && [ -f "$SENT_LOG" ]; then
-    LOG_FILE="$SENT_LOG"
-    LOG_TYPE="Sent notifications"
-fi
-
-if [ -z "$LOG_FILE" ]; then
-    echo "No notification logs found."
-    echo "Expected locations:"
-    echo "  - /var/log/build-messages-build1.log (processed Build1 queue)"
-    echo "  - /var/log/build-messages-build2.log (processed Build2 queue)"
-    echo "  - $RECEIVED_LOG (incoming, legacy)"
-    echo "  - $SENT_LOG (outgoing, legacy)"
-    exit 0
-fi
-
-# If -f flag, follow the log
-if [ "$1" = "-f" ]; then
-    echo "Following $LOG_TYPE (Ctrl+C to stop)..."
-    echo "Log: $LOG_FILE"
-    echo "---"
-    tail -f "$LOG_FILE" | format_timestamps
-# If number provided, show that many lines
-elif [ -n "$1" ] && [ "$1" -eq "$1" ] 2>/dev/null; then
-    tail -n "$1" "$LOG_FILE" | format_timestamps
-# Default: show last 20 lines
+elif [ "$VERBOSE" = true ]; then
+    tail -n "$LINES" "$LOG" | fmt
 else
-    echo "$LOG_TYPE:"
-    echo "Log: $LOG_FILE"
-    if [ -n "$CM_SERVER" ]; then
-        echo "Server override via CM_SERVER=$CM_SERVER"
-    fi
+    echo "Messages for ${SERVER} (condensed - use 'cm -v' for full):"
     echo "---"
-    tail -n 20 "$LOG_FILE" | format_timestamps
+    tail -n "$LINES" "$LOG" | fmt | condense
     echo "---"
-    echo "Use 'cm -f' to follow live, or 'cm <number>' for more lines"
-    echo "Set CM_SERVER=build2 to view Build2 entries."
 fi

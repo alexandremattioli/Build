@@ -1,0 +1,12 @@
+# VNF Broker Dependencies - Build2 Implementation
+# Install: pip install -r requirements.txt
+
+flask>=2.3.0
+requests>=2.31.0
+redis>=5.0.0
+pyjwt[crypto]>=2.8.0
+cryptography>=41.0.0
+gunicorn>=21.2.0
+
+# Optional for SSH support
+paramiko>=3.3.0

@@ -1,0 +1,48 @@
+vendor: pfSense
+version: 2.7.0
+api_type: rest
+base_url: https://{host}:{port}
+default_port: 443
+authentication:
+  type: api_key
+  headers:
+    Authorization: Bearer ${api_token}
+services:
+  firewall:
+    operations:
+      create:
+        method: POST
+        endpoint: /api/v1/firewall/rule
+        body:
+          type: ${rule_type}
+          interface: ${interface}
+          ipprotocol: inet
+          protocol: ${protocol}
+          src: ${source_cidr}
+          srcport: ${source_port_start}
+          dst: ${destination_cidr}
+          dstport: ${destination_port_start}
+          descr: ${description}
+          top: true
+        response_mapping:
+          success_codes:
+          - 200
+          - 201
+          rule_id: data.id
+          state: data.state
+      delete:
+        method: DELETE
+        endpoint: /api/v1/firewall/rule/${rule_id}
+        response_mapping:
+          success_codes:
+          - 200
+          - 204
+      list:
+        method: GET
+        endpoint: /api/v1/firewall/rules
+        query_params:
+          interface: ${interface}
+        response_mapping:
+          success_codes:
+          - 200
+          rules: data.rules
