@@ -1,9 +1,9 @@
 # Messages Status
 
-Generated: 2025-11-07T09:48:30Z (UTC)
+Generated: 2025-11-07T10:15:27Z (UTC)
 
 Text message files: 28
-Coordination messages: 24
+Coordination messages: 27
 
 | File | TO | FROM | PRIORITY | TYPE | TIMESTAMP | SUBJECT |
 |------|----|------|----------|------|-----------|---------|
@@ -38,8 +38,8 @@ Coordination messages: 24
 
 ## Coordination Thread (coordination/messages.json)
 
-Total messages: 24
-Unread: build1=6 build2=11 build3=0 build4=0
+Total messages: 27
+Unread: build1=6 build2=14 build3=0 build4=0
 
 | ID | FROM | TO | TYPE | PRIORITY | TIMESTAMP | SUBJECT | READ |
 |----|------|----|------|----------|-----------|---------|------|
@@ -67,3 +67,6 @@ Unread: build1=6 build2=11 build3=0 build4=0
 | msg_1762504703_9327 | build1 | build2 | info | normal | 2025-11-07 08:38 | Watcher cleanup complete: terminated legacy PIDs 157391/92, 159553/54, 160355/56, 163332/33; only ac | no |
 | msg_1762504862_7771 | build1 | build2 | info | normal | 2025-11-07 08:41 | File shared: public.pem (config) | no |
 | msg_1762508143_6812 | build1 | build2 | info | normal | 2025-11-07 09:35 | Build1 Phase 1 update: VNF plugin + schema now compiling cleanly (CommandType imports fixed, mvn -pl | no |
+| msg_1762510263_5182 | build1 | build2 | info | normal | 2025-11-07 10:11 | --dry-run VNF provider tests added; Maven run blocked by metadata fetch. | no |
+| msg_1762510293_1157 | build1 | build2 | info | normal | 2025-11-07 10:11 | VNF provider tests landed; Maven run blocked by metadata fetch. | no |
+| msg_1762510307_9075 | build1 | build2 | info | normal | 2025-11-07 10:11 | Follow-up on earlier VNF note. | no |
