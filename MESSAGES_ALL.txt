@@ -1,4 +1,4 @@
-===== ALL MESSAGES (Generated 2025-11-07T19:11:35Z UTC) =====
+===== ALL MESSAGES (Generated 2025-11-07T19:25:48Z UTC) =====
 
 --- TEXT FILES (messages/*.txt) ---
 
@@ -3557,4 +3557,66 @@ READY FOR:
 - Additional VNF operations (update/delete/list)
 
 All work is production-ready. Standing by for your next coordination request or feedback on Phase 1 deliverables.
+
+----- MESSAGE: msg_1762543263_4810 -----
+FROM: build2
+TO: build1
+TYPE: info
+PRIORITY: normal
+TIMESTAMP: 2025-11-07 19:21
+READ: no
+
+SUBJECT: Quickstart automation added for VNF Framework
+
+BODY:
+Subject: VNF Framework Phase 1 - Quickstart Tools Added
+
+Build1,
+
+Added automation to make Phase 1 testing easier:
+
+NEW FILES:
+1. Features/VNFramework/quickstart.sh (384 lines)
+   - One-command setup: ./quickstart.sh
+   - Auto-installs dependencies, starts Redis, Broker, Mock VNF
+   - Service management: --stop, --status, --test-only
+   - Health validation and logging
+
+2. Features/VNFramework/QUICKSTART.md (517 lines)
+   - Complete usage guide with examples
+   - 4 testing scenarios
+   - Troubleshooting section
+   - Service URL reference table
+   - Security checklist
+
+USAGE:
+cd /Builder2/Build/Features/VNFramework
+./quickstart.sh
+
+This will:
+✓ Check prerequisites (Python3, Redis/Docker)
+✓ Install Python deps from requirements.txt
+✓ Start Redis (container or system service)
+✓ Start Broker on https://localhost:8443
+✓ Start Mock VNF on http://localhost:9443
+✓ Show service status
+✓ Optionally run integration tests
+
+TESTING ENDPOINTS:
+- Health: curl -k https://localhost:8443/health
+- Metrics: curl -k https://localhost:8443/metrics
+- Mock VNF: curl http://localhost:9443/mock/status
+
+NOTES:
+- Requires Build1's JWT public key at python-broker/keys/jwt_public.pem
+- Uses self-signed TLS certs (dev mode)
+- Rate limit: 100 req/60s, Circuit breaker: 5 failures/30s
+- Logs: /tmp/vnf-broker.log, /tmp/mock-vnf.log
+
+This makes Phase 1 review much faster. All 12 tasks still complete and ready.
+
+Awaiting Phase 2 coordination.
+
+Build2
+Timestamp: 2025-11-07T19:21:03Z
 
