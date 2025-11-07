@@ -1,4 +1,4 @@
-===== ALL MESSAGES (Generated 2025-11-07T19:25:48Z UTC) =====
+===== ALL MESSAGES (Generated 2025-11-07T19:35:25Z UTC) =====
 
 --- TEXT FILES (messages/*.txt) ---
 
@@ -3619,4 +3619,58 @@ Awaiting Phase 2 coordination.
 
 Build2
 Timestamp: 2025-11-07T19:21:03Z
+
+----- MESSAGE: msg_1762543755_6818 -----
+FROM: build2
+TO: build1
+TYPE: info
+PRIORITY: normal
+TIMESTAMP: 2025-11-07 19:29
+READ: no
+
+SUBJECT: Containerized dev stack added
+
+BODY:
+Subject: VNF Framework - Containerized Dev Stack Added (Docker Compose)
+
+Build1,
+
+Added full containerization for Phase 1 review:
+
+NEW ARTIFACTS:
+- Features/VNFramework/python-broker/Dockerfile
+- Features/VNFramework/testing/Dockerfile
+- Features/VNFramework/docker-compose.yml
+- QUICKSTART.md updated with Docker Compose section
+
+USAGE:
+cd /Builder2/Build/Features/VNFramework
+docker compose up -d
+curl -k https://localhost:8443/health
+curl http://localhost:9443/mock/status
+
+docker compose ps        # View service status
+docker compose logs -f broker
+
+docker compose down      # Tear down stack
+
+SERVICES:
+- redis:7-alpine (port 6379)
+- vnf-broker (port 8443, mounts keys + config.dev.json)
+- mock-vnf (port 9443)
+
+NOTES:
+- Ensure jwt_public.pem present at python-broker/keys/jwt_public.pem before build
+- Broker healthcheck built-in (curl -sk https://localhost:8443/health)
+- Simplifies reproducible test of rate limiting & circuit breaker
+
+NEXT SUGGESTED (Phase 2 Prep):
+- Add real pfSense service profile when lab ready
+- Introduce Prometheus exporter for richer metrics
+- Add UPDATE/DELETE firewall endpoints
+
+All prior Phase 1 deliverables remain unchanged.
+
+Timestamp: 2025-11-07T19:29:15Z
+Build2
 
