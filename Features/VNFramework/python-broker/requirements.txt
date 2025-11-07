@@ -1,12 +1,24 @@
-# VNF Broker Dependencies - Build2 Implementation
+# VNF Broker Dependencies - Build2 Implementation (Enhanced)
 # Install: pip install -r requirements.txt
 
+# Core dependencies
 flask>=2.3.0
 requests>=2.31.0
 redis>=5.0.0
 pyjwt[crypto]>=2.8.0
 cryptography>=41.0.0
 gunicorn>=21.2.0
+
+# Validation and schema
+pydantic>=2.0.0
+
+# OpenAPI/documentation (for API stubs generation)
+apispec>=6.3.0
+apispec-webframeworks>=1.0.0
+
+# YAML processing for dictionaries
+pyyaml>=6.0.1
+jsonschema>=4.19.0
 
 # Optional for SSH support
 paramiko>=3.3.0

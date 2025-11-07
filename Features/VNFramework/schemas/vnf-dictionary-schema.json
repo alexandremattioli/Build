@@ -1,0 +1,187 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "VNF Dictionary Schema",
+  "description": "JSON Schema for VNF vendor dictionary YAML files",
+  "type": "object",
+  "required": ["version", "vendor", "product", "access", "services"],
+  "properties": {
+    "version": {
+      "type": "string",
+      "pattern": "^[0-9]+\\.[0-9]+(\\.[0-9]+)?$",
+      "description": "Dictionary format version (e.g., 1.0, 1.2.3)"
+    },
+    "vendor": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Vendor name (e.g., Netgate, Fortinet, Palo Alto)"
+    },
+    "product": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Product name (e.g., pfSense, FortiGate)"
+    },
+    "firmware_version": {
+      "type": "string",
+      "description": "Supported firmware version (e.g., 2.7+, 6.4.x)"
+    },
+    "access": {
+      "type": "object",
+      "required": ["protocol", "port", "authType"],
+      "properties": {
+        "protocol": {
+          "type": "string",
+          "enum": ["http", "https", "ssh"],
+          "description": "Access protocol"
+        },
+        "port": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 65535,
+          "description": "Access port"
+        },
+        "basePath": {
+          "type": "string",
+          "description": "API base path (e.g., /api/v1)"
+        },
+        "authType": {
+          "type": "string",
+          "enum": ["token", "basic", "apikey", "certificate"],
+          "description": "Authentication type"
+        },
+        "tokenRef": {
+          "type": "string",
+          "description": "Environment variable reference for token"
+        },
+        "tokenHeader": {
+          "type": "string",
+          "description": "HTTP header name for token"
+        }
+      }
+    },
+    "services": {
+      "type": "object",
+      "minProperties": 1,
+      "description": "Service definitions (Firewall, NAT, VPN, etc.)",
+      "patternProperties": {
+        "^[A-Z][A-Za-z0-9]*$": {
+          "type": "object",
+          "description": "Service definition",
+          "properties": {
+            "create": {
+              "$ref": "#/definitions/operation"
+            },
+            "update": {
+              "$ref": "#/definitions/operation"
+            },
+            "delete": {
+              "$ref": "#/definitions/operation"
+            },
+            "get": {
+              "$ref": "#/definitions/operation"
+            },
+            "list": {
+              "$ref": "#/definitions/operation"
+            }
+          }
+        }
+      }
+    },
+    "errorCodes": {
+      "type": "object",
+      "description": "Vendor-specific error code mappings",
+      "patternProperties": {
+        "^[A-Z_]+$": {
+          "type": "object",
+          "required": ["cloudstackCode", "message"],
+          "properties": {
+            "cloudstackCode": {
+              "type": "string",
+              "enum": [
+                "VNF_TIMEOUT",
+                "VNF_AUTH",
+                "VNF_CONFLICT",
+                "VNF_INVALID",
+                "VNF_UPSTREAM",
+                "VNF_UNREACHABLE",
+                "VNF_CAPACITY",
+                "VNF_RATE_LIMIT"
+              ]
+            },
+            "message": {
+              "type": "string"
+            },
+            "httpStatus": {
+              "type": "integer",
+              "minimum": 400,
+              "maximum": 599
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "operation": {
+      "type": "object",
+      "required": ["method", "endpoint"],
+      "properties": {
+        "method": {
+          "type": "string",
+          "enum": ["GET", "POST", "PUT", "PATCH", "DELETE"],
+          "description": "HTTP method"
+        },
+        "endpoint": {
+          "type": "string",
+          "minLength": 1,
+          "description": "API endpoint (supports Jinja2 templating)"
+        },
+        "headers": {
+          "type": "object",
+          "description": "Additional HTTP headers",
+          "patternProperties": {
+            "^[A-Za-z-]+$": {
+              "type": "string"
+            }
+          }
+        },
+        "body": {
+          "type": "string",
+          "description": "Request body template (Jinja2)"
+        },
+        "responseMapping": {
+          "type": "object",
+          "properties": {
+            "successCode": {
+              "type": "integer",
+              "minimum": 200,
+              "maximum": 299,
+              "description": "HTTP status code for success"
+            },
+            "idPath": {
+              "type": "string",
+              "description": "JSONPath to extract resource ID from response"
+            },
+            "errorPath": {
+              "type": "string",
+              "description": "JSONPath to extract error message from response"
+            }
+          }
+        },
+        "retry": {
+          "type": "object",
+          "properties": {
+            "maxAttempts": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 10
+            },
+            "backoffMs": {
+              "type": "integer",
+              "minimum": 100
+            }
+          }
+        }
+      }
+    }
+  }
+}

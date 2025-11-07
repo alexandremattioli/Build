@@ -1,0 +1,547 @@
+openapi: 3.0.3
+info:
+  title: VNF Broker API
+  description: |
+    CloudStack VNF (Virtual Network Function) Broker API for managing vendor appliances.
+    
+    The broker acts as an intermediary between CloudStack Management Server and VNF devices,
+    providing:
+    - Vendor abstraction via YAML dictionaries
+    - Idempotency with Redis-backed caching (24h TTL)
+    - RS256 JWT authentication
+    - Rate limiting and circuit breaker patterns
+    - Request validation with Pydantic models
+    
+    **Build2 Implementation** - Per coordination msg_1762504317
+  version: 1.0.0
+  contact:
+    name: Build2 (Copilot)
+    email: copilot@mattioli.co.uk
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0.html
+
+servers:
+  - url: https://localhost:8443
+    description: Local development (TLS)
+  - url: https://10.1.3.177:8443
+    description: Build2 server
+  - url: https://{host}:{port}
+    description: Custom deployment
+    variables:
+      host:
+        default: localhost
+      port:
+        default: '8443'
+
+security:
+  - bearerAuth: []
+
+tags:
+  - name: Health
+    description: Health check and monitoring endpoints
+  - name: Firewall
+    description: VNF firewall rule operations
+  - name: NAT
+    description: VNF NAT rule operations
+
+paths:
+  /health:
+    get:
+      tags:
+        - Health
+      summary: Health check
+      description: Returns broker health status including Redis connectivity
+      operationId: healthCheck
+      security: []  # No auth required for health
+      responses:
+        '200':
+          description: Broker is healthy
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HealthResponse'
+              example:
+                status: healthy
+                service: vnf-broker-enhanced
+                version: 1.0.0-build2
+                redis:
+                  status: connected
+                  latency_ms: 2
+                timestamp: '2025-11-07T18:30:00Z'
+
+  /metrics:
+    get:
+      tags:
+        - Health
+      summary: Metrics endpoint
+      description: Returns operational metrics including circuit breaker states
+      operationId: getMetrics
+      security: []  # No auth required for metrics
+      responses:
+        '200':
+          description: Metrics data
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MetricsResponse'
+              example:
+                circuit_breakers:
+                  vnf-instance-uuid-1:
+                    state: closed
+                    failure_count: 0
+                  vnf-instance-uuid-2:
+                    state: open
+                    failure_count: 5
+                timestamp: '2025-11-07T18:30:00Z'
+
+  /api/vnf/firewall/create:
+    post:
+      tags:
+        - Firewall
+      summary: Create firewall rule
+      description: |
+        Creates a firewall rule on the target VNF appliance.
+        
+        **Idempotency:** Requests with identical ruleId and parameters return cached response (24h TTL).
+        **Circuit Breaker:** Protects against failing VNF backends (5 failures = open for 30s).
+        **Rate Limit:** 100 requests per 60 seconds per client.
+      operationId: createFirewallRule
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateFirewallRuleRequest'
+            example:
+              vnfInstanceId: vnf-pfsense-001
+              ruleId: fw-rule-12345
+              action: allow
+              protocol: tcp
+              sourceIp: 10.0.0.0/24
+              destinationIp: 192.168.1.0/24
+              destinationPort: 443
+              enabled: true
+              description: Allow HTTPS from internal network
+      responses:
+        '201':
+          description: Firewall rule created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreateFirewallRuleResponse'
+              example:
+                success: true
+                ruleId: fw-rule-12345
+                vnfInstanceId: vnf-pfsense-001
+                status: created
+                timestamp: '2025-11-07T18:30:00Z'
+                request_id: a1b2c3d4
+        '200':
+          description: Idempotent request - returning cached response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreateFirewallRuleResponse'
+        '400':
+          description: Validation error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+              example:
+                error: Validation error
+                message: Invalid request data
+                details:
+                  - loc: [destinationPort]
+                    msg: ensure this value is less than or equal to 65535
+                    type: value_error.number.not_le
+        '401':
+          description: Missing or invalid Authorization header
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Invalid or expired JWT token
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '429':
+          description: Rate limit exceeded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RateLimitError'
+              example:
+                error: Rate limit exceeded
+                message: Too many requests. Retry after 45 seconds.
+                retry_after: 45
+        '502':
+          description: VNF operation failed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '503':
+          description: Circuit breaker open - VNF instance unavailable
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CircuitBreakerError'
+              example:
+                error: Service unavailable
+                message: Circuit breaker open for VNF instance vnf-pfsense-001
+                vnfInstanceId: vnf-pfsense-001
+
+  /api/vnf/nat/create:
+    post:
+      tags:
+        - NAT
+      summary: Create NAT rule
+      description: |
+        Creates a NAT rule on the target VNF appliance.
+        Supports SNAT, DNAT, and 1:1 NAT types.
+      operationId: createNATRule
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateNATRuleRequest'
+            example:
+              vnfInstanceId: vnf-pfsense-001
+              ruleId: nat-rule-67890
+              natType: snat
+              originalIp: 10.0.1.100
+              translatedIp: 203.0.113.10
+              protocol: tcp
+              enabled: true
+              description: SNAT for web server
+      responses:
+        '201':
+          description: NAT rule created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreateNATRuleResponse'
+              example:
+                success: true
+                ruleId: nat-rule-67890
+                vnfInstanceId: vnf-pfsense-001
+                natType: snat
+                status: created
+                timestamp: '2025-11-07T18:30:00Z'
+                request_id: e5f6g7h8
+        '200':
+          description: Idempotent request - returning cached response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreateNATRuleResponse'
+        '400':
+          description: Validation error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Forbidden - invalid JWT
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '429':
+          description: Rate limit exceeded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RateLimitError'
+        '503':
+          description: Circuit breaker open
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CircuitBreakerError'
+
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: |
+        RS256 JWT token issued by CloudStack Management Server.
+        Public key: `/etc/vnf-broker/jwt_public.pem`
+        
+        Expected claims:
+        - `sub`: Subject (e.g., cloudstack-management)
+        - `exp`: Expiration timestamp
+        - `iat`: Issued at timestamp
+
+  schemas:
+    CreateFirewallRuleRequest:
+      type: object
+      required:
+        - vnfInstanceId
+        - ruleId
+        - action
+        - protocol
+        - sourceIp
+        - destinationIp
+      properties:
+        vnfInstanceId:
+          type: string
+          minLength: 1
+          maxLength: 128
+          description: VNF instance UUID
+          example: vnf-pfsense-001
+        ruleId:
+          type: string
+          minLength: 1
+          maxLength: 128
+          description: Unique rule identifier (used for idempotency)
+          example: fw-rule-12345
+        action:
+          type: string
+          enum: [allow, deny, reject]
+          description: Firewall action
+          example: allow
+        protocol:
+          type: string
+          enum: [tcp, udp, icmp, any]
+          description: Network protocol
+          example: tcp
+        sourceIp:
+          type: string
+          description: Source IP or CIDR
+          example: 10.0.0.0/24
+        destinationIp:
+          type: string
+          description: Destination IP or CIDR
+          example: 192.168.1.0/24
+        destinationPort:
+          type: integer
+          minimum: 1
+          maximum: 65535
+          description: Destination port (optional)
+          example: 443
+        enabled:
+          type: boolean
+          default: true
+          description: Rule enabled state
+        description:
+          type: string
+          maxLength: 500
+          description: Rule description
+          example: Allow HTTPS traffic
+
+    CreateFirewallRuleResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+          example: true
+        ruleId:
+          type: string
+          example: fw-rule-12345
+        vnfInstanceId:
+          type: string
+          example: vnf-pfsense-001
+        status:
+          type: string
+          enum: [created, exists]
+          example: created
+        timestamp:
+          type: string
+          format: date-time
+          example: '2025-11-07T18:30:00Z'
+        request_id:
+          type: string
+          description: Unique request identifier for tracing
+          example: a1b2c3d4
+
+    CreateNATRuleRequest:
+      type: object
+      required:
+        - vnfInstanceId
+        - ruleId
+        - natType
+        - originalIp
+        - translatedIp
+      properties:
+        vnfInstanceId:
+          type: string
+          minLength: 1
+          maxLength: 128
+          example: vnf-pfsense-001
+        ruleId:
+          type: string
+          minLength: 1
+          maxLength: 128
+          example: nat-rule-67890
+        natType:
+          type: string
+          enum: [snat, dnat, 1to1]
+          description: NAT type
+          example: snat
+        originalIp:
+          type: string
+          description: Original IP address
+          example: 10.0.1.100
+        translatedIp:
+          type: string
+          description: Translated IP address
+          example: 203.0.113.10
+        originalPort:
+          type: integer
+          minimum: 1
+          maximum: 65535
+          description: Original port (for DNAT)
+          example: 8080
+        translatedPort:
+          type: integer
+          minimum: 1
+          maximum: 65535
+          description: Translated port (for DNAT)
+          example: 80
+        protocol:
+          type: string
+          enum: [tcp, udp, icmp, any]
+          default: any
+          example: tcp
+        enabled:
+          type: boolean
+          default: true
+        description:
+          type: string
+          maxLength: 500
+          example: SNAT for web server
+
+    CreateNATRuleResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+        ruleId:
+          type: string
+        vnfInstanceId:
+          type: string
+        natType:
+          type: string
+        status:
+          type: string
+          enum: [created, exists]
+        timestamp:
+          type: string
+          format: date-time
+        request_id:
+          type: string
+
+    HealthResponse:
+      type: object
+      properties:
+        status:
+          type: string
+          enum: [healthy, degraded, unhealthy]
+        service:
+          type: string
+        version:
+          type: string
+        redis:
+          type: object
+          properties:
+            status:
+              type: string
+            latency_ms:
+              type: integer
+        timestamp:
+          type: string
+          format: date-time
+
+    MetricsResponse:
+      type: object
+      properties:
+        circuit_breakers:
+          type: object
+          additionalProperties:
+            type: object
+            properties:
+              state:
+                type: string
+                enum: [closed, open, half_open]
+              failure_count:
+                type: integer
+        timestamp:
+          type: string
+          format: date-time
+
+    ErrorResponse:
+      type: object
+      properties:
+        error:
+          type: string
+          description: Error type
+        message:
+          type: string
+          description: Human-readable error message
+        timestamp:
+          type: string
+          format: date-time
+        request_id:
+          type: string
+
+    ValidationError:
+      type: object
+      properties:
+        error:
+          type: string
+          example: Validation error
+        message:
+          type: string
+          example: Invalid request data
+        details:
+          type: array
+          items:
+            type: object
+            properties:
+              loc:
+                type: array
+                items:
+                  oneOf:
+                    - type: string
+                    - type: integer
+              msg:
+                type: string
+              type:
+                type: string
+
+    RateLimitError:
+      type: object
+      properties:
+        error:
+          type: string
+          example: Rate limit exceeded
+        message:
+          type: string
+        retry_after:
+          type: integer
+          description: Seconds until rate limit resets
+
+    CircuitBreakerError:
+      type: object
+      properties:
+        error:
+          type: string
+          example: Service unavailable
+        message:
+          type: string
+        vnfInstanceId:
+          type: string
