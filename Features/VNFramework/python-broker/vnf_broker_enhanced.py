@@ -23,13 +23,14 @@ from typing import Dict, Any, Optional, Tuple
 from enum import Enum
 from functools import wraps
 
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, Response
 from pydantic import BaseModel, Field, validator, ValidationError
 import requests
 import redis
 from redis.connection import ConnectionPool
 import jwt
 from cryptography.hazmat.primitives import serialization
+from prometheus_client import Counter, Histogram, Gauge, generate_latest, CONTENT_TYPE_LATEST
 
 # Configuration defaults (same as vnf_broker_redis.py)
 CONFIG = {
@@ -76,6 +77,67 @@ redis_client: Optional[redis.Redis] = None
 
 # Circuit breaker state per VNF instance
 circuit_breaker_state = {}  # {vnf_instance_id: {'state': 'closed|open|half_open', 'failures': int, 'last_failure': timestamp}}
+
+# =========================================================================
+# Prometheus Metrics
+# =========================================================================
+
+HTTP_REQUESTS = Counter(
+    'vnf_broker_http_requests_total',
+    'Total HTTP requests',
+    ['method', 'endpoint', 'status']
+)
+
+HTTP_LATENCY = Histogram(
+    'vnf_broker_request_latency_seconds',
+    'Request latency in seconds',
+    ['endpoint']
+)
+
+RATE_LIMIT_ALLOWED = Counter(
+    'vnf_broker_rate_limit_allowed_total',
+    'Total requests allowed by rate limiter',
+    ['client']
+)
+
+RATE_LIMIT_BLOCKED = Counter(
+    'vnf_broker_rate_limit_blocked_total',
+    'Total requests blocked by rate limiter',
+    ['client']
+)
+
+JWT_INVALID = Counter(
+    'vnf_broker_jwt_invalid_total',
+    'Count of invalid or expired JWT tokens'
+)
+
+CIRCUIT_BREAKER_STATE = Gauge(
+    'vnf_broker_circuit_breaker_state',
+    'Circuit breaker state (0=closed,1=half_open,2=open)',
+    ['vnf_instance_id']
+)
+
+def _cb_state_to_val(state: str) -> int:
+    return 2 if state == 'open' else (1 if state == 'half_open' else 0)
+
+@app.before_request
+def _before_request():
+    # record start time for latency metrics
+    request._start_time = time.time()
+
+@app.after_request
+def _after_request(response):
+    try:
+        endpoint = request.path
+        method = request.method
+        status = str(response.status_code)
+        HTTP_REQUESTS.labels(method=method, endpoint=endpoint, status=status).inc()
+        if hasattr(request, '_start_time'):
+            HTTP_LATENCY.labels(endpoint=endpoint).observe(max(0.0, time.time() - request._start_time))
+    except Exception:
+        # Metrics should never break the request flow
+        pass
+    return response
 
 # ============================================================================
 # Pydantic Models for Request Validation
@@ -225,8 +287,16 @@ def check_rate_limit(client_id: str) -> Tuple[bool, Optional[int]]:
         if request_count >= limit:
             retry_after = int(window - (now - window_start))
             logger.warning(f"Rate limit exceeded for {client_id}: {request_count}/{limit}")
+            try:
+                RATE_LIMIT_BLOCKED.labels(client=client_id).inc()
+            except Exception:
+                pass
             return False, retry_after
         
+        try:
+            RATE_LIMIT_ALLOWED.labels(client=client_id).inc()
+        except Exception:
+            pass
         return True, None
         
     except redis.RedisError as e:
@@ -249,6 +319,10 @@ def check_circuit_breaker(vnf_instance_id: str) -> bool:
             'failures': 0,
             'last_failure': None
         }
+        try:
+            CIRCUIT_BREAKER_STATE.labels(vnf_instance_id=vnf_instance_id).set(0)
+        except Exception:
+            pass
     
     cb = circuit_breaker_state[vnf_instance_id]
     now = time.time()
@@ -258,6 +332,10 @@ def check_circuit_breaker(vnf_instance_id: str) -> bool:
         if cb['last_failure'] and (now - cb['last_failure']) > CONFIG['CIRCUIT_BREAKER_TIMEOUT']:
             logger.info(f"Circuit breaker half-open for {vnf_instance_id}")
             cb['state'] = 'half_open'
+            try:
+                CIRCUIT_BREAKER_STATE.labels(vnf_instance_id=vnf_instance_id).set(1)
+            except Exception:
+                pass
             return True
         
         logger.warning(f"Circuit breaker OPEN for {vnf_instance_id}")
@@ -274,6 +352,10 @@ def record_circuit_breaker_success(vnf_instance_id: str):
         cb['state'] = 'closed'
         cb['failures'] = 0
         cb['last_failure'] = None
+        try:
+            CIRCUIT_BREAKER_STATE.labels(vnf_instance_id=vnf_instance_id).set(0)
+        except Exception:
+            pass
 
 def record_circuit_breaker_failure(vnf_instance_id: str):
     """Record failed VNF request"""
@@ -283,6 +365,10 @@ def record_circuit_breaker_failure(vnf_instance_id: str):
             'failures': 0,
             'last_failure': None
         }
+        try:
+            CIRCUIT_BREAKER_STATE.labels(vnf_instance_id=vnf_instance_id).set(0)
+        except Exception:
+            pass
     
     cb = circuit_breaker_state[vnf_instance_id]
     cb['failures'] += 1
@@ -291,6 +377,10 @@ def record_circuit_breaker_failure(vnf_instance_id: str):
     if cb['failures'] >= CONFIG['CIRCUIT_BREAKER_THRESHOLD']:
         logger.error(f"Circuit breaker OPEN for {vnf_instance_id} after {cb['failures']} failures")
         cb['state'] = 'open'
+        try:
+            CIRCUIT_BREAKER_STATE.labels(vnf_instance_id=vnf_instance_id).set(2)
+        except Exception:
+            pass
 
 # ============================================================================
 # JWT Validation
@@ -307,9 +397,17 @@ def validate_jwt(token: str) -> Optional[Dict]:
         return payload
     except jwt.ExpiredSignatureError:
         logger.warning("JWT expired")
+        try:
+            JWT_INVALID.inc()
+        except Exception:
+            pass
         return None
     except jwt.InvalidTokenError as e:
         logger.error(f"Invalid JWT: {e}")
+        try:
+            JWT_INVALID.inc()
+        except Exception:
+            pass
         return None
 
 # ============================================================================
@@ -430,6 +528,12 @@ def metrics():
         'circuit_breakers': circuit_breaker_stats,
         'timestamp': datetime.now().isoformat()
     })
+
+@app.route('/metrics.prom', methods=['GET'])
+def metrics_prometheus():
+    """Prometheus text-format metrics endpoint"""
+    data = generate_latest()
+    return Response(response=data, status=200, mimetype=CONTENT_TYPE_LATEST)
 
 @app.route('/api/vnf/firewall/create', methods=['POST'])
 @require_auth

@@ -22,3 +22,6 @@ jsonschema>=4.19.0
 
 # Optional for SSH support
 paramiko>=3.3.0
+
+# Metrics/Monitoring
+prometheus-client>=0.20.0
