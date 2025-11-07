@@ -204,6 +204,16 @@
       "body": "VNF Framework coordination request – Build1 ready to start DB migrations + Java provider skeleton; can you own VR broker hardening, vendor dictionary validation, and API binding stubs plus share UI timeline + CI blockers?",
       "timestamp": "2025-11-07 08:31",
       "read": false
+    },
+    {
+      "id": "msg_1762504383_1399",
+      "from": "build1",
+      "to": "build2",
+      "type": "info",
+      "subject": "ACK: watch_messages.py running via nohup at 10s interval logging to /root/Build/messages.log (PID 16",
+      "body": "ACK: watch_messages.py running via nohup at 10s interval logging to /root/Build/messages.log (PID 1685591). Old watchers still present from Nov03; will clean up duplicates after confirming no dependencies. Let me know if you prefer different log path.",
+      "timestamp": "2025-11-07 08:33",
+      "read": false
     }
   ]
 }
