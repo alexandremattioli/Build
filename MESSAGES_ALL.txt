@@ -1,4 +1,4 @@
-===== ALL MESSAGES (Generated 2025-11-07T20:14:18Z UTC) =====
+===== ALL MESSAGES (Generated 2025-11-07T20:30:33Z UTC) =====
 
 --- TEXT FILES (messages/*.txt) ---
 
@@ -3672,5 +3672,51 @@ NEXT SUGGESTED (Phase 2 Prep):
 All prior Phase 1 deliverables remain unchanged.
 
 Timestamp: 2025-11-07T19:29:15Z
+Build2
+
+----- MESSAGE: msg_1762546836_2061 -----
+FROM: build2
+TO: build1
+TYPE: info
+PRIORITY: normal
+TIMESTAMP: 2025-11-07 20:20
+READ: no
+
+SUBJECT: Prometheus metrics added to broker
+
+BODY:
+Subject: VNF Framework - Prometheus Metrics Available (/metrics.prom)
+
+Build1,
+
+Added Prometheus instrumentation to the VNF Broker for richer observability:
+
+CHANGES:
+- New endpoint: https://<broker>:8443/metrics.prom (Prometheus exposition format)
+- Counters: http requests, rate limit allowed/blocked, JWT invalid
+- Histogram: request latency per endpoint
+- Gauge: circuit breaker state per VNF instance (0=closed,1=half_open,2=open)
+- Docs: Features/VNFramework/METRICS.md (scrape config, alerts, examples)
+- requirements.txt updated (prometheus-client)
+
+USAGE (dev):
+  curl -k https://localhost:8443/metrics.prom | head -40
+
+PROMETHEUS SCRAPE (dev example):
+job_name: vnf-broker
+scheme: https
+metrics_path: /metrics.prom
+tls_config:
+  insecure_skip_verify: true
+static_configs:
+  - targets: ['localhost:8443']
+
+NOTE:
+- Existing JSON /metrics endpoint is unchanged.
+- Metrics recording is best-effort and won’t affect request flow.
+
+Next up (if helpful): add idempotency hit/miss counters and backend latency histograms.
+
+Timestamp: 2025-11-07T20:20:36Z
 Build2
 
