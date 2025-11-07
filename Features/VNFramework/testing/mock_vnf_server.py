@@ -154,6 +154,82 @@ def pfsense_delete_firewall_rule(rule_id):
             'message': f'Rule {rule_id} not found'
         }), 404
 
+@app.route('/api/v1/firewall/rule/<rule_id>', methods=['PUT'])
+def pfsense_update_firewall_rule(rule_id):
+    """pfSense: Update firewall rule"""
+    state.request_count += 1
+    simulate_latency()
+    
+    if should_inject_error():
+        state.error_count += 1
+        return jsonify({
+            'status': 'error',
+            'code': 500,
+            'message': 'Simulated VNF backend failure'
+        }), 500
+    
+    if rule_id not in state.firewall_rules:
+        return jsonify({
+            'status': 'error',
+            'code': 404,
+            'message': f'Rule {rule_id} not found'
+        }), 404
+    
+    data = request.get_json()
+    
+    # Update rule with new data
+    rule = state.firewall_rules[rule_id]
+    rule.update({
+        'interface': data.get('interface', rule.get('interface')),
+        'type': data.get('type', rule.get('type')),
+        'protocol': data.get('protocol', rule.get('protocol')),
+        'src': data.get('src', rule.get('src')),
+        'dst': data.get('dst', rule.get('dst')),
+        'dstport': data.get('dstport', rule.get('dstport')),
+        'descr': data.get('descr', rule.get('descr')),
+        'disabled': data.get('disabled', rule.get('disabled')),
+        'updated_at': datetime.now().isoformat()
+    })
+    
+    logger.info(f"Updated firewall rule: {rule_id}")
+    
+    return jsonify({
+        'status': 'ok',
+        'code': 200,
+        'message': 'Rule updated successfully',
+        'data': {
+            'id': rule_id,
+            'tracker': int(time.time())
+        }
+    }), 200
+
+@app.route('/api/v1/firewall/rules', methods=['GET'])
+def pfsense_list_firewall_rules():
+    """pfSense: List all firewall rules"""
+    state.request_count += 1
+    simulate_latency()
+    
+    if should_inject_error():
+        state.error_count += 1
+        return jsonify({
+            'status': 'error',
+            'code': 500,
+            'message': 'Simulated VNF backend failure'
+        }), 500
+    
+    rules = list(state.firewall_rules.values())
+    logger.info(f"Listed {len(rules)} firewall rules")
+    
+    return jsonify({
+        'status': 'ok',
+        'code': 200,
+        'message': 'Rules retrieved successfully',
+        'data': {
+            'rules': rules,
+            'count': len(rules)
+        }
+    }), 200
+
 @app.route('/api/v1/firewall/nat/outbound', methods=['POST'])
 def pfsense_create_nat_rule():
     """pfSense: Create NAT rule (SNAT)"""
@@ -341,9 +417,11 @@ def main():
     logger.info(f"  POST http://localhost:{args.port}/mock/config")
     logger.info("")
     logger.info("VNF API endpoints (pfSense):")
-    logger.info(f"  POST http://localhost:{args.port}/api/v1/firewall/rule")
+    logger.info(f"  POST   http://localhost:{args.port}/api/v1/firewall/rule")
+    logger.info(f"  PUT    http://localhost:{args.port}/api/v1/firewall/rule/<id>")
     logger.info(f"  DELETE http://localhost:{args.port}/api/v1/firewall/rule/<id>")
-    logger.info(f"  POST http://localhost:{args.port}/api/v1/firewall/nat/outbound")
+    logger.info(f"  GET    http://localhost:{args.port}/api/v1/firewall/rules")
+    logger.info(f"  POST   http://localhost:{args.port}/api/v1/firewall/nat/outbound")
     logger.info("=" * 80)
     
     app.run(host=args.host, port=args.port, debug=args.debug)

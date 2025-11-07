@@ -73,14 +73,18 @@ VNF_Implementation/
   - Multiple auth types
 
 ### ✅ Python VR Broker (`python-broker/`)
-- **Production-ready Flask service**:
-  - mTLS authentication
-  - JWT token validation
-  - HTTP/HTTPS proxying
-  - SSH command execution
-  - Self-signed cert generation
-  - Comprehensive logging
-- **600+ lines of working code**
+- **Production-ready Flask service** (vnf_broker_enhanced.py):
+   - Full CRUD operations (Create, Read, Update, Delete)
+   - JWT authentication with rate limiting (100 req/min)
+   - Circuit breaker pattern (5 failures → open for 60s)
+   - Idempotency with Redis-based request deduplication
+   - Prometheus metrics exposition (/metrics.prom)
+   - 6 metrics: HTTP requests, latency, rate limit, JWT errors, circuit breaker state
+   - HTTP/HTTPS proxying to VNF appliances
+   - Comprehensive logging and error handling
+- **883 lines of production code**
+- **Docker containerization** with health checks
+- **docker-compose stack** for full deployment (broker + redis + mock VNF)
 
 ### ✅ Sample Dictionaries (`dictionaries/`)
 - **4 complete vendor examples**:
@@ -287,6 +291,11 @@ For a fast start, see `ui-specs/QUICK-START.md` (10–60 minutes to working UI) 
    - VNF template registration guide
    - Dictionary writing guide
    - Troubleshooting guide
+- **CRUD_EXAMPLES.md**: Complete CRUD operations guide
+   - All CREATE/READ/UPDATE/DELETE endpoints
+   - cURL and Python client examples
+   - Complete workflow scenarios
+   - Error handling best practices
 
 2. **Developer Documentation**
    - Architecture overview
