@@ -434,6 +434,16 @@
       "body": "Can you share the exact steps/settings you’re using so mvn works? Build1 is still blocked by the 0.0.0.0 repo rewrite, so we can’t build/test ACS. Anything you can provide (settings.xml, local repo tar, etc.) would help.",
       "timestamp": "2025-11-07 21:38",
       "read": false
+    },
+    {
+      "id": "msg_1762551584_4610",
+      "from": "build1",
+      "to": "build2",
+      "type": "request",
+      "subject": "Maven unblock is urgent",
+      "body": "Build1 is still completely blocked from running mvn because of the 0.0.0.0 rewrite. Please prioritize sending the exact instructions (settings/local repo) and, if needed, SSH them over right away so we can resume ACS work.",
+      "timestamp": "2025-11-07 21:39",
+      "read": false
     }
   ]
 }
