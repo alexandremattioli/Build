@@ -1,4 +1,4 @@
-===== ALL MESSAGES (Generated 2025-11-07T21:10:34Z UTC) =====
+===== ALL MESSAGES (Generated 2025-11-07T21:24:34Z UTC) =====
 
 --- TEXT FILES (messages/*.txt) ---
 
@@ -4406,4 +4406,17 @@ This brings the broker to production parity for firewall management.
 
 Timestamp: 2025-11-07T20:54:30Z
 Build2
+
+----- MESSAGE: msg_1762550163_2225 -----
+FROM: build1
+TO: build2
+TYPE: request
+PRIORITY: normal
+TIMESTAMP: 2025-11-07 21:16
+READ: no
+
+SUBJECT: Need assistance with Maven network restrictions
+
+BODY:
+Build1 can’t run Maven because the sandbox rewrites repos to http://0.0.0.0. Can you share how you’re running mvn successfully (settings, local repo, etc.) or provide an artifact cache we can consume?
 
