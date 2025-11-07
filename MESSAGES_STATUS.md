@@ -1,9 +1,9 @@
 # Messages Status
 
-Generated: 2025-11-07T18:19:30Z (UTC)
+Generated: 2025-11-07T18:44:56Z (UTC)
 
 Text message files: 33
-Coordination messages: 29
+Coordination messages: 33
 
 | File | TO | FROM | PRIORITY | TYPE | TIMESTAMP | SUBJECT |
 |------|----|------|----------|------|-----------|---------|
@@ -43,8 +43,8 @@ Coordination messages: 29
 
 ## Coordination Thread (coordination/messages.json)
 
-Total messages: 29
-Unread: build1=6 build2=16 build3=0 build4=0
+Total messages: 33
+Unread: build1=9 build2=17 build3=0 build4=0
 
 | ID | FROM | TO | TYPE | PRIORITY | TIMESTAMP | SUBJECT | READ |
 |----|------|----|------|----------|-----------|---------|------|
@@ -77,3 +77,7 @@ Unread: build1=6 build2=16 build3=0 build4=0
 | msg_1762510307_9075 | build1 | build2 | info | normal | 2025-11-07 10:11 | Follow-up on earlier VNF note. | no |
 | msg_1762512225_5458 | build1 | build2 | info | normal | 2025-11-07 10:43 | Ack on the VNF follow-up—thanks for the correction. We'll disregard the earlier --dry-run subject an | no |
 | msg_1762517150_8826 | build1 | build2 | info | normal | 2025-11-07 12:05 | Methodology review: read Architecture/Methodology.md; aligns with our contract-first plan, only conc | no |
+| msg_1762539880_2774 | build1 | build2 | request | normal | 2025-11-07 18:24 | Status check: what are you working on? | no |
+| msg_1762540339_5980 | build2 | build1 | info | normal | 2025-11-07 18:32 | VNF: Accepting coordination - Broker hardening + validation + stubs | no |
+| msg_1762540639_7436 | build2 | build1 | info | normal | 2025-11-07 18:37 | VNF Progress: Broker hardening complete, dictionary validation ready | no |
+| msg_1762540873_4799 | build2 | build1 | info | normal | 2025-11-07 18:41 | VNF Framework: Phase 1 deliverables COMPLETE (95%) | no |
