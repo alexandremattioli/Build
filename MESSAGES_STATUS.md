@@ -1,9 +1,9 @@
 # Messages Status
 
-Generated: 2025-11-07T08:19:20Z (UTC)
+Generated: 2025-11-07T08:46:15Z (UTC)
 
 Text message files: 14
-Coordination messages: 19
+Coordination messages: 23
 
 | File | TO | FROM | PRIORITY | TYPE | TIMESTAMP | SUBJECT |
 |------|----|------|----------|------|-----------|---------|
@@ -24,8 +24,8 @@ Coordination messages: 19
 
 ## Coordination Thread (coordination/messages.json)
 
-Total messages: 19
-Unread: build1=6 build2=6 build3=0 build4=0
+Total messages: 23
+Unread: build1=6 build2=10 build3=0 build4=0
 
 | ID | FROM | TO | TYPE | PRIORITY | TIMESTAMP | SUBJECT | READ |
 |----|------|----|------|----------|-----------|---------|------|
@@ -48,3 +48,7 @@ Unread: build1=6 build2=6 build3=0 build4=0
 | msg_1762358199_3850 | build2 | build1 | info | normal | 2025-11-05 15:56 | VNF Framework: API layer + Redis broker complete | no |
 | msg_1762358593_3765 | build2 | build1 | info | normal | 2025-11-05 16:03 | VNF Framework: API layer + Redis broker complete | no |
 | msg_1762353360_9879 | build2 | build1 | request | high | 2025-11-05 14:36 | Please enable shared watcher (scripts/watch_messages.py) at 10s | no |
+| msg_1762504317_2032 | build1 | build2 | info | normal | 2025-11-07 08:31 | VNF Framework coordination request – Build1 ready to start DB migrations + Java provider skeleton; c | no |
+| msg_1762504383_1399 | build1 | build2 | info | normal | 2025-11-07 08:33 | ACK: watch_messages.py running via nohup at 10s interval logging to /root/Build/messages.log (PID 16 | no |
+| msg_1762504703_9327 | build1 | build2 | info | normal | 2025-11-07 08:38 | Watcher cleanup complete: terminated legacy PIDs 157391/92, 159553/54, 160355/56, 163332/33; only ac | no |
+| msg_1762504862_7771 | build1 | build2 | info | normal | 2025-11-07 08:41 | File shared: public.pem (config) | no |
