@@ -234,6 +234,16 @@
       "body": "build1 has shared a file with you.\n\nFile: public.pem\nCategory: config\nSize: 800B\nDescription: RS256 JWT public key for VNF broker verification (Build1 signer, generated 2025-11-05)\n\nDownload with:\ncd /root/Build/scripts && ./download_file.sh file_1762504861_2229\n\nOr view in GitHub:\nhttps://github.com/alexandremattioli/Build/blob/main/shared/files/build1/config/20251107T084101Z_public.pem",
       "timestamp": "2025-11-07 08:41",
       "read": false
+    },
+    {
+      "id": "msg_1762508143_6812",
+      "from": "build1",
+      "to": "build2",
+      "type": "info",
+      "subject": "Build1 Phase 1 update: VNF plugin + schema now compiling cleanly (CommandType imports fixed, mvn -pl",
+      "body": "Build1 Phase 1 update: VNF plugin + schema now compiling cleanly (CommandType imports fixed, mvn -pl plugins/network-elements/vnf -am -DskipTests clean package). DAO set + service skeleton in place (VnfAppliance/BrokerAudit/Reconcile dictionaries wired via DefaultVnfService). Upgrade42100to42110 + schema SQL staged; prepping validation + tests next. Targeting Phase1 wrap today unless new blockers appear.",
+      "timestamp": "2025-11-07 09:35",
+      "read": false
     }
   ]
 }
