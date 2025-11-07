@@ -1,0 +1,67 @@
+# VNF Framework Dev Stack - docker-compose
+# Services:
+#  - redis: Key-value store for rate limiting & circuit breaker state
+#  - broker: VNF Broker (enhanced) on 8443 (self-signed certs, dev mode)
+#  - mock-vnf: Mock VNF appliance simulator on 9443
+#
+# Usage:
+#   docker compose up -d
+#   docker compose ps
+#   docker compose logs -f broker
+#   docker compose down
+#
+# After start test:
+#   curl -k https://localhost:8443/health
+#   curl http://localhost:9443/mock/status
+#
+version: "3.9"
+
+services:
+  redis:
+    image: redis:7-alpine
+    container_name: vnf-redis
+    restart: unless-stopped
+    ports:
+      - "6379:6379"
+    command: ["redis-server", "--save", ""] # disable RDB for dev speed
+
+  broker:
+    build:
+      context: ./python-broker
+      dockerfile: Dockerfile
+    container_name: vnf-broker
+    restart: unless-stopped
+    depends_on:
+      - redis
+    environment:
+      REDIS_HOST: redis
+      REDIS_PORT: 6379
+      BROKER_PORT: 8443
+    ports:
+      - "8443:8443"
+    volumes:
+      - ./python-broker/keys:/app/keys:ro
+      - ./python-broker/config.dev.json:/app/config.dev.json:ro
+    healthcheck:
+      test: ["CMD", "curl", "-sk", "https://localhost:8443/health"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+
+  mock-vnf:
+    build:
+      context: ./testing
+      dockerfile: Dockerfile
+    container_name: mock-vnf
+    restart: unless-stopped
+    ports:
+      - "9443:9443"
+    healthcheck:
+      test: ["CMD", "curl", "-s", "http://localhost:9443/health"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+
+networks:
+  default:
+    name: vnf-net

@@ -24,7 +24,37 @@ This will:
 
 ---
 
-## 📋 Prerequisites
+## � Containerized Setup (Docker Compose)
+
+If you prefer containers, a compose stack is included to run Redis, the Broker, and the Mock VNF together.
+
+```bash
+cd /Builder2/Build/Features/VNFramework
+docker compose up -d
+
+# Check status
+docker compose ps
+
+# Tail broker logs
+docker compose logs -f broker
+
+# Tear down
+docker compose down
+```
+
+Notes:
+- The compose stack builds two local images:
+  - `broker`: from `python-broker/Dockerfile`
+  - `mock-vnf`: from `testing/Dockerfile`
+- It also starts `redis:7-alpine` and wires the network automatically.
+- The broker mounts `python-broker/keys` (read-only) and `config.dev.json`. Ensure `python-broker/keys/jwt_public.pem` exists.
+- After starting, verify:
+  - `curl -k https://localhost:8443/health` (broker)
+  - `curl http://localhost:9443/mock/status` (mock VNF)
+
+---
+
+## �📋 Prerequisites
 
 ### Required
 - **Python 3.11+** (3.8+ minimum)
