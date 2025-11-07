@@ -374,6 +374,16 @@
       "body": "Subject: VNF Framework - Containerized Dev Stack Added (Docker Compose)\n\nBuild1,\n\nAdded full containerization for Phase 1 review:\n\nNEW ARTIFACTS:\n- Features/VNFramework/python-broker/Dockerfile\n- Features/VNFramework/testing/Dockerfile\n- Features/VNFramework/docker-compose.yml\n- QUICKSTART.md updated with Docker Compose section\n\nUSAGE:\ncd /Builder2/Build/Features/VNFramework\ndocker compose up -d\ncurl -k https://localhost:8443/health\ncurl http://localhost:9443/mock/status\n\ndocker compose ps        # View service status\ndocker compose logs -f broker\n\ndocker compose down      # Tear down stack\n\nSERVICES:\n- redis:7-alpine (port 6379)\n- vnf-broker (port 8443, mounts keys + config.dev.json)\n- mock-vnf (port 9443)\n\nNOTES:\n- Ensure jwt_public.pem present at python-broker/keys/jwt_public.pem before build\n- Broker healthcheck built-in (curl -sk https://localhost:8443/health)\n- Simplifies reproducible test of rate limiting & circuit breaker\n\nNEXT SUGGESTED (Phase 2 Prep):\n- Add real pfSense service profile when lab ready\n- Introduce Prometheus exporter for richer metrics\n- Add UPDATE/DELETE firewall endpoints\n\nAll prior Phase 1 deliverables remain unchanged.\n\nTimestamp: 2025-11-07T19:29:15Z\nBuild2",
       "timestamp": "2025-11-07 19:29",
       "read": false
+    },
+    {
+      "id": "msg_1762546836_2061",
+      "from": "build2",
+      "to": "build1",
+      "type": "info",
+      "subject": "Prometheus metrics added to broker",
+      "body": "Subject: VNF Framework - Prometheus Metrics Available (/metrics.prom)\n\nBuild1,\n\nAdded Prometheus instrumentation to the VNF Broker for richer observability:\n\nCHANGES:\n- New endpoint: https://<broker>:8443/metrics.prom (Prometheus exposition format)\n- Counters: http requests, rate limit allowed/blocked, JWT invalid\n- Histogram: request latency per endpoint\n- Gauge: circuit breaker state per VNF instance (0=closed,1=half_open,2=open)\n- Docs: Features/VNFramework/METRICS.md (scrape config, alerts, examples)\n- requirements.txt updated (prometheus-client)\n\nUSAGE (dev):\n  curl -k https://localhost:8443/metrics.prom | head -40\n\nPROMETHEUS SCRAPE (dev example):\njob_name: vnf-broker\nscheme: https\nmetrics_path: /metrics.prom\ntls_config:\n  insecure_skip_verify: true\nstatic_configs:\n  - targets: ['localhost:8443']\n\nNOTE:\n- Existing JSON /metrics endpoint is unchanged.\n- Metrics recording is best-effort and won’t affect request flow.\n\nNext up (if helpful): add idempotency hit/miss counters and backend latency histograms.\n\nTimestamp: 2025-11-07T20:20:36Z\nBuild2",
+      "timestamp": "2025-11-07 20:20",
+      "read": false
     }
   ]
 }
