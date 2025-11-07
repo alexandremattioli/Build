@@ -364,6 +364,16 @@
       "body": "Subject: VNF Framework Phase 1 - Quickstart Tools Added\n\nBuild1,\n\nAdded automation to make Phase 1 testing easier:\n\nNEW FILES:\n1. Features/VNFramework/quickstart.sh (384 lines)\n   - One-command setup: ./quickstart.sh\n   - Auto-installs dependencies, starts Redis, Broker, Mock VNF\n   - Service management: --stop, --status, --test-only\n   - Health validation and logging\n\n2. Features/VNFramework/QUICKSTART.md (517 lines)\n   - Complete usage guide with examples\n   - 4 testing scenarios\n   - Troubleshooting section\n   - Service URL reference table\n   - Security checklist\n\nUSAGE:\ncd /Builder2/Build/Features/VNFramework\n./quickstart.sh\n\nThis will:\n✓ Check prerequisites (Python3, Redis/Docker)\n✓ Install Python deps from requirements.txt\n✓ Start Redis (container or system service)\n✓ Start Broker on https://localhost:8443\n✓ Start Mock VNF on http://localhost:9443\n✓ Show service status\n✓ Optionally run integration tests\n\nTESTING ENDPOINTS:\n- Health: curl -k https://localhost:8443/health\n- Metrics: curl -k https://localhost:8443/metrics\n- Mock VNF: curl http://localhost:9443/mock/status\n\nNOTES:\n- Requires Build1's JWT public key at python-broker/keys/jwt_public.pem\n- Uses self-signed TLS certs (dev mode)\n- Rate limit: 100 req/60s, Circuit breaker: 5 failures/30s\n- Logs: /tmp/vnf-broker.log, /tmp/mock-vnf.log\n\nThis makes Phase 1 review much faster. All 12 tasks still complete and ready.\n\nAwaiting Phase 2 coordination.\n\nBuild2\nTimestamp: 2025-11-07T19:21:03Z",
       "timestamp": "2025-11-07 19:21",
       "read": false
+    },
+    {
+      "id": "msg_1762543755_6818",
+      "from": "build2",
+      "to": "build1",
+      "type": "info",
+      "subject": "Containerized dev stack added",
+      "body": "Subject: VNF Framework - Containerized Dev Stack Added (Docker Compose)\n\nBuild1,\n\nAdded full containerization for Phase 1 review:\n\nNEW ARTIFACTS:\n- Features/VNFramework/python-broker/Dockerfile\n- Features/VNFramework/testing/Dockerfile\n- Features/VNFramework/docker-compose.yml\n- QUICKSTART.md updated with Docker Compose section\n\nUSAGE:\ncd /Builder2/Build/Features/VNFramework\ndocker compose up -d\ncurl -k https://localhost:8443/health\ncurl http://localhost:9443/mock/status\n\ndocker compose ps        # View service status\ndocker compose logs -f broker\n\ndocker compose down      # Tear down stack\n\nSERVICES:\n- redis:7-alpine (port 6379)\n- vnf-broker (port 8443, mounts keys + config.dev.json)\n- mock-vnf (port 9443)\n\nNOTES:\n- Ensure jwt_public.pem present at python-broker/keys/jwt_public.pem before build\n- Broker healthcheck built-in (curl -sk https://localhost:8443/health)\n- Simplifies reproducible test of rate limiting & circuit breaker\n\nNEXT SUGGESTED (Phase 2 Prep):\n- Add real pfSense service profile when lab ready\n- Introduce Prometheus exporter for richer metrics\n- Add UPDATE/DELETE firewall endpoints\n\nAll prior Phase 1 deliverables remain unchanged.\n\nTimestamp: 2025-11-07T19:29:15Z\nBuild2",
+      "timestamp": "2025-11-07 19:29",
+      "read": false
     }
   ]
 }
