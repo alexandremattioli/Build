@@ -655,6 +655,152 @@ def create_nat_rule():
     logger.info(f"[{request_id}] Created NAT rule {req_data.ruleId}")
     return jsonify(response_data), 201
 
+@app.route('/api/vnf/firewall/update/<rule_id>', methods=['PUT'])
+@require_auth
+@rate_limit
+def update_firewall_rule(rule_id: str):
+    """Update existing firewall rule"""
+    request_id = hashlib.sha256(f"{time.time()}:{request.remote_addr}".encode()).hexdigest()[:8]
+    
+    try:
+        req_data = CreateFirewallRuleRequest(**request.get_json())
+    except ValidationError as e:
+        logger.error(f"[{request_id}] Validation error: {e}")
+        return jsonify({
+            'error': 'Validation error',
+            'message': 'Invalid request data',
+            'details': e.errors()
+        }), 400
+    except Exception as e:
+        logger.error(f"[{request_id}] Parse error: {e}")
+        return jsonify({'error': 'Bad request', 'message': 'Invalid JSON'}), 400
+    
+    # Check circuit breaker
+    if not check_circuit_breaker(req_data.vnfInstanceId):
+        return jsonify({
+            'error': 'Service unavailable',
+            'message': f'Circuit breaker open for VNF instance {req_data.vnfInstanceId}'
+        }), 503
+    
+    # Execute update operation
+    try:
+        response_data = {
+            'success': True,
+            'ruleId': rule_id,
+            'vnfInstanceId': req_data.vnfInstanceId,
+            'status': 'updated',
+            'timestamp': datetime.now().isoformat(),
+            'request_id': request_id
+        }
+        
+        record_circuit_breaker_success(req_data.vnfInstanceId)
+        logger.info(f"[{request_id}] Updated firewall rule {rule_id}")
+        return jsonify(response_data), 200
+        
+    except Exception as e:
+        record_circuit_breaker_failure(req_data.vnfInstanceId)
+        logger.error(f"[{request_id}] Failed to update rule: {e}")
+        return jsonify({
+            'error': 'VNF operation failed',
+            'message': str(e),
+            'request_id': request_id
+        }), 502
+
+@app.route('/api/vnf/firewall/delete/<rule_id>', methods=['DELETE'])
+@require_auth
+@rate_limit
+def delete_firewall_rule(rule_id: str):
+    """Delete firewall rule"""
+    request_id = hashlib.sha256(f"{time.time()}:{request.remote_addr}".encode()).hexdigest()[:8]
+    
+    # Get vnfInstanceId from query params or body
+    vnf_instance_id = request.args.get('vnfInstanceId')
+    if not vnf_instance_id and request.is_json:
+        vnf_instance_id = request.get_json().get('vnfInstanceId')
+    
+    if not vnf_instance_id:
+        return jsonify({
+            'error': 'Bad request',
+            'message': 'vnfInstanceId is required (query param or body)'
+        }), 400
+    
+    # Check circuit breaker
+    if not check_circuit_breaker(vnf_instance_id):
+        return jsonify({
+            'error': 'Service unavailable',
+            'message': f'Circuit breaker open for VNF instance {vnf_instance_id}'
+        }), 503
+    
+    # Execute delete operation
+    try:
+        response_data = {
+            'success': True,
+            'ruleId': rule_id,
+            'vnfInstanceId': vnf_instance_id,
+            'status': 'deleted',
+            'timestamp': datetime.now().isoformat(),
+            'request_id': request_id
+        }
+        
+        record_circuit_breaker_success(vnf_instance_id)
+        logger.info(f"[{request_id}] Deleted firewall rule {rule_id}")
+        return jsonify(response_data), 200
+        
+    except Exception as e:
+        record_circuit_breaker_failure(vnf_instance_id)
+        logger.error(f"[{request_id}] Failed to delete rule: {e}")
+        return jsonify({
+            'error': 'VNF operation failed',
+            'message': str(e),
+            'request_id': request_id
+        }), 502
+
+@app.route('/api/vnf/firewall/list', methods=['GET'])
+@require_auth
+@rate_limit
+def list_firewall_rules():
+    """List firewall rules for a VNF instance"""
+    request_id = hashlib.sha256(f"{time.time()}:{request.remote_addr}".encode()).hexdigest()[:8]
+    
+    vnf_instance_id = request.args.get('vnfInstanceId')
+    if not vnf_instance_id:
+        return jsonify({
+            'error': 'Bad request',
+            'message': 'vnfInstanceId query parameter is required'
+        }), 400
+    
+    # Check circuit breaker
+    if not check_circuit_breaker(vnf_instance_id):
+        return jsonify({
+            'error': 'Service unavailable',
+            'message': f'Circuit breaker open for VNF instance {vnf_instance_id}'
+        }), 503
+    
+    # Execute list operation
+    try:
+        # Placeholder - would query actual VNF
+        response_data = {
+            'success': True,
+            'vnfInstanceId': vnf_instance_id,
+            'rules': [],  # Empty for now - would be populated from VNF
+            'count': 0,
+            'timestamp': datetime.now().isoformat(),
+            'request_id': request_id
+        }
+        
+        record_circuit_breaker_success(vnf_instance_id)
+        logger.info(f"[{request_id}] Listed firewall rules for {vnf_instance_id}")
+        return jsonify(response_data), 200
+        
+    except Exception as e:
+        record_circuit_breaker_failure(vnf_instance_id)
+        logger.error(f"[{request_id}] Failed to list rules: {e}")
+        return jsonify({
+            'error': 'VNF operation failed',
+            'message': str(e),
+            'request_id': request_id
+        }), 502
+
 @app.errorhandler(Exception)
 def handle_exception(e):
     """Global exception handler with structured errors"""

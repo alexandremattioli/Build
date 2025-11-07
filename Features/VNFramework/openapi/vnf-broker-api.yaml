@@ -195,6 +195,237 @@ paths:
                 message: Circuit breaker open for VNF instance vnf-pfsense-001
                 vnfInstanceId: vnf-pfsense-001
 
+  /api/vnf/firewall/update/{ruleId}:
+    put:
+      tags:
+        - Firewall
+      summary: Update firewall rule
+      description: |
+        Updates an existing firewall rule on the target VNF appliance.
+        All fields are replaced with new values.
+      operationId: updateFirewallRule
+      parameters:
+        - name: ruleId
+          in: path
+          required: true
+          description: Unique identifier of the firewall rule to update
+          schema:
+            type: string
+            example: fw-rule-12345
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateFirewallRuleRequest'
+            example:
+              vnfInstanceId: vnf-pfsense-001
+              ruleId: fw-rule-12345
+              action: deny
+              protocol: tcp
+              sourceIp: 10.0.0.0/24
+              destinationIp: 192.168.1.0/24
+              destinationPort: 22
+              enabled: false
+              description: Block SSH from internal network
+      responses:
+        '200':
+          description: Firewall rule updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UpdateFirewallRuleResponse'
+              example:
+                success: true
+                ruleId: fw-rule-12345
+                vnfInstanceId: vnf-pfsense-001
+                status: updated
+                timestamp: '2025-11-07T18:30:00Z'
+                request_id: i9j0k1l2
+        '400':
+          description: Validation error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: Rule not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '429':
+          description: Rate limit exceeded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RateLimitError'
+        '503':
+          description: Circuit breaker open
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CircuitBreakerError'
+
+  /api/vnf/firewall/delete/{ruleId}:
+    delete:
+      tags:
+        - Firewall
+      summary: Delete firewall rule
+      description: Deletes an existing firewall rule from the VNF appliance
+      operationId: deleteFirewallRule
+      parameters:
+        - name: ruleId
+          in: path
+          required: true
+          description: Unique identifier of the firewall rule to delete
+          schema:
+            type: string
+            example: fw-rule-12345
+        - name: vnfInstanceId
+          in: query
+          required: true
+          description: VNF instance UUID
+          schema:
+            type: string
+            example: vnf-pfsense-001
+      responses:
+        '200':
+          description: Firewall rule deleted successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeleteFirewallRuleResponse'
+              example:
+                success: true
+                ruleId: fw-rule-12345
+                vnfInstanceId: vnf-pfsense-001
+                status: deleted
+                timestamp: '2025-11-07T18:30:00Z'
+                request_id: m3n4o5p6
+        '400':
+          description: Bad request - missing vnfInstanceId
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: Rule not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '429':
+          description: Rate limit exceeded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RateLimitError'
+        '503':
+          description: Circuit breaker open
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CircuitBreakerError'
+
+  /api/vnf/firewall/list:
+    get:
+      tags:
+        - Firewall
+      summary: List firewall rules
+      description: Retrieves all firewall rules for a specific VNF instance
+      operationId: listFirewallRules
+      parameters:
+        - name: vnfInstanceId
+          in: query
+          required: true
+          description: VNF instance UUID
+          schema:
+            type: string
+            example: vnf-pfsense-001
+      responses:
+        '200':
+          description: List of firewall rules
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListFirewallRulesResponse'
+              example:
+                success: true
+                vnfInstanceId: vnf-pfsense-001
+                rules:
+                  - ruleId: fw-rule-12345
+                    action: allow
+                    protocol: tcp
+                    sourceIp: 10.0.0.0/24
+                    destinationIp: 192.168.1.0/24
+                    destinationPort: 443
+                    enabled: true
+                  - ruleId: fw-rule-67890
+                    action: deny
+                    protocol: tcp
+                    sourceIp: 0.0.0.0/0
+                    destinationIp: 192.168.1.10
+                    destinationPort: 22
+                    enabled: true
+                count: 2
+                timestamp: '2025-11-07T18:30:00Z'
+                request_id: q7r8s9t0
+        '400':
+          description: Bad request - missing vnfInstanceId
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '429':
+          description: Rate limit exceeded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RateLimitError'
+        '503':
+          description: Circuit breaker open
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CircuitBreakerError'
+
   /api/vnf/nat/create:
     post:
       tags:
@@ -439,6 +670,82 @@ components:
         status:
           type: string
           enum: [created, exists]
+        timestamp:
+          type: string
+          format: date-time
+        request_id:
+          type: string
+
+    UpdateFirewallRuleResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+        ruleId:
+          type: string
+        vnfInstanceId:
+          type: string
+        status:
+          type: string
+          enum: [updated]
+        timestamp:
+          type: string
+          format: date-time
+        request_id:
+          type: string
+
+    DeleteFirewallRuleResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+        ruleId:
+          type: string
+        vnfInstanceId:
+          type: string
+        status:
+          type: string
+          enum: [deleted]
+        timestamp:
+          type: string
+          format: date-time
+        request_id:
+          type: string
+
+    ListFirewallRulesResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+        vnfInstanceId:
+          type: string
+        rules:
+          type: array
+          items:
+            type: object
+            properties:
+              ruleId:
+                type: string
+              action:
+                type: string
+                enum: [allow, deny, reject]
+              protocol:
+                type: string
+                enum: [tcp, udp, icmp, any]
+              sourceIp:
+                type: string
+              destinationIp:
+                type: string
+              destinationPort:
+                type: integer
+                minimum: 1
+                maximum: 65535
+              enabled:
+                type: boolean
+              description:
+                type: string
+        count:
+          type: integer
         timestamp:
           type: string
           format: date-time

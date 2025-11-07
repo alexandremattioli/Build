@@ -116,6 +116,51 @@ class VNFBrokerClient:
                                 json=data, verify=False)
         resp.raise_for_status()
         return resp.json()
+    
+    def update_firewall_rule(self, rule_id: str, vnf_instance_id: str,
+                            action: str, protocol: str, source_ip: str,
+                            destination_ip: str, destination_port: Optional[int] = None,
+                            enabled: bool = True, description: Optional[str] = None) -> Dict[str, Any]:
+        """Update existing firewall rule"""
+        data = {
+            'vnfInstanceId': vnf_instance_id,
+            'ruleId': rule_id,
+            'action': action,
+            'protocol': protocol,
+            'sourceIp': source_ip,
+            'destinationIp': destination_ip,
+            'enabled': enabled
+        }
+        
+        if destination_port:
+            data['destinationPort'] = destination_port
+        if description:
+            data['description'] = description
+        
+        resp = self.session.put(f'{self.base_url}/api/vnf/firewall/update/{rule_id}',
+                               json=data, verify=False)
+        resp.raise_for_status()
+        return resp.json()
+    
+    def delete_firewall_rule(self, rule_id: str, vnf_instance_id: str) -> Dict[str, Any]:
+        """Delete firewall rule"""
+        resp = self.session.delete(
+            f'{self.base_url}/api/vnf/firewall/delete/{rule_id}',
+            params={'vnfInstanceId': vnf_instance_id},
+            verify=False
+        )
+        resp.raise_for_status()
+        return resp.json()
+    
+    def list_firewall_rules(self, vnf_instance_id: str) -> Dict[str, Any]:
+        """List all firewall rules for a VNF instance"""
+        resp = self.session.get(
+            f'{self.base_url}/api/vnf/firewall/list',
+            params={'vnfInstanceId': vnf_instance_id},
+            verify=False
+        )
+        resp.raise_for_status()
+        return resp.json()
 
 
 # Example usage
@@ -144,3 +189,25 @@ if __name__ == '__main__':
         description='Test HTTPS rule'
     )
     print(f"Rule created: {result}")
+    
+    # List rules
+    rules = client.list_firewall_rules('vnf-pfsense-001')
+    print(f"Total rules: {rules['count']}")
+    
+    # Update rule
+    update_result = client.update_firewall_rule(
+        rule_id='fw-test-001',
+        vnf_instance_id='vnf-pfsense-001',
+        action='deny',
+        protocol='tcp',
+        source_ip='10.0.0.0/24',
+        destination_ip='192.168.1.0/24',
+        destination_port=22,
+        description='Block SSH'
+    )
+    print(f"Rule updated: {update_result}")
+    
+    # Delete rule
+    delete_result = client.delete_firewall_rule('fw-test-001', 'vnf-pfsense-001')
+    print(f"Rule deleted: {delete_result}")
+
