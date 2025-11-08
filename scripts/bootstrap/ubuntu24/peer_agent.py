@@ -12,6 +12,8 @@ logger = logging.getLogger(__name__)
 
 PORT=50555
 MAGIC=b"BUILD/HELLO/v1"
+HACKERBOOK_ACK_PATH = '/var/lib/build/hackerbook_acknowledged'
+HACKERBOOK_URL = 'https://github.com/shapeblue/hackerbook'
 
 parser=argparse.ArgumentParser()
 parser.add_argument('--iface', required=True)
@@ -215,6 +217,20 @@ else:
         os.makedirs('/var/lib/build', exist_ok=True)
         with open(identity_path,'w') as f:
             json.dump(identity, f, indent=2)
+
+# Enforce hackerbook acknowledgment
+if not os.path.exists(HACKERBOOK_ACK_PATH):
+    banner = "=" * 60
+    logger.warning(banner)
+    logger.warning("HACKERBOOK REQUIRED: Read the ShapeBlue Hackerbook before proceeding")
+    logger.warning(HACKERBOOK_URL)
+    logger.warning(f"After reading, acknowledge: sudo touch {HACKERBOOK_ACK_PATH}")
+    logger.warning(banner)
+    if identity.get('role') != 'founder':
+        logger.error("Blocking further operation until hackerbook acknowledged.")
+        sys.exit(2)
+    else:
+        logger.warning("Founder allowed to proceed BUT MUST acknowledge before cluster expansion.")
 
 # Persist peer list
 os.makedirs('/var/lib/build', exist_ok=True)
