@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-import argparse, json, os, socket, sys, time, uuid, hmac, hashlib, subprocess, signal, logging
+import argparse, json, os, socket, sys, time, uuid, hmac, hashlib, subprocess, signal, logging, shutil
 from datetime import datetime
 import ipaddress
 from collections import Counter
@@ -14,6 +14,7 @@ PORT=50555
 MAGIC=b"BUILD/HELLO/v1"
 HACKERBOOK_ACK_PATH = '/var/lib/build/hackerbook_acknowledged'
 HACKERBOOK_URL = 'https://github.com/shapeblue/hackerbook'
+STATE_PATH = '/var/lib/build/hive_state.json'
 
 # Known build servers and coordinator
 BUILD_MARKERS = {
@@ -80,15 +81,51 @@ def valid(msg: dict) -> bool:
     return True
 
 def send_with_retry(sock, message, address, retries=3):
-    """Send message with retry and exponential backoff."""
     for attempt in range(retries):
         sock.sendto(message, address)
         if attempt < retries - 1:
             time.sleep(0.5 * (2 ** attempt))
 
+def get_health(identity):
+    role = (identity or {}).get('role')
+    status = {'ok': True}
+    try:
+        if role == 'cloudstack-builder':
+            mvn_ok = subprocess.run(['bash','-lc','mvn -v'], capture_output=True).returncode == 0
+            free_gb = shutil.disk_usage('/').free / (1024**3)
+            status.update({'maven': mvn_ok, 'disk_free_gb': int(free_gb)})
+        elif role == 'controller':
+            ans_ok = subprocess.run(['bash','-lc','ansible --version'], capture_output=True).returncode == 0
+            status.update({'ansible': ans_ok})
+    except Exception as e:
+        status['error'] = str(e)
+    return status
+
+def save_state(peers, identity):
+    try:
+        os.makedirs('/var/lib/build', exist_ok=True)
+        with open(STATE_PATH, 'w') as f:
+            json.dump({'peers': peers, 'identity': identity, 'saved_at': datetime.utcnow().isoformat()+"Z"}, f)
+    except Exception as e:
+        logger.warning(f"Failed to save state: {e}")
+
+def load_state():
+    try:
+        with open(STATE_PATH) as f:
+            return json.load(f)
+    except Exception:
+        return None
+
 def signal_handler(sig, frame):
     logger.info("Shutting down gracefully...")
-    sock.close()
+    try:
+        save_state(peers, identity)
+    except Exception:
+        pass
+    try:
+        sock.close()
+    except Exception:
+        pass
     sys.exit(0)
 
 signal.signal(signal.SIGTERM, signal_handler)
@@ -104,13 +141,18 @@ except OSError as e:
     sys.exit(1)
 sock.settimeout(2.0)
 
-# Phase 1: discover peers
+# Attempt to load cached peers
+cached = load_state() or {}
+peers = cached.get('peers', [])
+if peers:
+    logger.info(f"Loaded {len(peers)} cached peer(s) from state")
+
+# Phase 1: discover peers (refresh)
 hello=make_msg('HELLO')
 for _ in range(3):
     send_with_retry(sock, hello, (bcast, PORT), retries=2)
     time.sleep(0.3)
 
-peers=[]
 start=time.time()
 while time.time()-start < 5:
     try:
@@ -124,10 +166,10 @@ while time.time()-start < 5:
         if pl.get('kind')=='HELLO':
             sock.sendto(make_msg('WELCOME'), (addr[0], PORT))
             if not any(p['node_id']==pl['node_id'] for p in peers):
-                peers.append({'ip': addr[0], **pl})
+                peers.append({'ip': addr[0], 'last_seen': time.time(), **pl})
         elif pl.get('kind')=='WELCOME':
             if not any(p['node_id']==pl['node_id'] for p in peers):
-                peers.append({'ip': addr[0], **pl})
+                peers.append({'ip': addr[0], 'last_seen': time.time(), **pl})
     except socket.timeout:
         continue
     except Exception as e:
@@ -136,7 +178,7 @@ while time.time()-start < 5:
 
 logger.info(f"Discovered {len(peers)} peer(s)")
 
-# Phase 2: ask peers "who am I, what should I become?"
+# Phase 2: ask peers "who am I?"
 identity_path='/var/lib/build/identity.json'
 if os.path.exists(identity_path):
     with open(identity_path) as f:
@@ -201,7 +243,6 @@ else:
                 if identity.get('build_server'):
                     logger.info(f"This node is {identity['build_server']} (coordinator={identity['is_coordinator']})")
                 
-                # Auto-install packages
                 if identity['packages']:
                     logger.info("Installing packages...")
                     try:
@@ -228,7 +269,6 @@ else:
             'assigned_by': ['self'],
             'assigned_at': datetime.utcnow().isoformat()+"Z"
         }
-        # Annotate build server if founder is one of the known IPs
         build_name = BUILD_MARKERS.get(primary)
         identity['build_server'] = build_name
         identity['is_coordinator'] = (primary == COORDINATOR_IP)
@@ -247,11 +287,12 @@ if not os.path.exists(HACKERBOOK_ACK_PATH):
     logger.warning(banner)
     if identity.get('role') != 'founder':
         logger.error("Blocking further operation until hackerbook acknowledged.")
+        save_state(peers, identity)
         sys.exit(2)
     else:
         logger.warning("Founder allowed to proceed BUT MUST acknowledge before cluster expansion.")
 
-# Persist peer list
+# Persist peer list snapshot
 os.makedirs('/var/lib/build', exist_ok=True)
 with open('/var/lib/build/peers.json','w') as f:
     json.dump({
@@ -268,3 +309,50 @@ with open('/var/lib/build/peers.json','w') as f:
 
 for p in peers:
     logger.info(f" - {p.get('hostname')} @ {p.get('ip')} ({p.get('primary_ip')})")
+
+# --- Heartbeat loop ---
+logger.info("Entering heartbeat loop (30s interval)")
+last_cleanup = time.time()
+while True:
+    # Broadcast STATUS/HEARTBEAT
+    hb = make_msg('HEARTBEAT', {'identity': identity, 'health': get_health(identity)})
+    try:
+        sock.sendto(hb, (bcast, PORT))
+    except Exception as e:
+        logger.warning(f"Failed to send heartbeat: {e}")
+
+    # Drain incoming messages briefly to update last_seen
+    end = time.time() + 2
+    while time.time() < end:
+        try:
+            data, addr = sock.recvfrom(8192)
+            msg=json.loads(data.decode('utf-8'))
+            if not valid(msg):
+                continue
+            pl=msg['payload']
+            if pl.get('node_id') == node_id:
+                continue
+            # Track last seen
+            for pp in peers:
+                if pp.get('node_id') == pl.get('node_id'):
+                    pp['last_seen'] = time.time()
+                    pp['role'] = (pl.get('identity') or {}).get('role', pp.get('role'))
+                    break
+            else:
+                peers.append({'ip': addr[0], 'last_seen': time.time(), **pl})
+        except socket.timeout:
+            break
+        except Exception:
+            break
+
+    # Periodically clean stale peers and save state
+    if time.time() - last_cleanup > 60:
+        before = len(peers)
+        peers = [pp for pp in peers if (time.time() - pp.get('last_seen', 0)) < 300]
+        after = len(peers)
+        if after != before:
+            logger.info(f"Cleaned peers: {before}->{after}")
+        save_state(peers, identity)
+        last_cleanup = time.time()
+
+    time.sleep(30)
