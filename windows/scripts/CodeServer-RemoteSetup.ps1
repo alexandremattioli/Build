@@ -106,9 +106,9 @@ function Install-AuthorizedKey {
 
   # Tight permissions required by Windows OpenSSH
   icacls $sshDir /inheritance:r | Out-Null
-  icacls $sshDir /grant "$UserName:(OI)(CI)(F)" "SYSTEM:(OI)(CI)(F)" | Out-Null
+  icacls $sshDir /grant "$($UserName):(OI)(CI)(F)" "SYSTEM:(OI)(CI)(F)" | Out-Null
   icacls $auth  /inheritance:r | Out-Null
-  icacls $auth  /grant "$UserName:(R,W)" "SYSTEM:(R,W)" | Out-Null
+  icacls $auth  /grant "$($UserName):(R,W)" "SYSTEM:(R,W)" | Out-Null
   Write-Host "authorized_keys installed for $UserName"
 }
 
