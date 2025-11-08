@@ -4,9 +4,12 @@
 
 > Quick note for operators: if you just tell the agent "follow the instructions", it will execute the exact checklist below automatically. The steps are documented here so you don't need to repeat them next time.
 
-## SSH Access Between Builders
+## Build Infrastructure
 
-**Build1 (10.1.3.175)** ↔ **Build2 (10.1.3.177)**
+### Linux Build Servers
+
+**Build1 (10.1.3.175)** - OpenAI Codex
+**Build2 (10.1.3.177)** - GitHub Copilot
 
 Both builders have SSH access to each other. You can SSH anytime to check implementations, sync files, or debug:
 
@@ -23,6 +26,35 @@ Common uses:
 - Compare scripts or configurations
 - Trigger notifications or message checks
 - Sync shared files or coordination data
+
+### Windows Development Servers
+
+**Win-Dev1 (10.1.3.75)** - Primary Windows development server
+**Win-Dev2 (10.1.3.76)** - Secondary Windows development server
+
+- **User:** amattioli
+- **Password:** Losgar!27
+- **IDE:** VSCode
+- **Purpose:** Code editing, Git operations, CloudStack development
+
+**Complete Windows setup documentation:** [windows/README.md](windows/README.md)
+
+**Quick setup:**
+```powershell
+# From PowerShell on Windows server
+cd C:\
+git clone https://github.com/alexandremattioli/Build.git
+cd Build\windows
+.\setup_windows.ps1
+```
+
+**Windows servers participate in coordination:**
+- Send/receive coordination messages via PowerShell scripts
+- Execute commands on Linux builders remotely
+- Sync code between Windows and Linux
+- Hourly heartbeat monitoring
+
+---
 
 ## AI Development Time Estimates
 
@@ -229,15 +261,31 @@ cd /root && git clone https://github.com/alexandremattioli/Build.git && cd Build
 cd /root && git clone https://github.com/alexandremattioli/Build.git && cd Build/scripts && ./setup_build2.sh
 ```
 
+## For Windows Servers - `amattioli@Win-Dev1/Win-Dev2`
+
+```powershell
+cd C:\
+git clone https://github.com/alexandremattioli/Build.git
+cd Build\windows
+.\setup_windows.ps1
+```
+
+See [windows/README.md](windows/README.md) for complete Windows setup and integration guide.
+
 ## Quick messaging CLI
 
 Every setup script installs a helper so builds can send coordination messages without remembering long command lines:
 
+**Linux:**
 - Command: `sendmessages`
 - Alias: `sm` (example `sm 2 Build2 acked watcher rollout`)
 - Source: `scripts/sendmessages` (wraps `scripts/send_message.sh`)
 
-Run `sendmessages --help` for all options. Targets accept digits (`1`, `12`, `4`) or `all`; subjects are auto-derived from the first line of the body.
+**Windows:**
+- Script: `Send-BuildMessage.ps1`
+- Example: `.\scripts\Send-BuildMessage.ps1 -From "win-dev1" -To "all" -Type "info" -Body "Status update"`
+
+Run `sendmessages --help` (Linux) for all options. Targets accept digits (`1`, `12`, `4`) or `all`; subjects are auto-derived from the first line of the body.
 
 ### Atomic send + status refresh
 
@@ -252,19 +300,24 @@ Run `sendmessages --help` for all options. Targets accept digits (`1`, `12`, `4`
 
 - Append `--require-ack` to any message that needs explicit confirmation.
 - Recipients acknowledge via `scripts/ack_message.sh <message_id> <builder>`.
-- Ack state is tracked inside `coordination/messages.json` and summarized in `message_status.txt` (“Ack pending” line).
+- Ack state is tracked inside `coordination/messages.json` and summarized in `message_status.txt` ("Ack pending" line).
 
 ### Hourly Coordination Requirement
 
-- **All build agents must emit at least one coordination message every hour.**
-- Add a cron/systemd timer that runs:
+- **All build agents (Linux and Windows) must emit at least one coordination message every hour.**
 
+**Linux:**
 ```bash
 cd /root/Build
 ./scripts/send_message.sh build1 all info "Hourly heartbeat" "Build1 is online and ready."
 ```
 
-- Use the appropriate `build2`/`build3` sender name on other hosts.
+**Windows:**
+```powershell
+.\scripts\Send-Heartbeat.ps1
+```
+
+- Use the appropriate `build2`/`build3`/`win-dev1`/`win-dev2` sender name on other hosts.
 - If a builder misses two consecutive heartbeats, flag it in `coordination/messages.json` and update the health dashboard.
 
 ### Heartbeat enforcement
@@ -324,19 +377,22 @@ When implementing new features:
 ### Repository Locations
 
 **CloudStack Fork:**
-- **Location:** `/root/src/cloudstack`
+- **Location (Linux):** `/root/src/cloudstack`
+- **Location (Windows):** `C:\src\cloudstack`
 - **Remote:** `https://github.com/alexandremattioli/cloudstack.git`
 - **Branch:** `VNFCopilot`
 - **Upstream:** `https://github.com/shapeblue/cloudstack.git`
 
 **VNF Plugin Module:**
-- **Path:** `/root/src/cloudstack/plugins/vnf-framework/`
+- **Path:** `/root/src/cloudstack/plugins/vnf-framework/` (Linux)
+- **Path:** `C:\src\cloudstack\plugins\vnf-framework\` (Windows)
 - **Status:** ✅ Code exists and compiles
 - **Build Status:** ⏸️ Blocked by 64 checkstyle violations
 - **Files:** 28 Java files (22 with checkstyle issues)
 
 **Coordination Repo:**
-- **Location:** `/Builder2/Build` (this repo)
+- **Location (Linux):** `/root/Build` or `/Builder2/Build`
+- **Location (Windows):** `C:\Build`
 - **Remote:** `https://github.com/alexandremattioli/Build.git`
 - **Purpose:** Build coordination, messaging, documentation
 
@@ -345,7 +401,7 @@ When implementing new features:
 **Maven & Java:**
 - Maven: 3.8.7
 - Java: 17.0.16 (OpenJDK)
-- OS: Linux 6.8.0-86-generic (Ubuntu)
+- OS: Linux 6.8.0-86-generic (Ubuntu) / Windows Server
 
 **Maven Repository Fix (Critical for Build1):**
 
@@ -499,41 +555,7 @@ mvn -s /Builder2/tools/maven/settings-fixed.xml clean install -DskipTests
 - `/Builder2/Build/Features/VNFramework/QUICKSTART.md` - Getting started
 - `/Builder2/Build/messages/vnf_framework_final_complete_20251107.txt` - Phase 1 completion report
 
-**CloudStack Build:**
-- `/Builder2/Build/Architecture/Methodology.md` - Build methodology
-- `/Builder2/tools/maven/settings-fixed.xml` - Maven repository fix
-
-### Quick Commands Reference
-
-**Check CloudStack VNF Plugin:**
-```bash
-cd /root/src/cloudstack
-find plugins/vnf-framework -name "*.java" | wc -l  # Count Java files
-mvn -s /Builder2/tools/maven/settings-fixed.xml checkstyle:check -pl :cloud-plugin-vnf-framework
-```
-
-**Start Python Broker:**
-```bash
-cd /Builder2/Build/Features/VNFramework
-docker-compose up -d && docker-compose ps
-```
-
-**Run Integration Tests:**
-```bash
-cd /Builder2/Build/Features/VNFramework/testing
-python3 integration_test.py --jwt-token <token>
-```
-
-**Push Status Updates:**
-```bash
-cd /Builder2/Build
-git add messages/
-git commit -m "Status update"
-git push
-```
-
----
-
-## Builder1 Workspace Quick Reference
-
-- The Codex session that backs this workspace runs on **Builder1 / Build1** (`ll-ACSBuilder1`, `10.1.3.175`), the primary host used to build Apache CloudStack artifacts.
+**Windows Development:**
+- `/Builder2/Build/windows/README.md` - Complete Windows server documentation
+- `/Builder2/Build/windows/scripts/` - PowerShell management scripts
+- `/Builder2/Build/windows/vscode/` - VSCode configuration
