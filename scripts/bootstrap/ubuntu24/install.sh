@@ -21,6 +21,8 @@ if [[ -f "$(dirname "$0")/agent-runner.sh" ]]; then
   install -m 0644 "$SRC_DIR/network_utils.sh" /opt/build-agent/network_utils.sh
   install -m 0644 "$SRC_DIR/build-agent.service" /etc/systemd/system/build-agent.service
   install -m 0644 "$SRC_DIR/peer_agent.py" /opt/build-agent/peer_agent.py
+  install -m 0644 "$SRC_DIR/advisor.py" /opt/build-agent/advisor.py
+  install -m 0644 "$SRC_DIR/build-advisor.service" /etc/systemd/system/build-advisor.service
 else
   echo "Installing via raw GitHub"
   BASE="https://raw.githubusercontent.com/alexandremattioli/Build/feature/ubuntu24-bootstrap/scripts/bootstrap/ubuntu24"
@@ -28,16 +30,27 @@ else
   curl -fsSL "$BASE/bootstrap.sh" -o /opt/build-agent/bootstrap.sh && chmod 0755 /opt/build-agent/bootstrap.sh
   curl -fsSL "$BASE/network_utils.sh" -o /opt/build-agent/network_utils.sh && chmod 0644 /opt/build-agent/network_utils.sh
   curl -fsSL "$BASE/peer_agent.py" -o /opt/build-agent/peer_agent.py && chmod 0644 /opt/build-agent/peer_agent.py
+  curl -fsSL "$BASE/advisor.py" -o /opt/build-agent/advisor.py && chmod 0644 /opt/build-agent/advisor.py
   curl -fsSL "$BASE/build-agent.service" -o /etc/systemd/system/build-agent.service && chmod 0644 /etc/systemd/system/build-agent.service
+  curl -fsSL "$BASE/build-advisor.service" -o /etc/systemd/system/build-advisor.service && chmod 0644 /etc/systemd/system/build-advisor.service
 fi
 
 # Create a default shared secret if not present
 if [[ ! -f /etc/build/shared_secret ]]; then
   openssl rand -hex 16 > /etc/build/shared_secret
   chmod 0600 /etc/build/shared_secret
+  echo "Generated new shared secret at /etc/build/shared_secret"
+  echo "Copy this to other nodes BEFORE running install on them:"
+  cat /etc/build/shared_secret
 fi
 
 systemctl daemon-reload
 systemctl enable --now build-agent.service
+systemctl enable --now build-advisor.service
 
-echo "Install complete. Logs: journalctl -u build-agent -f"
+echo ""
+echo "Install complete."
+echo "Agent logs:   journalctl -u build-agent -f"
+echo "Advisor logs: journalctl -u build-advisor -f"
+echo "Identity:     cat /var/lib/build/identity.json | jq ."
+echo "Peers:        cat /var/lib/build/peers.json | jq ."

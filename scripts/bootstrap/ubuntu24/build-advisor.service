@@ -1,0 +1,14 @@
+[Unit]
+Description=Build Agent Advisor (Role Assignment)
+After=network-online.target build-agent.service
+Wants=network-online.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/python3 /opt/build-agent/advisor.py
+Restart=on-failure
+RestartSec=5
+Environment=PYTHONUNBUFFERED=1
+
+[Install]
+WantedBy=multi-user.target
