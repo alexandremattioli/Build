@@ -64,6 +64,56 @@ Deliverables:
 - Test data builders / factories
 - CI execution hook
 
+### 6.1 Test Categories (Added)
+To ensure consistent quality gates, adopt a layered test pyramid for every feature/module:
+
+| Layer | Purpose | Scope | Frequency |
+|-------|---------|-------|-----------|
+| Static / Lint | Syntax & style correctness | Whole repo | Every push/PR |
+| Unit | Fast logic validation | Single function/class | Every push/PR |
+| Component | Interactions of 2-3 modules (in-memory) | Narrow slice | Every push/PR |
+| Integration | External boundaries (DB, network, broker) | Real infra or container | Nightly + gated merges |
+| Contract | Provider/consumer schema & semantics | API/Events | On provider or schema change |
+| Smoke | Sanity of deployable artifact start-up | Minimal runtime | Post-build & pre-deploy |
+| End-to-End | Real user path & data flow | Full system | Release candidate |
+| Performance | Latency/throughput budgets | Hot paths | Release candidate & quarterly |
+| Security | AuthZ, injection, secret handling | Sensitive paths | Release candidate & scheduled |
+| Chaos/Resilience | Failure handling, recovery | Selected subsystems | Scheduled |
+
+#### Minimum Required Per Feature
+- Unit tests for new pure logic (>=80% function coverage for changed lines)
+- One component test if cross-module interaction added
+- Smoke test ensuring startup of new daemon/CLI entry point
+- Contract test when altering externally consumed format (CLI JSON, API, event schema)
+
+#### Test Naming Conventions
+```
+<scope>/test_<unit_under_test>__<expected_behavior>.py
+Examples:
+unit/test_role_assigner__selects_first_management_server.py
+component/test_peer_identity_flow__consensus_reached.py
+smoke/test_agent_startup__exits_zero_help.py
+```
+
+#### Execution Profiles
+- Quick suite (CI default): unit + component + smoke (<60s target)
+- Full suite (nightly): + integration + contract + e2e
+
+#### Skipping & Markers (Pytest)
+```python
+import pytest
+@pytest.mark.slow
+@pytest.mark.integration
+@pytest.mark.contract
+```
+CI filters: `pytest -m "not slow"` for quick pass.
+
+#### Flakiness Policy
+Any flaky test must be:
+1. Quarantined via marker `@pytest.mark.flaky` within 24h
+2. Issue created with reproduction details
+3. Fixed or removed within 72h
+
 ## 7. Core Business Logic (Happy Path)
 Implement pure logic first.
 - Keep logic side-effect free where possible
@@ -202,6 +252,16 @@ Deliverables:
 - Performance: PASS/FAIL (budget adherence)
 - Documentation: PASS/FAIL (operator readiness)
 
+### Automated Quality Gate Mapping (Added)
+| Gate | Enforcement | Tooling | Threshold |
+|------|-------------|---------|-----------|
+| Build | CI job `build` | compiler + shellcheck | 0 errors |
+| Unit Coverage | CI job `test` | pytest + coverage | >= 75% changed lines |
+| Lint | CI job `lint` | ruff/flake8/shellcheck | 0 errors (warnings allowed) |
+| Security | CI job `security` | bandit + secret scan | 0 HIGH findings |
+| Smoke | CI job `smoke` | startup script & py_compile | 100% pass |
+| Performance (target) | scheduled | locust/k6/JMH | baseline recorded |
+
 ---
 ## CloudStack / VNF Mapping Quick Reference
 - API Contract → Commands (`execute()` wraps errors)
@@ -273,4 +333,12 @@ Always prefer delivering one working end-to-end path over 20 partially complete 
 If a change cannot be validated (run, test, observed), it isn't progress.
 
 ---
-*Last updated: 2025-11-07*
+## Test Implementation Checklist (Added)
+Before merging any feature branch:
+- [ ] Unit tests cover new decision branches
+- [ ] Smoke test validates daemon/CLI starts (help, py_compile)
+- [ ] Negative test included for at least one failure mode
+- [ ] Secret handling validated (no accidental print of shared_secret)
+- [ ] HMAC logic verified (sign + tamper fail)
+
+*Last updated: 2025-11-08*
