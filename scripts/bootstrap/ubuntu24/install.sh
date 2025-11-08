@@ -23,6 +23,7 @@ if [[ -f "$(dirname "$0")/agent-runner.sh" ]]; then
   install -m 0644 "$SRC_DIR/peer_agent.py" /opt/build-agent/peer_agent.py
   install -m 0644 "$SRC_DIR/advisor.py" /opt/build-agent/advisor.py
   install -m 0644 "$SRC_DIR/build-advisor.service" /etc/systemd/system/build-advisor.service
+  install -m 0644 "$SRC_DIR/message_bridge.py" /opt/build-agent/message_bridge.py
   install -m 0755 "$SRC_DIR/hive" /usr/local/bin/hive
 else
   echo "Installing via raw GitHub"
@@ -32,6 +33,7 @@ else
   curl -fsSL "$BASE/network_utils.sh" -o /opt/build-agent/network_utils.sh && chmod 0644 /opt/build-agent/network_utils.sh
   curl -fsSL "$BASE/peer_agent.py" -o /opt/build-agent/peer_agent.py && chmod 0644 /opt/build-agent/peer_agent.py
   curl -fsSL "$BASE/advisor.py" -o /opt/build-agent/advisor.py && chmod 0644 /opt/build-agent/advisor.py
+  curl -fsSL "$BASE/message_bridge.py" -o /opt/build-agent/message_bridge.py && chmod 0644 /opt/build-agent/message_bridge.py
   curl -fsSL "$BASE/build-agent.service" -o /etc/systemd/system/build-agent.service && chmod 0644 /etc/systemd/system/build-agent.service
   curl -fsSL "$BASE/build-advisor.service" -o /etc/systemd/system/build-advisor.service && chmod 0644 /etc/systemd/system/build-advisor.service
   curl -fsSL "$BASE/hive" -o /usr/local/bin/hive && chmod 0755 /usr/local/bin/hive
