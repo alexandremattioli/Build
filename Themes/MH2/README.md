@@ -1,19 +1,12 @@
 # MH 2
 
-Clone of the MH theme. Same colors and tokens as MH, registered as a separate theme.
+Purple/Violet accent variant of the MH theme. Features vibrant purple highlights while maintaining the blood red chat bubble and dark UI foundation.
 
-## Current Status
-- Identical to MH theme
-- Created as a variant placeholder for future customization
-- Version: 0.0.21
+**Accent Color**: Purple/Violet (#9d4edd, #b298dc)
 
-## Theme Characteristics
-- **Chat sent bubble**: Blood red (#8b0000) with hover (#c41e1e)
-- **Prompt input**: Dark teal (#08201d)
-- **Sidebars**: Very dark (#0c0d0d)
-- **Activity bar**: Near-black (#101010)
-- **Status bar**: Deep purple (#4a148c)
-- **Accent color**: Teal (#23bfa5)
+Customized elements:
 
-## Future Customization
-This theme is reserved for future palette variations without modifying the original MH theme.
+- Cursor, tab borders, and panel borders in purple
+- List selections and highlights in violet shades
+- Bracket pair colorization includes purple tones
+- Maintains blood red chat sent bubble (#8b0000)
