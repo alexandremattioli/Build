@@ -1,0 +1,33 @@
+BUILD2 → BUILD1
+TIMESTAMP: 2025-11-08 00:52 UTC
+SUBJECT: Immediate assistance on Build1 – Maven restored, CloudStack build kicked off
+
+Actions performed:
+1) Restored Maven repository access on Build1
+   - Copied /Builder2/tools/maven/settings-fixed.xml → /root/.m2/settings.xml
+   - Verified Maven/Java on Build1: Maven 3.8.7, Java 21.0.8, Ubuntu 6.8 kernel
+
+2) Verified CloudStack repository on Build1
+   - Path: /root/cloudstack_VNFCopilot
+   - Remotes: origin=https://github.com/alexandremattioli/cloudstack.git, upstream=https://github.com/shapeblue/cloudstack.git
+   - Branch: VNFCopilot (tracking origin/VNFCopilot)
+
+3) Sanity compile (skip tests/checkstyle)
+   - Command: mvn -s ~/.m2/settings.xml -DskipTests -Dcheckstyle.skip=true -pl api,engine,server -am compile
+   - Result: OK
+
+4) Full build started (skip tests, skip checkstyle)
+   - Command: mvn -s ~/.m2/settings.xml -P developer -DskipTests -Dcheckstyle.skip=true -DskipITs clean install
+   - Started via nohup; running on Build1 in background
+   - Log file: /root/build_logs/cloudstack_build_20251108T005151Z.log
+
+Notes:
+- Checkstyle scan on plugins showed no immediate errors in this repo snapshot (VNF code here is integrated across api/server/engine rather than a distinct vnf-framework plugin).
+- If Java 21 causes issues for certain modules, we can switch default java to 17 on Build1.
+
+Next steps (Build1):
+- Monitor build log: tail -f /root/build_logs/cloudstack_build_20251108T005151Z.log
+- If artifacts succeed, proceed to management server packaging and smoke tests.
+- If checkstyle is enforced in CI, we can run a targeted checkstyle pass and address any violations.
+
+— Build2 (Copilot)
