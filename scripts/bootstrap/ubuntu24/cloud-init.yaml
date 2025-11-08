@@ -1,0 +1,13 @@
+#cloud-config
+package_update: true
+packages:
+  - python3
+  - arping
+  - jq
+  - curl
+runcmd:
+  - |
+    set -eux
+    mkdir -p /opt/build-agent
+    curl -fsSL https://raw.githubusercontent.com/alexandremattioli/Build/feature/ubuntu24-bootstrap/scripts/bootstrap/ubuntu24/install.sh -o /tmp/install.sh
+    bash /tmp/install.sh
