@@ -71,7 +71,12 @@ function Ensure-OpenSSH {
   Set-Service ssh-agent -StartupType Automatic -ErrorAction SilentlyContinue
   Start-Service ssh-agent -ErrorAction SilentlyContinue
 
-  if (-not (Get-NetFirewallRule -DisplayName 'OpenSSH Server (sshd)' -ErrorAction SilentlyContinue)) {
+  # Idempotent firewall rule: enable if present, else create
+  $fwByName = Get-NetFirewallRule -Name 'OpenSSH-Server-In-TCP' -ErrorAction SilentlyContinue
+  $fwByDisp = Get-NetFirewallRule -DisplayName 'OpenSSH Server (sshd)' -ErrorAction SilentlyContinue
+  if ($fwByName -or $fwByDisp) {
+    ($fwByName + $fwByDisp) | Where-Object { $_ } | Enable-NetFirewallRule | Out-Null
+  } else {
     New-NetFirewallRule -Name 'OpenSSH-Server-In-TCP' -DisplayName 'OpenSSH Server (sshd)' `
       -Direction Inbound -Protocol TCP -Action Allow -LocalPort 22 | Out-Null
   }
@@ -83,9 +88,13 @@ function Get-UserProfilePath {
   $sid  = $user.SID.Value
   $prof = Get-CimInstance Win32_UserProfile | Where-Object { $_.SID -eq $sid }
   if ($prof -and $prof.LocalPath) { return $prof.LocalPath }
+  # Fallback: create a minimal profile folder if it doesn't exist yet (first logon not done)
   $fallback = "C:\Users\$UserName"
+  if (-not (Test-Path $fallback)) {
+    try { New-Item -ItemType Directory -Path $fallback -Force | Out-Null } catch {}
+  }
   if (Test-Path $fallback) { return $fallback }
-  throw "Cannot locate profile for $UserName"
+  throw "Cannot locate or create profile folder for $UserName. Log on once interactively to initialize the profile, then rerun."
 }
 
 function Install-AuthorizedKey {
