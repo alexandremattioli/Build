@@ -15,6 +15,13 @@ MAGIC=b"BUILD/HELLO/v1"
 HACKERBOOK_ACK_PATH = '/var/lib/build/hackerbook_acknowledged'
 HACKERBOOK_URL = 'https://github.com/shapeblue/hackerbook'
 
+# Known build servers and coordinator
+BUILD_MARKERS = {
+    '10.1.3.175': 'build1',
+    '10.1.3.177': 'build2',
+}
+COORDINATOR_IP = '10.1.3.175'
+
 parser=argparse.ArgumentParser()
 parser.add_argument('--iface', required=True)
 parser.add_argument('--cidr', required=True)
@@ -181,11 +188,18 @@ else:
                     'assigned_by': [s['from'] for s in matches],
                     'assigned_at': datetime.utcnow().isoformat()+"Z"
                 }
+                # Annotate with build server info
+                build_name = BUILD_MARKERS.get(primary)
+                identity['build_server'] = build_name
+                identity['is_coordinator'] = (primary == COORDINATOR_IP)
+
                 os.makedirs('/var/lib/build', exist_ok=True)
                 with open(identity_path,'w') as f:
                     json.dump(identity, f, indent=2)
                 logger.info(f"Consensus: I am a '{chosen_role}'")
                 logger.info(f"Packages: {', '.join(identity['packages']) if identity['packages'] else '<none>'}")
+                if identity.get('build_server'):
+                    logger.info(f"This node is {identity['build_server']} (coordinator={identity['is_coordinator']})")
                 
                 # Auto-install packages
                 if identity['packages']:
@@ -214,6 +228,11 @@ else:
             'assigned_by': ['self'],
             'assigned_at': datetime.utcnow().isoformat()+"Z"
         }
+        # Annotate build server if founder is one of the known IPs
+        build_name = BUILD_MARKERS.get(primary)
+        identity['build_server'] = build_name
+        identity['is_coordinator'] = (primary == COORDINATOR_IP)
+
         os.makedirs('/var/lib/build', exist_ok=True)
         with open(identity_path,'w') as f:
             json.dump(identity, f, indent=2)
@@ -240,7 +259,9 @@ with open('/var/lib/build/peers.json','w') as f:
             'hostname': hostname,
             'primary_ip': primary,
             'candidate_ip': args.candidate,
-            'role': identity.get('role') if identity else None
+            'role': identity.get('role') if identity else None,
+            'build_server': identity.get('build_server') if identity else None,
+            'is_coordinator': identity.get('is_coordinator') if identity else None,
         },
         'peers': peers
     }, f, indent=2)
