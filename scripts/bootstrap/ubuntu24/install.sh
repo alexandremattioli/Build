@@ -23,6 +23,7 @@ if [[ -f "$(dirname "$0")/agent-runner.sh" ]]; then
   install -m 0644 "$SRC_DIR/peer_agent.py" /opt/build-agent/peer_agent.py
   install -m 0644 "$SRC_DIR/advisor.py" /opt/build-agent/advisor.py
   install -m 0644 "$SRC_DIR/build-advisor.service" /etc/systemd/system/build-advisor.service
+  install -m 0755 "$SRC_DIR/hive" /usr/local/bin/hive
 else
   echo "Installing via raw GitHub"
   BASE="https://raw.githubusercontent.com/alexandremattioli/Build/feature/ubuntu24-bootstrap/scripts/bootstrap/ubuntu24"
@@ -33,6 +34,7 @@ else
   curl -fsSL "$BASE/advisor.py" -o /opt/build-agent/advisor.py && chmod 0644 /opt/build-agent/advisor.py
   curl -fsSL "$BASE/build-agent.service" -o /etc/systemd/system/build-agent.service && chmod 0644 /etc/systemd/system/build-agent.service
   curl -fsSL "$BASE/build-advisor.service" -o /etc/systemd/system/build-advisor.service && chmod 0644 /etc/systemd/system/build-advisor.service
+  curl -fsSL "$BASE/hive" -o /usr/local/bin/hive && chmod 0755 /usr/local/bin/hive
 fi
 
 # Create a default shared secret if not present
@@ -52,5 +54,6 @@ echo ""
 echo "Install complete."
 echo "Agent logs:   journalctl -u build-agent -f"
 echo "Advisor logs: journalctl -u build-advisor -f"
-echo "Identity:     cat /var/lib/build/identity.json | jq ."
-echo "Peers:        cat /var/lib/build/peers.json | jq ."
+echo "Hive status:  hive status"
+echo "List peers:   hive peers"
+echo "Reset role:   sudo hive reset"

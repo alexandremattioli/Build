@@ -1,8 +1,14 @@
 #!/usr/bin/env python3
-import argparse, json, os, socket, sys, time, uuid, hmac, hashlib
+import argparse, json, os, socket, sys, time, uuid, hmac, hashlib, subprocess, signal, logging
 from datetime import datetime
 import ipaddress
 from collections import Counter
+
+logging.basicConfig(
+    level=logging.INFO,
+    format='%(asctime)s [%(levelname)s] %(message)s'
+)
+logger = logging.getLogger(__name__)
 
 PORT=50555
 MAGIC=b"BUILD/HELLO/v1"
@@ -64,15 +70,35 @@ def valid(msg: dict) -> bool:
         return hmac.compare_digest(mac, sig)
     return True
 
+def send_with_retry(sock, message, address, retries=3):
+    """Send message with retry and exponential backoff."""
+    for attempt in range(retries):
+        sock.sendto(message, address)
+        if attempt < retries - 1:
+            time.sleep(0.5 * (2 ** attempt))
+
+def signal_handler(sig, frame):
+    logger.info("Shutting down gracefully...")
+    sock.close()
+    sys.exit(0)
+
+signal.signal(signal.SIGTERM, signal_handler)
+signal.signal(signal.SIGINT, signal_handler)
+
 sock=socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 sock.setsockopt(socket.SOL_SOCKET, socket.SO_BROADCAST, 1)
-sock.bind(('', PORT))
+sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+try:
+    sock.bind(('', PORT))
+except OSError as e:
+    logger.error(f"Failed to bind to port {PORT}: {e}")
+    sys.exit(1)
 sock.settimeout(2.0)
 
 # Phase 1: discover peers
 hello=make_msg('HELLO')
 for _ in range(3):
-    sock.sendto(hello, (bcast, PORT))
+    send_with_retry(sock, hello, (bcast, PORT), retries=2)
     time.sleep(0.3)
 
 peers=[]
@@ -95,24 +121,25 @@ while time.time()-start < 5:
                 peers.append({'ip': addr[0], **pl})
     except socket.timeout:
         continue
-    except Exception:
+    except Exception as e:
+        logger.warning(f"Error receiving message: {e}")
         continue
 
-print(f"Discovered {len(peers)} peer(s)")
+logger.info(f"Discovered {len(peers)} peer(s)")
 
 # Phase 2: ask peers "who am I, what should I become?"
 identity_path='/var/lib/build/identity.json'
 if os.path.exists(identity_path):
     with open(identity_path) as f:
         identity=json.load(f)
-    print(f"Already identified as: {identity.get('role','<unknown>')}")
+    logger.info(f"Already identified as: {identity.get('role','<unknown>')}")
 else:
     identity=None
     if peers:
-        print("Asking peers for role assignment...")
+        logger.info("Asking peers for role assignment...")
         identify_req=make_msg('IDENTIFY', {'request':'who_am_i'})
         for _ in range(2):
-            sock.sendto(identify_req, (bcast, PORT))
+            send_with_retry(sock, identify_req, (bcast, PORT), retries=2)
             time.sleep(0.2)
         
         suggestions=[]
@@ -132,10 +159,11 @@ else:
                         'config': pl.get('config',{}),
                         'reason': pl.get('reason','')
                     })
-                    print(f" <- {pl.get('hostname')}: become '{pl.get('suggested_role')}' ({pl.get('reason','')})")
+                    logger.info(f" <- {pl.get('hostname')}: become '{pl.get('suggested_role')}' ({pl.get('reason','')})")
             except socket.timeout:
                 continue
-            except Exception:
+            except Exception as e:
+                logger.warning(f"Error receiving advice: {e}")
                 continue
         
         if suggestions:
@@ -154,14 +182,29 @@ else:
                 os.makedirs('/var/lib/build', exist_ok=True)
                 with open(identity_path,'w') as f:
                     json.dump(identity, f, indent=2)
-                print(f"\nConsensus: I am a '{chosen_role}'")
-                print(f"Packages: {', '.join(identity['packages']) if identity['packages'] else '<none>'}")
+                logger.info(f"Consensus: I am a '{chosen_role}'")
+                logger.info(f"Packages: {', '.join(identity['packages']) if identity['packages'] else '<none>'}")
+                
+                # Auto-install packages
+                if identity['packages']:
+                    logger.info("Installing packages...")
+                    try:
+                        subprocess.run(['apt-get', 'update'], check=True, capture_output=True)
+                        subprocess.run(
+                            ['apt-get', 'install', '-y', '--no-install-recommends'] + identity['packages'],
+                            check=True,
+                            env={**os.environ, 'DEBIAN_FRONTEND': 'noninteractive'},
+                            capture_output=True
+                        )
+                        logger.info("Package installation complete")
+                    except subprocess.CalledProcessError as e:
+                        logger.error(f"Package installation failed: {e}")
             else:
-                print("No role consensus reached; will retry on next run.")
+                logger.warning("No role consensus reached; will retry on next run.")
         else:
-            print("No advice received from peers; operating as unassigned node.")
+            logger.warning("No advice received from peers; operating as unassigned node.")
     else:
-        print("No peers found; this may be the first node (founder role).")
+        logger.info("No peers found; this may be the first node (founder role).")
         identity={
             'role': 'founder',
             'packages': [],
@@ -187,4 +230,4 @@ with open('/var/lib/build/peers.json','w') as f:
     }, f, indent=2)
 
 for p in peers:
-    print(f" - {p.get('hostname')} @ {p.get('ip')} ({p.get('primary_ip')})")
+    logger.info(f" - {p.get('hostname')} @ {p.get('ip')} ({p.get('primary_ip')})")

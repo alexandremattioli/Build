@@ -7,7 +7,10 @@ Wants=network-online.target
 Type=simple
 ExecStart=/opt/build-agent/agent-runner.sh
 Restart=on-failure
-RestartSec=5
+RestartSec=10
+StartLimitBurst=5
+StartLimitIntervalSec=300
+TimeoutStopSec=30
 Environment=PYTHONUNBUFFERED=1
 
 [Install]

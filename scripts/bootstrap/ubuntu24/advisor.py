@@ -1,7 +1,13 @@
 #!/usr/bin/env python3
 """Advisor daemon: listens for IDENTIFY requests and suggests roles based on cluster state."""
-import argparse, json, os, socket, hmac, hashlib, time
+import argparse, json, os, socket, hmac, hashlib, time, sys, signal, logging
 from datetime import datetime
+
+logging.basicConfig(
+    level=logging.INFO,
+    format='%(asctime)s [%(levelname)s] %(message)s'
+)
+logger = logging.getLogger(__name__)
 
 PORT=50555
 MAGIC=b"BUILD/HELLO/v1"
@@ -68,16 +74,29 @@ def suggest_role(peers_count: int) -> dict:
             'reason': 'cluster has builders, needs test runners'
         }
 
+def signal_handler(sig, frame):
+    logger.info("Shutting down gracefully...")
+    sock.close()
+    sys.exit(0)
+
+signal.signal(signal.SIGTERM, signal_handler)
+signal.signal(signal.SIGINT, signal_handler)
+
 sock=socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 sock.setsockopt(socket.SOL_SOCKET, socket.SO_BROADCAST, 1)
-sock.bind(('', PORT))
+sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+try:
+    sock.bind(('', PORT))
+except OSError as e:
+    logger.error(f"Failed to bind to port {PORT}: {e}")
+    sys.exit(1)
 sock.settimeout(5.0)
 
 identity=load_identity()
 my_node_id=os.urandom(8).hex()
 hostname=socket.gethostname()
 
-print(f"Advisor running as {identity.get('role')} on {hostname}")
+logger.info(f"Advisor running as {identity.get('role')} on {hostname}")
 
 while True:
     try:
@@ -87,7 +106,7 @@ while True:
             continue
         pl=msg['payload']
         if pl.get('kind')=='IDENTIFY':
-            # Count known peers (简化：基于最近的peers.json)
+            # Count known peers (simplified: based on recent peers.json)
             peers_count=0
             try:
                 with open('/var/lib/build/peers.json') as f:
@@ -110,11 +129,11 @@ while True:
             raw=json.dumps(response_payload, separators=(',',':')).encode('utf-8')
             response=json.dumps({'magic':MAGIC.decode(),'payload':response_payload,'sig':sign(raw)}, separators=(',',':')).encode('utf-8')
             sock.sendto(response, (addr[0], PORT))
-            print(f"Advised {pl.get('hostname')} -> {advice['role']} ({advice['reason']})")
+            logger.info(f"Advised {pl.get('hostname')} -> {advice['role']} ({advice['reason']})")
     except socket.timeout:
         continue
     except KeyboardInterrupt:
         break
     except Exception as e:
-        print(f"Error: {e}")
+        logger.error(f"Error processing message: {e}")
         time.sleep(1)
