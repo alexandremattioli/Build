@@ -12,6 +12,7 @@ if [[ -z "${IFACE}" ]] || [[ -z "${NETCIDR}" ]]; then
   source /opt/build-agent/network_utils.sh
   IFACE=$(get_primary_iface)
   NETCIDR=$(get_iface_cidr "$IFACE")
+  export NETCIDR
   BROADCAST=$(python3 - <<'PY'
 import ipaddress, os
 cidr=os.environ.get('NETCIDR')

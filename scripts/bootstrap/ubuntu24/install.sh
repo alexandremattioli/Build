@@ -9,7 +9,7 @@ fi
 apt-get update
 DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
   python3 python3-venv python3-distutils \
-  arping jq iproute2 curl ca-certificates
+  arping jq iproute2 curl ca-certificates openssl
 
 mkdir -p /opt/build-agent /var/lib/build /etc/build
 

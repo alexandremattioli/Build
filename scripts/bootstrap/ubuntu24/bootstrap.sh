@@ -5,6 +5,7 @@ source "$(dirname "$0")/network_utils.sh"
 
 IFACE=$(get_primary_iface)
 CIDR=$(get_iface_cidr "$IFACE")
+export CIDR
 BROADCAST=$(python3 - <<'PY'
 import ipaddress, os
 cidr=os.environ.get('CIDR')
