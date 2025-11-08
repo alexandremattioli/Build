@@ -40,6 +40,17 @@ TO_SERVER="$2"
 MSG_TYPE="$3"
 SUBJECT="$4"
 BODY="$5"
+ACK_REQUIRED="false"
+
+if [ $# -ge 6 ]; then
+    if [ "$6" == "--require-ack" ]; then
+        ACK_REQUIRED="true"
+    else
+        echo "ERROR: Unknown argument: $6" >&2
+        echo "Usage: $0 <from> <to> <type> <subject> <body> [--require-ack]" >&2
+        exit 1
+    fi
+fi
 
 # Input validation
 validate_server_id() {
@@ -142,6 +153,7 @@ jq --arg id "$MSG_ID" \
    --arg subject "$SUBJECT" \
    --arg body "$BODY" \
    --arg ts "$TIMESTAMP" \
+   --arg ack_required "$ACK_REQUIRED" \
    '.messages += [{
        id: $id,
        from: $from,
@@ -150,7 +162,10 @@ jq --arg id "$MSG_ID" \
        subject: $subject,
        body: $body,
        timestamp: $ts,
-       read: false
+        read: false,
+        ack_required: ($ack_required == "true"),
+        ack_status: ($ack_required == "true" ? "pending" : "not_requested"),
+        acknowledged_by: []
    }]' coordination/messages.json > "$TMP_FILE"
 mv "$TMP_FILE" coordination/messages.json
 
@@ -188,6 +203,9 @@ fi
 echo "Message sent: $MSG_ID"
 echo "  Subject: $SUBJECT (${#SUBJECT} chars)"
 echo "  Body: ${#BODY} characters"
+if [ "$ACK_REQUIRED" == "true" ]; then
+    echo "  Ack required from $TO_SERVER"
+fi
 
 # Update statistics
 cd scripts

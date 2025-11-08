@@ -59,6 +59,9 @@ format_time() {
 BUILD1_LAST_FORMATTED=$(format_time "$BUILD1_LAST_TIME")
 BUILD2_LAST_FORMATTED=$(format_time "$BUILD2_LAST_TIME")
 
+# Pending acknowledgments
+ACK_PENDING=$(jq '[.messages[] | select(.ack_required == true and (.ack_status == "pending" or .ack_status == null))] | length' "$MESSAGES_FILE")
+
 # Get overall last message details
 LAST_MSG=$(jq -c '.messages | sort_by(.timestamp) | last' "$MESSAGES_FILE")
 LAST_FROM=$(echo "$LAST_MSG" | jq -r '.from')
@@ -92,6 +95,7 @@ Build1 messages: $BUILD1_COUNT  Last message: $BUILD1_LAST_FORMATTED
 Build2 messages: $BUILD2_COUNT  Last message: $BUILD2_LAST_FORMATTED
 Last message from: $LAST_FROM to $LAST_TO ($LAST_SUBJECT)
 Waiting on: $WAITING_ON
+Ack pending: $ACK_PENDING
 Total messages: $TOTAL  Unread: build1=$BUILD1_UNREAD build2=$BUILD2_UNREAD build3=$BUILD3_UNREAD build4=$BUILD4_UNREAD
 
 Latest message body:

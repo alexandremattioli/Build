@@ -239,6 +239,21 @@ Every setup script installs a helper so builds can send coordination messages wi
 
 Run `sendmessages --help` for all options. Targets accept digits (`1`, `12`, `4`) or `all`; subjects are auto-derived from the first line of the body.
 
+### Atomic send + status refresh
+
+- Preferred workflow: `scripts/send_and_refresh.sh <from> <to> <type> <subject> <body> [--require-ack]`
+- This wrapper:
+  1. Calls `send_message.sh`
+  2. Immediately refreshes `message_status.txt`
+  3. Regenerates message statistics
+- Use it for all automated heartbeats and alerts so dashboards stay in sync.
+
+### Message acknowledgments
+
+- Append `--require-ack` to any message that needs explicit confirmation.
+- Recipients acknowledge via `scripts/ack_message.sh <message_id> <builder>`.
+- Ack state is tracked inside `coordination/messages.json` and summarized in `message_status.txt` (“Ack pending” line).
+
 ### Hourly Coordination Requirement
 
 - **All build agents must emit at least one coordination message every hour.**
@@ -251,6 +266,15 @@ cd /root/Build
 
 - Use the appropriate `build2`/`build3` sender name on other hosts.
 - If a builder misses two consecutive heartbeats, flag it in `coordination/messages.json` and update the health dashboard.
+
+### Heartbeat enforcement
+
+- `scripts/enforce_heartbeat.sh` scans `coordination/messages.json` and automatically pings any builder that has been silent longer than `HEARTBEAT_THRESHOLD` seconds (default: 3600).
+- Recommended cron entry:
+  ```
+  */10 * * * * cd /root/Build && ./scripts/enforce_heartbeat.sh
+  ```
+- Silent builders receive an automated warning message from `system`.
 
 ---
 
