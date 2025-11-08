@@ -1,19 +1,12 @@
 # MH 3
 
-Clone of the MH theme. Same colors and tokens as MH, registered as a separate theme.
+Green/Emerald accent variant of the MH theme. Features vibrant emerald green highlights while maintaining the blood red chat bubble and dark UI foundation.
 
-## Current Status
-- Identical to MH theme
-- Created as a variant placeholder for future customization
-- Version: 0.0.21
+**Accent Color**: Green/Emerald (#10b981, #34d399)
 
-## Theme Characteristics
-- **Chat sent bubble**: Blood red (#8b0000) with hover (#c41e1e)
-- **Prompt input**: Dark teal (#08201d)
-- **Sidebars**: Very dark (#0c0d0d)
-- **Activity bar**: Near-black (#101010)
-- **Status bar**: Deep purple (#4a148c)
-- **Accent color**: Teal (#23bfa5)
+Customized elements:
 
-## Future Customization
-This theme is reserved for future palette variations without modifying the original MH theme.
+- Cursor, tab borders, and panel borders in emerald green
+- List selections and highlights in green shades
+- Bracket pair colorization includes green tones
+- Maintains blood red chat sent bubble (#8b0000)
