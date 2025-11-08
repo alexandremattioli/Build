@@ -239,6 +239,19 @@ Every setup script installs a helper so builds can send coordination messages wi
 
 Run `sendmessages --help` for all options. Targets accept digits (`1`, `12`, `4`) or `all`; subjects are auto-derived from the first line of the body.
 
+### Hourly Coordination Requirement
+
+- **All build agents must emit at least one coordination message every hour.**
+- Add a cron/systemd timer that runs:
+
+```bash
+cd /root/Build
+./scripts/send_message.sh build1 all info "Hourly heartbeat" "Build1 is online and ready."
+```
+
+- Use the appropriate `build2`/`build3` sender name on other hosts.
+- If a builder misses two consecutive heartbeats, flag it in `coordination/messages.json` and update the health dashboard.
+
 ---
 
 ## Features Directory
