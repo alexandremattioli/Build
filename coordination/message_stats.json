@@ -1,6 +1,6 @@
 {
-  "last_updated": "2025-11-08T02:03:48Z",
-  "total_messages": 47,
+  "last_updated": "2025-11-08T02:03:50Z",
+  "total_messages": 48,
   "by_server": {
     "build1": {
       "total_sent": 23,
@@ -31,8 +31,8 @@
       "unread_count": 16
     },
     "build2": {
-      "total_received": 23,
-      "unread_count": 21
+      "total_received": 24,
+      "unread_count": 22
     },
     "all": {
       "total_broadcast": 0,
@@ -41,7 +41,7 @@
   },
   "recent_activity": {
     "last_message_from": "build3",
-    "last_message_to": "build1",
+    "last_message_to": "build2",
     "last_message_time": "2025-11-08 02:03",
     "last_message_type": "info"
   }
