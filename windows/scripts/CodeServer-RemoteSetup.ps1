@@ -75,7 +75,7 @@ function Ensure-OpenSSH {
   $fwByName = Get-NetFirewallRule -Name 'OpenSSH-Server-In-TCP' -ErrorAction SilentlyContinue
   $fwByDisp = Get-NetFirewallRule -DisplayName 'OpenSSH Server (sshd)' -ErrorAction SilentlyContinue
   if ($fwByName -or $fwByDisp) {
-    ($fwByName + $fwByDisp) | Where-Object { $_ } | Enable-NetFirewallRule | Out-Null
+    @($fwByName, $fwByDisp) | Where-Object { $_ } | Enable-NetFirewallRule | Out-Null
   } else {
     New-NetFirewallRule -Name 'OpenSSH-Server-In-TCP' -DisplayName 'OpenSSH Server (sshd)' `
       -Direction Inbound -Protocol TCP -Action Allow -LocalPort 22 | Out-Null
@@ -115,9 +115,9 @@ function Install-AuthorizedKey {
 
   # Tight permissions required by Windows OpenSSH
   icacls $sshDir /inheritance:r | Out-Null
-  icacls $sshDir /grant "$($UserName):(OI)(CI)(F)" "SYSTEM:(OI)(CI)(F)" | Out-Null
+  icacls $sshDir /grant "$( $UserName ):(OI)(CI)(F)" "SYSTEM:(OI)(CI)(F)" | Out-Null
   icacls $auth  /inheritance:r | Out-Null
-  icacls $auth  /grant "$($UserName):(R,W)" "SYSTEM:(R,W)" | Out-Null
+  icacls $auth  /grant "$( $UserName ):(R,W)" "SYSTEM:(R,W)" | Out-Null
   Write-Host "authorized_keys installed for $UserName"
 }
 
