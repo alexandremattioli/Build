@@ -59,6 +59,22 @@ function Ensure-LocalUser {
 }
 
 function Ensure-OpenSSH {
+  # Fast-path: if sshd service exists (manual or previous install), just ensure it's configured and skip capability install.
+  $existingSvc = Get-Service -Name 'sshd' -ErrorAction SilentlyContinue
+  if ($existingSvc) {
+    Write-Host "OpenSSH Server service found. Skipping capability install."
+    try { Set-Service sshd -StartupType Automatic } catch {}
+    try { Start-Service sshd -ErrorAction SilentlyContinue } catch {}
+    try { Set-Service ssh-agent -StartupType Automatic -ErrorAction SilentlyContinue; Start-Service ssh-agent -ErrorAction SilentlyContinue } catch {}
+    # Idempotent firewall rule
+    $fwByName = Get-NetFirewallRule -Name 'OpenSSH-Server-In-TCP' -ErrorAction SilentlyContinue
+    $fwByDisp = Get-NetFirewallRule -DisplayName 'OpenSSH Server (sshd)' -ErrorAction SilentlyContinue
+    if ($fwByName -or $fwByDisp) { @($fwByName, $fwByDisp) | Where-Object { $_ } | Enable-NetFirewallRule | Out-Null }
+    else { New-NetFirewallRule -Name 'OpenSSH-Server-In-TCP' -DisplayName 'OpenSSH Server (sshd)' -Direction Inbound -Protocol TCP -Action Allow -LocalPort 22 | Out-Null }
+    return
+  }
+
+  # Capability-based install (requires access to FoD/Windows Update/WSUS)
   $cap = Get-WindowsCapability -Online | Where-Object Name -like 'OpenSSH.Server*'
   if (-not $cap -or $cap.State -ne 'Installed') {
     Write-Host "Installing OpenSSH Server..."
@@ -66,19 +82,19 @@ function Ensure-OpenSSH {
   } else {
     Write-Host "OpenSSH Server already installed."
   }
+
   Start-Service sshd -ErrorAction SilentlyContinue
   Set-Service sshd -StartupType Automatic
   Set-Service ssh-agent -StartupType Automatic -ErrorAction SilentlyContinue
   Start-Service ssh-agent -ErrorAction SilentlyContinue
 
   # Idempotent firewall rule: enable if present, else create
-  $fwByName = Get-NetFirewallRule -Name 'OpenSSH-Server-In-TCP' -ErrorAction SilentlyContinue
-  $fwByDisp = Get-NetFirewallRule -DisplayName 'OpenSSH Server (sshd)' -ErrorAction SilentlyContinue
-  if ($fwByName -or $fwByDisp) {
-    @($fwByName, $fwByDisp) | Where-Object { $_ } | Enable-NetFirewallRule | Out-Null
+  $fwByName2 = Get-NetFirewallRule -Name 'OpenSSH-Server-In-TCP' -ErrorAction SilentlyContinue
+  $fwByDisp2 = Get-NetFirewallRule -DisplayName 'OpenSSH Server (sshd)' -ErrorAction SilentlyContinue
+  if ($fwByName2 -or $fwByDisp2) {
+    @($fwByName2, $fwByDisp2) | Where-Object { $_ } | Enable-NetFirewallRule | Out-Null
   } else {
-    New-NetFirewallRule -Name 'OpenSSH-Server-In-TCP' -DisplayName 'OpenSSH Server (sshd)' `
-      -Direction Inbound -Protocol TCP -Action Allow -LocalPort 22 | Out-Null
+    New-NetFirewallRule -Name 'OpenSSH-Server-In-TCP' -DisplayName 'OpenSSH Server (sshd)' -Direction Inbound -Protocol TCP -Action Allow -LocalPort 22 | Out-Null
   }
 }
 
@@ -89,7 +105,7 @@ function Get-UserProfilePath {
   $prof = Get-CimInstance Win32_UserProfile | Where-Object { $_.SID -eq $sid }
   if ($prof -and $prof.LocalPath) { return $prof.LocalPath }
   # Fallback: create a minimal profile folder if it doesn't exist yet (first logon not done)
-  $fallback = "C:\Users\$UserName"
+  $fallback = "C:\\Users\\$UserName"
   if (-not (Test-Path $fallback)) {
     try { New-Item -ItemType Directory -Path $fallback -Force | Out-Null } catch {}
   }
@@ -123,14 +139,14 @@ function Install-AuthorizedKey {
 
 function Configure-SSHD {
   param([string]$UserName,[bool]$DisablePasswordAuth)
-  $cfg = 'C:\ProgramData\ssh\sshd_config'
+  $cfg = 'C:\\ProgramData\\ssh\\sshd_config'
   if (-not (Test-Path $cfg)) { throw "sshd_config not found at $cfg" }
   $lines = Get-Content $cfg
   $backup = "$cfg.bak"
   if (-not (Test-Path $backup)) { Copy-Item $cfg $backup }
 
   function Upsert($Key,$Value) {
-    $pattern = "^\s*#?\s*$([regex]::Escape($Key))\b.*$"
+    $pattern = "^\\s*#?\\s*$([regex]::Escape($Key))\\b.*$"
     $idx = -1
     for ($i=0; $i -lt $lines.Count; $i++) { if ($lines[$i] -match $pattern) { $idx = $i; break } }
     if ($idx -ge 0) { $lines[$idx] = "$Key $Value" } else { $script:lines += "$Key $Value" }
@@ -140,14 +156,14 @@ function Configure-SSHD {
   if ($DisablePasswordAuth) {
     Upsert 'PasswordAuthentication' 'no'
   } else {
-    if ($lines -notmatch '^\s*PasswordAuthentication\b') { $script:lines += 'PasswordAuthentication yes' }
+    if ($lines -notmatch '^\\s*PasswordAuthentication\\b') { $script:lines += 'PasswordAuthentication yes' }
   }
 
-  if ($lines -notmatch '^\s*AllowUsers\b') { $script:lines += "AllowUsers $UserName" }
-  else { $script:lines = $script:lines -replace '^(#?\s*AllowUsers\s+.*)$', "`$1 $UserName" }
+  if ($lines -notmatch '^\\s*AllowUsers\\b') { $script:lines += "AllowUsers $UserName" }
+  else { $script:lines = $script:lines -replace '^(#?\\s*AllowUsers\\s+.*)$', "`$1 $UserName" }
 
-  if ($lines -notmatch '^\s*UseDNS\b') { $script:lines += 'UseDNS no' }
-  if ($lines -notmatch '^\s*GSSAPIAuthentication\b') { $script:lines += 'GSSAPIAuthentication no' }
+  if ($lines -notmatch '^\\s*UseDNS\\b') { $script:lines += 'UseDNS no' }
+  if ($lines -notmatch '^\\s*GSSAPIAuthentication\\b') { $script:lines += 'GSSAPIAuthentication no' }
 
   Set-Content -Path $cfg -Value $lines -Encoding ascii
   Restart-Service sshd
@@ -166,7 +182,7 @@ function Ensure-WinRM-HTTPS {
   $dnsName  = if ($domain -and $domain -ne $hostname) { "$hostname.$domain" } else { $hostname }
 
   Write-Host "Creating self-signed certificate for $dnsName ..."
-  $cert = New-SelfSignedCertificate -DnsName $dnsName -CertStoreLocation Cert:\LocalMachine\My -KeyLength 2048 -HashAlgorithm sha256 -FriendlyName "WinRM HTTPS ($dnsName)"
+  $cert = New-SelfSignedCertificate -DnsName $dnsName -CertStoreLocation Cert:\\LocalMachine\\My -KeyLength 2048 -HashAlgorithm sha256 -FriendlyName "WinRM HTTPS ($dnsName)"
   $thumb = $cert.Thumbprint
 
   Write-Host "Configuring WinRM HTTPS listener..."
@@ -192,7 +208,7 @@ $ErrorActionPreference = "SilentlyContinue"
 $now = Get-Date -Format "yyyy-MM-dd HH:mm:ss"
 $os  = Get-CimInstance Win32_OperatingSystem
 $uptime = (Get-Date) - $os.LastBootUpTime
-$cpu = (Get-Counter '\Processor(_Total)\% Processor Time' -SampleInterval 1 -MaxSamples 1).CounterSamples.CookedValue
+$cpu = (Get-Counter '\\Processor(_Total)\\% Processor Time' -SampleInterval 1 -MaxSamples 1).CounterSamples.CookedValue
 $memUsedGB = "{0:N2}" -f (($os.TotalVisibleMemorySize - $os.FreePhysicalMemory)/1MB)
 $memTotalGB = "{0:N2}" -f ($os.TotalVisibleMemorySize/1MB)
 $disk = Get-CimInstance Win32_LogicalDisk -Filter "DeviceID='C:'"
@@ -209,7 +225,7 @@ $line = [pscustomobject]@{
   MemTotGB    = $memTotalGB
   DiskCFreeGB = if ($disk.FreeSpace) { "{0:N2}" -f ($disk.FreeSpace/1GB) } else { $null }
 }
-$logDir = Join-Path (Split-Path $MyInvocation.MyCommand.Path -Parent) '..\logs'
+$logDir = Join-Path (Split-Path $MyInvocation.MyCommand.Path -Parent) '..\\logs'
 $log    = Join-Path $logDir ("heartbeat-"+(Get-Date -Format 'yyyyMMdd')+".log")
 $line | ConvertTo-Json -Compress | Add-Content -Path $log
 '@
@@ -246,7 +262,7 @@ function Remove-WinRMHttps {
       }
       foreach ($entry in $https) {
         $line = $entry.Line
-        if ($line -match 'Listener\s+(\{[^\}]+\})') {
+        if ($line -match 'Listener\\s+(\\{[^\\}]+\\})') {
           winrm delete "winrm/config/Listener?$($Matches[1])" 2>$null | Out-Null
         }
       }
@@ -299,7 +315,7 @@ try {
 
   if ($EnableRdpDefault) {
     Write-Host "Enabling RDP and firewall..."
-    Set-ItemProperty -Path "HKLM:\System\CurrentControlSet\Control\Terminal Server" -Name "fDenyTSConnections" -Value 0
+    Set-ItemProperty -Path "HKLM:\\System\\CurrentControlSet\\Control\\Terminal Server" -Name "fDenyTSConnections" -Value 0
     Enable-NetFirewallRule -DisplayGroup "Remote Desktop" | Out-Null
   }
 
