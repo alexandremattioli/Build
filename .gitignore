@@ -35,3 +35,6 @@ Thumbs.db
 coordination/.locks/
 .watch_messages_state.json
 messages.log
+/.secrets/
+/.secrets
+README.md.bak.*

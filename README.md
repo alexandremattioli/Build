@@ -565,3 +565,32 @@ mvn -s /Builder2/tools/maven/settings-fixed.xml clean install -DskipTests
 - `/Builder2/Build/windows/README.md` - Complete Windows server documentation
 - `/Builder2/Build/windows/scripts/` - PowerShell management scripts
 - `/Builder2/Build/windows/vscode/` - VSCode configuration
+
+
+## Secrets Storage (Local)
+
+This repo keeps secrets out of Git. On Windows, store your GitHub token encrypted with DPAPI under a hidden `.secrets` folder (machine/user-bound).
+
+- Store token (encrypt, not committed):
+  ```powershell
+  Set-Location "K:\\Projects\\Build"
+  $s = Read-Host "Paste GitHub token" -AsSecureString
+  if (-not (Test-Path .\\.secrets)) { New-Item -ItemType Directory .\\.secrets | Out-Null; attrib +h .\\.secrets }
+  $enc = ConvertFrom-SecureString $s
+  Set-Content .\\.secrets\\github_token.dpapi $enc
+  ```
+- Retrieve token for this session:
+  ```powershell
+  Set-Location "K:\\Projects\\Build"
+  .\\scripts\\Get-GitHubToken.ps1 -SetEnv
+  # Then use tools that read $env:GITHUB_TOKEN
+  ```
+- Retrieve as secure string (for scripts):
+  ```powershell
+  $sec = .\\scripts\\Get-GitHubToken.ps1 -AsSecure
+  ```
+
+Notes:
+- DPAPI binds to the current Windows user and machine. To share across machines, use certificate-based `Protect-CmsMessage` instead.
+- `.secrets` and backups are ignored by Git (see `.gitignore`). Never commit tokens.
+
