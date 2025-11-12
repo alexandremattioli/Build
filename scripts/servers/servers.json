@@ -1,0 +1,17 @@
+﻿[
+    {
+        "Host":  "10.1.3.74",
+        "Name":  "AM-Jumphost",
+        "Role":  "Jumphost"
+    },
+    {
+        "Host":  "10.1.3.75",
+        "Name":  "Code1",
+        "Role":  "VSCode"
+    },
+    {
+        "Host":  "10.1.3.76",
+        "Name":  "Code2",
+        "Role":  "VSCode"
+    }
+]
