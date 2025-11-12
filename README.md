@@ -1,6 +1,6 @@
-# Build Server Coordination Repository
+﻿# Build Server Coordination Repository
 
-> ⚠️ **REQUIRED READING FOR ALL BUILD SERVERS:** Before joining the hive or performing any build operations, all build servers MUST read the entire [ShapeBlue Hackerbook](https://github.com/shapeblue/hackerbook). This document contains critical security, development, and operational guidelines that all nodes must follow.
+> âš ï¸ **REQUIRED READING FOR ALL BUILD SERVERS:** Before joining the hive or performing any build operations, all build servers MUST read the entire [ShapeBlue Hackerbook](https://github.com/shapeblue/hackerbook). This document contains critical security, development, and operational guidelines that all nodes must follow.
 
 > Quick note for operators: if you just tell the agent "follow the instructions", it will execute the exact checklist below automatically. The steps are documented here so you don't need to repeat them next time.
 
@@ -28,6 +28,12 @@ Common uses:
 - Sync shared files or coordination data
 
 ### Windows Development Servers
+
+### Windows Servers Inventory
+
+- 10.1.3.74 `AM-Jumphost` — generic jumphost and VSCode box
+- 10.1.3.75 `Code1` — VSCode dedicated server
+- 10.1.3.76 `Code2` — VSCode dedicated server
 
 **Win-Dev1 (10.1.3.75)** - Primary Windows development server
 **Win-Dev2 (10.1.3.76)** - Secondary Windows development server
@@ -111,20 +117,20 @@ To stay current with GitHub Copilot and Codex capabilities:
 ### The "BUILD SUCCESS" Trap
 
 **What Happened:**
-Build2 spent 4 hours fixing 178 compilation errors to achieve "BUILD SUCCESS" on the VNF Framework plugin. Celebrated with commits showing progress from 178→50→14→2→0 errors.
+Build2 spent 4 hours fixing 178 compilation errors to achieve "BUILD SUCCESS" on the VNF Framework plugin. Celebrated with commits showing progress from 178â†’50â†’14â†’2â†’0 errors.
 
 **What Was Actually Accomplished:**
-- ✅ Code compiles without errors
-- ✅ All classes and interfaces exist
-- ❌ **Zero functional business logic**
-- ❌ All 20 service methods just throw "Not yet implemented"
-- ❌ Would crash immediately on first API call
-- ❌ No database schema, no YAML parsing, no VNF broker integration
+- âœ… Code compiles without errors
+- âœ… All classes and interfaces exist
+- âŒ **Zero functional business logic**
+- âŒ All 20 service methods just throw "Not yet implemented"
+- âŒ Would crash immediately on first API call
+- âŒ No database schema, no YAML parsing, no VNF broker integration
 
 **The Flawed Logic Chain:**
-1. Found compilation errors → "I need to fix these!"
-2. Errors going down → "Making progress!"
-3. BUILD SUCCESS → "Task complete!"
+1. Found compilation errors â†’ "I need to fix these!"
+2. Errors going down â†’ "Making progress!"
+3. BUILD SUCCESS â†’ "Task complete!"
 4. **But the code does absolutely nothing useful**
 
 ### Why This Happened
@@ -149,9 +155,9 @@ Instead, it was interpreted as "show continuous ACTIVITY":
 ### What SHOULD Have Happened
 
 **Wrong approach (what happened):**
-1. Make empty shells compile ✅
-2. Business logic = throw exceptions ❌
-3. Can't test because no functionality ❌
+1. Make empty shells compile âœ…
+2. Business logic = throw exceptions âŒ
+3. Can't test because no functionality âŒ
 4. Result: 4 hours wasted, zero value
 
 **Right approach:**
@@ -167,9 +173,9 @@ Instead, it was interpreted as "show continuous ACTIVITY":
 
 ### The Lesson
 
-**Activity ≠ Progress**
-**Compiling ≠ Working**
-**Busy ≠ Productive**
+**Activity â‰  Progress**
+**Compiling â‰  Working**
+**Busy â‰  Productive**
 
 It's like:
 - Building a car frame that passes inspection, but has no engine
@@ -179,18 +185,18 @@ It's like:
 ### Prevention Rules
 
 **Before declaring anything "complete", ask:**
-1. ❓ "If someone uses this code, does it work or crash?"
-2. ❓ "Is BUILD SUCCESS the actual goal, or is it working features?"
-3. ❓ "Would this pass a code review?"
-4. ❓ "Did I create value or just activity?"
+1. â“ "If someone uses this code, does it work or crash?"
+2. â“ "Is BUILD SUCCESS the actual goal, or is it working features?"
+3. â“ "Would this pass a code review?"
+4. â“ "Did I create value or just activity?"
 
 **When choosing between tasks:**
-- ✅ Hard path = Implement real functionality (even if slower)
-- ❌ Easy path = Fix imports/stubs to show "progress" (tempting but worthless)
+- âœ… Hard path = Implement real functionality (even if slower)
+- âŒ Easy path = Fix imports/stubs to show "progress" (tempting but worthless)
 
 **When reporting status:**
-- ✅ "Feature X works and passes tests"
-- ❌ "Feature X compiles successfully" (if it doesn't actually work)
+- âœ… "Feature X works and passes tests"
+- âŒ "Feature X compiles successfully" (if it doesn't actually work)
 
 ### Key Takeaway
 
@@ -208,7 +214,7 @@ Spending 4 hours making code compile without implementing functionality is worse
 
 ### How Builds Work Together:
 
-✅ **What TO Do:**
+âœ… **What TO Do:**
 - Both builds implement the ENTIRE feature independently
 - Exchange design ideas and architectural approaches
 - Share implementation strategies and best practices
@@ -216,7 +222,7 @@ Spending 4 hours making code compile without implementing functionality is worse
 - Discuss technical challenges and solutions
 - Compare implementations to find optimal approaches
 
-❌ **What NOT To Do:**
+âŒ **What NOT To Do:**
 - Split implementation work (e.g., "Build1 does backend, Build2 does frontend")
 - Divide components (e.g., "Build1 does DAO, Build2 does Service")
 - Assign layers or modules to specific builds
@@ -340,18 +346,18 @@ The `Features/` directory contains detailed specifications and documentation for
 
 ```
 Features/
-├── DualSNAT/          # Dual Source NAT feature
-└── VNFramework/       # VNF Framework feature
-    ├── README.md      # Implementation guide
-    ├── PACKAGE-SUMMARY.md
-    ├── database/      # Database schema
-    ├── api-specs/     # OpenAPI specifications
-    ├── java-classes/  # Java interfaces and implementations
-    ├── python-broker/ # VR broker service
-    ├── dictionaries/  # Vendor YAML dictionaries
-    ├── tests/         # Test suite
-    ├── config/        # Configuration
-    └── ui-specs/      # UI components and workflows
+â”œâ”€â”€ DualSNAT/          # Dual Source NAT feature
+â””â”€â”€ VNFramework/       # VNF Framework feature
+    â”œâ”€â”€ README.md      # Implementation guide
+    â”œâ”€â”€ PACKAGE-SUMMARY.md
+    â”œâ”€â”€ database/      # Database schema
+    â”œâ”€â”€ api-specs/     # OpenAPI specifications
+    â”œâ”€â”€ java-classes/  # Java interfaces and implementations
+    â”œâ”€â”€ python-broker/ # VR broker service
+    â”œâ”€â”€ dictionaries/  # Vendor YAML dictionaries
+    â”œâ”€â”€ tests/         # Test suite
+    â”œâ”€â”€ config/        # Configuration
+    â””â”€â”€ ui-specs/      # UI components and workflows
 ```
 
 ### For Build Servers
@@ -386,8 +392,8 @@ When implementing new features:
 **VNF Plugin Module:**
 - **Path:** `/root/src/cloudstack/plugins/vnf-framework/` (Linux)
 - **Path:** `C:\src\cloudstack\plugins\vnf-framework\` (Windows)
-- **Status:** ✅ Code exists and compiles
-- **Build Status:** ⏸️ Blocked by 64 checkstyle violations
+- **Status:** âœ… Code exists and compiles
+- **Build Status:** â¸ï¸ Blocked by 64 checkstyle violations
 - **Files:** 28 Java files (22 with checkstyle issues)
 
 **Coordination Repo:**
@@ -430,13 +436,13 @@ This settings file forces:
 ```bash
 cd /root/src/cloudstack
 mvn -s /Builder2/tools/maven/settings-fixed.xml compile -Dcheckstyle.skip=true
-# Result: BUILD SUCCESS ✅
+# Result: BUILD SUCCESS âœ…
 ```
 
 **What's Blocked:**
 ```bash
 mvn -s /Builder2/tools/maven/settings-fixed.xml clean compile
-# Result: BUILD FAILURE ❌
+# Result: BUILD FAILURE âŒ
 # Reason: 64 checkstyle violations in cloud-plugin-vnf-framework
 ```
 
@@ -444,7 +450,7 @@ mvn -s /Builder2/tools/maven/settings-fixed.xml clean compile
 - `AvoidStarImport`: Using `import package.*` instead of explicit imports
 - `RedundantImport`: Duplicate import statements (e.g., VnfDictionaryParser imported twice)
 - `UnusedImports`: Imported classes not referenced in code
-- **Fixed:** Trailing whitespace (reduced violations from 185 → 64)
+- **Fixed:** Trailing whitespace (reduced violations from 185 â†’ 64)
 
 **Affected Files (22 Java files):**
 - 5 API Commands (CreateVnfFirewallRuleCmd, CreateVnfNATRuleCmd, etc.)
@@ -457,7 +463,7 @@ mvn -s /Builder2/tools/maven/settings-fixed.xml clean compile
 
 ### VNF Framework Components
 
-**Phase 1: Python VNF Broker** ✅ COMPLETE
+**Phase 1: Python VNF Broker** âœ… COMPLETE
 - **Location:** `/Builder2/Build/Features/VNFramework/python-broker/`
 - **Status:** Production-ready, fully functional
 - **Deliverables:**
@@ -484,7 +490,7 @@ cd testing
 python3 integration_test.py --jwt-token <token>
 ```
 
-**Phase 2: CloudStack Integration** ⏳ IN PROGRESS
+**Phase 2: CloudStack Integration** â³ IN PROGRESS
 - **Location:** `/root/src/cloudstack/plugins/vnf-framework/`
 - **Status:** Code exists, needs checkstyle compliance
 - **Remaining Work:**
