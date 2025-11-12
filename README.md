@@ -32,8 +32,8 @@ Common uses:
 ### Windows Servers Inventory
 
 - 10.1.3.74 `AM-Jumphost` — generic jumphost and VSCode box
-- 10.1.3.75 `Code1` — VSCode dedicated server
-- 10.1.3.76 `Code2` — VSCode dedicated server
+- 10.1.3.75 "Code1" — VSCode dedicated server
+- 10.1.3.76 "Code2" — VSCode dedicated server
 
 **Win-Dev1 (10.1.3.75)** - Primary Windows development server
 **Win-Dev2 (10.1.3.76)** - Secondary Windows development server
@@ -618,3 +618,4 @@ Set-Location "K:\\Projects\\Build"
 # Run a command
 .\\scripts\\servers\\Invoke-CodeServers.ps1 -Name Code1,Code2 -ScriptBlock { hostname }
 ```
+
