@@ -31,7 +31,7 @@ Common uses:
 
 ### Windows Servers Inventory
 
-- 10.1.3.74 `AM-Jumphost` — generic jumphost and VSCode box
+- 10.1.3.74 `AM-Jumphost` — generic jumphost and VSCode box (this machine)
 - 10.1.3.75 "Code1" — VSCode dedicated server
 - 10.1.3.76 "Code2" — VSCode dedicated server
 
@@ -644,3 +644,4 @@ if (-not (Test-Path 'K:\\projects\\build\\.git')) {
   git clone https://github.com/alexandremattioli/Build.git "K:\\projects\\build"
 }
 ```
+
