@@ -619,3 +619,9 @@ Set-Location "K:\\Projects\\Build"
 .\\scripts\\servers\\Invoke-CodeServers.ps1 -Name Code1,Code2 -ScriptBlock { hostname }
 ```
 
+
+
+## Windows Repo Path (Standard)
+
+Windows development servers use `K:\\projects\\build` as the standard repo path.
+Scheduled tasks and scripts reference `K:\\projects\\build\\windows\\scripts\\...`.

@@ -4,10 +4,12 @@ param(
   [scriptblock]$ScriptBlock,
   [string[]]$Name,
   [switch]$UseSSL,
-  [int]$Port
+  [int]$Port,
+  [System.Management.Automation.PSCredential]$Credential
 )
 $servers = & "$PSScriptRoot/Get-CodeServers.ps1" -Name $Name
-$cred = & "$PSScriptRoot/Get-CodeCredential.ps1"
+$cred = $Credential
+if (-not $cred) { $cred = & "$PSScriptRoot/Get-CodeCredential.ps1" }
 $results = @()
 foreach ($s in $servers) {
   $opts = @{ ComputerName=$s.Host; Credential=$cred; ErrorAction='Stop' }
