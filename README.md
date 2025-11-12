@@ -645,3 +645,20 @@ if (-not (Test-Path 'K:\\projects\\build\\.git')) {
 }
 ```
 
+
+## Storing Credentials for Remote Management
+
+To avoid re-entering credentials for every remote operation on Code1/Code2, save them once using DPAPI encryption:
+
+```powershell
+Set-Location "K:\Projects\Build"
+.\scripts\servers\Get-CodeCredential.ps1 -Save
+```
+
+- Prompts for Username and Password
+- Stores encrypted PSCredential at `.secrets\code_pscredential.xml`
+- Credential is bound to this Windows user and machine (DPAPI)
+- Auto-loaded by `Invoke-CodeServers.ps1` if no `-Credential` parameter is provided
+- Not committed to Git (`.secrets` is ignored)
+
+After saving, all remote commands will use the stored credential automatically.
