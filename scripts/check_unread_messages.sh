@@ -112,7 +112,7 @@ display_unread_status() {
             
             echo "[$srv]"
             if [ "$has_unread" = "true" ]; then
-                echo "  Status: ⚠️  HAS UNREAD MESSAGES"
+                echo "  Status: [!]  HAS UNREAD MESSAGES"
                 echo "  Unread Count: $unread"
                 
                 # Show first unread message
@@ -125,7 +125,7 @@ display_unread_status() {
                     echo "  Subject: $subject"
                 fi
             else
-                echo "  Status: ✅ No unread messages"
+                echo "  Status: [OK] No unread messages"
             fi
             echo ""
         done
@@ -139,13 +139,13 @@ display_unread_status() {
         echo ""
         
         if [ "$has_unread" = "true" ]; then
-            echo "⚠️  YOU HAVE $unread UNREAD MESSAGE(S)"
+            echo "[!]  YOU HAVE $unread UNREAD MESSAGE(S)"
             echo ""
             
             # Show all unread messages
             get_unread_messages "$server" | jq -r '.[] | "[\(.type | ascii_upcase)] From: \(.from) | Time: \(.timestamp)\nSubject: \(.subject)\nID: \(.id)\n\(.body)\n" + "─" * 70'
         else
-            echo "✅ No unread messages"
+            echo "[OK] No unread messages"
         fi
     fi
 }

@@ -561,7 +561,7 @@ def main():
     )
     print(f"Deleted: {result['ruleId']}")
     
-    print("\n✓ Complete CRUD workflow successful!")
+    print("\n[OK] Complete CRUD workflow successful!")
 
 if __name__ == '__main__':
     main()

@@ -28,7 +28,7 @@ echo ""
 
 # Test connectivity first
 if ! ping -c 1 -W 2 "$BUILD1_IP" &>/dev/null; then
-    echo "❌ Cannot reach Build1 at $BUILD1_IP"
+    echo "[X] Cannot reach Build1 at $BUILD1_IP"
     echo "[$TIMESTAMP] FAILED: Cannot reach Build1 at $BUILD1_IP" >> "$BUILD2_LOG"
     echo ""
     echo "Please provide Build1's IP address:"
@@ -39,7 +39,7 @@ if ! ping -c 1 -W 2 "$BUILD1_IP" &>/dev/null; then
     exit 1
 fi
 
-echo "✓ Build1 is reachable at $BUILD1_IP"
+echo "[OK] Build1 is reachable at $BUILD1_IP"
 
 # Create log directory on Build1 if needed
 ssh -o ConnectTimeout=5 -o StrictHostKeyChecking=no "$BUILD1_HOST" \
@@ -82,16 +82,16 @@ ssh -o ConnectTimeout=5 -o StrictHostKeyChecking=no "$BUILD1_HOST" \
      echo 'Action Required: Run read_messages.sh or check messages/' >> $BUILD1_BUILD_DIR/.NEW_MESSAGES_ALERT && \
      echo '' >> $BUILD1_BUILD_DIR/.NEW_MESSAGES_ALERT && \
      ls -1t $BUILD1_BUILD_DIR/messages/*.txt 2>/dev/null | head -5 >> $BUILD1_BUILD_DIR/.NEW_MESSAGES_ALERT || true"
-echo "  ✓ Created .NEW_MESSAGES_ALERT file (visible in VS Code)"
+echo "  [OK] Created .NEW_MESSAGES_ALERT file (visible in VS Code)"
 
 # Method 5: Send terminal bell/notification if interactive terminal exists
 echo "Attempting to send terminal notification..."
 ssh -o ConnectTimeout=5 -o StrictHostKeyChecking=no "$BUILD1_HOST" \
     "for tty in /dev/pts/*; do [ -w \$tty ] && echo -e '\a\n*** NEW MESSAGES FROM BUILD2 ***\n' > \$tty 2>/dev/null || true; done"
-echo "  ✓ Terminal notifications sent (if any active terminals)"
+echo "  [OK] Terminal notifications sent (if any active terminals)"
 
 echo ""
-echo "✓ Build1 notified successfully!"
+echo "[OK] Build1 notified successfully!"
 echo "[$TIMESTAMP] SUCCESS: Build1 notified successfully" >> "$BUILD2_LOG"
 echo ""
 echo "Recent messages for Build1 to read:"

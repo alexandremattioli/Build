@@ -45,11 +45,11 @@ Or manually:
 │ WHAT'S PRESERVED (IN GITHUB)                                       │
 └────────────────────────────────────────────────────────────────────┘
 
-✓ All scripts and framework
-✓ Message history
-✓ Status tracking
-✓ Job queue
-✓ Build1 communication continues unaffected
+[OK] All scripts and framework
+[OK] Message history
+[OK] Status tracking
+[OK] Job queue
+[OK] Build1 communication continues unaffected
 
 ┌────────────────────────────────────────────────────────────────────┐
 │ RECOVERY FILES LOCATION                                            │

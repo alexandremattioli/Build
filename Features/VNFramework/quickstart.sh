@@ -250,21 +250,21 @@ show_status() {
     
     # Redis
     if redis-cli ping >/dev/null 2>&1; then
-        echo -e "Redis:      ${GREEN}✓ Running${NC}"
+        echo -e "Redis:      ${GREEN}[OK] Running${NC}"
     else
         echo -e "Redis:      ${RED}✗ Stopped${NC}"
     fi
     
     # Broker
     if pgrep -f "vnf_broker_enhanced.py" > /dev/null; then
-        echo -e "Broker:     ${GREEN}✓ Running${NC} (PID: $(pgrep -f vnf_broker_enhanced.py))"
+        echo -e "Broker:     ${GREEN}[OK] Running${NC} (PID: $(pgrep -f vnf_broker_enhanced.py))"
     else
         echo -e "Broker:     ${RED}✗ Stopped${NC}"
     fi
     
     # Mock VNF
     if pgrep -f "mock_vnf_server.py" > /dev/null; then
-        echo -e "Mock VNF:   ${GREEN}✓ Running${NC} (PID: $(pgrep -f mock_vnf_server.py))"
+        echo -e "Mock VNF:   ${GREEN}[OK] Running${NC} (PID: $(pgrep -f mock_vnf_server.py))"
     else
         echo -e "Mock VNF:   ${RED}✗ Stopped${NC}"
     fi

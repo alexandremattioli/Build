@@ -75,8 +75,8 @@ nohup ./heartbeat_build4.sh > /tmp/heartbeat.log 2>&1 &
 ```
 
 ## Welcome Messages Sent
-- ✅ Build2 → Build3: Welcome message with setup instructions
-- ✅ Build2 → Build4: Welcome message with setup instructions
+- [OK] Build2 → Build3: Welcome message with setup instructions
+- [OK] Build2 → Build4: Welcome message with setup instructions
 
 ## Git Commits
 1. **Commit 1e333aa**: "Add Build3 and Build4 to coordination system"
@@ -101,13 +101,13 @@ nohup ./heartbeat_build4.sh > /tmp/heartbeat.log 2>&1 &
 ## Coordination Features Available
 
 ### For All Servers
-- ✅ Status tracking (status.json)
-- ✅ Health monitoring (heartbeat.json every 60s)
-- ✅ Message passing (coordination/messages.json)
-- ✅ Job queue (coordination/jobs.json)
-- ✅ Lock management (coordination/locks.json)
-- ✅ Build logs (buildX/logs/)
-- ✅ SSH access (passwordless to all servers)
+- [OK] Status tracking (status.json)
+- [OK] Health monitoring (heartbeat.json every 60s)
+- [OK] Message passing (coordination/messages.json)
+- [OK] Job queue (coordination/jobs.json)
+- [OK] Lock management (coordination/locks.json)
+- [OK] Build logs (buildX/logs/)
+- [OK] SSH access (passwordless to all servers)
 
 ### Existing Servers (Build1, Build2)
 - Active and operational

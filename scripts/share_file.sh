@@ -211,7 +211,7 @@ push_with_retry() {
 push_with_retry
 
 echo ""
-echo "✅ File shared successfully!"
+echo "[OK] File shared successfully!"
 echo "  File ID: $FILE_ID"
 echo "  Source: $FROM_SERVER"
 echo "  Destination: $TO_SERVER"

@@ -53,4 +53,4 @@ case "$FILE" in
         ;;
 esac
 
-echo "✓ $FILE is valid"
+echo "[OK] $FILE is valid"

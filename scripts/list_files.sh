@@ -211,7 +211,7 @@ case "$FORMAT" in
             # Check if current server downloaded
             DOWNLOADED_ICON=""
             if echo "$DOWNLOADED_BY" | grep -q "$SERVER_ID"; then
-                DOWNLOADED_ICON="✅"
+                DOWNLOADED_ICON="[OK]"
             fi
             
             echo "" >&2

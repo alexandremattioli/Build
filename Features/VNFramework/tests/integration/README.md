@@ -74,27 +74,27 @@ Configuration:
   Test VNF Instance ID: (skip E2E tests)
 
 ▶ Running: Broker Health Check
-  ✓ PASSED (0.12s)
+  [OK] PASSED (0.12s)
 
 ▶ Running: Broker Dictionary Listing
-  ✓ PASSED (0.08s)
+  [OK] PASSED (0.08s)
 
 ▶ Running: Create Firewall Rule (Broker)
-  ✓ PASSED (0.45s)
+  [OK] PASSED (0.45s)
 
 ▶ Running: Idempotency Check (Broker)
-  ✓ PASSED (0.62s)
+  [OK] PASSED (0.62s)
 
 ⚠ Skipping E2E tests (TEST_NETWORK_ID/TEST_VNF_INSTANCE_ID not set)
 
 ▶ Cleanup: Removing test resources
-  ✓ Cleaned up broker test rule
+  [OK] Cleaned up broker test rule
 
 ============================================================
 TEST SUMMARY
 ============================================================
 Total:  4
-Passed: 4 ✓
+Passed: 4 [OK]
 Failed: 0 ✗
 Success Rate: 100.0%
 ============================================================

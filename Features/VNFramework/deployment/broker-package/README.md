@@ -199,12 +199,12 @@ iptables -L -n | grep 8443
 
 **CRITICAL**: The `vnf_broker_private.pem` file contains the private key for JWT signing.
 
-- ✅ **DO**: Store securely on broker host only
-- ✅ **DO**: Set permissions to 600 (readable only by vnfbroker user)
-- ✅ **DO**: Rotate every 90 days
-- ❌ **DON'T**: Commit to version control
-- ❌ **DON'T**: Copy to CloudStack server
-- ❌ **DON'T**: Share via email/chat
+- [OK] **DO**: Store securely on broker host only
+- [OK] **DO**: Set permissions to 600 (readable only by vnfbroker user)
+- [OK] **DO**: Rotate every 90 days
+- [X] **DON'T**: Commit to version control
+- [X] **DON'T**: Copy to CloudStack server
+- [X] **DON'T**: Share via email/chat
 
 ### TLS Certificate
 

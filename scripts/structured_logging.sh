@@ -90,11 +90,11 @@ log_event() {
     # Add to Markdown log
     local emoji
     case "$level" in
-        info) emoji="ℹ️" ;;
-        warning) emoji="⚠️" ;;
-        error) emoji="❌" ;;
-        success) emoji="✅" ;;
-        *) emoji="📝" ;;
+        info) emoji="[i]" ;;
+        warning) emoji="[!]" ;;
+        error) emoji="[X]" ;;
+        success) emoji="[OK]" ;;
+        *) emoji="[*]" ;;
     esac
     
     cat >> "$md_log" <<EOF

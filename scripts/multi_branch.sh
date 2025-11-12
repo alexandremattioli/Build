@@ -165,7 +165,7 @@ queue_all_enabled() {
         local priority=$(jq -r --arg branch "$branch" '.branches[$branch].priority' "$BRANCHES_CONFIG")
         
         if [ ! -d "$repo_path" ]; then
-            log "⚠️  Skipping $branch: repo not found at $repo_path"
+            log "[!]  Skipping $branch: repo not found at $repo_path"
             continue
         fi
         
@@ -199,7 +199,7 @@ check_branch_updates() {
         local repo_path=$(jq -r --arg branch "$branch" '.branches[$branch].repo_path' "$BRANCHES_CONFIG")
         
         if [ ! -d "$repo_path" ]; then
-            log "⚠️  Skipping $branch: repo not found at $repo_path"
+            log "[!]  Skipping $branch: repo not found at $repo_path"
             continue
         fi
         
@@ -207,7 +207,7 @@ check_branch_updates() {
         
         # Fetch latest
         git fetch origin "$branch" --quiet 2>/dev/null || {
-            log "⚠️  Failed to fetch $branch"
+            log "[!]  Failed to fetch $branch"
             continue
         }
         
@@ -215,7 +215,7 @@ check_branch_updates() {
         local remote_commit=$(git rev-parse "origin/$branch" 2>/dev/null || echo "")
         
         if [ -z "$remote_commit" ]; then
-            log "⚠️  Could not determine remote commit for $branch"
+            log "[!]  Could not determine remote commit for $branch"
             continue
         fi
         
@@ -235,7 +235,7 @@ check_branch_updates() {
                 log "  Build already queued"
             fi
         else
-            log "✅ $branch is up to date (${local_commit:0:7})"
+            log "[OK] $branch is up to date (${local_commit:0:7})"
         fi
         
     done <<< "$branches"
@@ -268,7 +268,7 @@ setup_worktrees() {
         local worktree_path="$worktree_base/${branch//\//_}"
         
         if [ -d "$worktree_path" ]; then
-            log "✅ Worktree already exists: $worktree_path"
+            log "[OK] Worktree already exists: $worktree_path"
             continue
         fi
         
@@ -276,7 +276,7 @@ setup_worktrees() {
         
         cd "$base_repo"
         git worktree add "$worktree_path" "$branch" || {
-            log "⚠️  Failed to create worktree for $branch"
+            log "[!]  Failed to create worktree for $branch"
             continue
         }
         
@@ -288,7 +288,7 @@ setup_worktrees() {
            "$BRANCHES_CONFIG" > "$temp_file"
         mv "$temp_file" "$BRANCHES_CONFIG"
         
-        log "✅ Worktree created: $worktree_path"
+        log "[OK] Worktree created: $worktree_path"
         
     done <<< "$branches"
     

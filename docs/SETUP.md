@@ -6,7 +6,7 @@ This repository contains a complete communication framework for Build1 (Codex) a
 
 ---
 
-## 📋 Quick Setup
+## [i] Quick Setup
 
 ### For Build1 (10.1.3.175 - Codex)
 
@@ -108,7 +108,7 @@ All located in `scripts/`:
 
 ---
 
-## ✅ Post-Setup Verification
+## [OK] Post-Setup Verification
 
 After running the setup script, verify with:
 
@@ -263,12 +263,12 @@ alexandremattioli/Build/
 
 ## 🎯 Key Features
 
-- ✅ **No external dependencies** (just Git and standard tools)
-- ✅ **Automatic message detection** (no polling needed)
-- ✅ **Built-in recovery** from snapshot reverts
-- ✅ **Complete audit trail** (Git history)
-- ✅ **Self-healing** (expired locks auto-cleanup)
-- ✅ **AI-friendly** (scripts designed for AI execution)
+- [OK] **No external dependencies** (just Git and standard tools)
+- [OK] **Automatic message detection** (no polling needed)
+- [OK] **Built-in recovery** from snapshot reverts
+- [OK] **Complete audit trail** (Git history)
+- [OK] **Self-healing** (expired locks auto-cleanup)
+- [OK] **AI-friendly** (scripts designed for AI execution)
 
 ---
 

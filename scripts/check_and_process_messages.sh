@@ -72,18 +72,18 @@ echo "$MESSAGES" | jq -c '.[]' | while read -r msg; do
     # Process based on type
     case "$MSG_TYPE" in
         error)
-            echo "⚠️  ERROR from $MSG_FROM: $MSG_SUBJECT" >&2
+            echo "[!]  ERROR from $MSG_FROM: $MSG_SUBJECT" >&2
             # Could trigger alert here
             ;;
         warning)
-            echo "⚠️  WARNING from $MSG_FROM: $MSG_SUBJECT"
+            echo "[!]  WARNING from $MSG_FROM: $MSG_SUBJECT"
             ;;
         request)
-            echo "📋 REQUEST from $MSG_FROM: $MSG_SUBJECT"
+            echo "[i] REQUEST from $MSG_FROM: $MSG_SUBJECT"
             # Could trigger automated action here
             ;;
         info)
-            echo "ℹ️  INFO from $MSG_FROM: $MSG_SUBJECT"
+            echo "[i]  INFO from $MSG_FROM: $MSG_SUBJECT"
             ;;
     esac
 done

@@ -191,7 +191,7 @@ Navigate to these URLs and verify functionality:
 
 ---
 
-## 📋 Checklist
+## [i] Checklist
 
 After generation, verify:
 

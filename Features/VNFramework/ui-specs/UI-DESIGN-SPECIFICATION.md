@@ -116,8 +116,8 @@ The VNF Framework UI follows CloudStack Primate's existing patterns:
    - VNF appliance IP and credentials status
    - Dictionary validation status
 4. Click "Test Components" → Runs diagnostics:
-   - ✓ VNF VM is running
-   - ✓ Broker service is up
+   - [OK] VNF VM is running
+   - [OK] Broker service is up
    - ✗ VNF API not responding on port 443
    - Recommendation: "Check VNF firewall rules"
 5. Click "View Audit Log" → Shows all requests/responses
@@ -139,7 +139,7 @@ The VNF Framework UI follows CloudStack Primate's existing patterns:
 │ VNF Configuration                                           │
 ├─────────────────────────────────────────────────────────────┤
 │                                                             │
-│ [VNF Ready Badge: Green ✓] Dictionary Version: 2.1.0       │
+│ [VNF Ready Badge: Green [OK]] Dictionary Version: 2.1.0       │
 │                             Last Updated: Nov 4, 2025       │
 │                                                             │
 │ ┌─────────────────────────────────────────────────────────┐│
@@ -161,10 +161,10 @@ The VNF Framework UI follows CloudStack Primate's existing patterns:
 │ └─────────────────────────────────────────────────────────┘│
 │                                                             │
 │ Validation Results:                                         │
-│ ✓ Metadata section valid                                    │
-│ ✓ Services section valid (3 services defined)               │
+│ [OK] Metadata section valid                                    │
+│ [OK] Services section valid (3 services defined)               │
 │ ⚠ Warning: No 'loadbalancer' service defined                │
-│ ✓ All placeholders use valid CloudStack context             │
+│ [OK] All placeholders use valid CloudStack context             │
 │                                                             │
 │ ┌─────────────────────────────────────────────────────────┐│
 │ │ Current Dictionary Info                                 ││
@@ -239,17 +239,17 @@ The VNF Framework UI follows CloudStack Primate's existing patterns:
 │ │ │ [√] pfSense 2.7.0 Community Edition                │ ││
 │ │ │     Vendor: pfSense | API: REST                     │ ││
 │ │ │     Services: Firewall, NAT, Routing                │ ││
-│ │ │     [VNF Ready ✓]                                   │ ││
+│ │ │     [VNF Ready [OK]]                                   │ ││
 │ │ └─────────────────────────────────────────────────────┘ ││
 │ │ [ ] FortiGate 7.4.0                                     ││
 │ │     Vendor: Fortinet | API: REST                        ││
 │ │     Services: Firewall, NAT, Load Balancer              ││
-│ │     [VNF Ready ✓]                                       ││
+│ │     [VNF Ready [OK]]                                       ││
 │ │                                                         ││
 │ │ [ ] Palo Alto PAN-OS 11.0                               ││
 │ │     Vendor: Palo Alto Networks | API: XML               ││
 │ │     Services: Firewall, NAT, SSL VPN                    ││
-│ │     [VNF Ready ✓]                                       ││
+│ │     [VNF Ready [OK]]                                       ││
 │ │                                                         ││
 │ │ Advanced Options: [Expand ▼]                            ││
 │ │ ┌─────────────────────────────────────────────────────┐ ││
@@ -302,7 +302,7 @@ The VNF Framework UI follows CloudStack Primate's existing patterns:
 │                                                             │
 │ ┌──────────────┬──────────────┬──────────────┬────────────┐│
 │ │ Connectivity │ Rules in Sync│ Last Reconcile│ API Latency││
-│ │   ✓ Online   │   12 / 12    │  2 hours ago │   45ms     ││
+│ │   [OK] Online   │   12 / 12    │  2 hours ago │   45ms     ││
 │ └──────────────┴──────────────┴──────────────┴────────────┘│
 │                                                             │
 │ VNF Appliance Details:                                      │
@@ -315,9 +315,9 @@ The VNF Framework UI follows CloudStack Primate's existing patterns:
 │ [Test Connectivity]  [Reconcile Now]  [View Audit Log]      │
 │                                                             │
 │ Drift Detection:                                            │
-│ ✓ All firewall rules in sync                                │
-│ ✓ All port forwarding rules in sync                         │
-│ ✓ All static routes in sync                                 │
+│ [OK] All firewall rules in sync                                │
+│ [OK] All port forwarding rules in sync                         │
+│ [OK] All static routes in sync                                 │
 │                                                             │
 │ [When drift detected:]                                      │
 │ ⚠ 3 rules out of sync - Last reconciliation failed          │
@@ -403,22 +403,22 @@ The VNF Framework UI follows CloudStack Primate's existing patterns:
 │                                                             │
 │ [Progress Bar: ████████████████░░░░░░░░] 75%               │
 │                                                             │
-│ ✓ VNF VM is running (192.168.1.10)                          │
-│ ✓ Broker service is reachable (VR-123-456:8445)             │
-│ ✓ JWT token valid                                           │
-│ ✓ VNF API responding on HTTPS (port 443)                    │
+│ [OK] VNF VM is running (192.168.1.10)                          │
+│ [OK] Broker service is reachable (VR-123-456:8445)             │
+│ [OK] JWT token valid                                           │
+│ [OK] VNF API responding on HTTPS (port 443)                    │
 │ ⏳ Testing authentication...                                │
 │                                                             │
 │ [After completion:]                                         │
 │                                                             │
-│ ✅ All Tests Passed                                         │
+│ [OK] All Tests Passed                                         │
 │                                                             │
-│ ✓ VNF VM is running                                         │
-│ ✓ Broker service is reachable                               │
-│ ✓ JWT token valid                                           │
-│ ✓ VNF API responding                                        │
-│ ✓ Authentication successful                                 │
-│ ✓ Test rule created and deleted                             │
+│ [OK] VNF VM is running                                         │
+│ [OK] Broker service is reachable                               │
+│ [OK] JWT token valid                                           │
+│ [OK] VNF API responding                                        │
+│ [OK] Authentication successful                                 │
+│ [OK] Test rule created and deleted                             │
 │                                                             │
 │ Connectivity Metrics:                                       │
 │ • Round-trip latency:  45ms                                 │
@@ -434,11 +434,11 @@ The VNF Framework UI follows CloudStack Primate's existing patterns:
 │ Test VNF Connectivity                             [Close ✕]│
 ├─────────────────────────────────────────────────────────────┤
 │                                                             │
-│ ❌ Connectivity Test Failed                                 │
+│ [X] Connectivity Test Failed                                 │
 │                                                             │
-│ ✓ VNF VM is running                                         │
-│ ✓ Broker service is reachable                               │
-│ ✓ JWT token valid                                           │
+│ [OK] VNF VM is running                                         │
+│ [OK] Broker service is reachable                               │
+│ [OK] JWT token valid                                           │
 │ ✗ VNF API not responding on HTTPS (port 443)                │
 │   Error: Connection timeout after 10 seconds                │
 │   Troubleshooting:                                          │
@@ -476,14 +476,14 @@ The VNF Framework UI follows CloudStack Primate's existing patterns:
 │ [Progress Bar: ████████████████████████░░] 90%             │
 │                                                             │
 │ Phase 1: Query CloudStack State                             │
-│ ✓ Found 12 firewall rules in database                       │
-│ ✓ Found 5 port forwarding rules in database                 │
-│ ✓ Found 2 static routes in database                         │
+│ [OK] Found 12 firewall rules in database                       │
+│ [OK] Found 5 port forwarding rules in database                 │
+│ [OK] Found 2 static routes in database                         │
 │                                                             │
 │ Phase 2: Query VNF Device State                             │
-│ ✓ Retrieved 11 firewall rules from device                   │
-│ ✓ Retrieved 5 port forwarding rules from device             │
-│ ✓ Retrieved 2 static routes from device                     │
+│ [OK] Retrieved 11 firewall rules from device                   │
+│ [OK] Retrieved 5 port forwarding rules from device             │
+│ [OK] Retrieved 2 static routes from device                     │
 │                                                             │
 │ Phase 3: Compare and Identify Drift                         │
 │ ⚠ Found 3 discrepancies                                     │
@@ -493,7 +493,7 @@ The VNF Framework UI follows CloudStack Primate's existing patterns:
 │                                                             │
 │ [After completion:]                                         │
 │                                                             │
-│ ✅ Reconciliation Complete                                  │
+│ [OK] Reconciliation Complete                                  │
 │                                                             │
 │ Summary:                                                    │
 │ • Total rules checked:    19                                │
@@ -506,9 +506,9 @@ The VNF Framework UI follows CloudStack Primate's existing patterns:
 │ ┌──────────────┬────────────────────────┬─────────────────┐│
 │ │ Action       │ Rule                   │ Status          ││
 │ ├──────────────┼────────────────────────┼─────────────────┤│
-│ │ Created      │ Firewall: Allow-SSH    │ ✓ Success       ││
-│ │ Created      │ Firewall: Allow-HTTPS  │ ✓ Success       ││
-│ │ Deleted      │ PortFwd: 80→8080 (old) │ ✓ Success       ││
+│ │ Created      │ Firewall: Allow-SSH    │ [OK] Success       ││
+│ │ Created      │ Firewall: Allow-HTTPS  │ [OK] Success       ││
+│ │ Deleted      │ PortFwd: 80→8080 (old) │ [OK] Success       ││
 │ └──────────────┴────────────────────────┴─────────────────┘│
 │                                                             │
 │ Next automatic reconciliation: in 6 hours                   │
@@ -746,7 +746,7 @@ The VNF Framework UI follows CloudStack Primate's existing patterns:
 
 **You need to provide:**
 
-1. **This UI specification document** ✓ (this file)
+1. **This UI specification document** [OK] (this file)
 2. **Component specifications** (detailed props/events/methods)
 3. **Mock data files** (JSON responses for all APIs)
 4. **Primate UI context** (existing patterns and component examples)

@@ -122,7 +122,7 @@ if $push_changes; then
     echo "[dry-run] git push --force-with-lease origin refs/heads/$branch:refs/heads/$branch"
   else
     push_with_retry || exit 2
-    echo "✓ Squashed branch '$branch' on origin (backup: $backup)"
+    echo "[OK] Squashed branch '$branch' on origin (backup: $backup)"
   fi
 else
   echo "Local ref updated for '$branch' (no push performed)"

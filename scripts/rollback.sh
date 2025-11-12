@@ -190,7 +190,7 @@ rollback_to_tag() {
     git fetch origin "$source_branch" || log "Warning: Could not fetch $source_branch"
     git checkout -b "$rollback_branch" "$source_commit"
     
-    log "✅ Rolled back to commit: $source_commit"
+    log "[OK] Rolled back to commit: $source_commit"
     log "   New branch: $rollback_branch"
     log ""
     log "To switch back to $source_branch: git checkout $source_branch"

@@ -118,7 +118,7 @@ echo "$MESSAGES" | jq -r '.[] |
 │ From: \(.from) → To: \(.to)
 │ Type: \(.type | ascii_upcase) | Priority: \(.priority // "normal")
 │ Timestamp: \(.timestamp)
-│ Status: \(if .read then "✅ READ" else "⚠️  UNREAD" end)
+│ Status: \(if .read then "[OK] READ" else "[!]  UNREAD" end)
 ├─────────────────────────────────────────────────────────────────────────┤
 │ Subject: \(.subject)
 ├─────────────────────────────────────────────────────────────────────────┤
@@ -160,9 +160,9 @@ if [ "$UNREAD_ONLY" = "false" ]; then
     for server in build1 build2 build3 build4; do
         UNREAD=$(echo "$MESSAGES" | jq --arg srv "$server" '[.[] | select((.to == $srv or .to == "all") and .read == false)] | length')
         if [ "$UNREAD" -gt 0 ]; then
-            echo "  $server: ⚠️  $UNREAD unread messages"
+            echo "  $server: [!]  $UNREAD unread messages"
         else
-            echo "  $server: ✅ No unread messages"
+            echo "  $server: [OK] No unread messages"
         fi
     done
 fi

@@ -101,7 +101,7 @@ fi
 git commit -m "[$SERVER_ID] Marked messages as read" >/dev/null 2>&1
 git push origin main >/dev/null 2>&1
 
-echo "✓ Messages marked as read in GitHub"
+echo "[OK] Messages marked as read in GitHub"
 
 # Update statistics
 cd scripts

@@ -15,7 +15,7 @@ err() {
 }
 
 ok() {
-  echo "✓ $1"
+  echo "[OK] $1"
 }
 
 # Validate build status files

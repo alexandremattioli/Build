@@ -30,10 +30,10 @@ compatibility:
 
 | Dictionary Version | Broker Version | Compatible | Notes |
 |-------------------|----------------|------------|-------|
-| 1.0.x | 1.0.x | ✓ | Full compatibility |
-| 1.1.x | 1.0.x | ✓ | Backward compatible (new features) |
+| 1.0.x | 1.0.x | [OK] | Full compatibility |
+| 1.1.x | 1.0.x | [OK] | Backward compatible (new features) |
 | 2.0.x | 1.0.x | ✗ | Breaking changes |
-| 1.0.x | 2.0.x | ✓ | Broker maintains backward compat |
+| 1.0.x | 2.0.x | [OK] | Broker maintains backward compat |
 
 ## Version Migration Guide
 

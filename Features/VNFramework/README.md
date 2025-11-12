@@ -32,7 +32,7 @@ VNF_Implementation/
 
 ## 🎯 What's Included
 
-### ✅ Database Schema (`database/`)
+### [OK] Database Schema (`database/`)
 - **Complete DDL** for 5 new tables:
   - `vnf_dictionaries` - Store YAML dictionaries
   - `vnf_appliances` - Track VNF VMs
@@ -43,7 +43,7 @@ VNF_Implementation/
 - **Views** for monitoring (vnf_health_summary, vnf_drift_summary)
 - **Indexes** for performance
 
-### ✅ API Specifications (`api-specs/`)
+### [OK] API Specifications (`api-specs/`)
 - **OpenAPI 3.0** specification with:
   - 10+ API endpoints (createNetwork, updateTemplateDictionary, reconcileVnfNetwork, etc.)
   - Complete request/response schemas
@@ -51,7 +51,7 @@ VNF_Implementation/
   - Authentication requirements
 - **Backward compatible** with existing CloudStack APIs
 
-### ✅ Java Class Structure (`java-classes/`)
+### [OK] Java Class Structure (`java-classes/`)
 - **20+ interfaces and classes**:
   - `VnfProvider` - Main provider interface
   - `VnfDictionaryManager` - Dictionary parsing
@@ -62,7 +62,7 @@ VNF_Implementation/
 - **Exception hierarchy**
 - **Full method signatures** ready for implementation
 
-### ✅ Dictionary Parser (`java-classes/`)
+### [OK] Dictionary Parser (`java-classes/`)
 - **Full implementation** of YAML parser
 - **Validation engine** with error/warning reporting
 - **Template renderer** with placeholder substitution
@@ -72,21 +72,17 @@ VNF_Implementation/
   - JSONPath response parsing
   - Multiple auth types
 
-### ✅ Python VR Broker (`python-broker/`)
-- **Production-ready Flask service** (vnf_broker_enhanced.py):
-   - Full CRUD operations (Create, Read, Update, Delete)
-   - JWT authentication with rate limiting (100 req/min)
-   - Circuit breaker pattern (5 failures → open for 60s)
-   - Idempotency with Redis-based request deduplication
-   - Prometheus metrics exposition (/metrics.prom)
-   - 6 metrics: HTTP requests, latency, rate limit, JWT errors, circuit breaker state
-   - HTTP/HTTPS proxying to VNF appliances
-   - Comprehensive logging and error handling
-- **883 lines of production code**
-- **Docker containerization** with health checks
-- **docker-compose stack** for full deployment (broker + redis + mock VNF)
+### [OK] Python VR Broker (`python-broker/`)
+- **Production-ready Flask service**:
+  - mTLS authentication
+  - JWT token validation
+  - HTTP/HTTPS proxying
+  - SSH command execution
+  - Self-signed cert generation
+  - Comprehensive logging
+- **600+ lines of working code**
 
-### ✅ Sample Dictionaries (`dictionaries/`)
+### [OK] Sample Dictionaries (`dictionaries/`)
 - **4 complete vendor examples**:
   - **pfSense** - REST API based (open-source)
   - **FortiGate** - Enterprise firewall
@@ -98,7 +94,7 @@ VNF_Implementation/
   - Load balancing (where applicable)
   - Vendor-specific notes
 
-### ✅ Test Specifications (`tests/`)
+### [OK] Test Specifications (`tests/`)
 - **50+ test cases**:
   - Unit tests (dictionary parsing, rendering)
   - Integration tests (end-to-end flows)
@@ -107,7 +103,7 @@ VNF_Implementation/
 - **Mock data generators**
 - **Test scenarios** for common operations
 
-### ✅ Configuration (`config/`)
+### [OK] Configuration (`config/`)
 - **150+ configuration constants**:
   - Timeouts and retry logic
   - Security settings
@@ -291,11 +287,6 @@ For a fast start, see `ui-specs/QUICK-START.md` (10–60 minutes to working UI) 
    - VNF template registration guide
    - Dictionary writing guide
    - Troubleshooting guide
-- **CRUD_EXAMPLES.md**: Complete CRUD operations guide
-   - All CREATE/READ/UPDATE/DELETE endpoints
-   - cURL and Python client examples
-   - Complete workflow scenarios
-   - Error handling best practices
 
 2. **Developer Documentation**
    - Architecture overview
@@ -333,27 +324,27 @@ For a fast start, see `ui-specs/QUICK-START.md` (10–60 minutes to working UI) 
 ## 🔑 Key Success Criteria
 
 ### Functional
-- ✅ Deploy VNF-backed network with 1-click
-- ✅ Add/remove firewall rules via existing APIs
-- ✅ Reconciliation detects and fixes drift
-- ✅ Support 4+ vendors out of box
+- [OK] Deploy VNF-backed network with 1-click
+- [OK] Add/remove firewall rules via existing APIs
+- [OK] Reconciliation detects and fixes drift
+- [OK] Support 4+ vendors out of box
 
 ### Performance
-- ✅ Dictionary parsing < 100ms
-- ✅ Rule application < 5 seconds
-- ✅ Reconciliation < 30 seconds (100 rules)
-- ✅ API latency < 200ms
+- [OK] Dictionary parsing < 100ms
+- [OK] Rule application < 5 seconds
+- [OK] Reconciliation < 30 seconds (100 rules)
+- [OK] API latency < 200ms
 
 ### Operational
-- ✅ Clear error messages in UI
-- ✅ Dictionary validation with helpful feedback
-- ✅ VNF health visible in dashboard
-- ✅ Comprehensive logging
+- [OK] Clear error messages in UI
+- [OK] Dictionary validation with helpful feedback
+- [OK] VNF health visible in dashboard
+- [OK] Comprehensive logging
 
 ### Extensibility
-- ✅ New vendor = YAML only (no code)
-- ✅ Dictionary supports 90% of use cases
-- ✅ Broker replaceable (VR → direct → controller)
+- [OK] New vendor = YAML only (no code)
+- [OK] Dictionary supports 90% of use cases
+- [OK] Broker replaceable (VR → direct → controller)
 
 ---
 
@@ -412,13 +403,13 @@ For a fast start, see `ui-specs/QUICK-START.md` (10–60 minutes to working UI) 
 This package is designed to be **AI-friendly** for implementation:
 
 ### What You Have
-- ✅ Complete database schema (DDL ready to run)
-- ✅ API contracts (OpenAPI spec)
-- ✅ Java interfaces with method signatures
-- ✅ Working Python broker code
-- ✅ 4 complete dictionary examples
-- ✅ Test cases with expected behavior
-- ✅ Configuration with all constants
+- [OK] Complete database schema (DDL ready to run)
+- [OK] API contracts (OpenAPI spec)
+- [OK] Java interfaces with method signatures
+- [OK] Working Python broker code
+- [OK] 4 complete dictionary examples
+- [OK] Test cases with expected behavior
+- [OK] Configuration with all constants
 
 ### What You Need to Generate
 1. **DAO Implementations** (CRUD for vnf_dictionaries, vnf_appliances)
@@ -447,7 +438,7 @@ This package is designed to be **AI-friendly** for implementation:
 
 ---
 
-## ⚠️ Important Notes
+## [!] Important Notes
 
 ### Security Considerations
 1. **Never log secrets** - Mask API keys, passwords in logs

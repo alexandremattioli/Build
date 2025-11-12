@@ -40,7 +40,7 @@ log_check() {
 }
 
 log_pass() {
-    echo -e "${GREEN}✓ PASS${NC}"
+    echo -e "${GREEN}[OK] PASS${NC}"
     [ -n "${1:-}" ] && echo -e "  ${GREEN}$1${NC}"
 }
 
@@ -126,7 +126,7 @@ done
 log_header "Verification Summary"
 
 if [ $FAILURE_COUNT -eq 0 ]; then
-    echo -e "${GREEN}✓ All checks passed!${NC}"
+    echo -e "${GREEN}[OK] All checks passed!${NC}"
     echo -e "${GREEN}Server is ready for build operations.${NC}"
     exit 0
 else

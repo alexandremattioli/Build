@@ -24,7 +24,7 @@ chmod 600 vnf_broker_private.pem vnf_broker_private.der
 chmod 644 vnf_broker_public.pem vnf_broker_public.der
 
 echo ""
-echo "✓ Keypair generated successfully!"
+echo "[OK] Keypair generated successfully!"
 echo ""
 echo "Files created:"
 echo "  - vnf_broker_private.pem (Python broker - KEEP SECURE)"

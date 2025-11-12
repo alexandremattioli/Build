@@ -302,7 +302,7 @@ type $env:USERPROFILE\.ssh\id_ed25519.pub | ssh root@10.1.3.177 "cat >> ~/.ssh/a
 
 ## Security Notes
 
-⚠️ **IMPORTANT:**
+[!] **IMPORTANT:**
 - Password `Losgar!27` is currently in plaintext
 - Consider using SSH keys for authentication
 - Enable Windows Firewall with appropriate rules

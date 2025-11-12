@@ -89,11 +89,11 @@ Total = Base Time + Adjustments
 ## PRACTICAL GUIDELINES
 
 ### DO:
-✓ Start with lines of code estimate (AI writes ~400 lines/hour)
-✓ Add time for integration and testing
-✓ Consider project familiarity (first time vs. similar work)
-✓ Account for documentation if required
-✓ Include buffer for iterations (10-20%)
+[OK] Start with lines of code estimate (AI writes ~400 lines/hour)
+[OK] Add time for integration and testing
+[OK] Consider project familiarity (first time vs. similar work)
+[OK] Account for documentation if required
+[OK] Include buffer for iterations (10-20%)
 
 ### DON'T:
 ✗ Use human-only development speeds (weeks for what AI does in days)

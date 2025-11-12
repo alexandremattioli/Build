@@ -118,7 +118,7 @@ verify_artifacts() {
         local expected_sha256=$(echo "$artifact" | jq -r '.checksums.sha256')
         
         if [ ! -f "$path" ]; then
-            log "  ❌ MISSING: $name"
+            log "  [X] MISSING: $name"
             failed=$((failed + 1))
             continue
         fi
@@ -126,10 +126,10 @@ verify_artifacts() {
         local actual_sha256=$(sha256sum "$path" | awk '{print $1}')
         
         if [ "$actual_sha256" = "$expected_sha256" ]; then
-            log "  ✅ OK: $name"
+            log "  [OK] OK: $name"
             verified=$((verified + 1))
         else
-            log "  ❌ CHECKSUM MISMATCH: $name"
+            log "  [X] CHECKSUM MISMATCH: $name"
             log "     Expected: $expected_sha256"
             log "     Got:      $actual_sha256"
             failed=$((failed + 1))

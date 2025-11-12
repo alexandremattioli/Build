@@ -147,7 +147,7 @@ git commit -m "File downloaded: $FILENAME by $SERVER_ID" --quiet 2>/dev/null || 
 git push origin main --quiet 2>/dev/null || true
 
 echo ""
-echo "✅ File downloaded successfully!"
+echo "[OK] File downloaded successfully!"
 echo "  Location: $FINAL_DEST"
 echo "  Size: $SIZE"
 echo ""

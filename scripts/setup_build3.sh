@@ -14,13 +14,11 @@ if [ -f "$HELPER_SRC" ]; then
     chmod +x "$HELPER_SRC" 2>/dev/null || true
     ln -sf "$HELPER_SRC" /usr/local/bin/sendmessages
     ln -sf /usr/local/bin/sendmessages /usr/local/bin/sm
-    ln -sf /root/Build/scripts/cm /usr/local/bin/cm
     cat <<'EOF' >/etc/profile.d/build-messaging.sh
 alias sm='sendmessages'
-alias cm='/root/Build/scripts/cm'
 EOF
     chmod 644 /etc/profile.d/build-messaging.sh 2>/dev/null || true
-    echo "✓ Messaging helpers installed (use 'sm' and 'cm')."
+    echo "[OK] Messaging helper installed (use 'sm')."
 fi
 
 # Configure git

@@ -44,11 +44,11 @@ compare_manifests() {
     echo ""
     
     if [ "$branch1" != "$branch2" ]; then
-        log "⚠️  Warning: Different branches ($branch1 vs $branch2)"
+        log "[!]  Warning: Different branches ($branch1 vs $branch2)"
     fi
     
     if [ "$commit1" != "$commit2" ]; then
-        log "⚠️  Warning: Different commits ($commit1 vs $commit2)"
+        log "[!]  Warning: Different commits ($commit1 vs $commit2)"
         echo ""
         echo "Builds are from different commits, comparison may not be meaningful."
         echo ""
@@ -97,10 +97,10 @@ compare_manifests() {
         local size2=$(jq -r --arg name "$artifact_name" '.artifacts[] | select(.name == $name) | .size_bytes' "$manifest2")
         
         if [ "$sha256_1" = "$sha256_2" ]; then
-            echo "  ✅ $artifact_name - IDENTICAL"
+            echo "  [OK] $artifact_name - IDENTICAL"
             identical=$((identical + 1))
         else
-            echo "  ❌ $artifact_name - DIFFERENT"
+            echo "  [X] $artifact_name - DIFFERENT"
             echo "     $server1: $sha256_1 ($(numfmt --to=iec-i --suffix=B $size1))"
             echo "     $server2: $sha256_2 ($(numfmt --to=iec-i --suffix=B $size2))"
             different=$((different + 1))
@@ -123,11 +123,11 @@ compare_manifests() {
     echo ""
     
     if [ $different -eq 0 ] && [ -z "$only1" ] && [ -z "$only2" ]; then
-        echo "✅ REPRODUCIBLE BUILD VERIFIED"
+        echo "[OK] REPRODUCIBLE BUILD VERIFIED"
         echo "Both servers produced identical artifacts!"
         return 0
     else
-        echo "❌ BUILDS ARE NOT REPRODUCIBLE"
+        echo "[X] BUILDS ARE NOT REPRODUCIBLE"
         echo "Differences found between artifacts."
         return 1
     fi

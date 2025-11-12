@@ -38,7 +38,7 @@ echo ""
 
 # Check if already setup
 if [ -d "/root/Build/.git" ]; then
-    echo "⚠️  Warning: /root/Build already exists"
+    echo "[!]  Warning: /root/Build already exists"
     if [[ $FORCE_RECLONE -eq 1 ]]; then
         echo "Re-cloning repository for latest code (default behavior)..."
         echo "Use --skip-reclone to keep existing repo."
@@ -55,7 +55,7 @@ if [ ! -d "/root/Build/.git" ]; then
     echo "[1/8] Cloning communication repository..."
     cd /root
     git clone https://github.com/alexandremattioli/Build.git
-    echo "✓ Repository cloned"
+    echo "[OK] Repository cloned"
 else
     echo "[1/8] Repository already exists"
 fi
@@ -79,18 +79,18 @@ if [ -f "/PAT" ] && [ -s "/PAT" ]; then
         sed -i '/github.com/d' "$CRED_FILE"
     fi
     printf "https://x-access-token:%s@github.com\n" "$TOKEN" >> "$CRED_FILE"
-    echo "✓ GitHub auth configured via credential helper"
+    echo "[OK] GitHub auth configured via credential helper"
 else
-    echo "⚠️  /PAT not found or empty; pushes may require interactive auth or SSH keys"
+    echo "[!]  /PAT not found or empty; pushes may require interactive auth or SSH keys"
 fi
 
-echo "✓ Git configured"
+echo "[OK] Git configured"
 
 # 3. Make scripts executable
 echo "[3/8] Setting script permissions..."
 chmod +x scripts/*.sh
 chmod +x scripts/sendmessages 2>/dev/null || true
-echo "✓ Scripts are executable"
+echo "[OK] Scripts are executable"
 
 # 4. Install messaging helper + alias
 echo "[4/8] Installing messaging helper and alias..."
@@ -98,13 +98,11 @@ HELPER_SRC="/root/Build/scripts/sendmessages"
 HELPER_DST="/usr/local/bin/sendmessages"
 ln -sf "$HELPER_SRC" "$HELPER_DST"
 ln -sf "$HELPER_DST" /usr/local/bin/sm
-ln -sf /root/Build/scripts/cm /usr/local/bin/cm
 cat <<'EOF' >/etc/profile.d/build-messaging.sh
 alias sm='sendmessages'
-alias cm='/root/Build/scripts/cm'
 EOF
 chmod 644 /etc/profile.d/build-messaging.sh 2>/dev/null || true
-echo "✓ Messaging helpers installed (use 'sm' and 'cm')."
+echo "[OK] Messaging helper installed (use 'sm')."
 
 # 5. Read entire conversation thread (REQUIRED on first setup)
 echo "[5/8] Reading conversation thread..."
@@ -115,7 +113,7 @@ echo "════════════════════════�
 cd /root/Build/scripts
 ./read_conversation_thread.sh build2 --limit 10
 echo ""
-echo "✓ Conversation thread reviewed (showing last 10 messages)"
+echo "[OK] Conversation thread reviewed (showing last 10 messages)"
 echo ""
 echo "To read full conversation history, run:"
 echo "  cd /root/Build/scripts && ./read_conversation_thread.sh build2"
@@ -125,11 +123,11 @@ echo ""
 echo "[6/8] Checking for unread messages..."
 cd /root/Build/scripts
 if ./check_unread_messages.sh build2; then
-    echo "✓ No unread messages"
+    echo "[OK] No unread messages"
 else
     echo ""
     echo "════════════════════════════════════════════════════════════════"
-    echo " ⚠️  YOU HAVE UNREAD MESSAGES!"
+    echo " [!]  YOU HAVE UNREAD MESSAGES!"
     echo " Please review and respond to unread messages before proceeding."
     echo "════════════════════════════════════════════════════════════════"
     echo ""
@@ -156,9 +154,9 @@ sleep 2
 
 # Verify daemon is running
 if ps -p $DAEMON_PID > /dev/null; then
-    echo "✓ Heartbeat daemon started (PID: $DAEMON_PID)"
+    echo "[OK] Heartbeat daemon started (PID: $DAEMON_PID)"
 else
-    echo "⚠️  Warning: Heartbeat daemon may not have started properly"
+    echo "[!]  Warning: Heartbeat daemon may not have started properly"
     echo "  Check logs: tail -f /var/log/heartbeat-build2.log"
 fi
 

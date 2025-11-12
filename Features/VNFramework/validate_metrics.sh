@@ -21,7 +21,7 @@ METRICS_ENDPOINT="${BROKER_URL}/metrics.prom"
 # Check if broker is running
 echo -e "${BLUE}[1/5]${NC} Checking if broker is running..."
 if curl -sk "${BROKER_URL}/health" > /dev/null 2>&1; then
-    echo -e "${GREEN}✓${NC} Broker is responding at ${BROKER_URL}"
+    echo -e "${GREEN}[OK]${NC} Broker is responding at ${BROKER_URL}"
 else
     echo -e "${RED}✗${NC} Broker not responding. Start it first:"
     echo "      cd /Builder2/Build/Features/VNFramework"
@@ -40,7 +40,7 @@ if [ -z "$METRICS_OUTPUT" ]; then
     exit 1
 fi
 
-echo -e "${GREEN}✓${NC} Metrics endpoint responded"
+echo -e "${GREEN}[OK]${NC} Metrics endpoint responded"
 
 echo ""
 echo -e "${BLUE}[3/5]${NC} Validating expected metrics are present..."
@@ -57,7 +57,7 @@ EXPECTED_METRICS=(
 MISSING_METRICS=()
 for metric in "${EXPECTED_METRICS[@]}"; do
     if echo "$METRICS_OUTPUT" | grep -q "$metric"; then
-        echo -e "  ${GREEN}✓${NC} $metric"
+        echo -e "  ${GREEN}[OK]${NC} $metric"
     else
         echo -e "  ${RED}✗${NC} $metric (MISSING)"
         MISSING_METRICS+=("$metric")
@@ -92,7 +92,7 @@ EOF
 
 echo ""
 echo -e "${GREEN}=========================================="
-echo "✓ All Prometheus metrics validated!"
+echo "[OK] All Prometheus metrics validated!"
 echo "==========================================${NC}"
 echo ""
 echo "Next steps:"

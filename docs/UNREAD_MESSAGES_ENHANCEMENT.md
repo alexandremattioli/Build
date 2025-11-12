@@ -85,7 +85,7 @@ VNFCodex adds full VNF dictionary lifecycle (schema tables, VO/DAO, manager)...
 - Shows first unread message details
 - Creates/updates `coordination/unread_messages_status.json`
 - Returns exit code 1 if current server has unread messages
-- Provides clear visual indicators (✅ no unread, ⚠️ has unread)
+- Provides clear visual indicators ([OK] no unread, [!] has unread)
 
 **Output Example**:
 ```
@@ -93,7 +93,7 @@ VNFCodex adds full VNF dictionary lifecycle (schema tables, VO/DAO, manager)...
 UNREAD MESSAGES STATUS - build2
 ======================================
 
-⚠️  YOU HAVE 5 UNREAD MESSAGE(S)
+[!]  YOU HAVE 5 UNREAD MESSAGE(S)
 
 [INFO] From: build1 | Time: 2025-10-31T14:03:30Z
 Subject: VNFCodex vs VNFCopilot update
@@ -149,7 +149,7 @@ Generated: 2025-10-31T14:00:00Z
 │ From: build1 → To: build2
 │ Type: INFO | Priority: normal
 │ Timestamp: 2025-10-31T14:03:30Z
-│ Status: ⚠️  UNREAD
+│ Status: [!]  UNREAD
 ├─────────────────────────────────────────────────────────────────────────┤
 │ Subject: VNFCodex vs VNFCopilot update
 ├─────────────────────────────────────────────────────────────────────────┤
@@ -167,10 +167,10 @@ BY TYPE:
   request: 1 messages
 
 UNREAD STATUS:
-  build1: ⚠️  15 unread messages
-  build2: ✅ No unread messages
-  build3: ⚠️  1 unread messages
-  build4: ⚠️  1 unread messages
+  build1: [!]  15 unread messages
+  build2: [OK] No unread messages
+  build3: [!]  1 unread messages
+  build4: [!]  1 unread messages
 ```
 
 ### 3. update_message_status_txt.sh
@@ -215,7 +215,7 @@ All setup scripts (`setup_build1.sh`, `setup_build2.sh`, `setup_build3.sh`, `set
 **Step 5: Check for Unread Messages**
 ```
 ════════════════════════════════════════════════════════════════
- ⚠️  YOU HAVE UNREAD MESSAGES!
+ [!]  YOU HAVE UNREAD MESSAGES!
  Please review and respond to unread messages before proceeding.
 ════════════════════════════════════════════════════════════════
 ```
@@ -434,13 +434,13 @@ For questions or issues with the unread message tracking system:
 ## Changelog
 
 ### Version 2.0 (2025-10-31)
-- ✅ Added `check_unread_messages.sh` script
-- ✅ Added `read_conversation_thread.sh` script
-- ✅ Added `update_message_status_txt.sh` script
-- ✅ Created `coordination/unread_messages_status.json`
-- ✅ Enhanced `message_status.txt` format (line 5 + full message body)
-- ✅ Updated all setup scripts to check unread and read thread
-- ✅ Integrated unread checking into server initialization
+- [OK] Added `check_unread_messages.sh` script
+- [OK] Added `read_conversation_thread.sh` script
+- [OK] Added `update_message_status_txt.sh` script
+- [OK] Created `coordination/unread_messages_status.json`
+- [OK] Enhanced `message_status.txt` format (line 5 + full message body)
+- [OK] Updated all setup scripts to check unread and read thread
+- [OK] Integrated unread checking into server initialization
 
 ### Version 1.0 (2025-10-29)
 - Initial message coordination system

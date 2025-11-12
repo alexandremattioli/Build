@@ -96,9 +96,9 @@ if [ ! -f "$CONFIG_DIR/tls/cert.pem" ]; then
     chmod 600 $CONFIG_DIR/tls/key.pem
     chmod 644 $CONFIG_DIR/tls/cert.pem
     chown -R $BROKER_USER:$BROKER_USER $CONFIG_DIR/tls
-    echo "✓ Self-signed certificate generated"
+    echo "[OK] Self-signed certificate generated"
 else
-    echo "✓ TLS certificate already exists"
+    echo "[OK] TLS certificate already exists"
 fi
 
 echo "Step 7: Creating configuration file..."
@@ -121,7 +121,7 @@ if [ -f "vnf_broker_private.pem" ]; then
     chown $BROKER_USER:$BROKER_USER $CONFIG_DIR/tls/jwt_private.pem
     echo "JWT_ALGORITHM=RS256" >> $CONFIG_DIR/broker.env
     echo "JWT_PRIVATE_KEY=$CONFIG_DIR/tls/jwt_private.pem" >> $CONFIG_DIR/broker.env
-    echo "✓ RS256 JWT configured"
+    echo "[OK] RS256 JWT configured"
 else
     echo "Step 8: Configuring HS256 JWT (RS256 key not found)..."
     JWT_SECRET=$(openssl rand -base64 32)
@@ -190,11 +190,11 @@ echo "Waiting for service to start..."
 sleep 3
 
 if systemctl is-active --quiet vnfbroker; then
-    echo "✓ VNF Broker service started successfully"
+    echo "[OK] VNF Broker service started successfully"
     
     # Test health endpoint
     if curl -k -f https://localhost:$BROKER_PORT/health > /dev/null 2>&1; then
-        echo "✓ Health check passed"
+        echo "[OK] Health check passed"
     else
         echo "WARNING: Health check failed"
     fi

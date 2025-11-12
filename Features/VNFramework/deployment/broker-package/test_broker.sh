@@ -36,7 +36,7 @@ token = jwt.encode(payload, private_key, algorithm='RS256')
 print(token)
 PYEOF
 )
-        echo "✓ RS256 token generated"
+        echo "[OK] RS256 token generated"
     else
         # HS256 fallback
         JWT_SECRET="${JWT_SECRET:-changeme}"
@@ -56,7 +56,7 @@ token = jwt.encode(payload, '$JWT_SECRET', algorithm='HS256')
 print(token)
 PYEOF
 )
-        echo "✓ HS256 token generated (using default secret)"
+        echo "[OK] HS256 token generated (using default secret)"
     fi
 fi
 
@@ -74,7 +74,7 @@ echo "Status: $HTTP_STATUS"
 echo "Response: $BODY"
 
 if [ "$HTTP_STATUS" = "200" ]; then
-    echo "✓ PASS"
+    echo "[OK] PASS"
 else
     echo "✗ FAIL"
 fi
@@ -106,7 +106,7 @@ echo "Response: $BODY"
 if [ "$HTTP_STATUS" = "200" ] || [ "$HTTP_STATUS" = "201" ]; then
     RULE_ID=$(echo "$BODY" | python3 -c "import sys, json; print(json.load(sys.stdin).get('rule_id', 'unknown'))" 2>/dev/null || echo "unknown")
     echo "Rule ID: $RULE_ID"
-    echo "✓ PASS"
+    echo "[OK] PASS"
 else
     echo "✗ FAIL"
 fi
@@ -135,7 +135,7 @@ echo "Status: $HTTP_STATUS"
 echo "Response: $BODY"
 
 if [ "$HTTP_STATUS" = "200" ]; then
-    echo "✓ PASS - Idempotency working (cached response returned)"
+    echo "[OK] PASS - Idempotency working (cached response returned)"
 else
     echo "✗ FAIL - Expected 200 for duplicate request"
 fi
@@ -160,7 +160,7 @@ echo "Response: $BODY"
 if [ "$HTTP_STATUS" = "200" ]; then
     RULE_COUNT=$(echo "$BODY" | python3 -c "import sys, json; print(len(json.load(sys.stdin).get('rules', [])))" 2>/dev/null || echo "0")
     echo "Rules found: $RULE_COUNT"
-    echo "✓ PASS"
+    echo "[OK] PASS"
 else
     echo "✗ FAIL"
 fi
@@ -187,7 +187,7 @@ if [ ! -z "$RULE_ID" ] && [ "$RULE_ID" != "unknown" ]; then
     echo "Response: $BODY"
     
     if [ "$HTTP_STATUS" = "200" ]; then
-        echo "✓ PASS"
+        echo "[OK] PASS"
     else
         echo "✗ FAIL"
     fi
@@ -209,7 +209,7 @@ HTTP_STATUS=$(echo "$RESPONSE" | grep "HTTP_STATUS" | cut -d: -f2)
 echo "Status: $HTTP_STATUS"
 
 if [ "$HTTP_STATUS" = "401" ] || [ "$HTTP_STATUS" = "403" ]; then
-    echo "✓ PASS - Properly rejected invalid token"
+    echo "[OK] PASS - Properly rejected invalid token"
 else
     echo "✗ FAIL - Should reject invalid token"
 fi

@@ -30,11 +30,11 @@
 - `broker-scaffold/vnfbroker.service.example` - Systemd unit
 
 #### Key Decisions:
-- VNF_RATE_LIMIT error code added per Build1 request ✓
-- HS256 JWT for initial implementation, RS256 for production ✓
-- Idempotency via ruleId + op_hash (dual-layer) ✓
-- Redis for distributed idempotency store ✓
-- Dictionary startup validation ✓
+- VNF_RATE_LIMIT error code added per Build1 request [OK]
+- HS256 JWT for initial implementation, RS256 for production [OK]
+- Idempotency via ruleId + op_hash (dual-layer) [OK]
+- Redis for distributed idempotency store [OK]
+- Dictionary startup validation [OK]
 
 ---
 
@@ -330,16 +330,16 @@
 ## Testing Strategy
 
 ### Unit Tests:
-- VnfOperationDao: Idempotency queries ✓ (TODO: implement)
-- VnfService: Operation orchestration ✓ (TODO: implement)
-- DictionaryEngine: Template rendering ✓ (TODO: implement)
-- Broker endpoints: Request validation ✓ (implemented: 15 tests)
+- VnfOperationDao: Idempotency queries [OK] (TODO: implement)
+- VnfService: Operation orchestration [OK] (TODO: implement)
+- DictionaryEngine: Template rendering [OK] (TODO: implement)
+- Broker endpoints: Request validation [OK] (implemented: 15 tests)
 
 ### Integration Tests:
-- End-to-end rule creation ✓ (TODO: implement)
-- Idempotency verification ✓ (TODO: implement)
-- Error propagation ✓ (TODO: implement)
-- Multi-vendor support ✓ (TODO: implement)
+- End-to-end rule creation [OK] (TODO: implement)
+- Idempotency verification [OK] (TODO: implement)
+- Error propagation [OK] (TODO: implement)
+- Multi-vendor support [OK] (TODO: implement)
 
 ### Performance Tests:
 - Load testing: 1000+ concurrent rules (TODO)

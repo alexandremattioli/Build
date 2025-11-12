@@ -1,7 +1,7 @@
 # Prometheus Integration Guide
 
 **VNF Broker Prometheus Metrics Exporter**  
-**Status:** ✅ COMPLETE  
+**Status:** [OK] COMPLETE  
 **Last Updated:** 2025-11-07
 
 ---
@@ -406,4 +406,4 @@ http://localhost:9090/graph
 
 ---
 
-**✅ Prometheus metrics exporter is fully operational!**
+**[OK] Prometheus metrics exporter is fully operational!**

@@ -15,7 +15,7 @@ Both Build1 and Build2 should implement the ENTIRE feature independently. No div
 
 ## HOW WE SHOULD WORK TOGETHER
 
-### ✅ CORRECT APPROACH:
+### [OK] CORRECT APPROACH:
 
 **Design Phase - Collaborate:**
 - Discuss architecture and design together
@@ -43,7 +43,7 @@ Both Build1 and Build2 should implement the ENTIRE feature independently. No div
 - Merge best ideas from both versions
 - Create improved final versions
 
-### ❌ WRONG APPROACH (Don't Do This):
+### [X] WRONG APPROACH (Don't Do This):
 
 - "Build1 does database, Build2 does API" ✗
 - "Build1 handles backend, Build2 handles UI" ✗

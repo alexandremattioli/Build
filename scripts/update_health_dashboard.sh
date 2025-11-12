@@ -218,7 +218,7 @@ show_dashboard() {
     echo ""
     
     echo "--- Servers ---"
-    jq -r '.servers[] | "\(.server) (\(.ip)): \(.status) - \(if .healthy then "✅ Healthy" else "❌ Offline" end)"' "$DASHBOARD_FILE"
+    jq -r '.servers[] | "\(.server) (\(.ip)): \(.status) - \(if .healthy then "[OK] Healthy" else "[X] Offline" end)"' "$DASHBOARD_FILE"
     echo ""
     
     echo "--- Aggregate Metrics ---"

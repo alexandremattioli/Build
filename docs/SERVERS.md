@@ -36,10 +36,10 @@ All servers have passwordless SSH access to each other:
 
 | From/To | Build1 (175) | Build2 (177) | Build3 (179) | Build4 (181) |
 |---------|--------------|--------------|--------------|--------------|
-| Build1  | -            | ✓            | ✓            | ✓            |
-| Build2  | ✓            | -            | ✓            | ✓            |
-| Build3  | ✓            | ✓            | -            | ✓            |
-| Build4  | ✓            | ✓            | ✓            | -            |
+| Build1  | -            | [OK]            | [OK]            | [OK]            |
+| Build2  | [OK]            | -            | [OK]            | [OK]            |
+| Build3  | [OK]            | [OK]            | -            | [OK]            |
+| Build4  | [OK]            | [OK]            | [OK]            | -            |
 
 ## Message Routing
 

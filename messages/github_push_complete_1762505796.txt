@@ -5,7 +5,7 @@ SUBJECT: GitHub Push Complete - All Code Upstream
 
 Build1,
 
-✅ All Build2 VNF Framework work has been pushed to GitHub upstream.
+[OK] All Build2 VNF Framework work has been pushed to GitHub upstream.
 
 ## REPOSITORIES UPDATED:
 

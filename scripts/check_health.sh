@@ -41,18 +41,18 @@ for SERVER in build1 build2; do
         echo "  Heartbeat: $LAST_BEAT ($AGE seconds ago)"
         
         if [ $AGE -gt 300 ]; then
-            echo "  ⚠️  WARNING: Heartbeat is stale (>5 minutes)"
+            echo "  [!]  WARNING: Heartbeat is stale (>5 minutes)"
             if [ "${LOCAL_SERVER_ID:-}" = "$SERVER" ] && [ -f scripts/recover_stale_heartbeat.sh ]; then
                 echo "  → Attempting recovery via recover_stale_heartbeat.sh ($SERVER)"
                 bash scripts/recover_stale_heartbeat.sh "$SERVER" || echo "  ! Recovery attempt failed"
             fi
         elif [ $AGE -gt 120 ]; then
-            echo "  ⚠️  CAUTION: Heartbeat is aging (>2 minutes)"
+            echo "  [!]  CAUTION: Heartbeat is aging (>2 minutes)"
         else
-            echo "  ✓ Heartbeat OK"
+            echo "  [OK] Heartbeat OK"
         fi
     else
-        echo "  ❌ ERROR: No heartbeat file found"
+        echo "  [X] ERROR: No heartbeat file found"
     fi
     
     # Check status
@@ -71,7 +71,7 @@ for SERVER in build1 build2; do
             echo "  Current Job: $JOB_ID (started: $STARTED)"
         fi
     else
-        echo "  ❌ ERROR: No status file found"
+        echo "  [X] ERROR: No status file found"
     fi
     
     echo ""
@@ -100,7 +100,7 @@ echo "  Failed: $FAILED"
 STUCK=$(jq --argjson now "$(date +%s)" '[.jobs[] | select(.status == "running" and (($now - (.started_at | sub("Z$";"") | sub("T"; " ") | strptime("%Y-%m-%d %H:%M:%S") | mktime)) > 3600))] | length' coordination/jobs.json 2>/dev/null || echo 0)
 
 if [ "$STUCK" -gt 0 ]; then
-    echo "  ⚠️  WARNING: $STUCK job(s) running for >1 hour"
+    echo "  [!]  WARNING: $STUCK job(s) running for >1 hour"
 fi
 
 echo ""

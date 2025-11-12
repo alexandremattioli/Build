@@ -201,9 +201,9 @@ and this project adheres to semantic versioning for coordination protocol change
 
 | Date | Version | Key Changes | Build Status |
 |------|---------|-------------|--------------|
-| 2025-10-29 | 1.0 | Initial coordination framework | ✅ Operational |
-| 2025-10-29 | 1.1 | Enhanced heartbeat and messaging | ✅ Operational |
-| 2025-10-29 | 1.2 | First CloudStack build on Build2 | ✅ Maven Success, ⚠️ DEB Issues |
+| 2025-10-29 | 1.0 | Initial coordination framework | [OK] Operational |
+| 2025-10-29 | 1.1 | Enhanced heartbeat and messaging | [OK] Operational |
+| 2025-10-29 | 1.2 | First CloudStack build on Build2 | [OK] Maven Success, [!] DEB Issues |
 | 2025-10-30 | 1.3 | Build reporting and DEB packaging improvements | 🔄 In Progress |
 
 ---

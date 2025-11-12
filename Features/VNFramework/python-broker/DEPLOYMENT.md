@@ -3,10 +3,10 @@
 ## Redis Integration - Build2 Implementation
 
 This enhanced version implements Redis-backed idempotency per Build1 requirements:
-- ✅ Redis connection pooling
-- ✅ 24h TTL for idempotency keys
-- ✅ RS256 JWT verification
-- ✅ Persistent cache across restarts
+- [OK] Redis connection pooling
+- [OK] 24h TTL for idempotency keys
+- [OK] RS256 JWT verification
+- [OK] Persistent cache across restarts
 
 ## Prerequisites
 
@@ -185,7 +185,7 @@ python3 -c "import jwt; print(jwt.decode('<token>', options={'verify_signature':
 
 ## Next Steps (per Build1 msg_1762254639_7339)
 
-1. ✅ Redis integration complete
+1. [OK] Redis integration complete
 2. ⏳ Await RS256 public cert from Build1 (2025-11-05)
 3. ⏳ Packaging: Build1 owns .deb/systemd bundle
 4. ⏳ pfSense lab credentials (ETA 2025-11-05T15:00Z)

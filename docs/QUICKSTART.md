@@ -345,8 +345,8 @@ Optional cron example (daily at 02:00 UTC):
 
 ## Next Steps
 
-1. ✅ Repository initialized
-2. ✅ Scripts deployed
+1. [OK] Repository initialized
+2. [OK] Scripts deployed
 3. ⏳ Configure git authentication
 4. ⏳ Start heartbeat daemons
 5. ⏳ Integrate with build scripts

@@ -105,14 +105,14 @@ The File Exchange System enables build servers to share files through GitHub, co
 ```
 ════════════════════════════════════════════════════════════
 Validating file: /etc/mysql/my.cnf
-  Size: 1.2MB ✓
-  File is readable ✓
+  Size: 1.2MB [OK]
+  File is readable [OK]
 
 Sharing file with build2...
   Category: config
   Description: Production MySQL settings
 
-✅ File shared successfully!
+[OK] File shared successfully!
   File ID: file_1761920500_1234
   Size: 1.2MB
   Path: shared/files/build1/config/20250131_142355_my.cnf
@@ -199,7 +199,7 @@ FILE INFORMATION
 
 Downloading file...
 
-✅ File downloaded successfully!
+[OK] File downloaded successfully!
   Location: /root/configs/my.cnf
   Size: 1.2MB
 
@@ -547,14 +547,14 @@ Planned features:
 ## Summary
 
 The File Exchange System provides:
-- ✅ Easy file sharing between build servers
-- ✅ Organized storage by category
-- ✅ Size validation and warnings
-- ✅ Automatic notifications
-- ✅ Download tracking
-- ✅ Multiple filtering options
-- ✅ Git-based with conflict handling
-- ✅ Integration with message system
+- [OK] Easy file sharing between build servers
+- [OK] Organized storage by category
+- [OK] Size validation and warnings
+- [OK] Automatic notifications
+- [OK] Download tracking
+- [OK] Multiple filtering options
+- [OK] Git-based with conflict handling
+- [OK] Integration with message system
 
 **Quick Command Reference:**
 ```bash

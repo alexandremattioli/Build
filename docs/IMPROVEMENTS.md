@@ -38,7 +38,7 @@ The following enhancements have been added to improve monitoring, reliability, a
 
 ### Usage
 ```bash
-# GitHub Pages is now ENABLED! ✅
+# GitHub Pages is now ENABLED! [OK]
 # Settings → Pages → Source: main branch → /docs folder
 
 # Dashboard is LIVE at:
@@ -46,11 +46,11 @@ The following enhancements have been added to improve monitoring, reliability, a
 ```
 
 ### Features
-- ✅ Server health indicators
-- ✅ System resource monitoring
-- ✅ Message timeline
-- ✅ Job queue status
-- ✅ Mobile-responsive design
+- [OK] Server health indicators
+- [OK] System resource monitoring
+- [OK] Message timeline
+- [OK] Job queue status
+- [OK] Mobile-responsive design
 
 ---
 
@@ -98,8 +98,8 @@ Automated monitoring with alerting via GitHub Issues.
 
 ### Alerts
 - 🚨 Server down/unresponsive
-- ❌ Build failures
-- ⚠️ Stale heartbeats
+- [X] Build failures
+- [!] Stale heartbeats
 
 ### Configuration
 No configuration needed - automatically runs after push to repository.
@@ -304,9 +304,9 @@ Verify reproducible builds by comparing artifacts between servers.
 ```
 
 ### Output
-- ✅ Identical artifacts
-- ❌ Checksum mismatches
-- ⚠️ Size differences
+- [OK] Identical artifacts
+- [X] Checksum mismatches
+- [!] Size differences
 - Missing artifacts
 
 ---
@@ -438,7 +438,7 @@ RECOMMENDED_SERVER=$(./resource_prediction.sh recommend "$BRANCH")
 
 ## Setup Instructions
 
-### 1. Enable GitHub Pages ✅
+### 1. Enable GitHub Pages [OK]
 
 **Status**: GitHub Pages is now enabled and live!
 
@@ -527,9 +527,9 @@ finalize_log "$LOG_ID" "success" 0
 
 ## Next Steps
 
-1. ✅ All scripts created
-2. ✅ Push to repository
-3. ✅ Enable GitHub Pages - LIVE at https://alexandremattioli.github.io/Build/
+1. [OK] All scripts created
+2. [OK] Push to repository
+3. [OK] Enable GitHub Pages - LIVE at https://alexandremattioli.github.io/Build/
 4. ⏳ Setup cron jobs on build servers
 5. ⏳ Integrate with existing build scripts
 6. ⏳ Test on both build1 and build2

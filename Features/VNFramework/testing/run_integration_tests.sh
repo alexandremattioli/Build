@@ -41,7 +41,7 @@ log_warn() {
 pass_test() {
     ((TESTS_PASSED++))
     ((TESTS_RUN++))
-    log_info "✓ PASS: $1"
+    log_info "[OK] PASS: $1"
 }
 
 fail_test() {
@@ -333,7 +333,7 @@ main() {
     echo "========================================="
     
     if [ $TESTS_FAILED -eq 0 ]; then
-        log_info "All tests passed! ✓"
+        log_info "All tests passed! [OK]"
         exit 0
     else
         log_error "Some tests failed!"

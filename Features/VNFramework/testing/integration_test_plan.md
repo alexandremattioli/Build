@@ -38,9 +38,9 @@ curl -k https://<vr-ip>:8443/health
 ```
 
 **Success Criteria:**
-- ✅ HTTP 200 status
-- ✅ JSON response with "healthy" status
-- ✅ Redis connection confirmed
+- [OK] HTTP 200 status
+- [OK] JSON response with "healthy" status
+- [OK] Redis connection confirmed
 
 ---
 
@@ -59,10 +59,10 @@ curl -k -H "Authorization: Bearer ${token}" \
 ```
 
 **Success Criteria:**
-- ✅ Token generated with RS256 algorithm
-- ✅ Token contains operation ID claim
-- ✅ Broker accepts valid token
-- ✅ Broker rejects expired/invalid tokens (401)
+- [OK] Token generated with RS256 algorithm
+- [OK] Token contains operation ID claim
+- [OK] Broker accepts valid token
+- [OK] Broker rejects expired/invalid tokens (401)
 
 ---
 
@@ -80,9 +80,9 @@ curl -k -H "Authorization: Bearer ${token}" \
 ```
 
 **Success Criteria:**
-- ✅ Dictionary YAML parses without errors
-- ✅ All required sections present (authentication, services, operations)
-- ✅ Template variables identified correctly
+- [OK] Dictionary YAML parses without errors
+- [OK] All required sections present (authentication, services, operations)
+- [OK] Template variables identified correctly
 
 ---
 
@@ -115,11 +115,11 @@ cloudmonkey create vnffirewallrule \
 10. CloudStack → Creates VnfOperationVO record
 
 **Success Criteria:**
-- ✅ HTTP 201 Created
-- ✅ Response contains `ruleId` from pfSense
-- ✅ Redis contains idempotency entry
-- ✅ Firewall rule visible in pfSense UI
-- ✅ VnfOperationVO created with status SUCCESS
+- [OK] HTTP 201 Created
+- [OK] Response contains `ruleId` from pfSense
+- [OK] Redis contains idempotency entry
+- [OK] Firewall rule visible in pfSense UI
+- [OK] VnfOperationVO created with status SUCCESS
 
 ---
 
@@ -148,11 +148,11 @@ cloudmonkey create vnffirewallrule \
 5. pfSense API is NOT called (no duplicate rule created)
 
 **Success Criteria:**
-- ✅ HTTP 200 OK (not 201)
-- ✅ Response identical to first request
-- ✅ Response time < 100ms (cache hit)
-- ✅ Only ONE rule exists in pfSense
-- ✅ Redis TTL refreshed to 24h
+- [OK] HTTP 200 OK (not 201)
+- [OK] Response identical to first request
+- [OK] Response time < 100ms (cache hit)
+- [OK] Only ONE rule exists in pfSense
+- [OK] Redis TTL refreshed to 24h
 
 ---
 
@@ -175,10 +175,10 @@ cloudmonkey list vnffirewallrules \
 6. Broker → Returns normalized rule list to CloudStack
 
 **Success Criteria:**
-- ✅ Returns array of firewall rules
-- ✅ Each rule has: id, protocol, source, destination, ports, action
-- ✅ Filtering by protocol works correctly
-- ✅ Response format matches VnfFirewallRuleResponse schema
+- [OK] Returns array of firewall rules
+- [OK] Each rule has: id, protocol, source, destination, ports, action
+- [OK] Filtering by protocol works correctly
+- [OK] Response format matches VnfFirewallRuleResponse schema
 
 ---
 
@@ -201,10 +201,10 @@ cloudmonkey delete vnffirewallrule \
 7. CloudStack → Updates VnfOperationVO status
 
 **Success Criteria:**
-- ✅ HTTP 200 OK
-- ✅ Rule deleted from pfSense
-- ✅ Duplicate delete returns 200 (idempotent)
-- ✅ VnfOperationVO status = SUCCESS
+- [OK] HTTP 200 OK
+- [OK] Rule deleted from pfSense
+- [OK] Duplicate delete returns 200 (idempotent)
+- [OK] VnfOperationVO status = SUCCESS
 
 ---
 
@@ -225,10 +225,10 @@ cloudmonkey create vnffirewallrule \
 ```
 
 **Success Criteria:**
-- ✅ HTTP 400 Bad Request
-- ✅ Error message indicates invalid port
-- ✅ No rule created in pfSense
-- ✅ VnfOperationVO status = FAILED with error details
+- [OK] HTTP 400 Bad Request
+- [OK] Error message indicates invalid port
+- [OK] No rule created in pfSense
+- [OK] VnfOperationVO status = FAILED with error details
 
 ---
 
@@ -249,10 +249,10 @@ cloudmonkey create vnffirewallrule ...
 4. Broker → Returns error after all retries exhausted
 
 **Success Criteria:**
-- ✅ HTTP 503 Service Unavailable
-- ✅ Error message indicates connection failure
-- ✅ VnfOperationVO status = FAILED
-- ✅ Error code = VNF_COMMUNICATION_ERROR
+- [OK] HTTP 503 Service Unavailable
+- [OK] Error message indicates connection failure
+- [OK] VnfOperationVO status = FAILED
+- [OK] Error code = VNF_COMMUNICATION_ERROR
 
 ---
 
@@ -274,9 +274,9 @@ cloudmonkey create vnffirewallrule ...
 - Warning logged about Redis unavailability
 
 **Success Criteria:**
-- ✅ Operation completes (no idempotency)
-- ✅ Warning in broker logs
-- ✅ Rule created successfully in pfSense
+- [OK] Operation completes (no idempotency)
+- [OK] Warning in broker logs
+- [OK] Rule created successfully in pfSense
 
 ---
 
@@ -316,9 +316,9 @@ body:
 ```
 
 **Success Criteria:**
-- ✅ All ${variables} replaced correctly
-- ✅ No remaining ${} placeholders in output
-- ✅ Data types preserved (string, number, boolean)
+- [OK] All ${variables} replaced correctly
+- [OK] No remaining ${} placeholders in output
+- [OK] Data types preserved (string, number, boolean)
 
 ---
 
@@ -332,9 +332,9 @@ cloudmonkey create vnffirewallrule ... (large ruleset)
 ```
 
 **Success Criteria:**
-- ✅ Request doesn't timeout prematurely
-- ✅ CloudStack job status updated correctly
-- ✅ Final status reflects actual pfSense state
+- [OK] Request doesn't timeout prematurely
+- [OK] CloudStack job status updated correctly
+- [OK] Final status reflects actual pfSense state
 
 ---
 
@@ -358,9 +358,9 @@ cloudmonkey create vnffirewallrule ... (large ruleset)
 2. Verify all succeed or fail gracefully
 
 **Success Criteria:**
-- ✅ All requests complete
-- ✅ No race conditions
-- ✅ Idempotency works correctly
+- [OK] All requests complete
+- [OK] No race conditions
+- [OK] Idempotency works correctly
 
 ---
 
@@ -376,8 +376,8 @@ curl -k -H "Authorization: Bearer ${expired_token}" ...
 ```
 
 **Success Criteria:**
-- ✅ HTTP 401 Unauthorized
-- ✅ Error indicates token expired
+- [OK] HTTP 401 Unauthorized
+- [OK] Error indicates token expired
 
 ### Test 16: Invalid Signature
 **Objective:** Verify token signature validation
@@ -389,8 +389,8 @@ curl -k -H "Authorization: Bearer ${bad_token}" ...
 ```
 
 **Success Criteria:**
-- ✅ HTTP 401 Unauthorized
-- ✅ Error indicates invalid signature
+- [OK] HTTP 401 Unauthorized
+- [OK] Error indicates invalid signature
 
 ---
 

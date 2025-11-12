@@ -4,7 +4,7 @@
 **Generated:** 2025-10-30T02:00:00Z  
 **Server:** Build2 (ll-ACSBuilder2, 10.1.3.177)  
 **Build Date:** 2025-10-29  
-**Final Status:** ✅ Maven SUCCESS, ⚠️ DEB Packaging Incomplete
+**Final Status:** [OK] Maven SUCCESS, [!] DEB Packaging Incomplete
 
 ---
 
@@ -28,7 +28,7 @@ ExternalNew
 d8e22ab0af
 ```
 
-**Result:** ✅ Repository on correct branch and commit
+**Result:** [OK] Repository on correct branch and commit
 
 ### Toolchain Verification - Build2
 ```bash
@@ -46,7 +46,7 @@ OpenJDK 64-Bit Server VM (build 17.0.16+8-Ubuntu-0ubuntu124.04.1, mixed mode, sh
 v18.20.8
 ```
 
-**Result:** ✅ All required tools present and correct versions
+**Result:** [OK] All required tools present and correct versions
 
 ### Toolchain Verification - Build1 (via SSH)
 ```bash
@@ -64,7 +64,7 @@ OpenJDK 64-Bit Server VM (build 17.0.16+8-Ubuntu-0ubuntu124.04.1, mixed mode, sh
 v18.20.8
 ```
 
-**Result:** ✅ Build1 also has identical toolchain (good for consistency)
+**Result:** [OK] Build1 also has identical toolchain (good for consistency)
 
 ### Health Check
 ```bash
@@ -74,14 +74,14 @@ Timestamp: 2025-10-29T23:13:08Z
 
 [build1]
   Heartbeat: 2025-10-29T23:06:16Z (412 seconds ago)
-  ⚠️  WARNING: Heartbeat is stale (>5 minutes)
+  [!]  WARNING: Heartbeat is stale (>5 minutes)
   Status: idle
   Manager: Codex
   IP: 10.1.3.175
 
 [build2]
   Heartbeat: 2025-10-29T23:13:01Z (7 seconds ago)
-  ✓ Heartbeat OK
+  [OK] Heartbeat OK
   Status: idle
   Manager: GitHub Copilot
   IP: 10.1.3.177
@@ -103,9 +103,9 @@ Timestamp: 2025-10-29T23:13:08Z
 ```
 
 **Analysis:**
-- ✅ Build2 healthy and ready
-- ⚠️ Build1 heartbeat slightly stale but server reachable via SSH
-- ✅ Coordination infrastructure operational
+- [OK] Build2 healthy and ready
+- [!] Build1 heartbeat slightly stale but server reachable via SSH
+- [OK] Coordination infrastructure operational
 
 ---
 
@@ -173,7 +173,7 @@ dh_auto_clean: warning: Compatibility levels before 10 are deprecated (level 9 i
 
 **End Time:** 2025-10-29T23:22:20Z  
 **Duration:** 4 minutes 54 seconds (294 seconds)  
-**Status:** ✅ **SUCCESS**
+**Status:** [OK] **SUCCESS**
 
 ### Build Performance Analysis
 
@@ -291,7 +291,7 @@ PY
 }
 ```
 
-**Result:** ✅ Artifacts preserved and documented
+**Result:** [OK] Artifacts preserved and documented
 
 ---
 
@@ -340,7 +340,7 @@ Status: install ok installed
 Version: 9999
 ```
 
-**Result:** ✅ Dummy python-setuptools package installed
+**Result:** [OK] Dummy python-setuptools package installed
 
 ### Attempt 3: Retry build-deb.sh
 
@@ -403,7 +403,7 @@ SLF4J: Defaulting to no-operation (NOP) logger implementation
 ...
 ```
 
-**Process Started:** ✅ Build initiated with dependency checks skipped
+**Process Started:** [OK] Build initiated with dependency checks skipped
 
 **Later Output:**
 ```
@@ -425,7 +425,7 @@ Command exited with code 130
 - **Likely Cause:** User interrupt OR script timeout OR unhandled prompt
 - **Impact:** DEB packaging incomplete
 
-**Result:** ❌ DEB packaging failed (interrupted)
+**Result:** [X] DEB packaging failed (interrupted)
 
 ---
 
@@ -493,7 +493,7 @@ To https://github.com/alexandremattioli/Build.git
    7386f04..72ca7cd  main -> main
 ```
 
-**Result:** ✅ Conflict resolved, status update succeeded on retry
+**Result:** [OK] Conflict resolved, status update succeeded on retry
 
 ### Issue 2: Rebase Conflict During Script Commit
 
@@ -566,7 +566,7 @@ HEAD is now at 256b2b1 [build1] Status: success at 2025-10-30T01:41:53Z
 
 ## Final Outcomes
 
-### Successful Outcomes ✅
+### Successful Outcomes [OK]
 
 1. **Maven Build:** Complete success in 4:54
 2. **Artifact Generation:** All critical JARs and WARs produced
@@ -576,7 +576,7 @@ HEAD is now at 256b2b1 [build1] Status: success at 2025-10-30T01:41:53Z
 6. **Coordination:** Messages sent to Build1 about build completion
 7. **Build Report:** Comprehensive documentation created
 
-### Incomplete/Failed Outcomes ⚠️❌
+### Incomplete/Failed Outcomes [!][X]
 
 1. **DEB Packaging:** Failed due to Python 2 dependencies (Ubuntu 24.04 incompatibility)
 2. **Git Workflow:** Multiple heartbeat conflicts requiring manual resolution

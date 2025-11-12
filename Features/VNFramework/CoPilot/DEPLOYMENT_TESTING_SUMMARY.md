@@ -311,9 +311,9 @@ curl -k https://<VR_IP>:8443/health
 ## Known Issues & Limitations
 
 ### Resolved:
-- ✅ In-memory idempotency (Redis store implemented)
-- ✅ No deployment automation (Ansible playbooks created)
-- ✅ No unit tests (JUnit and pytest tests added)
+- [OK] In-memory idempotency (Redis store implemented)
+- [OK] No deployment automation (Ansible playbooks created)
+- [OK] No unit tests (JUnit and pytest tests added)
 
 ### Pending:
 - ⏳ AsyncJob framework integration (implementation pending)
