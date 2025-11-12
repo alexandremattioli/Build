@@ -594,3 +594,27 @@ Notes:
 - DPAPI binds to the current Windows user and machine. To share across machines, use certificate-based `Protect-CmsMessage` instead.
 - `.secrets` and backups are ignored by Git (see `.gitignore`). Never commit tokens.
 
+
+
+## Managing Windows Code Servers
+
+Scripts under `scripts/servers/` help manage Code1/Code2 remotely via WinRM:
+
+- `scripts/servers/servers.json`: inventory of servers (`Name`, `Host`, `Role`).
+- `scripts/servers/Get-CodeServers.ps1`: loads server list.
+- `scripts/servers/Get-CodeCredential.ps1`: save/load DPAPI PSCredential (`-Save` to prompt and store at `.secrets/code_pscredential.xml`).
+- `scripts/servers/Test-CodeServers.ps1 [-Name Code1,Code2]`: ping, WinRM, and RDP checks.
+- `scripts/servers/Invoke-CodeServers.ps1 -Name Code1,Code2 -ScriptBlock { $PSVersionTable.PSVersion }`: run commands on servers.
+
+Quick start:
+```powershell
+Set-Location "K:\\Projects\\Build"
+# One-time: store credentials securely
+.\\scripts\\servers\\Get-CodeCredential.ps1 -Save
+
+# Test connectivity
+.\\scripts\\servers\\Test-CodeServers.ps1 -Name Code1,Code2
+
+# Run a command
+.\\scripts\\servers\\Invoke-CodeServers.ps1 -Name Code1,Code2 -ScriptBlock { hostname }
+```
