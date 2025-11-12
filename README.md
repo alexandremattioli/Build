@@ -625,3 +625,22 @@ Set-Location "K:\\Projects\\Build"
 
 Windows development servers use `K:\\projects\\build` as the standard repo path.
 Scheduled tasks and scripts reference `K:\\projects\\build\\windows\\scripts\\...`.
+
+
+## Projects Repo Layout (Windows)
+
+All Windows servers (this box, Code1, Code2) use a shared projects root and a child Build repo:
+
+- Root projects folder: `K:\\projects`
+- Build coordination repo: `K:\\projects\\build`
+
+This path is assumed by Windows scripts and the heartbeat scheduled task. If `K:` is not available, scripts fall back to `C:\\Build`.
+
+Quick setup (if needed):
+```powershell
+# Ensure drive and layout
+New-Item -ItemType Directory 'K:\\projects' -Force | Out-Null
+if (-not (Test-Path 'K:\\projects\\build\\.git')) {
+  git clone https://github.com/alexandremattioli/Build.git "K:\\projects\\build"
+}
+```
