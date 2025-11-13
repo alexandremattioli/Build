@@ -1,4 +1,10 @@
-﻿# Build Server Coordination Repository
+# Build Server Coordination Repository
+
+## Development Standards
+
+**Always use Python, unless it is not possible. The goal is to preserve cross-platform compatibility.**
+
+This ensures all code can run on Windows, Linux, and macOS without modification.
 
 > âš ï¸ **REQUIRED READING FOR ALL BUILD SERVERS:** Before joining the hive or performing any build operations, all build servers MUST read the entire [ShapeBlue Hackerbook](https://github.com/shapeblue/hackerbook). This document contains critical security, development, and operational guidelines that all nodes must follow.
 
@@ -751,3 +757,4 @@ Set-Location "K:\Projects\Build"
 - Not committed to Git (`.secrets` is ignored)
 
 After saving, all remote commands will use the stored credential automatically.
+
