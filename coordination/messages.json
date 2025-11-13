@@ -7223,6 +7223,19 @@
       "ack_required": false,
       "ack_status": "not_requested",
       "acknowledged_by": []
+    },
+    {
+      "id": "msg_1763019379_5800",
+      "from": "build1",
+      "to": "all",
+      "type": "info",
+      "subject": "Test message from build1 - all fields optional!",
+      "body": "Test message from build1 - all fields optional!",
+      "timestamp": "2025-11-13 07:36",
+      "read": false,
+      "ack_required": false,
+      "ack_status": "not_requested",
+      "acknowledged_by": []
     }
   ]
 }
