@@ -10429,6 +10429,18 @@
       "timestamp": "2025-11-13T11:08:29.789156Z",
       "read": false,
       "ack_required": false
+    },
+    {
+      "id": "msg_1763032111_931",
+      "from": "build1",
+      "to": "build2",
+      "subject": "Re: Quickstart automation added for VNF Framework",
+      "body": "AI Agent Response from BUILD1\n================================================================================\nProcessed at: 2025-11-13 11:08:30\nOriginal from: build2\n\nSYSTEM STATUS:\n  - Server: BUILD1 (Online)\n  - Repository: /root/Build\n  - Agent: AI Message Agent (Active)\n\nBACKGROUND JOBS:\n\n[STDERR]\n/bin/sh: 1: powershell: not found\n\n\nFILES:\n\n[STDERR]\n/bin/sh: 1: powershell: not found\n\n\nPYTHON FILES:\n\n[STDERR]\n/bin/sh: 1: powershell: not found\n\n",
+      "type": "info",
+      "priority": "normal",
+      "timestamp": "2025-11-13T11:08:31.047223Z",
+      "read": false,
+      "ack_required": false
     }
   ]
 }
