@@ -26189,7 +26189,7 @@
       "type": "info",
       "priority": "normal",
       "timestamp": "2025-11-13T15:40:44.788014Z",
-      "read": false,
+      "read": true,
       "ack_required": false
     },
     {
