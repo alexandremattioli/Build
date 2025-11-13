@@ -42,7 +42,7 @@
             body { padding: 10px; }
             .container { max-width: 100%; }
             .grid { grid-template-columns: 1fr; }
-            #searchInput { width: 100% !important; max-width: 250px; }
+            .search-input { width: 100%; max-width: 250px; }
         }
         
         .container {
@@ -72,6 +72,17 @@
         .last-update {
             color: #8b949e;
             font-size: 14px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .last-update-time {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
         }
         
         .grid {
@@ -141,6 +152,7 @@
         .status-building { background: #d29922; }
         .status-offline { background: #f85149; }
         .status-idle { background: #58a6ff; }
+        .status-stale { background: #9e6a03; }
         
         .server-info {
             display: grid;
@@ -304,8 +316,11 @@
             border-radius: 6px;
             cursor: pointer;
             font-size: 14px;
-            margin-left: 10px;
-            transition: background 0.2s;
+            margin-left: 0;
+            transition: background 0.2s, transform 0.1s ease-in;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
         }
         
         .refresh-btn:hover {
@@ -314,6 +329,77 @@
 
         .refresh-btn:active {
             background: #1a7f37;
+            transform: translateY(1px);
+        }
+
+        .refresh-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .refresh-btn:focus-visible {
+            outline: 2px solid #3b82f6;
+            outline-offset: 2px;
+        }
+
+        .refresh-btn.secondary {
+            background: #21262d;
+            color: var(--text-secondary);
+            border: 1px solid #30363d;
+            margin-left: 0;
+        }
+
+        .refresh-btn.secondary:hover {
+            background: #2d333b;
+            color: var(--text-primary);
+        }
+
+        .refresh-btn.secondary:active {
+            background: #1c2128;
+        }
+
+        .refresh-btn .btn-icon {
+            font-size: 16px;
+            line-height: 1;
+        }
+
+        .refresh-btn .btn-text {
+            font-weight: 500;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .action-row {
+            margin-top: 15px;
+        }
+
+        .action-row.compact {
+            margin-top: 10px;
+        }
+
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            border: 0;
+        }
+
+        .search-input {
+            padding: 8px;
+            width: 300px;
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            color: var(--text-primary);
         }
         
         .progress-bar {
@@ -371,21 +457,32 @@
             <h1>🏗️ Build Infrastructure Status</h1>
             <div class="subtitle">Real-time coordination and health monitoring</div>
             <div class="last-update">
-                Last Updated: <span id="lastUpdate">Loading...</span>
-                <button class="refresh-btn" onclick="loadAllData()">🔄 Refresh</button>
-                <button class="refresh-btn" onclick="toggleTheme()">🌓 Theme</button>
-                <button class="refresh-btn" onclick="exportMetrics()">📊 Export</button>
+                <div class="last-update-time">
+                    <span>Last Updated:</span>
+                    <span id="lastUpdate">Loading...</span>
+                </div>
+                <div class="button-group" role="group" aria-label="Primary actions">
+                    <button class="refresh-btn" type="button" onclick="loadAllData()" aria-label="Refresh data">
+                        <span class="btn-icon" aria-hidden="true">🔄</span>
+                        <span class="btn-text">Refresh</span>
+                    </button>
+                    <button class="refresh-btn" type="button" onclick="toggleTheme()" aria-label="Toggle theme">
+                        <span class="btn-icon" aria-hidden="true">🌓</span>
+                        <span class="btn-text">Theme</span>
+                    </button>
+                    <button class="refresh-btn" type="button" onclick="exportMetrics()" aria-label="Export metrics">
+                        <span class="btn-icon" aria-hidden="true">📊</span>
+                        <span class="btn-text">Export</span>
+                    </button>
+                </div>
             </div>
-            <div style="margin-top: 15px;">
-                <input type="text" id="searchInput" placeholder="Search servers, jobs, messages..." style="padding: 8px; width: 300px; background: var(--bg-tertiary); border: 1px solid var(--border-color); border-radius: 6px; color: var(--text-primary);">
-                <button class="refresh-btn" onclick="performSearch()">🔍 Search</button>
-            </div>
-            <div style="margin-top: 10px; display: flex; gap: 10px; flex-wrap: wrap;">
-                <button class="refresh-btn" onclick="filterServers('all')" id="filter-all">All (6)</button>
-                <button class="refresh-btn" onclick="filterServers('online')">✅ Online</button>
-                <button class="refresh-btn" onclick="filterServers('offline')">🔴 Offline</button>
-                <button class="refresh-btn" onclick="filterServers('overloaded')">⚠️ Overloaded</button>
-                <button class="refresh-btn" onclick="toggleNotifications()" id="notif-btn">🔔 Enable Alerts</button>
+            <div class="action-row search-row">
+                <label class="sr-only" for="searchInput">Search the dashboard</label>
+                <input type="search" id="searchInput" class="search-input" placeholder="Search servers, jobs, messages...">
+                <button class="refresh-btn secondary" type="button" onclick="performSearch()" aria-label="Run search">
+                    <span class="btn-icon" aria-hidden="true">🔍</span>
+                    <span class="btn-text">Search</span>
+                </button>
             </div>
         </header>
 
@@ -399,14 +496,7 @@
         <div id="content" style="display: none;">
             
             <!-- Historical Metrics Chart -->
-            <div class="wide-grid">
-                <div class="card">
-                    <h2>📈 Historical Metrics (Last 24 Hours)</h2>
-                    <div style="position: relative; height: 250px;">
-                        <canvas id="metricsChart"></canvas>
-                    </div>
-                </div>
-            </div>
+            
 
             <!-- System Health Overview -->
             <div class="wide-grid">
@@ -440,21 +530,7 @@
                     <div class="server-info" id="build2-info"></div>
                 </div>
 
-                <div class="card" id="build3-card">
-                    <h2>
-                        <span class="status-indicator status-offline" id="build3-indicator"></span>
-                        Build3
-                    </h2>
-                    <div class="server-info" id="build3-info"></div>
-                </div>
 
-                <div class="card" id="build4-card">
-                    <h2>
-                        <span class="status-indicator status-offline" id="build4-indicator"></span>
-                        Build4
-                    </h2>
-                    <div class="server-info" id="build4-info"></div>
-                </div>
 
                 <div class="card" id="code1-card">
                     <h2>
@@ -481,8 +557,11 @@
                 </div>
 
                 <div class="card">
-                    <h2>⚙️ Job Queue Status</h2>
+                    <h2>⚙️ Build Job Queue</h2>
                     <div class="metrics" id="jobMetrics"></div>
+                    <div style="margin-top: 10px; padding: 8px; background: var(--bg-tertiary); border-radius: 4px; font-size: 12px; color: var(--text-secondary);">
+                        CloudStack build/package jobs tracked in coordination/jobs.json
+                    </div>
                 </div>
             </div>
 
@@ -491,6 +570,16 @@
                 <div class="card alert">
                     <h2>⚠️ System Alerts</h2>
                     <ul class="alert-list" id="alertsList"></ul>
+                </div>
+            </div>
+
+            <!-- Historical Metrics Chart -->
+            <div class="wide-grid">
+                <div class="card">
+                    <h2>📈 Historical Metrics (Last 24 Hours)</h2>
+                    <div style="position: relative; height: 250px;">
+                        <canvas id="metricsChart"></canvas>
+                    </div>
                 </div>
             </div>
 
@@ -506,6 +595,143 @@
         const REPO_OWNER = 'alexandremattioli';
         const REPO_NAME = 'Build';
         const API_BASE = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents`;
+
+        const SERVER_CONFIG = {
+            build1: { displayName: 'Build1 (Codex)', statusPath: 'build1/status.json', heartbeatPath: 'build1/heartbeat.json' },
+            build2: { displayName: 'Build2 (Copilot)', statusPath: 'build2/status.json', heartbeatPath: 'build2/heartbeat.json' },
+            build3: { displayName: 'Build3', statusPath: 'build3/status.json', heartbeatPath: 'build3/heartbeat.json' },
+            build4: { displayName: 'Build4', statusPath: 'build4/status.json', heartbeatPath: 'build4/heartbeat.json' },
+            code1: { displayName: 'Code1 (Windows)', statusPath: 'code1/status.json', heartbeatPath: 'code1/heartbeat.json' },
+            code2: { displayName: 'Code2 (Windows)', statusPath: 'code2/status.json', heartbeatPath: 'code2/heartbeat.json' }
+        };
+
+        const STALE_THRESHOLD_SECONDS = 600;
+        const OUTAGE_THRESHOLD_SECONDS = 1800;
+
+        const STATUS_PRESENTATION = {
+            online: { className: 'status-online', text: 'Online' },
+            success: { className: 'status-online', text: 'Online' },
+            idle: { className: 'status-idle', text: 'Idle' },
+            building: { className: 'status-building', text: 'Building' },
+            running: { className: 'status-building', text: 'Running' },
+            maintenance: { className: 'status-stale', text: 'Maintenance' },
+            degraded: { className: 'status-stale', text: 'Degraded' },
+            offline: { className: 'status-offline', text: 'Offline' },
+            error: { className: 'status-offline', text: 'Error' }
+        };
+
+        function selectLatestTimestamp(values = []) {
+            return values
+                .filter(Boolean)
+                .reduce((latest, value) => {
+                    if (!latest) return value;
+                    return new Date(value) > new Date(latest) ? value : latest;
+                }, null);
+        }
+
+        function normalizeStatus(value) {
+            if (!value) return null;
+            const normalized = value.toString().trim().toLowerCase();
+            if (['online', 'success', 'healthy', 'up'].includes(normalized)) return 'online';
+            if (['idle', 'ready', 'available', 'standby'].includes(normalized)) return 'idle';
+            if (['building', 'running', 'busy', 'deploying', 'compiling', 'processing'].includes(normalized)) return 'building';
+            if (['maintenance', 'updating', 'restarting', 'patching'].includes(normalized)) return 'maintenance';
+            if (['degraded', 'unstable'].includes(normalized)) return 'degraded';
+            if (['offline', 'error', 'failed', 'down'].includes(normalized)) return 'offline';
+            return normalized;
+        }
+
+        function combineServerData(statusData, heartbeatData) {
+            const statusPayload = statusData && typeof statusData === 'object' ? statusData : {};
+            const heartbeatPayload = heartbeatData && typeof heartbeatData === 'object' ? heartbeatData : {};
+            const combined = {
+                ...statusPayload,
+                capabilities: { ...(statusPayload.capabilities || {}) },
+                system: { ...(statusPayload.system || {}) },
+                heartbeat: heartbeatPayload || null,
+                lastHeartbeat: heartbeatPayload?.last_heartbeat || statusPayload?.lastHeartbeat || null
+            };
+
+            if (!combined.server_id && heartbeatPayload?.server_id) combined.server_id = heartbeatPayload.server_id;
+            if (!combined.hostname && heartbeatPayload?.hostname) combined.hostname = heartbeatPayload.hostname;
+            if (!combined.role && heartbeatPayload?.role) combined.role = heartbeatPayload.role;
+            if (!combined.ip && heartbeatPayload?.ip) combined.ip = heartbeatPayload.ip;
+
+            if (typeof heartbeatPayload.cpu_usage === 'number') {
+                combined.system.cpu_usage = heartbeatPayload.cpu_usage;
+            }
+            if (typeof heartbeatPayload.memory_usage === 'number') {
+                combined.system.memory_used_gb = heartbeatPayload.memory_usage;
+            }
+            if (typeof heartbeatPayload.disk_free_gb === 'number') {
+                combined.system.disk_free_gb = heartbeatPayload.disk_free_gb;
+            }
+
+            const latestTimestamp = selectLatestTimestamp([
+                statusPayload?.timestamp,
+                statusPayload?.last_seen,
+                heartbeatPayload?.last_heartbeat
+            ]);
+
+            combined.timestamp = latestTimestamp || null;
+            combined.lastHeartbeat = heartbeatPayload?.last_heartbeat || latestTimestamp || combined.lastHeartbeat || null;
+
+            const candidates = [
+                normalizeStatus(heartbeatPayload?.status),
+                normalizeStatus(statusPayload?.status),
+                normalizeStatus(statusPayload?.state)
+            ].filter(Boolean);
+
+            combined.status = candidates[0] || 'offline';
+            combined.statusSources = {
+                status: statusPayload?.status || null,
+                state: statusPayload?.state || null,
+                heartbeat: heartbeatPayload?.status || null
+            };
+
+            return combined;
+        }
+
+        function getServerState(data = {}) {
+            const heartbeatTs = data.lastHeartbeat ? Date.parse(data.lastHeartbeat) : NaN;
+            const statusTs = data.timestamp ? Date.parse(data.timestamp) : NaN;
+            const freshestTs = Math.max(
+                Number.isFinite(statusTs) ? statusTs : -Infinity,
+                Number.isFinite(heartbeatTs) ? heartbeatTs : -Infinity
+            );
+            const hasFreshData = Number.isFinite(freshestTs) && freshestTs > 0;
+            const ageSeconds = hasFreshData ? Math.floor((Date.now() - freshestTs) / 1000) : Number.POSITIVE_INFINITY;
+
+            const normalized = normalizeStatus(data.status) || 'offline';
+            const presentation = STATUS_PRESENTATION[normalized] || STATUS_PRESENTATION.online;
+
+            let statusClass = presentation.className;
+            let statusText = presentation.text;
+
+            if (!hasFreshData) {
+                statusClass = 'status-offline';
+                statusText = 'Offline';
+            } else if (ageSeconds > OUTAGE_THRESHOLD_SECONDS) {
+                statusClass = 'status-offline';
+                statusText = 'Offline';
+            } else if (ageSeconds > STALE_THRESHOLD_SECONDS && presentation.className !== 'status-offline') {
+                statusClass = 'status-stale';
+                statusText = presentation.className === 'status-stale' ? presentation.text : `${presentation.text} (Stale)`;
+            }
+
+            const isStale = statusClass === 'status-stale';
+            const isOffline = statusClass === 'status-offline';
+
+            return {
+                statusClass,
+                statusText,
+                ageSeconds,
+                isOffline,
+                isStale,
+                normalizedStatus: normalized,
+                latestTimestamp: hasFreshData ? new Date(freshestTs).toISOString() : null
+            };
+        }
 
         async function fetchFile(path) {
             // Use raw.githubusercontent.com first for freshest data, skip CDN caching
@@ -547,54 +773,48 @@
             return `${Math.floor(diff / 86400)}d ago`;
         }
 
-        function getStatusClass(status, timestamp) {
-            if (!timestamp) return 'status-offline';
-            const age = (new Date() - new Date(timestamp)) / 1000;
-            if (age > 600) return 'status-offline'; // 10 min timeout
-            if (status === 'building' || status === 'running') return 'status-building';
-            if (status === 'idle' || status === 'success') return 'status-idle';
-            return 'status-online';
-        }
-
-        function getStatusText(status, timestamp) {
-            if (!timestamp) return 'Offline';
-            const age = (new Date() - new Date(timestamp)) / 1000;
-            if (age > 600) return 'Offline';
-            if (status === 'building' || status === 'running') return 'Building';
-            if (status === 'idle') return 'Idle';
-            if (status === 'success') return 'Online';
-            return status || 'Unknown';
-        }
-
         function renderServerInfo(serverId, data) {
             const indicator = document.getElementById(`${serverId}-indicator`);
             const infoDiv = document.getElementById(`${serverId}-info`);
-            
-            const statusClass = getStatusClass(data.status, data.timestamp);
-            const statusText = getStatusText(data.status, data.timestamp);
-            indicator.className = `status-indicator ${statusClass}`;
-            
+            const card = document.getElementById(`${serverId}-card`);
+
+            // Hide servers without valid IP addresses
+            if (!data.ip || data.ip === 'N/A' || data.ip.includes('xxx')) {
+                if (card) card.style.display = 'none';
+                return;
+            }
+            if (card) card.style.display = '';
+
+            const state = getServerState(data);
+            indicator.className = `status-indicator ${state.statusClass}`;
+
             const cpu = data.system?.cpu_usage?.toFixed(1) || 'N/A';
             const memory = data.system?.memory_used_gb?.toFixed(1) || 'N/A';
             const memoryTotal = data.capabilities?.memory_gb || '?';
             const disk = data.system?.disk_free_gb?.toFixed(0) || 'N/A';
             const cores = data.capabilities?.cores || 'N/A';
-            
+
             let statusValueClass = '';
-            if (statusText === 'Online' || statusText === 'Idle') statusValueClass = 'success';
-            else if (statusText === 'Building') statusValueClass = 'warning';
-            else if (statusText === 'Offline') statusValueClass = 'error';
-            
-            const ip = data.ip || 'N/A';
-            
-            infoDiv.innerHTML = `
+            if (state.statusClass === 'status-online' || state.statusClass === 'status-idle') statusValueClass = 'success';
+            else if (state.statusClass === 'status-building' || state.statusClass === 'status-stale') statusValueClass = 'warning';
+            else if (state.statusClass === 'status-offline') statusValueClass = 'error';
+
+            const ip = data.ip;            infoDiv.innerHTML = `
                 <div class="info-item">
                     <div class="info-label">IP Address</div>
                     <div class="info-value">${ip}</div>
                 </div>
                 <div class="info-item">
+                    <div class="info-label">Status</div>
+                    <div class="info-value ${statusValueClass}">${state.statusText}</div>
+                </div>
+                <div class="info-item">
                     <div class="info-label">Last Seen</div>
-                    <div class="info-value">${formatTime(data.timestamp)}</div>
+                    <div class="info-value">${formatTime(state.latestTimestamp || data.timestamp)}</div>
+                </div>
+                <div class="info-item">
+                    <div class="info-label">Last Heartbeat</div>
+                    <div class="info-value">${formatTime(data.lastHeartbeat)}</div>
                 </div>
                 <div class="info-item">
                     <div class="info-label">CPU Usage</div>
@@ -619,8 +839,12 @@
             const container = document.getElementById('healthMetrics');
             
             const serverList = [servers.build1, servers.build2, servers.build3, servers.build4, servers.code1, servers.code2];
-            const serversOnline = serverList.filter(s => getStatusClass(s.status, s.timestamp) !== 'status-offline').length;
-            const totalServers = serverList.length;
+            // Only count servers with valid IPs
+            const validServers = serverList.filter(s => s.ip && s.ip !== 'N/A' && !s.ip.includes('xxx'));
+            const states = validServers.map(s => getServerState(s));
+            const serversOnline = states.filter(state => !state.isOffline).length;
+            const staleServers = states.filter(state => state.isStale && !state.isOffline).length;
+            const totalServers = validServers.length;
             
             const totalCpu = serverList.reduce((sum, s) => sum + (s.system?.cpu_usage || 0), 0);
             const avgCpu = serverList.length > 0 ? totalCpu / serverList.length : 0;
@@ -634,6 +858,7 @@
                 <div class="metric">
                     <div class="metric-value ${serversOnline === totalServers ? 'success' : serversOnline > 0 ? 'warning' : 'error'}">${serversOnline}/${totalServers}</div>
                     <div class="metric-label">Servers Online</div>
+                    ${staleServers > 0 ? `<div class="metric-sublabel">${staleServers} stale checks</div>` : ''}
                 </div>
                 <div class="metric">
                     <div class="metric-value">${uptime}</div>
@@ -654,12 +879,26 @@
         function renderMessageMetrics(messages) {
             const container = document.getElementById('messageMetrics');
             
-            const total = messages?.length || 0;
-            const unread = messages?.filter(m => !m.read)?.length || 0;
-            const last24h = messages?.filter(m => {
-                const age = (new Date() - new Date(m.timestamp)) / 1000;
+            const allMessages = messages || [];
+            const total = allMessages.length;
+            const unreadMessages = allMessages.filter(m => m.read === false || !m.read);
+            const unread = unreadMessages.length;
+            
+            // Find oldest unread message
+            let oldestUnreadAge = 0;
+            if (unreadMessages.length > 0) {
+                const oldestUnread = unreadMessages.reduce((oldest, msg) => {
+                    const msgTime = new Date(msg.timestamp);
+                    const oldestTime = new Date(oldest.timestamp);
+                    return msgTime < oldestTime ? msg : oldest;
+                });
+                oldestUnreadAge = (Date.now() - new Date(oldestUnread.timestamp)) / 1000 / 3600; // hours
+            }
+            
+            const last24h = allMessages.filter(m => {
+                const age = (Date.now() - new Date(m.timestamp)) / 1000;
                 return age < 86400;
-            })?.length || 0;
+            }).length;
             const readPercent = total > 0 ? (((total - unread) / total) * 100).toFixed(0) : 0;
             
             container.innerHTML = `
@@ -670,6 +909,7 @@
                 <div class="metric">
                     <div class="metric-value ${unread > 10 ? 'warning' : ''}">${unread}</div>
                     <div class="metric-label">Unread</div>
+                    ${oldestUnreadAge > 1 ? `<div class="metric-sublabel" style="color: ${oldestUnreadAge > 24 ? '#f85149' : '#d29922'};">${oldestUnreadAge.toFixed(1)}h old</div>` : ''}
                 </div>
                 <div class="metric">
                     <div class="metric-value">${last24h}</div>
@@ -724,25 +964,54 @@
             };
             
             Object.entries(servers).forEach(([id, data]) => {
-                if (getStatusClass(data.status, data.timestamp) === 'status-offline') {
+                // Skip servers without valid IPs
+                if (!data.ip || data.ip === 'N/A' || data.ip.includes('xxx')) return;
+                
+                const state = getServerState(data);
+                if (state.isOffline) {
                     alerts.push({
                         type: 'error',
                         icon: '🔴',
                         title: `${serverNames[id]} Offline`,
-                        time: formatTime(data.timestamp)
+                        time: formatTime(state.latestTimestamp || data.timestamp)
+                    });
+                } else if (state.isStale) {
+                    alerts.push({
+                        type: 'warning',
+                        icon: '🟠',
+                        title: `${serverNames[id]} status stale`,
+                        time: formatTime(state.latestTimestamp || data.timestamp)
                     });
                 }
             });
             
-            // Check unread messages
-            const unread = messages?.filter(m => !m.read)?.length || 0;
-            if (unread > 15) {
-                alerts.push({
-                    type: 'warning',
-                    icon: '⚠️',
-                    title: `${unread} unread messages pending review`,
-                    time: 'Now'
+            // Check unread messages with time threshold
+            const unreadMessages = messages?.filter(m => m.read === false || !m.read) || [];
+            const unread = unreadMessages.length;
+            
+            if (unreadMessages.length > 0) {
+                const oldestUnread = unreadMessages.reduce((oldest, msg) => {
+                    const msgTime = new Date(msg.timestamp);
+                    const oldestTime = new Date(oldest.timestamp);
+                    return msgTime < oldestTime ? msg : oldest;
                 });
+                const hoursOld = (Date.now() - new Date(oldestUnread.timestamp)) / 1000 / 3600;
+                
+                if (hoursOld > 1) {
+                    alerts.push({
+                        type: hoursOld > 24 ? 'error' : 'warning',
+                        icon: hoursOld > 24 ? '🚨' : '⚠️',
+                        title: `${unread} unread messages (oldest: ${hoursOld.toFixed(1)}h)`,
+                        time: formatTime(oldestUnread.timestamp)
+                    });
+                } else if (unread > 15) {
+                    alerts.push({
+                        type: 'warning',
+                        icon: '📨',
+                        title: `${unread} unread messages pending review`,
+                        time: 'Now'
+                    });
+                }
             }
             
             // Check job queue
@@ -786,28 +1055,49 @@
             contentEl.style.display = 'none';
             
             try {
-                const [build1Status, build2Status, build3Status, build4Status, code1Status, code2Status, messagesData, jobsData] = await Promise.all([
-                    fetchFile('build1/status.json').catch(() => ({ status: 'offline', timestamp: null })),
-                    fetchFile('build2/status.json').catch(() => ({ status: 'offline', timestamp: null })),
-                    fetchFile('build3/status.json').catch(() => ({ status: 'offline', timestamp: null })),
-                    fetchFile('build4/status.json').catch(() => ({ status: 'offline', timestamp: null })),
-                    fetchFile('code1/status.json').catch(() => ({ status: 'offline', timestamp: null })),
-                    fetchFile('code2/status.json').catch(() => ({ status: 'offline', timestamp: null })),
+                const [
+                    build1Status, build1Heartbeat,
+                    build2Status, build2Heartbeat,
+                    build3Status, build3Heartbeat,
+                    build4Status, build4Heartbeat,
+                    code1Status, code1Heartbeat,
+                    code2Status, code2Heartbeat,
+                    messagesData, jobsData
+                ] = await Promise.all([
+                    fetchFile(SERVER_CONFIG.build1.statusPath).catch(() => ({})),
+                    fetchFile(SERVER_CONFIG.build1.heartbeatPath).catch(() => ({})),
+                    fetchFile(SERVER_CONFIG.build2.statusPath).catch(() => ({})),
+                    fetchFile(SERVER_CONFIG.build2.heartbeatPath).catch(() => ({})),
+                    fetchFile(SERVER_CONFIG.build3.statusPath).catch(() => ({})),
+                    fetchFile(SERVER_CONFIG.build3.heartbeatPath).catch(() => ({})),
+                    fetchFile(SERVER_CONFIG.build4.statusPath).catch(() => ({})),
+                    fetchFile(SERVER_CONFIG.build4.heartbeatPath).catch(() => ({})),
+                    fetchFile(SERVER_CONFIG.code1.statusPath).catch(() => ({})),
+                    fetchFile(SERVER_CONFIG.code1.heartbeatPath).catch(() => ({})),
+                    fetchFile(SERVER_CONFIG.code2.statusPath).catch(() => ({})),
+                    fetchFile(SERVER_CONFIG.code2.heartbeatPath).catch(() => ({})),
                     fetchFile('coordination/messages.json').then(d => d.messages || []).catch(() => []),
                     fetchFile('coordination/jobs.json').then(d => d.jobs || []).catch(() => [])
                 ]);
-                
-                const servers = { build1: build1Status, build2: build2Status, build3: build3Status, build4: build4Status, code1: code1Status, code2: code2Status };
+
+                const servers = {
+                    build1: combineServerData(build1Status, build1Heartbeat),
+                    build2: combineServerData(build2Status, build2Heartbeat),
+                    build3: combineServerData(build3Status, build3Heartbeat),
+                    build4: combineServerData(build4Status, build4Heartbeat),
+                    code1: combineServerData(code1Status, code1Heartbeat),
+                    code2: combineServerData(code2Status, code2Heartbeat)
+                };
                 
                 // Store server data globally for chart updates
                 window._lastServerData = servers;
                 
-                renderServerInfo('build1', build1Status);
-                renderServerInfo('build2', build2Status);
-                renderServerInfo('build3', build3Status);
-                renderServerInfo('build4', build4Status);
-                renderServerInfo('code1', code1Status);
-                renderServerInfo('code2', code2Status);
+                renderServerInfo('build1', servers.build1);
+                renderServerInfo('build2', servers.build2);
+                renderServerInfo('build3', servers.build3);
+                renderServerInfo('build4', servers.build4);
+                renderServerInfo('code1', servers.code1);
+                renderServerInfo('code2', servers.code2);
                 renderHealthMetrics(servers, messagesData, jobsData);
                 renderMessageMetrics(messagesData);
                 renderJobMetrics(jobsData);
@@ -925,33 +1215,64 @@
         
         // Browser notifications
         let notificationsEnabled = false;
-        
+        const notificationSupported = 'Notification' in window;
+
+        function updateNotificationButton() {
+            const button = document.getElementById('notif-btn');
+            if (!button) return;
+            if (!notificationSupported) {
+                const icon = button.querySelector('.btn-icon');
+                const text = button.querySelector('.btn-text');
+                if (icon) icon.textContent = '🚫';
+                if (text) text.textContent = 'Alerts Unavailable';
+                button.disabled = true;
+                button.removeAttribute('aria-pressed');
+                button.setAttribute('aria-label', 'Browser notifications not supported');
+                return;
+            }
+            const icon = button.querySelector('.btn-icon');
+            const text = button.querySelector('.btn-text');
+            const isEnabled = notificationsEnabled;
+            if (icon) icon.textContent = isEnabled ? '🔕' : '🔔';
+            if (text) text.textContent = isEnabled ? 'Disable Alerts' : 'Enable Alerts';
+            button.setAttribute('aria-pressed', isEnabled ? 'true' : 'false');
+            button.setAttribute('aria-label', isEnabled ? 'Disable notifications' : 'Enable notifications');
+        }
+
         function toggleNotifications() {
-            if (!('Notification' in window)) {
+            if (!notificationSupported) {
                 alert('Browser notifications not supported');
                 return;
             }
             
             if (Notification.permission === 'granted') {
                 notificationsEnabled = !notificationsEnabled;
-                document.getElementById('notif-btn').textContent = notificationsEnabled ? '🔕 Disable Alerts' : '🔔 Enable Alerts';
-                localStorage.setItem('notifications', notificationsEnabled);
+                localStorage.setItem('notifications', notificationsEnabled ? 'true' : 'false');
+                updateNotificationButton();
             } else if (Notification.permission !== 'denied') {
                 Notification.requestPermission().then(permission => {
                     if (permission === 'granted') {
                         notificationsEnabled = true;
-                        document.getElementById('notif-btn').textContent = '🔕 Disable Alerts';
                         localStorage.setItem('notifications', 'true');
+                        updateNotificationButton();
                         new Notification('Build Dashboard', { body: 'Notifications enabled!' });
+                    } else {
+                        notificationsEnabled = false;
+                        localStorage.setItem('notifications', 'false');
+                        updateNotificationButton();
                     }
                 });
+            } else {
+                alert('Notifications blocked. Enable them in your browser settings.');
             }
         }
         
         // Load notification preference
-        if (localStorage.getItem('notifications') === 'true' && Notification.permission === 'granted') {
+        if (notificationSupported && localStorage.getItem('notifications') === 'true' && Notification.permission === 'granted') {
             notificationsEnabled = true;
-            document.getElementById('notif-btn').textContent = '🔕 Disable Alerts';
+            updateNotificationButton();
+        } else {
+            updateNotificationButton();
         }
         
         // Server filtering
@@ -1072,17 +1393,17 @@
             if (!notificationsEnabled) return;
             
             Object.entries(servers).forEach(([id, data]) => {
-                const status = getStatusClass(data.status, data.timestamp);
+                const state = getServerState(data);
                 const cpu = data.system?.cpu_usage || 0;
                 const disk = data.system?.disk_free_gb || 100;
                 
-                if (status === 'status-offline' && !data._notified_offline) {
+                if (state.isOffline && !data._notified_offline) {
                     new Notification('⚠️ Server Offline', { 
                         body: `${id.toUpperCase()} is offline`,
                         icon: '/favicon.ico'
                     });
                     data._notified_offline = true;
-                } else if (status !== 'status-offline') {
+                } else if (!state.isOffline) {
                     data._notified_offline = false;
                 }
                 
