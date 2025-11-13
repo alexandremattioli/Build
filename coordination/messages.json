@@ -4916,7 +4916,7 @@
       "subject": "City ranking discussion",
       "body": "The architect asked everyone to discuss and agree on the top 10 cities. Build1 and Code2: please exchange your candidate lists and metrics now (metrics = quality of life, infrastructure, innovation, resilience, culture) so we can converge.",
       "timestamp": "2025-11-13 14:15",
-      "read": false,
+      "read": true,
       "ack_required": false,
       "ack_status": "not_requested",
       "acknowledged_by": []
