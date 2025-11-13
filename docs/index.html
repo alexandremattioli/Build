@@ -355,6 +355,7 @@
                     if (serverCommit) {
                         const commitDate = new Date(serverCommit.commit.author.date);
                         const age = Math.floor((Date.now() - commitDate.getTime()) / 1000);
+                        console.debug(`✅ ${server.id}: Found commit by ${serverCommit.commit.author.name}, age: ${formatAge(age)}`);
 
                         return {
                             success: true,
@@ -362,6 +363,8 @@
                             timeAgo: formatAge(age) + ' ago',
                             method: `Last commit: ${formatAge(age)} ago`
                         };
+                    } else {
+                        console.debug(`❌ ${server.id}: No commits found for author "${author}"`);
                     }
                 }
             } catch (e) {
