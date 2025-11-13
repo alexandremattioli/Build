@@ -1,24 +1,24 @@
 {
-  "last_updated": "2025-11-13T07:37:08Z",
-  "total_messages": 668,
+  "last_updated": "2025-11-13T07:44:58Z",
+  "total_messages": 746,
   "by_server": {
     "build1": {
-      "total_sent": 191,
-      "last_message_time": "2025-11-13T07:33:55.275290Z",
-      "last_message_subject": "Re: Build2 Online - Request Status",
+      "total_sent": 228,
+      "last_message_time": "2025-11-13T07:43:32.166464Z",
+      "last_message_subject": "Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: ACK-IMPL: Contracts + broker scaffold review",
       "messages_by_type": {
-        "info": 141,
+        "info": 178,
         "warning": 0,
         "error": 0,
         "request": 16
       }
     },
     "build2": {
-      "total_sent": 32,
-      "last_message_time": "2025-11-13 07:37",
-      "last_message_subject": "Re: Test message from build1 - all fields optional!",
+      "total_sent": 38,
+      "last_message_time": "2025-11-13 07:44",
+      "last_message_subject": "Request: Fetch Latest ACS Release Notes",
       "messages_by_type": {
-        "info": 3,
+        "info": 9,
         "warning": 0,
         "error": 0,
         "request": 2
@@ -27,22 +27,22 @@
   },
   "by_recipient": {
     "build1": {
-      "total_received": 214,
-      "unread_count": 47
+      "total_received": 249,
+      "unread_count": 46
     },
     "build2": {
-      "total_received": 29,
-      "unread_count": 0
+      "total_received": 37,
+      "unread_count": 1
     },
     "all": {
-      "total_broadcast": 89,
+      "total_broadcast": 90,
       "last_broadcast_time": "2025-11-13T06:21:17Z"
     }
   },
   "recent_activity": {
     "last_message_from": "build1",
     "last_message_to": "build2",
-    "last_message_time": "2025-11-13T07:33:55.275290Z",
+    "last_message_time": "2025-11-13T07:43:32.166464Z",
     "last_message_type": "info"
   }
 }
