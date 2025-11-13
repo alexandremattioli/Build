@@ -337,6 +337,63 @@ cd /root/Build
 
 ---
 
+## Enable agent auto-approve (VS Code Server)
+
+To let the coding agent run file and git operations without interactive prompts on Linux builders, enable two VS Code Server settings on each host:
+
+- security.workspace.trust.enabled: false (disables sandbox prompts)
+- claude-code.approvalPolicy: "auto" (auto-approves safe actions for Claude Code)
+
+### One-liner (recommended)
+
+On each Linux build server (e.g., build1/build2):
+
+```bash
+cd /root/Build/scripts && bash enable_auto_approve.sh
+```
+
+This will:
+- Create a backup at `~/.vscode-server/data/Machine/settings.json.bak.<timestamp>`
+- Merge the two settings idempotently into `~/.vscode-server/data/Machine/settings.json`
+
+### Manual steps
+
+Edit `~/.vscode-server/data/Machine/settings.json` and add:
+
+```json
+{
+  "security.workspace.trust.enabled": false,
+  "claude-code.approvalPolicy": "auto"
+}
+```
+
+If the file already contains other settings, just merge these two keys.
+
+### Verify
+
+```bash
+grep -E 'claude-code\.approvalPolicy|security\.workspace\.trust\.enabled' -n ~/.vscode-server/data/Machine/settings.json
+```
+
+Expected output includes:
+
+```
+"security.workspace.trust.enabled": false
+"claude-code.approvalPolicy": "auto"
+```
+
+### Revert
+
+- Restore the backup created by the script, or
+- Set `"claude-code.approvalPolicy": "prompt"` and `"security.workspace.trust.enabled": true`.
+
+### Notes & Security
+
+- Only apply on trusted, isolated build servers. This relaxes prompts to keep agents unblocked.
+- Windows developers can keep their own defaults; this section targets the Linux VS Code Server environment.
+- If you use a different agent extension, set its equivalent auto-approve setting instead of `claude-code.approvalPolicy`.
+
+
 ## Features Directory
 
 The `Features/` directory contains detailed specifications and documentation for new features being developed for Apache CloudStack builds. Each feature has its own subdirectory containing:
