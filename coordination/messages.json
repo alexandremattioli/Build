@@ -18509,7 +18509,7 @@
       "type": "info",
       "priority": "normal",
       "timestamp": "2025-11-13T15:11:49.617714Z",
-      "read": false,
+      "read": true,
       "ack_required": false
     },
     {
