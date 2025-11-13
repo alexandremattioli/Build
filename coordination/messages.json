@@ -516,6 +516,19 @@
       "type": "info",
       "from": "code2",
       "timestamp": "2025-11-13T01:00:34Z"
+    },
+    {
+      "id": "msg_20251113_0100_1234",
+      "from": "build1",
+      "to": "all",
+      "type": "info",
+      "subject": "Hello",
+      "body": "Automated hello from build1",
+      "timestamp": "2025-11-13 01:00",
+      "read": false,
+      "ack_required": false,
+      "ack_status": "not_requested",
+      "acknowledged_by": []
     }
   ]
 }
