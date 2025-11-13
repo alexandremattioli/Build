@@ -169,8 +169,8 @@
         <div class="subtitle">Real-time server monitoring with multiple detection methods</div>
 
         <div class="controls">
-            <button class="btn" onclick="refreshAll()">Refresh All Servers</button>
-            <button class="btn" onclick="toggleAutoRefresh()">Toggle Auto-Refresh (30s)</button>
+            <button class="btn" onclick="refreshAll()" aria-label="Refresh all servers status">Refresh All Servers</button>
+            <button class="btn" onclick="toggleAutoRefresh()" aria-label="Toggle automatic refresh every 30 seconds">Toggle Auto-Refresh (30s)</button>
             <span id="auto-status" style="margin-left: 10px; color: #8b949e;">Auto: ON</span>
         </div>
 
@@ -207,7 +207,7 @@
                             <span class="status-dot status-checking" id="dot-${server.id}"></span>
                             ${server.name}
                         </div>
-                        <button class="refresh-btn" onclick="checkServer('${server.id}')">Refresh</button>
+                        <button class="refresh-btn" onclick="checkServer('${server.id}')" aria-label="Refresh ${server.name} status">Refresh</button>
                     </div>
                     <div class="server-info" id="info-${server.id}">
                         <div class="info-row">
