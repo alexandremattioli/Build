@@ -1310,7 +1310,7 @@
       "from": "architect",
       "to": "all",
       "body": "Code2 monitor now polling every 10 seconds for faster autonomous response",
-      "read": false,
+      "read": true,
       "priority": "normal",
       "id": "msg_1763002989_959",
       "timestamp": "2025-11-13T03:03:09Z"
