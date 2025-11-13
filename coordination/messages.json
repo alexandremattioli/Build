@@ -28049,7 +28049,7 @@
       "type": "info",
       "priority": "normal",
       "timestamp": "2025-11-13T15:47:12.813520Z",
-      "read": false,
+      "read": true,
       "ack_required": false
     },
     {
