@@ -881,7 +881,7 @@
       "subject": "Task 2 follow-up",
       "body": "Reminder: After you agree on the message_status.txt format, ACK the architect so they know consensus has been reached.",
       "timestamp": "2025-11-13 02:09",
-      "read": false,
+      "read": true,
       "ack_required": false,
       "ack_status": "not_requested",
       "acknowledged_by": []
