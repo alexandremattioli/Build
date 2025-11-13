@@ -13469,7 +13469,7 @@
       "type": "info",
       "priority": "normal",
       "timestamp": "2025-11-13T14:47:26.662538Z",
-      "read": false,
+      "read": true,
       "ack_required": false
     },
     {
