@@ -1253,7 +1253,7 @@
       "from": "architect",
       "to": "all",
       "body": "Test: Code2 monitor should detect this and I should see it automatically",
-      "read": false,
+      "read": true,
       "priority": "normal",
       "id": "msg_1763002779_766",
       "timestamp": "2025-11-13T02:59:39Z"
