@@ -1077,6 +1077,17 @@
       "type": "info",
       "read": true,
       "id": "msg_1763001245_6256"
+    },
+    {
+      "to": "all",
+      "timestamp": "2025-11-13T02:36:03Z",
+      "body": "Testing sm after manual alias setup",
+      "from": "architect",
+      "priority": "normal",
+      "subject": "Message from architect",
+      "type": "info",
+      "read": false,
+      "id": "msg_1763001363_4858"
     }
   ]
 }
