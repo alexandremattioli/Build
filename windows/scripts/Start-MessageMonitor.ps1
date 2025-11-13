@@ -185,10 +185,47 @@ while ($true) {
     try {
         $iteration++
         
-        # Pull latest changes
+        # Check for git lock and remove if stale
+        $gitLock = Join-Path $BuildRepoPath ".git\index.lock"
+        if (Test-Path $gitLock) {
+            $lockAge = (Get-Date) - (Get-Item $gitLock).LastWriteTime
+            if ($lockAge.TotalMinutes -gt 2) {
+                Write-Host "[$(Get-Date -Format 'HH:mm:ss')] Removing stale git lock (age: $($lockAge.TotalMinutes) min)" -ForegroundColor Yellow
+                Remove-Item $gitLock -Force -ErrorAction SilentlyContinue
+            }
+        }
+        
+        # Pull latest changes with retry
         Push-Location $BuildRepoPath
-        $pullOutput = git pull origin main 2>&1
+        $pullAttempts = 0
+        $pullSuccess = $false
+        $pullOutput = ""
+        
+        while (-not $pullSuccess -and $pullAttempts -lt 3) {
+            $pullAttempts++
+            try {
+                $pullOutput = git pull origin main 2>&1
+                if ($LASTEXITCODE -eq 0) {
+                    $pullSuccess = $true
+                }
+                else {
+                    Write-Host "[$(Get-Date -Format 'HH:mm:ss')] Pull attempt $pullAttempts failed, retrying..." -ForegroundColor Yellow
+                    Start-Sleep -Seconds 2
+                }
+            }
+            catch {
+                Write-Host "[$(Get-Date -Format 'HH:mm:ss')] Pull error: $_" -ForegroundColor Red
+                Start-Sleep -Seconds 2
+            }
+        }
+        
         Pop-Location
+        
+        if (-not $pullSuccess) {
+            Write-Host "[$(Get-Date -Format 'HH:mm:ss')] Failed to pull after 3 attempts, skipping this cycle" -ForegroundColor Red
+            Start-Sleep -Seconds $IntervalSeconds
+            continue
+        }
         
         $hasGitUpdate = $pullOutput -match "Updating|Fast-forward"
         if ($hasGitUpdate) {
@@ -228,7 +265,15 @@ $($msg.body)
             Write-Host "`n=== Found $($unreadMessages.Count) unread message(s) ===" -ForegroundColor Yellow
             
             foreach ($msg in $unreadMessages) {
-                Process-Message -Message $msg
+                try {
+                    Process-Message -Message $msg
+                }
+                catch {
+                    Write-Host "[$(Get-Date -Format 'HH:mm:ss')] Error processing message $($msg.id): $_" -ForegroundColor Red
+                    # Log error but continue with other messages
+                    $errorLog = Join-Path $BuildRepoPath "$ServerId\logs\errors.log"
+                    Add-Content -Path $errorLog -Value "[$(Get-Date -Format 'yyyy-MM-dd HH:mm:ss')] Error processing $($msg.id): $_`n"
+                }
             }
             
             # Update last message time
@@ -242,14 +287,24 @@ $($msg.body)
             if ($timeSinceLastMessage.TotalMinutes -ge 2 -and $timeSinceLastHeartbeat.TotalMinutes -ge 2) {
                 Write-Host "[$(Get-Date -Format 'HH:mm:ss')] No messages for 2 minutes - sending heartbeat" -ForegroundColor Cyan
                 
-                # Send heartbeat
-                try {
-                    & "$BuildRepoPath\windows\scripts\Send-Heartbeat.ps1" -BuildRepoPath $BuildRepoPath
-                    $lastHeartbeatTime = Get-Date
-                    $lastMessageTime = Get-Date  # Reset to avoid immediate next heartbeat
+                # Send heartbeat with retry
+                $heartbeatSuccess = $false
+                for ($hbAttempt = 1; $hbAttempt -le 2; $hbAttempt++) {
+                    try {
+                        & "$BuildRepoPath\windows\scripts\Send-Heartbeat.ps1" -BuildRepoPath $BuildRepoPath
+                        $lastHeartbeatTime = Get-Date
+                        $lastMessageTime = Get-Date  # Reset to avoid immediate next heartbeat
+                        $heartbeatSuccess = $true
+                        break
+                    }
+                    catch {
+                        Write-Host "Heartbeat attempt $hbAttempt failed: $_" -ForegroundColor Red
+                        if ($hbAttempt -lt 2) { Start-Sleep -Seconds 5 }
+                    }
                 }
-                catch {
-                    Write-Host "Failed to send heartbeat: $_" -ForegroundColor Red
+                
+                if (-not $heartbeatSuccess) {
+                    Write-Host "[$(Get-Date -Format 'HH:mm:ss')] All heartbeat attempts failed" -ForegroundColor Red
                 }
             }
             elseif ($iteration % 10 -eq 0) {
