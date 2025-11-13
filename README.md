@@ -763,3 +763,116 @@ Set-Location "K:\Projects\Build"
 - Not committed to Git (`.secrets` is ignored)
 
 After saving, all remote commands will use the stored credential automatically.
+
+
+## Architect Monitoring & Communication Guidelines
+
+### How the Architect Monitors All Messages
+
+The architect has full visibility into ALL messages sent between servers in the Build coordination system. Nothing is hidden - complete transparency for project oversight.
+
+**Quick Status Check:**
+- GitHub status file (updates after every message): https://github.com/alexandremattioli/Build/blob/main/message_status.txt
+- Shows message counts, timestamps, unread counts, and AI agent status for all servers
+- Always current within 60 seconds (automatic update after each message + 1-minute cron backup)
+
+**Detailed Monitoring Methods:**
+
+1. **Check Messages Command (cm)** - Available on any build server:
+   ```bash
+   cd /root/Build
+   cm --limit 20 -v          # Last 20 messages with full details
+   cm --to architect -v      # All messages TO architect
+   cm --from build1 -v       # All messages FROM build1
+   ```
+
+2. **Direct JSON Access** - For advanced queries:
+   ```bash
+   # Count total messages
+   jq '.messages | length' /root/Build/coordination/messages.json
+
+   # View last 5 messages
+   jq '.messages | last(5)' /root/Build/coordination/messages.json
+
+   # Filter messages to architect
+   jq '.messages[] | select(.to == "architect")' /root/Build/coordination/messages.json
+   ```
+
+3. **GitHub Repository Watch** - Real-time notifications:
+   - Go to https://github.com/alexandremattioli/Build
+   - Click "Watch" → "All Activity"
+   - Receive notifications for every commit (which happens on every message)
+
+
+### How Servers Communicate with the Architect
+
+Any server can proactively send status updates, reports, or alerts to the architect:
+
+```bash
+# Status report
+sm build1 architect info "Daily Status" "Codex agent: operational, Messages: 421, Packages: 25 updates"
+
+# Error alert
+sm code2 architect error "Deployment Failed" "Agent script deployment failed: SSH host key verification failed"
+
+# Request for guidance
+sm build2 architect request "Git Conflicts" "Experiencing frequent git conflicts during message sends. Recommend Redis queue?"
+```
+
+**Message Types:**
+- `info`: General updates, status reports
+- `warning`: Issues that need attention but not critical
+- `error`: Critical failures requiring immediate action
+- `request`: Asking architect for guidance/approval
+
+
+### IMPORTANT: Respond to ANY Message You Can Help With
+
+**Even if a message is not addressed to you, feel free to respond if you deem appropriate. Use your best judgment.**
+
+**When to respond to messages not for you:**
+- You have expertise on the topic being discussed
+- You can provide helpful information or clarification
+- You notice an error or issue that needs correction
+- You can offer assistance to resolve a problem
+- The conversation affects your work or responsibilities
+
+**Example:**
+```bash
+# Build2 asks architect about package conflicts
+# Original: "build2 -> architect: Need help with package conflicts"
+
+# Build1 can jump in to help:
+sm build1 build2 info "Re: Package conflicts" "BUILD1: I recently resolved similar apt conflicts. Run 'apt --fix-broken install' then retry. Happy to help if needed."
+```
+
+**This promotes:**
+- Collaborative problem-solving
+- Knowledge sharing across servers
+- Faster issue resolution
+- Better team coordination
+
+
+### Best Practices for Server Communication
+
+1. **Send Regular Status Updates** - Keep architect informed of operational status
+2. **Alert on Important Events** - Agent deployments, errors, system changes
+3. **Use Clear, Descriptive Subjects** - Max 200 characters, summarize the message
+4. **Include Relevant Details in Body** - Full context for decision making
+5. **Respond Promptly to Architect Requests** - Acknowledge and execute quickly
+
+
+### Transparency Guarantee
+
+- Every message is logged in git with full history
+- All timestamps are immutable
+- Message body is never truncated in storage
+- Deletions leave audit trail
+- Git provides complete version history
+
+**The architect sees EVERYTHING:**
+✅ Every message sent
+✅ Every message received
+✅ Complete message history
+✅ Real-time updates via GitHub
+✅ Full transparency - nothing hidden
