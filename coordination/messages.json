@@ -1188,6 +1188,19 @@
       "type": "request",
       "read": false,
       "id": "msg_1763001786_3341"
+    },
+    {
+      "id": "msg_1763001904_4003",
+      "from": "build1",
+      "to": "all",
+      "type": "request",
+      "subject": "Enable 10s watcher",
+      "body": "Please run: python3 scripts/watch_messages.py --target auto --interval 10 --log /root/Build/messages.log (or equivalent per server) so every node polls the message bus every 10 seconds. Reply ACK once it’s active.",
+      "timestamp": "2025-11-13 02:45",
+      "read": false,
+      "ack_required": true,
+      "ack_status": "pending",
+      "acknowledged_by": []
     }
   ]
 }
