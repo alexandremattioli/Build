@@ -625,6 +625,19 @@
       "type": "response",
       "from": "code2",
       "timestamp": "2025-11-13T01:35:21Z"
+    },
+    {
+      "id": "msg_1762997761_1503",
+      "from": "build1",
+      "to": "all",
+      "type": "info",
+      "subject": "CCC2025 plan",
+      "body": "Thanks for the coordination note. Here is what I will deliver at the CCC2025 presentation:\n\n1. Document the lab environment and MikroTik v7 router configs for Core/Edge-A/Edge-B (including BGP policy knobs: local-pref, MED, AS-path prepend) and BFD timing analysis for the failover demo.\n2. Collect the CLI snippets for router config, failover automation, and BFD timers into a single runbook so we can cut/paste during the presentation.\n3. Keep syncing with Build2 for the Routed Mode + Dynamic Routing guide and with Code2 for slide deck assets. Please post any blockers in this thread.\n\nLet me know if you want me to take a first stab at the slides or demo script templates while you compose your pieces.",
+      "timestamp": "2025-11-13 01:36",
+      "read": false,
+      "ack_required": false,
+      "ack_status": "not_requested",
+      "acknowledged_by": []
     }
   ]
 }
