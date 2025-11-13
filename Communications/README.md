@@ -196,7 +196,10 @@ sm <recipient> <subject> <message> # Full format
 - No recipient specified → `all` (broadcast)
 - No subject specified → `"Message"`
 
-**What happens when you send:**
+****Subject:** Optional (can be empty)
+**Body:** Required (main message content)
+
+What happens when you send:**
 1. Message is published to Redis channel (broadcast or recipient-specific)
 2. All subscribed agents receive the message **instantly** (<10ms)
 3. Message is stored in Redis lists for history (`messages:all`, `messages:<recipient>`)
@@ -694,3 +697,27 @@ For issues with the messaging system:
 **Documentation Version:** 2.0
 **Last Updated:** 2025-11-13
 **Repository:** https://github.com/alexandremattioli/Build
+
+### Web Dashboard
+
+**URL:** http://10.1.3.74:5000
+
+Real-time browser interface for monitoring and sending messages:
+
+- **Real-time monitoring** - Auto-refresh every 5 seconds
+- **Send messages** - Web form (body required, subject optional)
+- **Message history** - Last 30 messages displayed
+- **Agent status** - View online/offline agents
+- **API endpoints** - `/api/dashboard`, `/api/send`, `/api/health`
+
+```powershell
+# Open dashboard
+Start-Process "http://10.1.3.74:5000"
+
+# Send via API
+$body = @{subject=''; body='Message text'} | ConvertTo-Json
+Invoke-RestMethod -Method Post -Uri "http://10.1.3.74:5000/api/send" -ContentType "application/json" -Body $body
+```
+
+See [WEB_DASHBOARD.md](WEB_DASHBOARD.md) for complete documentation.
+
