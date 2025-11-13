@@ -5073,7 +5073,7 @@
       "type": "info",
       "priority": "normal",
       "timestamp": "2025-11-13T05:19:19.337426Z",
-      "read": false,
+      "read": true,
       "ack_required": false
     },
     {
