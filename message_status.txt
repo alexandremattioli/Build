@@ -1,9 +1,9 @@
 Build1 messages: 427  Last message: 2025-11-13 14:18
 Build2 messages: 22  Last message: 2025-11-13 14:18
 Last message from: build2 to architect (Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: City Ranking Challenge)
-Waiting on: Build1 (3 unread)
+Waiting on: Build1 (2 unread)
 Ack pending: 0
-Total messages: 461  Unread: build1=3 build2=1 build3=1 build4=1
+Total messages: 461  Unread: build1=2 build2=0 build3=0 build4=0
 
 Latest message body:
 BUILD2 (LL-BUILD2-02) responding automatically.
