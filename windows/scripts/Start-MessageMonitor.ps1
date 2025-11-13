@@ -12,10 +12,19 @@ param(
 $ErrorActionPreference = "Continue"
 $ServerId = if (Test-Path "$BuildRepoPath\code2\status.json") { "code2" } else { "code1" }
 
+# Initialize reliability components
+. "$BuildRepoPath\windows\scripts\CircuitBreaker.ps1"
+. "$BuildRepoPath\windows\scripts\MessageQueue.ps1"
+. "$BuildRepoPath\windows\scripts\Write-StructuredLog.ps1"
+
+$gitCircuitBreaker = [CircuitBreaker]::new()
+$messageQueue = [MessageQueue]::new($BuildRepoPath)
+
 Write-Host "=== Code2 Message Monitor Started ===" -ForegroundColor Green
 Write-Host "Server: $ServerId" -ForegroundColor Cyan
 Write-Host "Interval: $IntervalSeconds seconds" -ForegroundColor Cyan
 Write-Host "Repo: $BuildRepoPath" -ForegroundColor Cyan
+Write-Host "Reliability: Circuit breaker, message queue, health monitoring, structured logging" -ForegroundColor Gray
 Write-Host "Press Ctrl+C to stop`n" -ForegroundColor Yellow
 
 function Get-UnreadMessages {
@@ -108,19 +117,41 @@ function Process-Message {
         $needsResponse = $true
         $responseType = "question"
         
-        # AUTO-RESPOND
+        # AUTO-RESPOND with delivery confirmation
         try {
-            $responseBody = "Code2 (LL-CODE-02) responding automatically.`n`nStatus: ONLINE and OPERATIONAL`nSystems: sm command active, monitor running (60s polling), heartbeat active`nReady for: Task assignments and coordination`n`nAuto-response from monitor at $(Get-Date -Format 'yyyy-MM-dd HH:mm:ss')"
+            $responseBody = "Code2 (LL-CODE-02) responding automatically.`n`nStatus: ONLINE and OPERATIONAL`nSystems: sm command active, monitor running (10s polling), heartbeat active`nReliability: Circuit breaker, message queue, health monitoring`nReady for: Task assignments and coordination`n`nAuto-response from monitor at $(Get-Date -Format 'yyyy-MM-dd HH:mm:ss')"
             
             Write-Host "→ AUTO-RESPONDING to: $($Message.subject)" -ForegroundColor Yellow
             
             # Use sm command to send response
-            & "$BuildRepoPath\windows\scripts\sm.ps1" -Body $responseBody -Subject "Re: $($Message.subject)" -To $Message.from -BuildRepoPath $BuildRepoPath
+            $sendStartTime = Get-Date
+            $sendOutput = & "$BuildRepoPath\windows\scripts\sm.ps1" -Body $responseBody -Subject "Re: $($Message.subject)" -To $Message.from -BuildRepoPath $BuildRepoPath
+            $sendDuration = ((Get-Date) - $sendStartTime).TotalMilliseconds
             
-            Write-Host "✓ Auto-response sent" -ForegroundColor Green
+            if ($sendOutput -match "SUCCESS") {
+                Write-Host "✓ Auto-response sent and verified" -ForegroundColor Green
+                
+                # Log metrics
+                & "$BuildRepoPath\windows\scripts\Write-StructuredLog.ps1" -Level INFO -Message "Auto-response sent" -Metadata @{
+                    to = $Message.from
+                    subject = $Message.subject
+                    durationMs = $sendDuration
+                    verified = $true
+                }
+            }
+            else {
+                Write-Host "✗ Auto-response verification failed - queueing for retry" -ForegroundColor Yellow
+                $messageQueue.Enqueue($responseBody, "Re: $($Message.subject)", $Message.from)
+            }
         }
         catch {
             Write-Host "✗ Auto-response failed: $_" -ForegroundColor Red
+            $messageQueue.Enqueue($responseBody, "Re: $($Message.subject)", $Message.from)
+            
+            & "$BuildRepoPath\windows\scripts\Write-StructuredLog.ps1" -Level ERROR -Message "Auto-response failed" -Metadata @{
+                error = $_.ToString()
+                to = $Message.from
+            }
         }
     }
     
@@ -167,6 +198,15 @@ $iteration = 0
 $lastMessageTime = Get-Date
 $lastHeartbeatTime = Get-Date
 $lastProcessedId = $null
+$script:processedIds = @{}
+$lastHealthCheck = Get-Date
+
+# Initialize reliability components
+. "$BuildRepoPath\windows\scripts\CircuitBreaker.ps1"
+. "$BuildRepoPath\windows\scripts\MessageQueue.ps1"
+
+$gitCircuitBreaker = [CircuitBreaker]::new()
+$messageQueue = [MessageQueue]::new($BuildRepoPath)
 
 # Get last processed message ID from log
 $logPath = Join-Path $BuildRepoPath "$ServerId\logs\messages.log"
@@ -185,6 +225,35 @@ while ($true) {
     try {
         $iteration++
         
+        # Health check every 10 iterations (100 seconds)
+        if ($iteration % 10 -eq 0) {
+            try {
+                $health = & "$BuildRepoPath\windows\scripts\Get-SystemHealth.ps1" -BuildRepoPath $BuildRepoPath
+                if ($health.Overall -eq "CRITICAL") {
+                    Write-Host "[$(Get-Date -Format 'HH:mm:ss')] CRITICAL HEALTH: $($health | ConvertTo-Json -Compress)" -ForegroundColor Red
+                }
+            }
+            catch {
+                Write-Host "[$(Get-Date -Format 'HH:mm:ss')] Health check failed: $_" -ForegroundColor Yellow
+            }
+        }
+        
+        # Check circuit breaker
+        if (-not $gitCircuitBreaker.CanExecute()) {
+            Write-Host "[$(Get-Date -Format 'HH:mm:ss')] Circuit breaker OPEN - skipping git operations" -ForegroundColor Red
+            Start-Sleep -Seconds $IntervalSeconds
+            continue
+        }
+        
+        # Check network connectivity
+        $netCheck = & "$BuildRepoPath\windows\scripts\Test-NetworkConnectivity.ps1"
+        if (-not $netCheck.Success) {
+            Write-Host "[$(Get-Date -Format 'HH:mm:ss')] Network check failed: $($netCheck.Message)" -ForegroundColor Red
+            $gitCircuitBreaker.RecordFailure()
+            Start-Sleep -Seconds $IntervalSeconds
+            continue
+        }
+        
         # Check for git lock and remove if stale
         $gitLock = Join-Path $BuildRepoPath ".git\index.lock"
         if (Test-Path $gitLock) {
@@ -195,27 +264,44 @@ while ($true) {
             }
         }
         
-        # Pull latest changes with retry
+        # Pull latest changes with exponential backoff
         Push-Location $BuildRepoPath
         $pullAttempts = 0
         $pullSuccess = $false
         $pullOutput = ""
+        $backoffSeconds = 2
         
         while (-not $pullSuccess -and $pullAttempts -lt 3) {
             $pullAttempts++
+            $pullStartTime = Get-Date
             try {
                 $pullOutput = git pull origin main 2>&1
+                $pullDuration = ((Get-Date) - $pullStartTime).TotalMilliseconds
+                
                 if ($LASTEXITCODE -eq 0) {
                     $pullSuccess = $true
+                    $gitCircuitBreaker.RecordSuccess()
+                    
+                    # Log metrics
+                    & "$BuildRepoPath\windows\scripts\Write-StructuredLog.ps1" -Level INFO -Message "Git pull succeeded" -Metadata @{
+                        attempt = $pullAttempts
+                        durationMs = $pullDuration
+                    }
                 }
                 else {
-                    Write-Host "[$(Get-Date -Format 'HH:mm:ss')] Pull attempt $pullAttempts failed, retrying..." -ForegroundColor Yellow
-                    Start-Sleep -Seconds 2
+                    Write-Host "[$(Get-Date -Format 'HH:mm:ss')] Pull attempt $pullAttempts failed, retrying in ${backoffSeconds}s..." -ForegroundColor Yellow
+                    Start-Sleep -Seconds $backoffSeconds
+                    $backoffSeconds *= 2  # Exponential backoff: 2s, 4s, 8s
                 }
             }
             catch {
                 Write-Host "[$(Get-Date -Format 'HH:mm:ss')] Pull error: $_" -ForegroundColor Red
-                Start-Sleep -Seconds 2
+                & "$BuildRepoPath\windows\scripts\Write-StructuredLog.ps1" -Level ERROR -Message "Git pull exception" -Metadata @{
+                    attempt = $pullAttempts
+                    error = $_.ToString()
+                }
+                Start-Sleep -Seconds $backoffSeconds
+                $backoffSeconds *= 2
             }
         }
         
@@ -223,8 +309,37 @@ while ($true) {
         
         if (-not $pullSuccess) {
             Write-Host "[$(Get-Date -Format 'HH:mm:ss')] Failed to pull after 3 attempts, skipping this cycle" -ForegroundColor Red
+            $gitCircuitBreaker.RecordFailure()
+            
+            & "$BuildRepoPath\windows\scripts\Write-StructuredLog.ps1" -Level ERROR -Message "Git pull failed after retries" -Metadata @{
+                attempts = $pullAttempts
+            }
+            
             Start-Sleep -Seconds $IntervalSeconds
             continue
+        }
+        
+        # Process message queue on successful git operation
+        $queuedMessages = $messageQueue.GetPending()
+        if ($queuedMessages.Count -gt 0) {
+            Write-Host "[$(Get-Date -Format 'HH:mm:ss')] Processing $($queuedMessages.Count) queued message(s)" -ForegroundColor Cyan
+            foreach ($qMsg in $queuedMessages) {
+                try {
+                    $sendResult = & "$BuildRepoPath\windows\scripts\sm.ps1" -Body $qMsg.body -Subject $qMsg.subject -To $qMsg.to
+                    if ($sendResult -match "SUCCESS") {
+                        $messageQueue.MarkSent($qMsg.id)
+                        Write-Host "  ✓ Sent queued message: $($qMsg.subject)" -ForegroundColor Green
+                    }
+                    else {
+                        $messageQueue.IncrementAttempts($qMsg.id)
+                        Write-Host "  ✗ Failed to send queued message: $($qMsg.subject)" -ForegroundColor Yellow
+                    }
+                }
+                catch {
+                    $messageQueue.IncrementAttempts($qMsg.id)
+                    Write-Host "  ✗ Error sending queued message: $_" -ForegroundColor Red
+                }
+            }
         }
         
         $hasGitUpdate = $pullOutput -match "Updating|Fast-forward"
