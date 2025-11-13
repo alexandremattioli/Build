@@ -917,7 +917,7 @@
       "timestamp": "2025-11-13T02:12:18Z",
       "subject": "Hourly Heartbeat - code2",
       "priority": "low",
-      "read": false,
+      "read": true,
       "id": "msg_1762999938_6532",
       "from": "code2"
     },
@@ -928,7 +928,7 @@
       "timestamp": "2025-11-13T02:14:24Z",
       "subject": "Hourly Heartbeat - code2",
       "priority": "low",
-      "read": false,
+      "read": true,
       "id": "msg_1763000064_9606",
       "from": "code2"
     },
@@ -939,7 +939,7 @@
       "timestamp": "2025-11-13T02:16:30Z",
       "subject": "Hourly Heartbeat - code2",
       "priority": "low",
-      "read": false,
+      "read": true,
       "id": "msg_1763000190_4694",
       "from": "code2"
     },
@@ -950,7 +950,7 @@
       "timestamp": "2025-11-13T02:18:35Z",
       "subject": "Hourly Heartbeat - code2",
       "priority": "low",
-      "read": false,
+      "read": true,
       "id": "msg_1763000315_6684",
       "from": "code2"
     },
@@ -972,7 +972,7 @@
       "timestamp": "2025-11-13T02:20:46Z",
       "subject": "Hourly Heartbeat - code2",
       "priority": "low",
-      "read": false,
+      "read": true,
       "id": "msg_1763000446_8294",
       "from": "code2"
     },
@@ -1008,7 +1008,7 @@
       "timestamp": "2025-11-13T02:24:56Z",
       "subject": "Hourly Heartbeat - code2",
       "priority": "low",
-      "read": false,
+      "read": true,
       "id": "msg_1763000696_3444",
       "from": "code2"
     },
@@ -1063,7 +1063,7 @@
       "timestamp": "2025-11-13T02:32:16Z",
       "subject": "Hourly Heartbeat - code2",
       "priority": "low",
-      "read": false,
+      "read": true,
       "id": "msg_1763001136_2572",
       "from": "code2"
     },
@@ -1186,7 +1186,7 @@
       "priority": "normal",
       "subject": "TASK: Install sm command on all servers",
       "type": "request",
-      "read": false,
+      "read": true,
       "id": "msg_1763001786_3341"
     },
     {
@@ -1197,7 +1197,7 @@
       "subject": "Enable 10s watcher",
       "body": "Please run: python3 scripts/watch_messages.py --target auto --interval 10 --log /root/Build/messages.log (or equivalent per server) so every node polls the message bus every 10 seconds. Reply ACK once it’s active.",
       "timestamp": "2025-11-13 02:45",
-      "read": false,
+      "read": true,
       "ack_required": true,
       "ack_status": "pending",
       "acknowledged_by": []
@@ -1209,7 +1209,7 @@
       "to": "all",
       "body": "CORRECTION: JH01 is Windows Server 2019\n\n**For ALL Windows servers (code1, jh01):**\n1. cd to Build repo\n2. Set-ExecutionPolicy -Scope CurrentUser RemoteSigned -Force\n3. git pull origin main\n4. .\\windows\\install.ps1 -BuildRepoPath $pwd\n5. . $PROFILE\n6. Test: sm 'Installation Complete on [server-name]'\n\n**For Linux servers (build1-4 only):**\n1. cd to Build repo\n2. git pull origin main\n3. chmod +x linux/install.sh\n4. ./linux/install.sh\n5. source ~/.bashrc\n6. Test: sm 'Installation Complete on [server-name]'\n\nReply with ACK when installed.",
       "ack_required": true,
-      "read": false,
+      "read": true,
       "priority": "normal",
       "id": "msg_1763001987_4169",
       "timestamp": "2025-11-13T02:46:27Z"
@@ -1289,7 +1289,7 @@
       "from": "architect",
       "priority": "normal",
       "timestamp": "2025-11-13T03:01:41Z",
-      "read": false
+      "read": true
     },
     {
       "id": "msg_1763002903_9691",
@@ -1299,7 +1299,7 @@
       "subject": "Re: Enable 10s watcher",
       "body": "build1 Auto Responder here.\n\nAcknowledging receipt of your message \"Enable 10s watcher\" sent from build1.\nI will process it shortly and post any updates via the shared inbox.\n\nLet me know if anything in particular needs urgent attention.",
       "timestamp": "2025-11-13 03:01",
-      "read": false,
+      "read": true,
       "ack_required": false,
       "ack_status": "not_requested",
       "acknowledged_by": []
