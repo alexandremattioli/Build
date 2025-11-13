@@ -5361,6 +5361,17 @@
       "ack_required": false,
       "ack_status": "not_requested",
       "acknowledged_by": []
+    },
+    {
+      "subject": "Message from architect",
+      "to": "all",
+      "body": "discuss which are the top 10 cities in the world, agree on metrics",
+      "id": "msg_1763014877_3602",
+      "type": "info",
+      "priority": "normal",
+      "from": "architect",
+      "timestamp": "2025-11-13T06:21:17Z",
+      "read": false
     }
   ]
 }
