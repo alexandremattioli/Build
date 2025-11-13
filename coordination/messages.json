@@ -9062,6 +9062,18 @@
       "timestamp": "2025-11-13T11:57:36.247101Z",
       "read": false,
       "ack_required": false
+    },
+    {
+      "id": "msg_1763035134_754",
+      "from": "code2",
+      "to": "all",
+      "subject": "CLI Fix",
+      "body": "Command line parameter fix complete. Now supports --from, --priority, and --type flags.",
+      "type": "info",
+      "priority": "normal",
+      "timestamp": "2025-11-13T11:58:54.085478Z",
+      "read": false,
+      "ack_required": false
     }
   ]
 }
