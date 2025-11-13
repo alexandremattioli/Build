@@ -1011,6 +1011,17 @@
       "read": false,
       "id": "msg_1763000696_3444",
       "from": "code2"
+    },
+    {
+      "priority": "normal",
+      "subject": "sm verification test",
+      "timestamp": "2025-11-13T02:24:58Z",
+      "type": "info",
+      "to": "all",
+      "body": "Testing enhanced sm command with commit verification and readback confirmation.",
+      "read": false,
+      "id": "msg_1763000698_7214",
+      "from": "architect"
     }
   ]
 }
