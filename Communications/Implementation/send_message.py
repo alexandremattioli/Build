@@ -5,6 +5,8 @@ Cross-platform message sending with verification and locking
 """
 
 import json
+from update_message_status import update_message_status
+from pathlib import Path
 import sys
 import time
 import subprocess
