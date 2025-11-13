@@ -13,23 +13,22 @@ from datetime import datetime
 from typing import Optional
 
 
-def send_message(body: str, subject: Optional[str] = None, to: str = "all", 
+def send_message(body: str, subject: Optional[str] = None, to: str = "all",
                  priority: str = "normal", msg_type: str = "info",
+                 from_sender: str = "architect",
                  build_repo_path: str = "K:/Projects/Build") -> bool:
     """Send a coordination message with verification"""
-    
+
     repo_path = Path(build_repo_path)
     messages_file = repo_path / "coordination" / "messages.json"
-    
+
     if not messages_file.exists():
         print(f"Error: Messages file not found: {messages_file}")
         return False
-    
+
     # Default subject
     if not subject:
-        subject = "Message from architect"
-    
-    # Load messages
+        subject = f"Message from {from_sender}"    # Load messages
     try:
         with open(messages_file, 'r', encoding='utf-8') as f:
             messages = json.load(f)
@@ -43,7 +42,7 @@ def send_message(body: str, subject: Optional[str] = None, to: str = "all",
     
     new_message = {
         "id": message_id,
-        "from": "architect",
+        "from": from_sender,
         "to": to,
         "subject": subject,
         "body": body,
@@ -74,11 +73,9 @@ def send_message(body: str, subject: Optional[str] = None, to: str = "all",
         subprocess.run(["git", "add", "coordination/messages.json"], 
                       cwd=repo_path, check=True)
         
-        subprocess.run(["git", "commit", "-m", 
-                       f"architect -> {to}: {subject}"],
-                      cwd=repo_path, check=True)
-        
-        subprocess.run(["git", "push", "origin", "main"], 
+        subprocess.run(["git", "commit", "-m",
+                       f"{from_sender} -> {to}: {subject}"],
+                      cwd=repo_path, check=True)        subprocess.run(["git", "push", "origin", "main"], 
                       cwd=repo_path, check=True)
         
         # Verify by pulling and checking
@@ -93,7 +90,7 @@ def send_message(body: str, subject: Optional[str] = None, to: str = "all",
         
         if message_exists:
             print(f"✓ Message sent and verified")
-            print(f"  From: architect")
+            print(f"  From: {from_sender}")
             print(f"  To: {to}")
             print(f"  Subject: {subject}")
             print(f"  Type: {msg_type} | Priority: {priority}")

@@ -222,17 +222,16 @@ class MessageMonitor:
         response_body += f"Auto-response from monitor at {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}"
         
         subject = f"Re: {message['subject']}"
-        try:
-            start_time = time.time()
-            success = send_message(
-                body=response_body,
-                subject=subject,
-                to=message['from'],
-                build_repo_path=str(self.build_repo_path)
-            )
-            duration_ms = (time.time() - start_time) * 1000
-            
-            if success:
+          try:
+              start_time = time.time()
+              success = send_message(
+                  body=response_body,
+                  subject=subject,
+                  to=message['from'],
+                  from_sender=self.server_id,
+                  build_repo_path=str(self.build_repo_path)
+              )
+              duration_ms = (time.time() - start_time) * 1000            if success:
                 print("OK Auto-response sent and verified")
                 self.logger.info("Auto-response sent", {
                     "to": message['from'],
