@@ -29,6 +29,17 @@ build2/logs/*.log
 *.swp
 *.swo
 
+# Code02 monitor artifacts
+.cache/
+.watch_messages_state_*.json
+coordination/locks.json.flock
+coordination/messages.json.flock
+coordination/message_outbox.jsonl
+logs/watch_metrics.json
+logs/autoresponder_metrics.json
+logs/git_fsck.log
+watch_messages.out
+
 # OS
 .DS_Store
 Thumbs.db

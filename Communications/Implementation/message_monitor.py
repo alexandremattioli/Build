@@ -25,29 +25,112 @@ from send_message import send_message
 class MessageMonitor:
     """Autonomous message monitoring with reliability features"""
     
-    def __init__(self, build_repo_path: str = "K:/Projects/Build", 
-                 interval_seconds: int = 10, server_id: str = "code2"):
+    def __init__(
+        self,
+        build_repo_path: str = "K:/Projects/Build",
+        interval_seconds: int = 10,
+        server_id: str = "code2",
+        log_path: Optional[str] = None,
+        state_path: Optional[str] = None,
+        watch_metrics_path: Optional[str] = None,
+        autoresponder_metrics_path: Optional[str] = None,
+        watch_heartbeat_path: Optional[str] = None,
+        autoresponder_heartbeat_path: Optional[str] = None,
+    ):
         self.build_repo_path = Path(build_repo_path)
         self.interval_seconds = interval_seconds
         self.server_id = server_id
         
+        self.log_path = Path(log_path) if log_path else self.build_repo_path / "logs" / "watch_messages.log"
+        self.state_path = Path(state_path) if state_path else self.build_repo_path / f".watch_messages_state_{server_id}.json"
+        self.watch_metrics_path = Path(watch_metrics_path) if watch_metrics_path else self.build_repo_path / "logs" / "watch_metrics.json"
+        self.autoresponder_metrics_path = (
+            Path(autoresponder_metrics_path)
+            if autoresponder_metrics_path
+            else self.build_repo_path / "logs" / "autoresponder_metrics.json"
+        )
+        self.watch_heartbeat = Path(watch_heartbeat_path) if watch_heartbeat_path else Path("/var/run/watch_messages.heartbeat")
+        self.autoresponder_heartbeat = (
+            Path(autoresponder_heartbeat_path)
+            if autoresponder_heartbeat_path
+            else Path(f"/var/run/autoresponder_{server_id}.heartbeat")
+        )
+
         # Initialize reliability components
+        self._ensure_directories()
         self.circuit_breaker = CircuitBreaker()
         self.message_queue = MessageQueue(str(self.build_repo_path))
-        self.logger = StructuredLogger(server_id=server_id)
-        self.metrics = MetricsCollector(str(self.build_repo_path))
+        self.logger = StructuredLogger(log_path=str(self.log_path), server_id=server_id)
+        self.metrics = MetricsCollector(metrics_path=str(self.watch_metrics_path))
+        self.autoresponder_metrics = MetricsCollector(metrics_path=str(self.autoresponder_metrics_path))
         
-        # State tracking
         self.last_message_time = time.time()
         self.last_heartbeat_time = time.time()
         self.processed_ids = set()
+        self._load_state()
         
         print(f"\033[92m=== {server_id.upper()} Message Monitor Started ===\033[0m")
         print(f"Server: {server_id}")
         print(f"Interval: {interval_seconds} seconds")
         print(f"Repo: {self.build_repo_path}")
-        print(f"Reliability: Circuit breaker, message queue, health monitoring, structured logging")
-        print(f"Press Ctrl+C to stop\n")
+        print(f"Log: {self.log_path}")
+        print(f"Watch metrics: {self.watch_metrics_path}")
+        print(f"Autoresponder metrics: {self.autoresponder_metrics_path}")
+        print("Reliability: Circuit breaker, message queue, health monitoring, structured logging")
+        print("Press Ctrl+C to stop\n")
+
+    def _ensure_directories(self):
+        for path in {
+            self.log_path.parent,
+            self.watch_metrics_path.parent,
+            self.autoresponder_metrics_path.parent,
+            self.state_path.parent,
+        }:
+            try:
+                path.mkdir(parents=True, exist_ok=True)
+            except Exception:
+                continue
+
+    def _load_state(self):
+        if not self.state_path.exists():
+            return
+        try:
+            data = json.loads(self.state_path.read_text())
+            seen = data.get("seen_ids", [])
+            self.processed_ids.update(seen)
+        except Exception as e:
+            self.logger.warning("Failed to load processed state", {"error": str(e)})
+
+    def _save_state(self):
+        try:
+            with open(self.state_path, "w", encoding="utf-8") as handle:
+                json.dump({"seen_ids": sorted(self.processed_ids)}, handle, indent=2)
+        except Exception as e:
+            self.logger.warning("Failed to persist processed ids", {"error": str(e)})
+
+    def _persist_processed_id(self, message_id: str) -> None:
+        if not message_id or message_id in self.processed_ids:
+            return
+        self.processed_ids.add(message_id)
+        self._save_state()
+
+    def _write_heartbeat(self, path: Path):
+        try:
+            path.parent.mkdir(parents=True, exist_ok=True)
+            path.write_text(datetime.utcnow().isoformat() + "Z", encoding="utf-8")
+        except Exception as e:
+            self.logger.warning("Heartbeat write failed", {"path": str(path), "error": str(e)})
+
+    def touch_heartbeats(self):
+        self._write_heartbeat(self.watch_heartbeat)
+        self._write_heartbeat(self.autoresponder_heartbeat)
+        self.metrics.record_operation("heartbeat", 0, True)
+        self.last_heartbeat_time = time.time()
+
+    def _record_autoresponse_metrics(self, duration_ms: float, success: bool, target: str):
+        metadata = {"target": target, "component": "autoresponder"}
+        self.autoresponder_metrics.record_operation("auto_response", duration_ms, success, metadata)
+        self.metrics.record_operation("auto_response", duration_ms, success, metadata)
     
     def get_unread_messages(self) -> List[Dict[str, Any]]:
         """Get unread messages for this server"""
@@ -109,26 +192,26 @@ class MessageMonitor:
         
         # Check if auto-response needed
         body_lower = message['body'].lower()
-        if any(keyword in body_lower for keyword in ['reply', 'respond', 'ready?', 'are you', 'status', 'report']):
+        auto_response_needed = any(keyword in body_lower for keyword in ['reply', 'respond', 'ready?', 'are you', 'status', 'report'])
+        if auto_response_needed:
             print("→ AUTO-RESPONDING")
             self.auto_respond(message)
         else:
-            # Just mark as read
-            self.mark_message_read(message['id'])
+            print("→ Marking as read")
+
+        self.mark_message_read(message['id'])
+        self._persist_processed_id(message.get('id', ''))
     
-    def auto_respond(self, message: Dict[str, Any]):
+    def auto_respond(self, message: Dict[str, Any]) -> bool:
         """Send automatic response"""
-        response_body = f"""{self.server_id.upper()} (LL-{self.server_id.upper()}-02) responding automatically.
-
-Status: ONLINE and OPERATIONAL
-Systems: Python cross-platform monitor, 10s polling, heartbeat active
-Reliability: Circuit breaker, message queue, health monitoring, structured logging
-Ready for: Task assignments and coordination
-
-Auto-response from monitor at {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}"""
+        response_body = f"{self.server_id.upper()} (LL-{self.server_id.upper()}-02) responding automatically.\n\n"
+        response_body += "Status: ONLINE and OPERATIONAL\n"
+        response_body += "Systems: Python cross-platform monitor, 10s polling, heartbeat active\n"
+        response_body += "Reliability: Circuit breaker, message queue, health monitoring, structured logging\n"
+        response_body += "Ready for: Task assignments and coordination\n\n"
+        response_body += f"Auto-response from monitor at {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}"
         
         subject = f"Re: {message['subject']}"
-        
         try:
             start_time = time.time()
             success = send_message(
@@ -147,7 +230,8 @@ Auto-response from monitor at {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}"""
                     "duration_ms": duration_ms,
                     "verified": True
                 })
-                self.metrics.record_operation("auto_response", duration_ms, True)
+                self._record_autoresponse_metrics(duration_ms, True, message['from'])
+                return True
             else:
                 print("✗ Auto-response verification failed - queueing for retry")
                 self.message_queue.enqueue({
@@ -155,15 +239,19 @@ Auto-response from monitor at {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}"""
                     "subject": subject,
                     "to": message['from']
                 })
-                self.metrics.record_operation("auto_response", duration_ms, False)
+                self._record_autoresponse_metrics(duration_ms, False, message['from'])
+                return False
         except Exception as e:
+            duration_ms = (time.time() - start_time) * 1000 if 'start_time' in locals() else 0
             print(f"✗ Auto-response failed: {e}")
             self.message_queue.enqueue({
                 "body": response_body,
                 "subject": subject,
                 "to": message['from']
             })
+            self._record_autoresponse_metrics(duration_ms, False, message['from'])
             self.logger.error("Auto-response failed", {"error": str(e), "to": message['from']})
+            return False
     
     def git_pull_with_retry(self) -> bool:
         """Pull latest changes with exponential backoff"""
@@ -253,6 +341,7 @@ Auto-response from monitor at {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}"""
         try:
             while True:
                 iteration += 1
+                self.touch_heartbeats()
                 
                 # Health check every 10 iterations
                 if iteration % 10 == 0:
@@ -299,7 +388,6 @@ Auto-response from monitor at {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}"""
                         if msg['id'] not in self.processed_ids:
                             try:
                                 self.process_message(msg)
-                                self.processed_ids.add(msg['id'])
                                 self.last_message_time = time.time()
                             except Exception as e:
                                 print(f"[{datetime.now().strftime('%H:%M:%S')}] Error processing message {msg['id']}: {e}")
@@ -330,13 +418,25 @@ if __name__ == "__main__":
     parser.add_argument("--interval", type=int, default=10, help="Polling interval in seconds")
     parser.add_argument("--repo", type=str, default="K:/Projects/Build", help="Build repository path")
     parser.add_argument("--server", type=str, default="code2", help="Server ID")
+    parser.add_argument("--log", type=str, help="Path to structured log file")
+    parser.add_argument("--state", type=str, help="Path to store processed message IDs")
+    parser.add_argument("--watch-metrics", type=str, help="File to store watcher metrics")
+    parser.add_argument("--autoresponder-metrics", type=str, help="File to store autoresponder metrics")
+    parser.add_argument("--watch-heartbeat", type=str, help="Heartbeat file path for the watcher")
+    parser.add_argument("--autoresponder-heartbeat", type=str, help="Heartbeat file path for the autoresponder")
     
     args = parser.parse_args()
     
     monitor = MessageMonitor(
         build_repo_path=args.repo,
         interval_seconds=args.interval,
-        server_id=args.server
+        server_id=args.server,
+        log_path=args.log,
+        state_path=args.state,
+        watch_metrics_path=args.watch_metrics,
+        autoresponder_metrics_path=args.autoresponder_metrics,
+        watch_heartbeat_path=args.watch_heartbeat,
+        autoresponder_heartbeat_path=args.autoresponder_heartbeat,
     )
     
     monitor.run()

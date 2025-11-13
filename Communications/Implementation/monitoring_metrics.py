@@ -13,8 +13,13 @@ from datetime import datetime, timedelta
 class MetricsCollector:
     """Collect and aggregate performance metrics"""
     
-    def __init__(self, build_repo_path: str):
-        self.metrics_path = Path(build_repo_path) / "code2" / "logs" / "metrics.json"
+    def __init__(self, build_repo_path: Optional[str] = None, metrics_path: Optional[str] = None):
+        if metrics_path:
+            self.metrics_path = Path(metrics_path)
+        elif build_repo_path:
+            self.metrics_path = Path(build_repo_path) / "code2" / "logs" / "metrics.json"
+        else:
+            raise ValueError("Either build_repo_path or metrics_path must be provided")
         self.metrics_path.parent.mkdir(parents=True, exist_ok=True)
         self._ensure_metrics_exist()
     

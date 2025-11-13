@@ -118,6 +118,12 @@ To stay current with GitHub Copilot and Codex capabilities:
 
 - Feature Implementation Methodology: see Architecture/Methodology.md for the end-to-end order, quality gates, and CloudStack/VNF mapping.
 
+## Code02 Coordination Monitor
+
+- The Python-based monitor/autoresponder lives under `Communications/Implementation/` and brings the Code01-level reliability stack described in the subsystem brief (circuit breaker, queueing, structured logging, health checks, heartbeats, metrics, and git lock recovery).
+- Use `scripts/run_code02_message_monitor.sh <server-id> <interval>` to start it with the repository-root defaults; metrics and heartbeat files go into `logs/{watch,autoresponder}_metrics.json` and `/var/run/watch_messages.heartbeat` plus `/var/run/autoresponder_<server>.heartbeat` respectively.
+- All runtime artifacts (`.watch_messages_state_<server>.json`, `coordination/message_outbox.jsonl`, `logs/*.json`, etc.) are ignored via `.gitignore`, so the repository stays clean.
+
 ## Critical Lesson: Activity vs Value (Build2 - 2025-11-07)
 
 ### The "BUILD SUCCESS" Trap
@@ -757,4 +763,3 @@ Set-Location "K:\Projects\Build"
 - Not committed to Git (`.secrets` is ignored)
 
 After saving, all remote commands will use the stored credential automatically.
-
