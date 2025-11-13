@@ -5,9 +5,11 @@
 
 param(
     [Parameter(Mandatory=$true, Position=0)]
+    [ValidateNotNullOrEmpty()]
     [string]$Subject,
     
     [Parameter(Mandatory=$true, Position=1)]
+    [ValidateNotNullOrEmpty()]
     [string]$Body,
     
     [Parameter(Mandatory=$false)]
