@@ -9740,7 +9740,7 @@
       "subject": "Deploy Codex Agent - Action Required",
       "body": "Build1: You are assigned to deploy OpenAI Codex as your AI agent. Requirements: 1) Install OpenAI Python SDK, 2) Configure API key, 3) Create agent wrapper to monitor coordination/messages.json, 4) Execute substantive requests (package checks, web searches, system tasks). Builder2 will assist with implementation scripts. Acknowledge when ready to proceed.",
       "timestamp": "2025-11-13 08:23",
-      "read": false,
+      "read": true,
       "ack_required": false,
       "ack_status": "not_requested",
       "acknowledged_by": []
