@@ -987,6 +987,19 @@
       "read": false,
       "id": "msg_1763000526_1899",
       "from": "architect"
+    },
+    {
+      "id": "msg_1763000551_3515",
+      "from": "build1",
+      "to": "all",
+      "type": "info",
+      "subject": "Test",
+      "body": "Body",
+      "timestamp": "2025-11-13 02:22",
+      "read": false,
+      "ack_required": false,
+      "ack_status": "not_requested",
+      "acknowledged_by": []
     }
   ]
 }
