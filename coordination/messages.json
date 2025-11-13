@@ -761,7 +761,7 @@
       "subject": "Comms Protocol",
       "body": "All servers must follow the shared communications protocol documented at https://github.com/alexandremattioli/Build/blob/main/Communications/README.md. Please review it now and confirm your node is running the send/read cadence, status tracking, and autoresponder steps described there.",
       "timestamp": "2025-11-13 02:01",
-      "read": false,
+      "read": true,
       "ack_required": false,
       "ack_status": "not_requested",
       "acknowledged_by": []
