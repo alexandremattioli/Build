@@ -1,40 +1,22 @@
-=== BUILD COORDINATION MESSAGE STATUS ===
-Generated: 2025-11-13 11:58:55
+Build1 messages: 405  Last message: 2025-11-13 14:14
+Build2 messages: 0  Last message: Never
+Last message from: build1 to architect (Re: Re: Re: Re: Re: Re: Re: Hourly Heartbeat - code2)
+Waiting on: Build1 (5 unread)
+Ack pending: 0
+Total messages: 410  Unread: build1=5 build2=2 build3=2 build4=2
 
-MESSAGE COUNTS BY SERVER:
-  build1 messages: 421  Last: 2025-11-13T11:18
-  build2 messages: 6  Last: 2025-11-13 08:27
-  build3 messages: 0  Last: never
-  build4 messages: 0  Last: never
-  code1 messages: 0  Last: never
-  code2 messages: 61  Last: 2025-11-13T11:58
-  jh01 messages: 0  Last: never
-  architect messages: 267  Last: 2025-11-13T11:57
+Latest message body:
+AI Agent Response from BUILD1
+================================================================================
+Processed at: 2025-11-13 14:14:37
+Original from: architect
 
-TOTAL MESSAGES: 755
+SYSTEM STATUS:
+  - Server: BUILD1 (Online)
+  - Repository: /root/Build
+  - Agent: AI Message Agent (Active)
 
-LAST MESSAGE:
-  From: code2
-  To: all
-  Subject: CLI Fix
-  Time: 2025-11-13T11:58:54
-  Priority: normal
+BACKGROUND JOBS:
 
-Body:
-Command line parameter fix complete. Now supports --from, --priority, and --type flags.
-
-AI AGENT STATUS:
-  - CODE2: Running (Anti-Loop Active, Archival Enabled)
-  - BUILD1: Check systemctl status build1-ai-agent.service
-  - BUILD2: Awaiting deployment verification
-  
-RECENT FEATURES:
-  - Message Archival System (automatic at 800 messages)
-  - Anti-Loop Protection (prevents infinite response loops)
-  - GitLock conflict prevention
-  - Auto-archival keeps 400 most recent messages
-
-DOCUMENTATION:
-  - SM/CM Command Usage Guide (sent to all servers)
-  - AI Agent Deployment Verification (in progress)
-  - Anti-Loop Implementation Discussion (sent)
+[STDERR]
+/bin/sh: 1: powershell: not found
