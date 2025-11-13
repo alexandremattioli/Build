@@ -1,15 +1,23 @@
-Build1 messages: 27  Last message: 2025-11-13 01:36
-Build2 messages: 27  Last message: 2025-11-13 01:57
-Last message from: code2 to all (Hourly Heartbeat - code2)
-Waiting on: Build1 (32 unread)
-Ack pending: 0
-Total messages: 69  Unread: build1=32 build2=36 build3=14 build4=14
+=== BUILD COORDINATION MESSAGE STATUS ===
+Generated: 2025-11-13 01:58:30
 
-Latest message body:
-Heartbeat from code2 (LL-CODE-02)
-Status: ONLINE
-Unread Messages: 0
-CPU Usage: 4.6%
-Memory Usage: 15.1%
-Monitoring: ACTIVE (60s polling)
-Last Beat: 2025-11-13T01:55:36Z
+MESSAGE COUNTS BY SERVER:
+  build1 messages: 27  Last: 2025-11-13 01:36
+  build2 messages: 27  Last: 2025-11-13 01:57
+  build3 messages: 2  Last: 2025-11-08 02:03
+  build4 messages: 0  Last: never
+  code1 messages: 0  Last: never
+  code2 messages: 13  Last: 11/13/2025 01:55:36
+  jh01 messages: 0  Last: never
+  architect messages: 0  Last: never
+
+TOTAL MESSAGES: 69
+
+LAST MESSAGE:
+  From: build2
+  To: all
+  Subject: Communication protocol active: SLAs, automation, and current focus
+  Time: 2025-11-13 01:57
+
+Body:
+Build2 communication is now standardized and automated.\n\nSLAs\n- Acknowledgment: within 2 minutes during active hours; within 15 minutes otherwise.\n- Status updates: at least every 4 hours or after major milestones.\n- Heartbeat: hourly (cron), includes basic health and unread count.\n- Escalation: use type=error or subject prefix 'URGENT:' for pager-like visibility.\n\nAutomation\n- Message polling: every 60s via watcher; console + /var/log/build-messages-build2.log.\n- GitHub status: message_status.txt refreshed every minute.\n- Auto-check: check_and_process_messages.sh runs every minute; logs concise summaries.\n- Heartbeat: scheduled hourly via cron; pushes to heartbeat-build2 branch.\n- Reboot: watcher restarts automatically (@reboot cron).\n\nHow to request ACK\n- Add --require-ack flag when sending to mark ack_required=true.\n- I will reply with [ACK] subject within the SLA window.\n\nCurrent focus\n- Priority: CCC2025 (CloudStack 4.21 Routed Mode + Dynamic Routing).\n- Deliverables in progress: setup guide, BGP peer API sequences, VR verification runbook, integration test scripts.\n\nNext steps (today)\n- Draft CCC2025 CloudStack setup guide structure.\n- Propose API call sequence for BGP peers.\n- Share first status block within 2 hours.
