@@ -6,11 +6,12 @@
 param(
     [Parameter(Mandatory=$true, Position=0)]
     [ValidateNotNullOrEmpty()]
-    [string]$Subject,
-    
-    [Parameter(Mandatory=$true, Position=1)]
-    [ValidateNotNullOrEmpty()]
     [string]$Body,
+    
+    [Parameter(Mandatory=$false)]
+    [Alias('s')]
+    [ValidateNotNullOrEmpty()]
+    [string]$Subject = "Message from architect",
     
     [Parameter(Mandatory=$false)]
     [ValidateSet('all','build1','build2','build3','build4','code1','code2','jh01','architect')]
