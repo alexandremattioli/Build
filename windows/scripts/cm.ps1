@@ -39,7 +39,7 @@ function Format-Timestamp {
 function Get-CondensedView {
     param([Parameter(ValueFromPipeline)]$InputObject)
     process {
-        if ($_ -match '^===|^\[INFO\]|^\[WARN\]|^\[ERROR\]|^Subject:|^Time:|^---') {
+        if ($_ -match '^===|^\[INFO\]|^\[WARN\]|^\[ERROR\]|^\[HEARTBEAT\]|^\[REQUEST\]|^\[RESPONSE\]|^Subject:|^Time:|^---') {
             $_
         }
     }
