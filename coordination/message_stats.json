@@ -1,24 +1,24 @@
 {
-  "last_updated": "2025-11-08T21:14:05Z",
-  "total_messages": 49,
+  "last_updated": "2025-11-13T01:27:12Z",
+  "total_messages": 57,
   "by_server": {
     "build1": {
-      "total_sent": 24,
-      "last_message_time": "2025-11-08 21:14",
-      "last_message_subject": "Hourly coordination requirement",
+      "total_sent": 26,
+      "last_message_time": "2025-11-13 01:27",
+      "last_message_subject": "Initial Task",
       "messages_by_type": {
-        "info": 20,
+        "info": 22,
         "warning": 0,
         "error": 0,
         "request": 4
       }
     },
     "build2": {
-      "total_sent": 23,
-      "last_message_time": "2025-11-07 20:54",
-      "last_message_subject": "Full CRUD operations for firewall rules completed",
+      "total_sent": 26,
+      "last_message_time": "2025-11-13 01:22",
+      "last_message_subject": "CCC2025 Project - Builder2 Acknowledged",
       "messages_by_type": {
-        "info": 20,
+        "info": 23,
         "warning": 0,
         "error": 0,
         "request": 2
@@ -27,22 +27,22 @@
   },
   "by_recipient": {
     "build1": {
-      "total_received": 22,
-      "unread_count": 17
+      "total_received": 24,
+      "unread_count": 25
     },
     "build2": {
       "total_received": 24,
-      "unread_count": 23
+      "unread_count": 29
     },
     "all": {
-      "total_broadcast": 1,
-      "last_broadcast_time": "2025-11-08 21:14"
+      "total_broadcast": 7,
+      "last_broadcast_time": "2025-11-13T01:13:38Z"
     }
   },
   "recent_activity": {
-    "last_message_from": "build1",
+    "last_message_from": "code2",
     "last_message_to": "all",
-    "last_message_time": "2025-11-08 21:14",
+    "last_message_time": "2025-11-13T01:13:38Z",
     "last_message_type": "info"
   }
 }
