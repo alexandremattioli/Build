@@ -1165,6 +1165,17 @@
       "type": "info",
       "read": false,
       "id": "msg_1763001729_3712"
+    },
+    {
+      "to": "all",
+      "timestamp": "2025-11-13T02:42:24Z",
+      "body": "arch test",
+      "from": "architect",
+      "priority": "normal",
+      "subject": "Message from architect",
+      "type": "info",
+      "read": false,
+      "id": "msg_1763001744_8738"
     }
   ]
 }
