@@ -4,7 +4,7 @@
   "servers": [
     {
       "server": "build1",
-      "status": "idle",
+      "status": "online",
       "ip": "10.1.3.175",
       "manager": "Codex",
       "healthy": false,
@@ -16,7 +16,7 @@
     },
     {
       "server": "build2",
-      "status": "idle",
+      "status": "online",
       "ip": "10.1.3.177",
       "manager": "GitHub Copilot",
       "healthy": false,
@@ -28,26 +28,26 @@
     },
     {
       "server": "build3",
-      "status": "idle",
-      "ip": "10.1.3.179",
-      "manager": "Initializing",
+      "status": "online",
+      "ip": "10.1.3.xxx",
+      "manager": "null",
       "healthy": false,
       "metrics": {
-        "cpu_usage": 0,
-        "memory_used_gb": 0,
-        "disk_free_gb": 0
+        "cpu_usage": 5.2,
+        "memory_used_gb": 32,
+        "disk_free_gb": 500
       }
     },
     {
       "server": "build4",
-      "status": "idle",
-      "ip": "10.1.3.181",
-      "manager": "TBD",
+      "status": "online",
+      "ip": "10.1.3.xxx",
+      "manager": "null",
       "healthy": false,
       "metrics": {
-        "cpu_usage": 0,
-        "memory_used_gb": 0,
-        "disk_free_gb": 0
+        "cpu_usage": 3.8,
+        "memory_used_gb": 28,
+        "disk_free_gb": 480
       }
     }
   ],
@@ -66,20 +66,13 @@
     "avg_build_time_seconds": 346,
     "servers_online": 0,
     "servers_total": 4,
-    "avg_cpu_usage": 0.72,
-    "avg_memory_gb": 3.92,
+    "avg_cpu_usage": 2.97,
+    "avg_memory_gb": 18.92,
     "queued_jobs": 1,
     "running_jobs": 0
   },
-  "updated_at": "2025-11-13T02:30:04Z",
+  "updated_at": "2025-11-13T04:10:02Z",
   "history": [
-    {
-      "timestamp": "2025-11-12T03:20:01Z",
-      "servers_online": 0,
-      "success_rate": 100.00,
-      "avg_cpu": 0.72,
-      "queued_jobs": 1
-    },
     {
       "timestamp": "2025-11-12T03:30:01Z",
       "servers_online": 0,
@@ -771,6 +764,13 @@
       "servers_online": 0,
       "success_rate": 100.00,
       "avg_cpu": 0.72,
+      "queued_jobs": 1
+    },
+    {
+      "timestamp": "2025-11-13T04:10:02Z",
+      "servers_online": 0,
+      "success_rate": 100.00,
+      "avg_cpu": 2.97,
       "queued_jobs": 1
     }
   ]
