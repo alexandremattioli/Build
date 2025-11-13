@@ -327,3 +327,170 @@ type $env:USERPROFILE\.ssh\id_ed25519.pub | ssh root@10.1.3.177 "cat >> ~/.ssh/a
 - Linux builders: `10.1.3.175` (Build1), `10.1.3.177` (Build2)
 - Git repository: `https://github.com/alexandremattioli/cloudstack.git`
 - Branch: `VNFCopilot`
+
+## Autonomous Message Monitoring System
+
+### Architecture Overview
+
+Code2 runs a fully autonomous message monitoring system that polls every 10 seconds and automatically responds to coordination requests.
+
+```powershell
+# MONITORING LOOP (runs continuously in background)
+while ($true) {
+    # 1. Check for git lock (auto-remove if stale >2 min)
+    # 2. Git pull with retry (3 attempts, 2s delay)
+    # 3. Read coordination/messages.json
+    # 4. Find unread messages (to: code2 or all, read: false)
+    # 5. Process each message:
+    #    - Detect if response needed (keywords: reply, respond, status, report)
+    #    - Auto-generate response with system status
+    #    - Send via sm command
+    #    - Handle ACK_REQUIRED messages
+    #    - Mark as read and commit
+    # 6. Send idle heartbeat if no messages for 2 minutes
+    # 7. Wait 10 seconds
+}
+```
+
+### Key Features
+
+**Reliability:**
+- ✅ Git lock detection and auto-recovery (stale locks >2min removed)
+- ✅ 3-attempt retry logic on git pull failures (2s delays)
+- ✅ Error handling per message (continues if one fails)
+- ✅ 2-attempt retry on heartbeat sends (5s delays)
+- ✅ Health check system monitors and auto-restarts on crash
+- ✅ Deduplication prevents processing same message twice
+- ✅ Error logging to code2/logs/errors.log
+
+**Autonomous Response:**
+- Detects keywords: "reply", "respond", "ready?", "are you", "status", "report"
+- Auto-generates response with system status
+- Response time: 10-15 seconds typical (10s polling + processing)
+
+### Quick Start
+
+```powershell
+# Install sm command and aliases
+.\windows\install.ps1 -BuildRepoPath K:\Projects\Build
+
+# Start monitor (background job)
+Start-Job -Name "Code2Monitor" -ScriptBlock { 
+    Set-Location "K:\Projects\Build"
+    .\windows\scripts\Start-MessageMonitor.ps1 
+}
+
+# Start with health check (auto-restart)
+.\windows\scripts\Start-MonitorWithHealthCheck.ps1
+
+# Add to Windows startup (survives reboots)
+.\windows\scripts\Add-MonitorToStartup.ps1
+```
+
+### Commands
+
+```powershell
+# Send message (simple)
+sm "Your message here"
+
+# Send with custom subject
+sm "Message body" -s "Custom Subject"
+
+# Send to specific server
+sm "Message" -to build1
+
+# Send request requiring acknowledgment
+sm "Please review" -Type request -RequireAck
+
+# Check messages
+cm                  # Condensed view
+cm -Verbose         # Full details
+cm -Follow          # Real-time tail
+cm -Lines 20        # Last 20 messages
+
+# Check monitor status
+Get-Job -Name "Code2Monitor"
+Receive-Job -Name "Code2Monitor" -Keep | Select-Object -Last 10
+```
+
+### File Structure
+
+```
+windows/
+├── install.ps1                        # Main installer (adds sm/cm commands)
+├── Start-Code2Monitor.bat             # Startup script for auto-launch
+├── README.md                          # This file
+└── scripts/
+    ├── sm.ps1                         # Send Message command
+    ├── cm.ps1                         # Check Messages command
+    ├── Start-MessageMonitor.ps1       # Main monitor (10s polling)
+    ├── Start-MonitorWithHealthCheck.ps1  # Health check wrapper
+    ├── Send-Heartbeat.ps1             # Heartbeat sender
+    ├── AutoResponder.ps1              # ACK handler
+    ├── Update-MessageStatus.ps1       # Status file updater
+    ├── Add-MonitorToStartup.ps1       # Startup installer
+    └── Test-AutonomousCoordination.ps1  # 5-message test suite
+```
+
+### Testing
+
+```powershell
+# Test autonomous response (waits for 5 replies)
+.\windows\scripts\Test-AutonomousCoordination.ps1
+
+# Manual test
+sm "code2 status report please"
+# Monitor will auto-respond within 10-15 seconds
+
+# Check monitor output
+Receive-Job -Name "Code2Monitor" -Keep | Select-Object -Last 20
+```
+
+### Troubleshooting
+
+**Monitor not responding:**
+```powershell
+# Check if monitor is running
+Get-Job -Name "Code2Monitor"
+
+# Restart monitor
+Get-Job -Name "Code2Monitor" | Stop-Job
+Remove-Job -Name "Code2Monitor"
+Start-Job -Name "Code2Monitor" -ScriptBlock { 
+    Set-Location "K:\Projects\Build"
+    .\windows\scripts\Start-MessageMonitor.ps1 
+}
+```
+
+**Git lock errors:**
+- Automatically handled by monitor (removes stale locks >2min)
+- Manual: Remove-Item K:\Projects\Build\.git\index.lock -Force
+
+**Messages not being read:**
+```powershell
+# Check monitor log
+Get-Content K:\Projects\Build\code2\logs\messages.log -Tail 20
+
+# Check for errors
+Get-Content K:\Projects\Build\code2\logs\errors.log -Tail 10
+```
+
+### Response Time
+
+- **Polling interval:** 10 seconds
+- **Detection delay:** 0-10 seconds (depends on poll timing)
+- **Processing time:** 1-2 seconds
+- **Total response:** 10-15 seconds typical
+
+### Auto-Response Template
+
+```
+Code2 (LL-CODE-02) responding automatically.
+
+Status: ONLINE and OPERATIONAL
+Systems: sm command active, monitor running (10s polling), heartbeat active
+Ready for: Task assignments and coordination
+
+Auto-response from monitor at 2025-11-13 03:15:42
+```
+
