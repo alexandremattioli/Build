@@ -99,14 +99,29 @@ function Process-Message {
     $logEntry = "[$timestamp] PROCESSED: $($Message.id) | FROM: $($Message.from) | SUBJECT: $($Message.subject)`n"
     Add-Content -Path $logPath -Value $logEntry
     
-    # Analyze if response needed
+    # Analyze if response needed and AUTO-RESPOND
     $needsResponse = $false
     $responseType = $null
     
     # Check for questions or requests
-    if ($Message.body -match "\?|\@code2|\@$ServerId|request|question|please respond") {
+    if ($Message.body -match "reply|respond|ready\?|are you|status|report") {
         $needsResponse = $true
         $responseType = "question"
+        
+        # AUTO-RESPOND
+        try {
+            $responseBody = "Code2 (LL-CODE-02) responding automatically.`n`nStatus: ONLINE and OPERATIONAL`nSystems: sm command active, monitor running (60s polling), heartbeat active`nReady for: Task assignments and coordination`n`nAuto-response from monitor at $(Get-Date -Format 'yyyy-MM-dd HH:mm:ss')"
+            
+            Write-Host "→ AUTO-RESPONDING to: $($Message.subject)" -ForegroundColor Yellow
+            
+            # Use sm command to send response
+            & "$BuildRepoPath\windows\scripts\sm.ps1" -Body $responseBody -Subject "Re: $($Message.subject)" -To $Message.from -BuildRepoPath $BuildRepoPath
+            
+            Write-Host "✓ Auto-response sent" -ForegroundColor Green
+        }
+        catch {
+            Write-Host "✗ Auto-response failed: $_" -ForegroundColor Red
+        }
     }
     
     # Check for project coordination
@@ -121,7 +136,7 @@ function Process-Message {
         $responseType = "task"
     }
     
-    if ($needsResponse) {
+    if ($needsResponse -and $responseType -ne "question") {
         Write-Host "→ Response needed: $responseType" -ForegroundColor Magenta
         Write-Host "→ User will be notified to review and respond" -ForegroundColor Magenta
         
