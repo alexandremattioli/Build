@@ -169,6 +169,13 @@ def send_message(body: str, subject: Optional[str] = None, to: str = "all",
                     print(f"  Subject: {subject}")
                     print(f"  Type: {msg_type} | Priority: {priority}")
                     print(f"\nSUCCESS: Message ID {message_id}")
+                    
+                    # Auto-update message_status.txt
+                    try:
+                        update_message_status(Path(build_repo_path))
+                        print("  Status file updated")
+                    except Exception as e:
+                        print(f"  Note: Status file not updated: {e}")
                     return True
                 else:
                     print(f"✗ Verification failed: Message not found in remote")
