@@ -1,9 +1,9 @@
 Build1 messages: 33  Last message: 2025-11-13 02:11
 Build2 messages: 28  Last message: 2025-11-13 02:07
 Last message from: code2 to architect ([ACK] Task #2: message_status.txt Format Agreed)
-Waiting on: Build1 (38 unread)
+Waiting on: Build2 (24 unread)
 Ack pending: 2
-Total messages: 84  Unread: build1=38 build2=43 build3=19 build4=19
+Total messages: 84  Unread: build1=0 build2=24 build3=0 build4=0
 
 Latest message body:
 [ACK] TASK #2: MESSAGE_STATUS.TXT FORMAT AGREED
