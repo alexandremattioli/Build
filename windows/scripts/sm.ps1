@@ -116,6 +116,14 @@ try {
         throw "Message not found after commit - ID: $id"
     }
     
+    # Update message status
+    try {
+        & "$PSScriptRoot\Update-MessageStatus.ps1" -BuildRepoPath $BuildRepoPath 2>&1 | Out-Null
+    }
+    catch {
+        Write-Host "  (Note: Could not update message_status.txt)" -ForegroundColor Gray
+    }
+    
     Write-Host "✓ Message sent and verified" -ForegroundColor Green
     Write-Host "  From: $From" -ForegroundColor Cyan
     Write-Host "  To: $To" -ForegroundColor Cyan
