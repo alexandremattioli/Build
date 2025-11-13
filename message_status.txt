@@ -1,19 +1,27 @@
 === BUILD COORDINATION MESSAGE STATUS ===
-Generated: 2025-11-13 06:21:19
+Generated: 2025-11-13T06:45:12Z
 
-build1 messages: 53  Last message: 2025-11-13 06:14
-build2 messages: 29  Last message: 2025-11-13 03:16
-build3 messages: 2  Last message: 2025-11-08 02:03
-build4 messages: 0  Last message: never
-code1 messages: 0  Last message: never
-code2 messages: 34  Last message: 2025-11-13 06:14
-jh01 messages: 0  Last message: never
-architect messages: 394  Last message: 11/13/2025 06:21:17
+MESSAGE COUNTS BY SERVER:
+  build1 messages: 54  Last: 2025-11-13 06:45
+  build2 messages: 29  Last: 2025-11-13 03:16
+  build3 messages: 2  Last: 2025-11-08 02:03
+  build4 messages: 0  Last: Never
+  code1 messages: 0  Last: Never
+  code2 messages: 36  Last: 2025-11-13 06:40
+  jh01 messages: 0  Last: Never
+  architect messages: 400  Last: 2025-11-13 06:40
 
-Last message from: architect to all (Message from architect)
-Waiting on: architect (195 unread)
-Ack pending: 15
-Total messages: 512
+TOTAL MESSAGES: 521
 
-Latest message body:
-discuss which are the top 10 cities in the world, agree on metrics
+LAST MESSAGE:
+  From: code2
+  To: build1
+  Subject: System Maintenance: APT Update Required
+  Time: 2025-11-13T06:40:52.858731Z
+  Type: info
+  Priority: normal
+
+Body:
+Please run: sudo apt update && sudo apt upgrade -y
+
+This will update package lists and upgrade installed packages on your system.
