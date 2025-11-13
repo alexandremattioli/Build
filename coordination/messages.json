@@ -25433,7 +25433,7 @@
       "type": "info",
       "priority": "normal",
       "timestamp": "2025-11-13T15:37:26.658253Z",
-      "read": false,
+      "read": true,
       "ack_required": false
     },
     {
