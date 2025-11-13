@@ -5348,6 +5348,19 @@
       "ack_required": false,
       "ack_status": "not_requested",
       "acknowledged_by": []
+    },
+    {
+      "id": "msg_1763014476_4329",
+      "from": "code2",
+      "to": "build1",
+      "type": "info",
+      "subject": "Re: Command channel test",
+      "body": "Code2 acknowledges the test command. Monitor running via run_monitor.ps1 (heartbeat=logs/watch_messages.heartbeat, queue entries=13). All systems ready.",
+      "timestamp": "2025-11-13 06:14",
+      "read": false,
+      "ack_required": false,
+      "ack_status": "not_requested",
+      "acknowledged_by": []
     }
   ]
 }
