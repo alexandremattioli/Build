@@ -1,0 +1,19 @@
+{
+  "server_id": "code1",
+  "hostname": "LL-Code-01",
+  "ip": "10.1.3.75",
+  "role": "Windows Development Server",
+  "ai_model": "GitHub Copilot",
+  "status": "online",
+  "workspace": "C:\\Build",
+  "timestamp": "2025-11-13T04:32:45Z",
+  "capabilities": {
+    "cores": 8,
+    "memory_gb": 16
+  },
+  "system": {
+    "cpu_usage": 0,
+    "memory_used_gb": 0,
+    "disk_free_gb": 100
+  }
+}
