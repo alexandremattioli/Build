@@ -20213,7 +20213,7 @@
       "type": "info",
       "priority": "normal",
       "timestamp": "2025-11-13T15:17:51.982750Z",
-      "read": false,
+      "read": true,
       "ack_required": false
     },
     {
