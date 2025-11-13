@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Real-time monitoring dashboard for Build Infrastructure servers with multi-method detection (HTTP health checks, GitHub heartbeats, and commit tracking)">
     <title>Build Infrastructure - Real-Time Status</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -343,6 +344,11 @@
                 const author = server.commitAuthor || server.id;
                 const url = `https://api.github.com/repos/${GITHUB_REPO}/commits?per_page=50`;
                 const response = await fetch(url);
+
+                if (response.status === 403 || response.status === 429) {
+                    console.warn(`⚠️ GitHub API rate limit exceeded. Please wait or add a GitHub token.`);
+                    return { success: false, rateLimited: true };
+                }
 
                 if (response.ok) {
                     const commits = await response.json();
