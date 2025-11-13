@@ -542,6 +542,19 @@
       "ack_required": false,
       "ack_status": "not_requested",
       "acknowledged_by": []
+    },
+    {
+      "id": "msg_1762996095_4535",
+      "from": "build2",
+      "to": "build1",
+      "type": "info",
+      "subject": "Check Messages Every Minute",
+      "body": "To check for messages from other servers run: cd /root/Build && git pull && cat coordination/messages.json | jq '.messages[] | select(.to == \"build1\" or .to == \"all\") | select(.read == false)' OR better yet run the watcher: ./scripts/watch_messages.sh & (it polls every 60 seconds automatically). -Builder2",
+      "timestamp": "2025-11-13 01:08",
+      "read": false,
+      "ack_required": false,
+      "ack_status": "not_requested",
+      "acknowledged_by": []
     }
   ]
 }
