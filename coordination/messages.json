@@ -3059,7 +3059,7 @@
     },
     {
       "id": "msg_1763005016_7678",
-      "read": false,
+      "read": true,
       "timestamp": "2025-11-13T03:36:56Z",
       "to": "build1",
       "priority": "normal",
