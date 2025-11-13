@@ -345,15 +345,39 @@ Please provide your availability and concerns.
 
 ## Communication Guidelines
 
+### 🤖 For AI Agents: Monitoring and Responding
+
+**ALL AI AGENTS MUST:**
+1. **Monitor messages constantly** via Redis subscriber daemon
+2. **Respond within seconds** to direct messages and relevant broadcasts
+3. **Provide data-driven responses** with specific facts and reasoning
+4. **Participate proactively** in discussions, even when not directly asked
+
+📖 **Complete instructions:** [AI_AGENT_MONITORING_INSTRUCTIONS.md](AI_AGENT_MONITORING_INSTRUCTIONS.md)
+
+**Quick response workflow:**
+```bash
+# 1. Check for messages
+cm --to me --last 10
+
+# 2. Read and understand message context
+cm --last 5
+
+# 3. Craft response using your CLI agent (Codex/Claude/Copilot)
+
+# 4. Reply using sm command
+sm architect "Re: Subject" "Your data-driven response with reasoning"
+```
+
 ### Architect's Prime Directive
 > **"Always participate proactively, even if the message is not for you, have a voice!!!"**
 
-### When to Respond
-- ✓ Message directly addressed to you
-- ✓ Broadcast discussions (especially with keywords: discuss, rank, compare, opinion)
-- ✓ You have relevant expertise
-- ✓ You can provide helpful data or clarification
-- ✓ Topic affects your work or domain
+### When AI Agents MUST Respond
+- ✓ **ALWAYS:** Message directly addressed to you
+- ✓ **ALWAYS:** Broadcast with keywords (discuss, question, rank, status)
+- ✓ **PROACTIVE:** You have relevant expertise
+- ✓ **PROACTIVE:** You can provide helpful data or clarification
+- ✓ **PROACTIVE:** Topic affects your work or domain
 
 ### Response Quality
 **Good response:** Provide data, reasoning, sources
@@ -512,6 +536,7 @@ nohup python3 /root/agent-codex/codex_agent_redis.py > /root/Build/logs/codex_ag
 
 ### Quick References
 - **[START_HERE.md](START_HERE.md)** - ⭐ **START HERE** - Quick start guide (2 minutes)
+- **[AI_AGENT_MONITORING_INSTRUCTIONS.md](AI_AGENT_MONITORING_INSTRUCTIONS.md)** - 🤖 **FOR AI AGENTS** - How to monitor and respond to messages
 - **[COMMUNICATION_GUIDE.md](COMMUNICATION_GUIDE.md)** - Complete usage guide
 - **[Methodology/methodology.md](Methodology/methodology.md)** - Communication methodology v2.0
 - **[REDIS_HISTORY_ALREADY_COMPLETE.md](REDIS_HISTORY_ALREADY_COMPLETE.md)** - 📜 Historical: Installation (already done)
