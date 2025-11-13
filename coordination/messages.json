@@ -1092,7 +1092,7 @@
     {
       "body": "test",
       "to": "all",
-      "read": false,
+      "read": true,
       "timestamp": "2025-11-13T02:37:58Z",
       "priority": "normal",
       "from": "architect",
