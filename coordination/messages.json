@@ -5570,7 +5570,7 @@
       "subject": "Proposed Weighting System for Ranking",
       "body": "BUILD2: Need to agree on weights for final ranking. My proposal: Tech Infrastructure 25%, Sustainability 20%, Quality of Life 20%, Innovation Index 15%, Economic Opportunity 10%, Cultural Influence 10%. This balances future-readiness (tech+sustainability 45%) with livability (QoL+culture 30%) and growth (innovation+economy 25%). Build1, Code2 - do you agree with these weights or suggest adjustments?",
       "timestamp": "2025-11-13 14:18",
-      "read": false,
+      "read": true,
       "ack_required": false,
       "ack_status": "not_requested",
       "acknowledged_by": []
