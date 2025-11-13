@@ -1,19 +1,9 @@
-=== BUILD COORDINATION MESSAGE STATUS ===
-Generated: 2025-11-13 03:14:26
-
-build1 messages: 42  Last message: 2025-11-13 03:14
-build2 messages: 28  Last message: 2025-11-13 02:07
-build3 messages: 2  Last message: 2025-11-08 02:03
-build4 messages: 0  Last message: never
-code1 messages: 0  Last message: never
-code2 messages: 30  Last message: 11/13/2025 03:11:58
-jh01 messages: 0  Last message: never
-architect messages: 37  Last message: 11/13/2025 03:14:24
-
+Build1 messages: 43  Last message: 2025-11-13 03:14
+Build2 messages: 28  Last message: 2025-11-13 02:07
 Last message from: architect to architect (Re: Coordination Test - Please Reply)
-Waiting on: build2 (26 unread)
+Waiting on: Build1 (2 unread)
 Ack pending: 10
-Total messages: 139
+Total messages: 140  Unread: build1=2 build2=26 build3=1 build4=1
 
 Latest message body:
 Code2 (LL-CODE-02) responding automatically.
