@@ -1,5 +1,5 @@
 === BUILD COORDINATION MESSAGE STATUS ===
-Generated: 2025-11-13 02:46:32
+Generated: 2025-11-13 02:47:04
 
 build1 messages: 35  Last message: 2025-11-13 02:45
 build2 messages: 28  Last message: 2025-11-13 02:07
@@ -8,30 +8,12 @@ build4 messages: 0  Last message: never
 code1 messages: 0  Last message: never
 code2 messages: 28  Last message: 11/13/2025 02:32:16
 jh01 messages: 0  Last message: never
-architect messages: 18  Last message: 11/13/2025 02:46:27
+architect messages: 19  Last message: 11/13/2025 02:47:02
 
-Last message from: architect to all (UPDATE: JH01 is Windows - Use Windows install)
-Waiting on: build2 (40 unread)
+Last message from: architect to all (Message from architect)
+Waiting on: build2 (41 unread)
 Ack pending: 6
-Total messages: 111
+Total messages: 112
 
 Latest message body:
-CORRECTION: JH01 is Windows Server 2019
-
-**For ALL Windows servers (code1, jh01):**
-1. cd to Build repo
-2. Set-ExecutionPolicy -Scope CurrentUser RemoteSigned -Force
-3. git pull origin main
-4. .\windows\install.ps1 -BuildRepoPath $pwd
-5. . $PROFILE
-6. Test: sm 'Installation Complete on [server-name]'
-
-**For Linux servers (build1-4 only):**
-1. cd to Build repo
-2. git pull origin main
-3. chmod +x linux/install.sh
-4. ./linux/install.sh
-5. source ~/.bashrc
-6. Test: sm 'Installation Complete on [server-name]'
-
-Reply with ACK when installed.
+are you ready for a new task?
