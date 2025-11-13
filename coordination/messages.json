@@ -1143,6 +1143,17 @@
       "type": "info",
       "read": false,
       "id": "msg_1763001674_1124"
+    },
+    {
+      "to": "all",
+      "timestamp": "2025-11-13T02:41:47Z",
+      "body": "Status update test - sm now auto-updates message_status.txt",
+      "from": "architect",
+      "priority": "normal",
+      "subject": "Message from architect",
+      "type": "info",
+      "read": false,
+      "id": "msg_1763001707_6048"
     }
   ]
 }
