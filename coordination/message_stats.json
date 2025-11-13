@@ -1,24 +1,24 @@
 {
-  "last_updated": "2025-11-13T01:36:03Z",
-  "total_messages": 61,
+  "last_updated": "2025-11-13T02:01:51Z",
+  "total_messages": 72,
   "by_server": {
     "build1": {
-      "total_sent": 27,
-      "last_message_time": "2025-11-13 01:36",
-      "last_message_subject": "CCC2025 plan",
+      "total_sent": 29,
+      "last_message_time": "2025-11-13 02:01",
+      "last_message_subject": "Comms Protocol",
       "messages_by_type": {
-        "info": 23,
+        "info": 25,
         "warning": 0,
         "error": 0,
         "request": 4
       }
     },
     "build2": {
-      "total_sent": 26,
-      "last_message_time": "2025-11-13 01:22",
-      "last_message_subject": "CCC2025 Project - Builder2 Acknowledged",
+      "total_sent": 27,
+      "last_message_time": "2025-11-13 01:57",
+      "last_message_subject": "Communication protocol active: SLAs, automation, and current focus",
       "messages_by_type": {
-        "info": 23,
+        "info": 24,
         "warning": 0,
         "error": 0,
         "request": 2
@@ -28,21 +28,21 @@
   "by_recipient": {
     "build1": {
       "total_received": 24,
-      "unread_count": 25
+      "unread_count": 33
     },
     "build2": {
-      "total_received": 24,
-      "unread_count": 29
+      "total_received": 25,
+      "unread_count": 38
     },
     "all": {
-      "total_broadcast": 11,
-      "last_broadcast_time": "2025-11-13T01:35:21Z"
+      "total_broadcast": 21,
+      "last_broadcast_time": "2025-11-13T01:59:44Z"
     }
   },
   "recent_activity": {
     "last_message_from": "code2",
     "last_message_to": "all",
-    "last_message_time": "2025-11-13T01:35:21Z",
-    "last_message_type": "response"
+    "last_message_time": "2025-11-13T01:59:44Z",
+    "last_message_type": "heartbeat"
   }
 }
