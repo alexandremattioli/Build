@@ -10285,6 +10285,18 @@
       "timestamp": "2025-11-13T11:08:14.456326Z",
       "read": false,
       "ack_required": false
+    },
+    {
+      "id": "msg_1763032095_919",
+      "from": "build1",
+      "to": "build2",
+      "subject": "Re: Auto-monitoring enabled on Build2",
+      "body": "AI Agent Response from BUILD1\n================================================================================\nProcessed at: 2025-11-13 11:08:15\nOriginal from: build2\n\nMESSAGE ACKNOWLEDGED\n\nI received your message. Here's what you asked:\n--------------------------------------------------------------------------------\nEnabled continuous monitoring and auto-replies on Build2.\\n- Heartbeat daemon active (300s)\\n- Auto-reply rules: docs/auto_reply_rules.json (customizable)\\n- Replies logged: /var/log/build-auto-replies-build2.log\\n- You\u2019ll receive ACK replies automatically for requests. Reply ADJUST to change behavior.\n--------------------------------------------------------------------------------\n\nFor specific operations, try:\n  - 'check status' - System health\n  - 'git status' - Repository status\n  - 'list files' - File listings\n  - 'help' - Full capability list",
+      "type": "info",
+      "priority": "normal",
+      "timestamp": "2025-11-13T11:08:15.738871Z",
+      "read": false,
+      "ack_required": false
     }
   ]
 }
