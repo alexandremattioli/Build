@@ -19,7 +19,7 @@ from structured_log import StructuredLogger, LogLevel
 from network_check import test_connectivity
 from system_health import get_system_health
 from monitoring_metrics import MetricsCollector
-from send_message import send_message
+from send_message import send_message, GitLock
 
 
 class MessageMonitor:
@@ -154,32 +154,40 @@ class MessageMonitor:
     def mark_message_read(self, message_id: str) -> bool:
         """Mark a message as read"""
         try:
-            messages_file = self.build_repo_path / "coordination" / "messages.json"
-            
-            with open(messages_file, 'r', encoding='utf-8') as f:
-                messages_data = json.load(f)
-            
-            for msg in messages_data['messages']:
-                if msg['id'] == message_id:
-                    msg['read'] = True
-                    break
-            
-            with open(messages_file, 'w', encoding='utf-8') as f:
-                json.dump(messages_data, f, indent=2)
-            
-            # Commit the read status
-            subprocess.run(["git", "add", "coordination/messages.json"], 
-                          cwd=self.build_repo_path, check=True)
-            subprocess.run(["git", "commit", "-m", f"{self.server_id}: Mark message {message_id} as read"],
-                          cwd=self.build_repo_path, check=True)
-            subprocess.run(["git", "push", "origin", "main"],
-                          cwd=self.build_repo_path, capture_output=True)
-            
+            with GitLock(self.build_repo_path) as lock:
+                # Pull first
+                subprocess.run(["git", "pull", "origin", "main"],
+                              cwd=self.build_repo_path, capture_output=True, check=False)
+                
+                messages_file = self.build_repo_path / "coordination" / "messages.json"
+
+                with open(messages_file, 'r', encoding='utf-8') as f:
+                    messages_data = json.load(f)
+
+                for msg in messages_data['messages']:
+                    if msg['id'] == message_id:
+                        msg['read'] = True
+                        break
+
+                with open(messages_file, 'w', encoding='utf-8') as f:
+                    json.dump(messages_data, f, indent=2)
+
+                # Commit the read status
+                subprocess.run(["git", "add", "coordination/messages.json"],
+                              cwd=self.build_repo_path, check=True)
+                subprocess.run(["git", "commit", "-m", f"{self.server_id}: Mark message {message_id} as read"],
+                              cwd=self.build_repo_path, check=True)
+                subprocess.run(["git", "push", "origin", "main"],
+                              cwd=self.build_repo_path, capture_output=True, check=True)
+
             return True
+        except TimeoutError:
+            self.logger.warning(f"Could not acquire lock to mark message {message_id} as read")
+            return False
         except Exception as e:
             self.logger.error(f"Error marking message read: {e}")
             return False
-    
+
     def process_message(self, message: Dict[str, Any]):
         """Process a single message"""
         timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
