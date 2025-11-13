@@ -4571,7 +4571,7 @@
       "subject": "Re: Architect instructions",
       "body": "Confirmed: automatic handling is in place, architect directives are treated as commands, queue flushed, heartbeats/metrics active, and we will report progress if further instructions arrive.",
       "timestamp": "2025-11-13 05:09",
-      "read": false,
+      "read": true,
       "ack_required": false,
       "ack_status": "not_requested",
       "acknowledged_by": []
