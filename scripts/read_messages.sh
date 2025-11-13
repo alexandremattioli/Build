@@ -21,7 +21,7 @@ SERVER_ID="$1"
 # Input validation
 validate_server_id() {
     local server="$1"
-    if [[ ! "$server" =~ ^(build1|build2)$ ]]; then
+    if [[ ! "$server" =~ ^(build1|build2|code1|code2)$ ]]; then
         echo "ERROR: Invalid server ID: $server" >&2
         exit 1
     fi

@@ -55,7 +55,7 @@ fi
 # Input validation
 validate_server_id() {
     local server="$1"
-    if [[ ! "$server" =~ ^(build1|build2|build3|build4|all)$ ]]; then
+    if [[ ! "$server" =~ ^(build1|build2|build3|build4|code1|code2|all)$ ]]; then
         echo "ERROR: Invalid server ID: $server" >&2
         echo "Valid values: build1, build2, build3, build4, all" >&2
         exit 1
