@@ -56,7 +56,7 @@ class MetricsCollector:
     def record_operation(self, operation_type: str, duration_ms: float, success: bool, metadata: Optional[Dict[str, Any]] = None):
         """Record an operation metric"""
         metrics = self._load_metrics()
-        
+
         operation = {
             "timestamp": time.time(),
             "type": operation_type,
@@ -64,10 +64,12 @@ class MetricsCollector:
             "success": success,
             "metadata": metadata or {}
         }
+
+        # Ensure operations list exists
+        if "operations" not in metrics:
+            metrics["operations"] = []
         
-        metrics["operations"].append(operation)
-        
-        # Update summary
+        metrics["operations"].append(operation)        # Update summary
         summary = metrics.get("summary", {})
         
         if operation_type == "message_processed":
