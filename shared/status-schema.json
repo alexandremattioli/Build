@@ -1,0 +1,144 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Build Server Status Schema",
+  "type": "object",
+  "required": ["server_id", "ip", "status", "timestamp"],
+  "properties": {
+    "server_id": {
+      "type": "string",
+      "description": "Unique identifier for the server",
+      "pattern": "^(build[1-4]|code[1-2])$"
+    },
+    "hostname": {
+      "type": "string",
+      "description": "Server hostname"
+    },
+    "ip": {
+      "type": "string",
+      "description": "Server IP address",
+      "pattern": "^\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}$"
+    },
+    "role": {
+      "type": "string",
+      "description": "Server role description"
+    },
+    "ai_model": {
+      "type": "string",
+      "description": "AI model used on this server"
+    },
+    "manager": {
+      "type": "string",
+      "description": "AI manager name (for build servers)"
+    },
+    "status": {
+      "type": "string",
+      "enum": ["online", "offline", "building", "idle", "maintenance"],
+      "description": "Current server status"
+    },
+    "workspace": {
+      "type": "string",
+      "description": "Workspace directory path"
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time",
+      "description": "ISO 8601 timestamp of last update"
+    },
+    "current_job": {
+      "type": ["object", "null"],
+      "description": "Currently executing job",
+      "properties": {
+        "id": {"type": "string"},
+        "branch": {"type": "string"},
+        "started_at": {"type": "string", "format": "date-time"}
+      }
+    },
+    "last_build": {
+      "type": ["object", "null"],
+      "description": "Last completed build",
+      "properties": {
+        "id": {"type": "string"},
+        "status": {"type": "string"},
+        "branch": {"type": "string"},
+        "commit": {"type": "string"},
+        "completed_at": {"type": "string", "format": "date-time"},
+        "duration_seconds": {"type": "number"}
+      }
+    },
+    "last_package": {
+      "type": ["object", "null"],
+      "description": "Last completed package build"
+    },
+    "system": {
+      "type": "object",
+      "required": ["cpu_usage", "memory_used_gb", "disk_free_gb"],
+      "properties": {
+        "cpu_usage": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100,
+          "description": "CPU usage percentage"
+        },
+        "memory_used_gb": {
+          "type": "number",
+          "minimum": 0,
+          "description": "Memory used in GB"
+        },
+        "disk_free_gb": {
+          "type": "number",
+          "minimum": 0,
+          "description": "Free disk space in GB"
+        },
+        "network_latency_ms": {
+          "type": "number",
+          "minimum": 0,
+          "description": "Network latency in milliseconds"
+        },
+        "temperature_celsius": {
+          "type": "number",
+          "description": "CPU temperature in Celsius"
+        }
+      }
+    },
+    "capabilities": {
+      "type": "object",
+      "required": ["cores", "memory_gb"],
+      "properties": {
+        "cores": {
+          "type": "integer",
+          "minimum": 1,
+          "description": "Number of CPU cores"
+        },
+        "memory_gb": {
+          "type": "integer",
+          "minimum": 1,
+          "description": "Total memory in GB"
+        },
+        "java_version": {
+          "type": "string",
+          "description": "Java version"
+        },
+        "maven_version": {
+          "type": "string",
+          "description": "Maven version"
+        },
+        "build_profiles": {
+          "type": "array",
+          "items": {"type": "string"},
+          "description": "Available build profiles"
+        }
+      }
+    },
+    "metrics": {
+      "type": "object",
+      "description": "Historical metrics",
+      "properties": {
+        "builds_today": {"type": "integer"},
+        "builds_this_week": {"type": "integer"},
+        "avg_build_time_seconds": {"type": "number"},
+        "success_rate_percent": {"type": "number"},
+        "uptime_percent": {"type": "number"}
+      }
+    }
+  }
+}

@@ -1,0 +1,92 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Job Schema",
+  "type": "object",
+  "required": ["id", "status", "branch", "priority", "created_at"],
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique job identifier"
+    },
+    "status": {
+      "type": "string",
+      "enum": ["queued", "running", "completed", "failed", "cancelled"],
+      "description": "Job status"
+    },
+    "branch": {
+      "type": "string",
+      "description": "Git branch to build"
+    },
+    "commit": {
+      "type": "string",
+      "description": "Git commit hash"
+    },
+    "priority": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 10,
+      "description": "Job priority (1=lowest, 10=highest)"
+    },
+    "assigned_to": {
+      "type": "string",
+      "description": "Server ID job is assigned to",
+      "pattern": "^(build[1-4]|code[1-2])$"
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When job was created"
+    },
+    "started_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When job started executing"
+    },
+    "completed_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When job completed"
+    },
+    "duration_seconds": {
+      "type": "number",
+      "description": "Job duration in seconds"
+    },
+    "requester": {
+      "type": "string",
+      "description": "Who requested the job"
+    },
+    "build_type": {
+      "type": "string",
+      "enum": ["full", "incremental", "package", "test"],
+      "description": "Type of build"
+    },
+    "profiles": {
+      "type": "array",
+      "items": {"type": "string"},
+      "description": "Maven profiles to use"
+    },
+    "artifacts": {
+      "type": "array",
+      "items": {"type": "string"},
+      "description": "Paths to generated artifacts"
+    },
+    "log_file": {
+      "type": "string",
+      "description": "Path to build log"
+    },
+    "error_message": {
+      "type": "string",
+      "description": "Error message if job failed"
+    },
+    "retry_count": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Number of retry attempts"
+    },
+    "dependencies": {
+      "type": "array",
+      "items": {"type": "string"},
+      "description": "Job IDs this job depends on"
+    }
+  }
+}

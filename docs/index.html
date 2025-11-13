@@ -9,11 +9,39 @@
             box-sizing: border-box;
         }
         
+        :root {
+            --bg-primary: #0d1117;
+            --bg-secondary: #161b22;
+            --bg-tertiary: #0d1117;
+            --border-color: #30363d;
+            --text-primary: #c9d1d9;
+            --text-secondary: #8b949e;
+            --accent-color: #58a6ff;
+        }
+        
+        [data-theme="light"] {
+            --bg-primary: #ffffff;
+            --bg-secondary: #f6f8fa;
+            --bg-tertiary: #ffffff;
+            --border-color: #d0d7de;
+            --text-primary: #24292f;
+            --text-secondary: #57606a;
+            --accent-color: #0969da;
+        }
+        
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            background: #0d1117;
-            color: #c9d1d9;
+            background: var(--bg-primary);
+            color: var(--text-primary);
             padding: 20px;
+            transition: background 0.3s, color 0.3s;
+        }
+        
+        @media (max-width: 768px) {
+            body { padding: 10px; }
+            .container { max-width: 100%; }
+            .grid { grid-template-columns: 1fr; }
+            #searchInput { width: 100% !important; max-width: 250px; }
         }
         
         .container {
@@ -60,10 +88,11 @@
         }
         
         .card {
-            background: #161b22;
-            border: 1px solid #30363d;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
             border-radius: 6px;
             padding: 20px;
+            transition: background 0.3s, border-color 0.3s;
         }
 
         .card.alert {
@@ -343,6 +372,12 @@
             <div class="last-update">
                 Last Updated: <span id="lastUpdate">Loading...</span>
                 <button class="refresh-btn" onclick="loadAllData()">🔄 Refresh</button>
+                <button class="refresh-btn" onclick="toggleTheme()">🌓 Theme</button>
+                <button class="refresh-btn" onclick="exportMetrics()">📊 Export</button>
+            </div>
+            <div style="margin-top: 15px;">
+                <input type="text" id="searchInput" placeholder="Search servers, jobs, messages..." style="padding: 8px; width: 300px; background: #0d1117; border: 1px solid #30363d; border-radius: 6px; color: #c9d1d9;">
+                <button class="refresh-btn" onclick="performSearch()">🔍 Search</button>
             </div>
         </header>
 
@@ -757,11 +792,118 @@
             }
         }
 
+        // Theme management
+        function toggleTheme() {
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+            document.documentElement.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+        }
+        
+        // Load saved theme
+        const savedTheme = localStorage.getItem('theme') || 'dark';
+        if (savedTheme === 'light') {
+            document.documentElement.setAttribute('data-theme', 'light');
+        }
+        
+        // Search functionality
+        function performSearch() {
+            const query = document.getElementById('searchInput').value.toLowerCase();
+            if (!query) return;
+            
+            const cards = document.querySelectorAll('.card');
+            let found = false;
+            
+            cards.forEach(card => {
+                const text = card.textContent.toLowerCase();
+                if (text.includes(query)) {
+                    card.style.border = '2px solid #58a6ff';
+                    card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    found = true;
+                } else {
+                    card.style.border = '';
+                }
+            });
+            
+            if (!found) {
+                alert(`No results found for: ${query}`);
+            }
+        }
+        
+        // Export metrics to CSV
+        function exportMetrics() {
+            const data = document.getElementById('data-dump').textContent;
+            if (!data) {
+                alert('No data available to export');
+                return;
+            }
+            
+            const blob = new Blob([data], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `build-metrics-${new Date().toISOString()}.json`;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        }
+        
+        // Enhanced error handling with retry
+        let retryCount = 0;
+        const maxRetries = 3;
+        
+        async function loadAllDataWithRetry() {
+            try {
+                await loadAllData();
+                retryCount = 0;
+            } catch (error) {
+                retryCount++;
+                if (retryCount < maxRetries) {
+                    console.log(`Retry ${retryCount}/${maxRetries} in 5 seconds...`);
+                    setTimeout(loadAllDataWithRetry, 5000);
+                } else {
+                    console.error('Max retries reached');
+                    retryCount = 0;
+                }
+            }
+        }
+        
+        // Keyboard shortcuts
+        document.addEventListener('keydown', (e) => {
+            if (e.ctrlKey && e.key === 'r') {
+                e.preventDefault();
+                loadAllData();
+            }
+            if (e.ctrlKey && e.key === 'f') {
+                e.preventDefault();
+                document.getElementById('searchInput').focus();
+            }
+            if (e.ctrlKey && e.key === 't') {
+                e.preventDefault();
+                toggleTheme();
+            }
+        });
+        
+        // Search on Enter key
+        document.getElementById('searchInput')?.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') performSearch();
+        });
+        
         // Load data on page load
         loadAllData();
         
-        // Auto-refresh every 60 seconds
-        setInterval(loadAllData, 60000);
+        // Auto-refresh every 120 seconds (reduced from 60 for performance)
+        setInterval(loadAllData, 120000);
+        
+        // Connection quality indicator
+        let lastLoadTime = Date.now();
+        setInterval(() => {
+            const timeSinceLoad = Date.now() - lastLoadTime;
+            if (timeSinceLoad > 180000) { // 3 minutes
+                document.getElementById('lastUpdate').style.color = '#f85149';
+            }
+        }, 30000);
     </script>
 
     <!-- Machine-readable data dump for AI agents (hidden from UI) -->

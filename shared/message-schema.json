@@ -1,0 +1,67 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Message Schema",
+  "type": "object",
+  "required": ["id", "from", "to", "subject", "timestamp", "priority", "read"],
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique message identifier"
+    },
+    "from": {
+      "type": "string",
+      "description": "Sender server ID",
+      "pattern": "^(build[1-4]|code[1-2]|system)$"
+    },
+    "to": {
+      "type": "string",
+      "description": "Recipient server ID or 'all'",
+      "pattern": "^(build[1-4]|code[1-2]|system|all)$"
+    },
+    "subject": {
+      "type": "string",
+      "description": "Message subject"
+    },
+    "body": {
+      "type": "string",
+      "description": "Message body content"
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time",
+      "description": "ISO 8601 timestamp"
+    },
+    "priority": {
+      "type": "string",
+      "enum": ["critical", "high", "normal", "low"],
+      "description": "Message priority level"
+    },
+    "type": {
+      "type": "string",
+      "enum": ["info", "warning", "error", "request", "response"],
+      "description": "Message type"
+    },
+    "read": {
+      "type": "boolean",
+      "description": "Whether message has been read"
+    },
+    "read_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Timestamp when message was read"
+    },
+    "reply_to": {
+      "type": "string",
+      "description": "Message ID this is replying to"
+    },
+    "expires_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When message should be auto-archived"
+    },
+    "metadata": {
+      "type": "object",
+      "description": "Additional metadata"
+    }
+  }
+}
