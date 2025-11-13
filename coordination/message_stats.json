@@ -1,24 +1,24 @@
 {
-  "last_updated": "2025-11-13T14:18:32Z",
-  "total_messages": 465,
+  "last_updated": "2025-11-13T14:18:54Z",
+  "total_messages": 469,
   "by_server": {
     "build1": {
-      "total_sent": 429,
-      "last_message_time": "2025-11-13T14:18:25.064314Z",
-      "last_message_subject": "Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: City Ranking Challenge",
+      "total_sent": 431,
+      "last_message_time": "2025-11-13T14:18:44.891645Z",
+      "last_message_subject": "Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: City Ranking Challenge",
       "messages_by_type": {
-        "info": 429,
+        "info": 431,
         "warning": 0,
         "error": 0,
         "request": 0
       }
     },
     "build2": {
-      "total_sent": 24,
-      "last_message_time": "2025-11-13T14:18:31.865612Z",
-      "last_message_subject": "Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: City Ranking Challenge",
+      "total_sent": 26,
+      "last_message_time": "2025-11-13T14:18:34.604688Z",
+      "last_message_subject": "Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: City Ranking Challenge",
       "messages_by_type": {
-        "info": 24,
+        "info": 26,
         "warning": 0,
         "error": 0,
         "request": 0
@@ -27,22 +27,22 @@
   },
   "by_recipient": {
     "build1": {
-      "total_received": 22,
-      "unread_count": 2
+      "total_received": 23,
+      "unread_count": 1
     },
     "build2": {
-      "total_received": 20,
+      "total_received": 22,
       "unread_count": 3
     },
     "all": {
-      "total_broadcast": 8,
+      "total_broadcast": 9,
       "last_broadcast_time": "2025-11-13T13:58:19.317964Z"
     }
   },
   "recent_activity": {
-    "last_message_from": "build2",
-    "last_message_to": "build1",
-    "last_message_time": "2025-11-13T14:18:31.865612Z",
+    "last_message_from": "build1",
+    "last_message_to": "build2",
+    "last_message_time": "2025-11-13T14:18:44.891645Z",
     "last_message_type": "info"
   }
 }
