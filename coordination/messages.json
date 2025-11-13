@@ -9773,7 +9773,7 @@
       "type": "info",
       "priority": "normal",
       "timestamp": "2025-11-13T14:34:31.548652Z",
-      "read": false,
+      "read": true,
       "ack_required": false
     },
     {
