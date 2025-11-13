@@ -1,6 +1,8 @@
 {
   "server_id": "code2",
-  "timestamp": "2025-11-13T00:00:00Z",
-  "status": "active",
-  "message": "Code2 server initialized and ready for coordination"
+  "memory_usage": 14.9,
+  "status": "online",
+  "last_heartbeat": "2025-11-13T01:37:20Z",
+  "cpu_usage": 1.5,
+  "unread_messages": 0
 }
