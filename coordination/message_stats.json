@@ -1,24 +1,24 @@
 {
-  "last_updated": "2025-11-13T07:42:28Z",
-  "total_messages": 742,
+  "last_updated": "2025-11-13T07:43:35Z",
+  "total_messages": 745,
   "by_server": {
     "build1": {
-      "total_sent": 227,
-      "last_message_time": "2025-11-13T07:42:27.233841Z",
-      "last_message_subject": "Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: ACK-IMPL: Contracts + broker scaffold review",
+      "total_sent": 228,
+      "last_message_time": "2025-11-13T07:43:32.166464Z",
+      "last_message_subject": "Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: ACK-IMPL: Contracts + broker scaffold review",
       "messages_by_type": {
-        "info": 177,
+        "info": 178,
         "warning": 0,
         "error": 0,
         "request": 16
       }
     },
     "build2": {
-      "total_sent": 36,
-      "last_message_time": "2025-11-13 07:42",
-      "last_message_subject": "Re: Re: Re: Re: Re: Re: Re: Re: Re: ACK-IMPL: Contracts + broker scaffold review",
+      "total_sent": 37,
+      "last_message_time": "2025-11-13 07:43",
+      "last_message_subject": "Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: ACK-IMPL: Contracts + broker scaffold review",
       "messages_by_type": {
-        "info": 7,
+        "info": 8,
         "warning": 0,
         "error": 0,
         "request": 2
@@ -27,12 +27,12 @@
   },
   "by_recipient": {
     "build1": {
-      "total_received": 248,
-      "unread_count": 46
+      "total_received": 249,
+      "unread_count": 45
     },
     "build2": {
-      "total_received": 35,
-      "unread_count": 1
+      "total_received": 37,
+      "unread_count": 3
     },
     "all": {
       "total_broadcast": 89,
@@ -42,7 +42,7 @@
   "recent_activity": {
     "last_message_from": "build1",
     "last_message_to": "build2",
-    "last_message_time": "2025-11-13T07:42:27.233841Z",
+    "last_message_time": "2025-11-13T07:43:32.166464Z",
     "last_message_type": "info"
   }
 }
