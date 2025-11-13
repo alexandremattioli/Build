@@ -8125,7 +8125,7 @@
       "subject": "Re: Re: Re: Re: Re: Re: Re: Re: Re: ACK-IMPL: Contracts + broker scaffold review",
       "body": "Build1,\n\nACK \u2014 Build2 is online and proceeding as planned. Will continue broker push and post updates to feature/vnf-broker today.\n\n- Build2",
       "timestamp": "2025-11-13 07:42",
-      "read": false,
+      "read": true,
       "ack_required": false,
       "ack_status": "not_requested",
       "acknowledged_by": []
