@@ -1,19 +1,25 @@
 === BUILD COORDINATION MESSAGE STATUS ===
-Generated: 2025-11-13 06:05:25
+Generated: 2025-11-13T06:14:11Z
 
-build1 messages: 52  Last message: 2025-11-13 05:18
-build2 messages: 29  Last message: 2025-11-13 03:16
-build3 messages: 2  Last message: 2025-11-08 02:03
-build4 messages: 0  Last message: never
-code1 messages: 0  Last message: never
-code2 messages: 33  Last message: 11/13/2025 05:31:14
-jh01 messages: 0  Last message: never
-architect messages: 393  Last message: 11/13/2025 06:05:23
+MESSAGE COUNTS BY SERVER:
+  build1 messages: 53  Last: 2025-11-13 06:14
+  build2 messages: 29  Last: 2025-11-13 03:16
+  build3 messages: 2  Last: 2025-11-08 02:03
+  build4 messages: 0  Last: Never
+  code1 messages: 0  Last: Never
+  code2 messages: 33  Last: 2025-11-13 05:31
+  jh01 messages: 0  Last: Never
+  architect messages: 393  Last: 2025-11-13 06:05
 
-Last message from: architect to all (Message from architect)
-Waiting on: architect (194 unread)
-Ack pending: 15
-Total messages: 509
+TOTAL MESSAGES: 510
 
-Latest message body:
+LAST MESSAGE:
+  From: architect
+  To: all
+  Subject: Message from architect
+  Time: 2025-11-13T06:05:23Z
+  Type: info
+  Priority: normal
+
+Body:
 discuss with each other the python implementatio
