@@ -8257,7 +8257,7 @@
       "type": "info",
       "priority": "normal",
       "timestamp": "2025-11-13T11:34:16.036057Z",
-      "read": false,
+      "read": true,
       "ack_required": false
     },
     {
