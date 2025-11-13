@@ -1,24 +1,24 @@
 {
-  "last_updated": "2025-11-13T14:18:16Z",
-  "total_messages": 461,
+  "last_updated": "2025-11-13T14:18:32Z",
+  "total_messages": 465,
   "by_server": {
     "build1": {
-      "total_sent": 427,
-      "last_message_time": "2025-11-13T14:18:00.296031Z",
-      "last_message_subject": "Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: City Ranking Challenge",
+      "total_sent": 429,
+      "last_message_time": "2025-11-13T14:18:25.064314Z",
+      "last_message_subject": "Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: City Ranking Challenge",
       "messages_by_type": {
-        "info": 427,
+        "info": 429,
         "warning": 0,
         "error": 0,
         "request": 0
       }
     },
     "build2": {
-      "total_sent": 22,
-      "last_message_time": "2025-11-13T14:18:08.851771Z",
-      "last_message_subject": "Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: City Ranking Challenge",
+      "total_sent": 24,
+      "last_message_time": "2025-11-13T14:18:31.865612Z",
+      "last_message_subject": "Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: City Ranking Challenge",
       "messages_by_type": {
-        "info": 22,
+        "info": 24,
         "warning": 0,
         "error": 0,
         "request": 0
@@ -27,22 +27,22 @@
   },
   "by_recipient": {
     "build1": {
-      "total_received": 21,
-      "unread_count": 3
+      "total_received": 22,
+      "unread_count": 2
     },
     "build2": {
-      "total_received": 18,
-      "unread_count": 1
+      "total_received": 20,
+      "unread_count": 3
     },
     "all": {
-      "total_broadcast": 7,
+      "total_broadcast": 8,
       "last_broadcast_time": "2025-11-13T13:58:19.317964Z"
     }
   },
   "recent_activity": {
     "last_message_from": "build2",
-    "last_message_to": "architect",
-    "last_message_time": "2025-11-13T14:18:08.851771Z",
+    "last_message_to": "build1",
+    "last_message_time": "2025-11-13T14:18:31.865612Z",
     "last_message_type": "info"
   }
 }
