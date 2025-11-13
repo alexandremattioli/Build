@@ -75,10 +75,10 @@ def send_message(body: str, subject: Optional[str] = None, to: str = "all",
         
         subprocess.run(["git", "commit", "-m",
                        f"{from_sender} -> {to}: {subject}"],
-                      cwd=repo_path, check=True)        subprocess.run(["git", "push", "origin", "main"], 
                       cwd=repo_path, check=True)
         
-        # Verify by pulling and checking
+        subprocess.run(["git", "push", "origin", "main"],
+                      cwd=repo_path, check=True)        # Verify by pulling and checking
         subprocess.run(["git", "pull", "origin", "main"], 
                       cwd=repo_path, check=True)
         
