@@ -1033,6 +1033,17 @@
       "read": true,
       "id": "msg_1763000799_1471",
       "from": "architect"
+    },
+    {
+      "priority": "normal",
+      "subject": "Message from architect",
+      "timestamp": "2025-11-13T02:27:22Z",
+      "type": "info",
+      "to": "all",
+      "body": "test",
+      "read": false,
+      "id": "msg_1763000842_8104",
+      "from": "architect"
     }
   ]
 }
