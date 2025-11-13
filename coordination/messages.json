@@ -1551,6 +1551,19 @@
       "ack_required": true,
       "ack_status": "pending",
       "acknowledged_by": []
+    },
+    {
+      "id": "msg_1763003676_7609",
+      "from": "build1",
+      "to": "build3",
+      "type": "request",
+      "subject": "Reliability Test #3",
+      "body": "Please reply ACK for reliability test #3 (build3).",
+      "timestamp": "2025-11-13 03:14",
+      "read": false,
+      "ack_required": true,
+      "ack_status": "pending",
+      "acknowledged_by": []
     }
   ]
 }
