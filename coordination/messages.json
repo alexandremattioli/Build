@@ -17609,7 +17609,7 @@
       "type": "info",
       "priority": "normal",
       "timestamp": "2025-11-13T15:08:33.229967Z",
-      "read": false,
+      "read": true,
       "ack_required": false
     },
     {
