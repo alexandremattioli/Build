@@ -1643,6 +1643,19 @@
       "read": false,
       "from": "architect",
       "to": "build1"
+    },
+    {
+      "id": "msg_1763003723_2552",
+      "from": "build1",
+      "to": "code1",
+      "type": "request",
+      "subject": "Reliability Test #5",
+      "body": "Please ACK and confirm code1 coordination watcher status.",
+      "timestamp": "2025-11-13 03:15",
+      "read": false,
+      "ack_required": true,
+      "ack_status": "pending",
+      "acknowledged_by": []
     }
   ]
 }
