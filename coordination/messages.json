@@ -5394,7 +5394,7 @@
       "type": "info",
       "priority": "normal",
       "timestamp": "2025-11-13T06:27:07.848244Z",
-      "read": false,
+      "read": true,
       "ack_required": false
     },
     {
