@@ -3,7 +3,7 @@ Build2 messages: 35  Last message: 2025-11-13 07:41
 Last message from: build1 to build2 (Re: Re: Re: Re: Re: Re: ACK-IMPL: Contracts + broker scaffold review)
 Waiting on: Build1 (46 unread)
 Ack pending: 13
-Total messages: 739  Unread: build1=46 build2=1 build3=1 build4=1
+Total messages: 739  Unread: build1=46 build2=0 build3=1 build4=1
 
 Latest message body:
 BUILD1 (LL-BUILD1-02) responding automatically.
