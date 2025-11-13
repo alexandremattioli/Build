@@ -1,13 +1,13 @@
 {
-  "last_updated": "2025-11-13T02:45:06Z",
-  "total_messages": 110,
+  "last_updated": "2025-11-13T03:01:47Z",
+  "total_messages": 119,
   "by_server": {
     "build1": {
-      "total_sent": 35,
-      "last_message_time": "2025-11-13 02:45",
-      "last_message_subject": "Enable 10s watcher",
+      "total_sent": 36,
+      "last_message_time": "2025-11-13 03:01",
+      "last_message_subject": "Re: Enable 10s watcher",
       "messages_by_type": {
-        "info": 28,
+        "info": 29,
         "warning": 0,
         "error": 0,
         "request": 7
@@ -27,22 +27,22 @@
   },
   "by_recipient": {
     "build1": {
-      "total_received": 25,
-      "unread_count": 17
+      "total_received": 27,
+      "unread_count": 12
     },
     "build2": {
       "total_received": 26,
-      "unread_count": 41
+      "unread_count": 34
     },
     "all": {
-      "total_broadcast": 54,
-      "last_broadcast_time": "2025-11-13T02:43:06Z"
+      "total_broadcast": 59,
+      "last_broadcast_time": "2025-11-13T02:59:39Z"
     }
   },
   "recent_activity": {
     "last_message_from": "architect",
-    "last_message_to": "all",
-    "last_message_time": "2025-11-13T02:43:06Z",
-    "last_message_type": "request"
+    "last_message_to": "build1",
+    "last_message_time": "2025-11-13T03:01:41Z",
+    "last_message_type": "info"
   }
 }
