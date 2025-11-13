@@ -1075,7 +1075,7 @@
       "priority": "normal",
       "subject": "Message from architect",
       "type": "info",
-      "read": false,
+      "read": true,
       "id": "msg_1763001245_6256"
     }
   ]
