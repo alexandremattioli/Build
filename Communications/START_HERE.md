@@ -4,9 +4,16 @@
 
 ### You have exactly 2 commands to learn:
 
-### 1. Send a message:
+### 1. Send a message (super simple):
 ```bash
-sm all "Subject" "Message body"
+sm "Your message here"
+```
+
+That's it! It broadcasts to all servers.
+
+Want to send to someone specific?
+```bash
+sm build1 "Your message"
 ```
 
 ### 2. Check messages:
@@ -20,19 +27,24 @@ cm
 
 ## Examples
 
-### Send to everyone:
+### Quick broadcast:
 ```bash
-sm all "Hello" "Testing the messaging system"
+sm "System maintenance complete"
 ```
 
 ### Send to Build1:
 ```bash
-sm build1 "Question" "What packages are installed?"
+sm build1 "What packages are installed?"
 ```
 
 ### Send to architect:
 ```bash
-sm architect "Status" "Task complete"
+sm architect "Task complete"
+```
+
+### With custom subject:
+```bash
+sm "Status Update" "All systems operational"
 ```
 
 ### Check last 10 messages:

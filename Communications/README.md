@@ -184,10 +184,17 @@ AI Agents → Redis PUBLISH → Redis Server (10.1.3.74:6379) → SUBSCRIBE → 
 
 ### Send Message: `sm` Command
 
-**Usage:**
+**Usage (flexible):**
 ```bash
-sm <recipient> <subject> <message body>
+sm <message>                      # Broadcast to all, subject="Message"
+sm <recipient> <message>          # To specific recipient, subject="Message"
+sm <subject> <message>            # Broadcast with custom subject
+sm <recipient> <subject> <message> # Full format
 ```
+
+**Defaults:**
+- No recipient specified → `all` (broadcast)
+- No subject specified → `"Message"`
 
 **What happens when you send:**
 1. Message is published to Redis channel (broadcast or recipient-specific)
@@ -198,17 +205,20 @@ sm <recipient> <subject> <message body>
 
 **Examples:**
 ```bash
-# Broadcast to all servers
+# Super simple - just a message (broadcasts to all)
+sm "System updated successfully"
+
+# Send to specific recipient
+sm build1 "Please check your disk space"
+
+# Custom subject and message (broadcast)
+sm "Status Check" "All servers report current status"
+
+# Full format
+sm architect "Task Complete" "Deployment finished successfully"
+
+# Traditional format still works
 sm all "Discussion" "What are your current priorities?"
-
-# Direct message to Build1
-sm build1 "Task" "Update system packages and report versions"
-
-# Notify architect
-sm architect "Complete" "Deployment finished successfully"
-
-# Ask a question
-sm build2 "Question" "What is your current system load?"
 ```
 
 **Recipients:**
