@@ -1468,7 +1468,7 @@
       "to": "all",
       "body": "COORDINATION TEST: Please reply with your server name and status. This is an autonomous coordination test. Include the word 'TEST-REPLY' in your response.",
       "ack_required": true,
-      "read": false,
+      "read": true,
       "priority": "normal",
       "id": "msg_1763003612_9694",
       "timestamp": "2025-11-13T03:13:32Z"
