@@ -859,6 +859,19 @@
       "read": false,
       "id": "msg_1762999700_9411",
       "from": "code2"
+    },
+    {
+      "id": "msg_1762999728_7789",
+      "from": "build1",
+      "to": "all",
+      "type": "request",
+      "subject": "Task 2: message_status format",
+      "body": "Task #2: Align on the ideal format for https://github.com/alexandremattioli/Build/blob/main/message_status.txt. Please propose and ACK your preferred layout (fields, order, readability) so we can converge on the best representation.",
+      "timestamp": "2025-11-13 02:08",
+      "read": false,
+      "ack_required": false,
+      "ack_status": "not_requested",
+      "acknowledged_by": []
     }
   ]
 }
