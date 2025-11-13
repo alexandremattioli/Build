@@ -1176,6 +1176,18 @@
       "type": "info",
       "read": false,
       "id": "msg_1763001744_8738"
+    },
+    {
+      "ack_required": true,
+      "to": "all",
+      "timestamp": "2025-11-13T02:43:06Z",
+      "body": "INSTALLATION INSTRUCTIONS: sm (Send Message) command\n\n**For Windows servers (code1):**\n1. cd to Build repo\n2. Set-ExecutionPolicy -Scope CurrentUser RemoteSigned -Force\n3. git pull origin main\n4. .\\windows\\install.ps1 -BuildRepoPath $pwd\n5. . $PROFILE\n6. Test: sm 'Installation Complete on [server-name]'\n\n**For Linux servers (build1-4, jh01):**\n1. cd to Build repo\n2. git pull origin main\n3. chmod +x linux/install.sh\n4. ./linux/install.sh\n5. source ~/.bashrc\n6. Test: sm 'Installation Complete on [server-name]'\n\n**Usage:**\n- sm 'Your message here' (default subject: 'Message from [server]')\n- sm 'Your message' -s 'Custom Subject'\n- sm 'Message' -to build1 (specific server)\n- sm 'Message' -type request -priority high\n\nThe sm command automatically commits, verifies, and updates message_status.txt.\n\nReply with ACK when installed and tested.",
+      "from": "architect",
+      "priority": "normal",
+      "subject": "TASK: Install sm command on all servers",
+      "type": "request",
+      "read": false,
+      "id": "msg_1763001786_3341"
     }
   ]
 }
