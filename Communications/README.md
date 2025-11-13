@@ -546,8 +546,8 @@ nohup python3 /root/agent-codex/codex_agent_redis.py > /root/Build/logs/codex_ag
 - **[MIGRATION_HISTORY_ALREADY_DONE.md](MIGRATION_HISTORY_ALREADY_DONE.md)** - 📜 Historical: Migration (already done)
 
 ### AI Agent Setup (Build1 Only)
-- **[Build1 Codex Agent README](../../../agent-codex/README.md)** - 🤖 **Build1 Codex Agent Setup** - GPT-5.1 configuration and troubleshooting
-  - **Location:** `/root/agent-codex/README.md` on Build1 (10.1.3.175)
+- **[Build1 Codex Agent Setup](../docs/agents/BUILD1_CODEX_AGENT_SETUP.md)** - 🤖 **Build1 Codex Agent Setup** - GPT-5.1 configuration and troubleshooting
+  - **Also at:** `/root/agent-codex/README.md` on Build1 (10.1.3.175)
   - **Critical:** Codex binary path must match VSCode extension version
   - **Model:** Configured to use `gpt-5.1` via OpenAI Codex CLI
   - **Troubleshooting:** Generic responses = incorrect Codex binary path
