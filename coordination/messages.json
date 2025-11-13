@@ -1163,7 +1163,7 @@
       "priority": "normal",
       "subject": "SM Enhancement Test",
       "type": "info",
-      "read": false,
+      "read": true,
       "id": "msg_1763001729_3712"
     },
     {
