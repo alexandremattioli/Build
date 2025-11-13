@@ -139,6 +139,20 @@ Action Required: Review message and send appropriate response
 $iteration = 0
 $lastMessageTime = Get-Date
 $lastHeartbeatTime = Get-Date
+$lastProcessedId = $null
+
+# Get last processed message ID from log
+$logPath = Join-Path $BuildRepoPath "$ServerId\logs\messages.log"
+if (Test-Path $logPath) {
+    $logContent = Get-Content $logPath -Raw
+    if ($logContent -match 'msg_(\d+_\d+)') {
+        # Find the last message ID in the log
+        $allIds = [regex]::Matches($logContent, 'msg_(\d+_\d+)') | ForEach-Object { $_.Value }
+        if ($allIds) {
+            $lastProcessedId = $allIds[-1]
+        }
+    }
+}
 
 while ($true) {
     try {
@@ -149,8 +163,35 @@ while ($true) {
         $pullOutput = git pull origin main 2>&1
         Pop-Location
         
-        if ($pullOutput -match "Updating|Fast-forward") {
+        $hasGitUpdate = $pullOutput -match "Updating|Fast-forward"
+        if ($hasGitUpdate) {
             Write-Host "[$(Get-Date -Format 'HH:mm:ss')] Repository updated" -ForegroundColor Green
+        }
+        
+        # Always sync local log with coordination messages (not just on git updates)
+        $messagesPath = Join-Path $BuildRepoPath "coordination\messages.json"
+        $allMessages = Get-Content $messagesPath -Raw | ConvertFrom-Json
+        
+        $newMessages = $allMessages.messages | Where-Object {
+            ($_.to -eq $ServerId -or $_.to -eq "all") -and
+            ($null -eq $lastProcessedId -or $_.id -gt $lastProcessedId)
+        }
+        
+        if ($newMessages) {
+            foreach ($msg in $newMessages) {
+                $logEntry = @"
+
+=== New Messages $($msg.timestamp) ===
+[$($msg.type.ToUpper())] $($msg.from) -> $($msg.to)
+Subject: $($msg.subject)
+Time: $($msg.timestamp)
+$($msg.body)
+---
+"@
+                Add-Content -Path $logPath -Value $logEntry
+                $lastProcessedId = $msg.id
+            }
+            Write-Host "[$(Get-Date -Format 'HH:mm:ss')] Appended $($newMessages.Count) message(s) to local log" -ForegroundColor Green
         }
         
         # Check for unread messages
