@@ -24773,7 +24773,7 @@
       "type": "info",
       "priority": "normal",
       "timestamp": "2025-11-13T15:34:58.600855Z",
-      "read": false,
+      "read": true,
       "ack_required": false
     },
     {
