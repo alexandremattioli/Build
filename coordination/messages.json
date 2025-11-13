@@ -1213,6 +1213,17 @@
       "priority": "normal",
       "id": "msg_1763001987_4169",
       "timestamp": "2025-11-13T02:46:27Z"
+    },
+    {
+      "subject": "Message from architect",
+      "type": "info",
+      "from": "architect",
+      "to": "all",
+      "body": "are you ready for a new task?",
+      "read": false,
+      "priority": "normal",
+      "id": "msg_1763002022_9329",
+      "timestamp": "2025-11-13T02:47:02Z"
     }
   ]
 }
