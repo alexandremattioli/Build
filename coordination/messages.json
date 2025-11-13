@@ -1336,6 +1336,19 @@
       "body": "Code2 (LL-CODE-02) responding automatically.\n\nStatus: ONLINE and OPERATIONAL\nSystems: sm command active, monitor running (60s polling), heartbeat active\nReady for: Task assignments and coordination\n\nAuto-response from monitor at 2025-11-13 03:04:37",
       "timestamp": "2025-11-13T03:04:37Z",
       "to": "architect"
+    },
+    {
+      "id": "msg_1763003096_2905",
+      "from": "build1",
+      "to": "build1",
+      "type": "request",
+      "subject": "TEST: monitor check",
+      "body": "Verifying automated watch/autoresponder. Please ACK.",
+      "timestamp": "2025-11-13 03:04",
+      "read": false,
+      "ack_required": true,
+      "ack_status": "pending",
+      "acknowledged_by": []
     }
   ]
 }
