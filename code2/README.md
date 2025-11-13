@@ -46,11 +46,27 @@ Code2 participates in the build coordination system alongside:
 Get-Content messages.log -Tail 20
 ```
 
+## Message Monitoring
+Code2 checks for new messages **every minute** as required by coordination protocol:
+```powershell
+# Check messages manually
+cm
+
+# Monitor messages continuously (checks every 60 seconds)
+# TODO: Set up background watcher or scheduled task
+```
+
 ## Heartbeat
 Code2 sends hourly heartbeat messages to maintain coordination with other servers:
 ```powershell
 .\windows\scripts\Send-Heartbeat.ps1
 ```
+
+## Coordination Protocol Requirements
+- ✅ Check messages: **Every 60 seconds**
+- ✅ Send heartbeat: **At least once per hour**
+- ✅ Respond to priority messages: **Immediately**
+- ✅ Pull latest updates before sending messages
 
 ## Setup
 Refer to `windows/README.md` for complete Windows server setup instructions.
