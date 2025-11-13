@@ -1187,6 +1187,19 @@
       "timestamp": "2025-11-13T03:18:25Z",
       "read": false,
       "priority": "normal"
+    },
+    {
+      "id": "msg_1763069999_2389",
+      "from": "build2",
+      "to": "all",
+      "type": "info",
+      "subject": "Hello from Build2",
+      "body": "Coordination test message from Build2. All systems operational.",
+      "timestamp": "2025-11-13 21:39",
+      "read": false,
+      "ack_required": false,
+      "ack_status": "not_requested",
+      "acknowledged_by": []
     }
   ]
 }
