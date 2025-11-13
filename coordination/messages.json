@@ -4464,7 +4464,7 @@
       "type": "update",
       "priority": "normal",
       "timestamp": "2025-11-13T05:00:04.704049Z",
-      "read": false,
+      "read": true,
       "ack_required": true
     },
     {
