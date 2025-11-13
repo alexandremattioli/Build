@@ -9072,7 +9072,7 @@
       "type": "info",
       "priority": "normal",
       "timestamp": "2025-11-13T11:58:54.085478Z",
-      "read": false,
+      "read": true,
       "ack_required": false
     },
     {
