@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Tests</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #0d1117;
+            color: #c9d1d9;
+        }
+        .test-suite {
+            background: #161b22;
+            border: 1px solid #30363d;
+            border-radius: 6px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        .test-case {
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .test-case.pass {
+            background: #0d4128;
+            border-left: 4px solid #3fb950;
+        }
+        .test-case.fail {
+            background: #3d1319;
+            border-left: 4px solid #f85149;
+        }
+        .test-icon { font-size: 20px; }
+        .test-name { flex: 1; }
+        .test-details { font-size: 12px; color: #8b949e; }
+        .summary {
+            background: #21262d;
+            padding: 15px;
+            border-radius: 6px;
+            margin-bottom: 20px;
+        }
+        .summary-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-top: 10px;
+        }
+        .stat {
+            text-align: center;
+            padding: 10px;
+            border-radius: 4px;
+        }
+        .stat.pass { background: #0d4128; }
+        .stat.fail { background: #3d1319; }
+        .stat-value { font-size: 32px; font-weight: bold; }
+        .stat-label { font-size: 12px; opacity: 0.8; }
+        h1 { color: #58a6ff; }
+        h2 { color: #8b949e; margin-top: 0; }
+        button {
+            background: #238636;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        button:hover { background: #2ea043; }
+    </style>
+</head>
+<body>
+    <h1>🧪 Dashboard Test Suite</h1>
+    <button onclick="runAllTests()">Run All Tests</button>
+    
+    <div class="summary" id="summary" style="display: none;">
+        <h2>Test Results</h2>
+        <div class="summary-stats">
+            <div class="stat pass">
+                <div class="stat-value" id="passCount">0</div>
+                <div class="stat-label">Passed</div>
+            </div>
+            <div class="stat fail">
+                <div class="stat-value" id="failCount">0</div>
+                <div class="stat-label">Failed</div>
+            </div>
+            <div class="stat">
+                <div class="stat-value" id="totalCount">0</div>
+                <div class="stat-label">Total</div>
+            </div>
+        </div>
+    </div>
+
+    <div id="results"></div>
+
+    <script>
+        // Mock data
+        const mockServerData = {
+            build1: {
+                ip: '10.1.3.175',
+                status: 'online',
+                timestamp: new Date(Date.now() - 120000).toISOString(), // 2 min ago
+                lastHeartbeat: new Date(Date.now() - 60000).toISOString(), // 1 min ago
+                system: { cpu_usage: 5.2, memory_used_gb: 7.2, disk_free_gb: 25 },
+                capabilities: { cores: 32, memory_gb: 128 }
+            },
+            build2: {
+                ip: '10.1.3.177',
+                status: 'building',
+                timestamp: new Date(Date.now() - 300000).toISOString(), // 5 min ago
+                lastHeartbeat: new Date(Date.now() - 180000).toISOString(), // 3 min ago
+                system: { cpu_usage: 85.1, memory_used_gb: 100, disk_free_gb: 450 },
+                capabilities: { cores: 32, memory_gb: 128 }
+            },
+            build3: {
+                ip: '10.1.3.xxx', // Invalid IP
+                status: 'online',
+                timestamp: new Date().toISOString(),
+                system: { cpu_usage: 5.2, memory_used_gb: 32, disk_free_gb: 500 },
+                capabilities: { cores: 32, memory_gb: 64 }
+            },
+            code1: {
+                ip: '10.1.3.75',
+                status: 'idle',
+                timestamp: new Date(Date.now() - 700000).toISOString(), // 11.6 min ago (stale)
+                lastHeartbeat: new Date(Date.now() - 650000).toISOString(),
+                system: { cpu_usage: 0, memory_used_gb: 8, disk_free_gb: 100 },
+                capabilities: { cores: 8, memory_gb: 16 }
+            },
+            offline_server: {
+                ip: '10.1.3.99',
+                status: 'offline',
+                timestamp: new Date(Date.now() - 2000000).toISOString(), // 33 min ago (offline)
+                system: { cpu_usage: 0, memory_used_gb: 0, disk_free_gb: 0 },
+                capabilities: { cores: 16, memory_gb: 32 }
+            }
+        };
+
+        const mockMessages = [
+            { id: 'msg1', from: 'build1', to: 'build2', timestamp: new Date(Date.now() - 3600000).toISOString(), read: false }, // 1h old
+            { id: 'msg2', from: 'build2', to: 'all', timestamp: new Date(Date.now() - 7200000).toISOString(), read: false }, // 2h old
+            { id: 'msg3', from: 'code1', to: 'build1', timestamp: new Date(Date.now() - 86400000).toISOString(), read: false }, // 24h old
+            { id: 'msg4', from: 'build1', to: 'code1', timestamp: new Date(Date.now() - 1800000).toISOString(), read: true }, // 30m old, read
+            { id: 'msg5', from: 'build2', to: 'build1', timestamp: new Date(Date.now() - 300000).toISOString(), read: false } // 5m old
+        ];
+
+        // Helper functions from dashboard
+        const STALE_THRESHOLD_SECONDS = 600;
+        const OUTAGE_THRESHOLD_SECONDS = 1800;
+
+        function normalizeStatus(value) {
+            if (!value) return null;
+            const normalized = value.toString().trim().toLowerCase();
+            if (['online', 'success', 'healthy', 'up'].includes(normalized)) return 'online';
+            if (['idle', 'ready', 'available', 'standby'].includes(normalized)) return 'idle';
+            if (['building', 'running', 'busy', 'deploying', 'compiling', 'processing'].includes(normalized)) return 'building';
+            if (['maintenance', 'updating', 'restarting', 'patching'].includes(normalized)) return 'maintenance';
+            if (['degraded', 'unstable'].includes(normalized)) return 'degraded';
+            if (['offline', 'error', 'failed', 'down'].includes(normalized)) return 'offline';
+            return normalized;
+        }
+
+        function selectLatestTimestamp(values = []) {
+            return values
+                .filter(Boolean)
+                .reduce((latest, value) => {
+                    if (!latest) return value;
+                    return new Date(value) > new Date(latest) ? value : latest;
+                }, null);
+        }
+
+        function getServerState(data = {}) {
+            const heartbeatTs = data.lastHeartbeat ? Date.parse(data.lastHeartbeat) : NaN;
+            const statusTs = data.timestamp ? Date.parse(data.timestamp) : NaN;
+            const freshestTs = Math.max(
+                Number.isFinite(statusTs) ? statusTs : -Infinity,
+                Number.isFinite(heartbeatTs) ? heartbeatTs : -Infinity
+            );
+            const hasFreshData = Number.isFinite(freshestTs) && freshestTs > 0;
+            const ageSeconds = hasFreshData ? Math.floor((Date.now() - freshestTs) / 1000) : Number.POSITIVE_INFINITY;
+
+            const normalized = normalizeStatus(data.status) || 'offline';
+            
+            let statusClass = 'status-online';
+            let statusText = 'Online';
+            let isOffline = false;
+            let isStale = false;
+
+            if (!hasFreshData || ageSeconds > OUTAGE_THRESHOLD_SECONDS) {
+                statusClass = 'status-offline';
+                statusText = 'Offline';
+                isOffline = true;
+            } else if (ageSeconds > STALE_THRESHOLD_SECONDS) {
+                statusClass = 'status-stale';
+                statusText = `${normalized} (Stale)`;
+                isStale = true;
+            } else {
+                if (normalized === 'building') {
+                    statusClass = 'status-building';
+                    statusText = 'Building';
+                } else if (normalized === 'idle') {
+                    statusClass = 'status-idle';
+                    statusText = 'Idle';
+                }
+            }
+
+            return {
+                statusClass,
+                statusText,
+                ageSeconds,
+                isOffline,
+                isStale,
+                normalizedStatus: normalized,
+                latestTimestamp: hasFreshData ? new Date(freshestTs).toISOString() : null
+            };
+        }
+
+        // Test framework
+        let testResults = [];
+
+        function assert(condition, message) {
+            if (!condition) {
+                throw new Error(message || 'Assertion failed');
+            }
+        }
+
+        function assertEqual(actual, expected, message) {
+            if (actual !== expected) {
+                throw new Error(`${message || 'Values not equal'}: expected ${expected}, got ${actual}`);
+            }
+        }
+
+        function test(name, fn) {
+            try {
+                fn();
+                testResults.push({ name, passed: true });
+            } catch (error) {
+                testResults.push({ name, passed: false, error: error.message });
+            }
+        }
+
+        function runAllTests() {
+            testResults = [];
+            
+            // Test Suite 1: Server State Detection
+            test('normalizeStatus: converts "success" to "online"', () => {
+                assertEqual(normalizeStatus('success'), 'online');
+            });
+
+            test('normalizeStatus: converts "building" correctly', () => {
+                assertEqual(normalizeStatus('building'), 'building');
+            });
+
+            test('normalizeStatus: handles null/undefined', () => {
+                assertEqual(normalizeStatus(null), null);
+                assertEqual(normalizeStatus(undefined), null);
+            });
+
+            test('getServerState: detects online server', () => {
+                const state = getServerState(mockServerData.build1);
+                assertEqual(state.statusClass, 'status-online');
+                assert(!state.isOffline, 'Should not be offline');
+                assert(!state.isStale, 'Should not be stale');
+            });
+
+            test('getServerState: detects building server', () => {
+                const state = getServerState(mockServerData.build2);
+                assertEqual(state.statusClass, 'status-building');
+                assertEqual(state.statusText, 'Building');
+            });
+
+            test('getServerState: detects stale server', () => {
+                const state = getServerState(mockServerData.code1);
+                assertEqual(state.statusClass, 'status-stale');
+                assert(state.isStale, 'Should be stale');
+                assert(!state.isOffline, 'Should not be offline');
+            });
+
+            test('getServerState: detects offline server', () => {
+                const state = getServerState(mockServerData.offline_server);
+                assertEqual(state.statusClass, 'status-offline');
+                assert(state.isOffline, 'Should be offline');
+            });
+
+            test('getServerState: uses latest timestamp from status or heartbeat', () => {
+                const state = getServerState(mockServerData.build1);
+                const heartbeatTime = new Date(mockServerData.build1.lastHeartbeat).getTime();
+                const latestTime = new Date(state.latestTimestamp).getTime();
+                assertEqual(latestTime, heartbeatTime, 'Should use heartbeat as latest');
+            });
+
+            // Test Suite 2: Server Filtering
+            test('shouldHideServer: hides servers with invalid IPs', () => {
+                const shouldHide = (data) => !data.ip || data.ip === 'N/A' || data.ip.includes('xxx');
+                assert(shouldHide(mockServerData.build3), 'Should hide server with xxx IP');
+                assert(!shouldHide(mockServerData.build1), 'Should not hide valid IP');
+            });
+
+            test('validServerCount: counts only valid servers', () => {
+                const servers = Object.values(mockServerData);
+                const validServers = servers.filter(s => s.ip && s.ip !== 'N/A' && !s.ip.includes('xxx'));
+                assertEqual(validServers.length, 4, 'Should count 4 valid servers');
+            });
+
+            // Test Suite 3: Message Metrics
+            test('messageCount: counts total messages correctly', () => {
+                assertEqual(mockMessages.length, 5);
+            });
+
+            test('unreadCount: counts unread messages', () => {
+                const unread = mockMessages.filter(m => m.read === false || !m.read);
+                assertEqual(unread.length, 4, 'Should have 4 unread messages');
+            });
+
+            test('oldestUnreadAge: finds oldest unread message', () => {
+                const unreadMessages = mockMessages.filter(m => m.read === false || !m.read);
+                const oldestUnread = unreadMessages.reduce((oldest, msg) => {
+                    const msgTime = new Date(msg.timestamp);
+                    const oldestTime = new Date(oldest.timestamp);
+                    return msgTime < oldestTime ? msg : oldest;
+                });
+                const hoursOld = (Date.now() - new Date(oldestUnread.timestamp)) / 1000 / 3600;
+                assert(hoursOld >= 23.9 && hoursOld <= 24.1, 'Oldest should be ~24h old');
+            });
+
+            test('unreadAlert: triggers for messages older than 1 hour', () => {
+                const unreadMessages = mockMessages.filter(m => m.read === false || !m.read);
+                const oldestUnread = unreadMessages.reduce((oldest, msg) => {
+                    const msgTime = new Date(msg.timestamp);
+                    const oldestTime = new Date(oldest.timestamp);
+                    return msgTime < oldestTime ? msg : oldest;
+                });
+                const hoursOld = (Date.now() - new Date(oldestUnread.timestamp)) / 1000 / 3600;
+                assert(hoursOld > 1, 'Should trigger alert for 1h+ old messages');
+            });
+
+            test('criticalAlert: triggers for messages older than 24 hours', () => {
+                const unreadMessages = mockMessages.filter(m => m.read === false || !m.read);
+                const oldestUnread = unreadMessages.reduce((oldest, msg) => {
+                    const msgTime = new Date(msg.timestamp);
+                    const oldestTime = new Date(oldest.timestamp);
+                    return msgTime < oldestTime ? msg : oldest;
+                });
+                const hoursOld = (Date.now() - new Date(oldestUnread.timestamp)) / 1000 / 3600;
+                const isCritical = hoursOld > 24;
+                assert(isCritical, 'Should be critical for 24h+ old messages');
+            });
+
+            test('last24hCount: counts messages from last 24 hours', () => {
+                const last24h = mockMessages.filter(m => {
+                    const age = (Date.now() - new Date(m.timestamp)) / 1000;
+                    return age < 86400;
+                });
+                assertEqual(last24h.length, 4, 'Should have 4 messages in last 24h');
+            });
+
+            // Test Suite 4: Utility Functions
+            test('selectLatestTimestamp: returns most recent timestamp', () => {
+                const timestamps = [
+                    new Date(Date.now() - 5000).toISOString(),
+                    new Date(Date.now() - 1000).toISOString(),
+                    new Date(Date.now() - 10000).toISOString()
+                ];
+                const latest = selectLatestTimestamp(timestamps);
+                assertEqual(latest, timestamps[1], 'Should return newest timestamp');
+            });
+
+            test('selectLatestTimestamp: filters null values', () => {
+                const timestamps = [
+                    null,
+                    new Date(Date.now() - 1000).toISOString(),
+                    null
+                ];
+                const latest = selectLatestTimestamp(timestamps);
+                assertEqual(latest, timestamps[1]);
+            });
+
+            test('selectLatestTimestamp: returns null for empty array', () => {
+                const latest = selectLatestTimestamp([]);
+                assertEqual(latest, null);
+            });
+
+            // Display results
+            displayResults();
+        }
+
+        function displayResults() {
+            const summaryEl = document.getElementById('summary');
+            const resultsEl = document.getElementById('results');
+            
+            const passed = testResults.filter(t => t.passed).length;
+            const failed = testResults.filter(t => !t.passed).length;
+            const total = testResults.length;
+
+            document.getElementById('passCount').textContent = passed;
+            document.getElementById('failCount').textContent = failed;
+            document.getElementById('totalCount').textContent = total;
+            summaryEl.style.display = 'block';
+
+            const suites = {
+                'Server State Detection': testResults.filter(t => t.name.includes('normalizeStatus') || t.name.includes('getServerState')),
+                'Server Filtering': testResults.filter(t => t.name.includes('shouldHideServer') || t.name.includes('validServerCount')),
+                'Message Metrics': testResults.filter(t => t.name.includes('message') || t.name.includes('unread') || t.name.includes('Alert')),
+                'Utility Functions': testResults.filter(t => t.name.includes('selectLatestTimestamp'))
+            };
+
+            resultsEl.innerHTML = '';
+            
+            Object.entries(suites).forEach(([suiteName, tests]) => {
+                if (tests.length === 0) return;
+                
+                const suiteEl = document.createElement('div');
+                suiteEl.className = 'test-suite';
+                suiteEl.innerHTML = `<h2>${suiteName}</h2>`;
+                
+                tests.forEach(test => {
+                    const testEl = document.createElement('div');
+                    testEl.className = `test-case ${test.passed ? 'pass' : 'fail'}`;
+                    testEl.innerHTML = `
+                        <span class="test-icon">${test.passed ? '✅' : '❌'}</span>
+                        <span class="test-name">${test.name}</span>
+                        ${test.error ? `<div class="test-details">${test.error}</div>` : ''}
+                    `;
+                    suiteEl.appendChild(testEl);
+                });
+                
+                resultsEl.appendChild(suiteEl);
+            });
+        }
+    </script>
+</body>
+</html>
