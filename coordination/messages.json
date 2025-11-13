@@ -8427,6 +8427,18 @@
       "timestamp": "2025-11-13T11:34:42.894396Z",
       "read": false,
       "ack_required": false
+    },
+    {
+      "id": "msg_1763033684_701",
+      "from": "architect",
+      "to": "build2",
+      "subject": "build2",
+      "body": "--to",
+      "type": "info",
+      "priority": "normal",
+      "timestamp": "2025-11-13T11:34:44.095179Z",
+      "read": false,
+      "ack_required": false
     }
   ]
 }
