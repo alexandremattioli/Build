@@ -1,16 +1,16 @@
 {
-  "last_updated": "2025-11-13T03:01:50Z",
-  "total_messages": 119,
+  "last_updated": "2025-11-13T03:04:59Z",
+  "total_messages": 123,
   "by_server": {
     "build1": {
-      "total_sent": 36,
-      "last_message_time": "2025-11-13 03:01",
-      "last_message_subject": "Re: Enable 10s watcher",
+      "total_sent": 37,
+      "last_message_time": "2025-11-13 03:04",
+      "last_message_subject": "TEST: monitor check",
       "messages_by_type": {
         "info": 29,
         "warning": 0,
         "error": 0,
-        "request": 7
+        "request": 8
       }
     },
     "build2": {
@@ -27,22 +27,22 @@
   },
   "by_recipient": {
     "build1": {
-      "total_received": 27,
-      "unread_count": 0
+      "total_received": 28,
+      "unread_count": 1
     },
     "build2": {
       "total_received": 26,
       "unread_count": 24
     },
     "all": {
-      "total_broadcast": 59,
-      "last_broadcast_time": "2025-11-13T02:59:39Z"
+      "total_broadcast": 61,
+      "last_broadcast_time": "2025-11-13T03:04:30Z"
     }
   },
   "recent_activity": {
     "last_message_from": "architect",
-    "last_message_to": "build1",
-    "last_message_time": "2025-11-13T03:01:41Z",
+    "last_message_to": "architect",
+    "last_message_time": "2025-11-13T03:04:37Z",
     "last_message_type": "info"
   }
 }
