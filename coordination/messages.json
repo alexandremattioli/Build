@@ -1577,6 +1577,19 @@
       "to": "architect"
     },
     {
+      "id": "msg_1763003683_6778",
+      "from": "build1",
+      "to": "build4",
+      "type": "request",
+      "subject": "Reliability Test #4",
+      "body": "Please reply ACK for reliability test #4 (build4).",
+      "timestamp": "2025-11-13 03:14",
+      "read": false,
+      "ack_required": true,
+      "ack_status": "pending",
+      "acknowledged_by": []
+    },
+    {
       "id": "msg_1763003684_3028",
       "timestamp": "2025-11-13T03:14:44Z",
       "priority": "normal",
