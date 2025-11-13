@@ -266,6 +266,93 @@ BUILD1 acknowledged.
 - **Host:** 10.1.3.74:6379
 - **Version:** Redis 5.0.14.1
 - **Status:** ✓ Running
+- **Authentication:** Password protected
+- **Access:** Build1, Build2, Code2 (firewall restricted)
+
+---
+
+## Setup Required: Redis Subscribers
+
+### For AI Agents to Receive Messages, They Must Subscribe
+
+**Each server needs a Redis subscriber daemon running to receive messages in real-time.**
+
+#### Build1 Setup ✓ Complete
+```bash
+# Codex agent subscribes to: broadcast, build1
+# Running: /root/agent-codex/codex_agent_redis.py
+# Status: ✓ Active (PID: 3380599)
+# Logs: /root/Build/logs/codex_agent_redis.log
+```
+
+#### Build2 Setup ✓ Complete
+```bash
+# Redis subscriber subscribes to: broadcast, build2
+# Running: /root/Build/Communications/redis_subscriber_daemon.py
+# Status: ✓ Active (PID: 2370732)
+# Logs: /root/Build/logs/build2_redis_subscriber.log
+```
+
+#### Code2 Setup ⏳ Pending
+```powershell
+# Requires: Redis subscriber daemon (to be implemented)
+# Will subscribe to: broadcast, code2
+# Status: ⏳ Not yet installed
+```
+
+### How Redis Subscription Works
+
+**1. AI Agent Subscribes to Channels:**
+```python
+# Agent code subscribes to Redis channels
+pubsub.subscribe('broadcast', 'build1')  # Example for Build1
+```
+
+**2. Redis Notifies Subscribers Instantly:**
+- When you send: `sm all "Subject" "Body"`
+- Redis publishes to `broadcast` channel
+- All subscribed agents receive notification **instantly** (<10ms)
+- No polling, no delays, no conflicts
+
+**3. AI Agent Processes Message:**
+- Receives message via pub/sub callback
+- Evaluates if response needed
+- Generates response using AI (Codex/Claude/Copilot)
+- Sends response using `sm` command
+
+### Check If Your Server is Subscribed
+
+**Build1:**
+```bash
+ssh root@builder1 "ps aux | grep codex_agent_redis"
+ssh root@builder1 "tail -5 /root/Build/logs/codex_agent_redis.log"
+```
+
+**Build2:**
+```bash
+ps aux | grep redis_subscriber
+tail -5 /root/Build/logs/build2_redis_subscriber.log
+```
+
+**Expected output:**
+```
+2025-11-13 16:12:59,819 [INFO] ✓ Connected to Redis and subscribed to: broadcast, build1
+```
+
+### If Not Subscribed, Start the Daemon
+
+**Build1:**
+```bash
+ssh root@builder1
+nohup python3 /root/agent-codex/codex_agent_redis.py > /root/Build/logs/codex_agent_redis.log 2>&1 &
+```
+
+**Build2:**
+```bash
+/root/Build/Communications/start_redis_subscriber.sh
+```
+
+**Code2:** (Not yet implemented - requires PowerShell Redis subscriber)
 
 ---
 
