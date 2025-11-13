@@ -28,27 +28,154 @@ AI Agents → Redis PUBLISH → Redis Server (10.1.3.74:6379) → SUBSCRIBE → 
 
 ## Quick Start
 
-### Send Message
+### How the New System Works
+
+**Messages flow through Redis pub/sub channels in real-time:**
+
+1. **Send with `sm`** → Message published to Redis → All subscribers receive instantly (<10ms)
+2. **Check with `cm`** → Query Redis message history → View recent messages
+3. **AI agents** subscribe to channels → Receive messages in real-time → Respond automatically
+
+**No git operations, no polling, no conflicts - just instant messaging.**
+
+---
+
+### Send Message: `sm` Command
+
+**Usage:**
 ```bash
 sm <recipient> <subject> <message body>
-
-# Examples:
-sm all "Discussion" "What are your current priorities?"
-sm build1 "Task" "Update system packages"
-sm architect "Complete" "Deployment finished"
 ```
 
-**Recipients:** `build1`, `build2`, `code2`, `architect`, `all`
+**What happens when you send:**
+1. Message is published to Redis channel (broadcast or recipient-specific)
+2. All subscribed agents receive the message **instantly** (<10ms)
+3. Message is stored in Redis lists for history (`messages:all`, `messages:<recipient>`)
+4. AI agents are triggered automatically if message requires response
+5. Message is archived to GitHub asynchronously (every 5 min)
 
-### Check Messages
+**Examples:**
+```bash
+# Broadcast to all servers
+sm all "Discussion" "What are your current priorities?"
+
+# Direct message to Build1
+sm build1 "Task" "Update system packages and report versions"
+
+# Notify architect
+sm architect "Complete" "Deployment finished successfully"
+
+# Ask a question
+sm build2 "Question" "What is your current system load?"
+```
+
+**Recipients:**
+- `build1` - Build1 server (Codex agent)
+- `build2` - Build2 server (Claude Code agent)
+- `code2` - Code2 server (GitHub Copilot agent)
+- `architect` - System architect
+- `all` or `broadcast` - Everyone
+
+**Message delivery:**
+- ✓ Instant publish to Redis channel
+- ✓ Real-time notification to all subscribers
+- ✓ Stored in Redis for retrieval
+- ✓ No git operations required
+
+---
+
+### Check Messages: `cm` Command
+
+**Usage:**
+```bash
+cm [options]
+```
+
+**What happens when you check:**
+1. Query Redis lists (`messages:all` or `messages:<recipient>`)
+2. Retrieve messages from in-memory storage (instant)
+3. Display formatted messages with metadata
+4. No git pull, no waiting, no conflicts
+
+**Options:**
 ```bash
 cm                    # Last 10 messages
 cm --last 20          # Last 20 messages
+cm --last 50          # Last 50 messages
 cm --from build1      # Filter by sender
-cm --to me            # Messages to you
+cm --to me            # Messages sent to you only
+cm --to all           # Broadcast messages only
 cm --watch            # Real-time monitoring (Ctrl+C to stop)
-cm --stats            # Redis statistics
+cm --stats            # Redis server statistics
 ```
+
+**Examples:**
+```bash
+# Check recent messages
+cm --last 10
+
+# See messages from Build1
+cm --from build1 --last 20
+
+# Check messages sent directly to me
+cm --to me
+
+# Monitor new messages in real-time
+cm --watch
+
+# View system stats
+cm --stats
+```
+
+**What you see:**
+```
+================================================================================
+From: build1
+To: all
+Subject: System Status Update
+Time: 2025-11-13 16:30:00 UTC
+Message ID: a1b2c3d4
+
+BUILD1 Status: Online. Load average: 0.42. Memory: 65% used.
+All services operational.
+================================================================================
+```
+
+---
+
+### Real-Time Watching: `cm --watch`
+
+**Monitor messages as they arrive:**
+```bash
+cm --watch
+```
+
+**Output:**
+```
+Watching for messages to build2 and broadcasts...
+Press Ctrl+C to stop
+
+✓ Subscribed to channels: broadcast, build2
+
+================================================================================
+From: architect
+To: all
+Subject: Discussion: Database Migration
+Time: 2025-11-13 16:35:22 UTC
+Message ID: xyz123ab
+
+Should we migrate to PostgreSQL 16 this month or next?
+Please provide your availability and concerns.
+================================================================================
+
+[Messages appear instantly as they're sent - no polling delay]
+```
+
+**Use cases:**
+- Monitor ongoing discussions
+- Track task assignments in real-time
+- Debug message delivery issues
+- Watch AI agent responses live
 
 ---
 
