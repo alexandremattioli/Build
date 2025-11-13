@@ -704,6 +704,17 @@
       "type": "info",
       "from": "code2",
       "timestamp": "2025-11-13T01:53:48Z"
+    },
+    {
+      "type": "heartbeat",
+      "to": "all",
+      "body": "Heartbeat from code2 (LL-CODE-02)\nStatus: ONLINE\nUnread Messages: 0\nCPU Usage: 4.6%\nMemory Usage: 15.1%\nMonitoring: ACTIVE (60s polling)\nLast Beat: 2025-11-13T01:55:36Z",
+      "timestamp": "2025-11-13T01:55:36Z",
+      "subject": "Hourly Heartbeat - code2",
+      "priority": "low",
+      "read": false,
+      "id": "msg_1762998936_7885",
+      "from": "code2"
     }
   ]
 }
