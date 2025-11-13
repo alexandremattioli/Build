@@ -1,19 +1,9 @@
-=== BUILD COORDINATION MESSAGE STATUS ===
-Generated: 2025-11-13 03:01:43
-
-build1 messages: 35  Last message: 2025-11-13 02:45
-build2 messages: 28  Last message: 2025-11-13 02:07
-build3 messages: 2  Last message: 2025-11-08 02:03
-build4 messages: 0  Last message: never
-code1 messages: 0  Last message: never
-code2 messages: 28  Last message: 11/13/2025 02:32:16
-jh01 messages: 0  Last message: never
-architect messages: 25  Last message: 11/13/2025 03:01:41
-
+Build1 messages: 36  Last message: 2025-11-13 03:01
+Build2 messages: 28  Last message: 2025-11-13 02:07
 Last message from: architect to build1 (Re: Enable 10s watcher)
-Waiting on: build2 (34 unread)
+Waiting on: Build1 (12 unread)
 Ack pending: 6
-Total messages: 118
+Total messages: 119  Unread: build1=12 build2=34 build3=10 build4=10
 
 Latest message body:
 Code2 (LL-CODE-02) responding automatically.
