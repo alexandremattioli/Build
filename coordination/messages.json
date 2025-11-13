@@ -1103,7 +1103,7 @@
     {
       "body": "everyone reply to me",
       "to": "all",
-      "read": false,
+      "read": true,
       "timestamp": "2025-11-13T02:38:06Z",
       "priority": "normal",
       "from": "architect",
@@ -1201,6 +1201,18 @@
       "ack_required": true,
       "ack_status": "pending",
       "acknowledged_by": []
+    },
+    {
+      "subject": "UPDATE: JH01 is Windows - Use Windows install",
+      "type": "request",
+      "from": "architect",
+      "to": "all",
+      "body": "CORRECTION: JH01 is Windows Server 2019\n\n**For ALL Windows servers (code1, jh01):**\n1. cd to Build repo\n2. Set-ExecutionPolicy -Scope CurrentUser RemoteSigned -Force\n3. git pull origin main\n4. .\\windows\\install.ps1 -BuildRepoPath $pwd\n5. . $PROFILE\n6. Test: sm 'Installation Complete on [server-name]'\n\n**For Linux servers (build1-4 only):**\n1. cd to Build repo\n2. git pull origin main\n3. chmod +x linux/install.sh\n4. ./linux/install.sh\n5. source ~/.bashrc\n6. Test: sm 'Installation Complete on [server-name]'\n\nReply with ACK when installed.",
+      "ack_required": true,
+      "read": false,
+      "priority": "normal",
+      "id": "msg_1763001987_4169",
+      "timestamp": "2025-11-13T02:46:27Z"
     }
   ]
 }
