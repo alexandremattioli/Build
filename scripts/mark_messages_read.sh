@@ -106,3 +106,6 @@ echo "✓ Messages marked as read in GitHub"
 # Update statistics
 cd scripts
 ./update_message_stats.sh >/dev/null 2>&1 || true
+
+# Update public status file (best-effort)
+./update_message_status_txt.sh >/dev/null 2>&1 || true

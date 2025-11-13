@@ -20,6 +20,9 @@ add_line "*/5 * * * * cd /root/Build && bash scripts/monitor_health.sh >> /var/l
 # Daily at 01:05: archive old messages
 add_line "5 1 * * * cd /root/Build && bash scripts/archive_old_messages.sh >> /var/log/archive_messages.log 2>&1"
 
+# Every minute: update message_status.txt for GitHub visibility
+add_line "* * * * * cd /root/Build/scripts && ./update_message_status_txt.sh >> /var/log/message_status.log 2>&1"
+
 # Hourly: collect metrics
 add_line "0 * * * * cd /root/Build && bash scripts/collect_metrics.sh >> /var/log/metrics.log 2>&1"
 

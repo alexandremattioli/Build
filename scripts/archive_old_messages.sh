@@ -75,3 +75,7 @@ push_with_retry() {
 push_with_retry || true
 
 echo "Archived old messages to $ARCHIVE_FILE"
+
+# Update public status file (best-effort)
+cd scripts
+./update_message_status_txt.sh >/dev/null 2>&1 || true
