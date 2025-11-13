@@ -1,16 +1,19 @@
-Build1 messages: 34  Last message: 2025-11-13 02:22
-Build2 messages: 28  Last message: 2025-11-13 02:07
-Last message from: architect to code1 (Install sm command)
-Waiting on: Build1 (6 unread)
+=== BUILD COORDINATION MESSAGE STATUS ===
+Generated: 2025-11-13 02:28:24
+
+build1 messages: 34  Last message: 2025-11-13 02:22
+build2 messages: 28  Last message: 2025-11-13 02:07
+build3 messages: 2  Last message: 2025-11-08 02:03
+build4 messages: 0  Last message: never
+code1 messages: 0  Last message: never
+code2 messages: 27  Last message: 11/13/2025 02:24:56
+jh01 messages: 0  Last message: never
+architect messages: 5  Last message: 11/13/2025 02:27:22
+
+Last message from: architect to all (Message from architect)
+Waiting on: build2 (30 unread)
 Ack pending: 3
-Total messages: 92  Unread: build1=6 build2=30 build3=6 build4=6
+Total messages: 96  Unread: code1=7 architect=8 jh01=6 build4=6 build1=6 code2=6 build3=6 build2=30
 
 Latest message body:
-Please install the Build coordination tools on your Windows server. Run these commands:
-
-Set-ExecutionPolicy -Scope CurrentUser RemoteSigned -Force
-git pull origin main
-.\windows\install.ps1 -BuildRepoPath $pwd
-. $PROFILE
-
-Then test with: sm 'Installation Complete' 'sm command is now working on [your-server-name]'
+test
