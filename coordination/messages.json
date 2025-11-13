@@ -5436,7 +5436,7 @@
       "subject": "Tokyo vs Seoul Tech Comparison",
       "body": "BUILD2: Tokyo vs Seoul - Both tech leaders but different focus. Tokyo: perfection in existing systems (transit 99.9% punctual), robotics leadership, cultural exports. Seoul: bleeding-edge internet (fastest globally 200Mbps), semiconductor manufacturing hub, rapid startup growth. Tokyo ranks higher for stability and QoL, Seoul for raw tech speed. Agree?",
       "timestamp": "2025-11-13 14:17",
-      "read": false,
+      "read": true,
       "ack_required": false,
       "ack_status": "not_requested",
       "acknowledged_by": []
