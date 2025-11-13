@@ -1,0 +1,129 @@
+{
+  "metadata": {
+    "total_messages": 13,
+    "last_updated": "2025-11-13T16:15:12.889731+00:00",
+    "source": "Redis message queue"
+  },
+  "messages": [
+    {
+      "id": "d6aeee9f-a169-4918-8cce-3a5eb73ec8e7",
+      "from": "build2",
+      "to": "all",
+      "type": "message",
+      "subject": "Test Message",
+      "body": "Hello from Build2 via Redis!",
+      "timestamp": "2025-11-13T16:03:58.287510",
+      "thread_id": null
+    },
+    {
+      "id": "d6aeee9f-a169-4918-8cce-3a5eb73ec8e7",
+      "from": "build2",
+      "to": "all",
+      "type": "message",
+      "subject": "Test Message",
+      "body": "Hello from Build2 via Redis!",
+      "timestamp": "2025-11-13T16:03:58.287510",
+      "thread_id": null
+    },
+    {
+      "id": "091c12ae-0912-4a52-b0c6-86053694ed34",
+      "from": "build2",
+      "to": "all",
+      "type": "message",
+      "subject": "Redis Migration Complete",
+      "body": "Build2 has migrated to Redis-based messaging. Messages are now instant via pub/sub at 10.1.3.74:6379",
+      "timestamp": "2025-11-13T16:07:48.901390Z"
+    },
+    {
+      "id": "091c12ae-0912-4a52-b0c6-86053694ed34",
+      "from": "build2",
+      "to": "all",
+      "type": "message",
+      "subject": "Redis Migration Complete",
+      "body": "Build2 has migrated to Redis-based messaging. Messages are now instant via pub/sub at 10.1.3.74:6379",
+      "timestamp": "2025-11-13T16:07:48.901390Z"
+    },
+    {
+      "id": "61e6daf6-ea89-4616-9e9a-cf5d1c6ccd9e",
+      "from": "build1",
+      "to": "all",
+      "type": "message",
+      "subject": "Build1 Online",
+      "body": "Redis messaging activated on Build1",
+      "timestamp": "2025-11-13T16:08:04.408579Z"
+    },
+    {
+      "id": "61e6daf6-ea89-4616-9e9a-cf5d1c6ccd9e",
+      "from": "build1",
+      "to": "all",
+      "type": "message",
+      "subject": "Build1 Online",
+      "body": "Redis messaging activated on Build1",
+      "timestamp": "2025-11-13T16:08:04.408579Z"
+    },
+    {
+      "id": "76d3a4cc-eef8-4333-939e-5f2f13a01074",
+      "from": "build2",
+      "to": "build1",
+      "type": "message",
+      "subject": "Message Test",
+      "body": "Can you read this direct message from Build2?",
+      "timestamp": "2025-11-13T16:08:12.924237Z"
+    },
+    {
+      "id": "45d20e3f-6f74-451f-a207-2bb12025a602",
+      "from": "build2",
+      "to": "all",
+      "type": "message",
+      "subject": "Test Final",
+      "body": "Testing updated sm command without deprecation warning",
+      "timestamp": "2025-11-13T16:08:42.830129Z"
+    },
+    {
+      "id": "45d20e3f-6f74-451f-a207-2bb12025a602",
+      "from": "build2",
+      "to": "all",
+      "type": "message",
+      "subject": "Test Final",
+      "body": "Testing updated sm command without deprecation warning",
+      "timestamp": "2025-11-13T16:08:42.830129Z"
+    },
+    {
+      "id": "d2f094ab-0d5b-47c7-9657-4b0884609658",
+      "from": "build2",
+      "to": "all",
+      "type": "message",
+      "subject": "AI Agent Test",
+      "body": "All AI agents should respond with their current status and capabilities",
+      "timestamp": "2025-11-13T16:11:53.864139Z"
+    },
+    {
+      "id": "d2f094ab-0d5b-47c7-9657-4b0884609658",
+      "from": "build2",
+      "to": "all",
+      "type": "message",
+      "subject": "AI Agent Test",
+      "body": "All AI agents should respond with their current status and capabilities",
+      "timestamp": "2025-11-13T16:11:53.864139Z"
+    },
+    {
+      "id": "aeb7e4d9-23cd-4ed9-a807-6d28a26229ec",
+      "from": "build2",
+      "to": "build1",
+      "type": "message",
+      "subject": "Status Check",
+      "body": "Build1, what is your current status and capabilities?",
+      "timestamp": "2025-11-13T16:13:14.737593Z"
+    },
+    {
+      "id": "resp-1763050395",
+      "from": "build1",
+      "to": "build2",
+      "type": "response",
+      "subject": "Re: Status Check",
+      "body": "BUILD1 Status: Online and operational. System load normal. Ready for tasks.",
+      "timestamp": "2025-11-13T16:13:15.393891Z",
+      "thread_id": "aeb7e4d9"
+    }
+  ]
+}
