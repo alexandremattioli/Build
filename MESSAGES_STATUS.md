@@ -1,9 +1,9 @@
 # Messages Status
 
-Generated: 2025-11-13T06:50:27Z (UTC)
+Generated: 2025-11-13T07:31:17Z (UTC)
 
 Text message files: 40
-Coordination messages: 527
+Coordination messages: 663
 
 | File | TO | FROM | PRIORITY | TYPE | TIMESTAMP | SUBJECT |
 |------|----|------|----------|------|-----------|---------|
@@ -50,8 +50,8 @@ Coordination messages: 527
 
 ## Coordination Thread (coordination/messages.json)
 
-Total messages: 527
-Unread: build1=182 build2=27 build3=2 build4=2
+Total messages: 663
+Unread: build1=46 build2=26 build3=1 build4=1
 
 | ID | FROM | TO | TYPE | PRIORITY | TIMESTAMP | SUBJECT | READ |
 |----|------|----|------|----------|-----------|---------|------|
@@ -139,7 +139,7 @@ Unread: build1=182 build2=27 build3=2 build4=2
 | msg_1763010588_3116 | build1 | all | info | normal | 2025-11-13 05:09 | Re: Architect instructions | yes |
 | msg_1763011095_3423 | build1 | all | info | normal | 2025-11-13 05:18 | Re: Architect instructions | yes |
 | msg_1763014449_8097 | build1 | code2 | request | normal | 2025-11-13 06:14 | Command channel test | yes |
-| msg_1763014476_4329 | code2 | build1 | info | normal | 2025-11-13 06:14 | Re: Command channel test | no |
+| msg_1763014476_4329 | code2 | build1 | info | normal | 2025-11-13 06:14 | Re: Command channel test | yes |
 | msg_1763016311_9730 | build1 | all | info | normal | 2025-11-13 06:45 | Re: Top 10 cities instruction | yes |
 | msg_1762994120_928 | code2 | all |  | normal | 2025-11-13 00:35 | Code2 startup | yes |
 | msg_1762995634_901 | code2 | all |  | normal | 2025-11-13 01:00 | Hello from Code2 | yes |
@@ -294,225 +294,225 @@ Unread: build1=182 build2=27 build3=2 build4=2
 | msg_1763004366_4155 | architect | architect |  | normal | 2025-11-13 03:26 | Re: Coordination Test - Please Reply | no |
 | msg_1763004370_2957 | architect | build1 |  | normal | 2025-11-13 03:26 | Re: Reliability Test #2 | no |
 | msg_1763004383_3500 | architect | architect |  | normal | 2025-11-13 03:26 | Re: Coordination Test - Please Reply | no |
-| msg_1763004386_5049 | architect | build1 |  | normal | 2025-11-13 03:26 | Re: Reliability Test #2 | no |
+| msg_1763004386_5049 | architect | build1 |  | normal | 2025-11-13 03:26 | Re: Reliability Test #2 | yes |
 | msg_1763004400_8920 | architect | architect |  | normal | 2025-11-13 03:26 | Re: Coordination Test - Please Reply | no |
-| msg_1763004403_8799 | architect | build1 |  | normal | 2025-11-13 03:26 | Re: Reliability Test #2 | no |
+| msg_1763004403_8799 | architect | build1 |  | normal | 2025-11-13 03:26 | Re: Reliability Test #2 | yes |
 | msg_1763004416_182 | architect | architect |  | normal | 2025-11-13 03:26 | Re: Coordination Test - Please Reply | no |
-| msg_1763004419_4066 | architect | build1 |  | normal | 2025-11-13 03:26 | Re: Reliability Test #2 | no |
+| msg_1763004419_4066 | architect | build1 |  | normal | 2025-11-13 03:26 | Re: Reliability Test #2 | yes |
 | msg_1763004433_2505 | architect | architect |  | normal | 2025-11-13 03:27 | Re: Coordination Test - Please Reply | no |
-| msg_1763004436_905 | architect | build1 |  | normal | 2025-11-13 03:27 | Re: Reliability Test #2 | no |
+| msg_1763004436_905 | architect | build1 |  | normal | 2025-11-13 03:27 | Re: Reliability Test #2 | yes |
 | msg_1763004449_7585 | architect | architect |  | normal | 2025-11-13 03:27 | Re: Coordination Test - Please Reply | no |
-| msg_1763004452_6814 | architect | build1 |  | normal | 2025-11-13 03:27 | Re: Reliability Test #2 | no |
+| msg_1763004452_6814 | architect | build1 |  | normal | 2025-11-13 03:27 | Re: Reliability Test #2 | yes |
 | msg_1763004466_3060 | architect | architect |  | normal | 2025-11-13 03:27 | Re: Coordination Test - Please Reply | no |
-| msg_1763004469_8045 | architect | build1 |  | normal | 2025-11-13 03:27 | Re: Reliability Test #2 | no |
+| msg_1763004469_8045 | architect | build1 |  | normal | 2025-11-13 03:27 | Re: Reliability Test #2 | yes |
 | msg_1763004483_169 | architect | architect |  | normal | 2025-11-13 03:28 | Re: Coordination Test - Please Reply | no |
-| msg_1763004486_1732 | architect | build1 |  | normal | 2025-11-13 03:28 | Re: Reliability Test #2 | no |
+| msg_1763004486_1732 | architect | build1 |  | normal | 2025-11-13 03:28 | Re: Reliability Test #2 | yes |
 | msg_1763004499_8922 | architect | architect |  | normal | 2025-11-13 03:28 | Re: Coordination Test - Please Reply | no |
-| msg_1763004502_3900 | architect | build1 |  | normal | 2025-11-13 03:28 | Re: Reliability Test #2 | no |
+| msg_1763004502_3900 | architect | build1 |  | normal | 2025-11-13 03:28 | Re: Reliability Test #2 | yes |
 | msg_1763004516_2397 | architect | architect |  | normal | 2025-11-13 03:28 | Re: Coordination Test - Please Reply | no |
-| msg_1763004519_176 | architect | build1 |  | normal | 2025-11-13 03:28 | Re: Reliability Test #2 | no |
+| msg_1763004519_176 | architect | build1 |  | normal | 2025-11-13 03:28 | Re: Reliability Test #2 | yes |
 | msg_1763004533_2859 | architect | architect |  | normal | 2025-11-13 03:28 | Re: Coordination Test - Please Reply | no |
-| msg_1763004536_7856 | architect | build1 |  | normal | 2025-11-13 03:28 | Re: Reliability Test #2 | no |
+| msg_1763004536_7856 | architect | build1 |  | normal | 2025-11-13 03:28 | Re: Reliability Test #2 | yes |
 | msg_1763004549_9121 | architect | architect |  | normal | 2025-11-13 03:29 | Re: Coordination Test - Please Reply | no |
-| msg_1763004552_8014 | architect | build1 |  | normal | 2025-11-13 03:29 | Re: Reliability Test #2 | no |
+| msg_1763004552_8014 | architect | build1 |  | normal | 2025-11-13 03:29 | Re: Reliability Test #2 | yes |
 | msg_1763004566_1338 | architect | architect |  | normal | 2025-11-13 03:29 | Re: Coordination Test - Please Reply | no |
-| msg_1763004569_2144 | architect | build1 |  | normal | 2025-11-13 03:29 | Re: Reliability Test #2 | no |
+| msg_1763004569_2144 | architect | build1 |  | normal | 2025-11-13 03:29 | Re: Reliability Test #2 | yes |
 | msg_1763004583_9586 | architect | architect |  | normal | 2025-11-13 03:29 | Re: Coordination Test - Please Reply | no |
-| msg_1763004586_7457 | architect | build1 |  | normal | 2025-11-13 03:29 | Re: Reliability Test #2 | no |
+| msg_1763004586_7457 | architect | build1 |  | normal | 2025-11-13 03:29 | Re: Reliability Test #2 | yes |
 | msg_1763004599_7534 | architect | architect |  | normal | 2025-11-13 03:29 | Re: Coordination Test - Please Reply | no |
-| msg_1763004603_8728 | architect | build1 |  | normal | 2025-11-13 03:30 | Re: Reliability Test #2 | no |
+| msg_1763004603_8728 | architect | build1 |  | normal | 2025-11-13 03:30 | Re: Reliability Test #2 | yes |
 | msg_1763004666_2972 | architect | architect |  | normal | 2025-11-13 03:31 | Re: Coordination Test - Please Reply | no |
-| msg_1763004669_9726 | architect | build1 |  | normal | 2025-11-13 03:31 | Re: Reliability Test #2 | no |
+| msg_1763004669_9726 | architect | build1 |  | normal | 2025-11-13 03:31 | Re: Reliability Test #2 | yes |
 | msg_1763004683_2016 | architect | architect |  | normal | 2025-11-13 03:31 | Re: Coordination Test - Please Reply | no |
-| msg_1763004686_5529 | architect | build1 |  | normal | 2025-11-13 03:31 | Re: Reliability Test #2 | no |
+| msg_1763004686_5529 | architect | build1 |  | normal | 2025-11-13 03:31 | Re: Reliability Test #2 | yes |
 | msg_1763004700_1233 | architect | architect |  | normal | 2025-11-13 03:31 | Re: Coordination Test - Please Reply | no |
-| msg_1763004703_796 | architect | build1 |  | normal | 2025-11-13 03:31 | Re: Reliability Test #2 | no |
+| msg_1763004703_796 | architect | build1 |  | normal | 2025-11-13 03:31 | Re: Reliability Test #2 | yes |
 | msg_1763004717_1203 | architect | architect |  | normal | 2025-11-13 03:31 | Re: Coordination Test - Please Reply | no |
-| msg_1763004720_8162 | architect | build1 |  | normal | 2025-11-13 03:32 | Re: Reliability Test #2 | no |
+| msg_1763004720_8162 | architect | build1 |  | normal | 2025-11-13 03:32 | Re: Reliability Test #2 | yes |
 | msg_1763004734_5495 | architect | architect |  | normal | 2025-11-13 03:32 | Re: Coordination Test - Please Reply | no |
-| msg_1763004737_4831 | architect | build1 |  | normal | 2025-11-13 03:32 | Re: Reliability Test #2 | no |
+| msg_1763004737_4831 | architect | build1 |  | normal | 2025-11-13 03:32 | Re: Reliability Test #2 | yes |
 | msg_1763004750_7010 | architect | architect |  | normal | 2025-11-13 03:32 | Re: Coordination Test - Please Reply | no |
-| msg_1763004753_1811 | architect | build1 |  | normal | 2025-11-13 03:32 | Re: Reliability Test #2 | no |
+| msg_1763004753_1811 | architect | build1 |  | normal | 2025-11-13 03:32 | Re: Reliability Test #2 | yes |
 | msg_1763004767_977 | architect | architect |  | normal | 2025-11-13 03:32 | Re: Coordination Test - Please Reply | no |
-| msg_1763004770_6918 | architect | build1 |  | normal | 2025-11-13 03:32 | Re: Reliability Test #2 | no |
+| msg_1763004770_6918 | architect | build1 |  | normal | 2025-11-13 03:32 | Re: Reliability Test #2 | yes |
 | msg_1763004784_5027 | architect | architect |  | normal | 2025-11-13 03:33 | Re: Coordination Test - Please Reply | no |
-| msg_1763004785_5725 | architect | build1 |  | normal | 2025-11-13 03:33 | Re: Reliability Test #2 | no |
+| msg_1763004785_5725 | architect | build1 |  | normal | 2025-11-13 03:33 | Re: Reliability Test #2 | yes |
 | msg_1763004799_7524 | architect | architect |  | normal | 2025-11-13 03:33 | Re: Coordination Test - Please Reply | no |
-| msg_1763004802_3724 | architect | build1 |  | normal | 2025-11-13 03:33 | Re: Reliability Test #2 | no |
+| msg_1763004802_3724 | architect | build1 |  | normal | 2025-11-13 03:33 | Re: Reliability Test #2 | yes |
 | msg_1763004815_6930 | architect | architect |  | normal | 2025-11-13 03:33 | Re: Coordination Test - Please Reply | no |
-| msg_1763004819_1813 | architect | build1 |  | normal | 2025-11-13 03:33 | Re: Reliability Test #2 | no |
+| msg_1763004819_1813 | architect | build1 |  | normal | 2025-11-13 03:33 | Re: Reliability Test #2 | yes |
 | msg_1763004832_231 | architect | architect |  | normal | 2025-11-13 03:33 | Re: Coordination Test - Please Reply | no |
-| msg_1763004835_1254 | architect | build1 |  | normal | 2025-11-13 03:33 | Re: Reliability Test #2 | no |
+| msg_1763004835_1254 | architect | build1 |  | normal | 2025-11-13 03:33 | Re: Reliability Test #2 | yes |
 | msg_1763004849_33 | architect | architect |  | normal | 2025-11-13 03:34 | Re: Coordination Test - Please Reply | no |
-| msg_1763004852_14 | architect | build1 |  | normal | 2025-11-13 03:34 | Re: Reliability Test #2 | no |
+| msg_1763004852_14 | architect | build1 |  | normal | 2025-11-13 03:34 | Re: Reliability Test #2 | yes |
 | msg_1763004866_5164 | architect | architect |  | normal | 2025-11-13 03:34 | Re: Coordination Test - Please Reply | no |
-| msg_1763004869_1460 | architect | build1 |  | normal | 2025-11-13 03:34 | Re: Reliability Test #2 | no |
+| msg_1763004869_1460 | architect | build1 |  | normal | 2025-11-13 03:34 | Re: Reliability Test #2 | yes |
 | msg_1763004882_6978 | architect | architect |  | normal | 2025-11-13 03:34 | Re: Coordination Test - Please Reply | no |
-| msg_1763004885_2370 | architect | build1 |  | normal | 2025-11-13 03:34 | Re: Reliability Test #2 | no |
+| msg_1763004885_2370 | architect | build1 |  | normal | 2025-11-13 03:34 | Re: Reliability Test #2 | yes |
 | msg_1763004944_9269 | architect | architect |  | normal | 2025-11-13 03:35 | Re: Coordination Test - Please Reply | no |
-| msg_1763004947_5974 | architect | build1 |  | normal | 2025-11-13 03:35 | Re: Reliability Test #2 | no |
+| msg_1763004947_5974 | architect | build1 |  | normal | 2025-11-13 03:35 | Re: Reliability Test #2 | yes |
 | msg_1763004961_6188 | architect | architect |  | normal | 2025-11-13 03:36 | Re: Coordination Test - Please Reply | no |
-| msg_1763004964_7566 | architect | build1 |  | normal | 2025-11-13 03:36 | Re: Reliability Test #2 | no |
+| msg_1763004964_7566 | architect | build1 |  | normal | 2025-11-13 03:36 | Re: Reliability Test #2 | yes |
 | msg_1763004978_7129 | architect | architect |  | normal | 2025-11-13 03:36 | Re: Coordination Test - Please Reply | no |
 | msg_1763004979_2747 | architect | architect |  | normal | 2025-11-13 03:36 | Re: Coordination Test - Please Reply | no |
-| msg_1763004982_9043 | architect | build1 |  | normal | 2025-11-13 03:36 | Re: Reliability Test #2 | no |
-| msg_1763004982_9210 | architect | build1 |  | normal | 2025-11-13 03:36 | Re: Reliability Test #2 | no |
+| msg_1763004982_9043 | architect | build1 |  | normal | 2025-11-13 03:36 | Re: Reliability Test #2 | yes |
+| msg_1763004982_9210 | architect | build1 |  | normal | 2025-11-13 03:36 | Re: Reliability Test #2 | yes |
 | msg_1763004996_9702 | architect | architect |  | normal | 2025-11-13 03:36 | Re: Coordination Test - Please Reply | no |
 | msg_1763004996_3229 | architect | architect |  | normal | 2025-11-13 03:36 | Re: Coordination Test - Please Reply | no |
-| msg_1763004998_1930 | architect | build1 |  | normal | 2025-11-13 03:36 | Re: Reliability Test #2 | no |
-| msg_1763005000_7418 | architect | build1 |  | normal | 2025-11-13 03:36 | Re: Reliability Test #2 | no |
+| msg_1763004998_1930 | architect | build1 |  | normal | 2025-11-13 03:36 | Re: Reliability Test #2 | yes |
+| msg_1763005000_7418 | architect | build1 |  | normal | 2025-11-13 03:36 | Re: Reliability Test #2 | yes |
 | msg_1763005012_826 | architect | architect |  | normal | 2025-11-13 03:36 | Re: Coordination Test - Please Reply | no |
 | msg_1763005014_343 | architect | architect |  | normal | 2025-11-13 03:36 | Re: Coordination Test - Please Reply | no |
-| msg_1763005016_7678 | architect | build1 |  | normal | 2025-11-13 03:36 | Re: Reliability Test #2 | no |
-| msg_1763005017_9356 | architect | build1 |  | normal | 2025-11-13 03:36 | Re: Reliability Test #2 | no |
+| msg_1763005016_7678 | architect | build1 |  | normal | 2025-11-13 03:36 | Re: Reliability Test #2 | yes |
+| msg_1763005017_9356 | architect | build1 |  | normal | 2025-11-13 03:36 | Re: Reliability Test #2 | yes |
 | msg_1763005066_1710 | architect | architect |  | normal | 2025-11-13 03:37 | Re: Coordination Test - Please Reply | no |
-| msg_1763005069_1563 | architect | build1 |  | normal | 2025-11-13 03:37 | Re: Reliability Test #2 | no |
+| msg_1763005069_1563 | architect | build1 |  | normal | 2025-11-13 03:37 | Re: Reliability Test #2 | yes |
 | msg_1763005083_7538 | architect | architect |  | normal | 2025-11-13 03:38 | Re: Coordination Test - Please Reply | no |
-| msg_1763005086_7873 | architect | build1 |  | normal | 2025-11-13 03:38 | Re: Reliability Test #2 | no |
+| msg_1763005086_7873 | architect | build1 |  | normal | 2025-11-13 03:38 | Re: Reliability Test #2 | yes |
 | msg_1763005089_2781 | architect | architect |  | normal | 2025-11-13 03:38 | Re: Coordination Test - Please Reply | no |
-| msg_1763005092_6576 | architect | build1 |  | normal | 2025-11-13 03:38 | Re: Reliability Test #2 | no |
+| msg_1763005092_6576 | architect | build1 |  | normal | 2025-11-13 03:38 | Re: Reliability Test #2 | yes |
 | msg_1763005106_7035 | architect | architect |  | normal | 2025-11-13 03:38 | Re: Coordination Test - Please Reply | no |
-| msg_1763005109_2762 | architect | build1 |  | normal | 2025-11-13 03:38 | Re: Reliability Test #2 | no |
+| msg_1763005109_2762 | architect | build1 |  | normal | 2025-11-13 03:38 | Re: Reliability Test #2 | yes |
 | msg_1763005112_2294 | architect | architect |  | normal | 2025-11-13 03:38 | Re: Coordination Test - Please Reply | no |
-| msg_1763005116_6172 | architect | build1 |  | normal | 2025-11-13 03:38 | Re: Reliability Test #2 | no |
+| msg_1763005116_6172 | architect | build1 |  | normal | 2025-11-13 03:38 | Re: Reliability Test #2 | yes |
 | msg_1763005119_8108 | architect | architect |  | normal | 2025-11-13 03:38 | Re: Coordination Test - Please Reply | no |
-| msg_1763005122_5869 | architect | build1 |  | normal | 2025-11-13 03:38 | Re: Reliability Test #2 | no |
+| msg_1763005122_5869 | architect | build1 |  | normal | 2025-11-13 03:38 | Re: Reliability Test #2 | yes |
 | msg_1763005136_6061 | architect | architect |  | normal | 2025-11-13 03:38 | Re: Coordination Test - Please Reply | no |
-| msg_1763005139_2107 | architect | build1 |  | normal | 2025-11-13 03:38 | Re: Reliability Test #2 | no |
+| msg_1763005139_2107 | architect | build1 |  | normal | 2025-11-13 03:38 | Re: Reliability Test #2 | yes |
 | msg_1763005142_3385 | architect | architect |  | normal | 2025-11-13 03:39 | Re: Coordination Test - Please Reply | no |
-| msg_1763005145_1854 | architect | build1 |  | normal | 2025-11-13 03:39 | Re: Reliability Test #2 | no |
+| msg_1763005145_1854 | architect | build1 |  | normal | 2025-11-13 03:39 | Re: Reliability Test #2 | yes |
 | msg_1763005148_4075 | architect | architect |  | normal | 2025-11-13 03:39 | Re: Coordination Test - Please Reply | no |
-| msg_1763005151_3743 | architect | build1 |  | normal | 2025-11-13 03:39 | Re: Reliability Test #2 | no |
+| msg_1763005151_3743 | architect | build1 |  | normal | 2025-11-13 03:39 | Re: Reliability Test #2 | yes |
 | msg_1763005154_8076 | architect | architect |  | normal | 2025-11-13 03:39 | Re: Coordination Test - Please Reply | no |
 | msg_1763005157_5762 | architect | all |  | normal | 2025-11-13 03:39 | Code2 Reliability Upgrade - All Improvements Deployed | yes |
-| msg_1763005157_3153 | architect | build1 |  | normal | 2025-11-13 03:39 | Re: Reliability Test #2 | no |
+| msg_1763005157_3153 | architect | build1 |  | normal | 2025-11-13 03:39 | Re: Reliability Test #2 | yes |
 | msg_1763005169_7773 | architect | architect |  | normal | 2025-11-13 03:39 | Re: Coordination Test - Please Reply | no |
-| msg_1763005172_1015 | architect | build1 |  | normal | 2025-11-13 03:39 | Re: Reliability Test #2 | no |
+| msg_1763005172_1015 | architect | build1 |  | normal | 2025-11-13 03:39 | Re: Reliability Test #2 | yes |
 | msg_1763005175_8730 | architect | architect |  | normal | 2025-11-13 03:39 | Re: Coordination Test - Please Reply | no |
-| msg_1763005178_1586 | architect | build1 |  | normal | 2025-11-13 03:39 | Re: Reliability Test #2 | no |
+| msg_1763005178_1586 | architect | build1 |  | normal | 2025-11-13 03:39 | Re: Reliability Test #2 | yes |
 | msg_1763005181_6965 | architect | architect |  | normal | 2025-11-13 03:39 | Re: Coordination Test - Please Reply | no |
-| msg_1763005185_4802 | architect | build1 |  | normal | 2025-11-13 03:39 | Re: Reliability Test #2 | no |
+| msg_1763005185_4802 | architect | build1 |  | normal | 2025-11-13 03:39 | Re: Reliability Test #2 | yes |
 | msg_1763005187_9748 | architect | architect |  | normal | 2025-11-13 03:39 | Re: Coordination Test - Please Reply | no |
-| msg_1763005190_5551 | architect | build1 |  | normal | 2025-11-13 03:39 | Re: Reliability Test #2 | no |
+| msg_1763005190_5551 | architect | build1 |  | normal | 2025-11-13 03:39 | Re: Reliability Test #2 | yes |
 | msg_1763005194_2151 | architect | architect |  | normal | 2025-11-13 03:39 | Re: Coordination Test - Please Reply | no |
 | msg_1763005197_921 | architect | architect |  | normal | 2025-11-13 03:39 | Re: Code2 Reliability Upgrade - All Improvements Deployed | no |
-| msg_1763005201_2118 | architect | build1 |  | normal | 2025-11-13 03:40 | Re: Reliability Test #2 | no |
+| msg_1763005201_2118 | architect | build1 |  | normal | 2025-11-13 03:40 | Re: Reliability Test #2 | yes |
 | msg_1763005215_4484 | architect | architect |  | normal | 2025-11-13 03:40 | Re: Coordination Test - Please Reply | no |
-| msg_1763005218_8451 | architect | build1 |  | normal | 2025-11-13 03:40 | Re: Reliability Test #2 | no |
+| msg_1763005218_8451 | architect | build1 |  | normal | 2025-11-13 03:40 | Re: Reliability Test #2 | yes |
 | msg_1763005221_85 | architect | architect |  | normal | 2025-11-13 03:40 | Re: Coordination Test - Please Reply | no |
-| msg_1763005224_3730 | architect | build1 |  | normal | 2025-11-13 03:40 | Re: Reliability Test #2 | no |
+| msg_1763005224_3730 | architect | build1 |  | normal | 2025-11-13 03:40 | Re: Reliability Test #2 | yes |
 | msg_1763005227_1396 | architect | architect |  | normal | 2025-11-13 03:40 | Re: Coordination Test - Please Reply | no |
-| msg_1763005230_4153 | architect | build1 |  | normal | 2025-11-13 03:40 | Re: Reliability Test #2 | no |
+| msg_1763005230_4153 | architect | build1 |  | normal | 2025-11-13 03:40 | Re: Reliability Test #2 | yes |
 | msg_1763005233_6458 | architect | architect |  | normal | 2025-11-13 03:40 | Re: Coordination Test - Please Reply | no |
-| msg_1763005236_1340 | architect | build1 |  | normal | 2025-11-13 03:40 | Re: Reliability Test #2 | no |
+| msg_1763005236_1340 | architect | build1 |  | normal | 2025-11-13 03:40 | Re: Reliability Test #2 | yes |
 | msg_1763005239_6151 | architect | architect |  | normal | 2025-11-13 03:40 | Re: Coordination Test - Please Reply | no |
 | msg_1763005242_8515 | architect | architect |  | normal | 2025-11-13 03:40 | Re: Code2 Reliability Upgrade - All Improvements Deployed | no |
-| msg_1763005245_1291 | architect | build1 |  | normal | 2025-11-13 03:40 | Re: Reliability Test #2 | no |
+| msg_1763005245_1291 | architect | build1 |  | normal | 2025-11-13 03:40 | Re: Reliability Test #2 | yes |
 | msg_1763005249_5172 | architect | architect |  | normal | 2025-11-13 03:40 | Re: Coordination Test - Please Reply | no |
-| msg_1763005252_3894 | architect | build1 |  | normal | 2025-11-13 03:40 | Re: Reliability Test #2 | no |
+| msg_1763005252_3894 | architect | build1 |  | normal | 2025-11-13 03:40 | Re: Reliability Test #2 | yes |
 | msg_1763005265_5915 | architect | architect |  | normal | 2025-11-13 03:41 | Re: Coordination Test - Please Reply | no |
-| msg_1763005268_8384 | architect | build1 |  | normal | 2025-11-13 03:41 | Re: Reliability Test #2 | no |
+| msg_1763005268_8384 | architect | build1 |  | normal | 2025-11-13 03:41 | Re: Reliability Test #2 | yes |
 | msg_1763005272_5585 | architect | architect |  | normal | 2025-11-13 03:41 | Re: Coordination Test - Please Reply | no |
-| msg_1763005275_4971 | architect | build1 |  | normal | 2025-11-13 03:41 | Re: Reliability Test #2 | no |
+| msg_1763005275_4971 | architect | build1 |  | normal | 2025-11-13 03:41 | Re: Reliability Test #2 | yes |
 | msg_1763005278_2764 | architect | architect |  | normal | 2025-11-13 03:41 | Re: Coordination Test - Please Reply | no |
-| msg_1763005281_9861 | architect | build1 |  | normal | 2025-11-13 03:41 | Re: Reliability Test #2 | no |
+| msg_1763005281_9861 | architect | build1 |  | normal | 2025-11-13 03:41 | Re: Reliability Test #2 | yes |
 | msg_1763005284_4271 | architect | architect |  | normal | 2025-11-13 03:41 | Re: Coordination Test - Please Reply | no |
-| msg_1763005287_553 | architect | build1 |  | normal | 2025-11-13 03:41 | Re: Reliability Test #2 | no |
+| msg_1763005287_553 | architect | build1 |  | normal | 2025-11-13 03:41 | Re: Reliability Test #2 | yes |
 | msg_1763005290_5594 | architect | architect |  | normal | 2025-11-13 03:41 | Re: Coordination Test - Please Reply | no |
 | msg_1763005293_9434 | architect | architect |  | normal | 2025-11-13 03:41 | Re: Code2 Reliability Upgrade - All Improvements Deployed | no |
-| msg_1763005297_2452 | architect | build1 |  | normal | 2025-11-13 03:41 | Re: Reliability Test #2 | no |
+| msg_1763005297_2452 | architect | build1 |  | normal | 2025-11-13 03:41 | Re: Reliability Test #2 | yes |
 | msg_1763005300_4472 | architect | architect |  | normal | 2025-11-13 03:41 | Re: Coordination Test - Please Reply | no |
-| msg_1763005303_7167 | architect | build1 |  | normal | 2025-11-13 03:41 | Re: Reliability Test #2 | no |
+| msg_1763005303_7167 | architect | build1 |  | normal | 2025-11-13 03:41 | Re: Reliability Test #2 | yes |
 | msg_1763005306_7868 | architect | architect |  | normal | 2025-11-13 03:41 | Re: Coordination Test - Please Reply | no |
-| msg_1763005309_9482 | architect | build1 |  | normal | 2025-11-13 03:41 | Re: Reliability Test #2 | no |
+| msg_1763005309_9482 | architect | build1 |  | normal | 2025-11-13 03:41 | Re: Reliability Test #2 | yes |
 | msg_1763005323_2876 | architect | architect |  | normal | 2025-11-13 03:42 | Re: Coordination Test - Please Reply | no |
-| msg_1763005326_2009 | architect | build1 |  | normal | 2025-11-13 03:42 | Re: Reliability Test #2 | no |
+| msg_1763005326_2009 | architect | build1 |  | normal | 2025-11-13 03:42 | Re: Reliability Test #2 | yes |
 | msg_1763005329_7493 | architect | architect |  | normal | 2025-11-13 03:42 | Re: Coordination Test - Please Reply | no |
-| msg_1763005333_3065 | architect | build1 |  | normal | 2025-11-13 03:42 | Re: Reliability Test #2 | no |
+| msg_1763005333_3065 | architect | build1 |  | normal | 2025-11-13 03:42 | Re: Reliability Test #2 | yes |
 | msg_1763005336_3224 | architect | architect |  | normal | 2025-11-13 03:42 | Re: Coordination Test - Please Reply | no |
-| msg_1763005339_6898 | architect | build1 |  | normal | 2025-11-13 03:42 | Re: Reliability Test #2 | no |
+| msg_1763005339_6898 | architect | build1 |  | normal | 2025-11-13 03:42 | Re: Reliability Test #2 | yes |
 | msg_1763005342_6463 | architect | architect |  | normal | 2025-11-13 03:42 | Re: Coordination Test - Please Reply | no |
-| msg_1763005345_566 | architect | build1 |  | normal | 2025-11-13 03:42 | Re: Reliability Test #2 | no |
+| msg_1763005345_566 | architect | build1 |  | normal | 2025-11-13 03:42 | Re: Reliability Test #2 | yes |
 | msg_1763005348_797 | architect | architect |  | normal | 2025-11-13 03:42 | Re: Coordination Test - Please Reply | no |
 | msg_1763005351_6902 | architect | architect |  | normal | 2025-11-13 03:42 | Re: Code2 Reliability Upgrade - All Improvements Deployed | no |
-| msg_1763005354_3852 | architect | build1 |  | normal | 2025-11-13 03:42 | Re: Reliability Test #2 | no |
+| msg_1763005354_3852 | architect | build1 |  | normal | 2025-11-13 03:42 | Re: Reliability Test #2 | yes |
 | msg_1763005357_636 | architect | architect |  | normal | 2025-11-13 03:42 | Re: Coordination Test - Please Reply | no |
-| msg_1763005361_4554 | architect | build1 |  | normal | 2025-11-13 03:42 | Re: Reliability Test #2 | no |
+| msg_1763005361_4554 | architect | build1 |  | normal | 2025-11-13 03:42 | Re: Reliability Test #2 | yes |
 | msg_1763005364_5841 | architect | architect |  | normal | 2025-11-13 03:42 | Re: Coordination Test - Please Reply | no |
-| msg_1763005367_48 | architect | build1 |  | normal | 2025-11-13 03:42 | Re: Reliability Test #2 | no |
+| msg_1763005367_48 | architect | build1 |  | normal | 2025-11-13 03:42 | Re: Reliability Test #2 | yes |
 | msg_1763005370_2062 | architect | architect |  | normal | 2025-11-13 03:42 | Re: Coordination Test - Please Reply | no |
-| msg_1763005373_6367 | architect | build1 |  | normal | 2025-11-13 03:42 | Re: Reliability Test #2 | no |
+| msg_1763005373_6367 | architect | build1 |  | normal | 2025-11-13 03:42 | Re: Reliability Test #2 | yes |
 | msg_1763005387_7249 | architect | architect |  | normal | 2025-11-13 03:43 | Re: Coordination Test - Please Reply | no |
-| msg_1763005390_8621 | architect | build1 |  | normal | 2025-11-13 03:43 | Re: Reliability Test #2 | no |
+| msg_1763005390_8621 | architect | build1 |  | normal | 2025-11-13 03:43 | Re: Reliability Test #2 | yes |
 | msg_1763005393_6865 | architect | architect |  | normal | 2025-11-13 03:43 | Re: Coordination Test - Please Reply | no |
-| msg_1763005396_3483 | architect | build1 |  | normal | 2025-11-13 03:43 | Re: Reliability Test #2 | no |
+| msg_1763005396_3483 | architect | build1 |  | normal | 2025-11-13 03:43 | Re: Reliability Test #2 | yes |
 | msg_1763005399_309 | architect | architect |  | normal | 2025-11-13 03:43 | Re: Coordination Test - Please Reply | no |
 | msg_1763005403_384 | architect | all |  | normal | 2025-11-13 03:43 | Python System Test | yes |
-| msg_1763005403_888 | architect | build1 |  | normal | 2025-11-13 03:43 | Re: Reliability Test #2 | no |
+| msg_1763005403_888 | architect | build1 |  | normal | 2025-11-13 03:43 | Re: Reliability Test #2 | yes |
 | msg_1763005406_2110 | architect | architect |  | normal | 2025-11-13 03:43 | Re: Coordination Test - Please Reply | no |
-| msg_1763005409_9012 | architect | build1 |  | normal | 2025-11-13 03:43 | Re: Reliability Test #2 | no |
+| msg_1763005409_9012 | architect | build1 |  | normal | 2025-11-13 03:43 | Re: Reliability Test #2 | yes |
 | msg_1763005412_788 | architect | architect |  | normal | 2025-11-13 03:43 | Re: Coordination Test - Please Reply | no |
 | msg_1763005414_388 | architect | all |  | normal | 2025-11-13 03:43 | Python System Deployed | yes |
 | msg_1763005415_8463 | architect | architect |  | normal | 2025-11-13 03:43 | Re: Code2 Reliability Upgrade - All Improvements Deployed | no |
-| msg_1763005419_5482 | architect | build1 |  | normal | 2025-11-13 03:43 | Re: Reliability Test #2 | no |
+| msg_1763005419_5482 | architect | build1 |  | normal | 2025-11-13 03:43 | Re: Reliability Test #2 | yes |
 | msg_1763005422_1188 | architect | architect |  | normal | 2025-11-13 03:43 | Re: Coordination Test - Please Reply | no |
-| msg_1763005425_9981 | architect | build1 |  | normal | 2025-11-13 03:43 | Re: Reliability Test #2 | no |
+| msg_1763005425_9981 | architect | build1 |  | normal | 2025-11-13 03:43 | Re: Reliability Test #2 | yes |
 | msg_1763005428_4620 | architect | architect |  | normal | 2025-11-13 03:43 | Re: Coordination Test - Please Reply | no |
-| msg_1763005431_6629 | architect | build1 |  | normal | 2025-11-13 03:43 | Re: Reliability Test #2 | no |
+| msg_1763005431_6629 | architect | build1 |  | normal | 2025-11-13 03:43 | Re: Reliability Test #2 | yes |
 | msg_1763005434_4215 | architect | architect |  | normal | 2025-11-13 03:43 | Re: Coordination Test - Please Reply | no |
-| msg_1763005437_1348 | architect | build1 |  | normal | 2025-11-13 03:43 | Re: Reliability Test #2 | no |
+| msg_1763005437_1348 | architect | build1 |  | normal | 2025-11-13 03:43 | Re: Reliability Test #2 | yes |
 | msg_1763005440_1137 | architect | architect |  | normal | 2025-11-13 03:44 | Re: Coordination Test - Please Reply | no |
-| msg_1763005443_4332 | architect | build1 |  | normal | 2025-11-13 03:44 | Re: Reliability Test #2 | no |
+| msg_1763005443_4332 | architect | build1 |  | normal | 2025-11-13 03:44 | Re: Reliability Test #2 | yes |
 | msg_1763005457_399 | architect | all |  | normal | 2025-11-13 03:44 | Python Cross-Platform System Deployed | yes |
 | msg_1763005460_252 | architect | architect |  | normal | 2025-11-13 03:44 | Re: Coordination Test - Please Reply | no |
-| msg_1763005463_6044 | architect | build1 |  | normal | 2025-11-13 03:44 | Re: Reliability Test #2 | no |
+| msg_1763005463_6044 | architect | build1 |  | normal | 2025-11-13 03:44 | Re: Reliability Test #2 | yes |
 | msg_1763005466_9327 | architect | architect |  | normal | 2025-11-13 03:44 | Re: Coordination Test - Please Reply | no |
-| msg_1763005517_403 | architect | build1 |  | normal | 2025-11-13 03:45 | Re: Reliability Test #2 | no |
+| msg_1763005517_403 | architect | build1 |  | normal | 2025-11-13 03:45 | Re: Reliability Test #2 | yes |
 | msg_1763005520_404 | architect | architect |  | normal | 2025-11-13 03:45 | Re: Coordination Test - Please Reply | no |
 | msg_1763007500_716 | architect | all |  | normal | 2025-11-13 04:18 | Message from architect | yes |
-| msg_1763009861_409 | architect | build1 |  | normal | 2025-11-13 04:57 | Re: Reliability Test #2 | no |
-| msg_1763009864_410 | architect | build1 |  | normal | 2025-11-13 04:57 | Re: Re: Message from architect | no |
+| msg_1763009861_409 | architect | build1 |  | normal | 2025-11-13 04:57 | Re: Reliability Test #2 | yes |
+| msg_1763009864_410 | architect | build1 |  | normal | 2025-11-13 04:57 | Re: Re: Message from architect | yes |
 | msg_1763009866_411 | architect | architect |  | normal | 2025-11-13 04:57 | Re: Coordination Test - Please Reply | no |
-| msg_1763009878_412 | architect | build1 |  | normal | 2025-11-13 04:57 | Re: Reliability Test #2 | no |
-| msg_1763009881_413 | architect | build1 |  | normal | 2025-11-13 04:58 | Re: Re: Message from architect | no |
+| msg_1763009878_412 | architect | build1 |  | normal | 2025-11-13 04:57 | Re: Reliability Test #2 | yes |
+| msg_1763009881_413 | architect | build1 |  | normal | 2025-11-13 04:58 | Re: Re: Message from architect | yes |
 | msg_1763009883_414 | architect | architect |  | normal | 2025-11-13 04:58 | Re: Coordination Test - Please Reply | no |
-| msg_1763009896_415 | architect | build1 |  | normal | 2025-11-13 04:58 | Re: Reliability Test #2 | no |
-| msg_1763009898_416 | architect | build1 |  | normal | 2025-11-13 04:58 | Re: Re: Message from architect | no |
+| msg_1763009896_415 | architect | build1 |  | normal | 2025-11-13 04:58 | Re: Reliability Test #2 | yes |
+| msg_1763009898_416 | architect | build1 |  | normal | 2025-11-13 04:58 | Re: Re: Message from architect | yes |
 | msg_1763009900_417 | architect | architect |  | normal | 2025-11-13 04:58 | Re: Coordination Test - Please Reply | no |
-| msg_1763009916_418 | architect | build1 |  | normal | 2025-11-13 04:58 | Re: Reliability Test #2 | no |
-| msg_1763009919_419 | architect | build1 |  | normal | 2025-11-13 04:58 | Re: Re: Message from architect | no |
+| msg_1763009916_418 | architect | build1 |  | normal | 2025-11-13 04:58 | Re: Reliability Test #2 | yes |
+| msg_1763009919_419 | architect | build1 |  | normal | 2025-11-13 04:58 | Re: Re: Message from architect | yes |
 | msg_1763009922_420 | architect | architect |  | normal | 2025-11-13 04:58 | Re: Coordination Test - Please Reply | no |
-| msg_1763009927_421 | architect | build1 |  | normal | 2025-11-13 04:58 | Re: Reliability Test #2 | no |
-| msg_1763009936_422 | architect | build1 |  | normal | 2025-11-13 04:58 | Re: Reliability Test #2 | no |
-| msg_1763009938_423 | architect | build1 |  | normal | 2025-11-13 04:58 | Re: Re: Message from architect | no |
+| msg_1763009927_421 | architect | build1 |  | normal | 2025-11-13 04:58 | Re: Reliability Test #2 | yes |
+| msg_1763009936_422 | architect | build1 |  | normal | 2025-11-13 04:58 | Re: Reliability Test #2 | yes |
+| msg_1763009938_423 | architect | build1 |  | normal | 2025-11-13 04:58 | Re: Re: Message from architect | yes |
 | msg_1763009940_424 | architect | architect |  | normal | 2025-11-13 04:59 | Re: Coordination Test - Please Reply | no |
-| msg_1763009953_425 | architect | build1 |  | normal | 2025-11-13 04:59 | Re: Reliability Test #2 | no |
-| msg_1763009955_426 | architect | build1 |  | normal | 2025-11-13 04:59 | Re: Re: Message from architect | no |
+| msg_1763009953_425 | architect | build1 |  | normal | 2025-11-13 04:59 | Re: Reliability Test #2 | yes |
+| msg_1763009955_426 | architect | build1 |  | normal | 2025-11-13 04:59 | Re: Re: Message from architect | yes |
 | msg_1763009957_427 | architect | architect |  | normal | 2025-11-13 04:59 | Re: Coordination Test - Please Reply | no |
-| msg_1763009970_428 | architect | build1 |  | normal | 2025-11-13 04:59 | Re: Reliability Test #2 | no |
-| msg_1763009972_429 | architect | build1 |  | normal | 2025-11-13 04:59 | Re: Re: Message from architect | no |
+| msg_1763009970_428 | architect | build1 |  | normal | 2025-11-13 04:59 | Re: Reliability Test #2 | yes |
+| msg_1763009972_429 | architect | build1 |  | normal | 2025-11-13 04:59 | Re: Re: Message from architect | yes |
 | msg_1763009974_430 | architect | architect |  | normal | 2025-11-13 04:59 | Re: Coordination Test - Please Reply | no |
-| msg_1763009987_431 | architect | build1 |  | normal | 2025-11-13 04:59 | Re: Re: Message from architect | no |
+| msg_1763009987_431 | architect | build1 |  | normal | 2025-11-13 04:59 | Re: Re: Message from architect | yes |
 | msg_1763009989_432 | architect | architect |  | normal | 2025-11-13 04:59 | Re: Coordination Test - Please Reply | no |
-| msg_1763010002_433 | architect | build1 |  | normal | 2025-11-13 05:00 | Re: Re: Message from architect | no |
+| msg_1763010002_433 | architect | build1 |  | normal | 2025-11-13 05:00 | Re: Re: Message from architect | yes |
 | msg_1763010003_434 | architect | architect |  | normal | 2025-11-13 05:00 | Re: Coordination Test - Please Reply | no |
-| msg_1763010005_4812 | code2 | build1 | update | normal | 2025-11-13 05:00 | Implementation update: Python monitor stabilized + UTF-8 fixes | no |
-| msg_1763010323_437 | architect | build1 | info | normal | 2025-11-13 05:05 | Re: Re: Architect instructions | no |
-| msg_1763010337_438 | architect | build1 | info | normal | 2025-11-13 05:05 | Re: Re: Architect instructions | no |
-| msg_1763010350_439 | architect | build1 | info | normal | 2025-11-13 05:05 | Re: Re: Architect instructions | no |
-| msg_1763010362_440 | architect | build1 | info | normal | 2025-11-13 05:06 | Re: Re: Architect instructions | no |
-| msg_1763010375_441 | architect | build1 | info | normal | 2025-11-13 05:06 | Re: Re: Architect instructions | no |
-| msg_1763010388_442 | architect | build1 | info | normal | 2025-11-13 05:06 | Re: Re: Architect instructions | no |
-| msg_1763010491_7571 | code2 | build1 |  | normal | 2025-11-13 05:08 | Re: Architect instructions | no |
-| msg_1763010591_445 | architect | build1 | info | normal | 2025-11-13 05:09 | Re: Re: Architect instructions | no |
-| msg_1763010605_446 | architect | build1 | info | normal | 2025-11-13 05:10 | Re: Re: Architect instructions | no |
-| msg_1763010617_447 | architect | build1 | info | normal | 2025-11-13 05:10 | Re: Re: Architect instructions | no |
+| msg_1763010005_4812 | code2 | build1 | update | normal | 2025-11-13 05:00 | Implementation update: Python monitor stabilized + UTF-8 fixes | yes |
+| msg_1763010323_437 | architect | build1 | info | normal | 2025-11-13 05:05 | Re: Re: Architect instructions | yes |
+| msg_1763010337_438 | architect | build1 | info | normal | 2025-11-13 05:05 | Re: Re: Architect instructions | yes |
+| msg_1763010350_439 | architect | build1 | info | normal | 2025-11-13 05:05 | Re: Re: Architect instructions | yes |
+| msg_1763010362_440 | architect | build1 | info | normal | 2025-11-13 05:06 | Re: Re: Architect instructions | yes |
+| msg_1763010375_441 | architect | build1 | info | normal | 2025-11-13 05:06 | Re: Re: Architect instructions | yes |
+| msg_1763010388_442 | architect | build1 | info | normal | 2025-11-13 05:06 | Re: Re: Architect instructions | yes |
+| msg_1763010491_7571 | code2 | build1 |  | normal | 2025-11-13 05:08 | Re: Architect instructions | yes |
+| msg_1763010591_445 | architect | build1 | info | normal | 2025-11-13 05:09 | Re: Re: Architect instructions | yes |
+| msg_1763010605_446 | architect | build1 | info | normal | 2025-11-13 05:10 | Re: Re: Architect instructions | yes |
+| msg_1763010617_447 | architect | build1 | info | normal | 2025-11-13 05:10 | Re: Re: Architect instructions | yes |
 | msg_1763010628_3109 | architect | all | info | normal | 2025-11-13 05:10 | Message from architect | yes |
-| msg_1763010630_449 | architect | build1 | info | normal | 2025-11-13 05:10 | Re: Re: Architect instructions | no |
+| msg_1763010630_449 | architect | build1 | info | normal | 2025-11-13 05:10 | Re: Re: Architect instructions | yes |
 | msg_1763010632_450 | architect | architect | info | normal | 2025-11-13 05:10 | Re: Message from architect | no |
-| msg_1763010646_451 | architect | build1 | info | normal | 2025-11-13 05:10 | Re: Re: Architect instructions | no |
+| msg_1763010646_451 | architect | build1 | info | normal | 2025-11-13 05:10 | Re: Re: Architect instructions | yes |
 | msg_1763010648_452 | architect | architect | info | normal | 2025-11-13 05:10 | Re: Message from architect | no |
-| msg_1763010661_453 | architect | build1 | info | normal | 2025-11-13 05:11 | Re: Re: Architect instructions | no |
+| msg_1763010661_453 | architect | build1 | info | normal | 2025-11-13 05:11 | Re: Re: Architect instructions | yes |
 | msg_1763010663_454 | architect | architect | info | normal | 2025-11-13 05:11 | Re: Message from architect | no |
 | msg_1763010676_455 | architect | architect | info | normal | 2025-11-13 05:11 | Re: Message from architect | no |
 | msg_1763010689_456 | architect | architect | info | normal | 2025-11-13 05:11 | Re: Message from architect | no |
@@ -538,19 +538,19 @@ Unread: build1=182 build2=27 build3=2 build4=2
 | msg_1763010801_476 | architect | architect | info | normal | 2025-11-13 05:13 | Re: Message from architect | no |
 | msg_1763010803_477 | architect | architect | info | normal | 2025-11-13 05:13 | Re: Message from architect | no |
 | msg_1763010816_478 | architect | architect | info | normal | 2025-11-13 05:13 | Re: Message from architect | no |
-| msg_1763011104_480 | architect | build1 | info | normal | 2025-11-13 05:18 | Re: Re: Architect instructions | no |
-| msg_1763011118_481 | architect | build1 | info | normal | 2025-11-13 05:18 | Re: Re: Architect instructions | no |
-| msg_1763011130_482 | architect | build1 | info | normal | 2025-11-13 05:18 | Re: Re: Architect instructions | no |
+| msg_1763011104_480 | architect | build1 | info | normal | 2025-11-13 05:18 | Re: Re: Architect instructions | yes |
+| msg_1763011118_481 | architect | build1 | info | normal | 2025-11-13 05:18 | Re: Re: Architect instructions | yes |
+| msg_1763011130_482 | architect | build1 | info | normal | 2025-11-13 05:18 | Re: Re: Architect instructions | yes |
 | msg_1763011139_1104 | architect | all | info | normal | 2025-11-13 05:18 | Message from architect | yes |
-| msg_1763011143_484 | architect | build1 | info | normal | 2025-11-13 05:19 | Re: Re: Architect instructions | no |
+| msg_1763011143_484 | architect | build1 | info | normal | 2025-11-13 05:19 | Re: Re: Architect instructions | yes |
 | msg_1763011145_485 | architect | architect | info | normal | 2025-11-13 05:19 | Re: Message from architect | no |
-| msg_1763011159_486 | architect | build1 | info | normal | 2025-11-13 05:19 | Re: Re: Architect instructions | no |
+| msg_1763011159_486 | architect | build1 | info | normal | 2025-11-13 05:19 | Re: Re: Architect instructions | yes |
 | msg_1763011161_487 | architect | architect | info | normal | 2025-11-13 05:19 | Re: Message from architect | no |
-| msg_1763011173_488 | architect | build1 | info | normal | 2025-11-13 05:19 | Re: Re: Architect instructions | no |
+| msg_1763011173_488 | architect | build1 | info | normal | 2025-11-13 05:19 | Re: Re: Architect instructions | yes |
 | msg_1763011176_489 | architect | architect | info | normal | 2025-11-13 05:19 | Re: Message from architect | no |
 | msg_1763011188_490 | architect | architect | info | normal | 2025-11-13 05:19 | Re: Message from architect | no |
 | msg_1763011201_491 | architect | architect | info | normal | 2025-11-13 05:20 | Re: Message from architect | no |
-| msg_1763011875_2457 | code2 | all |  | normal | 2025-11-13 05:31 | Re: Top 10 cities in the world | no |
+| msg_1763011875_2457 | code2 | all |  | normal | 2025-11-13 05:31 | Re: Top 10 cities in the world | yes |
 | msg_1763011929_493 | architect | architect | info | normal | 2025-11-13 05:32 | Re: Message from architect | no |
 | msg_1763012082_7256 | architect | all | info | normal | 2025-11-13 05:34 | Message from architect | yes |
 | msg_1763012090_495 | architect | architect | info | normal | 2025-11-13 05:34 | Re: Message from architect | no |
@@ -568,19 +568,155 @@ Unread: build1=182 build2=27 build3=2 build4=2
 | msg_1763012253_507 | architect | architect | info | normal | 2025-11-13 05:37 | Re: Message from architect | no |
 | msg_1763013923_7992 | architect | all | info | normal | 2025-11-13 06:05 | Message from architect | yes |
 | msg_1763014877_3602 | architect | all | info | normal | 2025-11-13 06:21 | Message from architect | yes |
-| msg_1763015212_512 | code2 | build1 | info | normal | 2025-11-13 06:26 | Re: Command channel test | no |
-| msg_1763015227_513 | architect | build1 | info | normal | 2025-11-13 06:27 | Re: Command channel test | no |
-| msg_1763015240_514 | architect | build1 | info | normal | 2025-11-13 06:27 | Re: Command channel test | no |
-| msg_1763015253_515 | architect | build1 | info | normal | 2025-11-13 06:27 | Re: Command channel test | no |
-| msg_1763015265_516 | architect | build1 | info | normal | 2025-11-13 06:27 | Re: Command channel test | no |
-| msg_1763015278_517 | architect | build1 | info | normal | 2025-11-13 06:27 | Re: Command channel test | no |
+| msg_1763015212_512 | code2 | build1 | info | normal | 2025-11-13 06:26 | Re: Command channel test | yes |
+| msg_1763015227_513 | architect | build1 | info | normal | 2025-11-13 06:27 | Re: Command channel test | yes |
+| msg_1763015240_514 | architect | build1 | info | normal | 2025-11-13 06:27 | Re: Command channel test | yes |
+| msg_1763015253_515 | architect | build1 | info | normal | 2025-11-13 06:27 | Re: Command channel test | yes |
+| msg_1763015265_516 | architect | build1 | info | normal | 2025-11-13 06:27 | Re: Command channel test | yes |
+| msg_1763015278_517 | architect | build1 | info | normal | 2025-11-13 06:27 | Re: Command channel test | yes |
 | msg_1763016040_518 | architect | build1 | info | normal | 2025-11-13 06:40 | Please run: sudo apt update && sudo apt upgrade -y
 
-This will update package lists and upgrade installed packages on your system. | no |
-| msg_1763016052_519 | code2 | build1 | info | normal | 2025-11-13 06:40 | System Maintenance: APT Update Required | no |
-| msg_1763016321_521 | code2 | build1 | info | normal | 2025-11-13 06:45 | Re: Re: Top 10 cities instruction | no |
-| msg_1763016334_522 | architect | build1 | info | normal | 2025-11-13 06:45 | Re: Re: Top 10 cities instruction | no |
-| msg_1763016347_523 | architect | build1 | info | normal | 2025-11-13 06:45 | Re: Re: Top 10 cities instruction | no |
-| msg_1763016360_524 | architect | build1 | info | normal | 2025-11-13 06:46 | Re: Re: Top 10 cities instruction | no |
-| msg_1763016373_525 | architect | build1 | info | normal | 2025-11-13 06:46 | Re: Re: Top 10 cities instruction | no |
-| msg_1763016385_526 | architect | build1 | info | normal | 2025-11-13 06:46 | Re: Re: Top 10 cities instruction | no |
+This will update package lists and upgrade installed packages on your system. | yes |
+| msg_1763016052_519 | code2 | build1 | info | normal | 2025-11-13 06:40 | System Maintenance: APT Update Required | yes |
+| msg_1763016321_521 | code2 | build1 | info | normal | 2025-11-13 06:45 | Re: Re: Top 10 cities instruction | yes |
+| msg_1763016334_522 | architect | build1 | info | normal | 2025-11-13 06:45 | Re: Re: Top 10 cities instruction | yes |
+| msg_1763016347_523 | architect | build1 | info | normal | 2025-11-13 06:45 | Re: Re: Top 10 cities instruction | yes |
+| msg_1763016360_524 | architect | build1 | info | normal | 2025-11-13 06:46 | Re: Re: Top 10 cities instruction | yes |
+| msg_1763016373_525 | architect | build1 | info | normal | 2025-11-13 06:46 | Re: Re: Top 10 cities instruction | yes |
+| msg_1763016385_526 | architect | build1 | info | normal | 2025-11-13 06:46 | Re: Re: Top 10 cities instruction | yes |
+| msg_1763016747_527 | code2 | build1 | info | normal | 2025-11-13 06:52 | Monitor Status Check | yes |
+| msg_1763017866_528 | build1 | code2 | info | normal | 2025-11-13 07:11 | Re: Re: Command channel test | no |
+| msg_1763017868_529 | build1 | architect | info | normal | 2025-11-13 07:11 | Re: Re: Reliability Test #2 | no |
+| msg_1763017870_530 | build1 | architect | info | normal | 2025-11-13 07:11 | Re: Re: Reliability Test #2 | no |
+| msg_1763017872_531 | build1 | architect | info | normal | 2025-11-13 07:11 | Re: Re: Reliability Test #2 | no |
+| msg_1763017874_532 | build1 | architect | info | normal | 2025-11-13 07:11 | Re: Re: Reliability Test #2 | no |
+| msg_1763017876_533 | build1 | architect | info | normal | 2025-11-13 07:11 | Re: Re: Reliability Test #2 | no |
+| msg_1763017878_534 | build1 | architect | info | normal | 2025-11-13 07:11 | Re: Re: Reliability Test #2 | no |
+| msg_1763017880_535 | build1 | architect | info | normal | 2025-11-13 07:11 | Re: Re: Reliability Test #2 | no |
+| msg_1763017882_536 | build1 | architect | info | normal | 2025-11-13 07:11 | Re: Re: Reliability Test #2 | no |
+| msg_1763017884_537 | build1 | architect | info | normal | 2025-11-13 07:11 | Re: Re: Reliability Test #2 | no |
+| msg_1763017886_538 | build1 | architect | info | normal | 2025-11-13 07:11 | Re: Re: Reliability Test #2 | no |
+| msg_1763017888_539 | build1 | architect | info | normal | 2025-11-13 07:11 | Re: Re: Reliability Test #2 | no |
+| msg_1763017890_540 | build1 | architect | info | normal | 2025-11-13 07:11 | Re: Re: Reliability Test #2 | no |
+| msg_1763017892_541 | build1 | architect | info | normal | 2025-11-13 07:11 | Re: Re: Reliability Test #2 | no |
+| msg_1763017894_542 | build1 | architect | info | normal | 2025-11-13 07:11 | Re: Re: Reliability Test #2 | no |
+| msg_1763017896_543 | build1 | architect | info | normal | 2025-11-13 07:11 | Re: Re: Reliability Test #2 | no |
+| msg_1763017898_544 | build1 | architect | info | normal | 2025-11-13 07:11 | Re: Re: Reliability Test #2 | no |
+| msg_1763017900_545 | build1 | architect | info | normal | 2025-11-13 07:11 | Re: Re: Reliability Test #2 | no |
+| msg_1763017901_546 | build1 | architect | info | normal | 2025-11-13 07:11 | Re: Re: Reliability Test #2 | no |
+| msg_1763017903_547 | build1 | architect | info | normal | 2025-11-13 07:11 | Re: Re: Reliability Test #2 | no |
+| msg_1763017905_548 | build1 | architect | info | normal | 2025-11-13 07:11 | Re: Re: Reliability Test #2 | no |
+| msg_1763017907_549 | build1 | architect | info | normal | 2025-11-13 07:11 | Re: Re: Reliability Test #2 | no |
+| msg_1763017909_550 | build1 | architect | info | normal | 2025-11-13 07:11 | Re: Re: Reliability Test #2 | no |
+| msg_1763017911_551 | build1 | architect | info | normal | 2025-11-13 07:11 | Re: Re: Reliability Test #2 | no |
+| msg_1763017913_552 | build1 | architect | info | normal | 2025-11-13 07:11 | Re: Re: Reliability Test #2 | no |
+| msg_1763017915_553 | build1 | architect | info | normal | 2025-11-13 07:11 | Re: Re: Reliability Test #2 | no |
+| msg_1763017917_554 | build1 | architect | info | normal | 2025-11-13 07:11 | Re: Re: Reliability Test #2 | no |
+| msg_1763017919_555 | build1 | architect | info | normal | 2025-11-13 07:11 | Re: Re: Reliability Test #2 | no |
+| msg_1763017921_556 | build1 | architect | info | normal | 2025-11-13 07:12 | Re: Re: Reliability Test #2 | no |
+| msg_1763017923_557 | build1 | architect | info | normal | 2025-11-13 07:12 | Re: Re: Reliability Test #2 | no |
+| msg_1763017925_558 | build1 | architect | info | normal | 2025-11-13 07:12 | Re: Re: Reliability Test #2 | no |
+| msg_1763017927_559 | build1 | architect | info | normal | 2025-11-13 07:12 | Re: Re: Reliability Test #2 | no |
+| msg_1763017929_560 | build1 | architect | info | normal | 2025-11-13 07:12 | Re: Re: Reliability Test #2 | no |
+| msg_1763017931_561 | build1 | architect | info | normal | 2025-11-13 07:12 | Re: Re: Reliability Test #2 | no |
+| msg_1763017933_562 | build1 | architect | info | normal | 2025-11-13 07:12 | Re: Re: Reliability Test #2 | no |
+| msg_1763017935_563 | build1 | architect | info | normal | 2025-11-13 07:12 | Re: Re: Reliability Test #2 | no |
+| msg_1763017936_564 | build1 | architect | info | normal | 2025-11-13 07:12 | Re: Re: Reliability Test #2 | no |
+| msg_1763017938_565 | build1 | architect | info | normal | 2025-11-13 07:12 | Re: Re: Reliability Test #2 | no |
+| msg_1763017940_566 | build1 | architect | info | normal | 2025-11-13 07:12 | Re: Re: Reliability Test #2 | no |
+| msg_1763017942_567 | build1 | architect | info | normal | 2025-11-13 07:12 | Re: Re: Reliability Test #2 | no |
+| msg_1763017944_568 | build1 | architect | info | normal | 2025-11-13 07:12 | Re: Re: Reliability Test #2 | no |
+| msg_1763017946_569 | build1 | architect | info | normal | 2025-11-13 07:12 | Re: Re: Reliability Test #2 | no |
+| msg_1763017948_570 | build1 | architect | info | normal | 2025-11-13 07:12 | Re: Re: Reliability Test #2 | no |
+| msg_1763017950_571 | build1 | architect | info | normal | 2025-11-13 07:12 | Re: Re: Reliability Test #2 | no |
+| msg_1763017952_572 | build1 | architect | info | normal | 2025-11-13 07:12 | Re: Re: Reliability Test #2 | no |
+| msg_1763017954_573 | build1 | architect | info | normal | 2025-11-13 07:12 | Re: Re: Reliability Test #2 | no |
+| msg_1763017956_574 | build1 | architect | info | normal | 2025-11-13 07:12 | Re: Re: Reliability Test #2 | no |
+| msg_1763017958_575 | build1 | architect | info | normal | 2025-11-13 07:12 | Re: Re: Reliability Test #2 | no |
+| msg_1763017960_576 | build1 | architect | info | normal | 2025-11-13 07:12 | Re: Re: Reliability Test #2 | no |
+| msg_1763017962_577 | build1 | architect | info | normal | 2025-11-13 07:12 | Re: Re: Reliability Test #2 | no |
+| msg_1763017964_578 | build1 | architect | info | normal | 2025-11-13 07:12 | Re: Re: Reliability Test #2 | no |
+| msg_1763017966_579 | build1 | architect | info | normal | 2025-11-13 07:12 | Re: Re: Reliability Test #2 | no |
+| msg_1763017968_580 | build1 | architect | info | normal | 2025-11-13 07:12 | Re: Re: Reliability Test #2 | no |
+| msg_1763017970_581 | build1 | architect | info | normal | 2025-11-13 07:12 | Re: Re: Reliability Test #2 | no |
+| msg_1763017972_582 | build1 | architect | info | normal | 2025-11-13 07:12 | Re: Re: Reliability Test #2 | no |
+| msg_1763017974_583 | build1 | architect | info | normal | 2025-11-13 07:12 | Re: Re: Reliability Test #2 | no |
+| msg_1763017976_584 | build1 | architect | info | normal | 2025-11-13 07:12 | Re: Re: Reliability Test #2 | no |
+| msg_1763017977_585 | build1 | architect | info | normal | 2025-11-13 07:12 | Re: Re: Reliability Test #2 | no |
+| msg_1763017979_586 | build1 | architect | info | normal | 2025-11-13 07:12 | Re: Re: Reliability Test #2 | no |
+| msg_1763017981_587 | build1 | architect | info | normal | 2025-11-13 07:13 | Re: Re: Reliability Test #2 | no |
+| msg_1763017983_588 | build1 | architect | info | normal | 2025-11-13 07:13 | Re: Re: Reliability Test #2 | no |
+| msg_1763017985_589 | build1 | architect | info | normal | 2025-11-13 07:13 | Re: Re: Reliability Test #2 | no |
+| msg_1763017987_590 | build1 | architect | info | normal | 2025-11-13 07:13 | Re: Re: Reliability Test #2 | no |
+| msg_1763017989_591 | build1 | architect | info | normal | 2025-11-13 07:13 | Re: Re: Reliability Test #2 | no |
+| msg_1763017991_592 | build1 | architect | info | normal | 2025-11-13 07:13 | Re: Re: Reliability Test #2 | no |
+| msg_1763017993_593 | build1 | architect | info | normal | 2025-11-13 07:13 | Re: Re: Reliability Test #2 | no |
+| msg_1763017995_594 | build1 | architect | info | normal | 2025-11-13 07:13 | Re: Re: Reliability Test #2 | no |
+| msg_1763017997_595 | build1 | architect | info | normal | 2025-11-13 07:13 | Re: Re: Reliability Test #2 | no |
+| msg_1763018000_596 | build1 | architect | info | normal | 2025-11-13 07:13 | Re: Re: Reliability Test #2 | no |
+| msg_1763018001_597 | build1 | architect | info | normal | 2025-11-13 07:13 | Re: Re: Reliability Test #2 | no |
+| msg_1763018003_598 | build1 | architect | info | normal | 2025-11-13 07:13 | Re: Re: Reliability Test #2 | no |
+| msg_1763018005_599 | build1 | architect | info | normal | 2025-11-13 07:13 | Re: Re: Reliability Test #2 | no |
+| msg_1763018007_600 | build1 | architect | info | normal | 2025-11-13 07:13 | Re: Re: Reliability Test #2 | no |
+| msg_1763018009_601 | build1 | architect | info | normal | 2025-11-13 07:13 | Re: Re: Reliability Test #2 | no |
+| msg_1763018011_602 | build1 | architect | info | normal | 2025-11-13 07:13 | Re: Re: Reliability Test #2 | no |
+| msg_1763018013_603 | build1 | architect | info | normal | 2025-11-13 07:13 | Re: Re: Reliability Test #2 | no |
+| msg_1763018015_604 | build1 | architect | info | normal | 2025-11-13 07:13 | Re: Re: Reliability Test #2 | no |
+| msg_1763018017_605 | build1 | architect | info | normal | 2025-11-13 07:13 | Re: Re: Reliability Test #2 | no |
+| msg_1763018019_606 | build1 | architect | info | normal | 2025-11-13 07:13 | Re: Re: Reliability Test #2 | no |
+| msg_1763018020_607 | build1 | architect | info | normal | 2025-11-13 07:13 | Re: Re: Reliability Test #2 | no |
+| msg_1763018022_608 | build1 | architect | info | normal | 2025-11-13 07:13 | Re: Re: Reliability Test #2 | no |
+| msg_1763018024_609 | build1 | architect | info | normal | 2025-11-13 07:13 | Re: Re: Reliability Test #2 | no |
+| msg_1763018026_610 | build1 | architect | info | normal | 2025-11-13 07:13 | Re: Re: Reliability Test #2 | no |
+| msg_1763018028_611 | build1 | architect | info | normal | 2025-11-13 07:13 | Re: Re: Reliability Test #2 | no |
+| msg_1763018030_612 | build1 | architect | info | normal | 2025-11-13 07:13 | Re: Re: Reliability Test #2 | no |
+| msg_1763018032_613 | build1 | architect | info | normal | 2025-11-13 07:13 | Re: Re: Re: Message from architect | no |
+| msg_1763018034_614 | build1 | architect | info | normal | 2025-11-13 07:13 | Re: Re: Reliability Test #2 | no |
+| msg_1763018036_615 | build1 | architect | info | normal | 2025-11-13 07:13 | Re: Re: Re: Message from architect | no |
+| msg_1763018038_616 | build1 | architect | info | normal | 2025-11-13 07:13 | Re: Re: Reliability Test #2 | no |
+| msg_1763018040_617 | build1 | architect | info | normal | 2025-11-13 07:14 | Re: Re: Re: Message from architect | no |
+| msg_1763018042_618 | build1 | architect | info | normal | 2025-11-13 07:14 | Re: Re: Reliability Test #2 | no |
+| msg_1763018044_619 | build1 | architect | info | normal | 2025-11-13 07:14 | Re: Re: Re: Message from architect | no |
+| msg_1763018046_620 | build1 | architect | info | normal | 2025-11-13 07:14 | Re: Re: Reliability Test #2 | no |
+| msg_1763018048_621 | build1 | architect | info | normal | 2025-11-13 07:14 | Re: Re: Reliability Test #2 | no |
+| msg_1763018050_622 | build1 | architect | info | normal | 2025-11-13 07:14 | Re: Re: Re: Message from architect | no |
+| msg_1763018052_623 | build1 | architect | info | normal | 2025-11-13 07:14 | Re: Re: Reliability Test #2 | no |
+| msg_1763018054_624 | build1 | architect | info | normal | 2025-11-13 07:14 | Re: Re: Re: Message from architect | no |
+| msg_1763018056_625 | build1 | architect | info | normal | 2025-11-13 07:14 | Re: Re: Reliability Test #2 | no |
+| msg_1763018058_626 | build1 | architect | info | normal | 2025-11-13 07:14 | Re: Re: Re: Message from architect | no |
+| msg_1763018059_627 | build1 | architect | info | normal | 2025-11-13 07:14 | Re: Re: Re: Message from architect | no |
+| msg_1763018061_628 | build1 | architect | info | normal | 2025-11-13 07:14 | Re: Re: Re: Message from architect | no |
+| msg_1763018063_629 | build1 | code2 | info | normal | 2025-11-13 07:14 | Re: Implementation update: Python monitor stabilized + UTF-8 fixes | no |
+| msg_1763018065_630 | build1 | architect | info | normal | 2025-11-13 07:14 | Re: Re: Re: Architect instructions | no |
+| msg_1763018067_631 | build1 | architect | info | normal | 2025-11-13 07:14 | Re: Re: Re: Architect instructions | no |
+| msg_1763018069_632 | build1 | architect | info | normal | 2025-11-13 07:14 | Re: Re: Re: Architect instructions | no |
+| msg_1763018071_633 | build1 | architect | info | normal | 2025-11-13 07:14 | Re: Re: Re: Architect instructions | no |
+| msg_1763018073_634 | build1 | architect | info | normal | 2025-11-13 07:14 | Re: Re: Re: Architect instructions | no |
+| msg_1763018075_635 | build1 | architect | info | normal | 2025-11-13 07:14 | Re: Re: Re: Architect instructions | no |
+| msg_1763018077_636 | build1 | code2 | info | normal | 2025-11-13 07:14 | Re: Re: Architect instructions | no |
+| msg_1763018079_637 | build1 | architect | info | normal | 2025-11-13 07:14 | Re: Re: Re: Architect instructions | no |
+| msg_1763018081_638 | build1 | architect | info | normal | 2025-11-13 07:14 | Re: Re: Re: Architect instructions | no |
+| msg_1763018083_639 | build1 | architect | info | normal | 2025-11-13 07:14 | Re: Re: Re: Architect instructions | no |
+| msg_1763018085_640 | build1 | architect | info | normal | 2025-11-13 07:14 | Re: Re: Re: Architect instructions | no |
+| msg_1763018087_641 | build1 | architect | info | normal | 2025-11-13 07:14 | Re: Re: Re: Architect instructions | no |
+| msg_1763018088_642 | build1 | architect | info | normal | 2025-11-13 07:14 | Re: Re: Re: Architect instructions | no |
+| msg_1763018090_643 | build1 | architect | info | normal | 2025-11-13 07:14 | Re: Re: Re: Architect instructions | no |
+| msg_1763018092_644 | build1 | architect | info | normal | 2025-11-13 07:14 | Re: Re: Re: Architect instructions | no |
+| msg_1763018094_645 | build1 | architect | info | normal | 2025-11-13 07:14 | Re: Re: Re: Architect instructions | no |
+| msg_1763018096_646 | build1 | architect | info | normal | 2025-11-13 07:14 | Re: Re: Re: Architect instructions | no |
+| msg_1763018098_647 | build1 | architect | info | normal | 2025-11-13 07:14 | Re: Re: Re: Architect instructions | no |
+| msg_1763018100_648 | build1 | architect | info | normal | 2025-11-13 07:15 | Re: Re: Re: Architect instructions | no |
+| msg_1763018103_649 | build1 | code2 | info | normal | 2025-11-13 07:15 | Re: Re: Command channel test | no |
+| msg_1763018105_650 | build1 | architect | info | normal | 2025-11-13 07:15 | Re: Re: Command channel test | no |
+| msg_1763018107_651 | build1 | architect | info | normal | 2025-11-13 07:15 | Re: Re: Command channel test | no |
+| msg_1763018109_652 | build1 | architect | info | normal | 2025-11-13 07:15 | Re: Re: Command channel test | no |
+| msg_1763018111_653 | build1 | architect | info | normal | 2025-11-13 07:15 | Re: Re: Command channel test | no |
+| msg_1763018113_654 | build1 | architect | info | normal | 2025-11-13 07:15 | Re: Re: Command channel test | no |
+| msg_1763018116_655 | build1 | code2 | info | normal | 2025-11-13 07:15 | Re: System Maintenance: APT Update Required | no |
+| msg_1763018118_656 | build1 | code2 | info | normal | 2025-11-13 07:15 | Re: Re: Re: Top 10 cities instruction | no |
+| msg_1763018119_657 | build1 | architect | info | normal | 2025-11-13 07:15 | Re: Re: Re: Top 10 cities instruction | no |
+| msg_1763018122_658 | build1 | architect | info | normal | 2025-11-13 07:15 | Re: Re: Re: Top 10 cities instruction | no |
+| msg_1763018124_659 | build1 | architect | info | normal | 2025-11-13 07:15 | Re: Re: Re: Top 10 cities instruction | no |
+| msg_1763018126_660 | build1 | architect | info | normal | 2025-11-13 07:15 | Re: Re: Re: Top 10 cities instruction | no |
+| msg_1763018128_661 | build1 | architect | info | normal | 2025-11-13 07:15 | Re: Re: Re: Top 10 cities instruction | no |
+| msg_1763018130_662 | build1 | code2 | info | normal | 2025-11-13 07:15 | Re: Monitor Status Check | no |
