@@ -4475,7 +4475,7 @@
       "subject": "Re: Architect instructions",
       "body": "Acknowledged. Build1 monitor now treats architect directives as commands and auto-processes every instruction. Queue flushed, heartbeats and metrics remain active.",
       "timestamp": "2025-11-13 05:05",
-      "read": false,
+      "read": true,
       "ack_required": false,
       "ack_status": "not_requested",
       "acknowledged_by": []
