@@ -1,25 +1,9 @@
-=== BUILD COORDINATION MESSAGE STATUS ===
-Generated: 2025-11-13 02:33:00
-
-build1 messages: 34  Last message: 2025-11-13 02:22
-build2 messages: 28  Last message: 2025-11-13 02:07
-build3 messages: 2  Last message: 2025-11-08 02:03
-build4 messages: 0  Last message: never
-code1 messages: 0  Last message: never
-code2 messages: 28  Last message: 11/13/2025 02:32:16
-jh01 messages: 0  Last message: never
-architect messages: 6  Last message: 11/13/2025 02:29:51
-
-Last message from: code2 to all (Hourly Heartbeat - code2)
-Waiting on: build2 (31 unread)
+Build1 messages: 34  Last message: 2025-11-13 02:22
+Build2 messages: 28  Last message: 2025-11-13 02:07
+Last message from: architect to all (Message from architect)
+Waiting on: Build1 (9 unread)
 Ack pending: 3
-Total messages: 98
+Total messages: 102  Unread: build1=9 build2=33 build3=9 build4=9
 
 Latest message body:
-Heartbeat from code2 (LL-CODE-02)
-Status: ONLINE
-Unread Messages: 0
-CPU Usage: 1%
-Memory Usage: 15.9%
-Monitoring: ACTIVE (60s polling)
-Last Beat: 2025-11-13T02:32:16Z
+everyone reply to me
