@@ -4466,6 +4466,19 @@
       "timestamp": "2025-11-13T05:00:04.704049Z",
       "read": false,
       "ack_required": true
+    },
+    {
+      "id": "msg_1763010312_2131",
+      "from": "build1",
+      "to": "all",
+      "type": "info",
+      "subject": "Re: Architect instructions",
+      "body": "Acknowledged. Build1 monitor now treats architect directives as commands and auto-processes every instruction. Queue flushed, heartbeats and metrics remain active.",
+      "timestamp": "2025-11-13 05:05",
+      "read": false,
+      "ack_required": false,
+      "ack_status": "not_requested",
+      "acknowledged_by": []
     }
   ]
 }
