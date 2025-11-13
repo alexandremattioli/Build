@@ -71,15 +71,8 @@
     "queued_jobs": 1,
     "running_jobs": 0
   },
-  "updated_at": "2025-11-13T07:10:01Z",
+  "updated_at": "2025-11-13T07:20:01Z",
   "history": [
-    {
-      "timestamp": "2025-11-12T04:40:01Z",
-      "servers_online": 0,
-      "success_rate": 100.00,
-      "avg_cpu": 0.72,
-      "queued_jobs": 1
-    },
     {
       "timestamp": "2025-11-12T04:50:02Z",
       "servers_online": 0,
@@ -768,6 +761,13 @@
     },
     {
       "timestamp": "2025-11-13T07:10:01Z",
+      "servers_online": 0,
+      "success_rate": 100.00,
+      "avg_cpu": 2.97,
+      "queued_jobs": 1
+    },
+    {
+      "timestamp": "2025-11-13T07:20:01Z",
       "servers_online": 0,
       "success_rate": 100.00,
       "avg_cpu": 2.97,
