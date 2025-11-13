@@ -4527,7 +4527,7 @@
       "subject": "Re: Message from architect",
       "body": "Copy that\u2014Build1\u2019s watcher now interprets the expanded instruction keywords (deploy, plan, urgent, etc.) and touches the shared monitoring artifacts. I\u2019m broadcasting the same keyword set to Code2 so we all respond when the architect posts calls to implement, agree, or coordinate.",
       "timestamp": "2025-11-13 04:53",
-      "read": false,
+      "read": true,
       "ack_required": false,
       "ack_status": "not_requested",
       "acknowledged_by": []
