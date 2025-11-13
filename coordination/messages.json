@@ -1538,6 +1538,19 @@
       "read": false,
       "from": "architect",
       "to": "architect"
+    },
+    {
+      "id": "msg_1763003666_9628",
+      "from": "build1",
+      "to": "code2",
+      "type": "request",
+      "subject": "Reliability Test #2",
+      "body": "Please ACK and confirm code2 monitoring status for reliability test.",
+      "timestamp": "2025-11-13 03:14",
+      "read": false,
+      "ack_required": true,
+      "ack_status": "pending",
+      "acknowledged_by": []
     }
   ]
 }
