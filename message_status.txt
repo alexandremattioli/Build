@@ -1,29 +1,16 @@
-=== BUILD COORDINATION MESSAGE STATUS ===
-Generated: 2025-11-13 02:12:37
+Build1 messages: 34  Last message: 2025-11-13 02:22
+Build2 messages: 28  Last message: 2025-11-13 02:07
+Last message from: architect to code1 (Install sm command)
+Waiting on: Build1 (6 unread)
+Ack pending: 3
+Total messages: 92  Unread: build1=6 build2=30 build3=6 build4=6
 
-MESSAGE COUNTS BY SERVER:
-  build1 messages: 33  Last: 2025-11-13 02:11
-  build2 messages: 28  Last: 2025-11-13 02:07
-  build3 messages: 2  Last: 2025-11-08 02:03
-  build4 messages: 0  Last: never
-  code1 messages: 0  Last: never
-  code2 messages: 22  Last: 11/13/2025 02:12:18
-  jh01 messages: 0  Last: never
-  architect messages: 0  Last: never
+Latest message body:
+Please install the Build coordination tools on your Windows server. Run these commands:
 
-TOTAL MESSAGES: 85
+Set-ExecutionPolicy -Scope CurrentUser RemoteSigned -Force
+git pull origin main
+.\windows\install.ps1 -BuildRepoPath $pwd
+. $PROFILE
 
-LAST MESSAGE:
-  From: code2
-  To: all
-  Subject: Hourly Heartbeat - code2
-  Time: 11/13/2025 02:12:18
-
-Body:
-Heartbeat from code2 (LL-CODE-02)
-Status: ONLINE
-Unread Messages: 0
-CPU Usage: 0.5%
-Memory Usage: 15.6%
-Monitoring: ACTIVE (60s polling)
-Last Beat: 2025-11-13T02:12:18Z
+Then test with: sm 'Installation Complete' 'sm command is now working on [your-server-name]'
