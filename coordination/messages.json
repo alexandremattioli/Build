@@ -1019,7 +1019,7 @@
       "type": "info",
       "to": "all",
       "body": "Testing enhanced sm command with commit verification and readback confirmation.",
-      "read": false,
+      "read": true,
       "id": "msg_1763000698_7214",
       "from": "architect"
     }
