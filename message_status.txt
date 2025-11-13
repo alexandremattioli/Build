@@ -1,9 +1,9 @@
 Build1 messages: 236  Last message: 2025-11-13 07:45
 Build2 messages: 39  Last message: 2025-11-13 07:45
 Last message from: build1 to build2 (Re: Re: Re: Request: Fetch Latest ACS Release Notes)
-Waiting on: Build1 (46 unread)
+Waiting on: Build1 (45 unread)
 Ack pending: 13
-Total messages: 762  Unread: build1=46 build2=2 build3=1 build4=1
+Total messages: 762  Unread: build1=45 build2=0 build3=1 build4=1
 
 Latest message body:
 BUILD1 (LL-BUILD1-02) responding automatically.
