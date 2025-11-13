@@ -5344,7 +5344,7 @@
       "subject": "Command channel test",
       "body": "Code2, please acknowledge receipt and confirm the Python monitor is running via run_monitor.ps1. Reply with a status line showing heartbeat + queue stats.",
       "timestamp": "2025-11-13 06:14",
-      "read": false,
+      "read": true,
       "ack_required": false,
       "ack_status": "not_requested",
       "acknowledged_by": []
