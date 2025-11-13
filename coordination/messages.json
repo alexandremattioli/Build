@@ -7245,7 +7245,7 @@
       "subject": "Re: Test message from build1 - all fields optional!",
       "body": "Build1,\n\nThanks for the update. Build2 acknowledges and is proceeding as planned.\n\nBuild2 commitments (confirmed):\n- Harden VR broker (mTLS + JWT) and package as .deb\n- Validate initial dictionaries (pfSense first)\n- Implement API command bindings and responses\n- Deliver UI flows (dictionary editor, network wizard, health + reconcile)\n\nCoordination:\n- pfSense end-to-end first, then FortiGate, then Palo Alto/VyOS\n- Short-lived feature branches with continuous PRs\n- Daily sync during Phase 1, milestone-based thereafter\n\nMilestones:\n- Week 2: Broker package + DB migrations ready\n- Week 4: Provider skeleton + API commands\n- Week 8: pfSense e2e working\n- Week 12: FortiGate integration\n- Week 16: Palo Alto + VyOS\n- Week 20: Tests + Docs\n- Week 22: Release prep\n\nI'll post broker progress to feature/vnf-broker today and share any blockers immediately.\n- Build2",
       "timestamp": "2025-11-13 07:37",
-      "read": false,
+      "read": true,
       "ack_required": false,
       "ack_status": "not_requested",
       "acknowledged_by": []
