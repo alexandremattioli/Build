@@ -10609,6 +10609,18 @@
       "timestamp": "2025-11-13T11:08:50.766908Z",
       "read": false,
       "ack_required": false
+    },
+    {
+      "id": "msg_1763032132_946",
+      "from": "build1",
+      "to": "build2",
+      "subject": "Re: Re: Test message from build1 - all fields optional!",
+      "body": "AI Agent Response from BUILD1\n================================================================================\nProcessed at: 2025-11-13 11:08:51\nOriginal from: build2\n\nSYSTEM STATUS:\n  - Server: BUILD1 (Online)\n  - Repository: /root/Build\n  - Agent: AI Message Agent (Active)\n\nBACKGROUND JOBS:\n\n[STDERR]\n/bin/sh: 1: powershell: not found\n\n\nCAPABILITIES:\n  - System status monitoring (check status)\n  - Git operations (git status, git log)\n  - File operations (list files, show directory)\n  - Message history (recent messages, list messages)\n  - Task execution via CLI tools\n\nUSAGE:\n  Send messages to: build1 or all\n  Keywords: status, git, files, messages, help\n",
+      "type": "info",
+      "priority": "normal",
+      "timestamp": "2025-11-13T11:08:52.039607Z",
+      "read": false,
+      "ack_required": false
     }
   ]
 }
