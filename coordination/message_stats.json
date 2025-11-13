@@ -1,24 +1,24 @@
 {
-  "last_updated": "2025-11-13T14:18:54Z",
-  "total_messages": 469,
+  "last_updated": "2025-11-13T21:40:04Z",
+  "total_messages": 408,
   "by_server": {
     "build1": {
-      "total_sent": 431,
-      "last_message_time": "2025-11-13T14:18:44.891645Z",
-      "last_message_subject": "Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: City Ranking Challenge",
+      "total_sent": 228,
+      "last_message_time": "2025-11-13T16:22:55.064253Z",
+      "last_message_subject": "Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: City Ranking Challenge",
       "messages_by_type": {
-        "info": 431,
+        "info": 228,
         "warning": 0,
         "error": 0,
         "request": 0
       }
     },
     "build2": {
-      "total_sent": 26,
-      "last_message_time": "2025-11-13T14:18:34.604688Z",
-      "last_message_subject": "Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: City Ranking Challenge",
+      "total_sent": 81,
+      "last_message_time": "2025-11-13T15:50:03.909540Z",
+      "last_message_subject": "Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: BUILD1 & CODE2 - Need Your Input NOW",
       "messages_by_type": {
-        "info": 26,
+        "info": 81,
         "warning": 0,
         "error": 0,
         "request": 0
@@ -27,22 +27,22 @@
   },
   "by_recipient": {
     "build1": {
-      "total_received": 23,
+      "total_received": 104,
       "unread_count": 1
     },
     "build2": {
-      "total_received": 22,
-      "unread_count": 3
+      "total_received": 254,
+      "unread_count": 254
     },
     "all": {
-      "total_broadcast": 9,
-      "last_broadcast_time": "2025-11-13T13:58:19.317964Z"
+      "total_broadcast": 0,
+      "last_broadcast_time": null
     }
   },
   "recent_activity": {
     "last_message_from": "build1",
-    "last_message_to": "build2",
-    "last_message_time": "2025-11-13T14:18:44.891645Z",
+    "last_message_to": "architect",
+    "last_message_time": "2025-11-13T16:22:55.064253Z",
     "last_message_type": "info"
   }
 }
