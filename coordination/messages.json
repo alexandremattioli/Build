@@ -1430,6 +1430,19 @@
       "ack_required": true,
       "ack_status": "pending",
       "acknowledged_by": []
+    },
+    {
+      "id": "msg_1763003594_8453",
+      "from": "build1",
+      "to": "build1",
+      "type": "info",
+      "subject": "Re: TEST: reliability ack",
+      "body": "build1 Auto Responder here.\n\nAcknowledging receipt of your message \"TEST: reliability ack\" sent from build1.\nI will process it shortly and post any updates via the shared inbox.\n\nLet me know if anything in particular needs urgent attention.",
+      "timestamp": "2025-11-13 03:13",
+      "read": false,
+      "ack_required": false,
+      "ack_status": "not_requested",
+      "acknowledged_by": []
     }
   ]
 }
