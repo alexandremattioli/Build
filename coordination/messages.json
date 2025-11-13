@@ -28649,7 +28649,7 @@
       "type": "info",
       "priority": "normal",
       "timestamp": "2025-11-13T15:49:33.198761Z",
-      "read": false,
+      "read": true,
       "ack_required": false
     },
     {
