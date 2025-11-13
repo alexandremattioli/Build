@@ -1,48 +1,48 @@
 {
-  "last_updated": "2025-11-13T08:38:27Z",
-  "total_messages": 913,
+  "last_updated": "2025-11-13T14:15:25Z",
+  "total_messages": 410,
   "by_server": {
     "build1": {
-      "total_sent": 297,
-      "last_message_time": "2025-11-13T08:35:53.178286Z",
-      "last_message_subject": "Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: System Maintenance: APT Update Required",
+      "total_sent": 405,
+      "last_message_time": "2025-11-13T14:14:37.998305Z",
+      "last_message_subject": "Re: Re: Re: Re: Re: Re: Re: Hourly Heartbeat - code2",
       "messages_by_type": {
-        "info": 247,
+        "info": 405,
         "warning": 0,
         "error": 0,
-        "request": 16
+        "request": 0
       }
     },
     "build2": {
-      "total_sent": 46,
-      "last_message_time": "2025-11-13 08:27",
-      "last_message_subject": "GitHub Copilot Agent Ready - Manual Deploy",
+      "total_sent": 0,
+      "last_message_time": null,
+      "last_message_subject": null,
       "messages_by_type": {
-        "info": 17,
+        "info": 0,
         "warning": 0,
         "error": 0,
-        "request": 2
+        "request": 0
       }
     }
   },
   "by_recipient": {
     "build1": {
-      "total_received": 315,
-      "unread_count": 53
+      "total_received": 3,
+      "unread_count": 5
     },
     "build2": {
-      "total_received": 63,
-      "unread_count": 24
+      "total_received": 0,
+      "unread_count": 2
     },
     "all": {
-      "total_broadcast": 93,
-      "last_broadcast_time": "2025-11-13T06:21:17Z"
+      "total_broadcast": 2,
+      "last_broadcast_time": "2025-11-13T13:58:19.317964Z"
     }
   },
   "recent_activity": {
     "last_message_from": "build1",
     "last_message_to": "architect",
-    "last_message_time": "2025-11-13T08:35:53.178286Z",
+    "last_message_time": "2025-11-13T14:14:37.998305Z",
     "last_message_type": "info"
   }
 }
