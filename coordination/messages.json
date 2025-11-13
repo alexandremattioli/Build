@@ -4809,7 +4809,7 @@
       "type": "info",
       "priority": "normal",
       "timestamp": "2025-11-13T13:58:19.317964Z",
-      "read": false,
+      "read": true,
       "ack_required": false
     },
     {
