@@ -79,8 +79,20 @@ function Process-Message {
     Write-Host "Subject: $($Message.subject)" -ForegroundColor Green
     Write-Host "Body: $($Message.body.Substring(0, [Math]::Min(200, $Message.body.Length)))..." -ForegroundColor White
     
-    # Mark as read
-    Mark-MessageRead -MessageId $Message.id | Out-Null
+    # Check if auto-ACK needed (request or ack_required)
+    if ($Message.type -eq "request" -or $Message.ack_required -eq $true) {
+        Write-Host "→ Auto-ACK triggered" -ForegroundColor Cyan
+        try {
+            & "$BuildRepoPath\windows\scripts\AutoResponder.ps1" -BuildRepoPath $BuildRepoPath
+        }
+        catch {
+            Write-Host "Warning: AutoResponder failed: $_" -ForegroundColor Yellow
+        }
+    }
+    else {
+        # Mark as read for non-request messages
+        Mark-MessageRead -MessageId $Message.id | Out-Null
+    }
     
     # Log to local file
     $logPath = Join-Path $BuildRepoPath "$ServerId\logs\message_processing.log"
