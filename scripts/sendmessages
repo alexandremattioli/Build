@@ -22,6 +22,7 @@ SERVER_MAP = {
 }
 
 DEFAULT_TYPE = "info"
+DEFAULT_TARGET = "all"
 MAX_SUBJECT_LENGTH = 100
 
 
@@ -111,7 +112,7 @@ DEFAULT_FROM = detect_server_id()
 def parse_targets(spec: str) -> list[str]:
     spec = spec.strip().lower()
     if not spec:
-        raise SendMessageError("Target string may not be empty.")
+        return ["all"]
     if spec == "all":
         return ["all"]
 
@@ -123,7 +124,7 @@ def parse_targets(spec: str) -> list[str]:
             normalized.append(char)
 
     if not normalized:
-        raise SendMessageError("No valid server IDs found in target specification.")
+        return ["all"]
     return [SERVER_MAP[c] for c in normalized]
 
 
@@ -143,19 +144,21 @@ def derive_subject(body: str) -> str:
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Send coordination messages to build servers.")
     parser.add_argument(
-        "targets",
-        help="Target build servers (e.g. 1,2 or 13 or all).",
+        "body",
+        nargs="+",
+        help="Message body text (subject auto-derived from first line).",
     )
     parser.add_argument(
-        "body",
-        nargs=argparse.REMAINDER,
-        help="Message body text (subject auto-derived from first line).",
+        "--to",
+        dest="targets",
+        default=DEFAULT_TARGET,
+        help="Target build servers (e.g. 1,2 or 13 or all). Default: all.",
     )
     parser.add_argument(
         "--from",
         dest="from_server",
         default=DEFAULT_FROM,
-        help="Sender build server number (1-4). Default: 1.",
+        help="Sender build server number (1-4). Default: auto-detect.",
     )
     parser.add_argument(
         "--type",
