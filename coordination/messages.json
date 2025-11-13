@@ -21869,7 +21869,7 @@
       "type": "info",
       "priority": "normal",
       "timestamp": "2025-11-13T15:24:00.112013Z",
-      "read": false,
+      "read": true,
       "ack_required": false
     },
     {
