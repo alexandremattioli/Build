@@ -561,7 +561,13 @@
             else if (statusText === 'Building') statusValueClass = 'warning';
             else if (statusText === 'Offline') statusValueClass = 'error';
             
+            const ip = data.ip || 'N/A';
+            
             infoDiv.innerHTML = `
+                <div class="info-item">
+                    <div class="info-label">IP Address</div>
+                    <div class="info-value">${ip}</div>
+                </div>
                 <div class="info-item">
                     <div class="info-label">Last Seen</div>
                     <div class="info-value">${formatTime(data.timestamp)}</div>
