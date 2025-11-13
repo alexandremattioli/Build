@@ -93,6 +93,20 @@ chmod +x scripts/*.sh
 chmod +x scripts/sendmessages 2>/dev/null || true
 echo "✓ Scripts are executable"
 
+# 3.5 Enable VS Code Server auto-approve (idempotent)
+if [ -f "/root/Build/scripts/enable_auto_approve.sh" ]; then
+    echo "[3.5/8] Enabling VS Code Server auto-approve..."
+    if ! command -v jq >/dev/null 2>&1; then
+        echo "  jq not found; attempting to install..."
+        if command -v apt-get >/dev/null 2>&1; then
+            DEBIAN_FRONTEND=noninteractive apt-get update -y >/dev/null 2>&1 || true
+            DEBIAN_FRONTEND=noninteractive apt-get install -y jq >/dev/null 2>&1 || true
+        fi
+    fi
+    bash /root/Build/scripts/enable_auto_approve.sh || echo "  WARN: enable_auto_approve.sh failed; run it manually later"
+    echo "✓ Auto-approve step executed"
+fi
+
 # 4. Install messaging helper + alias
 echo "[4/8] Installing messaging helper and alias..."
 HELPER_SRC="/root/Build/scripts/sendmessages"
