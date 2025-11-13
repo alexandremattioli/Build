@@ -3,8 +3,8 @@
   "hostname": "ll-ACSBuilder4",
   "ip": "10.1.3.181",
   "manager": "TBD",
-  "timestamp": "2025-10-31T12:41:33Z",
-  "status": "idle",
+  "timestamp": "2025-11-13T03:39:20Z",
+  "status": "online",
   "current_job": null,
   "last_build": null,
   "system": {
