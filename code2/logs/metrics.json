@@ -426,6 +426,2554 @@
       "duration_ms": 542.8011417388916,
       "success": true,
       "metadata": {}
+    },
+    {
+      "timestamp": 1763006075.1744187,
+      "type": "git_pull",
+      "duration_ms": 540.4117107391357,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763006085.7842937,
+      "type": "git_pull",
+      "duration_ms": 589.303731918335,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763006096.389902,
+      "type": "git_pull",
+      "duration_ms": 528.0427932739258,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763006106.961458,
+      "type": "git_pull",
+      "duration_ms": 542.2778129577637,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763006117.6367786,
+      "type": "git_pull",
+      "duration_ms": 614.9225234985352,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763006128.2188966,
+      "type": "git_pull",
+      "duration_ms": 549.7288703918457,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763006138.777845,
+      "type": "git_pull",
+      "duration_ms": 537.2929573059082,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763006149.3278737,
+      "type": "git_pull",
+      "duration_ms": 527.8551578521729,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763006160.0537434,
+      "type": "git_pull",
+      "duration_ms": 703.4564018249512,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763006170.6447446,
+      "type": "git_pull",
+      "duration_ms": 565.5479431152344,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763006181.179452,
+      "type": "git_pull",
+      "duration_ms": 514.9815082550049,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763006191.7577627,
+      "type": "git_pull",
+      "duration_ms": 521.263599395752,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763006202.349549,
+      "type": "git_pull",
+      "duration_ms": 515.8817768096924,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763006212.9270916,
+      "type": "git_pull",
+      "duration_ms": 539.7353172302246,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763006223.633568,
+      "type": "git_pull",
+      "duration_ms": 684.4475269317627,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763006234.2027483,
+      "type": "git_pull",
+      "duration_ms": 548.0489730834961,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763006244.7524412,
+      "type": "git_pull",
+      "duration_ms": 519.3307399749756,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763006255.3046658,
+      "type": "git_pull",
+      "duration_ms": 530.2784442901611,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763006265.8569658,
+      "type": "git_pull",
+      "duration_ms": 531.8663120269775,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763006276.4442267,
+      "type": "git_pull",
+      "duration_ms": 556.5094947814941,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763006287.0132706,
+      "type": "git_pull",
+      "duration_ms": 545.5858707427979,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763006297.5448391,
+      "type": "git_pull",
+      "duration_ms": 507.7857971191406,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763006308.1380923,
+      "type": "git_pull",
+      "duration_ms": 511.92259788513184,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763006318.6822195,
+      "type": "git_pull",
+      "duration_ms": 523.0519771575928,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763006329.2426598,
+      "type": "git_pull",
+      "duration_ms": 538.3856296539307,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763006339.7967558,
+      "type": "git_pull",
+      "duration_ms": 531.2139987945557,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763006350.3562791,
+      "type": "git_pull",
+      "duration_ms": 540.2212142944336,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763006360.9194045,
+      "type": "git_pull",
+      "duration_ms": 526.0794162750244,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763006371.5031762,
+      "type": "git_pull",
+      "duration_ms": 557.1718215942383,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763006382.0600235,
+      "type": "git_pull",
+      "duration_ms": 535.1564884185791,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763006392.6392913,
+      "type": "git_pull",
+      "duration_ms": 547.8465557098389,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763006403.199478,
+      "type": "git_pull",
+      "duration_ms": 537.8756523132324,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763006413.8055947,
+      "type": "git_pull",
+      "duration_ms": 534.9404811859131,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763006424.379508,
+      "type": "git_pull",
+      "duration_ms": 547.3661422729492,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763006434.9428103,
+      "type": "git_pull",
+      "duration_ms": 538.2938385009766,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763006445.4844494,
+      "type": "git_pull",
+      "duration_ms": 518.8167095184326,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763006456.0372732,
+      "type": "git_pull",
+      "duration_ms": 531.4404964447021,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763006466.5911748,
+      "type": "git_pull",
+      "duration_ms": 532.8817367553711,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763006477.1730745,
+      "type": "git_pull",
+      "duration_ms": 558.8898658752441,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763006487.7331893,
+      "type": "git_pull",
+      "duration_ms": 534.4254970550537,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763006499.0097802,
+      "type": "git_pull",
+      "duration_ms": 1252.152919769287,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763006509.5622144,
+      "type": "git_pull",
+      "duration_ms": 526.8690586090088,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763006520.1960347,
+      "type": "git_pull",
+      "duration_ms": 560.5237483978271,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763006530.7693286,
+      "type": "git_pull",
+      "duration_ms": 549.3884086608887,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763006541.3618321,
+      "type": "git_pull",
+      "duration_ms": 570.7428455352783,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763006551.9506595,
+      "type": "git_pull",
+      "duration_ms": 562.1662139892578,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763006562.5415874,
+      "type": "git_pull",
+      "duration_ms": 555.4485321044922,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763006573.1028526,
+      "type": "git_pull",
+      "duration_ms": 538.0170345306396,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763006583.656004,
+      "type": "git_pull",
+      "duration_ms": 529.1390419006348,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763006594.1979094,
+      "type": "git_pull",
+      "duration_ms": 518.639326095581,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763006604.9153183,
+      "type": "git_pull",
+      "duration_ms": 695.4360008239746,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763006615.5165904,
+      "type": "git_pull",
+      "duration_ms": 575.6824016571045,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763006626.1123815,
+      "type": "git_pull",
+      "duration_ms": 525.1317024230957,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763006636.7194908,
+      "type": "git_pull",
+      "duration_ms": 584.5270156860352,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763006647.292767,
+      "type": "git_pull",
+      "duration_ms": 541.7098999023438,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763006657.8707333,
+      "type": "git_pull",
+      "duration_ms": 556.0133457183838,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763006668.43105,
+      "type": "git_pull",
+      "duration_ms": 538.6440753936768,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763006679.0042484,
+      "type": "git_pull",
+      "duration_ms": 539.3681526184082,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763006689.575236,
+      "type": "git_pull",
+      "duration_ms": 546.952486038208,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763006700.164429,
+      "type": "git_pull",
+      "duration_ms": 567.9547786712646,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763006710.89858,
+      "type": "git_pull",
+      "duration_ms": 712.1751308441162,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763006721.5127747,
+      "type": "git_pull",
+      "duration_ms": 570.9238052368164,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763006732.098049,
+      "type": "git_pull",
+      "duration_ms": 509.68456268310547,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763006742.7695618,
+      "type": "git_pull",
+      "duration_ms": 626.5869140625,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763006753.327392,
+      "type": "git_pull",
+      "duration_ms": 530.1816463470459,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763006763.8974094,
+      "type": "git_pull",
+      "duration_ms": 547.276496887207,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763006774.508931,
+      "type": "git_pull",
+      "duration_ms": 549.8576164245605,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763006785.236715,
+      "type": "git_pull",
+      "duration_ms": 704.6968936920166,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763006796.6911514,
+      "type": "git_pull",
+      "duration_ms": 773.7061977386475,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763006807.2876823,
+      "type": "git_pull",
+      "duration_ms": 558.5637092590332,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763006817.874187,
+      "type": "git_pull",
+      "duration_ms": 556.3647747039795,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763006828.4641998,
+      "type": "git_pull",
+      "duration_ms": 566.3352012634277,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763006839.0694096,
+      "type": "git_pull",
+      "duration_ms": 522.8159427642822,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763006849.6966102,
+      "type": "git_pull",
+      "duration_ms": 604.8095226287842,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763006860.3009915,
+      "type": "git_pull",
+      "duration_ms": 579.9345970153809,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763006870.8622453,
+      "type": "git_pull",
+      "duration_ms": 527.5089740753174,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763006881.475962,
+      "type": "git_pull",
+      "duration_ms": 590.4123783111572,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763006892.048237,
+      "type": "git_pull",
+      "duration_ms": 546.2081432342529,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763006902.6138413,
+      "type": "git_pull",
+      "duration_ms": 531.7370891571045,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763006913.153211,
+      "type": "git_pull",
+      "duration_ms": 516.8788433074951,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763006923.7163858,
+      "type": "git_pull",
+      "duration_ms": 538.8772487640381,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763006934.290112,
+      "type": "git_pull",
+      "duration_ms": 548.0334758758545,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763006944.905958,
+      "type": "git_pull",
+      "duration_ms": 533.5936546325684,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763006955.4511044,
+      "type": "git_pull",
+      "duration_ms": 521.8064785003662,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763006966.006979,
+      "type": "git_pull",
+      "duration_ms": 530.6587219238281,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763006976.5689607,
+      "type": "git_pull",
+      "duration_ms": 536.705732345581,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763006987.1204,
+      "type": "git_pull",
+      "duration_ms": 528.792142868042,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763006997.7050855,
+      "type": "git_pull",
+      "duration_ms": 563.5781288146973,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763007008.517153,
+      "type": "git_pull",
+      "duration_ms": 787.8766059875488,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763007019.073405,
+      "type": "git_pull",
+      "duration_ms": 532.5684547424316,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763007029.6311147,
+      "type": "git_pull",
+      "duration_ms": 533.6799621582031,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763007040.191871,
+      "type": "git_pull",
+      "duration_ms": 533.7426662445068,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763007050.830938,
+      "type": "git_pull",
+      "duration_ms": 565.4153823852539,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763007061.418011,
+      "type": "git_pull",
+      "duration_ms": 564.7687911987305,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763007071.9568727,
+      "type": "git_pull",
+      "duration_ms": 517.0056819915771,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763007082.5274706,
+      "type": "git_pull",
+      "duration_ms": 536.2710952758789,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763007093.071251,
+      "type": "git_pull",
+      "duration_ms": 520.8325386047363,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763007103.6523557,
+      "type": "git_pull",
+      "duration_ms": 547.0590591430664,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763007114.2032356,
+      "type": "git_pull",
+      "duration_ms": 528.0478000640869,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763007124.782386,
+      "type": "git_pull",
+      "duration_ms": 556.9338798522949,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763007135.350091,
+      "type": "git_pull",
+      "duration_ms": 544.790506362915,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763007145.9307659,
+      "type": "git_pull",
+      "duration_ms": 557.1894645690918,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763007156.5360987,
+      "type": "git_pull",
+      "duration_ms": 536.7379188537598,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763007167.1116848,
+      "type": "git_pull",
+      "duration_ms": 551.4554977416992,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763007177.6560056,
+      "type": "git_pull",
+      "duration_ms": 523.9226818084717,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763007188.240239,
+      "type": "git_pull",
+      "duration_ms": 551.6026020050049,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763007198.7923276,
+      "type": "git_pull",
+      "duration_ms": 527.890682220459,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763007209.3453321,
+      "type": "git_pull",
+      "duration_ms": 529.2806625366211,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763007219.9363992,
+      "type": "git_pull",
+      "duration_ms": 553.7929534912109,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763007230.5116353,
+      "type": "git_pull",
+      "duration_ms": 550.7643222808838,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763007241.0912302,
+      "type": "git_pull",
+      "duration_ms": 542.9232120513916,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763007251.7087302,
+      "type": "git_pull",
+      "duration_ms": 583.024263381958,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763007262.3348854,
+      "type": "git_pull",
+      "duration_ms": 538.7656688690186,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763007272.9147356,
+      "type": "git_pull",
+      "duration_ms": 555.128812789917,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763007283.4824014,
+      "type": "git_pull",
+      "duration_ms": 531.7940711975098,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763007294.1394005,
+      "type": "git_pull",
+      "duration_ms": 624.2685317993164,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763007304.6921563,
+      "type": "git_pull",
+      "duration_ms": 523.0379104614258,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763007315.250613,
+      "type": "git_pull",
+      "duration_ms": 535.555362701416,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763007325.7917955,
+      "type": "git_pull",
+      "duration_ms": 518.1806087493896,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763007336.3464065,
+      "type": "git_pull",
+      "duration_ms": 528.8550853729248,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763007346.9198866,
+      "type": "git_pull",
+      "duration_ms": 549.0095615386963,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763007357.4760163,
+      "type": "git_pull",
+      "duration_ms": 528.6574363708496,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763007368.1098027,
+      "type": "git_pull",
+      "duration_ms": 550.1010417938232,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763007378.6842096,
+      "type": "git_pull",
+      "duration_ms": 548.9010810852051,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763007389.269808,
+      "type": "git_pull",
+      "duration_ms": 557.8467845916748,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763007399.8389618,
+      "type": "git_pull",
+      "duration_ms": 540.4961109161377,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763007410.4016023,
+      "type": "git_pull",
+      "duration_ms": 532.520055770874,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763007420.983187,
+      "type": "git_pull",
+      "duration_ms": 557.697057723999,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763007431.5470455,
+      "type": "git_pull",
+      "duration_ms": 536.3984107971191,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763007442.1193047,
+      "type": "git_pull",
+      "duration_ms": 547.7797985076904,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763007452.6818163,
+      "type": "git_pull",
+      "duration_ms": 537.4453067779541,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763007463.3484838,
+      "type": "git_pull",
+      "duration_ms": 629.5149326324463,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763007473.9579163,
+      "type": "git_pull",
+      "duration_ms": 521.6896533966064,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763007484.6505818,
+      "type": "git_pull",
+      "duration_ms": 660.5148315429688,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763007495.2351334,
+      "type": "git_pull",
+      "duration_ms": 560.4851245880127,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763007505.784088,
+      "type": "git_pull",
+      "duration_ms": 523.2946872711182,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763007517.3442464,
+      "type": "git_pull",
+      "duration_ms": 538.0330085754395,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763007527.9246154,
+      "type": "git_pull",
+      "duration_ms": 543.5709953308105,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763007538.4798825,
+      "type": "git_pull",
+      "duration_ms": 533.8089466094971,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763007549.0361643,
+      "type": "git_pull",
+      "duration_ms": 529.9453735351562,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763007559.5926619,
+      "type": "git_pull",
+      "duration_ms": 530.6117534637451,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763007570.1480095,
+      "type": "git_pull",
+      "duration_ms": 529.5884609222412,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763007580.7462904,
+      "type": "git_pull",
+      "duration_ms": 516.7179107666016,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763007591.2988527,
+      "type": "git_pull",
+      "duration_ms": 525.9048938751221,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763007601.8669276,
+      "type": "git_pull",
+      "duration_ms": 539.6804809570312,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763007612.436441,
+      "type": "git_pull",
+      "duration_ms": 534.8067283630371,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763007622.9877093,
+      "type": "git_pull",
+      "duration_ms": 525.2940654754639,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763007633.5467439,
+      "type": "git_pull",
+      "duration_ms": 532.9916477203369,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763007644.12188,
+      "type": "git_pull",
+      "duration_ms": 530.8489799499512,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763007654.6559384,
+      "type": "git_pull",
+      "duration_ms": 507.17711448669434,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763007665.2185993,
+      "type": "git_pull",
+      "duration_ms": 536.0114574432373,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763007675.7842069,
+      "type": "git_pull",
+      "duration_ms": 541.0187244415283,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763007686.3950622,
+      "type": "git_pull",
+      "duration_ms": 529.5929908752441,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763007696.9594526,
+      "type": "git_pull",
+      "duration_ms": 538.1350517272949,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763007707.5113826,
+      "type": "git_pull",
+      "duration_ms": 527.6782512664795,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763007718.0590873,
+      "type": "git_pull",
+      "duration_ms": 524.0952968597412,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763007728.6326394,
+      "type": "git_pull",
+      "duration_ms": 549.6277809143066,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763007739.182985,
+      "type": "git_pull",
+      "duration_ms": 521.6922760009766,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763007749.7428854,
+      "type": "git_pull",
+      "duration_ms": 535.3834629058838,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763007760.3027422,
+      "type": "git_pull",
+      "duration_ms": 532.996416091919,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763007770.841866,
+      "type": "git_pull",
+      "duration_ms": 515.1324272155762,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763007781.405336,
+      "type": "git_pull",
+      "duration_ms": 537.595272064209,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763007792.023526,
+      "type": "git_pull",
+      "duration_ms": 538.952112197876,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763007802.5709333,
+      "type": "git_pull",
+      "duration_ms": 524.1656303405762,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763007813.127008,
+      "type": "git_pull",
+      "duration_ms": 531.8140983581543,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763007823.697435,
+      "type": "git_pull",
+      "duration_ms": 543.9238548278809,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763007834.2457294,
+      "type": "git_pull",
+      "duration_ms": 524.6915817260742,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763007844.8265345,
+      "type": "git_pull",
+      "duration_ms": 554.1515350341797,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763007855.390392,
+      "type": "git_pull",
+      "duration_ms": 534.5256328582764,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763007865.9485204,
+      "type": "git_pull",
+      "duration_ms": 531.0156345367432,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763007876.497671,
+      "type": "git_pull",
+      "duration_ms": 521.4998722076416,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763007887.076649,
+      "type": "git_pull",
+      "duration_ms": 535.3350639343262,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763007897.684515,
+      "type": "git_pull",
+      "duration_ms": 513.6659145355225,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763007908.2178826,
+      "type": "git_pull",
+      "duration_ms": 507.6298713684082,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763007918.7681613,
+      "type": "git_pull",
+      "duration_ms": 515.2137279510498,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763007929.3393605,
+      "type": "git_pull",
+      "duration_ms": 544.5761680603027,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763007939.8655558,
+      "type": "git_pull",
+      "duration_ms": 499.5405673980713,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763007950.413127,
+      "type": "git_pull",
+      "duration_ms": 521.8522548675537,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763007960.967632,
+      "type": "git_pull",
+      "duration_ms": 529.2603969573975,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763007971.541246,
+      "type": "git_pull",
+      "duration_ms": 545.3855991363525,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763007982.081779,
+      "type": "git_pull",
+      "duration_ms": 514.3277645111084,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763007992.633371,
+      "type": "git_pull",
+      "duration_ms": 528.0203819274902,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763008003.2653024,
+      "type": "git_pull",
+      "duration_ms": 550.6162643432617,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763008013.807565,
+      "type": "git_pull",
+      "duration_ms": 514.1439437866211,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763008024.3538957,
+      "type": "git_pull",
+      "duration_ms": 521.1424827575684,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763008034.9012792,
+      "type": "git_pull",
+      "duration_ms": 523.0565071105957,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763008045.4597666,
+      "type": "git_pull",
+      "duration_ms": 532.9382419586182,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763008057.0326025,
+      "type": "git_pull",
+      "duration_ms": 525.2377986907959,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763008067.5650039,
+      "type": "git_pull",
+      "duration_ms": 503.42750549316406,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763008078.124951,
+      "type": "git_pull",
+      "duration_ms": 533.6835384368896,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763008088.7012014,
+      "type": "git_pull",
+      "duration_ms": 546.661376953125,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763008099.2511604,
+      "type": "git_pull",
+      "duration_ms": 513.2453441619873,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763008109.892517,
+      "type": "git_pull",
+      "duration_ms": 537.4221801757812,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763008120.4549892,
+      "type": "git_pull",
+      "duration_ms": 534.393310546875,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763008131.0211346,
+      "type": "git_pull",
+      "duration_ms": 539.9339199066162,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763008141.5647702,
+      "type": "git_pull",
+      "duration_ms": 519.2117691040039,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763008152.1170635,
+      "type": "git_pull",
+      "duration_ms": 526.1943340301514,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763008162.6611502,
+      "type": "git_pull",
+      "duration_ms": 517.3654556274414,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763008173.2258358,
+      "type": "git_pull",
+      "duration_ms": 538.149356842041,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763008183.7966967,
+      "type": "git_pull",
+      "duration_ms": 542.0053005218506,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763008194.363213,
+      "type": "git_pull",
+      "duration_ms": 537.4557971954346,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763008205.233367,
+      "type": "git_pull",
+      "duration_ms": 844.7349071502686,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763008215.8228981,
+      "type": "git_pull",
+      "duration_ms": 516.0672664642334,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763008226.5500526,
+      "type": "git_pull",
+      "duration_ms": 700.0570297241211,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763008237.1219723,
+      "type": "git_pull",
+      "duration_ms": 543.7667369842529,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763008247.7013097,
+      "type": "git_pull",
+      "duration_ms": 551.1901378631592,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763008258.2693996,
+      "type": "git_pull",
+      "duration_ms": 540.4369831085205,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763008268.8166962,
+      "type": "git_pull",
+      "duration_ms": 519.5462703704834,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763008279.3943412,
+      "type": "git_pull",
+      "duration_ms": 543.2467460632324,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763008289.946555,
+      "type": "git_pull",
+      "duration_ms": 523.357629776001,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763008300.5176506,
+      "type": "git_pull",
+      "duration_ms": 541.4469242095947,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763008311.0665724,
+      "type": "git_pull",
+      "duration_ms": 522.0787525177002,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763008321.7207928,
+      "type": "git_pull",
+      "duration_ms": 579.9527168273926,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763008332.2757795,
+      "type": "git_pull",
+      "duration_ms": 528.3408164978027,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763008342.8638268,
+      "type": "git_pull",
+      "duration_ms": 561.1600875854492,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763008353.4415534,
+      "type": "git_pull",
+      "duration_ms": 550.4882335662842,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763008364.011723,
+      "type": "git_pull",
+      "duration_ms": 542.5126552581787,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763008374.5560868,
+      "type": "git_pull",
+      "duration_ms": 518.726110458374,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763008385.106006,
+      "type": "git_pull",
+      "duration_ms": 523.8277912139893,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763008395.6663673,
+      "type": "git_pull",
+      "duration_ms": 533.4570407867432,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763008406.210966,
+      "type": "git_pull",
+      "duration_ms": 517.7998542785645,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763008416.7630918,
+      "type": "git_pull",
+      "duration_ms": 521.7013359069824,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763008427.3835776,
+      "type": "git_pull",
+      "duration_ms": 530.4520130157471,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763008437.9542818,
+      "type": "git_pull",
+      "duration_ms": 537.1479988098145,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763008448.5290704,
+      "type": "git_pull",
+      "duration_ms": 546.2367534637451,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763008459.093479,
+      "type": "git_pull",
+      "duration_ms": 537.9397869110107,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763008469.6732204,
+      "type": "git_pull",
+      "duration_ms": 552.0725250244141,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763008480.2678134,
+      "type": "git_pull",
+      "duration_ms": 557.7065944671631,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763008490.8298502,
+      "type": "git_pull",
+      "duration_ms": 535.1150035858154,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763008501.380321,
+      "type": "git_pull",
+      "duration_ms": 521.3947296142578,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763008511.9488366,
+      "type": "git_pull",
+      "duration_ms": 540.1854515075684,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763008522.5089562,
+      "type": "git_pull",
+      "duration_ms": 533.5381031036377,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763008533.110101,
+      "type": "git_pull",
+      "duration_ms": 522.3028659820557,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763008543.6844306,
+      "type": "git_pull",
+      "duration_ms": 544.0843105316162,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763008554.2719371,
+      "type": "git_pull",
+      "duration_ms": 548.9788055419922,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763008564.8194199,
+      "type": "git_pull",
+      "duration_ms": 521.0361480712891,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763008575.3839355,
+      "type": "git_pull",
+      "duration_ms": 535.4573726654053,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763008585.9299693,
+      "type": "git_pull",
+      "duration_ms": 519.763708114624,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763008596.485661,
+      "type": "git_pull",
+      "duration_ms": 527.1179676055908,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763008607.039985,
+      "type": "git_pull",
+      "duration_ms": 526.7834663391113,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763008617.592625,
+      "type": "git_pull",
+      "duration_ms": 525.2187252044678,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763008628.1494663,
+      "type": "git_pull",
+      "duration_ms": 530.5967330932617,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763008638.7515306,
+      "type": "git_pull",
+      "duration_ms": 532.2160720825195,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763008649.3142104,
+      "type": "git_pull",
+      "duration_ms": 535.9721183776855,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763008659.8708959,
+      "type": "git_pull",
+      "duration_ms": 527.1494388580322,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763008670.4346404,
+      "type": "git_pull",
+      "duration_ms": 526.5328884124756,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763008680.979203,
+      "type": "git_pull",
+      "duration_ms": 518.9833641052246,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763008691.7232866,
+      "type": "git_pull",
+      "duration_ms": 706.9733142852783,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763008702.294642,
+      "type": "git_pull",
+      "duration_ms": 544.1601276397705,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763008712.8574395,
+      "type": "git_pull",
+      "duration_ms": 526.3307094573975,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763008723.4340117,
+      "type": "git_pull",
+      "duration_ms": 536.6096496582031,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763008734.0267956,
+      "type": "git_pull",
+      "duration_ms": 558.9377880096436,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763008744.636625,
+      "type": "git_pull",
+      "duration_ms": 514.7461891174316,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763008755.1934125,
+      "type": "git_pull",
+      "duration_ms": 527.5335311889648,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763008765.76093,
+      "type": "git_pull",
+      "duration_ms": 528.8517475128174,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763008776.3383944,
+      "type": "git_pull",
+      "duration_ms": 545.6027984619141,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763008786.929178,
+      "type": "git_pull",
+      "duration_ms": 550.5974292755127,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763008797.5051966,
+      "type": "git_pull",
+      "duration_ms": 546.9248294830322,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763008808.283462,
+      "type": "git_pull",
+      "duration_ms": 748.7320899963379,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763008818.830284,
+      "type": "git_pull",
+      "duration_ms": 519.1812515258789,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763008829.3788576,
+      "type": "git_pull",
+      "duration_ms": 519.8109149932861,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763008839.9483862,
+      "type": "git_pull",
+      "duration_ms": 538.5518074035645,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763008850.579811,
+      "type": "git_pull",
+      "duration_ms": 542.677640914917,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763008861.1312747,
+      "type": "git_pull",
+      "duration_ms": 522.6716995239258,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763008871.7243216,
+      "type": "git_pull",
+      "duration_ms": 542.9747104644775,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763008882.302976,
+      "type": "git_pull",
+      "duration_ms": 541.9025421142578,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763008892.8909426,
+      "type": "git_pull",
+      "duration_ms": 559.4727993011475,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763008903.4431858,
+      "type": "git_pull",
+      "duration_ms": 522.2105979919434,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763008914.0086954,
+      "type": "git_pull",
+      "duration_ms": 535.6557369232178,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763008924.5837467,
+      "type": "git_pull",
+      "duration_ms": 537.635087966919,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763008935.1373026,
+      "type": "git_pull",
+      "duration_ms": 526.2150764465332,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763008945.7000463,
+      "type": "git_pull",
+      "duration_ms": 535.0408554077148,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763008956.3155115,
+      "type": "git_pull",
+      "duration_ms": 528.7611484527588,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763008966.860112,
+      "type": "git_pull",
+      "duration_ms": 518.2087421417236,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763008977.4202363,
+      "type": "git_pull",
+      "duration_ms": 531.9156646728516,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763008987.9933107,
+      "type": "git_pull",
+      "duration_ms": 543.2357788085938,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763008998.558403,
+      "type": "git_pull",
+      "duration_ms": 537.2545719146729,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763009009.1356237,
+      "type": "git_pull",
+      "duration_ms": 549.8800277709961,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763009019.6923125,
+      "type": "git_pull",
+      "duration_ms": 526.339054107666,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763009030.263815,
+      "type": "git_pull",
+      "duration_ms": 541.9626235961914,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763009040.8425913,
+      "type": "git_pull",
+      "duration_ms": 550.3337383270264,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763009051.4475963,
+      "type": "git_pull",
+      "duration_ms": 564.1841888427734,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763009062.0307283,
+      "type": "git_pull",
+      "duration_ms": 510.3945732116699,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763009072.599765,
+      "type": "git_pull",
+      "duration_ms": 538.5560989379883,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763009083.4241438,
+      "type": "git_pull",
+      "duration_ms": 793.8110828399658,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763009093.9909248,
+      "type": "git_pull",
+      "duration_ms": 529.0181636810303,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763009104.547759,
+      "type": "git_pull",
+      "duration_ms": 528.9773941040039,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763009115.113089,
+      "type": "git_pull",
+      "duration_ms": 537.1615886688232,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763009125.6841664,
+      "type": "git_pull",
+      "duration_ms": 543.2374477386475,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763009136.2403522,
+      "type": "git_pull",
+      "duration_ms": 525.1996517181396,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763009146.8013914,
+      "type": "git_pull",
+      "duration_ms": 520.8156108856201,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763009157.3596222,
+      "type": "git_pull",
+      "duration_ms": 526.2908935546875,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763009168.019563,
+      "type": "git_pull",
+      "duration_ms": 562.0739459991455,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763009178.5962517,
+      "type": "git_pull",
+      "duration_ms": 521.2571620941162,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763009189.1676614,
+      "type": "git_pull",
+      "duration_ms": 532.7949523925781,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763009199.745717,
+      "type": "git_pull",
+      "duration_ms": 537.3260974884033,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763009210.298049,
+      "type": "git_pull",
+      "duration_ms": 523.928165435791,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763009220.8419533,
+      "type": "git_pull",
+      "duration_ms": 514.1799449920654,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763009231.4002953,
+      "type": "git_pull",
+      "duration_ms": 521.5804576873779,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763009242.0031357,
+      "type": "git_pull",
+      "duration_ms": 551.3851642608643,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763009252.5747612,
+      "type": "git_pull",
+      "duration_ms": 529.9561023712158,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763009263.294881,
+      "type": "git_pull",
+      "duration_ms": 690.1695728302002,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763009273.8929434,
+      "type": "git_pull",
+      "duration_ms": 516.0298347473145,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763009284.4570725,
+      "type": "git_pull",
+      "duration_ms": 525.7165431976318,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763009295.040991,
+      "type": "git_pull",
+      "duration_ms": 552.5662899017334,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763009305.6012075,
+      "type": "git_pull",
+      "duration_ms": 527.7633666992188,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763009316.1528769,
+      "type": "git_pull",
+      "duration_ms": 523.1883525848389,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763009326.6981325,
+      "type": "git_pull",
+      "duration_ms": 517.0872211456299,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763009337.2550619,
+      "type": "git_pull",
+      "duration_ms": 526.4854431152344,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763009347.8520837,
+      "type": "git_pull",
+      "duration_ms": 558.0143928527832,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763009358.4171605,
+      "type": "git_pull",
+      "duration_ms": 516.3736343383789,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763009368.9630604,
+      "type": "git_pull",
+      "duration_ms": 518.4032917022705,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763009379.566815,
+      "type": "git_pull",
+      "duration_ms": 525.0575542449951,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763009390.1286309,
+      "type": "git_pull",
+      "duration_ms": 529.2878150939941,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763009400.6837187,
+      "type": "git_pull",
+      "duration_ms": 524.7690677642822,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763009411.3080595,
+      "type": "git_pull",
+      "duration_ms": 582.9675197601318,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763009421.8765128,
+      "type": "git_pull",
+      "duration_ms": 539.5700931549072,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763009432.449029,
+      "type": "git_pull",
+      "duration_ms": 543.9159870147705,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763009443.0045907,
+      "type": "git_pull",
+      "duration_ms": 525.7067680358887,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763009453.5843842,
+      "type": "git_pull",
+      "duration_ms": 550.041675567627,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763009464.1542594,
+      "type": "git_pull",
+      "duration_ms": 538.7213230133057,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763009474.7267635,
+      "type": "git_pull",
+      "duration_ms": 544.2752838134766,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763009485.336135,
+      "type": "git_pull",
+      "duration_ms": 514.8770809173584,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763009495.894631,
+      "type": "git_pull",
+      "duration_ms": 530.585765838623,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763009506.4513175,
+      "type": "git_pull",
+      "duration_ms": 523.5645771026611,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763009517.018959,
+      "type": "git_pull",
+      "duration_ms": 536.3168716430664,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763009527.58785,
+      "type": "git_pull",
+      "duration_ms": 539.0715599060059,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763009538.1389644,
+      "type": "git_pull",
+      "duration_ms": 519.8802947998047,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763009548.878744,
+      "type": "git_pull",
+      "duration_ms": 710.8500003814697,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763009559.4467595,
+      "type": "git_pull",
+      "duration_ms": 538.7606620788574,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763009570.0064723,
+      "type": "git_pull",
+      "duration_ms": 532.1521759033203,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763009580.5650933,
+      "type": "git_pull",
+      "duration_ms": 522.357702255249,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763009591.1639028,
+      "type": "git_pull",
+      "duration_ms": 522.2785472869873,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763009601.7252426,
+      "type": "git_pull",
+      "duration_ms": 532.113790512085,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763009612.2819707,
+      "type": "git_pull",
+      "duration_ms": 528.0914306640625,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763009622.889707,
+      "type": "git_pull",
+      "duration_ms": 573.1961727142334,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763009633.428909,
+      "type": "git_pull",
+      "duration_ms": 510.875940322876,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763009644.2055833,
+      "type": "git_pull",
+      "duration_ms": 746.7129230499268,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763009654.9845977,
+      "type": "git_pull",
+      "duration_ms": 670.8939075469971,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763009665.5606375,
+      "type": "git_pull",
+      "duration_ms": 543.4744358062744,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763009676.1475768,
+      "type": "git_pull",
+      "duration_ms": 554.6536445617676,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763009686.7256413,
+      "type": "git_pull",
+      "duration_ms": 535.423755645752,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763009697.3411622,
+      "type": "git_pull",
+      "duration_ms": 532.2582721710205,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763009707.9081042,
+      "type": "git_pull",
+      "duration_ms": 524.4386196136475,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763009718.4697309,
+      "type": "git_pull",
+      "duration_ms": 531.8868160247803,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763009729.0506837,
+      "type": "git_pull",
+      "duration_ms": 539.1523838043213,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763009739.6485684,
+      "type": "git_pull",
+      "duration_ms": 566.5290355682373,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763009750.2137077,
+      "type": "git_pull",
+      "duration_ms": 527.9941558837891,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763009760.7771158,
+      "type": "git_pull",
+      "duration_ms": 531.0423374176025,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763009771.354785,
+      "type": "git_pull",
+      "duration_ms": 543.9293384552002,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763009781.933348,
+      "type": "git_pull",
+      "duration_ms": 544.5570945739746,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763009792.5086274,
+      "type": "git_pull",
+      "duration_ms": 536.2973213195801,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763009803.1222095,
+      "type": "git_pull",
+      "duration_ms": 522.491455078125,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763009813.6866872,
+      "type": "git_pull",
+      "duration_ms": 533.5710048675537,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763009824.4115155,
+      "type": "git_pull",
+      "duration_ms": 692.6267147064209,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763009835.018707,
+      "type": "git_pull",
+      "duration_ms": 574.8274326324463,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763009845.7476113,
+      "type": "git_pull",
+      "duration_ms": 687.7398490905762,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763009856.3109705,
+      "type": "git_pull",
+      "duration_ms": 533.1642627716064,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763009869.3693254,
+      "type": "git_pull",
+      "duration_ms": 520.465612411499,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763009880.161307,
+      "type": "git_pull",
+      "duration_ms": 761.6558074951172,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763009890.7543576,
+      "type": "git_pull",
+      "duration_ms": 551.43141746521,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763009903.853168,
+      "type": "git_pull",
+      "duration_ms": 529.5429229736328,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763009914.4679062,
+      "type": "git_pull",
+      "duration_ms": 525.7868766784668,
+      "success": true,
+      "metadata": {}
+    },
+    {
+      "timestamp": 1763009927.518822,
+      "type": "git_pull",
+      "duration_ms": 517.0719623565674,
+      "success": true,
+      "metadata": {}
     }
   ],
   "summary": {
@@ -434,7 +2982,7 @@
     "messages_sent": 0,
     "auto_responses": 2,
     "errors": 0,
-    "git_pull_successes": 59,
+    "git_pull_successes": 423,
     "git_pull_failures": 0,
     "heartbeats_sent": 0
   }

@@ -1,3 +1,121 @@
 {
-  "messages": []
+  "messages": [
+    {
+      "body": "CODE2 (LL-CODE2-02) responding automatically.\n\nStatus: ONLINE and OPERATIONAL\nSystems: Python cross-platform monitor, 10s polling, heartbeat active\nReliability: Circuit breaker, message queue, health monitoring, structured logging\nReady for: Task assignments and coordination\n\nAuto-response from monitor at 2025-11-13 04:58:36",
+      "subject": "Re: Reliability Test #2",
+      "to": "build1",
+      "queued_at": 1763009918.4523237,
+      "attempts": 5,
+      "id": "queued_1763009918_0",
+      "last_attempt": 1763009972.5672853
+    },
+    {
+      "body": "CODE2 (LL-CODE2-02) responding automatically.\n\nStatus: ONLINE and OPERATIONAL\nSystems: Python cross-platform monitor, 10s polling, heartbeat active\nReliability: Circuit breaker, message queue, health monitoring, structured logging\nReady for: Task assignments and coordination\n\nAuto-response from monitor at 2025-11-13 04:58:39",
+      "subject": "Re: Re: Message from architect",
+      "to": "build1",
+      "queued_at": 1763009921.549526,
+      "attempts": 5,
+      "id": "queued_1763009921_1",
+      "last_attempt": 1763010003.4772284
+    },
+    {
+      "body": "CODE2 (LL-CODE2-02) responding automatically.\n\nStatus: ONLINE and OPERATIONAL\nSystems: Python cross-platform monitor, 10s polling, heartbeat active\nReliability: Circuit breaker, message queue, health monitoring, structured logging\nReady for: Task assignments and coordination\n\nAuto-response from monitor at 2025-11-13 04:58:42",
+      "subject": "Re: Coordination Test - Please Reply",
+      "to": "architect",
+      "queued_at": 1763009924.5829387,
+      "attempts": 5,
+      "id": "queued_1763009924_2",
+      "last_attempt": 1763010006.0346842
+    },
+    {
+      "body": "CODE2 (LL-CODE2-02) responding automatically.\n\nStatus: ONLINE and OPERATIONAL\nSystems: Python cross-platform monitor, 10s polling, heartbeat active\nReliability: Circuit breaker, message queue, health monitoring, structured logging\nReady for: Task assignments and coordination\n\nAuto-response from monitor at 2025-11-13 05:05:23",
+      "subject": "Re: Re: Architect instructions",
+      "to": "build1",
+      "queued_at": 1763010325.7810242,
+      "attempts": 5,
+      "id": "queued_1763010325_3",
+      "last_attempt": 1763010390.3657472
+    },
+    {
+      "body": "CODE2 (LL-CODE2-02) responding automatically.\n\nStatus: ONLINE and OPERATIONAL\nSystems: Python cross-platform monitor, 10s polling, heartbeat active\nReliability: Circuit breaker, message queue, health monitoring, structured logging\nReady for: Task assignments and coordination\n\nAuto-response from monitor at 2025-11-13 05:09:51",
+      "subject": "Re: Re: Architect instructions",
+      "to": "build1",
+      "queued_at": 1763010593.5912478,
+      "attempts": 5,
+      "id": "queued_1763010593_4",
+      "last_attempt": 1763010663.449132
+    },
+    {
+      "body": "CODE2 (LL-CODE2-02) responding automatically.\n\nStatus: ONLINE and OPERATIONAL\nSystems: Python cross-platform monitor, 10s polling, heartbeat active\nReliability: Circuit breaker, message queue, health monitoring, structured logging\nReady for: Task assignments and coordination\n\nAuto-response from monitor at 2025-11-13 05:10:32",
+      "subject": "Re: Message from architect",
+      "to": "architect",
+      "queued_at": 1763010634.9357784,
+      "attempts": 5,
+      "id": "queued_1763010634_5",
+      "last_attempt": 1763010704.0463238
+    },
+    {
+      "body": "CODE2 (LL-CODE2-02) responding automatically.\n\nStatus: ONLINE and OPERATIONAL\nSystems: Python cross-platform monitor, 10s polling, heartbeat active\nReliability: Circuit breaker, message queue, health monitoring, structured logging\nReady for: Task assignments and coordination\n\nAuto-response from monitor at 2025-11-13 05:11:44",
+      "subject": "Re: Message from architect",
+      "to": "architect",
+      "queued_at": 1763010706.0677273,
+      "attempts": 5,
+      "id": "queued_1763010706_6",
+      "last_attempt": 1763010786.8685935
+    },
+    {
+      "body": "CODE2 (LL-CODE2-02) responding automatically.\n\nStatus: ONLINE and OPERATIONAL\nSystems: Python cross-platform monitor, 10s polling, heartbeat active\nReliability: Circuit breaker, message queue, health monitoring, structured logging\nReady for: Task assignments and coordination\n\nAuto-response from monitor at 2025-11-13 05:11:59",
+      "subject": "Re: Message from architect",
+      "to": "architect",
+      "queued_at": 1763010721.6958337,
+      "attempts": 5,
+      "id": "queued_1763010721_7",
+      "last_attempt": 1763010803.5150647
+    },
+    {
+      "body": "CODE2 (LL-CODE2-02) responding automatically.\n\nStatus: ONLINE and OPERATIONAL\nSystems: Python cross-platform monitor, 10s polling, heartbeat active\nReliability: Circuit breaker, message queue, health monitoring, structured logging\nReady for: Task assignments and coordination\n\nAuto-response from monitor at 2025-11-13 05:12:17",
+      "subject": "Re: Message from architect",
+      "to": "architect",
+      "queued_at": 1763010739.5709028,
+      "attempts": 5,
+      "id": "queued_1763010739_8",
+      "last_attempt": 1763010818.3079233
+    },
+    {
+      "body": "CODE2 (LL-CODE2-02) responding automatically.\n\nStatus: ONLINE and OPERATIONAL\nSystems: Python cross-platform monitor, 10s polling, heartbeat active\nReliability: Circuit breaker, message queue, health monitoring, structured logging\nReady for: Task assignments and coordination\n\nAuto-response from monitor at 2025-11-13 05:18:24",
+      "subject": "Re: Re: Architect instructions",
+      "to": "build1",
+      "queued_at": 1763011106.6696942,
+      "attempts": 5,
+      "id": "queued_1763011106_9",
+      "last_attempt": 1763011176.0351696
+    },
+    {
+      "body": "CODE2 (LL-CODE2-02) responding automatically.\n\nStatus: ONLINE and OPERATIONAL\nSystems: Python cross-platform monitor, 10s polling, heartbeat active\nReliability: Circuit breaker, message queue, health monitoring, structured logging\nReady for: Task assignments and coordination\n\nAuto-response from monitor at 2025-11-13 05:19:05",
+      "subject": "Re: Message from architect",
+      "to": "architect",
+      "queued_at": 1763011147.7585025,
+      "attempts": 5,
+      "id": "queued_1763011147_10",
+      "last_attempt": 1763011931.7975485
+    },
+    {
+      "body": "CODE2 (LL-CODE2-02) responding automatically.\n\nStatus: ONLINE and OPERATIONAL\nSystems: Python cross-platform monitor, 10s polling, heartbeat active\nReliability: Circuit breaker, message queue, health monitoring, structured logging\nReady for: Task assignments and coordination\n\nAuto-response from monitor at 2025-11-13 05:34:50",
+      "subject": "Re: Message from architect",
+      "to": "architect",
+      "queued_at": 1763012092.8393161,
+      "attempts": 5,
+      "id": "queued_1763012092_11",
+      "last_attempt": 1763012157.338559
+    },
+    {
+      "body": "CODE2 (LL-CODE2-02) responding automatically.\n\nStatus: ONLINE and OPERATIONAL\nSystems: Python cross-platform monitor, 10s polling, heartbeat active\nReliability: Circuit breaker, message queue, health monitoring, structured logging\nReady for: Task assignments and coordination\n\nAuto-response from monitor at 2025-11-13 05:36:29",
+      "subject": "Re: Message from architect",
+      "to": "architect",
+      "queued_at": 1763012191.1519237,
+      "attempts": 5,
+      "id": "queued_1763012191_12",
+      "last_attempt": 1763012255.9320152
+    }
+  ]
 }

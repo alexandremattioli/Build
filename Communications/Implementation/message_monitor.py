@@ -192,8 +192,8 @@ class MessageMonitor:
         
         # Check if auto-response needed
         from_sender = message.get('from', '').lower()
-        if from_sender == self.server_id.lower() or 'CODE2 (LL-CODE2-02) responding automatically' in message.get('body', ''):
-            print('-> Skipping own message or auto-response')
+        if from_sender == self.server_id.lower():
+            print('-> Skipping own message')
             auto_response_needed = False
         else:
             body_lower = message.get('body','').lower()

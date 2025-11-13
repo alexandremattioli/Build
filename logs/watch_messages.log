@@ -1,0 +1,297 @@
+{"timestamp": "2025-11-13T04:46:38.842475Z", "level": "INFO", "message": "Git pull succeeded", "server": "code2", "metadata": {"attempt": 1, "duration_ms": 543.6253547668457}}
+{"timestamp": "2025-11-13T04:46:38.856896Z", "level": "ERROR", "message": "Error processing message msg_1763003666_9628", "server": "code2", "metadata": {"error": "'charmap' codec can't encode character '\\u2192' in position 0: character maps to <undefined>"}}
+{"timestamp": "2025-11-13T04:46:38.857121Z", "level": "ERROR", "message": "Error processing message msg_1763003612_9694", "server": "code2", "metadata": {"error": "'charmap' codec can't encode character '\\u2192' in position 0: character maps to <undefined>"}}
+{"timestamp": "2025-11-13T04:46:49.421257Z", "level": "INFO", "message": "Git pull succeeded", "server": "code2", "metadata": {"attempt": 1, "duration_ms": 544.5101261138916}}
+{"timestamp": "2025-11-13T04:46:49.438651Z", "level": "ERROR", "message": "Error processing message msg_1763003666_9628", "server": "code2", "metadata": {"error": "'charmap' codec can't encode character '\\u2192' in position 0: character maps to <undefined>"}}
+{"timestamp": "2025-11-13T04:46:49.438990Z", "level": "ERROR", "message": "Error processing message msg_1763003612_9694", "server": "code2", "metadata": {"error": "'charmap' codec can't encode character '\\u2192' in position 0: character maps to <undefined>"}}
+{"timestamp": "2025-11-13T04:47:00.007040Z", "level": "INFO", "message": "Git pull succeeded", "server": "code2", "metadata": {"attempt": 1, "duration_ms": 551.9309043884277}}
+{"timestamp": "2025-11-13T04:47:00.022720Z", "level": "ERROR", "message": "Error processing message msg_1763003666_9628", "server": "code2", "metadata": {"error": "'charmap' codec can't encode character '\\u2192' in position 0: character maps to <undefined>"}}
+{"timestamp": "2025-11-13T04:47:00.023072Z", "level": "ERROR", "message": "Error processing message msg_1763003612_9694", "server": "code2", "metadata": {"error": "'charmap' codec can't encode character '\\u2192' in position 0: character maps to <undefined>"}}
+{"timestamp": "2025-11-13T04:47:10.597893Z", "level": "INFO", "message": "Git pull succeeded", "server": "code2", "metadata": {"attempt": 1, "duration_ms": 564.1567707061768}}
+{"timestamp": "2025-11-13T04:47:10.600884Z", "level": "ERROR", "message": "Error processing message msg_1763003666_9628", "server": "code2", "metadata": {"error": "'charmap' codec can't encode character '\\u2192' in position 0: character maps to <undefined>"}}
+{"timestamp": "2025-11-13T04:47:10.601069Z", "level": "ERROR", "message": "Error processing message msg_1763003612_9694", "server": "code2", "metadata": {"error": "'charmap' codec can't encode character '\\u2192' in position 0: character maps to <undefined>"}}
+{"timestamp": "2025-11-13T04:47:21.157497Z", "level": "INFO", "message": "Git pull succeeded", "server": "code2", "metadata": {"attempt": 1, "duration_ms": 533.3011150360107}}
+{"timestamp": "2025-11-13T04:47:21.171419Z", "level": "ERROR", "message": "Error processing message msg_1763003666_9628", "server": "code2", "metadata": {"error": "'charmap' codec can't encode character '\\u2192' in position 0: character maps to <undefined>"}}
+{"timestamp": "2025-11-13T04:47:21.171624Z", "level": "ERROR", "message": "Error processing message msg_1763003612_9694", "server": "code2", "metadata": {"error": "'charmap' codec can't encode character '\\u2192' in position 0: character maps to <undefined>"}}
+{"timestamp": "2025-11-13T04:47:31.786661Z", "level": "INFO", "message": "Git pull succeeded", "server": "code2", "metadata": {"attempt": 1, "duration_ms": 597.2280502319336}}
+{"timestamp": "2025-11-13T04:47:31.802091Z", "level": "ERROR", "message": "Error processing message msg_1763003666_9628", "server": "code2", "metadata": {"error": "'charmap' codec can't encode character '\\u2192' in position 0: character maps to <undefined>"}}
+{"timestamp": "2025-11-13T04:47:31.802357Z", "level": "ERROR", "message": "Error processing message msg_1763003612_9694", "server": "code2", "metadata": {"error": "'charmap' codec can't encode character '\\u2192' in position 0: character maps to <undefined>"}}
+{"timestamp": "2025-11-13T04:47:42.519501Z", "level": "INFO", "message": "Git pull succeeded", "server": "code2", "metadata": {"attempt": 1, "duration_ms": 700.4857063293457}}
+{"timestamp": "2025-11-13T04:47:42.535367Z", "level": "ERROR", "message": "Error processing message msg_1763003666_9628", "server": "code2", "metadata": {"error": "'charmap' codec can't encode character '\\u2192' in position 0: character maps to <undefined>"}}
+{"timestamp": "2025-11-13T04:47:42.535577Z", "level": "ERROR", "message": "Error processing message msg_1763003612_9694", "server": "code2", "metadata": {"error": "'charmap' codec can't encode character '\\u2192' in position 0: character maps to <undefined>"}}
+{"timestamp": "2025-11-13T04:47:53.079553Z", "level": "INFO", "message": "Git pull succeeded", "server": "code2", "metadata": {"attempt": 1, "duration_ms": 526.6718864440918}}
+{"timestamp": "2025-11-13T04:47:53.094049Z", "level": "ERROR", "message": "Error processing message msg_1763003666_9628", "server": "code2", "metadata": {"error": "'charmap' codec can't encode character '\\u2192' in position 0: character maps to <undefined>"}}
+{"timestamp": "2025-11-13T04:47:53.094274Z", "level": "ERROR", "message": "Error processing message msg_1763003612_9694", "server": "code2", "metadata": {"error": "'charmap' codec can't encode character '\\u2192' in position 0: character maps to <undefined>"}}
+{"timestamp": "2025-11-13T04:48:03.652405Z", "level": "INFO", "message": "Git pull succeeded", "server": "code2", "metadata": {"attempt": 1, "duration_ms": 530.1723480224609}}
+{"timestamp": "2025-11-13T04:48:03.667957Z", "level": "ERROR", "message": "Error processing message msg_1763003666_9628", "server": "code2", "metadata": {"error": "'charmap' codec can't encode character '\\u2192' in position 0: character maps to <undefined>"}}
+{"timestamp": "2025-11-13T04:48:03.668158Z", "level": "ERROR", "message": "Error processing message msg_1763003612_9694", "server": "code2", "metadata": {"error": "'charmap' codec can't encode character '\\u2192' in position 0: character maps to <undefined>"}}
+{"timestamp": "2025-11-13T04:48:14.254050Z", "level": "INFO", "message": "Git pull succeeded", "server": "code2", "metadata": {"attempt": 1, "duration_ms": 513.8740539550781}}
+{"timestamp": "2025-11-13T04:48:14.268966Z", "level": "ERROR", "message": "Error processing message msg_1763003666_9628", "server": "code2", "metadata": {"error": "'charmap' codec can't encode character '\\u2192' in position 0: character maps to <undefined>"}}
+{"timestamp": "2025-11-13T04:48:14.269165Z", "level": "ERROR", "message": "Error processing message msg_1763003612_9694", "server": "code2", "metadata": {"error": "'charmap' codec can't encode character '\\u2192' in position 0: character maps to <undefined>"}}
+{"timestamp": "2025-11-13T04:48:24.806640Z", "level": "INFO", "message": "Git pull succeeded", "server": "code2", "metadata": {"attempt": 1, "duration_ms": 519.2646980285645}}
+{"timestamp": "2025-11-13T04:48:24.820678Z", "level": "ERROR", "message": "Error processing message msg_1763003666_9628", "server": "code2", "metadata": {"error": "'charmap' codec can't encode character '\\u2192' in position 0: character maps to <undefined>"}}
+{"timestamp": "2025-11-13T04:48:24.820908Z", "level": "ERROR", "message": "Error processing message msg_1763003612_9694", "server": "code2", "metadata": {"error": "'charmap' codec can't encode character '\\u2192' in position 0: character maps to <undefined>"}}
+{"timestamp": "2025-11-13T04:48:35.379954Z", "level": "INFO", "message": "Git pull succeeded", "server": "code2", "metadata": {"attempt": 1, "duration_ms": 524.789571762085}}
+{"timestamp": "2025-11-13T04:48:35.395431Z", "level": "ERROR", "message": "Error processing message msg_1763003666_9628", "server": "code2", "metadata": {"error": "'charmap' codec can't encode character '\\u2192' in position 0: character maps to <undefined>"}}
+{"timestamp": "2025-11-13T04:48:35.395673Z", "level": "ERROR", "message": "Error processing message msg_1763003612_9694", "server": "code2", "metadata": {"error": "'charmap' codec can't encode character '\\u2192' in position 0: character maps to <undefined>"}}
+{"timestamp": "2025-11-13T04:48:45.955903Z", "level": "INFO", "message": "Git pull succeeded", "server": "code2", "metadata": {"attempt": 1, "duration_ms": 537.0750427246094}}
+{"timestamp": "2025-11-13T04:48:45.972054Z", "level": "ERROR", "message": "Error processing message msg_1763003666_9628", "server": "code2", "metadata": {"error": "'charmap' codec can't encode character '\\u2192' in position 0: character maps to <undefined>"}}
+{"timestamp": "2025-11-13T04:48:45.972362Z", "level": "ERROR", "message": "Error processing message msg_1763003612_9694", "server": "code2", "metadata": {"error": "'charmap' codec can't encode character '\\u2192' in position 0: character maps to <undefined>"}}
+{"timestamp": "2025-11-13T04:48:56.538180Z", "level": "INFO", "message": "Git pull succeeded", "server": "code2", "metadata": {"attempt": 1, "duration_ms": 534.1756343841553}}
+{"timestamp": "2025-11-13T04:48:56.555319Z", "level": "ERROR", "message": "Error processing message msg_1763003666_9628", "server": "code2", "metadata": {"error": "'charmap' codec can't encode character '\\u2192' in position 0: character maps to <undefined>"}}
+{"timestamp": "2025-11-13T04:48:56.555644Z", "level": "ERROR", "message": "Error processing message msg_1763003612_9694", "server": "code2", "metadata": {"error": "'charmap' codec can't encode character '\\u2192' in position 0: character maps to <undefined>"}}
+{"timestamp": "2025-11-13T04:49:07.131219Z", "level": "INFO", "message": "Git pull succeeded", "server": "code2", "metadata": {"attempt": 1, "duration_ms": 553.016185760498}}
+{"timestamp": "2025-11-13T04:49:07.145875Z", "level": "ERROR", "message": "Error processing message msg_1763003666_9628", "server": "code2", "metadata": {"error": "'charmap' codec can't encode character '\\u2192' in position 0: character maps to <undefined>"}}
+{"timestamp": "2025-11-13T04:49:07.146065Z", "level": "ERROR", "message": "Error processing message msg_1763003612_9694", "server": "code2", "metadata": {"error": "'charmap' codec can't encode character '\\u2192' in position 0: character maps to <undefined>"}}
+{"timestamp": "2025-11-13T04:49:17.696855Z", "level": "INFO", "message": "Git pull succeeded", "server": "code2", "metadata": {"attempt": 1, "duration_ms": 533.1540107727051}}
+{"timestamp": "2025-11-13T04:49:17.711509Z", "level": "ERROR", "message": "Error processing message msg_1763003666_9628", "server": "code2", "metadata": {"error": "'charmap' codec can't encode character '\\u2192' in position 0: character maps to <undefined>"}}
+{"timestamp": "2025-11-13T04:49:17.711789Z", "level": "ERROR", "message": "Error processing message msg_1763003612_9694", "server": "code2", "metadata": {"error": "'charmap' codec can't encode character '\\u2192' in position 0: character maps to <undefined>"}}
+{"timestamp": "2025-11-13T04:49:28.256836Z", "level": "INFO", "message": "Git pull succeeded", "server": "code2", "metadata": {"attempt": 1, "duration_ms": 524.9853134155273}}
+{"timestamp": "2025-11-13T04:49:28.270370Z", "level": "ERROR", "message": "Error processing message msg_1763003666_9628", "server": "code2", "metadata": {"error": "'charmap' codec can't encode character '\\u2192' in position 0: character maps to <undefined>"}}
+{"timestamp": "2025-11-13T04:49:28.270568Z", "level": "ERROR", "message": "Error processing message msg_1763003612_9694", "server": "code2", "metadata": {"error": "'charmap' codec can't encode character '\\u2192' in position 0: character maps to <undefined>"}}
+{"timestamp": "2025-11-13T04:49:38.844303Z", "level": "INFO", "message": "Git pull succeeded", "server": "code2", "metadata": {"attempt": 1, "duration_ms": 539.9456024169922}}
+{"timestamp": "2025-11-13T04:49:38.857574Z", "level": "ERROR", "message": "Error processing message msg_1763003666_9628", "server": "code2", "metadata": {"error": "'charmap' codec can't encode character '\\u2192' in position 0: character maps to <undefined>"}}
+{"timestamp": "2025-11-13T04:49:38.857818Z", "level": "ERROR", "message": "Error processing message msg_1763003612_9694", "server": "code2", "metadata": {"error": "'charmap' codec can't encode character '\\u2192' in position 0: character maps to <undefined>"}}
+{"timestamp": "2025-11-13T04:49:49.398092Z", "level": "INFO", "message": "Git pull succeeded", "server": "code2", "metadata": {"attempt": 1, "duration_ms": 522.9337215423584}}
+{"timestamp": "2025-11-13T04:49:49.414091Z", "level": "ERROR", "message": "Error processing message msg_1763003666_9628", "server": "code2", "metadata": {"error": "'charmap' codec can't encode character '\\u2192' in position 0: character maps to <undefined>"}}
+{"timestamp": "2025-11-13T04:49:49.414315Z", "level": "ERROR", "message": "Error processing message msg_1763003612_9694", "server": "code2", "metadata": {"error": "'charmap' codec can't encode character '\\u2192' in position 0: character maps to <undefined>"}}
+{"timestamp": "2025-11-13T04:50:00.034704Z", "level": "INFO", "message": "Git pull succeeded", "server": "code2", "metadata": {"attempt": 1, "duration_ms": 538.9325618743896}}
+{"timestamp": "2025-11-13T04:50:00.050541Z", "level": "ERROR", "message": "Error processing message msg_1763003666_9628", "server": "code2", "metadata": {"error": "'charmap' codec can't encode character '\\u2192' in position 0: character maps to <undefined>"}}
+{"timestamp": "2025-11-13T04:50:00.050737Z", "level": "ERROR", "message": "Error processing message msg_1763003612_9694", "server": "code2", "metadata": {"error": "'charmap' codec can't encode character '\\u2192' in position 0: character maps to <undefined>"}}
+{"timestamp": "2025-11-13T04:57:41.870586Z", "level": "INFO", "message": "Git pull succeeded", "server": "code2", "metadata": {"attempt": 1, "duration_ms": 539.2031669616699}}
+{"timestamp": "2025-11-13T04:57:44.005387Z", "level": "ERROR", "message": "Error processing message msg_1763003666_9628", "server": "code2", "metadata": {"error": "'charmap' codec can't encode character '\\u2717' in position 0: character maps to <undefined>"}}
+{"timestamp": "2025-11-13T04:57:46.122560Z", "level": "ERROR", "message": "Error processing message msg_1763009632_5182", "server": "code2", "metadata": {"error": "'charmap' codec can't encode character '\\u2717' in position 0: character maps to <undefined>"}}
+{"timestamp": "2025-11-13T04:57:48.167846Z", "level": "ERROR", "message": "Error processing message msg_1763003612_9694", "server": "code2", "metadata": {"error": "'charmap' codec can't encode character '\\u2717' in position 0: character maps to <undefined>"}}
+{"timestamp": "2025-11-13T04:57:58.737786Z", "level": "INFO", "message": "Git pull succeeded", "server": "code2", "metadata": {"attempt": 1, "duration_ms": 552.7439117431641}}
+{"timestamp": "2025-11-13T04:58:01.002837Z", "level": "ERROR", "message": "Error processing message msg_1763003666_9628", "server": "code2", "metadata": {"error": "'charmap' codec can't encode character '\\u2717' in position 0: character maps to <undefined>"}}
+{"timestamp": "2025-11-13T04:58:03.021544Z", "level": "ERROR", "message": "Error processing message msg_1763009632_5182", "server": "code2", "metadata": {"error": "'charmap' codec can't encode character '\\u2717' in position 0: character maps to <undefined>"}}
+{"timestamp": "2025-11-13T04:58:05.439917Z", "level": "ERROR", "message": "Error processing message msg_1763003612_9694", "server": "code2", "metadata": {"error": "'charmap' codec can't encode character '\\u2717' in position 0: character maps to <undefined>"}}
+{"timestamp": "2025-11-13T04:58:16.171235Z", "level": "INFO", "message": "Git pull succeeded", "server": "code2", "metadata": {"attempt": 1, "duration_ms": 702.3746967315674}}
+{"timestamp": "2025-11-13T04:58:18.282185Z", "level": "ERROR", "message": "Error processing message msg_1763003666_9628", "server": "code2", "metadata": {"error": "'charmap' codec can't encode character '\\u2717' in position 0: character maps to <undefined>"}}
+{"timestamp": "2025-11-13T04:58:20.342307Z", "level": "ERROR", "message": "Error processing message msg_1763009632_5182", "server": "code2", "metadata": {"error": "'charmap' codec can't encode character '\\u2717' in position 0: character maps to <undefined>"}}
+{"timestamp": "2025-11-13T04:58:22.510992Z", "level": "ERROR", "message": "Error processing message msg_1763003612_9694", "server": "code2", "metadata": {"error": "'charmap' codec can't encode character '\\u2717' in position 0: character maps to <undefined>"}}
+{"timestamp": "2025-11-13T04:58:36.452593Z", "level": "INFO", "message": "Git pull succeeded", "server": "code2", "metadata": {"attempt": 1, "duration_ms": 519.6437835693359}}
+{"timestamp": "2025-11-13T04:58:56.071707Z", "level": "INFO", "message": "Git pull succeeded", "server": "code2", "metadata": {"attempt": 1, "duration_ms": 518.7768936157227}}
+{"timestamp": "2025-11-13T04:59:13.201494Z", "level": "INFO", "message": "Git pull succeeded", "server": "code2", "metadata": {"attempt": 1, "duration_ms": 673.382043838501}}
+{"timestamp": "2025-11-13T04:59:30.515773Z", "level": "INFO", "message": "Git pull succeeded", "server": "code2", "metadata": {"attempt": 1, "duration_ms": 517.0457363128662}}
+{"timestamp": "2025-11-13T04:59:47.515954Z", "level": "INFO", "message": "Git pull succeeded", "server": "code2", "metadata": {"attempt": 1, "duration_ms": 546.1840629577637}}
+{"timestamp": "2025-11-13T05:00:02.278504Z", "level": "INFO", "message": "Git pull succeeded", "server": "code2", "metadata": {"attempt": 1, "duration_ms": 542.9630279541016}}
+{"timestamp": "2025-11-13T05:00:16.597286Z", "level": "INFO", "message": "Git pull succeeded", "server": "code2", "metadata": {"attempt": 1, "duration_ms": 530.3773880004883}}
+{"timestamp": "2025-11-13T05:00:27.157882Z", "level": "INFO", "message": "Git pull succeeded", "server": "code2", "metadata": {"attempt": 1, "duration_ms": 516.1135196685791}}
+{"timestamp": "2025-11-13T05:00:37.715276Z", "level": "INFO", "message": "Git pull succeeded", "server": "code2", "metadata": {"attempt": 1, "duration_ms": 520.6096172332764}}
+{"timestamp": "2025-11-13T05:00:48.330392Z", "level": "INFO", "message": "Git pull succeeded", "server": "code2", "metadata": {"attempt": 1, "duration_ms": 522.2172737121582}}
+{"timestamp": "2025-11-13T05:00:58.914692Z", "level": "INFO", "message": "Git pull succeeded", "server": "code2", "metadata": {"attempt": 1, "duration_ms": 542.8295135498047}}
+{"timestamp": "2025-11-13T05:01:09.483803Z", "level": "INFO", "message": "Git pull succeeded", "server": "code2", "metadata": {"attempt": 1, "duration_ms": 524.965763092041}}
+{"timestamp": "2025-11-13T05:01:20.058436Z", "level": "INFO", "message": "Git pull succeeded", "server": "code2", "metadata": {"attempt": 1, "duration_ms": 537.9359722137451}}
+{"timestamp": "2025-11-13T05:01:30.629156Z", "level": "INFO", "message": "Git pull succeeded", "server": "code2", "metadata": {"attempt": 1, "duration_ms": 532.9327583312988}}
+{"timestamp": "2025-11-13T05:01:41.182441Z", "level": "INFO", "message": "Git pull succeeded", "server": "code2", "metadata": {"attempt": 1, "duration_ms": 512.711763381958}}
+{"timestamp": "2025-11-13T05:01:51.761546Z", "level": "INFO", "message": "Git pull succeeded", "server": "code2", "metadata": {"attempt": 1, "duration_ms": 539.5820140838623}}
+{"timestamp": "2025-11-13T05:02:02.398210Z", "level": "INFO", "message": "Git pull succeeded", "server": "code2", "metadata": {"attempt": 1, "duration_ms": 586.3492488861084}}
+{"timestamp": "2025-11-13T05:02:12.971500Z", "level": "INFO", "message": "Git pull succeeded", "server": "code2", "metadata": {"attempt": 1, "duration_ms": 518.7890529632568}}
+{"timestamp": "2025-11-13T05:02:23.569078Z", "level": "INFO", "message": "Git pull succeeded", "server": "code2", "metadata": {"attempt": 1, "duration_ms": 545.8827018737793}}
+{"timestamp": "2025-11-13T05:02:34.189504Z", "level": "INFO", "message": "Git pull succeeded", "server": "code2", "metadata": {"attempt": 1, "duration_ms": 527.5285243988037}}
+{"timestamp": "2025-11-13T05:02:44.753279Z", "level": "INFO", "message": "Git pull succeeded", "server": "code2", "metadata": {"attempt": 1, "duration_ms": 525.4881381988525}}
+{"timestamp": "2025-11-13T05:02:55.327800Z", "level": "INFO", "message": "Git pull succeeded", "server": "code2", "metadata": {"attempt": 1, "duration_ms": 537.9092693328857}}
+{"timestamp": "2025-11-13T05:03:06.038805Z", "level": "INFO", "message": "Git pull succeeded", "server": "code2", "metadata": {"attempt": 1, "duration_ms": 666.3765907287598}}
+{"timestamp": "2025-11-13T05:03:16.607199Z", "level": "INFO", "message": "Git pull succeeded", "server": "code2", "metadata": {"attempt": 1, "duration_ms": 527.2681713104248}}
+{"timestamp": "2025-11-13T05:03:27.196169Z", "level": "INFO", "message": "Git pull succeeded", "server": "code2", "metadata": {"attempt": 1, "duration_ms": 522.7241516113281}}
+{"timestamp": "2025-11-13T05:03:37.762332Z", "level": "INFO", "message": "Git pull succeeded", "server": "code2", "metadata": {"attempt": 1, "duration_ms": 519.230842590332}}
+{"timestamp": "2025-11-13T05:03:48.334536Z", "level": "INFO", "message": "Git pull succeeded", "server": "code2", "metadata": {"attempt": 1, "duration_ms": 531.5494537353516}}
+{"timestamp": "2025-11-13T05:03:58.905427Z", "level": "INFO", "message": "Git pull succeeded", "server": "code2", "metadata": {"attempt": 1, "duration_ms": 522.5715637207031}}
+{"timestamp": "2025-11-13T05:04:09.480205Z", "level": "INFO", "message": "Git pull succeeded", "server": "code2", "metadata": {"attempt": 1, "duration_ms": 531.1617851257324}}
+{"timestamp": "2025-11-13T05:04:20.093583Z", "level": "INFO", "message": "Git pull succeeded", "server": "code2", "metadata": {"attempt": 1, "duration_ms": 523.4599113464355}}
+{"timestamp": "2025-11-13T05:04:30.750428Z", "level": "INFO", "message": "Git pull succeeded", "server": "code2", "metadata": {"attempt": 1, "duration_ms": 582.5743675231934}}
+{"timestamp": "2025-11-13T05:04:41.317924Z", "level": "INFO", "message": "Git pull succeeded", "server": "code2", "metadata": {"attempt": 1, "duration_ms": 518.5925960540771}}
+{"timestamp": "2025-11-13T05:04:51.879917Z", "level": "INFO", "message": "Git pull succeeded", "server": "code2", "metadata": {"attempt": 1, "duration_ms": 510.8058452606201}}
+{"timestamp": "2025-11-13T05:05:02.447190Z", "level": "INFO", "message": "Git pull succeeded", "server": "code2", "metadata": {"attempt": 1, "duration_ms": 530.4665565490723}}
+{"timestamp": "2025-11-13T05:05:13.039513Z", "level": "INFO", "message": "Git pull succeeded", "server": "code2", "metadata": {"attempt": 1, "duration_ms": 549.793004989624}}
+{"timestamp": "2025-11-13T05:05:23.644561Z", "level": "INFO", "message": "Git pull succeeded", "server": "code2", "metadata": {"attempt": 1, "duration_ms": 555.0460815429688}}
+{"timestamp": "2025-11-13T05:05:37.361647Z", "level": "INFO", "message": "Git pull succeeded", "server": "code2", "metadata": {"attempt": 1, "duration_ms": 535.5629920959473}}
+{"timestamp": "2025-11-13T05:05:50.100992Z", "level": "INFO", "message": "Git pull succeeded", "server": "code2", "metadata": {"attempt": 1, "duration_ms": 533.715009689331}}
+{"timestamp": "2025-11-13T05:06:02.885151Z", "level": "INFO", "message": "Git pull succeeded", "server": "code2", "metadata": {"attempt": 1, "duration_ms": 504.95409965515137}}
+{"timestamp": "2025-11-13T05:06:15.630965Z", "level": "INFO", "message": "Git pull succeeded", "server": "code2", "metadata": {"attempt": 1, "duration_ms": 518.8562870025635}}
+{"timestamp": "2025-11-13T05:06:28.259817Z", "level": "INFO", "message": "Git pull succeeded", "server": "code2", "metadata": {"attempt": 1, "duration_ms": 527.9896259307861}}
+{"timestamp": "2025-11-13T05:06:40.921120Z", "level": "INFO", "message": "Git pull succeeded", "server": "code2", "metadata": {"attempt": 1, "duration_ms": 526.7679691314697}}
+{"timestamp": "2025-11-13T05:06:51.515236Z", "level": "INFO", "message": "Git pull succeeded", "server": "code2", "metadata": {"attempt": 1, "duration_ms": 537.2610092163086}}
+{"timestamp": "2025-11-13T05:07:02.093826Z", "level": "INFO", "message": "Git pull succeeded", "server": "code2", "metadata": {"attempt": 1, "duration_ms": 531.0962200164795}}
+{"timestamp": "2025-11-13T05:07:12.672813Z", "level": "INFO", "message": "Git pull succeeded", "server": "code2", "metadata": {"attempt": 1, "duration_ms": 536.8623733520508}}
+{"timestamp": "2025-11-13T05:07:23.259912Z", "level": "INFO", "message": "Git pull succeeded", "server": "code2", "metadata": {"attempt": 1, "duration_ms": 541.1996841430664}}
+{"timestamp": "2025-11-13T05:07:33.832823Z", "level": "INFO", "message": "Git pull succeeded", "server": "code2", "metadata": {"attempt": 1, "duration_ms": 533.9508056640625}}
+{"timestamp": "2025-11-13T05:07:44.402340Z", "level": "INFO", "message": "Git pull succeeded", "server": "code2", "metadata": {"attempt": 1, "duration_ms": 525.9535312652588}}
+{"timestamp": "2025-11-13T05:07:54.975029Z", "level": "INFO", "message": "Git pull succeeded", "server": "code2", "metadata": {"attempt": 1, "duration_ms": 530.2529335021973}}
+{"timestamp": "2025-11-13T05:08:05.597101Z", "level": "INFO", "message": "Git pull succeeded", "server": "code2", "metadata": {"attempt": 1, "duration_ms": 531.9960117340088}}
+{"timestamp": "2025-11-13T05:08:16.156599Z", "level": "INFO", "message": "Git pull succeeded", "server": "code2", "metadata": {"attempt": 1, "duration_ms": 520.1573371887207}}
+{"timestamp": "2025-11-13T05:08:26.883052Z", "level": "INFO", "message": "Git pull succeeded", "server": "code2", "metadata": {"attempt": 1, "duration_ms": 513.69309425354}}
+{"timestamp": "2025-11-13T05:08:37.583735Z", "level": "INFO", "message": "Git pull succeeded", "server": "code2", "metadata": {"attempt": 1, "duration_ms": 648.662805557251}}
+{"timestamp": "2025-11-13T05:08:48.159459Z", "level": "INFO", "message": "Git pull succeeded", "server": "code2", "metadata": {"attempt": 1, "duration_ms": 521.458625793457}}
+{"timestamp": "2025-11-13T05:08:58.726324Z", "level": "INFO", "message": "Git pull succeeded", "server": "code2", "metadata": {"attempt": 1, "duration_ms": 528.4616947174072}}
+{"timestamp": "2025-11-13T05:09:09.303126Z", "level": "INFO", "message": "Git pull succeeded", "server": "code2", "metadata": {"attempt": 1, "duration_ms": 535.8150005340576}}
+{"timestamp": "2025-11-13T05:09:19.874626Z", "level": "INFO", "message": "Git pull succeeded", "server": "code2", "metadata": {"attempt": 1, "duration_ms": 531.2604904174805}}
+{"timestamp": "2025-11-13T05:09:30.443838Z", "level": "INFO", "message": "Git pull succeeded", "server": "code2", "metadata": {"attempt": 1, "duration_ms": 523.0662822723389}}
+{"timestamp": "2025-11-13T05:09:40.999135Z", "level": "INFO", "message": "Git pull succeeded", "server": "code2", "metadata": {"attempt": 1, "duration_ms": 510.39981842041016}}
+{"timestamp": "2025-11-13T05:09:51.810383Z", "level": "INFO", "message": "Git pull succeeded", "server": "code2", "metadata": {"attempt": 1, "duration_ms": 701.1439800262451}}
+{"timestamp": "2025-11-13T05:10:05.089182Z", "level": "INFO", "message": "Git pull succeeded", "server": "code2", "metadata": {"attempt": 1, "duration_ms": 821.1264610290527}}
+{"timestamp": "2025-11-13T05:10:17.814278Z", "level": "INFO", "message": "Git pull succeeded", "server": "code2", "metadata": {"attempt": 1, "duration_ms": 532.2203636169434}}
+{"timestamp": "2025-11-13T05:10:30.574891Z", "level": "INFO", "message": "Git pull succeeded", "server": "code2", "metadata": {"attempt": 1, "duration_ms": 535.935640335083}}
+{"timestamp": "2025-11-13T05:10:46.540659Z", "level": "INFO", "message": "Git pull succeeded", "server": "code2", "metadata": {"attempt": 1, "duration_ms": 554.9275875091553}}
+{"timestamp": "2025-11-13T05:11:01.404843Z", "level": "INFO", "message": "Git pull succeeded", "server": "code2", "metadata": {"attempt": 1, "duration_ms": 542.2413349151611}}
+{"timestamp": "2025-11-13T05:11:16.378478Z", "level": "INFO", "message": "Git pull succeeded", "server": "code2", "metadata": {"attempt": 1, "duration_ms": 524.3568420410156}}
+{"timestamp": "2025-11-13T05:11:28.984878Z", "level": "INFO", "message": "Git pull succeeded", "server": "code2", "metadata": {"attempt": 1, "duration_ms": 534.0056419372559}}
+{"timestamp": "2025-11-13T05:11:41.813799Z", "level": "INFO", "message": "Git pull succeeded", "server": "code2", "metadata": {"attempt": 1, "duration_ms": 536.3929271697998}}
+{"timestamp": "2025-11-13T05:11:57.585021Z", "level": "INFO", "message": "Git pull succeeded", "server": "code2", "metadata": {"attempt": 1, "duration_ms": 525.8936882019043}}
+{"timestamp": "2025-11-13T05:12:13.555629Z", "level": "INFO", "message": "Git pull succeeded", "server": "code2", "metadata": {"attempt": 1, "duration_ms": 737.6184463500977}}
+{"timestamp": "2025-11-13T05:12:31.219836Z", "level": "INFO", "message": "Git pull succeeded", "server": "code2", "metadata": {"attempt": 1, "duration_ms": 527.087926864624}}
+{"timestamp": "2025-11-13T05:12:47.980678Z", "level": "INFO", "message": "Git pull succeeded", "server": "code2", "metadata": {"attempt": 1, "duration_ms": 538.2640361785889}}
+{"timestamp": "2025-11-13T05:13:04.693613Z", "level": "INFO", "message": "Git pull succeeded", "server": "code2", "metadata": {"attempt": 1, "duration_ms": 534.6758365631104}}
+{"timestamp": "2025-11-13T05:13:21.508368Z", "level": "INFO", "message": "Git pull succeeded", "server": "code2", "metadata": {"attempt": 1, "duration_ms": 510.22815704345703}}
+{"timestamp": "2025-11-13T05:13:36.137010Z", "level": "INFO", "message": "Git pull succeeded", "server": "code2", "metadata": {"attempt": 1, "duration_ms": 521.6093063354492}}
+{"timestamp": "2025-11-13T05:13:48.851715Z", "level": "INFO", "message": "Git pull succeeded", "server": "code2", "metadata": {"attempt": 1, "duration_ms": 517.5507068634033}}
+{"timestamp": "2025-11-13T05:13:59.443342Z", "level": "INFO", "message": "Git pull succeeded", "server": "code2", "metadata": {"attempt": 1, "duration_ms": 528.1069278717041}}
+{"timestamp": "2025-11-13T05:14:10.027772Z", "level": "INFO", "message": "Git pull succeeded", "server": "code2", "metadata": {"attempt": 1, "duration_ms": 545.0952053070068}}
+{"timestamp": "2025-11-13T05:14:20.610026Z", "level": "INFO", "message": "Git pull succeeded", "server": "code2", "metadata": {"attempt": 1, "duration_ms": 530.3092002868652}}
+{"timestamp": "2025-11-13T05:14:31.222245Z", "level": "INFO", "message": "Git pull succeeded", "server": "code2", "metadata": {"attempt": 1, "duration_ms": 523.425817489624}}
+{"timestamp": "2025-11-13T05:14:41.797489Z", "level": "INFO", "message": "Git pull succeeded", "server": "code2", "metadata": {"attempt": 1, "duration_ms": 528.0027389526367}}
+{"timestamp": "2025-11-13T05:14:52.556747Z", "level": "INFO", "message": "Git pull succeeded", "server": "code2", "metadata": {"attempt": 1, "duration_ms": 720.1623916625977}}
+{"timestamp": "2025-11-13T05:15:03.151530Z", "level": "INFO", "message": "Git pull succeeded", "server": "code2", "metadata": {"attempt": 1, "duration_ms": 538.0208492279053}}
+{"timestamp": "2025-11-13T05:15:13.712175Z", "level": "INFO", "message": "Git pull succeeded", "server": "code2", "metadata": {"attempt": 1, "duration_ms": 520.2121734619141}}
+{"timestamp": "2025-11-13T05:15:24.275346Z", "level": "INFO", "message": "Git pull succeeded", "server": "code2", "metadata": {"attempt": 1, "duration_ms": 512.5477313995361}}
+{"timestamp": "2025-11-13T05:15:34.938135Z", "level": "INFO", "message": "Git pull succeeded", "server": "code2", "metadata": {"attempt": 1, "duration_ms": 616.1158084869385}}
+{"timestamp": "2025-11-13T05:15:45.509819Z", "level": "INFO", "message": "Git pull succeeded", "server": "code2", "metadata": {"attempt": 1, "duration_ms": 529.8383235931396}}
+{"timestamp": "2025-11-13T05:15:56.100439Z", "level": "INFO", "message": "Git pull succeeded", "server": "code2", "metadata": {"attempt": 1, "duration_ms": 539.7160053253174}}
+{"timestamp": "2025-11-13T05:16:06.706418Z", "level": "INFO", "message": "Git pull succeeded", "server": "code2", "metadata": {"attempt": 1, "duration_ms": 561.9802474975586}}
+{"timestamp": "2025-11-13T05:16:17.327184Z", "level": "INFO", "message": "Git pull succeeded", "server": "code2", "metadata": {"attempt": 1, "duration_ms": 520.0934410095215}}
+{"timestamp": "2025-11-13T05:16:27.905646Z", "level": "INFO", "message": "Git pull succeeded", "server": "code2", "metadata": {"attempt": 1, "duration_ms": 531.6109657287598}}
+{"timestamp": "2025-11-13T05:16:38.499294Z", "level": "INFO", "message": "Git pull succeeded", "server": "code2", "metadata": {"attempt": 1, "duration_ms": 531.7497253417969}}
+{"timestamp": "2025-11-13T05:16:49.057422Z", "level": "INFO", "message": "Git pull succeeded", "server": "code2", "metadata": {"attempt": 1, "duration_ms": 517.0912742614746}}
+{"timestamp": "2025-11-13T05:16:59.659220Z", "level": "INFO", "message": "Git pull succeeded", "server": "code2", "metadata": {"attempt": 1, "duration_ms": 546.198844909668}}
+{"timestamp": "2025-11-13T05:17:10.237832Z", "level": "INFO", "message": "Git pull succeeded", "server": "code2", "metadata": {"attempt": 1, "duration_ms": 524.8234272003174}}
+{"timestamp": "2025-11-13T05:17:20.817543Z", "level": "INFO", "message": "Git pull succeeded", "server": "code2", "metadata": {"attempt": 1, "duration_ms": 525.5992412567139}}
+{"timestamp": "2025-11-13T05:17:31.398666Z", "level": "INFO", "message": "Git pull succeeded", "server": "code2", "metadata": {"attempt": 1, "duration_ms": 527.4710655212402}}
+{"timestamp": "2025-11-13T05:17:41.980106Z", "level": "INFO", "message": "Git pull succeeded", "server": "code2", "metadata": {"attempt": 1, "duration_ms": 528.0981063842773}}
+{"timestamp": "2025-11-13T05:17:52.546003Z", "level": "INFO", "message": "Git pull succeeded", "server": "code2", "metadata": {"attempt": 1, "duration_ms": 521.381139755249}}
+{"timestamp": "2025-11-13T05:18:03.176801Z", "level": "INFO", "message": "Git pull succeeded", "server": "code2", "metadata": {"attempt": 1, "duration_ms": 525.7883071899414}}
+{"timestamp": "2025-11-13T05:18:13.801061Z", "level": "INFO", "message": "Git pull succeeded", "server": "code2", "metadata": {"attempt": 1, "duration_ms": 541.5852069854736}}
+{"timestamp": "2025-11-13T05:18:24.559947Z", "level": "INFO", "message": "Git pull succeeded", "server": "code2", "metadata": {"attempt": 1, "duration_ms": 714.2305374145508}}
+{"timestamp": "2025-11-13T05:18:38.212602Z", "level": "INFO", "message": "Git pull succeeded", "server": "code2", "metadata": {"attempt": 1, "duration_ms": 526.8054008483887}}
+{"timestamp": "2025-11-13T05:18:50.842035Z", "level": "INFO", "message": "Git pull succeeded", "server": "code2", "metadata": {"attempt": 1, "duration_ms": 511.0595226287842}}
+{"timestamp": "2025-11-13T05:19:03.611770Z", "level": "INFO", "message": "Git pull succeeded", "server": "code2", "metadata": {"attempt": 1, "duration_ms": 526.597261428833}}
+{"timestamp": "2025-11-13T05:19:19.297583Z", "level": "INFO", "message": "Git pull succeeded", "server": "code2", "metadata": {"attempt": 1, "duration_ms": 523.7188339233398}}
+{"timestamp": "2025-11-13T05:19:33.955705Z", "level": "INFO", "message": "Git pull succeeded", "server": "code2", "metadata": {"attempt": 1, "duration_ms": 528.2959938049316}}
+{"timestamp": "2025-11-13T05:19:48.595916Z", "level": "INFO", "message": "Git pull succeeded", "server": "code2", "metadata": {"attempt": 1, "duration_ms": 528.7337303161621}}
+{"timestamp": "2025-11-13T05:20:01.219184Z", "level": "INFO", "message": "Git pull succeeded", "server": "code2", "metadata": {"attempt": 1, "duration_ms": 521.0912227630615}}
+{"timestamp": "2025-11-13T05:32:09.572142Z", "level": "INFO", "message": "Git pull succeeded", "server": "code2", "metadata": {"attempt": 1, "duration_ms": 541.4998531341553}}
+{"timestamp": "2025-11-13T05:32:22.366010Z", "level": "INFO", "message": "Git pull succeeded", "server": "code2", "metadata": {"attempt": 1, "duration_ms": 538.1784439086914}}
+{"timestamp": "2025-11-13T05:32:32.958731Z", "level": "INFO", "message": "Git pull succeeded", "server": "code2", "metadata": {"attempt": 1, "duration_ms": 537.5046730041504}}
+{"timestamp": "2025-11-13T05:32:43.696204Z", "level": "INFO", "message": "Git pull succeeded", "server": "code2", "metadata": {"attempt": 1, "duration_ms": 680.548906326294}}
+{"timestamp": "2025-11-13T05:32:54.292922Z", "level": "INFO", "message": "Git pull succeeded", "server": "code2", "metadata": {"attempt": 1, "duration_ms": 528.6426544189453}}
+{"timestamp": "2025-11-13T05:33:04.890065Z", "level": "INFO", "message": "Git pull succeeded", "server": "code2", "metadata": {"attempt": 1, "duration_ms": 538.280725479126}}
+{"timestamp": "2025-11-13T05:33:15.468028Z", "level": "INFO", "message": "Git pull succeeded", "server": "code2", "metadata": {"attempt": 1, "duration_ms": 521.578311920166}}
+{"timestamp": "2025-11-13T05:33:26.056815Z", "level": "INFO", "message": "Git pull succeeded", "server": "code2", "metadata": {"attempt": 1, "duration_ms": 531.1298370361328}}
+{"timestamp": "2025-11-13T05:33:36.641220Z", "level": "INFO", "message": "Git pull succeeded", "server": "code2", "metadata": {"attempt": 1, "duration_ms": 522.0437049865723}}
+{"timestamp": "2025-11-13T05:33:47.264144Z", "level": "INFO", "message": "Git pull succeeded", "server": "code2", "metadata": {"attempt": 1, "duration_ms": 529.1218757629395}}
+{"timestamp": "2025-11-13T05:33:57.841620Z", "level": "INFO", "message": "Git pull succeeded", "server": "code2", "metadata": {"attempt": 1, "duration_ms": 533.271074295044}}
+{"timestamp": "2025-11-13T05:34:08.406793Z", "level": "INFO", "message": "Git pull succeeded", "server": "code2", "metadata": {"attempt": 1, "duration_ms": 518.8889503479004}}
+{"timestamp": "2025-11-13T05:34:18.982557Z", "level": "INFO", "message": "Git pull succeeded", "server": "code2", "metadata": {"attempt": 1, "duration_ms": 533.9102745056152}}
+{"timestamp": "2025-11-13T05:34:29.558645Z", "level": "INFO", "message": "Git pull succeeded", "server": "code2", "metadata": {"attempt": 1, "duration_ms": 527.6179313659668}}
+{"timestamp": "2025-11-13T05:34:40.203880Z", "level": "INFO", "message": "Git pull succeeded", "server": "code2", "metadata": {"attempt": 1, "duration_ms": 514.808177947998}}
+{"timestamp": "2025-11-13T05:34:50.798567Z", "level": "INFO", "message": "Git pull succeeded", "server": "code2", "metadata": {"attempt": 1, "duration_ms": 531.3854217529297}}
+{"timestamp": "2025-11-13T05:35:04.397240Z", "level": "INFO", "message": "Git pull succeeded", "server": "code2", "metadata": {"attempt": 1, "duration_ms": 512.1588706970215}}
+{"timestamp": "2025-11-13T05:35:17.091682Z", "level": "INFO", "message": "Git pull succeeded", "server": "code2", "metadata": {"attempt": 1, "duration_ms": 533.0002307891846}}
+{"timestamp": "2025-11-13T05:35:29.787016Z", "level": "INFO", "message": "Git pull succeeded", "server": "code2", "metadata": {"attempt": 1, "duration_ms": 532.9365730285645}}
+{"timestamp": "2025-11-13T05:35:42.465343Z", "level": "INFO", "message": "Git pull succeeded", "server": "code2", "metadata": {"attempt": 1, "duration_ms": 526.0801315307617}}
+{"timestamp": "2025-11-13T05:35:55.252435Z", "level": "INFO", "message": "Git pull succeeded", "server": "code2", "metadata": {"attempt": 1, "duration_ms": 538.806676864624}}
+{"timestamp": "2025-11-13T05:36:07.897701Z", "level": "INFO", "message": "Git pull succeeded", "server": "code2", "metadata": {"attempt": 1, "duration_ms": 528.0098915100098}}
+{"timestamp": "2025-11-13T05:36:18.523357Z", "level": "INFO", "message": "Git pull succeeded", "server": "code2", "metadata": {"attempt": 1, "duration_ms": 558.2756996154785}}
+{"timestamp": "2025-11-13T05:36:29.106944Z", "level": "INFO", "message": "Git pull succeeded", "server": "code2", "metadata": {"attempt": 1, "duration_ms": 536.700963973999}}
+{"timestamp": "2025-11-13T05:36:42.707725Z", "level": "INFO", "message": "Git pull succeeded", "server": "code2", "metadata": {"attempt": 1, "duration_ms": 519.8895931243896}}
+{"timestamp": "2025-11-13T05:36:55.573617Z", "level": "INFO", "message": "Git pull succeeded", "server": "code2", "metadata": {"attempt": 1, "duration_ms": 521.3751792907715}}
+{"timestamp": "2025-11-13T05:37:08.549402Z", "level": "INFO", "message": "Git pull succeeded", "server": "code2", "metadata": {"attempt": 1, "duration_ms": 534.6238613128662}}
+{"timestamp": "2025-11-13T05:37:21.161964Z", "level": "INFO", "message": "Git pull succeeded", "server": "code2", "metadata": {"attempt": 1, "duration_ms": 510.52331924438477}}
+{"timestamp": "2025-11-13T05:37:33.751689Z", "level": "INFO", "message": "Git pull succeeded", "server": "code2", "metadata": {"attempt": 1, "duration_ms": 540.7531261444092}}
+{"timestamp": "2025-11-13T05:37:46.518491Z", "level": "INFO", "message": "Git pull succeeded", "server": "code2", "metadata": {"attempt": 1, "duration_ms": 513.852596282959}}
+{"timestamp": "2025-11-13T05:37:57.123002Z", "level": "INFO", "message": "Git pull succeeded", "server": "code2", "metadata": {"attempt": 1, "duration_ms": 552.060604095459}}
+{"timestamp": "2025-11-13T05:38:07.708105Z", "level": "INFO", "message": "Git pull succeeded", "server": "code2", "metadata": {"attempt": 1, "duration_ms": 534.0995788574219}}
+{"timestamp": "2025-11-13T05:38:18.301381Z", "level": "INFO", "message": "Git pull succeeded", "server": "code2", "metadata": {"attempt": 1, "duration_ms": 535.2575778961182}}
+{"timestamp": "2025-11-13T05:38:28.870144Z", "level": "INFO", "message": "Git pull succeeded", "server": "code2", "metadata": {"attempt": 1, "duration_ms": 522.2702026367188}}
+{"timestamp": "2025-11-13T05:38:39.447904Z", "level": "INFO", "message": "Git pull succeeded", "server": "code2", "metadata": {"attempt": 1, "duration_ms": 514.897346496582}}
+{"timestamp": "2025-11-13T05:38:50.013199Z", "level": "INFO", "message": "Git pull succeeded", "server": "code2", "metadata": {"attempt": 1, "duration_ms": 515.9611701965332}}
+{"timestamp": "2025-11-13T05:39:00.593660Z", "level": "INFO", "message": "Git pull succeeded", "server": "code2", "metadata": {"attempt": 1, "duration_ms": 522.1657752990723}}
+{"timestamp": "2025-11-13T05:39:11.188377Z", "level": "INFO", "message": "Git pull succeeded", "server": "code2", "metadata": {"attempt": 1, "duration_ms": 533.59055519104}}
+{"timestamp": "2025-11-13T05:39:21.800626Z", "level": "INFO", "message": "Git pull succeeded", "server": "code2", "metadata": {"attempt": 1, "duration_ms": 553.5309314727783}}
+{"timestamp": "2025-11-13T05:39:32.432398Z", "level": "INFO", "message": "Git pull succeeded", "server": "code2", "metadata": {"attempt": 1, "duration_ms": 534.6262454986572}}
+{"timestamp": "2025-11-13T05:39:42.999004Z", "level": "INFO", "message": "Git pull succeeded", "server": "code2", "metadata": {"attempt": 1, "duration_ms": 514.3046379089355}}
+{"timestamp": "2025-11-13T05:39:53.569709Z", "level": "INFO", "message": "Git pull succeeded", "server": "code2", "metadata": {"attempt": 1, "duration_ms": 524.7554779052734}}
+{"timestamp": "2025-11-13T05:40:04.156458Z", "level": "INFO", "message": "Git pull succeeded", "server": "code2", "metadata": {"attempt": 1, "duration_ms": 529.3622016906738}}
+{"timestamp": "2025-11-13T05:40:14.752653Z", "level": "INFO", "message": "Git pull succeeded", "server": "code2", "metadata": {"attempt": 1, "duration_ms": 535.966157913208}}
+{"timestamp": "2025-11-13T05:40:25.325128Z", "level": "INFO", "message": "Git pull succeeded", "server": "code2", "metadata": {"attempt": 1, "duration_ms": 524.7464179992676}}
+{"timestamp": "2025-11-13T05:40:35.918301Z", "level": "INFO", "message": "Git pull succeeded", "server": "code2", "metadata": {"attempt": 1, "duration_ms": 525.5801677703857}}
+{"timestamp": "2025-11-13T05:40:46.496032Z", "level": "INFO", "message": "Git pull succeeded", "server": "code2", "metadata": {"attempt": 1, "duration_ms": 527.8716087341309}}
+{"timestamp": "2025-11-13T05:40:57.086835Z", "level": "INFO", "message": "Git pull succeeded", "server": "code2", "metadata": {"attempt": 1, "duration_ms": 529.3309688568115}}
+{"timestamp": "2025-11-13T05:41:07.677645Z", "level": "INFO", "message": "Git pull succeeded", "server": "code2", "metadata": {"attempt": 1, "duration_ms": 542.5803661346436}}
+{"timestamp": "2025-11-13T05:41:18.312182Z", "level": "INFO", "message": "Git pull succeeded", "server": "code2", "metadata": {"attempt": 1, "duration_ms": 526.1485576629639}}
+{"timestamp": "2025-11-13T05:41:28.902856Z", "level": "INFO", "message": "Git pull succeeded", "server": "code2", "metadata": {"attempt": 1, "duration_ms": 531.4188003540039}}
+{"timestamp": "2025-11-13T05:41:39.500200Z", "level": "INFO", "message": "Git pull succeeded", "server": "code2", "metadata": {"attempt": 1, "duration_ms": 532.3214530944824}}
+{"timestamp": "2025-11-13T05:41:50.170098Z", "level": "INFO", "message": "Git pull succeeded", "server": "code2", "metadata": {"attempt": 1, "duration_ms": 581.0952186584473}}
+{"timestamp": "2025-11-13T05:42:00.767813Z", "level": "INFO", "message": "Git pull succeeded", "server": "code2", "metadata": {"attempt": 1, "duration_ms": 505.86438179016113}}
+{"timestamp": "2025-11-13T05:42:11.365926Z", "level": "INFO", "message": "Git pull succeeded", "server": "code2", "metadata": {"attempt": 1, "duration_ms": 534.5022678375244}}
+{"timestamp": "2025-11-13T05:42:21.951894Z", "level": "INFO", "message": "Git pull succeeded", "server": "code2", "metadata": {"attempt": 1, "duration_ms": 525.9432792663574}}
+{"timestamp": "2025-11-13T05:42:32.560042Z", "level": "INFO", "message": "Git pull succeeded", "server": "code2", "metadata": {"attempt": 1, "duration_ms": 546.4634895324707}}
+{"timestamp": "2025-11-13T05:42:43.162744Z", "level": "INFO", "message": "Git pull succeeded", "server": "code2", "metadata": {"attempt": 1, "duration_ms": 538.5739803314209}}
+{"timestamp": "2025-11-13T05:42:53.736543Z", "level": "INFO", "message": "Git pull succeeded", "server": "code2", "metadata": {"attempt": 1, "duration_ms": 524.8539447784424}}
+{"timestamp": "2025-11-13T05:43:04.558075Z", "level": "INFO", "message": "Git pull succeeded", "server": "code2", "metadata": {"attempt": 1, "duration_ms": 536.4522933959961}}
+{"timestamp": "2025-11-13T05:43:15.139289Z", "level": "INFO", "message": "Git pull succeeded", "server": "code2", "metadata": {"attempt": 1, "duration_ms": 520.3413963317871}}
+{"timestamp": "2025-11-13T05:43:25.736711Z", "level": "INFO", "message": "Git pull succeeded", "server": "code2", "metadata": {"attempt": 1, "duration_ms": 547.9981899261475}}
+{"timestamp": "2025-11-13T05:43:36.320974Z", "level": "INFO", "message": "Git pull succeeded", "server": "code2", "metadata": {"attempt": 1, "duration_ms": 519.3629264831543}}
+{"timestamp": "2025-11-13T05:43:46.922588Z", "level": "INFO", "message": "Git pull succeeded", "server": "code2", "metadata": {"attempt": 1, "duration_ms": 539.6590232849121}}
+{"timestamp": "2025-11-13T05:43:57.669829Z", "level": "INFO", "message": "Git pull succeeded", "server": "code2", "metadata": {"attempt": 1, "duration_ms": 517.0347690582275}}
+{"timestamp": "2025-11-13T05:44:08.253132Z", "level": "INFO", "message": "Git pull succeeded", "server": "code2", "metadata": {"attempt": 1, "duration_ms": 524.5952606201172}}
+{"timestamp": "2025-11-13T05:44:18.849608Z", "level": "INFO", "message": "Git pull succeeded", "server": "code2", "metadata": {"attempt": 1, "duration_ms": 548.8739013671875}}
+{"timestamp": "2025-11-13T05:44:29.443098Z", "level": "INFO", "message": "Git pull succeeded", "server": "code2", "metadata": {"attempt": 1, "duration_ms": 538.9161109924316}}
+{"timestamp": "2025-11-13T05:44:40.026616Z", "level": "INFO", "message": "Git pull succeeded", "server": "code2", "metadata": {"attempt": 1, "duration_ms": 518.115758895874}}
+{"timestamp": "2025-11-13T05:44:51.018084Z", "level": "INFO", "message": "Git pull succeeded", "server": "code2", "metadata": {"attempt": 1, "duration_ms": 883.7754726409912}}
+{"timestamp": "2025-11-13T05:45:01.608902Z", "level": "INFO", "message": "Git pull succeeded", "server": "code2", "metadata": {"attempt": 1, "duration_ms": 540.062665939331}}
+{"timestamp": "2025-11-13T05:45:12.204942Z", "level": "INFO", "message": "Git pull succeeded", "server": "code2", "metadata": {"attempt": 1, "duration_ms": 535.5455875396729}}
+{"timestamp": "2025-11-13T05:45:22.792065Z", "level": "INFO", "message": "Git pull succeeded", "server": "code2", "metadata": {"attempt": 1, "duration_ms": 524.9214172363281}}
+{"timestamp": "2025-11-13T05:45:33.366123Z", "level": "INFO", "message": "Git pull succeeded", "server": "code2", "metadata": {"attempt": 1, "duration_ms": 523.993730545044}}
+{"timestamp": "2025-11-13T05:45:44.103651Z", "level": "INFO", "message": "Git pull succeeded", "server": "code2", "metadata": {"attempt": 1, "duration_ms": 670.6600189208984}}
+{"timestamp": "2025-11-13T05:45:54.676746Z", "level": "INFO", "message": "Git pull succeeded", "server": "code2", "metadata": {"attempt": 1, "duration_ms": 512.9778385162354}}
+{"timestamp": "2025-11-13T05:46:05.283137Z", "level": "INFO", "message": "Git pull succeeded", "server": "code2", "metadata": {"attempt": 1, "duration_ms": 544.9111461639404}}
+{"timestamp": "2025-11-13T05:46:15.858249Z", "level": "INFO", "message": "Git pull succeeded", "server": "code2", "metadata": {"attempt": 1, "duration_ms": 523.7219333648682}}
+{"timestamp": "2025-11-13T05:46:26.445999Z", "level": "INFO", "message": "Git pull succeeded", "server": "code2", "metadata": {"attempt": 1, "duration_ms": 526.6323089599609}}
+{"timestamp": "2025-11-13T05:46:37.071632Z", "level": "INFO", "message": "Git pull succeeded", "server": "code2", "metadata": {"attempt": 1, "duration_ms": 521.3558673858643}}
+{"timestamp": "2025-11-13T05:46:47.669700Z", "level": "INFO", "message": "Git pull succeeded", "server": "code2", "metadata": {"attempt": 1, "duration_ms": 538.0210876464844}}
+{"timestamp": "2025-11-13T05:46:58.263828Z", "level": "INFO", "message": "Git pull succeeded", "server": "code2", "metadata": {"attempt": 1, "duration_ms": 526.1554718017578}}
+{"timestamp": "2025-11-13T05:47:08.934448Z", "level": "INFO", "message": "Git pull succeeded", "server": "code2", "metadata": {"attempt": 1, "duration_ms": 611.9105815887451}}
+{"timestamp": "2025-11-13T05:47:19.536357Z", "level": "INFO", "message": "Git pull succeeded", "server": "code2", "metadata": {"attempt": 1, "duration_ms": 532.8035354614258}}
+{"timestamp": "2025-11-13T05:47:30.108879Z", "level": "INFO", "message": "Git pull succeeded", "server": "code2", "metadata": {"attempt": 1, "duration_ms": 522.4452018737793}}
+{"timestamp": "2025-11-13T05:47:40.721196Z", "level": "INFO", "message": "Git pull succeeded", "server": "code2", "metadata": {"attempt": 1, "duration_ms": 563.0264282226562}}
+{"timestamp": "2025-11-13T05:47:51.299741Z", "level": "INFO", "message": "Git pull succeeded", "server": "code2", "metadata": {"attempt": 1, "duration_ms": 524.2135524749756}}
+{"timestamp": "2025-11-13T05:48:01.911444Z", "level": "INFO", "message": "Git pull succeeded", "server": "code2", "metadata": {"attempt": 1, "duration_ms": 559.5118999481201}}
+{"timestamp": "2025-11-13T05:48:12.483972Z", "level": "INFO", "message": "Git pull succeeded", "server": "code2", "metadata": {"attempt": 1, "duration_ms": 522.7420330047607}}
+{"timestamp": "2025-11-13T05:48:23.121274Z", "level": "INFO", "message": "Git pull succeeded", "server": "code2", "metadata": {"attempt": 1, "duration_ms": 531.2073230743408}}
+{"timestamp": "2025-11-13T05:48:33.714616Z", "level": "INFO", "message": "Git pull succeeded", "server": "code2", "metadata": {"attempt": 1, "duration_ms": 532.3307514190674}}
+{"timestamp": "2025-11-13T05:48:44.285716Z", "level": "INFO", "message": "Git pull succeeded", "server": "code2", "metadata": {"attempt": 1, "duration_ms": 520.5404758453369}}
+{"timestamp": "2025-11-13T05:48:54.885388Z", "level": "INFO", "message": "Git pull succeeded", "server": "code2", "metadata": {"attempt": 1, "duration_ms": 546.8800067901611}}
+{"timestamp": "2025-11-13T05:49:05.464483Z", "level": "INFO", "message": "Git pull succeeded", "server": "code2", "metadata": {"attempt": 1, "duration_ms": 516.404390335083}}
+{"timestamp": "2025-11-13T05:49:16.037167Z", "level": "INFO", "message": "Git pull succeeded", "server": "code2", "metadata": {"attempt": 1, "duration_ms": 524.8088836669922}}
+{"timestamp": "2025-11-13T05:49:26.606691Z", "level": "INFO", "message": "Git pull succeeded", "server": "code2", "metadata": {"attempt": 1, "duration_ms": 516.5269374847412}}
+{"timestamp": "2025-11-13T05:49:37.166111Z", "level": "INFO", "message": "Git pull succeeded", "server": "code2", "metadata": {"attempt": 1, "duration_ms": 508.29100608825684}}
+{"timestamp": "2025-11-13T05:49:47.748291Z", "level": "INFO", "message": "Git pull succeeded", "server": "code2", "metadata": {"attempt": 1, "duration_ms": 521.9707489013672}}
+{"timestamp": "2025-11-13T05:49:58.311750Z", "level": "INFO", "message": "Git pull succeeded", "server": "code2", "metadata": {"attempt": 1, "duration_ms": 503.59177589416504}}
+{"timestamp": "2025-11-13T05:50:08.945038Z", "level": "INFO", "message": "Git pull succeeded", "server": "code2", "metadata": {"attempt": 1, "duration_ms": 522.984504699707}}
+{"timestamp": "2025-11-13T05:50:19.552933Z", "level": "INFO", "message": "Git pull succeeded", "server": "code2", "metadata": {"attempt": 1, "duration_ms": 556.1008453369141}}
+{"timestamp": "2025-11-13T05:50:30.138545Z", "level": "INFO", "message": "Git pull succeeded", "server": "code2", "metadata": {"attempt": 1, "duration_ms": 531.2933921813965}}
+{"timestamp": "2025-11-13T05:50:40.742588Z", "level": "INFO", "message": "Git pull succeeded", "server": "code2", "metadata": {"attempt": 1, "duration_ms": 546.8311309814453}}
+{"timestamp": "2025-11-13T05:50:51.496263Z", "level": "INFO", "message": "Git pull succeeded", "server": "code2", "metadata": {"attempt": 1, "duration_ms": 702.4214267730713}}
+{"timestamp": "2025-11-13T05:51:02.089656Z", "level": "INFO", "message": "Git pull succeeded", "server": "code2", "metadata": {"attempt": 1, "duration_ms": 542.4685478210449}}
+{"timestamp": "2025-11-13T05:51:12.676186Z", "level": "INFO", "message": "Git pull succeeded", "server": "code2", "metadata": {"attempt": 1, "duration_ms": 526.4368057250977}}
+{"timestamp": "2025-11-13T05:51:23.281346Z", "level": "INFO", "message": "Git pull succeeded", "server": "code2", "metadata": {"attempt": 1, "duration_ms": 536.8671417236328}}
+{"timestamp": "2025-11-13T05:51:33.849519Z", "level": "INFO", "message": "Git pull succeeded", "server": "code2", "metadata": {"attempt": 1, "duration_ms": 515.0730609893799}}
+{"timestamp": "2025-11-13T05:51:44.426652Z", "level": "INFO", "message": "Git pull succeeded", "server": "code2", "metadata": {"attempt": 1, "duration_ms": 512.5148296356201}}
+{"timestamp": "2025-11-13T05:51:55.051751Z", "level": "INFO", "message": "Git pull succeeded", "server": "code2", "metadata": {"attempt": 1, "duration_ms": 515.0923728942871}}
+{"timestamp": "2025-11-13T05:52:05.686071Z", "level": "INFO", "message": "Git pull succeeded", "server": "code2", "metadata": {"attempt": 1, "duration_ms": 578.6488056182861}}
+{"timestamp": "2025-11-13T05:52:16.285340Z", "level": "INFO", "message": "Git pull succeeded", "server": "code2", "metadata": {"attempt": 1, "duration_ms": 530.1175117492676}}
+{"timestamp": "2025-11-13T05:52:26.854673Z", "level": "INFO", "message": "Git pull succeeded", "server": "code2", "metadata": {"attempt": 1, "duration_ms": 518.2340145111084}}
+{"timestamp": "2025-11-13T05:52:37.459510Z", "level": "INFO", "message": "Git pull succeeded", "server": "code2", "metadata": {"attempt": 1, "duration_ms": 538.001537322998}}
+{"timestamp": "2025-11-13T05:52:48.080496Z", "level": "INFO", "message": "Git pull succeeded", "server": "code2", "metadata": {"attempt": 1, "duration_ms": 546.379566192627}}
+{"timestamp": "2025-11-13T05:52:58.664619Z", "level": "INFO", "message": "Git pull succeeded", "server": "code2", "metadata": {"attempt": 1, "duration_ms": 530.2956104278564}}
