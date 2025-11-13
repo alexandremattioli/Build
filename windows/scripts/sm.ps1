@@ -95,7 +95,8 @@ try {
     $messages | ConvertTo-Json -Depth 10 | Set-Content $messagesPath
     
     git add $messagesPath | Out-Null
-    git commit -m "$From -> $To: $Subject" -q
+    $commitMsg = "${From} -> ${To}: $Subject"
+    git commit -m $commitMsg -q
     git push origin main -q
     
     Write-Host "✓ Message sent successfully" -ForegroundColor Green
