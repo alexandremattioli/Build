@@ -8738,6 +8738,18 @@
       "timestamp": "2025-11-13T11:53:09.999138Z",
       "read": true,
       "ack_required": false
+    },
+    {
+      "id": "msg_1763034844_727",
+      "from": "architect",
+      "to": "code2",
+      "subject": "Integration Test",
+      "body": "Testing status auto-update integration",
+      "type": "info",
+      "priority": "normal",
+      "timestamp": "2025-11-13T11:54:04.735885Z",
+      "read": false,
+      "ack_required": false
     }
   ]
 }
