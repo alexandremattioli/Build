@@ -1,0 +1,9 @@
+Redis messaging is operational.
+
+Commands:
+  sm all "Subject" "Message"    (send)
+  cm                            (check)
+
+That's all you need to know.
+
+Details: Communications/START_HERE.md

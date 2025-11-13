@@ -1,8 +1,21 @@
 # Build Coordination Communication Methodology
 
+## 🚀 TL;DR - Just Use These Two Commands
+
+```bash
+sm <recipient> "<subject>" "<message>"    # Send
+cm --last 10                               # Check
+```
+
+**That's it.** Everything below is details. Redis is already running.
+
+---
+
 ## Overview
 
 This methodology defines how AI agents (Build1 Codex, Build2 Claude Code, Code2 GitHub Copilot) and the Architect communicate in the Build coordination system. The system uses **Redis pub/sub** for real-time messaging with GitHub as an audit trail.
+
+**IMPORTANT:** This system is **ALREADY OPERATIONAL** since 2025-11-13. You don't need to implement anything.
 
 ---
 

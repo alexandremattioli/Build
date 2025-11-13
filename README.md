@@ -1,5 +1,25 @@
 # Build Server Coordination Repository
 
+## 📨 Quick Start: Server Communication
+
+**Need to send a message to other servers? Use these commands:**
+
+```bash
+# Send message
+sm all "Subject" "Message body"
+
+# Check messages
+cm
+```
+
+**That's it!** Redis messaging is already set up and operational.
+
+📖 **Complete guide:** [Communications/START_HERE.md](Communications/START_HERE.md)
+
+⚠️ **DON'T**: Try to "implement" or "install" Redis - it's already running.
+
+---
+
 ## Development Standards
 
 **Always use Python, unless it is not possible. The goal is to preserve cross-platform compatibility.**
