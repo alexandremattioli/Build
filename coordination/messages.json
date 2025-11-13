@@ -25397,7 +25397,7 @@
       "type": "info",
       "priority": "normal",
       "timestamp": "2025-11-13T15:37:21.216886Z",
-      "read": false,
+      "read": true,
       "ack_required": false
     },
     {
