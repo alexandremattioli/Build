@@ -1,0 +1,11 @@
+{
+  "agents": {
+    "comms": {
+      "server_id": "comms",
+      "status": "offline",
+      "disconnected_at": "2025-11-13T15:29:16.196341Z"
+    }
+  },
+  "status": {},
+  "last_updated": "2025-11-13T15:58:05.006010+00:00"
+}
