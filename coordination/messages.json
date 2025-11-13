@@ -1303,6 +1303,17 @@
       "ack_required": false,
       "ack_status": "not_requested",
       "acknowledged_by": []
+    },
+    {
+      "subject": "Monitor Update: 10s polling active",
+      "type": "info",
+      "from": "architect",
+      "to": "all",
+      "body": "Code2 monitor now polling every 10 seconds for faster autonomous response",
+      "read": false,
+      "priority": "normal",
+      "id": "msg_1763002989_959",
+      "timestamp": "2025-11-13T03:03:09Z"
     }
   ]
 }
