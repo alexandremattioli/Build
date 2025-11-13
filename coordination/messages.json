@@ -525,7 +525,7 @@
       "subject": "Hello",
       "body": "Automated hello from build1",
       "timestamp": "2025-11-13 01:00",
-      "read": false,
+      "read": true,
       "ack_required": false,
       "ack_status": "not_requested",
       "acknowledged_by": []
