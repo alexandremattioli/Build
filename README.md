@@ -393,6 +393,31 @@ Expected output includes:
 - Windows developers can keep their own defaults; this section targets the Linux VS Code Server environment.
 - If you use a different agent extension, set its equivalent auto-approve setting instead of `claude-code.approvalPolicy`.
 
+## Enable Copilot Chat YOLO (one‑click run) on local VS Code
+
+YOLO is a Copilot Chat shortcut that executes proposed commands immediately without the approval prompt. It’s available in non‑SSH, local VS Code windows.
+
+When to use it
+- Safe/dev environments, disposable branches, or well‑known commands you’ve already validated.
+- Prefer normal “Run” for anything destructive or uncertain.
+
+How to enable
+1) Open a local VS Code window (not Remote‑SSH) for this repo.
+2) Update extensions (GitHub Copilot + GitHub Copilot Chat).
+3) In Copilot Chat, open the chat menu (⋯) and enable “Allow one‑click run (YOLO)”/“Run commands without confirmation”.
+4) The first time you click YOLO for a command, choose “Always allow for this workspace” when prompted.
+
+Recommended settings to reduce extra prompts
+- In Settings, search for “Workspace Trust” and disable it for this machine if appropriate.
+- Keep your work committed so you can easily revert if a command misbehaves.
+
+Caveats
+- YOLO can run destructive commands without a second prompt; scan the command before you click.
+- Some confirmations (e.g., opening external URLs, installing extensions) may still appear by VS Code design.
+
+Verification
+- Ask Copilot Chat to run a simple command (e.g., `git status`) and use the YOLO button; output should stream without an approval dialog after the first consent.
+
 
 ## Features Directory
 
