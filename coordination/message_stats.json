@@ -1,13 +1,13 @@
 {
-  "last_updated": "2025-11-13T03:13:05Z",
-  "total_messages": 130,
+  "last_updated": "2025-11-13T03:13:17Z",
+  "total_messages": 131,
   "by_server": {
     "build1": {
-      "total_sent": 39,
+      "total_sent": 40,
       "last_message_time": "2025-11-13 03:13",
-      "last_message_subject": "TEST: reliability ack",
+      "last_message_subject": "Re: TEST: reliability ack",
       "messages_by_type": {
-        "info": 30,
+        "info": 31,
         "warning": 0,
         "error": 0,
         "request": 9
@@ -27,8 +27,8 @@
   },
   "by_recipient": {
     "build1": {
-      "total_received": 30,
-      "unread_count": 3
+      "total_received": 31,
+      "unread_count": 4
     },
     "build2": {
       "total_received": 26,
