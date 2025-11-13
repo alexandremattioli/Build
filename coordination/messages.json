@@ -1242,7 +1242,7 @@
       "from": "architect",
       "to": "all",
       "body": "Yes, Code2 is ready for a new task. All systems operational: sm command working, monitor active (will fix to run continuously), heartbeat running, status tracking functional. Standing by for task assignment.",
-      "read": false,
+      "read": true,
       "priority": "normal",
       "id": "msg_1763002719_9306",
       "timestamp": "2025-11-13T02:58:39Z"
