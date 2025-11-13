@@ -22,28 +22,60 @@ try {
     $statusLines += "=== BUILD COORDINATION MESSAGE STATUS ==="
     $statusLines += "Generated: $(Get-Date -Format 'yyyy-MM-dd HH:mm:ss')"
     $statusLines += ""
-    $statusLines += "MESSAGE COUNTS BY SERVER:"
     
+    # Message counts by server
     foreach ($srv in $allServers) {
-        $count = ($messages.messages | Where-Object { $_.from -eq $srv }).Count
+        $fromCount = ($messages.messages | Where-Object { $_.from -eq $srv }).Count
+        $toCount = ($messages.messages | Where-Object { $_.to -eq $srv -or $_.to -eq 'all' }).Count
         $lastMsg = $messages.messages | Where-Object { $_.from -eq $srv } | Select-Object -Last 1
-        $lastTime = if ($lastMsg) { $lastMsg.timestamp } else { "never" }
-        $statusLines += "  $srv messages: $count  Last: $lastTime"
+        $lastTime = if ($lastMsg) { 
+            try { [DateTime]::Parse($lastMsg.timestamp).ToString('yyyy-MM-dd HH:mm') } 
+            catch { $lastMsg.timestamp }
+        } else { 
+            "never" 
+        }
+        $statusLines += "${srv} messages: $fromCount  Last message: $lastTime"
     }
     
     $statusLines += ""
-    $totalCount = $messages.messages.Count
-    $statusLines += "TOTAL MESSAGES: $totalCount"
-    $statusLines += ""
     
+    # Latest message summary
     $lastMsg = $messages.messages | Select-Object -Last 1
-    $statusLines += "LAST MESSAGE:"
-    $statusLines += "  From: $($lastMsg.from)"
-    $statusLines += "  To: $($lastMsg.to)"
-    $statusLines += "  Subject: $($lastMsg.subject)"
-    $statusLines += "  Time: $($lastMsg.timestamp)"
+    $lastTime = try { [DateTime]::Parse($lastMsg.timestamp).ToString('yyyy-MM-dd HH:mm') } catch { $lastMsg.timestamp }
+    $statusLines += "Last message from: $($lastMsg.from) to $($lastMsg.to) ($($lastMsg.subject))"
+    
+    # Unread count
+    $unreadByServer = @{}
+    foreach ($srv in $allServers) {
+        $unread = ($messages.messages | Where-Object { ($_.to -eq $srv -or $_.to -eq 'all') -and $_.read -eq $false }).Count
+        if ($unread -gt 0) {
+            $unreadByServer[$srv] = $unread
+        }
+    }
+    
+    if ($unreadByServer.Count -gt 0) {
+        $waitingOn = ($unreadByServer.GetEnumerator() | Sort-Object Value -Descending | Select-Object -First 1).Name
+        $waitingCount = $unreadByServer[$waitingOn]
+        $statusLines += "Waiting on: $waitingOn ($waitingCount unread)"
+    }
+    
+    # ACK pending count
+    $ackPending = ($messages.messages | Where-Object { $_.ack_required -eq $true -and -not $_.ack_by }).Count
+    if ($ackPending -gt 0) {
+        $statusLines += "Ack pending: $ackPending"
+    }
+    
+    # Total and unread summary
+    $totalCount = $messages.messages.Count
+    $unreadList = ($unreadByServer.GetEnumerator() | ForEach-Object { "$($_.Key)=$($_.Value)" }) -join ' '
+    if ($unreadList) {
+        $statusLines += "Total messages: $totalCount  Unread: $unreadList"
+    } else {
+        $statusLines += "Total messages: $totalCount  Unread: 0"
+    }
+    
     $statusLines += ""
-    $statusLines += "Body:"
+    $statusLines += "Latest message body:"
     $statusLines += $lastMsg.body
     
     $statusLines | Set-Content "message_status.txt"
