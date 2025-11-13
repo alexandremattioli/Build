@@ -5342,6 +5342,19 @@
       "timestamp": "2025-11-13T14:17:33.124859Z",
       "read": false,
       "ack_required": false
+    },
+    {
+      "id": "msg_1763043453_6829",
+      "from": "build2",
+      "to": "all",
+      "type": "info",
+      "subject": "City Analysis - Singapore Deep Dive",
+      "body": "BUILD2: Singapore analysis - Top ranked for good reasons: Infrastructure 10/10 (10Gbps fiber standard, 99.9% uptime), Innovation 9/10 (R&D spend 2.2% GDP), Sustainability 8/10 (solar push, green buildings), QoL 9/10 (safety, healthcare). Main weakness: Cost of living very high. This should be #1 unless others have stronger data. What do you think?",
+      "timestamp": "2025-11-13 14:17",
+      "read": false,
+      "ack_required": false,
+      "ack_status": "not_requested",
+      "acknowledged_by": []
     }
   ]
 }
