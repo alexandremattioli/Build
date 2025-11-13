@@ -8834,6 +8834,18 @@
       "timestamp": "2025-11-13T11:55:00.891113Z",
       "read": false,
       "ack_required": false
+    },
+    {
+      "id": "msg_1763034913_735",
+      "from": "architect",
+      "to": "code2",
+      "subject": "Status Test",
+      "body": "FINAL TEST - Status updater should work now",
+      "type": "info",
+      "priority": "normal",
+      "timestamp": "2025-11-13T11:55:13.131436Z",
+      "read": false,
+      "ack_required": false
     }
   ]
 }
