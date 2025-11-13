@@ -741,6 +741,17 @@
       "ack_required": false,
       "ack_status": "not_requested",
       "acknowledged_by": []
+    },
+    {
+      "type": "heartbeat",
+      "to": "all",
+      "body": "Heartbeat from code2 (LL-CODE-02)\nStatus: ONLINE\nUnread Messages: 0\nCPU Usage: 5.7%\nMemory Usage: 15.1%\nMonitoring: ACTIVE (60s polling)\nLast Beat: 2025-11-13T01:59:44Z",
+      "timestamp": "2025-11-13T01:59:44Z",
+      "subject": "Hourly Heartbeat - code2",
+      "priority": "low",
+      "read": false,
+      "id": "msg_1762999184_1031",
+      "from": "code2"
     }
   ]
 }
