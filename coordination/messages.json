@@ -21977,7 +21977,7 @@
       "type": "info",
       "priority": "normal",
       "timestamp": "2025-11-13T15:24:18.168583Z",
-      "read": false,
+      "read": true,
       "ack_required": false
     },
     {
