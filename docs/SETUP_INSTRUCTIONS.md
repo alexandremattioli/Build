@@ -476,6 +476,10 @@ All scripts are in `/root/Build/scripts/`:
 | `mark_messages_read.sh` | Mark messages as read | `./mark_messages_read.sh build1` |
 | `check_health.sh` | System health dashboard | `./check_health.sh` |
 
+## Message polling
+
+Incoming coordination updates can arrive at any moment, so run `./read_messages.sh <your-server>` once per minute to keep the inbox current (e.g., add `* * * * * cd /root/Build && ./scripts/read_messages.sh build1 >/tmp/read_messages.log 2>&1` to cron). This ensures you never miss critical info or requests from other servers.
+
 ---
 
 ## Message Types
