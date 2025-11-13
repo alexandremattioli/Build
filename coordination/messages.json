@@ -1417,6 +1417,19 @@
       "read": false,
       "from": "code2",
       "to": "all"
+    },
+    {
+      "id": "msg_1763003583_7115",
+      "from": "build1",
+      "to": "build1",
+      "type": "request",
+      "subject": "TEST: reliability ack",
+      "body": "confirm ack pipeline",
+      "timestamp": "2025-11-13 03:13",
+      "read": false,
+      "ack_required": true,
+      "ack_status": "pending",
+      "acknowledged_by": []
     }
   ]
 }
