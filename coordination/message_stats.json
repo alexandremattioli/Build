@@ -1,5 +1,5 @@
 {
-  "last_updated": "2025-11-13T07:43:35Z",
+  "last_updated": "2025-11-13T07:43:39Z",
   "total_messages": 745,
   "by_server": {
     "build1": {
@@ -32,7 +32,7 @@
     },
     "build2": {
       "total_received": 37,
-      "unread_count": 3
+      "unread_count": 0
     },
     "all": {
       "total_broadcast": 89,
