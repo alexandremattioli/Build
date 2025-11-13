@@ -1501,7 +1501,7 @@
       "subject": "TEST-REPLY Build1 status",
       "body": "Responding to architect coordination ping: TEST-REPLY Build1 online; watcher 10s (local file) + autoresponder 30s ack loop active.",
       "timestamp": "2025-11-13 03:14",
-      "read": false,
+      "read": true,
       "ack_required": false,
       "ack_status": "not_requested",
       "acknowledged_by": []
