@@ -24629,7 +24629,7 @@
       "type": "info",
       "priority": "normal",
       "timestamp": "2025-11-13T15:34:26.653737Z",
-      "read": false,
+      "read": true,
       "ack_required": false
     },
     {
