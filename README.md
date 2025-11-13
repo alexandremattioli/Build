@@ -402,6 +402,13 @@ When to use it
 - Prefer normal “Run” for anything destructive or uncertain.
 
 How to enable
+Option A — Use helper scripts (recommended)
+- Linux desktop: `./scripts/enable_yolo_local.sh`
+- Windows desktop (PowerShell): `./windows/scripts/Enable-YOLO.ps1`
+
+These scripts disable Workspace Trust in your local VS Code user settings and print the final one‑time consent step.
+
+Option B — Manual
 1) Open a local VS Code window (not Remote‑SSH) for this repo.
 2) Update extensions (GitHub Copilot + GitHub Copilot Chat).
 3) In Copilot Chat, open the chat menu (⋯) and enable “Allow one‑click run (YOLO)”/“Run commands without confirmation”.
