@@ -65,15 +65,9 @@ try {
         $statusLines += "Ack pending: $ackPending"
     }
     
-    # Total and unread summary
+    # Total messages
     $totalCount = $messages.messages.Count
-    $unreadList = ($unreadByServer.GetEnumerator() | ForEach-Object { "$($_.Key)=$($_.Value)" }) -join ' '
-    if ($unreadList) {
-        $statusLines += "Total messages: $totalCount  Unread: $unreadList"
-    } else {
-        $statusLines += "Total messages: $totalCount  Unread: 0"
-    }
-    
+    $statusLines += "Total messages: $totalCount"
     $statusLines += ""
     $statusLines += "Latest message body:"
     $statusLines += $lastMsg.body
