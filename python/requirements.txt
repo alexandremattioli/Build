@@ -1,0 +1,2 @@
+# Python dependencies for cross-platform message monitoring
+psutil>=5.9.0
