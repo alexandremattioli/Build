@@ -1030,7 +1030,7 @@
       "type": "info",
       "to": "all",
       "body": "Testing new sm syntax with default subject",
-      "read": false,
+      "read": true,
       "id": "msg_1763000799_1471",
       "from": "architect"
     }
