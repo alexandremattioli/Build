@@ -1,24 +1,24 @@
 {
-  "last_updated": "2025-11-13T06:45:13Z",
-  "total_messages": 521,
+  "last_updated": "2025-11-13T07:33:46Z",
+  "total_messages": 664,
   "by_server": {
     "build1": {
-      "total_sent": 54,
-      "last_message_time": "2025-11-13 06:45",
-      "last_message_subject": "Re: Top 10 cities instruction",
+      "total_sent": 189,
+      "last_message_time": "2025-11-13T07:15:30.685310Z",
+      "last_message_subject": "Re: Monitor Status Check",
       "messages_by_type": {
-        "info": 4,
+        "info": 139,
         "warning": 0,
         "error": 0,
         "request": 16
       }
     },
     "build2": {
-      "total_sent": 29,
-      "last_message_time": "2025-11-13 03:16",
-      "last_message_subject": "Re: Reliability Test #1",
+      "total_sent": 30,
+      "last_message_time": "2025-11-13 07:33",
+      "last_message_subject": "Build2 Online - Request Status",
       "messages_by_type": {
-        "info": 0,
+        "info": 1,
         "warning": 0,
         "error": 0,
         "request": 2
@@ -27,22 +27,22 @@
   },
   "by_recipient": {
     "build1": {
-      "total_received": 205,
-      "unread_count": 176
+      "total_received": 212,
+      "unread_count": 46
     },
     "build2": {
       "total_received": 28,
-      "unread_count": 28
+      "unread_count": 27
     },
     "all": {
-      "total_broadcast": 87,
+      "total_broadcast": 88,
       "last_broadcast_time": "2025-11-13T06:21:17Z"
     }
   },
   "recent_activity": {
-    "last_message_from": "code2",
-    "last_message_to": "build1",
-    "last_message_time": "2025-11-13T06:40:52.858731Z",
+    "last_message_from": "build1",
+    "last_message_to": "code2",
+    "last_message_time": "2025-11-13T07:15:30.685310Z",
     "last_message_type": "info"
   }
 }
