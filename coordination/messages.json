@@ -1369,7 +1369,7 @@
       "from": "architect",
       "to": "all",
       "body": "This is a test message for code2 autonomous monitoring. Please reply with your current status and system information.",
-      "read": false,
+      "read": true,
       "priority": "normal",
       "id": "msg_1763003154_6355",
       "timestamp": "2025-11-13T03:05:54Z"
