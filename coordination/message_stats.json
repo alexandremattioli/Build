@@ -1,13 +1,13 @@
 {
-  "last_updated": "2025-11-13T04:06:25Z",
-  "total_messages": 407,
+  "last_updated": "2025-11-13T04:53:55Z",
+  "total_messages": 409,
   "by_server": {
     "build1": {
-      "total_sent": 48,
-      "last_message_time": "2025-11-13 04:06",
-      "last_message_subject": "Clarify auto-response sender metadata",
+      "total_sent": 49,
+      "last_message_time": "2025-11-13 04:53",
+      "last_message_subject": "Re: Message from architect",
       "messages_by_type": {
-        "info": 33,
+        "info": 34,
         "warning": 0,
         "error": 0,
         "request": 15
@@ -28,21 +28,21 @@
   "by_recipient": {
     "build1": {
       "total_received": 159,
-      "unread_count": 129
+      "unread_count": 130
     },
     "build2": {
       "total_received": 28,
-      "unread_count": 27
+      "unread_count": 28
     },
     "all": {
-      "total_broadcast": 71,
-      "last_broadcast_time": "2025-11-13T03:44:17.981442Z"
+      "total_broadcast": 73,
+      "last_broadcast_time": "2025-11-13T04:18:20Z"
     }
   },
   "recent_activity": {
     "last_message_from": "architect",
-    "last_message_to": "architect",
-    "last_message_time": "2025-11-13T03:45:20.138503Z",
+    "last_message_to": "all",
+    "last_message_time": "2025-11-13T04:18:20Z",
     "last_message_type": "info"
   }
 }
