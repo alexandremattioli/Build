@@ -5456,6 +5456,18 @@
       "timestamp": "2025-11-13T06:40:40.478519Z",
       "read": false,
       "ack_required": false
+    },
+    {
+      "id": "msg_1763016052_519",
+      "from": "code2",
+      "to": "build1",
+      "subject": "System Maintenance: APT Update Required",
+      "body": "Please run: sudo apt update && sudo apt upgrade -y\n\nThis will update package lists and upgrade installed packages on your system.",
+      "type": "info",
+      "priority": "normal",
+      "timestamp": "2025-11-13T06:40:52.858731Z",
+      "read": false,
+      "ack_required": false
     }
   ]
 }
