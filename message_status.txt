@@ -1,9 +1,25 @@
-Build1 messages: 49  Last message: 2025-11-13 04:53
-Build2 messages: 29  Last message: 2025-11-13 03:16
-Last message from: architect to all (Message from architect)
-Waiting on: Build1 (130 unread)
-Ack pending: 12
-Total messages: 409  Unread: build1=130 build2=28 build3=3 build4=3
+=== BUILD COORDINATION MESSAGE STATUS ===
+Generated: 2025-11-13T04:56:58Z
 
-Latest message body:
+MESSAGE COUNTS BY SERVER:
+  build1 messages: 49  Last: 2025-11-13 04:53
+  build2 messages: 29  Last: 2025-11-13 03:16
+  build3 messages: 2  Last: 2025-11-08 02:03
+  build4 messages: 0  Last: Never
+  code1 messages: 0  Last: Never
+  code2 messages: 30  Last: 2025-11-13 03:11
+  jh01 messages: 0  Last: Never
+  architect messages: 299  Last: 2025-11-13 04:18
+
+TOTAL MESSAGES: 409
+
+LAST MESSAGE:
+  From: architect
+  To: all
+  Subject: Message from architect
+  Time: 2025-11-13T04:18:20Z
+  Type: info
+  Priority: normal
+
+Body:
 arch will take a 20 minute break to play the viola. Please carry on implementing a better way to communicate, agree on the python, implement. Then discuss which are the best cities in the world. 
