@@ -196,8 +196,8 @@ def send_message(body: str, subject: Optional[str] = None, to: str = "all",
 
 if __name__ == "__main__":
     if len(sys.argv) < 2:
-        print("Usage: python send_message.py <body> [subject] [--to <recipient>]")
-        print("Example: python send_message.py 'Hello fleet' 'Test message' --to all")
+        print("Usage: python send_message.py <body> [subject] [--to <recipient>] [--from <sender>] [--priority <level>] [--type <type>]")
+        print("Example: python send_message.py 'Hello fleet' 'Test message' --to all --from code2")
         sys.exit(1)
 
     body = sys.argv[1]
@@ -205,9 +205,19 @@ if __name__ == "__main__":
 
     # Parse additional arguments
     to = "all"
+    from_sender = "architect"
+    priority = "normal"
+    msg_type = "info"
+    
     for i, arg in enumerate(sys.argv):
         if arg == "--to" and i + 1 < len(sys.argv):
             to = sys.argv[i + 1]
+        elif arg == "--from" and i + 1 < len(sys.argv):
+            from_sender = sys.argv[i + 1]
+        elif arg == "--priority" and i + 1 < len(sys.argv):
+            priority = sys.argv[i + 1]
+        elif arg == "--type" and i + 1 < len(sys.argv):
+            msg_type = sys.argv[i + 1]
 
-    success = send_message(body, subject, to)
+    success = send_message(body, subject, to, priority, msg_type, from_sender)
     sys.exit(0 if success else 1)

@@ -1,5 +1,5 @@
 === BUILD COORDINATION MESSAGE STATUS ===
-Generated: 2025-11-13 11:55:14
+Generated: 2025-11-13 11:58:55
 
 MESSAGE COUNTS BY SERVER:
   build1 messages: 421  Last: 2025-11-13T11:18
@@ -7,21 +7,21 @@ MESSAGE COUNTS BY SERVER:
   build3 messages: 0  Last: never
   build4 messages: 0  Last: never
   code1 messages: 0  Last: never
-  code2 messages: 56  Last: 2025-11-13T11:54
+  code2 messages: 61  Last: 2025-11-13T11:58
   jh01 messages: 0  Last: never
-  architect messages: 253  Last: 2025-11-13T11:55
+  architect messages: 267  Last: 2025-11-13T11:57
 
-TOTAL MESSAGES: 736
+TOTAL MESSAGES: 755
 
 LAST MESSAGE:
-  From: architect
-  To: code2
-  Subject: Status Test
-  Time: 2025-11-13T11:55:13
+  From: code2
+  To: all
+  Subject: CLI Fix
+  Time: 2025-11-13T11:58:54
   Priority: normal
 
 Body:
-FINAL TEST - Status updater should work now
+Command line parameter fix complete. Now supports --from, --priority, and --type flags.
 
 AI AGENT STATUS:
   - CODE2: Running (Anti-Loop Active, Archival Enabled)
