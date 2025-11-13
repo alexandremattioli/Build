@@ -200,6 +200,12 @@ if [ -f scripts/validate_json.sh ]; then
     bash scripts/validate_json.sh coordination/messages.json || true
 fi
 
+# Refresh the status file so message_status.txt reflects the new conversation
+STATUS_SCRIPT="$SCRIPT_DIR/update_message_status_txt.sh"
+if [ -x "$STATUS_SCRIPT" ]; then
+    bash "$STATUS_SCRIPT" >/dev/null 2>&1 || true
+fi
+
 echo "Message sent: $MSG_ID"
 echo "  Subject: $SUBJECT (${#SUBJECT} chars)"
 echo "  Body: ${#BODY} characters"
