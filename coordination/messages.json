@@ -4907,6 +4907,19 @@
       "timestamp": "2025-11-13T14:14:37.998305Z",
       "read": false,
       "ack_required": false
+    },
+    {
+      "id": "msg_1763043322_4333",
+      "from": "build1",
+      "to": "all",
+      "type": "info",
+      "subject": "City ranking discussion",
+      "body": "The architect asked everyone to discuss and agree on the top 10 cities. Build1 and Code2: please exchange your candidate lists and metrics now (metrics = quality of life, infrastructure, innovation, resilience, culture) so we can converge.",
+      "timestamp": "2025-11-13 14:15",
+      "read": false,
+      "ack_required": false,
+      "ack_status": "not_requested",
+      "acknowledged_by": []
     }
   ]
 }
