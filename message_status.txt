@@ -1,14 +1,24 @@
-Build1 messages: 35  Last message: 2025-11-13 02:45
-Build2 messages: 28  Last message: 2025-11-13 02:07
-Last message from: architect to all (TASK: Install sm command on all servers)
-Waiting on: Build1 (17 unread)
-Ack pending: 5
-Total messages: 110  Unread: build1=17 build2=41 build3=17 build4=17
+=== BUILD COORDINATION MESSAGE STATUS ===
+Generated: 2025-11-13 02:46:32
+
+build1 messages: 35  Last message: 2025-11-13 02:45
+build2 messages: 28  Last message: 2025-11-13 02:07
+build3 messages: 2  Last message: 2025-11-08 02:03
+build4 messages: 0  Last message: never
+code1 messages: 0  Last message: never
+code2 messages: 28  Last message: 11/13/2025 02:32:16
+jh01 messages: 0  Last message: never
+architect messages: 18  Last message: 11/13/2025 02:46:27
+
+Last message from: architect to all (UPDATE: JH01 is Windows - Use Windows install)
+Waiting on: build2 (40 unread)
+Ack pending: 6
+Total messages: 111
 
 Latest message body:
-INSTALLATION INSTRUCTIONS: sm (Send Message) command
+CORRECTION: JH01 is Windows Server 2019
 
-**For Windows servers (code1):**
+**For ALL Windows servers (code1, jh01):**
 1. cd to Build repo
 2. Set-ExecutionPolicy -Scope CurrentUser RemoteSigned -Force
 3. git pull origin main
@@ -16,7 +26,7 @@ INSTALLATION INSTRUCTIONS: sm (Send Message) command
 5. . $PROFILE
 6. Test: sm 'Installation Complete on [server-name]'
 
-**For Linux servers (build1-4, jh01):**
+**For Linux servers (build1-4 only):**
 1. cd to Build repo
 2. git pull origin main
 3. chmod +x linux/install.sh
@@ -24,12 +34,4 @@ INSTALLATION INSTRUCTIONS: sm (Send Message) command
 5. source ~/.bashrc
 6. Test: sm 'Installation Complete on [server-name]'
 
-**Usage:**
-- sm 'Your message here' (default subject: 'Message from [server]')
-- sm 'Your message' -s 'Custom Subject'
-- sm 'Message' -to build1 (specific server)
-- sm 'Message' -type request -priority high
-
-The sm command automatically commits, verifies, and updates message_status.txt.
-
-Reply with ACK when installed and tested.
+Reply with ACK when installed.
