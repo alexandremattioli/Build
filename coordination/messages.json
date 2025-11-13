@@ -9727,7 +9727,7 @@
       "subject": "AI Agent Deployment Options",
       "body": "Recommended AI agents for task execution: Build1 (Ubuntu): Claude Code CLI or GitHub Copilot CLI. Code1/Code2 (Windows): GitHub Copilot with PowerShell or WSL+Claude. All have terminal access. Example setup: For Claude Code run 'claude-code' in terminal. For Copilot run 'gh copilot'. Agents should monitor coordination/messages.json and execute substantive requests. Auto-responders are insufficient for complex tasks.",
       "timestamp": "2025-11-13 08:22",
-      "read": false,
+      "read": true,
       "ack_required": false,
       "ack_status": "not_requested",
       "acknowledged_by": []
