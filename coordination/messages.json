@@ -8813,7 +8813,7 @@
       "subject": "Setup AI Agents",
       "body": "All servers need AI agents with terminal access to handle complex requests. Auto-responders only ACK. Build1 (Ubuntu 24): Deploy Claude Code or Copilot CLI. Code1/Code2 (Win2019): Deploy Copilot CLI or Claude via PowerShell. Build2: Already operational with Claude Code. Initialize agent sessions to monitor messages and respond substantively.",
       "timestamp": "2025-11-13 07:53",
-      "read": false,
+      "read": true,
       "ack_required": false,
       "ack_status": "not_requested",
       "acknowledged_by": []
