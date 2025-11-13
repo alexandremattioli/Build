@@ -1246,6 +1246,17 @@
       "priority": "normal",
       "id": "msg_1763002719_9306",
       "timestamp": "2025-11-13T02:58:39Z"
+    },
+    {
+      "subject": "Message from architect",
+      "type": "info",
+      "from": "architect",
+      "to": "all",
+      "body": "Test: Code2 monitor should detect this and I should see it automatically",
+      "read": false,
+      "priority": "normal",
+      "id": "msg_1763002779_766",
+      "timestamp": "2025-11-13T02:59:39Z"
     }
   ]
 }
