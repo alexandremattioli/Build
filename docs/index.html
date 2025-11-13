@@ -449,19 +449,19 @@
         const API_BASE = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents`;
 
         async function fetchFile(path) {
-            // Prefer CDN/raw endpoints to avoid GitHub API rate limits for public viewers
-            const cdnUrl = `https://cdn.jsdelivr.net/gh/${REPO_OWNER}/${REPO_NAME}@main/${path}`;
+            // Use raw.githubusercontent.com first for freshest data, skip CDN caching
             const rawUrl = `https://raw.githubusercontent.com/${REPO_OWNER}/${REPO_NAME}/main/${path}`;
-            // 1) Try jsDelivr CDN
+            const cdnUrl = `https://cdn.jsdelivr.net/gh/${REPO_OWNER}/${REPO_NAME}@main/${path}`;
+            // 1) Try raw.githubusercontent.com (no cache, always fresh)
             try {
-                const r1 = await fetch(cdnUrl, { cache: 'no-store' });
+                const r1 = await fetch(rawUrl, { cache: 'no-store' });
                 if (r1.ok) {
                     return await r1.json();
                 }
             } catch (_) {}
-            // 2) Try raw.githubusercontent.com
+            // 2) Try jsDelivr CDN as fallback
             try {
-                const r2 = await fetch(rawUrl, { cache: 'no-store' });
+                const r2 = await fetch(cdnUrl, { cache: 'no-store' });
                 if (r2.ok) {
                     return await r2.json();
                 }
