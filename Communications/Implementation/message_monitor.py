@@ -191,13 +191,19 @@ class MessageMonitor:
         print(f"Body: {body_preview}...")
         
         # Check if auto-response needed
-        body_lower = message['body'].lower()
-        auto_response_needed = any(keyword in body_lower for keyword in ['reply', 'respond', 'ready?', 'are you', 'status', 'report'])
+        body_lower = message.get('body','').lower()
+        keywords = ['reply','respond','ready?','are you','status','report','ack','acknowledge','confirm']
+        auto_response_needed = (
+            any(k in body_lower for k in keywords)
+            or str(message.get('type','')).lower() == 'request'
+            or bool(message.get('require_ack'))
+            or bool(message.get('ack_required'))
+        )
         if auto_response_needed:
-            print("→ AUTO-RESPONDING")
+            print("-> AUTO-RESPONDING")
             self.auto_respond(message)
         else:
-            print("→ Marking as read")
+            print("-> Marking as read")
 
         self.mark_message_read(message['id'])
         self._persist_processed_id(message.get('id', ''))
@@ -223,7 +229,7 @@ class MessageMonitor:
             duration_ms = (time.time() - start_time) * 1000
             
             if success:
-                print("✓ Auto-response sent and verified")
+                print("OK Auto-response sent and verified")
                 self.logger.info("Auto-response sent", {
                     "to": message['from'],
                     "subject": subject,
@@ -233,7 +239,7 @@ class MessageMonitor:
                 self._record_autoresponse_metrics(duration_ms, True, message['from'])
                 return True
             else:
-                print("✗ Auto-response verification failed - queueing for retry")
+                print("FAIL Auto-response verification failed - queueing for retry")
                 self.message_queue.enqueue({
                     "body": response_body,
                     "subject": subject,
@@ -243,7 +249,7 @@ class MessageMonitor:
                 return False
         except Exception as e:
             duration_ms = (time.time() - start_time) * 1000 if 'start_time' in locals() else 0
-            print(f"✗ Auto-response failed: {e}")
+            print(f"FAIL Auto-response failed: {e}")
             self.message_queue.enqueue({
                 "body": response_body,
                 "subject": subject,
@@ -316,13 +322,13 @@ class MessageMonitor:
                     
                     if success:
                         self.message_queue.mark_sent(msg['id'])
-                        print(f"  ✓ Sent queued message: {msg['subject']}")
+                        print(f"  OK Sent queued message: {msg['subject']}")
                     else:
                         self.message_queue.increment_attempts(msg['id'])
-                        print(f"  ✗ Failed to send queued message: {msg['subject']}")
+                        print(f"  FAIL Failed to send queued message: {msg['subject']}")
                 except Exception as e:
                     self.message_queue.increment_attempts(msg['id'])
-                    print(f"  ✗ Error sending queued message: {e}")
+                    print(f"  FAIL Error sending queued message: {e}")
     
     def check_git_lock(self):
         """Remove stale git lock if present"""
@@ -440,3 +446,6 @@ if __name__ == "__main__":
     )
     
     monitor.run()
+
+
+
