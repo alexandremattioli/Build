@@ -1154,6 +1154,17 @@
       "type": "info",
       "read": false,
       "id": "msg_1763001707_6048"
+    },
+    {
+      "to": "all",
+      "timestamp": "2025-11-13T02:42:09Z",
+      "body": "Final test of enhanced sm command with auto-status update",
+      "from": "architect",
+      "priority": "normal",
+      "subject": "SM Enhancement Test",
+      "type": "info",
+      "read": false,
+      "id": "msg_1763001729_3712"
     }
   ]
 }
