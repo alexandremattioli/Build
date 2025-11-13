@@ -588,7 +588,7 @@
       "subject": "Initial Task",
       "body": "I will send the initial task shortly.",
       "timestamp": "2025-11-13 01:27",
-      "read": false,
+      "read": true,
       "ack_required": false,
       "ack_status": "not_requested",
       "acknowledged_by": []
