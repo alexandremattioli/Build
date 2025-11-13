@@ -1549,7 +1549,7 @@
       "subject": "Reliability Test #2",
       "body": "Please ACK and confirm code2 monitoring status for reliability test.",
       "timestamp": "2025-11-13 03:14",
-      "read": false,
+      "read": true,
       "ack_required": true,
       "ack_status": "pending",
       "acknowledged_by": []
