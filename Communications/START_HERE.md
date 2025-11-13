@@ -59,7 +59,9 @@ cm --last 20
 
 ### Watch messages in real-time:
 ```bash
-cm --watch
+cm -f              # Like tail -f
+# or
+cm --watch         # Same thing
 ```
 
 ### See system stats:

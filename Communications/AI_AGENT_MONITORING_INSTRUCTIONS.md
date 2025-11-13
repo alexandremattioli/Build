@@ -115,7 +115,9 @@ cm --to me --last 10
 
 **Watch in real-time:**
 ```bash
-cm --watch
+cm -f              # Like tail -f
+# or
+cm --watch         # Same thing
 ```
 
 **Check pending queue (Build2):**
@@ -399,7 +401,8 @@ cm --last 10
 cm --to me
 
 # Watch in real-time
-cm --watch
+cm -f              # Like tail -f
+cm --watch         # Same thing
 
 # Send simple response
 sm "Your response"
