@@ -195,7 +195,6 @@ class MessageMonitor:
         keywords = ['reply','respond','ready?','are you','status','report','ack','acknowledge','confirm']
         auto_response_needed = (
             any(k in body_lower for k in keywords)
-            or str(message.get('type','')).lower() == 'request'
             or bool(message.get('require_ack'))
             or bool(message.get('ack_required'))
         )
