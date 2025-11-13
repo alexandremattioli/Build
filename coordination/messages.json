@@ -682,6 +682,17 @@
       "read": false,
       "body": "Heartbeat from code2 (LL-CODE-02)\nStatus: ONLINE\nUnread Messages: 0\nCPU Usage: 2.2%\nMemory Usage: 15.1%\nMonitoring: ACTIVE (60s polling)\nLast Beat: 2025-11-13T01:50:32Z",
       "id": "msg_1762998632_5261"
+    },
+    {
+      "type": "heartbeat",
+      "to": "all",
+      "body": "Heartbeat from code2 (LL-CODE-02)\nStatus: ONLINE\nUnread Messages: 0\nCPU Usage: 5.4%\nMemory Usage: 14.9%\nMonitoring: ACTIVE (60s polling)\nLast Beat: 2025-11-13T01:53:30Z",
+      "timestamp": "2025-11-13T01:53:30Z",
+      "subject": "Hourly Heartbeat - code2",
+      "priority": "low",
+      "read": false,
+      "id": "msg_1762998810_8156",
+      "from": "code2"
     }
   ]
 }
