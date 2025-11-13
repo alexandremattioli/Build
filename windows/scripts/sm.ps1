@@ -97,9 +97,23 @@ try {
     git add $messagesPath | Out-Null
     $commitMsg = "${From} -> ${To}: $Subject"
     git commit -m $commitMsg -q
-    git push origin main -q
     
-    Write-Host "✓ Message sent successfully" -ForegroundColor Green
+    # Push and verify
+    $pushResult = git push origin main 2>&1
+    if ($LASTEXITCODE -ne 0) {
+        throw "Failed to push message: $pushResult"
+    }
+    
+    # Pull and verify message exists
+    git pull origin main -q 2>&1 | Out-Null
+    $verifyMessages = Get-Content $messagesPath -Raw | ConvertFrom-Json
+    $sentMessage = $verifyMessages.messages | Where-Object { $_.id -eq $id }
+    
+    if (-not $sentMessage) {
+        throw "Message not found after commit - ID: $id"
+    }
+    
+    Write-Host "✓ Message sent and verified" -ForegroundColor Green
     Write-Host "  From: $From" -ForegroundColor Cyan
     Write-Host "  To: $To" -ForegroundColor Cyan
     Write-Host "  Subject: $Subject" -ForegroundColor Cyan
