@@ -2978,7 +2978,7 @@
       "subject": "Re: Coordination Test - Please Reply"
     },
     {
-      "read": false,
+      "read": true,
       "priority": "normal",
       "subject": "Re: Reliability Test #2",
       "from": "architect",
