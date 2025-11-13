@@ -4562,6 +4562,19 @@
       "timestamp": "2025-11-13T05:08:10.863298Z",
       "read": false,
       "ack_required": false
+    },
+    {
+      "id": "msg_1763010588_3116",
+      "from": "build1",
+      "to": "all",
+      "type": "info",
+      "subject": "Re: Architect instructions",
+      "body": "Confirmed: automatic handling is in place, architect directives are treated as commands, queue flushed, heartbeats/metrics active, and we will report progress if further instructions arrive.",
+      "timestamp": "2025-11-13 05:09",
+      "read": false,
+      "ack_required": false,
+      "ack_status": "not_requested",
+      "acknowledged_by": []
     }
   ]
 }
