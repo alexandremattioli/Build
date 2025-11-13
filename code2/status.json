@@ -1,0 +1,22 @@
+{
+  "server_id": "code2",
+  "hostname": "LL-Code-02",
+  "ip": "10.1.3.76",
+  "role": "Windows Development Server",
+  "ai_model": "GitHub Copilot (Claude Sonnet 4.5)",
+  "status": "online",
+  "workspace": "K:\\Projects\\Build",
+  "last_updated": "2025-11-13T00:00:00Z",
+  "capabilities": [
+    "VSCode development",
+    "Git operations",
+    "PowerShell scripting",
+    "Windows automation",
+    "Code coordination"
+  ],
+  "environment": {
+    "os": "Windows Server",
+    "shell": "PowerShell",
+    "ide": "VSCode"
+  }
+}
