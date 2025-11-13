@@ -1,11 +1,11 @@
 #
 # Start-MessageMonitor.ps1
 # Automated message monitoring for Code2 Build coordination
-# Checks every 60 seconds for new messages and processes them
+# Checks every 10 seconds for new messages and processes them
 #
 
 param(
-    [int]$IntervalSeconds = 60,
+    [int]$IntervalSeconds = 10,
     [string]$BuildRepoPath = "K:\Projects\Build"
 )
 
