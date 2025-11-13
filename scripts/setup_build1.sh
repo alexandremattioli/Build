@@ -112,10 +112,10 @@ echo "[4/8] Installing messaging helper and alias..."
 HELPER_SRC="/root/Build/scripts/sendmessages"
 HELPER_DST="/usr/local/bin/sendmessages"
 ln -sf "$HELPER_SRC" "$HELPER_DST"
-ln -sf "$HELPER_DST" /usr/local/bin/sm
+/root/Build/scripts/install_sm_helper.sh
 ln -sf /root/Build/scripts/cm /usr/local/bin/cm
 cat <<'EOF' >/etc/profile.d/build-messaging.sh
-alias sm='sendmessages'
+alias sm='/usr/local/bin/sm'
 alias cm='/root/Build/scripts/cm'
 EOF
 chmod 644 /etc/profile.d/build-messaging.sh 2>/dev/null || true
