@@ -14,6 +14,34 @@ This directory contains the communication system for the Build coordination infr
 **Status:** ✓ Operational
 **Performance:** <10ms latency, 99.9% success rate, zero conflicts
 
+### ✅ Verify Redis is Working Right Now
+
+**Run these commands to confirm the system is operational:**
+
+```bash
+# Test Redis connection
+redis-cli -h 10.1.3.74 -p 6379 --no-auth-warning -a EuWGoSqgyN34FZli0KehMvCHIbYTV8AP ping
+# Expected output: PONG
+
+# Check if sm/cm commands exist
+which sm && which cm
+# Expected: /usr/local/bin/sm and /usr/local/bin/cm
+
+# View Redis stats
+cm --stats
+# Shows: messages, connected clients, uptime
+
+# Send test message
+sm architect "Redis Test" "Testing from $(hostname)"
+# Message sent instantly via Redis
+
+# Check messages
+cm --last 3
+# Shows recent messages including your test
+```
+
+**If all commands work, Redis is operational and you're ready to use it.**
+
 ### Architecture
 
 ```
