@@ -728,6 +728,19 @@
       "ack_required": false,
       "ack_status": "not_requested",
       "acknowledged_by": []
+    },
+    {
+      "id": "msg_1762999169_5549",
+      "from": "build1",
+      "to": "build2",
+      "type": "info",
+      "subject": "TEST: Please ACK this",
+      "body": "This is a test message to validate ack_unread.sh flow.",
+      "timestamp": "2025-11-13 01:59",
+      "read": false,
+      "ack_required": false,
+      "ack_status": "not_requested",
+      "acknowledged_by": []
     }
   ]
 }
