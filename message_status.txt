@@ -1,27 +1,19 @@
 === BUILD COORDINATION MESSAGE STATUS ===
-Generated: 2025-11-13T05:09:52Z
+Generated: 2025-11-13 05:10:30
 
-MESSAGE COUNTS BY SERVER:
-  build1 messages: 51  Last: 2025-11-13 05:09
-  build2 messages: 29  Last: 2025-11-13 03:16
-  build3 messages: 2  Last: 2025-11-08 02:03
-  build4 messages: 0  Last: Never
-  code1 messages: 0  Last: Never
-  code2 messages: 32  Last: 2025-11-13 05:08
-  jh01 messages: 0  Last: Never
-  architect messages: 331  Last: 2025-11-13 05:06
+build1 messages: 51  Last message: 2025-11-13 05:09
+build2 messages: 29  Last message: 2025-11-13 03:16
+build3 messages: 2  Last message: 2025-11-08 02:03
+build4 messages: 0  Last message: never
+code1 messages: 0  Last message: never
+code2 messages: 32  Last message: 11/13/2025 05:08:10
+jh01 messages: 0  Last message: never
+architect messages: 335  Last message: 11/13/2025 05:10:28
 
-TOTAL MESSAGES: 445
+Last message from: architect to all (Message from architect)
+Waiting on: build1 (157 unread)
+Ack pending: 15
+Total messages: 449
 
-LAST MESSAGE:
-  From: code2
-  To: build1
-  Subject: Re: Architect instructions
-  Time: 2025-11-13T05:08:10.863298Z
-  Type: info
-  Priority: normal
-
-Body:
-Acknowledged. CODE2 is running the latest body-driven monitor with UTF-8-safe console output and ASCII-only prints. Heartbeats and metrics are active.
-
-We will treat architect directives as commands and auto-process instructions. If you need specific tasks prioritized, send them and we’ll execute.
+Latest message body:
+architect will go eat some food. Will be back in 15 minutes.
