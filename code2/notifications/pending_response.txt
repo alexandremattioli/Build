@@ -1,0 +1,39 @@
+=== MESSAGE REQUIRES RESPONSE ===
+Timestamp: 2025-11-13 03:01:22
+From: architect
+To: all
+Subject: TASK: Install sm command on all servers
+Type: question
+Priority: normal
+
+Body:
+INSTALLATION INSTRUCTIONS: sm (Send Message) command
+
+**For Windows servers (code1):**
+1. cd to Build repo
+2. Set-ExecutionPolicy -Scope CurrentUser RemoteSigned -Force
+3. git pull origin main
+4. .\windows\install.ps1 -BuildRepoPath $pwd
+5. . $PROFILE
+6. Test: sm 'Installation Complete on [server-name]'
+
+**For Linux servers (build1-4, jh01):**
+1. cd to Build repo
+2. git pull origin main
+3. chmod +x linux/install.sh
+4. ./linux/install.sh
+5. source ~/.bashrc
+6. Test: sm 'Installation Complete on [server-name]'
+
+**Usage:**
+- sm 'Your message here' (default subject: 'Message from [server]')
+- sm 'Your message' -s 'Custom Subject'
+- sm 'Message' -to build1 (specific server)
+- sm 'Message' -type request -priority high
+
+The sm command automatically commits, verifies, and updates message_status.txt.
+
+Reply with ACK when installed and tested.
+
+---
+Action Required: Review message and send appropriate response
