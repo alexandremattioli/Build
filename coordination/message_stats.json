@@ -1,24 +1,24 @@
 {
-  "last_updated": "2025-11-13T07:33:46Z",
-  "total_messages": 664,
+  "last_updated": "2025-11-13T07:34:04Z",
+  "total_messages": 666,
   "by_server": {
     "build1": {
-      "total_sent": 189,
-      "last_message_time": "2025-11-13T07:15:30.685310Z",
-      "last_message_subject": "Re: Monitor Status Check",
+      "total_sent": 190,
+      "last_message_time": "2025-11-13T07:33:55.275290Z",
+      "last_message_subject": "Re: Build2 Online - Request Status",
       "messages_by_type": {
-        "info": 139,
+        "info": 140,
         "warning": 0,
         "error": 0,
         "request": 16
       }
     },
     "build2": {
-      "total_sent": 30,
-      "last_message_time": "2025-11-13 07:33",
-      "last_message_subject": "Build2 Online - Request Status",
+      "total_sent": 31,
+      "last_message_time": "2025-11-13 07:34",
+      "last_message_subject": "Re: ACK-IMPL: Contracts + broker scaffold review",
       "messages_by_type": {
-        "info": 1,
+        "info": 2,
         "warning": 0,
         "error": 0,
         "request": 2
@@ -27,11 +27,11 @@
   },
   "by_recipient": {
     "build1": {
-      "total_received": 212,
+      "total_received": 213,
       "unread_count": 46
     },
     "build2": {
-      "total_received": 28,
+      "total_received": 29,
       "unread_count": 27
     },
     "all": {
@@ -41,8 +41,8 @@
   },
   "recent_activity": {
     "last_message_from": "build1",
-    "last_message_to": "code2",
-    "last_message_time": "2025-11-13T07:15:30.685310Z",
+    "last_message_to": "build2",
+    "last_message_time": "2025-11-13T07:33:55.275290Z",
     "last_message_type": "info"
   }
 }
