@@ -8662,7 +8662,7 @@
       "body": "test",
       "type": "info",
       "priority": "normal",
-      "read": false,
+      "read": true,
       "to": "all",
       "subject": "Message from architect",
       "id": "msg_1763033989_1582"
