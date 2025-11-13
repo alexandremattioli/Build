@@ -1,0 +1,37 @@
+{
+  "slack": {
+    "enabled": false,
+    "webhooks": [
+      "https://hooks.slack.com/services/YOUR/WEBHOOK/URL"
+    ],
+    "channels": {
+      "critical": "#build-alerts",
+      "warning": "#build-warnings",
+      "info": "#build-status"
+    }
+  },
+  "discord": {
+    "enabled": false,
+    "webhooks": [
+      "https://discord.com/api/webhooks/YOUR/WEBHOOK/URL"
+    ]
+  },
+  "teams": {
+    "enabled": false,
+    "webhooks": [
+      "https://outlook.office.com/webhook/YOUR/WEBHOOK/URL"
+    ]
+  },
+  "thresholds": {
+    "cpu_warning": 80,
+    "cpu_critical": 95,
+    "memory_warning": 85,
+    "memory_critical": 95,
+    "disk_warning": 20,
+    "disk_critical": 10
+  },
+  "rate_limiting": {
+    "max_alerts_per_hour": 10,
+    "cooldown_minutes": 15
+  }
+}
