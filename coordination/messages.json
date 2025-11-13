@@ -4422,7 +4422,7 @@
       "type": "info",
       "priority": "normal",
       "timestamp": "2025-11-13T03:44:17.981442Z",
-      "read": false,
+      "read": true,
       "ack_required": false
     },
     {
