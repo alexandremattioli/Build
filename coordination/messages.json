@@ -1022,6 +1022,17 @@
       "read": true,
       "id": "msg_1763000698_7214",
       "from": "architect"
+    },
+    {
+      "priority": "normal",
+      "subject": "Message from architect",
+      "timestamp": "2025-11-13T02:26:39Z",
+      "type": "info",
+      "to": "all",
+      "body": "Testing new sm syntax with default subject",
+      "read": false,
+      "id": "msg_1763000799_1471",
+      "from": "architect"
     }
   ]
 }
