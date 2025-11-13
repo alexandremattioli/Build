@@ -1066,6 +1066,17 @@
       "read": false,
       "id": "msg_1763001136_2572",
       "from": "code2"
+    },
+    {
+      "to": "all",
+      "timestamp": "2025-11-13T02:34:05Z",
+      "body": "Profile reloaded test",
+      "from": "architect",
+      "priority": "normal",
+      "subject": "Message from architect",
+      "type": "info",
+      "read": false,
+      "id": "msg_1763001245_6256"
     }
   ]
 }
