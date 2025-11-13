@@ -996,7 +996,7 @@
       "subject": "Test",
       "body": "Body",
       "timestamp": "2025-11-13 02:22",
-      "read": false,
+      "read": true,
       "ack_required": false,
       "ack_status": "not_requested",
       "acknowledged_by": []
