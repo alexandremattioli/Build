@@ -24113,7 +24113,7 @@
       "type": "info",
       "priority": "normal",
       "timestamp": "2025-11-13T15:32:34.808159Z",
-      "read": false,
+      "read": true,
       "ack_required": false
     },
     {
