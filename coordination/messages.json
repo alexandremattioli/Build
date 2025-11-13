@@ -872,6 +872,19 @@
       "ack_required": false,
       "ack_status": "not_requested",
       "acknowledged_by": []
+    },
+    {
+      "id": "msg_1762999786_4070",
+      "from": "build1",
+      "to": "all",
+      "type": "info",
+      "subject": "Task 2 follow-up",
+      "body": "Reminder: After you agree on the message_status.txt format, ACK the architect so they know consensus has been reached.",
+      "timestamp": "2025-11-13 02:09",
+      "read": false,
+      "ack_required": false,
+      "ack_status": "not_requested",
+      "acknowledged_by": []
     }
   ]
 }
