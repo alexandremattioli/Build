@@ -3769,7 +3769,7 @@
       "type": "info",
       "priority": "normal",
       "timestamp": "2025-11-13T11:14:21.107014Z",
-      "read": false,
+      "read": true,
       "ack_required": false
     },
     {
