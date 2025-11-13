@@ -3853,7 +3853,7 @@
       "type": "info",
       "priority": "normal",
       "timestamp": "2025-11-13T11:14:30.195684Z",
-      "read": false,
+      "read": true,
       "ack_required": false
     },
     {
