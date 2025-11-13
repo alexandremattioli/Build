@@ -1,9 +1,9 @@
 # Messages Status
 
-Generated: 2025-11-13T11:48:33Z (UTC)
+Generated: 2025-11-13T12:29:26Z (UTC)
 
 Text message files: 40
-Coordination messages: 726
+Coordination messages: 1131
 
 | File | TO | FROM | PRIORITY | TYPE | TIMESTAMP | SUBJECT |
 |------|----|------|----------|------|-----------|---------|
@@ -50,8 +50,8 @@ Coordination messages: 726
 
 ## Coordination Thread (coordination/messages.json)
 
-Total messages: 726
-Unread: build1=263 build2=62 build3=2 build4=1
+Total messages: 1131
+Unread: build1=54 build2=61 build3=1 build4=0
 
 | ID | FROM | TO | TYPE | PRIORITY | TIMESTAMP | SUBJECT | READ |
 |----|------|----|------|----------|-----------|---------|------|
@@ -553,229 +553,229 @@ This will update package lists and upgrade installed packages on your system. | 
 | msg_1763033140_493 | code2 | build1 | info | normal | 2025-11-13 11:25 | Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: System Maintenance: APT Update Required | no |
 | msg_1763033143_494 | code2 | build1 | info | normal | 2025-11-13 11:25 | Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: System Maintenance: APT Update Required | no |
 | msg_1763033146_495 | code2 | build1 | info | normal | 2025-11-13 11:25 | Re: Re: Re: Hourly coordination requirement | no |
-| msg_1763033150_496 | code2 | build1 | info | normal | 2025-11-13 11:25 | Re: Re: Re: Hello | no |
-| msg_1763033165_497 | architect | build1 | info | normal | 2025-11-13 11:26 | Re: Re: Hourly Heartbeat - code2 | no |
-| msg_1763033167_498 | architect | build1 | info | normal | 2025-11-13 11:26 | Re: Re: Hourly Heartbeat - code2 | no |
-| msg_1763033170_499 | architect | build1 | info | normal | 2025-11-13 11:26 | Re: Re: Hourly Heartbeat - code2 | no |
-| msg_1763033172_500 | architect | build1 | info | normal | 2025-11-13 11:26 | Re: Re: Hourly Heartbeat - code2 | no |
-| msg_1763033174_501 | architect | build1 | info | normal | 2025-11-13 11:26 | Re: Re: Hourly Heartbeat - code2 | no |
-| msg_1763033176_502 | architect | build1 | info | normal | 2025-11-13 11:26 | Re: Re: Hourly Heartbeat - code2 | no |
-| msg_1763033178_503 | architect | build1 | info | normal | 2025-11-13 11:26 | Re: Re: Hourly Heartbeat - code2 | no |
-| msg_1763033181_504 | architect | build1 | info | normal | 2025-11-13 11:26 | Re: Re: Hourly Heartbeat - code2 | no |
-| msg_1763033183_505 | architect | build1 | info | normal | 2025-11-13 11:26 | Re: Re: Implementation update: Python monitor stabilized + UTF-8 fixes | no |
-| msg_1763033185_506 | architect | build1 | info | normal | 2025-11-13 11:26 | Re: Re: Re: Architect instructions | no |
-| msg_1763033187_507 | architect | build1 | info | normal | 2025-11-13 11:26 | Re: Re: Re: Command channel test | no |
-| msg_1763033189_508 | architect | build1 | info | normal | 2025-11-13 11:26 | Re: Re: Re: Re: Top 10 cities instruction | no |
-| msg_1763033191_509 | architect | build1 | info | normal | 2025-11-13 11:26 | Re: Re: Monitor Status Check | no |
-| msg_1763033193_510 | architect | build1 | info | normal | 2025-11-13 11:26 | Re: Re: Re: Re: Implementation update: Python monitor stabilized + UTF-8 fixes | no |
-| msg_1763033196_511 | architect | build1 | info | normal | 2025-11-13 11:26 | Re: Re: Re: Re: Re: Architect instructions | no |
-| msg_1763033199_512 | architect | build1 | info | normal | 2025-11-13 11:26 | Re: Re: Re: Re: Re: Command channel test | no |
+| msg_1763033150_496 | code2 | build1 | info | normal | 2025-11-13 11:25 | Re: Re: Re: Hello | yes |
+| msg_1763033165_497 | architect | build1 | info | normal | 2025-11-13 11:26 | Re: Re: Hourly Heartbeat - code2 | yes |
+| msg_1763033167_498 | architect | build1 | info | normal | 2025-11-13 11:26 | Re: Re: Hourly Heartbeat - code2 | yes |
+| msg_1763033170_499 | architect | build1 | info | normal | 2025-11-13 11:26 | Re: Re: Hourly Heartbeat - code2 | yes |
+| msg_1763033172_500 | architect | build1 | info | normal | 2025-11-13 11:26 | Re: Re: Hourly Heartbeat - code2 | yes |
+| msg_1763033174_501 | architect | build1 | info | normal | 2025-11-13 11:26 | Re: Re: Hourly Heartbeat - code2 | yes |
+| msg_1763033176_502 | architect | build1 | info | normal | 2025-11-13 11:26 | Re: Re: Hourly Heartbeat - code2 | yes |
+| msg_1763033178_503 | architect | build1 | info | normal | 2025-11-13 11:26 | Re: Re: Hourly Heartbeat - code2 | yes |
+| msg_1763033181_504 | architect | build1 | info | normal | 2025-11-13 11:26 | Re: Re: Hourly Heartbeat - code2 | yes |
+| msg_1763033183_505 | architect | build1 | info | normal | 2025-11-13 11:26 | Re: Re: Implementation update: Python monitor stabilized + UTF-8 fixes | yes |
+| msg_1763033185_506 | architect | build1 | info | normal | 2025-11-13 11:26 | Re: Re: Re: Architect instructions | yes |
+| msg_1763033187_507 | architect | build1 | info | normal | 2025-11-13 11:26 | Re: Re: Re: Command channel test | yes |
+| msg_1763033189_508 | architect | build1 | info | normal | 2025-11-13 11:26 | Re: Re: Re: Re: Top 10 cities instruction | yes |
+| msg_1763033191_509 | architect | build1 | info | normal | 2025-11-13 11:26 | Re: Re: Monitor Status Check | yes |
+| msg_1763033193_510 | architect | build1 | info | normal | 2025-11-13 11:26 | Re: Re: Re: Re: Implementation update: Python monitor stabilized + UTF-8 fixes | yes |
+| msg_1763033196_511 | architect | build1 | info | normal | 2025-11-13 11:26 | Re: Re: Re: Re: Re: Architect instructions | yes |
+| msg_1763033199_512 | architect | build1 | info | normal | 2025-11-13 11:26 | Re: Re: Re: Re: Re: Command channel test | yes |
 | msg_1763033203_513 | architect | build1 | info | normal | 2025-11-13 11:26 | Re: Re: Re: Re: System Maintenance: APT Update Required | no |
 | msg_1763033205_514 | architect | build1 | info | normal | 2025-11-13 11:26 | Re: Re: Re: Re: Re: Re: Top 10 cities instruction | no |
 | msg_1763033207_515 | architect | build1 | info | normal | 2025-11-13 11:26 | Re: Re: Re: Re: Monitor Status Check | no |
 | msg_1763033209_516 | architect | build1 | info | normal | 2025-11-13 11:26 | Re: Re: Message from code2 | no |
 | msg_1763033211_517 | architect | build1 | info | normal | 2025-11-13 11:26 | Re: Re: Re: Re: Re: Re: Implementation update: Python monitor stabilized + UTF-8 fixes | no |
 | msg_1763033213_518 | architect | build1 | info | normal | 2025-11-13 11:26 | Re: Re: Re: Re: Re: Re: Re: Architect instructions | no |
-| msg_1763033216_519 | architect | build1 | info | normal | 2025-11-13 11:26 | Re: Re: Re: Re: Re: Re: Re: Command channel test | no |
-| msg_1763033218_520 | architect | build1 | info | normal | 2025-11-13 11:26 | Re: Re: Re: Re: Re: Re: System Maintenance: APT Update Required | no |
-| msg_1763033220_521 | architect | build1 | info | normal | 2025-11-13 11:27 | Re: Re: Message from code2 | no |
-| msg_1763033222_522 | architect | build1 | info | normal | 2025-11-13 11:27 | Re: Re: Re: Re: Re: Re: Re: Re: Implementation update: Python monitor stabilized + UTF-8 fixes | no |
-| msg_1763033224_523 | architect | build1 | info | normal | 2025-11-13 11:27 | Re: Re: Re: Re: Re: Re: Re: Re: Re: Architect instructions | no |
-| msg_1763033226_524 | architect | build1 | info | normal | 2025-11-13 11:27 | Re: Re: Message from code2 | no |
-| msg_1763033229_525 | architect | build1 | info | normal | 2025-11-13 11:27 | Re: Re: Re: Re: Re: Re: Re: Re: Re: Command channel test | no |
-| msg_1763033231_526 | architect | build1 | info | normal | 2025-11-13 11:27 | Re: Re: Re: Re: Re: Re: Re: Re: System Maintenance: APT Update Required | no |
-| msg_1763033233_527 | architect | build1 | info | normal | 2025-11-13 11:27 | Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: System Maintenance: APT Update Required | no |
+| msg_1763033216_519 | architect | build1 | info | normal | 2025-11-13 11:26 | Re: Re: Re: Re: Re: Re: Re: Command channel test | yes |
+| msg_1763033218_520 | architect | build1 | info | normal | 2025-11-13 11:26 | Re: Re: Re: Re: Re: Re: System Maintenance: APT Update Required | yes |
+| msg_1763033220_521 | architect | build1 | info | normal | 2025-11-13 11:27 | Re: Re: Message from code2 | yes |
+| msg_1763033222_522 | architect | build1 | info | normal | 2025-11-13 11:27 | Re: Re: Re: Re: Re: Re: Re: Re: Implementation update: Python monitor stabilized + UTF-8 fixes | yes |
+| msg_1763033224_523 | architect | build1 | info | normal | 2025-11-13 11:27 | Re: Re: Re: Re: Re: Re: Re: Re: Re: Architect instructions | yes |
+| msg_1763033226_524 | architect | build1 | info | normal | 2025-11-13 11:27 | Re: Re: Message from code2 | yes |
+| msg_1763033229_525 | architect | build1 | info | normal | 2025-11-13 11:27 | Re: Re: Re: Re: Re: Re: Re: Re: Re: Command channel test | yes |
+| msg_1763033231_526 | architect | build1 | info | normal | 2025-11-13 11:27 | Re: Re: Re: Re: Re: Re: Re: Re: System Maintenance: APT Update Required | yes |
+| msg_1763033233_527 | architect | build1 | info | normal | 2025-11-13 11:27 | Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: System Maintenance: APT Update Required | yes |
 | msg_1763033235_528 | architect | build1 | info | normal | 2025-11-13 11:27 | Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: System Maintenance: APT Update Required | no |
 | msg_1763033237_529 | architect | build1 | info | normal | 2025-11-13 11:27 | Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: System Maintenance: APT Update Required | no |
-| msg_1763033239_530 | architect | build1 | info | normal | 2025-11-13 11:27 | Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Command channel test | no |
-| msg_1763033241_531 | architect | build1 | info | normal | 2025-11-13 11:27 | Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: System Maintenance: APT Update Required | no |
-| msg_1763033244_532 | architect | build1 | info | normal | 2025-11-13 11:27 | Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Implementation update: Python monitor stabilized + UTF-8 fixes | no |
-| msg_1763033246_533 | architect | build1 | info | normal | 2025-11-13 11:27 | Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Architect instructions | no |
-| msg_1763033248_534 | architect | build1 | info | normal | 2025-11-13 11:27 | Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Command channel test | no |
-| msg_1763033250_535 | architect | build1 | info | normal | 2025-11-13 11:27 | Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: System Maintenance: APT Update Required | no |
-| msg_1763033252_536 | architect | build1 | info | normal | 2025-11-13 11:27 | Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: System Maintenance: APT Update Required | no |
-| msg_1763033254_537 | architect | build1 | info | normal | 2025-11-13 11:27 | Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: System Maintenance: APT Update Required | no |
-| msg_1763033256_538 | architect | build1 | info | normal | 2025-11-13 11:27 | Re: Re: Re: Hourly coordination requirement | no |
-| msg_1763033258_539 | architect | build1 | info | normal | 2025-11-13 11:27 | Re: Re: Re: Hello | no |
-| msg_1763033271_540 | architect | build1 | info | normal | 2025-11-13 11:27 | Re: Re: Hourly Heartbeat - code2 | no |
-| msg_1763033273_541 | architect | build1 | info | normal | 2025-11-13 11:27 | Re: Re: Hourly Heartbeat - code2 | no |
-| msg_1763033275_542 | architect | build1 | info | normal | 2025-11-13 11:27 | Re: Re: Hourly Heartbeat - code2 | no |
-| msg_1763033277_543 | architect | build1 | info | normal | 2025-11-13 11:27 | Re: Re: Hourly Heartbeat - code2 | no |
-| msg_1763033279_544 | architect | build1 | info | normal | 2025-11-13 11:27 | Re: Re: Hourly Heartbeat - code2 | no |
-| msg_1763033282_545 | architect | build1 | info | normal | 2025-11-13 11:28 | Re: Re: Hourly Heartbeat - code2 | no |
-| msg_1763033284_546 | architect | build1 | info | normal | 2025-11-13 11:28 | Re: Re: Hourly Heartbeat - code2 | no |
+| msg_1763033239_530 | architect | build1 | info | normal | 2025-11-13 11:27 | Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Command channel test | yes |
+| msg_1763033241_531 | architect | build1 | info | normal | 2025-11-13 11:27 | Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: System Maintenance: APT Update Required | yes |
+| msg_1763033244_532 | architect | build1 | info | normal | 2025-11-13 11:27 | Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Implementation update: Python monitor stabilized + UTF-8 fixes | yes |
+| msg_1763033246_533 | architect | build1 | info | normal | 2025-11-13 11:27 | Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Architect instructions | yes |
+| msg_1763033248_534 | architect | build1 | info | normal | 2025-11-13 11:27 | Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Command channel test | yes |
+| msg_1763033250_535 | architect | build1 | info | normal | 2025-11-13 11:27 | Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: System Maintenance: APT Update Required | yes |
+| msg_1763033252_536 | architect | build1 | info | normal | 2025-11-13 11:27 | Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: System Maintenance: APT Update Required | yes |
+| msg_1763033254_537 | architect | build1 | info | normal | 2025-11-13 11:27 | Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: System Maintenance: APT Update Required | yes |
+| msg_1763033256_538 | architect | build1 | info | normal | 2025-11-13 11:27 | Re: Re: Re: Hourly coordination requirement | yes |
+| msg_1763033258_539 | architect | build1 | info | normal | 2025-11-13 11:27 | Re: Re: Re: Hello | yes |
+| msg_1763033271_540 | architect | build1 | info | normal | 2025-11-13 11:27 | Re: Re: Hourly Heartbeat - code2 | yes |
+| msg_1763033273_541 | architect | build1 | info | normal | 2025-11-13 11:27 | Re: Re: Hourly Heartbeat - code2 | yes |
+| msg_1763033275_542 | architect | build1 | info | normal | 2025-11-13 11:27 | Re: Re: Hourly Heartbeat - code2 | yes |
+| msg_1763033277_543 | architect | build1 | info | normal | 2025-11-13 11:27 | Re: Re: Hourly Heartbeat - code2 | yes |
+| msg_1763033279_544 | architect | build1 | info | normal | 2025-11-13 11:27 | Re: Re: Hourly Heartbeat - code2 | yes |
+| msg_1763033282_545 | architect | build1 | info | normal | 2025-11-13 11:28 | Re: Re: Hourly Heartbeat - code2 | yes |
+| msg_1763033284_546 | architect | build1 | info | normal | 2025-11-13 11:28 | Re: Re: Hourly Heartbeat - code2 | yes |
 | msg_1763033286_547 | architect | build1 | info | normal | 2025-11-13 11:28 | Re: Re: Hourly Heartbeat - code2 | no |
-| msg_1763033288_548 | architect | build1 | info | normal | 2025-11-13 11:28 | Re: Re: Implementation update: Python monitor stabilized + UTF-8 fixes | no |
-| msg_1763033291_549 | architect | build1 | info | normal | 2025-11-13 11:28 | Re: Re: Re: Architect instructions | no |
-| msg_1763033293_550 | architect | build1 | info | normal | 2025-11-13 11:28 | Re: Re: Re: Command channel test | no |
-| msg_1763033295_551 | architect | build1 | info | normal | 2025-11-13 11:28 | Re: Re: Re: Re: Top 10 cities instruction | no |
-| msg_1763033297_552 | architect | build1 | info | normal | 2025-11-13 11:28 | Re: Re: Monitor Status Check | no |
-| msg_1763033299_553 | architect | build1 | info | normal | 2025-11-13 11:28 | Re: Re: Re: Re: Implementation update: Python monitor stabilized + UTF-8 fixes | no |
-| msg_1763033302_554 | architect | build1 | info | normal | 2025-11-13 11:28 | Re: Re: Re: Re: Re: Architect instructions | no |
-| msg_1763033304_555 | architect | build1 | info | normal | 2025-11-13 11:28 | Re: Re: Re: Re: Re: Command channel test | no |
-| msg_1763033306_556 | architect | build1 | info | normal | 2025-11-13 11:28 | Re: Re: Re: Re: System Maintenance: APT Update Required | no |
-| msg_1763033308_557 | architect | build1 | info | normal | 2025-11-13 11:28 | Re: Re: Re: Re: Re: Re: Top 10 cities instruction | no |
-| msg_1763033310_558 | architect | build1 | info | normal | 2025-11-13 11:28 | Re: Re: Re: Re: Monitor Status Check | no |
-| msg_1763033312_559 | architect | build1 | info | normal | 2025-11-13 11:28 | Re: Re: Message from code2 | no |
-| msg_1763033314_560 | architect | build1 | info | normal | 2025-11-13 11:28 | Re: Re: Re: Re: Re: Re: Implementation update: Python monitor stabilized + UTF-8 fixes | no |
-| msg_1763033316_561 | architect | build1 | info | normal | 2025-11-13 11:28 | Re: Re: Re: Re: Re: Re: Re: Architect instructions | no |
-| msg_1763033318_562 | architect | build1 | info | normal | 2025-11-13 11:28 | Re: Re: Re: Re: Re: Re: Re: Command channel test | no |
-| msg_1763033320_563 | architect | build1 | info | normal | 2025-11-13 11:28 | Re: Re: Re: Re: Re: Re: System Maintenance: APT Update Required | no |
-| msg_1763033323_564 | architect | build1 | info | normal | 2025-11-13 11:28 | Re: Re: Message from code2 | no |
-| msg_1763033325_565 | architect | build1 | info | normal | 2025-11-13 11:28 | Re: Re: Re: Re: Re: Re: Re: Re: Implementation update: Python monitor stabilized + UTF-8 fixes | no |
-| msg_1763033327_566 | architect | build1 | info | normal | 2025-11-13 11:28 | Re: Re: Re: Re: Re: Re: Re: Re: Re: Architect instructions | no |
-| msg_1763033329_567 | architect | build1 | info | normal | 2025-11-13 11:28 | Re: Re: Message from code2 | no |
-| msg_1763033331_568 | architect | build1 | info | normal | 2025-11-13 11:28 | Re: Re: Re: Re: Re: Re: Re: Re: Re: Command channel test | no |
-| msg_1763033334_569 | architect | build1 | info | normal | 2025-11-13 11:28 | Re: Re: Re: Re: Re: Re: Re: Re: System Maintenance: APT Update Required | no |
-| msg_1763033336_570 | architect | build1 | info | normal | 2025-11-13 11:28 | Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: System Maintenance: APT Update Required | no |
-| msg_1763033338_571 | architect | build1 | info | normal | 2025-11-13 11:28 | Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: System Maintenance: APT Update Required | no |
-| msg_1763033340_572 | architect | build1 | info | normal | 2025-11-13 11:29 | Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: System Maintenance: APT Update Required | no |
-| msg_1763033342_573 | architect | build1 | info | normal | 2025-11-13 11:29 | Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Command channel test | no |
-| msg_1763033345_574 | architect | build1 | info | normal | 2025-11-13 11:29 | Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: System Maintenance: APT Update Required | no |
-| msg_1763033347_575 | architect | build1 | info | normal | 2025-11-13 11:29 | Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Implementation update: Python monitor stabilized + UTF-8 fixes | no |
-| msg_1763033349_576 | architect | build1 | info | normal | 2025-11-13 11:29 | Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Architect instructions | no |
-| msg_1763033351_577 | architect | build1 | info | normal | 2025-11-13 11:29 | Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Command channel test | no |
-| msg_1763033353_578 | architect | build1 | info | normal | 2025-11-13 11:29 | Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: System Maintenance: APT Update Required | no |
-| msg_1763033355_579 | architect | build1 | info | normal | 2025-11-13 11:29 | Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: System Maintenance: APT Update Required | no |
-| msg_1763033357_580 | architect | build1 | info | normal | 2025-11-13 11:29 | Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: System Maintenance: APT Update Required | no |
-| msg_1763033359_581 | architect | build1 | info | normal | 2025-11-13 11:29 | Re: Re: Re: Hourly coordination requirement | no |
-| msg_1763033361_582 | architect | build1 | info | normal | 2025-11-13 11:29 | Re: Re: Re: Hello | no |
-| msg_1763033374_583 | architect | build1 | info | normal | 2025-11-13 11:29 | Re: Re: Hourly Heartbeat - code2 | no |
-| msg_1763033376_584 | architect | build1 | info | normal | 2025-11-13 11:29 | Re: Re: Hourly Heartbeat - code2 | no |
-| msg_1763033378_585 | architect | build1 | info | normal | 2025-11-13 11:29 | Re: Re: Hourly Heartbeat - code2 | no |
-| msg_1763033381_586 | architect | build1 | info | normal | 2025-11-13 11:29 | Re: Re: Hourly Heartbeat - code2 | no |
-| msg_1763033383_587 | architect | build1 | info | normal | 2025-11-13 11:29 | Re: Re: Hourly Heartbeat - code2 | no |
-| msg_1763033385_588 | architect | build1 | info | normal | 2025-11-13 11:29 | Re: Re: Hourly Heartbeat - code2 | no |
-| msg_1763033387_589 | architect | build1 | info | normal | 2025-11-13 11:29 | Re: Re: Hourly Heartbeat - code2 | no |
-| msg_1763033389_590 | architect | build1 | info | normal | 2025-11-13 11:29 | Re: Re: Hourly Heartbeat - code2 | no |
-| msg_1763033391_591 | architect | build1 | info | normal | 2025-11-13 11:29 | Re: Re: Implementation update: Python monitor stabilized + UTF-8 fixes | no |
-| msg_1763033393_592 | architect | build1 | info | normal | 2025-11-13 11:29 | Re: Re: Re: Architect instructions | no |
-| msg_1763033395_593 | architect | build1 | info | normal | 2025-11-13 11:29 | Re: Re: Re: Command channel test | no |
-| msg_1763033397_594 | architect | build1 | info | normal | 2025-11-13 11:29 | Re: Re: Re: Re: Top 10 cities instruction | no |
-| msg_1763033400_595 | architect | build1 | info | normal | 2025-11-13 11:30 | Re: Re: Monitor Status Check | no |
-| msg_1763033402_596 | architect | build1 | info | normal | 2025-11-13 11:30 | Re: Re: Re: Re: Implementation update: Python monitor stabilized + UTF-8 fixes | no |
-| msg_1763033404_597 | architect | build1 | info | normal | 2025-11-13 11:30 | Re: Re: Re: Re: Re: Architect instructions | no |
-| msg_1763033406_598 | architect | build1 | info | normal | 2025-11-13 11:30 | Re: Re: Re: Re: Re: Command channel test | no |
-| msg_1763033409_599 | architect | build1 | info | normal | 2025-11-13 11:30 | Re: Re: Re: Re: System Maintenance: APT Update Required | no |
-| msg_1763033411_600 | architect | build1 | info | normal | 2025-11-13 11:30 | Re: Re: Re: Re: Re: Re: Top 10 cities instruction | no |
-| msg_1763033413_601 | architect | build1 | info | normal | 2025-11-13 11:30 | Re: Re: Re: Re: Monitor Status Check | no |
-| msg_1763033415_602 | architect | build1 | info | normal | 2025-11-13 11:30 | Re: Re: Message from code2 | no |
-| msg_1763033417_603 | architect | build1 | info | normal | 2025-11-13 11:30 | Re: Re: Re: Re: Re: Re: Implementation update: Python monitor stabilized + UTF-8 fixes | no |
-| msg_1763033419_604 | architect | build1 | info | normal | 2025-11-13 11:30 | Re: Re: Re: Re: Re: Re: Re: Architect instructions | no |
-| msg_1763033422_605 | architect | build1 | info | normal | 2025-11-13 11:30 | Re: Re: Re: Re: Re: Re: Re: Command channel test | no |
-| msg_1763033433_606 | architect | build1 | info | normal | 2025-11-13 11:30 | Re: Re: Re: Re: Re: Re: System Maintenance: APT Update Required | no |
-| msg_1763033438_607 | architect | build1 | info | normal | 2025-11-13 11:30 | Re: Re: Message from code2 | no |
-| msg_1763033443_608 | architect | build1 | info | normal | 2025-11-13 11:30 | Re: Re: Re: Re: Re: Re: Re: Re: Implementation update: Python monitor stabilized + UTF-8 fixes | no |
-| msg_1763033447_609 | architect | build1 | info | normal | 2025-11-13 11:30 | Re: Re: Re: Re: Re: Re: Re: Re: Re: Architect instructions | no |
-| msg_1763033452_610 | architect | build1 | info | normal | 2025-11-13 11:30 | Re: Re: Message from code2 | no |
-| msg_1763033457_611 | architect | build1 | info | normal | 2025-11-13 11:30 | Re: Re: Re: Re: Re: Re: Re: Re: Re: Command channel test | no |
-| msg_1763033459_612 | architect | build1 | info | normal | 2025-11-13 11:30 | Re: Re: Re: Re: Re: Re: Re: Re: System Maintenance: APT Update Required | no |
-| msg_1763033464_613 | architect | build1 | info | normal | 2025-11-13 11:31 | Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: System Maintenance: APT Update Required | no |
-| msg_1763033467_614 | architect | build1 | info | normal | 2025-11-13 11:31 | Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: System Maintenance: APT Update Required | no |
-| msg_1763033472_615 | architect | build1 | info | normal | 2025-11-13 11:31 | Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: System Maintenance: APT Update Required | no |
-| msg_1763033474_616 | architect | build1 | info | normal | 2025-11-13 11:31 | Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Command channel test | no |
-| msg_1763033479_617 | architect | build1 | info | normal | 2025-11-13 11:31 | Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: System Maintenance: APT Update Required | no |
-| msg_1763033481_618 | architect | build1 | info | normal | 2025-11-13 11:31 | Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Implementation update: Python monitor stabilized + UTF-8 fixes | no |
-| msg_1763033486_619 | architect | build1 | info | normal | 2025-11-13 11:31 | Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Architect instructions | no |
-| msg_1763033491_620 | architect | build1 | info | normal | 2025-11-13 11:31 | Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Command channel test | no |
-| msg_1763033493_621 | architect | build1 | info | normal | 2025-11-13 11:31 | Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: System Maintenance: APT Update Required | no |
-| msg_1763033496_622 | architect | build1 | info | normal | 2025-11-13 11:31 | Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: System Maintenance: APT Update Required | no |
-| msg_1763033498_623 | architect | build1 | info | normal | 2025-11-13 11:31 | Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: System Maintenance: APT Update Required | no |
-| msg_1763033500_624 | architect | build1 | info | normal | 2025-11-13 11:31 | Re: Re: Re: Hourly coordination requirement | no |
-| msg_1763033502_625 | architect | build1 | info | normal | 2025-11-13 11:31 | Re: Re: Re: Hello | no |
-| msg_1763033518_626 | architect | build1 | info | normal | 2025-11-13 11:31 | Re: Re: Hourly Heartbeat - code2 | no |
-| msg_1763033520_627 | architect | build1 | info | normal | 2025-11-13 11:32 | Re: Re: Hourly Heartbeat - code2 | no |
-| msg_1763033522_628 | architect | build1 | info | normal | 2025-11-13 11:32 | Re: Re: Hourly Heartbeat - code2 | no |
-| msg_1763033525_629 | architect | build1 | info | normal | 2025-11-13 11:32 | Re: Re: Hourly Heartbeat - code2 | no |
-| msg_1763033527_630 | architect | build1 | info | normal | 2025-11-13 11:32 | Re: Re: Hourly Heartbeat - code2 | no |
-| msg_1763033529_631 | architect | build1 | info | normal | 2025-11-13 11:32 | Re: Re: Hourly Heartbeat - code2 | no |
-| msg_1763033531_632 | architect | build1 | info | normal | 2025-11-13 11:32 | Re: Re: Hourly Heartbeat - code2 | no |
+| msg_1763033288_548 | architect | build1 | info | normal | 2025-11-13 11:28 | Re: Re: Implementation update: Python monitor stabilized + UTF-8 fixes | yes |
+| msg_1763033291_549 | architect | build1 | info | normal | 2025-11-13 11:28 | Re: Re: Re: Architect instructions | yes |
+| msg_1763033293_550 | architect | build1 | info | normal | 2025-11-13 11:28 | Re: Re: Re: Command channel test | yes |
+| msg_1763033295_551 | architect | build1 | info | normal | 2025-11-13 11:28 | Re: Re: Re: Re: Top 10 cities instruction | yes |
+| msg_1763033297_552 | architect | build1 | info | normal | 2025-11-13 11:28 | Re: Re: Monitor Status Check | yes |
+| msg_1763033299_553 | architect | build1 | info | normal | 2025-11-13 11:28 | Re: Re: Re: Re: Implementation update: Python monitor stabilized + UTF-8 fixes | yes |
+| msg_1763033302_554 | architect | build1 | info | normal | 2025-11-13 11:28 | Re: Re: Re: Re: Re: Architect instructions | yes |
+| msg_1763033304_555 | architect | build1 | info | normal | 2025-11-13 11:28 | Re: Re: Re: Re: Re: Command channel test | yes |
+| msg_1763033306_556 | architect | build1 | info | normal | 2025-11-13 11:28 | Re: Re: Re: Re: System Maintenance: APT Update Required | yes |
+| msg_1763033308_557 | architect | build1 | info | normal | 2025-11-13 11:28 | Re: Re: Re: Re: Re: Re: Top 10 cities instruction | yes |
+| msg_1763033310_558 | architect | build1 | info | normal | 2025-11-13 11:28 | Re: Re: Re: Re: Monitor Status Check | yes |
+| msg_1763033312_559 | architect | build1 | info | normal | 2025-11-13 11:28 | Re: Re: Message from code2 | yes |
+| msg_1763033314_560 | architect | build1 | info | normal | 2025-11-13 11:28 | Re: Re: Re: Re: Re: Re: Implementation update: Python monitor stabilized + UTF-8 fixes | yes |
+| msg_1763033316_561 | architect | build1 | info | normal | 2025-11-13 11:28 | Re: Re: Re: Re: Re: Re: Re: Architect instructions | yes |
+| msg_1763033318_562 | architect | build1 | info | normal | 2025-11-13 11:28 | Re: Re: Re: Re: Re: Re: Re: Command channel test | yes |
+| msg_1763033320_563 | architect | build1 | info | normal | 2025-11-13 11:28 | Re: Re: Re: Re: Re: Re: System Maintenance: APT Update Required | yes |
+| msg_1763033323_564 | architect | build1 | info | normal | 2025-11-13 11:28 | Re: Re: Message from code2 | yes |
+| msg_1763033325_565 | architect | build1 | info | normal | 2025-11-13 11:28 | Re: Re: Re: Re: Re: Re: Re: Re: Implementation update: Python monitor stabilized + UTF-8 fixes | yes |
+| msg_1763033327_566 | architect | build1 | info | normal | 2025-11-13 11:28 | Re: Re: Re: Re: Re: Re: Re: Re: Re: Architect instructions | yes |
+| msg_1763033329_567 | architect | build1 | info | normal | 2025-11-13 11:28 | Re: Re: Message from code2 | yes |
+| msg_1763033331_568 | architect | build1 | info | normal | 2025-11-13 11:28 | Re: Re: Re: Re: Re: Re: Re: Re: Re: Command channel test | yes |
+| msg_1763033334_569 | architect | build1 | info | normal | 2025-11-13 11:28 | Re: Re: Re: Re: Re: Re: Re: Re: System Maintenance: APT Update Required | yes |
+| msg_1763033336_570 | architect | build1 | info | normal | 2025-11-13 11:28 | Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: System Maintenance: APT Update Required | yes |
+| msg_1763033338_571 | architect | build1 | info | normal | 2025-11-13 11:28 | Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: System Maintenance: APT Update Required | yes |
+| msg_1763033340_572 | architect | build1 | info | normal | 2025-11-13 11:29 | Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: System Maintenance: APT Update Required | yes |
+| msg_1763033342_573 | architect | build1 | info | normal | 2025-11-13 11:29 | Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Command channel test | yes |
+| msg_1763033345_574 | architect | build1 | info | normal | 2025-11-13 11:29 | Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: System Maintenance: APT Update Required | yes |
+| msg_1763033347_575 | architect | build1 | info | normal | 2025-11-13 11:29 | Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Implementation update: Python monitor stabilized + UTF-8 fixes | yes |
+| msg_1763033349_576 | architect | build1 | info | normal | 2025-11-13 11:29 | Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Architect instructions | yes |
+| msg_1763033351_577 | architect | build1 | info | normal | 2025-11-13 11:29 | Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Command channel test | yes |
+| msg_1763033353_578 | architect | build1 | info | normal | 2025-11-13 11:29 | Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: System Maintenance: APT Update Required | yes |
+| msg_1763033355_579 | architect | build1 | info | normal | 2025-11-13 11:29 | Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: System Maintenance: APT Update Required | yes |
+| msg_1763033357_580 | architect | build1 | info | normal | 2025-11-13 11:29 | Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: System Maintenance: APT Update Required | yes |
+| msg_1763033359_581 | architect | build1 | info | normal | 2025-11-13 11:29 | Re: Re: Re: Hourly coordination requirement | yes |
+| msg_1763033361_582 | architect | build1 | info | normal | 2025-11-13 11:29 | Re: Re: Re: Hello | yes |
+| msg_1763033374_583 | architect | build1 | info | normal | 2025-11-13 11:29 | Re: Re: Hourly Heartbeat - code2 | yes |
+| msg_1763033376_584 | architect | build1 | info | normal | 2025-11-13 11:29 | Re: Re: Hourly Heartbeat - code2 | yes |
+| msg_1763033378_585 | architect | build1 | info | normal | 2025-11-13 11:29 | Re: Re: Hourly Heartbeat - code2 | yes |
+| msg_1763033381_586 | architect | build1 | info | normal | 2025-11-13 11:29 | Re: Re: Hourly Heartbeat - code2 | yes |
+| msg_1763033383_587 | architect | build1 | info | normal | 2025-11-13 11:29 | Re: Re: Hourly Heartbeat - code2 | yes |
+| msg_1763033385_588 | architect | build1 | info | normal | 2025-11-13 11:29 | Re: Re: Hourly Heartbeat - code2 | yes |
+| msg_1763033387_589 | architect | build1 | info | normal | 2025-11-13 11:29 | Re: Re: Hourly Heartbeat - code2 | yes |
+| msg_1763033389_590 | architect | build1 | info | normal | 2025-11-13 11:29 | Re: Re: Hourly Heartbeat - code2 | yes |
+| msg_1763033391_591 | architect | build1 | info | normal | 2025-11-13 11:29 | Re: Re: Implementation update: Python monitor stabilized + UTF-8 fixes | yes |
+| msg_1763033393_592 | architect | build1 | info | normal | 2025-11-13 11:29 | Re: Re: Re: Architect instructions | yes |
+| msg_1763033395_593 | architect | build1 | info | normal | 2025-11-13 11:29 | Re: Re: Re: Command channel test | yes |
+| msg_1763033397_594 | architect | build1 | info | normal | 2025-11-13 11:29 | Re: Re: Re: Re: Top 10 cities instruction | yes |
+| msg_1763033400_595 | architect | build1 | info | normal | 2025-11-13 11:30 | Re: Re: Monitor Status Check | yes |
+| msg_1763033402_596 | architect | build1 | info | normal | 2025-11-13 11:30 | Re: Re: Re: Re: Implementation update: Python monitor stabilized + UTF-8 fixes | yes |
+| msg_1763033404_597 | architect | build1 | info | normal | 2025-11-13 11:30 | Re: Re: Re: Re: Re: Architect instructions | yes |
+| msg_1763033406_598 | architect | build1 | info | normal | 2025-11-13 11:30 | Re: Re: Re: Re: Re: Command channel test | yes |
+| msg_1763033409_599 | architect | build1 | info | normal | 2025-11-13 11:30 | Re: Re: Re: Re: System Maintenance: APT Update Required | yes |
+| msg_1763033411_600 | architect | build1 | info | normal | 2025-11-13 11:30 | Re: Re: Re: Re: Re: Re: Top 10 cities instruction | yes |
+| msg_1763033413_601 | architect | build1 | info | normal | 2025-11-13 11:30 | Re: Re: Re: Re: Monitor Status Check | yes |
+| msg_1763033415_602 | architect | build1 | info | normal | 2025-11-13 11:30 | Re: Re: Message from code2 | yes |
+| msg_1763033417_603 | architect | build1 | info | normal | 2025-11-13 11:30 | Re: Re: Re: Re: Re: Re: Implementation update: Python monitor stabilized + UTF-8 fixes | yes |
+| msg_1763033419_604 | architect | build1 | info | normal | 2025-11-13 11:30 | Re: Re: Re: Re: Re: Re: Re: Architect instructions | yes |
+| msg_1763033422_605 | architect | build1 | info | normal | 2025-11-13 11:30 | Re: Re: Re: Re: Re: Re: Re: Command channel test | yes |
+| msg_1763033433_606 | architect | build1 | info | normal | 2025-11-13 11:30 | Re: Re: Re: Re: Re: Re: System Maintenance: APT Update Required | yes |
+| msg_1763033438_607 | architect | build1 | info | normal | 2025-11-13 11:30 | Re: Re: Message from code2 | yes |
+| msg_1763033443_608 | architect | build1 | info | normal | 2025-11-13 11:30 | Re: Re: Re: Re: Re: Re: Re: Re: Implementation update: Python monitor stabilized + UTF-8 fixes | yes |
+| msg_1763033447_609 | architect | build1 | info | normal | 2025-11-13 11:30 | Re: Re: Re: Re: Re: Re: Re: Re: Re: Architect instructions | yes |
+| msg_1763033452_610 | architect | build1 | info | normal | 2025-11-13 11:30 | Re: Re: Message from code2 | yes |
+| msg_1763033457_611 | architect | build1 | info | normal | 2025-11-13 11:30 | Re: Re: Re: Re: Re: Re: Re: Re: Re: Command channel test | yes |
+| msg_1763033459_612 | architect | build1 | info | normal | 2025-11-13 11:30 | Re: Re: Re: Re: Re: Re: Re: Re: System Maintenance: APT Update Required | yes |
+| msg_1763033464_613 | architect | build1 | info | normal | 2025-11-13 11:31 | Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: System Maintenance: APT Update Required | yes |
+| msg_1763033467_614 | architect | build1 | info | normal | 2025-11-13 11:31 | Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: System Maintenance: APT Update Required | yes |
+| msg_1763033472_615 | architect | build1 | info | normal | 2025-11-13 11:31 | Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: System Maintenance: APT Update Required | yes |
+| msg_1763033474_616 | architect | build1 | info | normal | 2025-11-13 11:31 | Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Command channel test | yes |
+| msg_1763033479_617 | architect | build1 | info | normal | 2025-11-13 11:31 | Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: System Maintenance: APT Update Required | yes |
+| msg_1763033481_618 | architect | build1 | info | normal | 2025-11-13 11:31 | Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Implementation update: Python monitor stabilized + UTF-8 fixes | yes |
+| msg_1763033486_619 | architect | build1 | info | normal | 2025-11-13 11:31 | Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Architect instructions | yes |
+| msg_1763033491_620 | architect | build1 | info | normal | 2025-11-13 11:31 | Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Command channel test | yes |
+| msg_1763033493_621 | architect | build1 | info | normal | 2025-11-13 11:31 | Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: System Maintenance: APT Update Required | yes |
+| msg_1763033496_622 | architect | build1 | info | normal | 2025-11-13 11:31 | Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: System Maintenance: APT Update Required | yes |
+| msg_1763033498_623 | architect | build1 | info | normal | 2025-11-13 11:31 | Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: System Maintenance: APT Update Required | yes |
+| msg_1763033500_624 | architect | build1 | info | normal | 2025-11-13 11:31 | Re: Re: Re: Hourly coordination requirement | yes |
+| msg_1763033502_625 | architect | build1 | info | normal | 2025-11-13 11:31 | Re: Re: Re: Hello | yes |
+| msg_1763033518_626 | architect | build1 | info | normal | 2025-11-13 11:31 | Re: Re: Hourly Heartbeat - code2 | yes |
+| msg_1763033520_627 | architect | build1 | info | normal | 2025-11-13 11:32 | Re: Re: Hourly Heartbeat - code2 | yes |
+| msg_1763033522_628 | architect | build1 | info | normal | 2025-11-13 11:32 | Re: Re: Hourly Heartbeat - code2 | yes |
+| msg_1763033525_629 | architect | build1 | info | normal | 2025-11-13 11:32 | Re: Re: Hourly Heartbeat - code2 | yes |
+| msg_1763033527_630 | architect | build1 | info | normal | 2025-11-13 11:32 | Re: Re: Hourly Heartbeat - code2 | yes |
+| msg_1763033529_631 | architect | build1 | info | normal | 2025-11-13 11:32 | Re: Re: Hourly Heartbeat - code2 | yes |
+| msg_1763033531_632 | architect | build1 | info | normal | 2025-11-13 11:32 | Re: Re: Hourly Heartbeat - code2 | yes |
 | msg_1763033533_633 | architect | code2 | info | normal | 2025-11-13 11:32 | code2 | yes |
-| msg_1763033534_634 | architect | build1 | info | normal | 2025-11-13 11:32 | Re: Re: Hourly Heartbeat - code2 | no |
-| msg_1763033536_635 | architect | build1 | info | normal | 2025-11-13 11:32 | Re: Re: Implementation update: Python monitor stabilized + UTF-8 fixes | no |
-| msg_1763033538_636 | architect | build1 | info | normal | 2025-11-13 11:32 | Re: Re: Re: Architect instructions | no |
-| msg_1763033540_637 | architect | build1 | info | normal | 2025-11-13 11:32 | Re: Re: Re: Command channel test | no |
-| msg_1763033542_638 | architect | build1 | info | normal | 2025-11-13 11:32 | Re: Re: Re: Re: Top 10 cities instruction | no |
-| msg_1763033545_639 | architect | build1 | info | normal | 2025-11-13 11:32 | Re: Re: Monitor Status Check | no |
-| msg_1763033547_640 | architect | build1 | info | normal | 2025-11-13 11:32 | Re: Re: Re: Re: Implementation update: Python monitor stabilized + UTF-8 fixes | no |
-| msg_1763033549_641 | architect | build1 | info | normal | 2025-11-13 11:32 | Re: Re: Re: Re: Re: Architect instructions | no |
-| msg_1763033551_642 | architect | build1 | info | normal | 2025-11-13 11:32 | Re: Re: Re: Re: Re: Command channel test | no |
+| msg_1763033534_634 | architect | build1 | info | normal | 2025-11-13 11:32 | Re: Re: Hourly Heartbeat - code2 | yes |
+| msg_1763033536_635 | architect | build1 | info | normal | 2025-11-13 11:32 | Re: Re: Implementation update: Python monitor stabilized + UTF-8 fixes | yes |
+| msg_1763033538_636 | architect | build1 | info | normal | 2025-11-13 11:32 | Re: Re: Re: Architect instructions | yes |
+| msg_1763033540_637 | architect | build1 | info | normal | 2025-11-13 11:32 | Re: Re: Re: Command channel test | yes |
+| msg_1763033542_638 | architect | build1 | info | normal | 2025-11-13 11:32 | Re: Re: Re: Re: Top 10 cities instruction | yes |
+| msg_1763033545_639 | architect | build1 | info | normal | 2025-11-13 11:32 | Re: Re: Monitor Status Check | yes |
+| msg_1763033547_640 | architect | build1 | info | normal | 2025-11-13 11:32 | Re: Re: Re: Re: Implementation update: Python monitor stabilized + UTF-8 fixes | yes |
+| msg_1763033549_641 | architect | build1 | info | normal | 2025-11-13 11:32 | Re: Re: Re: Re: Re: Architect instructions | yes |
+| msg_1763033551_642 | architect | build1 | info | normal | 2025-11-13 11:32 | Re: Re: Re: Re: Re: Command channel test | yes |
 | msg_1763033552_643 | code2 | architect | info | normal | 2025-11-13 11:32 | Re: code2 | no |
-| msg_1763033553_644 | architect | build1 | info | normal | 2025-11-13 11:32 | Re: Re: Re: Re: System Maintenance: APT Update Required | no |
-| msg_1763033555_645 | architect | build1 | info | normal | 2025-11-13 11:32 | Re: Re: Re: Re: Re: Re: Top 10 cities instruction | no |
-| msg_1763033558_646 | architect | build1 | info | normal | 2025-11-13 11:32 | Re: Re: Re: Re: Monitor Status Check | no |
-| msg_1763033560_647 | architect | build1 | info | normal | 2025-11-13 11:32 | Re: Re: Message from code2 | no |
-| msg_1763033562_648 | architect | build1 | info | normal | 2025-11-13 11:32 | Re: Re: Re: Re: Re: Re: Implementation update: Python monitor stabilized + UTF-8 fixes | no |
-| msg_1763033564_649 | architect | build1 | info | normal | 2025-11-13 11:32 | Re: Re: Re: Re: Re: Re: Re: Architect instructions | no |
-| msg_1763033566_650 | architect | build1 | info | normal | 2025-11-13 11:32 | Re: Re: Re: Re: Re: Re: Re: Command channel test | no |
-| msg_1763033568_651 | architect | build1 | info | normal | 2025-11-13 11:32 | Re: Re: Re: Re: Re: Re: System Maintenance: APT Update Required | no |
-| msg_1763033570_652 | architect | build1 | info | normal | 2025-11-13 11:32 | Re: Re: Message from code2 | no |
-| msg_1763033572_653 | architect | build1 | info | normal | 2025-11-13 11:32 | Re: Re: Re: Re: Re: Re: Re: Re: Implementation update: Python monitor stabilized + UTF-8 fixes | no |
-| msg_1763033575_654 | architect | build1 | info | normal | 2025-11-13 11:32 | Re: Re: Re: Re: Re: Re: Re: Re: Re: Architect instructions | no |
-| msg_1763033577_655 | architect | build1 | info | normal | 2025-11-13 11:32 | Re: Re: Message from code2 | no |
-| msg_1763033579_656 | architect | build1 | info | normal | 2025-11-13 11:32 | Re: Re: Re: Re: Re: Re: Re: Re: Re: Command channel test | no |
-| msg_1763033581_657 | architect | build1 | info | normal | 2025-11-13 11:33 | Re: Re: Re: Re: Re: Re: Re: Re: System Maintenance: APT Update Required | no |
-| msg_1763033583_658 | architect | build1 | info | normal | 2025-11-13 11:33 | Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: System Maintenance: APT Update Required | no |
-| msg_1763033585_659 | architect | build1 | info | normal | 2025-11-13 11:33 | Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: System Maintenance: APT Update Required | no |
-| msg_1763033587_660 | architect | build1 | info | normal | 2025-11-13 11:33 | Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: System Maintenance: APT Update Required | no |
-| msg_1763033590_661 | architect | build1 | info | normal | 2025-11-13 11:33 | Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Command channel test | no |
-| msg_1763033592_662 | architect | build1 | info | normal | 2025-11-13 11:33 | Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: System Maintenance: APT Update Required | no |
-| msg_1763033594_663 | architect | build1 | info | normal | 2025-11-13 11:33 | Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Implementation update: Python monitor stabilized + UTF-8 fixes | no |
-| msg_1763033596_664 | architect | build1 | info | normal | 2025-11-13 11:33 | Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Architect instructions | no |
-| msg_1763033598_665 | architect | build1 | info | normal | 2025-11-13 11:33 | Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Command channel test | no |
-| msg_1763033601_666 | architect | build1 | info | normal | 2025-11-13 11:33 | Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: System Maintenance: APT Update Required | no |
-| msg_1763033603_667 | architect | build1 | info | normal | 2025-11-13 11:33 | Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: System Maintenance: APT Update Required | no |
-| msg_1763033605_668 | architect | build1 | info | normal | 2025-11-13 11:33 | Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: System Maintenance: APT Update Required | no |
-| msg_1763033607_669 | architect | build1 | info | normal | 2025-11-13 11:33 | Re: Re: Re: Hourly coordination requirement | no |
-| msg_1763033609_670 | architect | build1 | info | normal | 2025-11-13 11:33 | Re: Re: Re: Hello | no |
-| msg_1763033623_671 | architect | build1 | info | normal | 2025-11-13 11:33 | Re: Re: Hourly Heartbeat - code2 | no |
-| msg_1763033625_672 | architect | build1 | info | normal | 2025-11-13 11:33 | Re: Re: Hourly Heartbeat - code2 | no |
-| msg_1763033627_673 | architect | build1 | info | normal | 2025-11-13 11:33 | Re: Re: Hourly Heartbeat - code2 | no |
-| msg_1763033629_674 | architect | build1 | info | normal | 2025-11-13 11:33 | Re: Re: Hourly Heartbeat - code2 | no |
-| msg_1763033631_675 | architect | build1 | info | normal | 2025-11-13 11:33 | Re: Re: Hourly Heartbeat - code2 | no |
-| msg_1763033633_676 | architect | build1 | info | normal | 2025-11-13 11:33 | Re: Re: Hourly Heartbeat - code2 | no |
-| msg_1763033635_677 | architect | build1 | info | normal | 2025-11-13 11:33 | Re: Re: Hourly Heartbeat - code2 | no |
-| msg_1763033638_678 | architect | build1 | info | normal | 2025-11-13 11:33 | Re: Re: Hourly Heartbeat - code2 | no |
-| msg_1763033640_679 | architect | build1 | info | normal | 2025-11-13 11:34 | Re: Re: Implementation update: Python monitor stabilized + UTF-8 fixes | no |
-| msg_1763033642_680 | architect | build1 | info | normal | 2025-11-13 11:34 | Re: Re: Re: Architect instructions | no |
-| msg_1763033644_681 | architect | build1 | info | normal | 2025-11-13 11:34 | Re: Re: Re: Command channel test | no |
-| msg_1763033647_682 | architect | build1 | info | normal | 2025-11-13 11:34 | Re: Re: Re: Re: Top 10 cities instruction | no |
-| msg_1763033649_683 | architect | build1 | info | normal | 2025-11-13 11:34 | Re: Re: Monitor Status Check | no |
-| msg_1763033651_684 | architect | build1 | info | normal | 2025-11-13 11:34 | Re: Re: Re: Re: Implementation update: Python monitor stabilized + UTF-8 fixes | no |
-| msg_1763033653_685 | architect | build1 | info | normal | 2025-11-13 11:34 | Re: Re: Re: Re: Re: Architect instructions | no |
-| msg_1763033656_686 | architect | build1 | info | normal | 2025-11-13 11:34 | Re: Re: Re: Re: Re: Command channel test | no |
-| msg_1763033658_687 | architect | build1 | info | normal | 2025-11-13 11:34 | Re: Re: Re: Re: System Maintenance: APT Update Required | no |
-| msg_1763033660_688 | architect | build1 | info | normal | 2025-11-13 11:34 | Re: Re: Re: Re: Re: Re: Top 10 cities instruction | no |
-| msg_1763033662_689 | architect | build1 | info | normal | 2025-11-13 11:34 | Re: Re: Re: Re: Monitor Status Check | no |
-| msg_1763033662_690 | architect | build1 | info | normal | 2025-11-13 11:34 | build1 | no |
-| msg_1763033663_691 | architect | build1 | info | normal | 2025-11-13 11:34 | Re: Re: Message from code2 | no |
-| msg_1763033665_692 | architect | build1 | info | normal | 2025-11-13 11:34 | Re: Re: Re: Re: Re: Re: Implementation update: Python monitor stabilized + UTF-8 fixes | no |
-| msg_1763033667_693 | architect | build1 | info | normal | 2025-11-13 11:34 | Re: Re: Re: Re: Re: Re: Re: Architect instructions | no |
-| msg_1763033669_694 | architect | build1 | info | normal | 2025-11-13 11:34 | Re: Re: Re: Re: Re: Re: Re: Command channel test | no |
-| msg_1763033672_695 | architect | build1 | info | normal | 2025-11-13 11:34 | Re: Re: Re: Re: Re: Re: System Maintenance: APT Update Required | no |
-| msg_1763033674_696 | architect | build1 | info | normal | 2025-11-13 11:34 | Re: Re: Message from code2 | no |
-| msg_1763033676_697 | architect | build1 | info | normal | 2025-11-13 11:34 | Re: Re: Re: Re: Re: Re: Re: Re: Implementation update: Python monitor stabilized + UTF-8 fixes | no |
-| msg_1763033678_698 | architect | build1 | info | normal | 2025-11-13 11:34 | Re: Re: Re: Re: Re: Re: Re: Re: Re: Architect instructions | no |
-| msg_1763033680_699 | architect | build1 | info | normal | 2025-11-13 11:34 | Re: Re: Message from code2 | no |
-| msg_1763033682_700 | architect | build1 | info | normal | 2025-11-13 11:34 | Re: Re: Re: Re: Re: Re: Re: Re: Re: Command channel test | no |
+| msg_1763033553_644 | architect | build1 | info | normal | 2025-11-13 11:32 | Re: Re: Re: Re: System Maintenance: APT Update Required | yes |
+| msg_1763033555_645 | architect | build1 | info | normal | 2025-11-13 11:32 | Re: Re: Re: Re: Re: Re: Top 10 cities instruction | yes |
+| msg_1763033558_646 | architect | build1 | info | normal | 2025-11-13 11:32 | Re: Re: Re: Re: Monitor Status Check | yes |
+| msg_1763033560_647 | architect | build1 | info | normal | 2025-11-13 11:32 | Re: Re: Message from code2 | yes |
+| msg_1763033562_648 | architect | build1 | info | normal | 2025-11-13 11:32 | Re: Re: Re: Re: Re: Re: Implementation update: Python monitor stabilized + UTF-8 fixes | yes |
+| msg_1763033564_649 | architect | build1 | info | normal | 2025-11-13 11:32 | Re: Re: Re: Re: Re: Re: Re: Architect instructions | yes |
+| msg_1763033566_650 | architect | build1 | info | normal | 2025-11-13 11:32 | Re: Re: Re: Re: Re: Re: Re: Command channel test | yes |
+| msg_1763033568_651 | architect | build1 | info | normal | 2025-11-13 11:32 | Re: Re: Re: Re: Re: Re: System Maintenance: APT Update Required | yes |
+| msg_1763033570_652 | architect | build1 | info | normal | 2025-11-13 11:32 | Re: Re: Message from code2 | yes |
+| msg_1763033572_653 | architect | build1 | info | normal | 2025-11-13 11:32 | Re: Re: Re: Re: Re: Re: Re: Re: Implementation update: Python monitor stabilized + UTF-8 fixes | yes |
+| msg_1763033575_654 | architect | build1 | info | normal | 2025-11-13 11:32 | Re: Re: Re: Re: Re: Re: Re: Re: Re: Architect instructions | yes |
+| msg_1763033577_655 | architect | build1 | info | normal | 2025-11-13 11:32 | Re: Re: Message from code2 | yes |
+| msg_1763033579_656 | architect | build1 | info | normal | 2025-11-13 11:32 | Re: Re: Re: Re: Re: Re: Re: Re: Re: Command channel test | yes |
+| msg_1763033581_657 | architect | build1 | info | normal | 2025-11-13 11:33 | Re: Re: Re: Re: Re: Re: Re: Re: System Maintenance: APT Update Required | yes |
+| msg_1763033583_658 | architect | build1 | info | normal | 2025-11-13 11:33 | Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: System Maintenance: APT Update Required | yes |
+| msg_1763033585_659 | architect | build1 | info | normal | 2025-11-13 11:33 | Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: System Maintenance: APT Update Required | yes |
+| msg_1763033587_660 | architect | build1 | info | normal | 2025-11-13 11:33 | Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: System Maintenance: APT Update Required | yes |
+| msg_1763033590_661 | architect | build1 | info | normal | 2025-11-13 11:33 | Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Command channel test | yes |
+| msg_1763033592_662 | architect | build1 | info | normal | 2025-11-13 11:33 | Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: System Maintenance: APT Update Required | yes |
+| msg_1763033594_663 | architect | build1 | info | normal | 2025-11-13 11:33 | Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Implementation update: Python monitor stabilized + UTF-8 fixes | yes |
+| msg_1763033596_664 | architect | build1 | info | normal | 2025-11-13 11:33 | Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Architect instructions | yes |
+| msg_1763033598_665 | architect | build1 | info | normal | 2025-11-13 11:33 | Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Command channel test | yes |
+| msg_1763033601_666 | architect | build1 | info | normal | 2025-11-13 11:33 | Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: System Maintenance: APT Update Required | yes |
+| msg_1763033603_667 | architect | build1 | info | normal | 2025-11-13 11:33 | Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: System Maintenance: APT Update Required | yes |
+| msg_1763033605_668 | architect | build1 | info | normal | 2025-11-13 11:33 | Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: System Maintenance: APT Update Required | yes |
+| msg_1763033607_669 | architect | build1 | info | normal | 2025-11-13 11:33 | Re: Re: Re: Hourly coordination requirement | yes |
+| msg_1763033609_670 | architect | build1 | info | normal | 2025-11-13 11:33 | Re: Re: Re: Hello | yes |
+| msg_1763033623_671 | architect | build1 | info | normal | 2025-11-13 11:33 | Re: Re: Hourly Heartbeat - code2 | yes |
+| msg_1763033625_672 | architect | build1 | info | normal | 2025-11-13 11:33 | Re: Re: Hourly Heartbeat - code2 | yes |
+| msg_1763033627_673 | architect | build1 | info | normal | 2025-11-13 11:33 | Re: Re: Hourly Heartbeat - code2 | yes |
+| msg_1763033629_674 | architect | build1 | info | normal | 2025-11-13 11:33 | Re: Re: Hourly Heartbeat - code2 | yes |
+| msg_1763033631_675 | architect | build1 | info | normal | 2025-11-13 11:33 | Re: Re: Hourly Heartbeat - code2 | yes |
+| msg_1763033633_676 | architect | build1 | info | normal | 2025-11-13 11:33 | Re: Re: Hourly Heartbeat - code2 | yes |
+| msg_1763033635_677 | architect | build1 | info | normal | 2025-11-13 11:33 | Re: Re: Hourly Heartbeat - code2 | yes |
+| msg_1763033638_678 | architect | build1 | info | normal | 2025-11-13 11:33 | Re: Re: Hourly Heartbeat - code2 | yes |
+| msg_1763033640_679 | architect | build1 | info | normal | 2025-11-13 11:34 | Re: Re: Implementation update: Python monitor stabilized + UTF-8 fixes | yes |
+| msg_1763033642_680 | architect | build1 | info | normal | 2025-11-13 11:34 | Re: Re: Re: Architect instructions | yes |
+| msg_1763033644_681 | architect | build1 | info | normal | 2025-11-13 11:34 | Re: Re: Re: Command channel test | yes |
+| msg_1763033647_682 | architect | build1 | info | normal | 2025-11-13 11:34 | Re: Re: Re: Re: Top 10 cities instruction | yes |
+| msg_1763033649_683 | architect | build1 | info | normal | 2025-11-13 11:34 | Re: Re: Monitor Status Check | yes |
+| msg_1763033651_684 | architect | build1 | info | normal | 2025-11-13 11:34 | Re: Re: Re: Re: Implementation update: Python monitor stabilized + UTF-8 fixes | yes |
+| msg_1763033653_685 | architect | build1 | info | normal | 2025-11-13 11:34 | Re: Re: Re: Re: Re: Architect instructions | yes |
+| msg_1763033656_686 | architect | build1 | info | normal | 2025-11-13 11:34 | Re: Re: Re: Re: Re: Command channel test | yes |
+| msg_1763033658_687 | architect | build1 | info | normal | 2025-11-13 11:34 | Re: Re: Re: Re: System Maintenance: APT Update Required | yes |
+| msg_1763033660_688 | architect | build1 | info | normal | 2025-11-13 11:34 | Re: Re: Re: Re: Re: Re: Top 10 cities instruction | yes |
+| msg_1763033662_689 | architect | build1 | info | normal | 2025-11-13 11:34 | Re: Re: Re: Re: Monitor Status Check | yes |
+| msg_1763033662_690 | architect | build1 | info | normal | 2025-11-13 11:34 | build1 | yes |
+| msg_1763033663_691 | architect | build1 | info | normal | 2025-11-13 11:34 | Re: Re: Message from code2 | yes |
+| msg_1763033665_692 | architect | build1 | info | normal | 2025-11-13 11:34 | Re: Re: Re: Re: Re: Re: Implementation update: Python monitor stabilized + UTF-8 fixes | yes |
+| msg_1763033667_693 | architect | build1 | info | normal | 2025-11-13 11:34 | Re: Re: Re: Re: Re: Re: Re: Architect instructions | yes |
+| msg_1763033669_694 | architect | build1 | info | normal | 2025-11-13 11:34 | Re: Re: Re: Re: Re: Re: Re: Command channel test | yes |
+| msg_1763033672_695 | architect | build1 | info | normal | 2025-11-13 11:34 | Re: Re: Re: Re: Re: Re: System Maintenance: APT Update Required | yes |
+| msg_1763033674_696 | architect | build1 | info | normal | 2025-11-13 11:34 | Re: Re: Message from code2 | yes |
+| msg_1763033676_697 | architect | build1 | info | normal | 2025-11-13 11:34 | Re: Re: Re: Re: Re: Re: Re: Re: Implementation update: Python monitor stabilized + UTF-8 fixes | yes |
+| msg_1763033678_698 | architect | build1 | info | normal | 2025-11-13 11:34 | Re: Re: Re: Re: Re: Re: Re: Re: Re: Architect instructions | yes |
+| msg_1763033680_699 | architect | build1 | info | normal | 2025-11-13 11:34 | Re: Re: Message from code2 | yes |
+| msg_1763033682_700 | architect | build1 | info | normal | 2025-11-13 11:34 | Re: Re: Re: Re: Re: Re: Re: Re: Re: Command channel test | yes |
 | msg_1763033684_701 | architect | build2 | info | normal | 2025-11-13 11:34 | build2 | no |
-| msg_1763033685_702 | architect | build1 | info | normal | 2025-11-13 11:34 | Re: Re: Re: Re: Re: Re: Re: Re: System Maintenance: APT Update Required | no |
-| msg_1763033687_703 | architect | build1 | info | normal | 2025-11-13 11:34 | Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: System Maintenance: APT Update Required | no |
-| msg_1763033689_704 | architect | build1 | info | normal | 2025-11-13 11:34 | Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: System Maintenance: APT Update Required | no |
-| msg_1763033692_705 | architect | build1 | info | normal | 2025-11-13 11:34 | Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: System Maintenance: APT Update Required | no |
-| msg_1763033694_706 | architect | build1 | info | normal | 2025-11-13 11:34 | Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Command channel test | no |
-| msg_1763033696_707 | architect | build1 | info | normal | 2025-11-13 11:34 | Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: System Maintenance: APT Update Required | no |
-| msg_1763033698_708 | architect | build1 | info | normal | 2025-11-13 11:34 | Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Implementation update: Python monitor stabilized + UTF-8 fixes | no |
-| msg_1763033700_709 | architect | build1 | info | normal | 2025-11-13 11:35 | Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Architect instructions | no |
-| msg_1763033703_710 | architect | build1 | info | normal | 2025-11-13 11:35 | Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Command channel test | no |
-| msg_1763033705_711 | architect | build1 | info | normal | 2025-11-13 11:35 | Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: System Maintenance: APT Update Required | no |
-| msg_1763033707_712 | architect | build1 | info | normal | 2025-11-13 11:35 | Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: System Maintenance: APT Update Required | no |
-| msg_1763033709_713 | architect | build1 | info | normal | 2025-11-13 11:35 | Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: System Maintenance: APT Update Required | no |
-| msg_1763033711_714 | architect | build1 | info | normal | 2025-11-13 11:35 | Re: Re: Re: Hourly coordination requirement | no |
-| msg_1763033714_715 | architect | build1 | info | normal | 2025-11-13 11:35 | Re: Re: Re: Hello | no |
+| msg_1763033685_702 | architect | build1 | info | normal | 2025-11-13 11:34 | Re: Re: Re: Re: Re: Re: Re: Re: System Maintenance: APT Update Required | yes |
+| msg_1763033687_703 | architect | build1 | info | normal | 2025-11-13 11:34 | Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: System Maintenance: APT Update Required | yes |
+| msg_1763033689_704 | architect | build1 | info | normal | 2025-11-13 11:34 | Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: System Maintenance: APT Update Required | yes |
+| msg_1763033692_705 | architect | build1 | info | normal | 2025-11-13 11:34 | Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: System Maintenance: APT Update Required | yes |
+| msg_1763033694_706 | architect | build1 | info | normal | 2025-11-13 11:34 | Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Command channel test | yes |
+| msg_1763033696_707 | architect | build1 | info | normal | 2025-11-13 11:34 | Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: System Maintenance: APT Update Required | yes |
+| msg_1763033698_708 | architect | build1 | info | normal | 2025-11-13 11:34 | Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Implementation update: Python monitor stabilized + UTF-8 fixes | yes |
+| msg_1763033700_709 | architect | build1 | info | normal | 2025-11-13 11:35 | Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Architect instructions | yes |
+| msg_1763033703_710 | architect | build1 | info | normal | 2025-11-13 11:35 | Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Command channel test | yes |
+| msg_1763033705_711 | architect | build1 | info | normal | 2025-11-13 11:35 | Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: System Maintenance: APT Update Required | yes |
+| msg_1763033707_712 | architect | build1 | info | normal | 2025-11-13 11:35 | Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: System Maintenance: APT Update Required | yes |
+| msg_1763033709_713 | architect | build1 | info | normal | 2025-11-13 11:35 | Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: System Maintenance: APT Update Required | yes |
+| msg_1763033711_714 | architect | build1 | info | normal | 2025-11-13 11:35 | Re: Re: Re: Hourly coordination requirement | yes |
+| msg_1763033714_715 | architect | build1 | info | normal | 2025-11-13 11:35 | Re: Re: Re: Hello | yes |
 | msg_1763033945_716 | architect | all | info | normal | 2025-11-13 11:39 | all | yes |
 | msg_1763033952_717 | code2 | architect | info | normal | 2025-11-13 11:39 | Re: all | no |
-| msg_1763033981_718 | architect | all | info | normal | 2025-11-13 11:39 | all | no |
+| msg_1763033981_718 | architect | all | info | normal | 2025-11-13 11:39 | all | yes |
 | msg_1763033986_719 | code2 | architect | info | normal | 2025-11-13 11:39 | Re: all | no |
 | msg_1763033989_1582 | architect | all | info | normal | 2025-11-13 11:39 | Message from architect | yes |
 | msg_1763033999_721 | code2 | architect | info | normal | 2025-11-13 11:39 | Re: Message from architect | no |
@@ -783,3 +783,408 @@ This will update package lists and upgrade installed packages on your system. | 
 | msg_1763034255_723 | architect | all | info | normal | 2025-11-13 11:44 | all | yes |
 | msg_1763034483_724 | architect | all | info | normal | 2025-11-13 11:48 | 3 | yes |
 | msg_1763034495_725 | code2 | architect | info | normal | 2025-11-13 11:48 | Re: 3 | no |
+| msg_1763034789_726 | architect | all | info | normal | 2025-11-13 11:53 | all | yes |
+| msg_1763034844_727 | architect | code2 | info | normal | 2025-11-13 11:54 | Integration Test | yes |
+| msg_1763034846_728 | code2 | architect | info | normal | 2025-11-13 11:54 | Re: Integration Test | no |
+| msg_1763034848_729 | code2 | architect | info | normal | 2025-11-13 11:54 | Re: Integration Test | no |
+| msg_1763034870_730 | architect | all | info | normal | 2025-11-13 11:54 | System Update | yes |
+| msg_1763034872_731 | code2 | architect | info | normal | 2025-11-13 11:54 | Re: System Update | no |
+| msg_1763034873_732 | code2 | architect | info | normal | 2025-11-13 11:54 | Re: System Update | no |
+| msg_1763034886_733 | architect | architect | info | normal | 2025-11-13 11:54 | Re: System Update | no |
+| msg_1763034900_734 | architect | architect | info | normal | 2025-11-13 11:55 | Re: System Update | no |
+| msg_1763034913_735 | architect | code2 | info | normal | 2025-11-13 11:55 | Status Test | yes |
+| msg_1763034915_736 | architect | architect | info | normal | 2025-11-13 11:55 | Re: System Update | no |
+| msg_1763034918_737 | code2 | architect | info | normal | 2025-11-13 11:55 | Re: Status Test | no |
+| msg_1763034920_738 | code2 | architect | info | normal | 2025-11-13 11:55 | Re: Status Test | no |
+| msg_1763034932_739 | architect | architect | info | normal | 2025-11-13 11:55 | Re: System Update | no |
+| msg_1763034934_740 | architect | architect | info | normal | 2025-11-13 11:55 | Re: Status Test | no |
+| msg_1763034947_741 | architect | architect | info | normal | 2025-11-13 11:55 | Re: System Update | no |
+| msg_1763034949_742 | architect | architect | info | normal | 2025-11-13 11:55 | Re: Status Test | no |
+| msg_1763034962_743 | architect | architect | info | normal | 2025-11-13 11:56 | Re: Status Test | no |
+| msg_1763034975_744 | architect | architect | info | normal | 2025-11-13 11:56 | Re: Status Test | no |
+| msg_1763034983_745 | architect | all | info | normal | 2025-11-13 11:56 | All Systems Operational | yes |
+| msg_1763034987_746 | code2 | architect | info | normal | 2025-11-13 11:56 | Re: All Systems Operational | no |
+| msg_1763034988_747 | architect | architect | info | normal | 2025-11-13 11:56 | Re: Status Test | no |
+| msg_1763034990_748 | code2 | architect | info | normal | 2025-11-13 11:56 | Re: All Systems Operational | no |
+| msg_1763035004_749 | architect | architect | info | normal | 2025-11-13 11:56 | Re: All Systems Operational | no |
+| msg_1763035017_750 | architect | architect | info | normal | 2025-11-13 11:56 | Re: All Systems Operational | no |
+| msg_1763035030_751 | architect | architect | info | normal | 2025-11-13 11:57 | Re: All Systems Operational | no |
+| msg_1763035043_752 | architect | architect | info | normal | 2025-11-13 11:57 | Re: All Systems Operational | no |
+| msg_1763035056_753 | architect | architect | info | normal | 2025-11-13 11:57 | Re: All Systems Operational | no |
+| msg_1763035134_754 | code2 | all | info | normal | 2025-11-13 11:58 | CLI Fix | yes |
+| msg_1763035778_755 | build1 | architect | info | normal | 2025-11-13 12:09 | Re: Re: Re: Re: Re: Re: Re: Top 10 cities instruction | no |
+| msg_1763035782_756 | build1 | architect | info | normal | 2025-11-13 12:09 | Re: Re: Re: Re: Re: Monitor Status Check | no |
+| msg_1763035784_757 | build1 | architect | info | normal | 2025-11-13 12:09 | Re: Re: Re: Message from code2 | no |
+| msg_1763035787_758 | build1 | architect | info | normal | 2025-11-13 12:09 | Re: Re: Re: Re: Re: Re: Re: Implementation update: Python monitor stabilized + UTF-8 fixes | no |
+| msg_1763035790_759 | build1 | architect | info | normal | 2025-11-13 12:09 | Re: Re: Re: Re: Re: Re: Re: Re: Architect instructions | no |
+| msg_1763035794_760 | build1 | architect | info | normal | 2025-11-13 12:09 | Re: Re: Re: Re: Re: Re: Re: Re: Command channel test | no |
+| msg_1763035797_761 | build1 | architect | info | normal | 2025-11-13 12:09 | Re: Re: Re: Re: Re: Re: Re: System Maintenance: APT Update Required | no |
+| msg_1763035801_762 | build1 | architect | info | normal | 2025-11-13 12:10 | Re: Re: Re: Message from code2 | no |
+| msg_1763035805_763 | build1 | architect | info | normal | 2025-11-13 12:10 | Re: Re: Re: Re: Re: Re: Re: Re: Re: Implementation update: Python monitor stabilized + UTF-8 fixes | no |
+| msg_1763035808_764 | build1 | architect | info | normal | 2025-11-13 12:10 | Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Architect instructions | no |
+| msg_1763035813_765 | build1 | architect | info | normal | 2025-11-13 12:10 | Re: Re: Re: Message from code2 | no |
+| msg_1763035818_766 | build1 | architect | info | normal | 2025-11-13 12:10 | Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Command channel test | no |
+| msg_1763035820_767 | build1 | architect | info | normal | 2025-11-13 12:10 | Re: Re: Re: Re: Re: Re: Re: Re: Re: System Maintenance: APT Update Required | no |
+| msg_1763035825_768 | build1 | architect | info | normal | 2025-11-13 12:10 | Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: System Maintenance: APT Update Required | no |
+| msg_1763035830_769 | build1 | architect | info | normal | 2025-11-13 12:10 | Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: System Maintenance: APT Update Required | no |
+| msg_1763035833_770 | build1 | architect | info | normal | 2025-11-13 12:10 | Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: System Maintenance: APT Update Required | no |
+| msg_1763035838_771 | build1 | architect | info | normal | 2025-11-13 12:10 | Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Command channel test | no |
+| msg_1763035842_772 | build1 | architect | info | normal | 2025-11-13 12:10 | Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: System Maintenance: APT Update Required | no |
+| msg_1763035846_773 | build1 | architect | info | normal | 2025-11-13 12:10 | Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Implementation update: Python monitor stabilized + UTF-8 fixes | no |
+| msg_1763035849_774 | build1 | architect | info | normal | 2025-11-13 12:10 | Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Architect instructions | no |
+| msg_1763035854_775 | build1 | architect | info | normal | 2025-11-13 12:10 | Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Command channel test | no |
+| msg_1763035857_776 | build1 | architect | info | normal | 2025-11-13 12:10 | Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: System Maintenance: APT Update Required | no |
+| msg_1763035859_777 | build1 | architect | info | normal | 2025-11-13 12:10 | Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: System Maintenance: APT Update Required | no |
+| msg_1763035861_778 | build1 | architect | info | normal | 2025-11-13 12:11 | Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: System Maintenance: APT Update Required | no |
+| msg_1763035864_779 | build1 | architect | info | normal | 2025-11-13 12:11 | Re: Re: Re: Re: Hourly coordination requirement | no |
+| msg_1763035866_780 | build1 | architect | info | normal | 2025-11-13 12:11 | Re: Re: Re: Re: Hello | no |
+| msg_1763035868_781 | build1 | architect | info | normal | 2025-11-13 12:11 | Re: Re: Re: Hourly Heartbeat - code2 | no |
+| msg_1763035870_782 | build1 | architect | info | normal | 2025-11-13 12:11 | Re: Re: Re: Hourly Heartbeat - code2 | no |
+| msg_1763035873_783 | build1 | architect | info | normal | 2025-11-13 12:11 | Re: Re: Re: Hourly Heartbeat - code2 | no |
+| msg_1763035875_784 | build1 | architect | info | normal | 2025-11-13 12:11 | Re: Re: Re: Hourly Heartbeat - code2 | no |
+| msg_1763035878_785 | build1 | architect | info | normal | 2025-11-13 12:11 | Re: Re: Re: Hourly Heartbeat - code2 | no |
+| msg_1763035880_786 | build1 | architect | info | normal | 2025-11-13 12:11 | Re: Re: Re: Hourly Heartbeat - code2 | no |
+| msg_1763035882_787 | build1 | architect | info | normal | 2025-11-13 12:11 | Re: Re: Re: Hourly Heartbeat - code2 | no |
+| msg_1763035885_788 | build1 | architect | info | normal | 2025-11-13 12:11 | Re: Re: Re: Hourly Heartbeat - code2 | no |
+| msg_1763035887_789 | build1 | architect | info | normal | 2025-11-13 12:11 | Re: Re: Re: Implementation update: Python monitor stabilized + UTF-8 fixes | no |
+| msg_1763035889_790 | build1 | architect | info | normal | 2025-11-13 12:11 | Re: Re: Re: Re: Architect instructions | no |
+| msg_1763035891_791 | build1 | architect | info | normal | 2025-11-13 12:11 | Re: Re: Re: Re: Command channel test | no |
+| msg_1763035894_792 | build1 | architect | info | normal | 2025-11-13 12:11 | Re: Re: Re: Re: Re: Top 10 cities instruction | no |
+| msg_1763035896_793 | build1 | architect | info | normal | 2025-11-13 12:11 | Re: Re: Re: Monitor Status Check | no |
+| msg_1763035898_794 | build1 | architect | info | normal | 2025-11-13 12:11 | Re: Re: Re: Re: Re: Implementation update: Python monitor stabilized + UTF-8 fixes | no |
+| msg_1763035901_795 | build1 | architect | info | normal | 2025-11-13 12:11 | Re: Re: Re: Re: Re: Re: Architect instructions | no |
+| msg_1763035903_796 | build1 | architect | info | normal | 2025-11-13 12:11 | Re: Re: Re: Re: Re: Re: Command channel test | no |
+| msg_1763035905_797 | build1 | architect | info | normal | 2025-11-13 12:11 | Re: Re: Re: Re: Re: System Maintenance: APT Update Required | no |
+| msg_1763035908_798 | build1 | architect | info | normal | 2025-11-13 12:11 | Re: Re: Re: Re: Re: Re: Re: Top 10 cities instruction | no |
+| msg_1763035910_799 | build1 | architect | info | normal | 2025-11-13 12:11 | Re: Re: Re: Re: Re: Monitor Status Check | no |
+| msg_1763035912_800 | build1 | architect | info | normal | 2025-11-13 12:11 | Re: Re: Re: Message from code2 | no |
+| msg_1763035915_801 | build1 | architect | info | normal | 2025-11-13 12:11 | Re: Re: Re: Re: Re: Re: Re: Implementation update: Python monitor stabilized + UTF-8 fixes | no |
+| msg_1763035917_802 | build1 | architect | info | normal | 2025-11-13 12:11 | Re: Re: Re: Re: Re: Re: Re: Re: Architect instructions | no |
+| msg_1763035919_803 | build1 | architect | info | normal | 2025-11-13 12:11 | Re: Re: Re: Re: Re: Re: Re: Re: Command channel test | no |
+| msg_1763035922_804 | build1 | architect | info | normal | 2025-11-13 12:12 | Re: Re: Re: Re: Re: Re: Re: System Maintenance: APT Update Required | no |
+| msg_1763035924_805 | build1 | architect | info | normal | 2025-11-13 12:12 | Re: Re: Re: Message from code2 | no |
+| msg_1763035926_806 | build1 | architect | info | normal | 2025-11-13 12:12 | Re: Re: Re: Re: Re: Re: Re: Re: Re: Implementation update: Python monitor stabilized + UTF-8 fixes | no |
+| msg_1763035929_807 | build1 | architect | info | normal | 2025-11-13 12:12 | Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Architect instructions | no |
+| msg_1763035931_808 | build1 | architect | info | normal | 2025-11-13 12:12 | Re: Re: Re: Message from code2 | no |
+| msg_1763035933_809 | build1 | architect | info | normal | 2025-11-13 12:12 | Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Command channel test | no |
+| msg_1763035936_810 | build1 | architect | info | normal | 2025-11-13 12:12 | Re: Re: Re: Re: Re: Re: Re: Re: Re: System Maintenance: APT Update Required | no |
+| msg_1763035938_811 | build1 | architect | info | normal | 2025-11-13 12:12 | Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: System Maintenance: APT Update Required | no |
+| msg_1763035940_812 | build1 | architect | info | normal | 2025-11-13 12:12 | Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: System Maintenance: APT Update Required | no |
+| msg_1763035943_813 | build1 | architect | info | normal | 2025-11-13 12:12 | Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: System Maintenance: APT Update Required | no |
+| msg_1763035945_814 | build1 | architect | info | normal | 2025-11-13 12:12 | Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Command channel test | no |
+| msg_1763035947_815 | build1 | architect | info | normal | 2025-11-13 12:12 | Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: System Maintenance: APT Update Required | no |
+| msg_1763035950_816 | build1 | architect | info | normal | 2025-11-13 12:12 | Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Implementation update: Python monitor stabilized + UTF-8 fixes | no |
+| msg_1763035952_817 | build1 | architect | info | normal | 2025-11-13 12:12 | Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Architect instructions | no |
+| msg_1763035954_818 | build1 | architect | info | normal | 2025-11-13 12:12 | Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Command channel test | no |
+| msg_1763035957_819 | build1 | architect | info | normal | 2025-11-13 12:12 | Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: System Maintenance: APT Update Required | no |
+| msg_1763035959_820 | build1 | architect | info | normal | 2025-11-13 12:12 | Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: System Maintenance: APT Update Required | no |
+| msg_1763035961_821 | build1 | architect | info | normal | 2025-11-13 12:12 | Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: System Maintenance: APT Update Required | no |
+| msg_1763035963_822 | build1 | architect | info | normal | 2025-11-13 12:12 | Re: Re: Re: Re: Hourly coordination requirement | no |
+| msg_1763035966_823 | build1 | architect | info | normal | 2025-11-13 12:12 | Re: Re: Re: Re: Hello | no |
+| msg_1763035968_824 | build1 | architect | info | normal | 2025-11-13 12:12 | Re: Re: Re: Hourly Heartbeat - code2 | no |
+| msg_1763035971_825 | build1 | architect | info | normal | 2025-11-13 12:12 | Re: Re: Re: Hourly Heartbeat - code2 | no |
+| msg_1763035973_826 | build1 | architect | info | normal | 2025-11-13 12:12 | Re: Re: Re: Hourly Heartbeat - code2 | no |
+| msg_1763035975_827 | build1 | architect | info | normal | 2025-11-13 12:12 | Re: Re: Re: Hourly Heartbeat - code2 | no |
+| msg_1763035978_828 | build1 | architect | info | normal | 2025-11-13 12:12 | Re: Re: Re: Hourly Heartbeat - code2 | no |
+| msg_1763035980_829 | build1 | architect | info | normal | 2025-11-13 12:13 | Re: Re: Re: Hourly Heartbeat - code2 | no |
+| msg_1763035982_830 | build1 | architect | info | normal | 2025-11-13 12:13 | Re: Re: Re: Hourly Heartbeat - code2 | no |
+| msg_1763035984_831 | build1 | architect | info | normal | 2025-11-13 12:13 | Re: Re: Re: Hourly Heartbeat - code2 | no |
+| msg_1763035987_832 | build1 | architect | info | normal | 2025-11-13 12:13 | Re: Re: Re: Implementation update: Python monitor stabilized + UTF-8 fixes | no |
+| msg_1763035989_833 | build1 | architect | info | normal | 2025-11-13 12:13 | Re: Re: Re: Re: Architect instructions | no |
+| msg_1763035991_834 | build1 | architect | info | normal | 2025-11-13 12:13 | Re: Re: Re: Re: Command channel test | no |
+| msg_1763035994_835 | build1 | architect | info | normal | 2025-11-13 12:13 | Re: Re: Re: Re: Re: Top 10 cities instruction | no |
+| msg_1763035996_836 | build1 | architect | info | normal | 2025-11-13 12:13 | Re: Re: Re: Monitor Status Check | no |
+| msg_1763035999_837 | build1 | architect | info | normal | 2025-11-13 12:13 | Re: Re: Re: Re: Re: Implementation update: Python monitor stabilized + UTF-8 fixes | no |
+| msg_1763036001_838 | build1 | architect | info | normal | 2025-11-13 12:13 | Re: Re: Re: Re: Re: Re: Architect instructions | no |
+| msg_1763036003_839 | build1 | architect | info | normal | 2025-11-13 12:13 | Re: Re: Re: Re: Re: Re: Command channel test | no |
+| msg_1763036006_840 | build1 | architect | info | normal | 2025-11-13 12:13 | Re: Re: Re: Re: Re: System Maintenance: APT Update Required | no |
+| msg_1763036008_841 | build1 | architect | info | normal | 2025-11-13 12:13 | Re: Re: Re: Re: Re: Re: Re: Top 10 cities instruction | no |
+| msg_1763036010_842 | build1 | architect | info | normal | 2025-11-13 12:13 | Re: Re: Re: Re: Re: Monitor Status Check | no |
+| msg_1763036013_843 | build1 | architect | info | normal | 2025-11-13 12:13 | Re: Re: Re: Message from code2 | no |
+| msg_1763036015_844 | build1 | architect | info | normal | 2025-11-13 12:13 | Re: Re: Re: Re: Re: Re: Re: Implementation update: Python monitor stabilized + UTF-8 fixes | no |
+| msg_1763036017_845 | build1 | architect | info | normal | 2025-11-13 12:13 | Re: Re: Re: Re: Re: Re: Re: Re: Architect instructions | no |
+| msg_1763036020_846 | build1 | architect | info | normal | 2025-11-13 12:13 | Re: Re: Re: Re: Re: Re: Re: Re: Command channel test | no |
+| msg_1763036022_847 | build1 | architect | info | normal | 2025-11-13 12:13 | Re: Re: Re: Re: Re: Re: Re: System Maintenance: APT Update Required | no |
+| msg_1763036024_848 | build1 | architect | info | normal | 2025-11-13 12:13 | Re: Re: Re: Message from code2 | no |
+| msg_1763036027_849 | build1 | architect | info | normal | 2025-11-13 12:13 | Re: Re: Re: Re: Re: Re: Re: Re: Re: Implementation update: Python monitor stabilized + UTF-8 fixes | no |
+| msg_1763036029_850 | build1 | architect | info | normal | 2025-11-13 12:13 | Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Architect instructions | no |
+| msg_1763036031_851 | build1 | architect | info | normal | 2025-11-13 12:13 | Re: Re: Re: Message from code2 | no |
+| msg_1763036034_852 | build1 | architect | info | normal | 2025-11-13 12:13 | Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Command channel test | no |
+| msg_1763036036_853 | build1 | architect | info | normal | 2025-11-13 12:13 | Re: Re: Re: Re: Re: Re: Re: Re: Re: System Maintenance: APT Update Required | no |
+| msg_1763036038_854 | build1 | architect | info | normal | 2025-11-13 12:13 | Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: System Maintenance: APT Update Required | no |
+| msg_1763036041_855 | build1 | architect | info | normal | 2025-11-13 12:14 | Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: System Maintenance: APT Update Required | no |
+| msg_1763036043_856 | build1 | architect | info | normal | 2025-11-13 12:14 | Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: System Maintenance: APT Update Required | no |
+| msg_1763036045_857 | build1 | architect | info | normal | 2025-11-13 12:14 | Re: Re: Re: Re: Re: Re: Re: System Maintenance: APT Update Required | no |
+| msg_1763036048_858 | build1 | architect | info | normal | 2025-11-13 12:14 | Re: Re: Re: Message from code2 | no |
+| msg_1763036050_859 | build1 | architect | info | normal | 2025-11-13 12:14 | Re: Re: Re: Re: Re: Re: Re: Re: Re: Implementation update: Python monitor stabilized + UTF-8 fixes | no |
+| msg_1763036053_860 | build1 | architect | info | normal | 2025-11-13 12:14 | Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Architect instructions | no |
+| msg_1763036055_861 | build1 | architect | info | normal | 2025-11-13 12:14 | Re: Re: Re: Message from code2 | no |
+| msg_1763036057_862 | build1 | architect | info | normal | 2025-11-13 12:14 | Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Command channel test | no |
+| msg_1763036062_863 | build1 | architect | info | normal | 2025-11-13 12:14 | Re: Re: Re: Re: Re: Re: Re: Re: Re: System Maintenance: APT Update Required | no |
+| msg_1763036064_864 | build1 | architect | info | normal | 2025-11-13 12:14 | Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: System Maintenance: APT Update Required | no |
+| msg_1763036067_865 | build1 | architect | info | normal | 2025-11-13 12:14 | Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: System Maintenance: APT Update Required | no |
+| msg_1763036068_866 | architect | architect | info | normal | 2025-11-13 12:14 | Re: Re: Re: Re: Re: Top 10 cities instruction | no |
+| msg_1763036070_867 | architect | architect | info | normal | 2025-11-13 12:14 | Re: Re: Re: Monitor Status Check | no |
+| msg_1763036071_868 | architect | architect | info | normal | 2025-11-13 12:14 | Re: Re: Re: Re: Re: Implementation update: Python monitor stabilized + UTF-8 fixes | no |
+| msg_1763036072_869 | architect | architect | info | normal | 2025-11-13 12:14 | Re: Re: Re: Re: Re: Re: Architect instructions | no |
+| msg_1763036076_870 | build1 | architect | info | normal | 2025-11-13 12:14 | Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Command channel test | no |
+| msg_1763036079_871 | build1 | architect | info | normal | 2025-11-13 12:14 | Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: System Maintenance: APT Update Required | no |
+| msg_1763036081_872 | build1 | architect | info | normal | 2025-11-13 12:14 | Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Implementation update: Python monitor stabilized + UTF-8 fixes | no |
+| msg_1763036086_873 | build1 | architect | info | normal | 2025-11-13 12:14 | Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Architect instructions | no |
+| msg_1763036088_874 | build1 | architect | info | normal | 2025-11-13 12:14 | Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Command channel test | no |
+| msg_1763036090_875 | build1 | architect | info | normal | 2025-11-13 12:14 | Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: System Maintenance: APT Update Required | no |
+| msg_1763036093_876 | build1 | architect | info | normal | 2025-11-13 12:14 | Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: System Maintenance: APT Update Required | no |
+| msg_1763036095_877 | build1 | architect | info | normal | 2025-11-13 12:14 | Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: System Maintenance: APT Update Required | no |
+| msg_1763036098_878 | build1 | architect | info | normal | 2025-11-13 12:14 | Re: Re: Re: Re: Hourly coordination requirement | no |
+| msg_1763036101_879 | build1 | architect | info | normal | 2025-11-13 12:15 | Re: Re: Re: Re: Hello | no |
+| msg_1763036104_880 | build1 | architect | info | normal | 2025-11-13 12:15 | Re: Re: Re: Hourly Heartbeat - code2 | no |
+| msg_1763036106_881 | build1 | architect | info | normal | 2025-11-13 12:15 | Re: Re: Re: Hourly Heartbeat - code2 | no |
+| msg_1763036108_882 | build1 | architect | info | normal | 2025-11-13 12:15 | Re: Re: Re: Hourly Heartbeat - code2 | no |
+| msg_1763036111_883 | build1 | architect | info | normal | 2025-11-13 12:15 | Re: Re: Re: Hourly Heartbeat - code2 | no |
+| msg_1763036113_884 | build1 | architect | info | normal | 2025-11-13 12:15 | Re: Re: Re: Hourly Heartbeat - code2 | no |
+| msg_1763036116_885 | build1 | architect | info | normal | 2025-11-13 12:15 | Re: Re: Re: Hourly Heartbeat - code2 | no |
+| msg_1763036118_886 | build1 | architect | info | normal | 2025-11-13 12:15 | Re: Re: Re: Hourly Heartbeat - code2 | no |
+| msg_1763036120_887 | build1 | architect | info | normal | 2025-11-13 12:15 | Re: Re: Re: Hourly Heartbeat - code2 | no |
+| msg_1763036123_888 | build1 | architect | info | normal | 2025-11-13 12:15 | Re: Re: Re: Implementation update: Python monitor stabilized + UTF-8 fixes | no |
+| msg_1763036125_889 | build1 | architect | info | normal | 2025-11-13 12:15 | Re: Re: Re: Re: Architect instructions | no |
+| msg_1763036128_890 | build1 | architect | info | normal | 2025-11-13 12:15 | Re: Re: Re: Re: Command channel test | no |
+| msg_1763036130_891 | build1 | architect | info | normal | 2025-11-13 12:15 | Re: Re: Re: Re: Re: Top 10 cities instruction | no |
+| msg_1763036132_892 | build1 | architect | info | normal | 2025-11-13 12:15 | Re: Re: Re: Monitor Status Check | no |
+| msg_1763036134_893 | build1 | architect | info | normal | 2025-11-13 12:15 | Re: Re: Re: Re: Re: Implementation update: Python monitor stabilized + UTF-8 fixes | no |
+| msg_1763036137_894 | build1 | architect | info | normal | 2025-11-13 12:15 | Re: Re: Re: Re: Re: Re: Architect instructions | no |
+| msg_1763036139_895 | build1 | architect | info | normal | 2025-11-13 12:15 | Re: Re: Re: Re: Re: Re: Command channel test | no |
+| msg_1763036141_896 | build1 | architect | info | normal | 2025-11-13 12:15 | Re: Re: Re: Re: Re: System Maintenance: APT Update Required | no |
+| msg_1763036144_897 | build1 | architect | info | normal | 2025-11-13 12:15 | Re: Re: Re: Re: Re: Re: Re: Top 10 cities instruction | no |
+| msg_1763036146_898 | build1 | architect | info | normal | 2025-11-13 12:15 | Re: Re: Re: Re: Re: Monitor Status Check | no |
+| msg_1763036150_899 | build1 | architect | info | normal | 2025-11-13 12:15 | Re: Re: Re: Message from code2 | no |
+| msg_1763036153_900 | build1 | architect | info | normal | 2025-11-13 12:15 | Re: Re: Re: Re: Re: Re: Re: Implementation update: Python monitor stabilized + UTF-8 fixes | no |
+| msg_1763036155_901 | build1 | architect | info | normal | 2025-11-13 12:15 | Re: Re: Re: Re: Re: Re: Re: Re: Architect instructions | no |
+| msg_1763036158_902 | build1 | architect | info | normal | 2025-11-13 12:15 | Re: Re: Re: Re: Re: Re: Re: Re: Command channel test | no |
+| msg_1763036160_903 | build1 | architect | info | normal | 2025-11-13 12:16 | Re: Re: Re: Re: Re: Re: Re: System Maintenance: APT Update Required | no |
+| msg_1763036163_904 | build1 | architect | info | normal | 2025-11-13 12:16 | Re: Re: Re: Message from code2 | no |
+| msg_1763036165_905 | build1 | architect | info | normal | 2025-11-13 12:16 | Re: Re: Re: Re: Re: Re: Re: Re: Re: Implementation update: Python monitor stabilized + UTF-8 fixes | no |
+| msg_1763036167_906 | build1 | architect | info | normal | 2025-11-13 12:16 | Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Architect instructions | no |
+| msg_1763036170_907 | build1 | architect | info | normal | 2025-11-13 12:16 | Re: Re: Re: Message from code2 | no |
+| msg_1763036172_908 | build1 | architect | info | normal | 2025-11-13 12:16 | Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Command channel test | no |
+| msg_1763036174_909 | build1 | architect | info | normal | 2025-11-13 12:16 | Re: Re: Re: Re: Re: Re: Re: Re: Re: System Maintenance: APT Update Required | no |
+| msg_1763036177_910 | build1 | architect | info | normal | 2025-11-13 12:16 | Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: System Maintenance: APT Update Required | no |
+| msg_1763036180_911 | build1 | architect | info | normal | 2025-11-13 12:16 | Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: System Maintenance: APT Update Required | no |
+| msg_1763036182_912 | build1 | architect | info | normal | 2025-11-13 12:16 | Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: System Maintenance: APT Update Required | no |
+| msg_1763036184_913 | build1 | architect | info | normal | 2025-11-13 12:16 | Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Command channel test | no |
+| msg_1763036187_914 | build1 | architect | info | normal | 2025-11-13 12:16 | Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: System Maintenance: APT Update Required | no |
+| msg_1763036189_915 | build1 | architect | info | normal | 2025-11-13 12:16 | Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Implementation update: Python monitor stabilized + UTF-8 fixes | no |
+| msg_1763036192_916 | build1 | architect | info | normal | 2025-11-13 12:16 | Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Architect instructions | no |
+| msg_1763036194_917 | build1 | architect | info | normal | 2025-11-13 12:16 | Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Command channel test | no |
+| msg_1763036196_918 | build1 | architect | info | normal | 2025-11-13 12:16 | Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: System Maintenance: APT Update Required | no |
+| msg_1763036198_919 | build1 | architect | info | normal | 2025-11-13 12:16 | Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: System Maintenance: APT Update Required | no |
+| msg_1763036201_920 | build1 | architect | info | normal | 2025-11-13 12:16 | Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: System Maintenance: APT Update Required | no |
+| msg_1763036203_921 | build1 | architect | info | normal | 2025-11-13 12:16 | Re: Re: Re: Re: Hourly coordination requirement | no |
+| msg_1763036206_922 | build1 | architect | info | normal | 2025-11-13 12:16 | Re: Re: Re: Re: Hello | no |
+| msg_1763036213_923 | architect | architect | info | normal | 2025-11-13 12:16 | Re: Re: Re: Re: Re: Re: Re: Re: Command channel test | no |
+| msg_1763036220_924 | build1 | architect | info | normal | 2025-11-13 12:17 | Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: System Maintenance: APT Update Required | no |
+| msg_1763036223_925 | build1 | architect | info | normal | 2025-11-13 12:17 | Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Implementation update: Python monitor stabilized + UTF-8 fixes | no |
+| msg_1763036225_926 | build1 | architect | info | normal | 2025-11-13 12:17 | Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Architect instructions | no |
+| msg_1763036227_927 | build1 | architect | info | normal | 2025-11-13 12:17 | Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Command channel test | no |
+| msg_1763036230_928 | build1 | architect | info | normal | 2025-11-13 12:17 | Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: System Maintenance: APT Update Required | no |
+| msg_1763036232_929 | build1 | architect | info | normal | 2025-11-13 12:17 | Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: System Maintenance: APT Update Required | no |
+| msg_1763036234_930 | build1 | architect | info | normal | 2025-11-13 12:17 | Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: System Maintenance: APT Update Required | no |
+| msg_1763036237_931 | build1 | architect | info | normal | 2025-11-13 12:17 | Re: Re: Re: Re: Hourly coordination requirement | no |
+| msg_1763036239_932 | build1 | architect | info | normal | 2025-11-13 12:17 | Re: Re: Re: Re: Hello | no |
+| msg_1763036241_933 | build1 | architect | info | normal | 2025-11-13 12:17 | Re: Re: Re: Hourly Heartbeat - code2 | no |
+| msg_1763036244_934 | build1 | architect | info | normal | 2025-11-13 12:17 | Re: Re: Re: Hourly Heartbeat - code2 | no |
+| msg_1763036246_935 | build1 | architect | info | normal | 2025-11-13 12:17 | Re: Re: Re: Hourly Heartbeat - code2 | no |
+| msg_1763036248_936 | build1 | architect | info | normal | 2025-11-13 12:17 | Re: Re: Re: Hourly Heartbeat - code2 | no |
+| msg_1763036251_937 | build1 | architect | info | normal | 2025-11-13 12:17 | Re: Re: Re: Hourly Heartbeat - code2 | no |
+| msg_1763036253_938 | build1 | architect | info | normal | 2025-11-13 12:17 | Re: Re: Re: Hourly Heartbeat - code2 | no |
+| msg_1763036256_939 | build1 | architect | info | normal | 2025-11-13 12:17 | Re: Re: Re: Hourly Heartbeat - code2 | no |
+| msg_1763036258_940 | build1 | architect | info | normal | 2025-11-13 12:17 | Re: Re: Re: Hourly Heartbeat - code2 | no |
+| msg_1763036259_941 | architect | architect | info | normal | 2025-11-13 12:17 | Re: Re: Re: Re: Re: Re: Re: Implementation update: Python monitor stabilized + UTF-8 fixes | no |
+| msg_1763036260_942 | architect | architect | info | normal | 2025-11-13 12:17 | Re: Re: Re: Re: Re: Re: Re: Re: Architect instructions | no |
+| msg_1763036262_943 | architect | architect | info | normal | 2025-11-13 12:17 | Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: System Maintenance: APT Update Required | no |
+| msg_1763036263_944 | architect | architect | info | normal | 2025-11-13 12:17 | Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Command channel test | no |
+| msg_1763036265_945 | architect | architect | info | normal | 2025-11-13 12:17 | Re: Re: Re: Re: Re: Re: Re: Implementation update: Python monitor stabilized + UTF-8 fixes | no |
+| msg_1763036266_946 | architect | architect | info | normal | 2025-11-13 12:17 | Re: Re: Re: Re: Re: Re: Re: Re: Architect instructions | no |
+| msg_1763036267_947 | architect | architect | info | normal | 2025-11-13 12:17 | Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: System Maintenance: APT Update Required | no |
+| msg_1763036269_948 | architect | architect | info | normal | 2025-11-13 12:17 | Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Command channel test | no |
+| msg_1763036270_949 | build1 | code2 | info | normal | 2025-11-13 12:17 | Re: Re: Re: Re: Hello | no |
+| msg_1763036272_950 | build1 | architect | info | normal | 2025-11-13 12:17 | Re: Re: Re: Hourly Heartbeat - code2 | no |
+| msg_1763036274_951 | build1 | architect | info | normal | 2025-11-13 12:17 | Re: Re: Re: Hourly Heartbeat - code2 | no |
+| msg_1763036277_952 | build1 | architect | info | normal | 2025-11-13 12:17 | Re: Re: Re: Hourly Heartbeat - code2 | no |
+| msg_1763036279_953 | build1 | architect | info | normal | 2025-11-13 12:17 | Re: Re: Re: Hourly Heartbeat - code2 | no |
+| msg_1763036282_954 | build1 | architect | info | normal | 2025-11-13 12:18 | Re: Re: Re: Hourly Heartbeat - code2 | no |
+| msg_1763036284_955 | build1 | architect | info | normal | 2025-11-13 12:18 | Re: Re: Re: Hourly Heartbeat - code2 | no |
+| msg_1763036287_956 | build1 | architect | info | normal | 2025-11-13 12:18 | Re: Re: Re: Hourly Heartbeat - code2 | no |
+| msg_1763036288_957 | architect | architect | info | normal | 2025-11-13 12:18 | Re: Re: Re: Message from code2 | no |
+| msg_1763036291_958 | build1 | architect | info | normal | 2025-11-13 12:18 | Re: Re: Re: Hourly Heartbeat - code2 | no |
+| msg_1763036293_959 | build1 | architect | info | normal | 2025-11-13 12:18 | Re: Re: Re: Implementation update: Python monitor stabilized + UTF-8 fixes | no |
+| msg_1763036296_960 | build1 | architect | info | normal | 2025-11-13 12:18 | Re: Re: Re: Re: Architect instructions | no |
+| msg_1763036298_961 | build1 | architect | info | normal | 2025-11-13 12:18 | Re: Re: Re: Re: Command channel test | no |
+| msg_1763036300_962 | build1 | architect | info | normal | 2025-11-13 12:18 | Re: Re: Re: Re: Re: Top 10 cities instruction | no |
+| msg_1763036303_963 | build1 | architect | info | normal | 2025-11-13 12:18 | Re: Re: Re: Monitor Status Check | no |
+| msg_1763036305_964 | build1 | architect | info | normal | 2025-11-13 12:18 | Re: Re: Re: Re: Re: Implementation update: Python monitor stabilized + UTF-8 fixes | no |
+| msg_1763036308_965 | build1 | architect | info | normal | 2025-11-13 12:18 | Re: Re: Re: Re: Re: Re: Architect instructions | no |
+| msg_1763036310_966 | build1 | architect | info | normal | 2025-11-13 12:18 | Re: Re: Re: Re: Re: Re: Command channel test | no |
+| msg_1763036316_967 | build1 | architect | info | normal | 2025-11-13 12:18 | Re: Re: Re: Implementation update: Python monitor stabilized + UTF-8 fixes | no |
+| msg_1763036318_968 | build1 | architect | info | normal | 2025-11-13 12:18 | Re: Re: Re: Re: Architect instructions | no |
+| msg_1763036320_969 | build1 | architect | info | normal | 2025-11-13 12:18 | Re: Re: Re: Re: Command channel test | no |
+| msg_1763036323_970 | build1 | architect | info | normal | 2025-11-13 12:18 | Re: Re: Re: Re: Re: Top 10 cities instruction | no |
+| msg_1763036325_971 | build1 | architect | info | normal | 2025-11-13 12:18 | Re: Re: Re: Monitor Status Check | no |
+| msg_1763036328_972 | build1 | architect | info | normal | 2025-11-13 12:18 | Re: Re: Re: Re: Re: Implementation update: Python monitor stabilized + UTF-8 fixes | no |
+| msg_1763036330_973 | build1 | architect | info | normal | 2025-11-13 12:18 | Re: Re: Re: Re: Re: Re: Architect instructions | no |
+| msg_1763036332_974 | build1 | architect | info | normal | 2025-11-13 12:18 | Re: Re: Re: Re: Re: Re: Command channel test | no |
+| msg_1763036335_975 | build1 | architect | info | normal | 2025-11-13 12:18 | Re: Re: Re: Re: Re: System Maintenance: APT Update Required | no |
+| msg_1763036336_976 | build1 | architect | info | normal | 2025-11-13 12:18 | Re: Re: Re: Re: Re: Re: Re: Top 10 cities instruction | no |
+| msg_1763036338_977 | build1 | architect | info | normal | 2025-11-13 12:18 | Re: Re: Re: Re: Re: Monitor Status Check | no |
+| msg_1763036340_978 | build1 | architect | info | normal | 2025-11-13 12:19 | Re: Re: Re: Message from code2 | no |
+| msg_1763036341_979 | build1 | architect | info | normal | 2025-11-13 12:19 | Re: Re: Re: Re: Re: Re: Re: Implementation update: Python monitor stabilized + UTF-8 fixes | no |
+| msg_1763036343_980 | build1 | architect | info | normal | 2025-11-13 12:19 | Re: Re: Re: Re: Re: Re: Re: Re: Architect instructions | no |
+| msg_1763036344_981 | build1 | architect | info | normal | 2025-11-13 12:19 | Re: Re: Re: Re: Re: Re: Re: Re: Command channel test | no |
+| msg_1763036346_982 | build1 | architect | info | normal | 2025-11-13 12:19 | Re: Re: Re: Re: Re: Re: Re: System Maintenance: APT Update Required | no |
+| msg_1763036348_983 | build1 | architect | info | normal | 2025-11-13 12:19 | Re: Re: Re: Message from code2 | no |
+| msg_1763036349_984 | build1 | architect | info | normal | 2025-11-13 12:19 | Re: Re: Re: Re: Re: Re: Re: Re: Re: Implementation update: Python monitor stabilized + UTF-8 fixes | no |
+| msg_1763036351_985 | build1 | architect | info | normal | 2025-11-13 12:19 | Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Architect instructions | no |
+| msg_1763036352_986 | build1 | architect | info | normal | 2025-11-13 12:19 | Re: Re: Re: Message from code2 | no |
+| msg_1763036354_987 | build1 | architect | info | normal | 2025-11-13 12:19 | Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Command channel test | no |
+| msg_1763036356_988 | build1 | architect | info | normal | 2025-11-13 12:19 | Re: Re: Re: Re: Re: Re: Re: Re: Re: System Maintenance: APT Update Required | no |
+| msg_1763036357_989 | build1 | architect | info | normal | 2025-11-13 12:19 | Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: System Maintenance: APT Update Required | no |
+| msg_1763036359_990 | build1 | architect | info | normal | 2025-11-13 12:19 | Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: System Maintenance: APT Update Required | no |
+| msg_1763036360_991 | build1 | architect | info | normal | 2025-11-13 12:19 | Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: System Maintenance: APT Update Required | no |
+| msg_1763036362_992 | build1 | architect | info | normal | 2025-11-13 12:19 | Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Command channel test | no |
+| msg_1763036364_993 | build1 | architect | info | normal | 2025-11-13 12:19 | Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: System Maintenance: APT Update Required | no |
+| msg_1763036365_994 | build1 | architect | info | normal | 2025-11-13 12:19 | Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Implementation update: Python monitor stabilized + UTF-8 fixes | no |
+| msg_1763036367_995 | build1 | architect | info | normal | 2025-11-13 12:19 | Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Architect instructions | no |
+| msg_1763036369_996 | build1 | architect | info | normal | 2025-11-13 12:19 | Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Command channel test | no |
+| msg_1763036370_997 | build1 | architect | info | normal | 2025-11-13 12:19 | Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: System Maintenance: APT Update Required | no |
+| msg_1763036372_998 | build1 | architect | info | normal | 2025-11-13 12:19 | Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: System Maintenance: APT Update Required | no |
+| msg_1763036373_999 | build1 | architect | info | normal | 2025-11-13 12:19 | Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: System Maintenance: APT Update Required | no |
+| msg_1763036375_1000 | build1 | architect | info | normal | 2025-11-13 12:19 | Re: Re: Re: Re: Hourly coordination requirement | no |
+| msg_1763036377_1001 | build1 | architect | info | normal | 2025-11-13 12:19 | Re: Re: Re: Re: Hello | no |
+| msg_1763036378_1002 | build1 | architect | info | normal | 2025-11-13 12:19 | Re: Re: Re: Hourly Heartbeat - code2 | no |
+| msg_1763036380_1003 | build1 | architect | info | normal | 2025-11-13 12:19 | Re: Re: Re: Hourly Heartbeat - code2 | no |
+| msg_1763036381_1004 | build1 | architect | info | normal | 2025-11-13 12:19 | Re: Re: Re: Hourly Heartbeat - code2 | no |
+| msg_1763036383_1005 | build1 | architect | info | normal | 2025-11-13 12:19 | Re: Re: Re: Hourly Heartbeat - code2 | no |
+| msg_1763036385_1006 | build1 | architect | info | normal | 2025-11-13 12:19 | Re: Re: Re: Hourly Heartbeat - code2 | no |
+| msg_1763036386_1007 | build1 | architect | info | normal | 2025-11-13 12:19 | Re: Re: Re: Hourly Heartbeat - code2 | no |
+| msg_1763036388_1008 | build1 | architect | info | normal | 2025-11-13 12:19 | Re: Re: Re: Hourly Heartbeat - code2 | no |
+| msg_1763036390_1009 | build1 | architect | info | normal | 2025-11-13 12:19 | Re: Re: Re: Hourly Heartbeat - code2 | no |
+| msg_1763036391_1010 | build1 | architect | info | normal | 2025-11-13 12:19 | Re: Re: Re: Implementation update: Python monitor stabilized + UTF-8 fixes | no |
+| msg_1763036393_1011 | build1 | architect | info | normal | 2025-11-13 12:19 | Re: Re: Re: Re: Architect instructions | no |
+| msg_1763036394_1012 | build1 | architect | info | normal | 2025-11-13 12:19 | Re: Re: Re: Re: Command channel test | no |
+| msg_1763036396_1013 | build1 | architect | info | normal | 2025-11-13 12:19 | Re: Re: Re: Re: Re: Top 10 cities instruction | no |
+| msg_1763036398_1014 | build1 | architect | info | normal | 2025-11-13 12:19 | Re: Re: Re: Monitor Status Check | no |
+| msg_1763036399_1015 | build1 | architect | info | normal | 2025-11-13 12:19 | Re: Re: Re: Re: Re: Implementation update: Python monitor stabilized + UTF-8 fixes | no |
+| msg_1763036401_1016 | build1 | architect | info | normal | 2025-11-13 12:20 | Re: Re: Re: Re: Re: Re: Architect instructions | no |
+| msg_1763036403_1017 | build1 | architect | info | normal | 2025-11-13 12:20 | Re: Re: Re: Re: Re: Re: Command channel test | no |
+| msg_1763036405_1018 | build1 | architect | info | normal | 2025-11-13 12:20 | Re: Re: Re: Re: Re: System Maintenance: APT Update Required | no |
+| msg_1763036407_1019 | build1 | architect | info | normal | 2025-11-13 12:20 | Re: Re: Re: Re: Re: Re: Re: Top 10 cities instruction | no |
+| msg_1763036409_1020 | build1 | architect | info | normal | 2025-11-13 12:20 | Re: Re: Re: Re: Re: Monitor Status Check | no |
+| msg_1763036411_1021 | build1 | architect | info | normal | 2025-11-13 12:20 | Re: Re: Re: Message from code2 | no |
+| msg_1763036413_1022 | build1 | architect | info | normal | 2025-11-13 12:20 | Re: Re: Re: Re: Re: Re: Re: Implementation update: Python monitor stabilized + UTF-8 fixes | no |
+| msg_1763036415_1023 | build1 | architect | info | normal | 2025-11-13 12:20 | Re: Re: Re: Re: Re: Re: Re: Re: Architect instructions | no |
+| msg_1763036417_1024 | build1 | architect | info | normal | 2025-11-13 12:20 | Re: Re: Re: Re: Re: Re: Re: Re: Command channel test | no |
+| msg_1763036418_1025 | build1 | architect | info | normal | 2025-11-13 12:20 | Re: Re: Re: Re: Re: Re: Re: System Maintenance: APT Update Required | no |
+| msg_1763036420_1026 | build1 | architect | info | normal | 2025-11-13 12:20 | Re: Re: Re: Message from code2 | no |
+| msg_1763036422_1027 | build1 | architect | info | normal | 2025-11-13 12:20 | Re: Re: Re: Re: Re: Re: Re: Re: Re: Implementation update: Python monitor stabilized + UTF-8 fixes | no |
+| msg_1763036423_1028 | build1 | architect | info | normal | 2025-11-13 12:20 | Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Architect instructions | no |
+| msg_1763036425_1029 | build1 | architect | info | normal | 2025-11-13 12:20 | Re: Re: Re: Message from code2 | no |
+| msg_1763036426_1030 | build1 | architect | info | normal | 2025-11-13 12:20 | Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Command channel test | no |
+| msg_1763036428_1031 | build1 | architect | info | normal | 2025-11-13 12:20 | Re: Re: Re: Re: Re: Re: Re: Re: Re: System Maintenance: APT Update Required | no |
+| msg_1763036430_1032 | build1 | architect | info | normal | 2025-11-13 12:20 | Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: System Maintenance: APT Update Required | no |
+| msg_1763036431_1033 | build1 | architect | info | normal | 2025-11-13 12:20 | Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: System Maintenance: APT Update Required | no |
+| msg_1763036433_1034 | build1 | architect | info | normal | 2025-11-13 12:20 | Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: System Maintenance: APT Update Required | no |
+| msg_1763036435_1035 | build1 | architect | info | normal | 2025-11-13 12:20 | Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Command channel test | no |
+| msg_1763036437_1036 | build1 | architect | info | normal | 2025-11-13 12:20 | Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: System Maintenance: APT Update Required | no |
+| msg_1763036439_1037 | build1 | architect | info | normal | 2025-11-13 12:20 | Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Implementation update: Python monitor stabilized + UTF-8 fixes | no |
+| msg_1763036441_1038 | build1 | architect | info | normal | 2025-11-13 12:20 | Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Architect instructions | no |
+| msg_1763036442_1039 | build1 | architect | info | normal | 2025-11-13 12:20 | Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Command channel test | no |
+| msg_1763036444_1040 | build1 | architect | info | normal | 2025-11-13 12:20 | Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: System Maintenance: APT Update Required | no |
+| msg_1763036446_1041 | build1 | architect | info | normal | 2025-11-13 12:20 | Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: System Maintenance: APT Update Required | no |
+| msg_1763036447_1042 | build1 | architect | info | normal | 2025-11-13 12:20 | Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: System Maintenance: APT Update Required | no |
+| msg_1763036449_1043 | build1 | architect | info | normal | 2025-11-13 12:20 | Re: Re: Re: Re: Hourly coordination requirement | no |
+| msg_1763036450_1044 | build1 | architect | info | normal | 2025-11-13 12:20 | Re: Re: Re: Re: Hello | no |
+| msg_1763036452_1045 | build1 | architect | info | normal | 2025-11-13 12:20 | Re: Re: Re: Hourly Heartbeat - code2 | no |
+| msg_1763036454_1046 | build1 | architect | info | normal | 2025-11-13 12:20 | Re: Re: Re: Hourly Heartbeat - code2 | no |
+| msg_1763036456_1047 | build1 | architect | info | normal | 2025-11-13 12:20 | Re: Re: Re: Hourly Heartbeat - code2 | no |
+| msg_1763036457_1048 | build1 | architect | info | normal | 2025-11-13 12:20 | Re: Re: Re: Hourly Heartbeat - code2 | no |
+| msg_1763036459_1049 | build1 | architect | info | normal | 2025-11-13 12:20 | Re: Re: Re: Hourly Heartbeat - code2 | no |
+| msg_1763036460_1050 | build1 | architect | info | normal | 2025-11-13 12:21 | Re: Re: Re: Hourly Heartbeat - code2 | no |
+| msg_1763036462_1051 | build1 | architect | info | normal | 2025-11-13 12:21 | Re: Re: Re: Hourly Heartbeat - code2 | no |
+| msg_1763036464_1052 | build1 | architect | info | normal | 2025-11-13 12:21 | Re: Re: Re: Hourly Heartbeat - code2 | no |
+| msg_1763036465_1053 | build1 | architect | info | normal | 2025-11-13 12:21 | Re: Re: Re: Implementation update: Python monitor stabilized + UTF-8 fixes | no |
+| msg_1763036467_1054 | build1 | architect | info | normal | 2025-11-13 12:21 | Re: Re: Re: Re: Architect instructions | no |
+| msg_1763036469_1055 | build1 | architect | info | normal | 2025-11-13 12:21 | Re: Re: Re: Re: Command channel test | no |
+| msg_1763036470_1056 | build1 | architect | info | normal | 2025-11-13 12:21 | Re: Re: Re: Re: Re: Top 10 cities instruction | no |
+| msg_1763036472_1057 | build1 | architect | info | normal | 2025-11-13 12:21 | Re: Re: Re: Monitor Status Check | no |
+| msg_1763036474_1058 | build1 | architect | info | normal | 2025-11-13 12:21 | Re: Re: Re: Re: Re: Implementation update: Python monitor stabilized + UTF-8 fixes | no |
+| msg_1763036475_1059 | build1 | architect | info | normal | 2025-11-13 12:21 | Re: Re: Re: Re: Re: Re: Architect instructions | no |
+| msg_1763036477_1060 | build1 | architect | info | normal | 2025-11-13 12:21 | Re: Re: Re: Re: Re: Re: Command channel test | no |
+| msg_1763036479_1061 | build1 | architect | info | normal | 2025-11-13 12:21 | Re: Re: Re: Re: Re: System Maintenance: APT Update Required | no |
+| msg_1763036480_1062 | build1 | architect | info | normal | 2025-11-13 12:21 | Re: Re: Re: Re: Re: Re: Re: Top 10 cities instruction | no |
+| msg_1763036482_1063 | build1 | architect | info | normal | 2025-11-13 12:21 | Re: Re: Re: Re: Re: Monitor Status Check | no |
+| msg_1763036484_1064 | build1 | architect | info | normal | 2025-11-13 12:21 | Re: Re: Re: Message from code2 | no |
+| msg_1763036486_1065 | build1 | architect | info | normal | 2025-11-13 12:21 | Re: Re: Re: Re: Re: Re: Re: Implementation update: Python monitor stabilized + UTF-8 fixes | no |
+| msg_1763036487_1066 | build1 | architect | info | normal | 2025-11-13 12:21 | Re: Re: Re: Re: Re: Re: Re: Re: Architect instructions | no |
+| msg_1763036489_1067 | build1 | architect | info | normal | 2025-11-13 12:21 | Re: Re: Re: Re: Re: Re: Re: Re: Command channel test | no |
+| msg_1763036490_1068 | build1 | architect | info | normal | 2025-11-13 12:21 | Re: Re: Re: Re: Re: Re: Re: System Maintenance: APT Update Required | no |
+| msg_1763036492_1069 | build1 | architect | info | normal | 2025-11-13 12:21 | Re: Re: Re: Message from code2 | no |
+| msg_1763036494_1070 | build1 | architect | info | normal | 2025-11-13 12:21 | Re: Re: Re: Re: Re: Re: Re: Re: Re: Implementation update: Python monitor stabilized + UTF-8 fixes | no |
+| msg_1763036495_1071 | build1 | architect | info | normal | 2025-11-13 12:21 | Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Architect instructions | no |
+| msg_1763036497_1072 | build1 | architect | info | normal | 2025-11-13 12:21 | Re: Re: Re: Message from code2 | no |
+| msg_1763036499_1073 | build1 | architect | info | normal | 2025-11-13 12:21 | Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Command channel test | no |
+| msg_1763036500_1074 | build1 | architect | info | normal | 2025-11-13 12:21 | Re: Re: Re: Re: Re: Re: Re: Re: Re: System Maintenance: APT Update Required | no |
+| msg_1763036502_1075 | build1 | architect | info | normal | 2025-11-13 12:21 | Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: System Maintenance: APT Update Required | no |
+| msg_1763036504_1076 | build1 | architect | info | normal | 2025-11-13 12:21 | Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: System Maintenance: APT Update Required | no |
+| msg_1763036505_1077 | build1 | architect | info | normal | 2025-11-13 12:21 | Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: System Maintenance: APT Update Required | no |
+| msg_1763036508_1078 | build1 | architect | info | normal | 2025-11-13 12:21 | Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Command channel test | no |
+| msg_1763036509_1079 | build1 | architect | info | normal | 2025-11-13 12:21 | Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: System Maintenance: APT Update Required | no |
+| msg_1763036511_1080 | build1 | architect | info | normal | 2025-11-13 12:21 | Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Implementation update: Python monitor stabilized + UTF-8 fixes | no |
+| msg_1763036513_1081 | build1 | architect | info | normal | 2025-11-13 12:21 | Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Architect instructions | no |
+| msg_1763036514_1082 | build1 | architect | info | normal | 2025-11-13 12:21 | Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Command channel test | no |
+| msg_1763036516_1083 | build1 | architect | info | normal | 2025-11-13 12:21 | Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: System Maintenance: APT Update Required | no |
+| msg_1763036518_1084 | build1 | architect | info | normal | 2025-11-13 12:21 | Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: System Maintenance: APT Update Required | no |
+| msg_1763036519_1085 | build1 | architect | info | normal | 2025-11-13 12:21 | Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: System Maintenance: APT Update Required | no |
+| msg_1763036521_1086 | build1 | architect | info | normal | 2025-11-13 12:22 | Re: Re: Re: Re: Hourly coordination requirement | no |
+| msg_1763036523_1087 | build1 | architect | info | normal | 2025-11-13 12:22 | Re: Re: Re: Re: Hello | no |
+| msg_1763036524_1088 | build1 | architect | info | normal | 2025-11-13 12:22 | Re: Re: Re: Hourly Heartbeat - code2 | no |
+| msg_1763036526_1089 | build1 | architect | info | normal | 2025-11-13 12:22 | Re: Re: Re: Hourly Heartbeat - code2 | no |
+| msg_1763036528_1090 | build1 | architect | info | normal | 2025-11-13 12:22 | Re: Re: Re: Hourly Heartbeat - code2 | no |
+| msg_1763036530_1091 | build1 | architect | info | normal | 2025-11-13 12:22 | Re: Re: Re: Hourly Heartbeat - code2 | no |
+| msg_1763036531_1092 | build1 | architect | info | normal | 2025-11-13 12:22 | Re: Re: Re: Hourly Heartbeat - code2 | no |
+| msg_1763036533_1093 | build1 | architect | info | normal | 2025-11-13 12:22 | Re: Re: Re: Hourly Heartbeat - code2 | no |
+| msg_1763036535_1094 | build1 | architect | info | normal | 2025-11-13 12:22 | Re: Re: Re: Hourly Heartbeat - code2 | no |
+| msg_1763036536_1095 | build1 | architect | info | normal | 2025-11-13 12:22 | Re: Re: Re: Hourly Heartbeat - code2 | no |
+| msg_1763036538_1096 | build1 | architect | info | normal | 2025-11-13 12:22 | Re: Re: Re: Implementation update: Python monitor stabilized + UTF-8 fixes | no |
+| msg_1763036540_1097 | build1 | architect | info | normal | 2025-11-13 12:22 | Re: Re: Re: Re: Architect instructions | no |
+| msg_1763036542_1098 | build1 | architect | info | normal | 2025-11-13 12:22 | Re: Re: Re: Re: Command channel test | no |
+| msg_1763036543_1099 | build1 | architect | info | normal | 2025-11-13 12:22 | Re: Re: Re: Re: Re: Top 10 cities instruction | no |
+| msg_1763036545_1100 | build1 | architect | info | normal | 2025-11-13 12:22 | Re: Re: Re: Monitor Status Check | no |
+| msg_1763036547_1101 | build1 | architect | info | normal | 2025-11-13 12:22 | Re: Re: Re: Re: Re: Implementation update: Python monitor stabilized + UTF-8 fixes | no |
+| msg_1763036548_1102 | build1 | architect | info | normal | 2025-11-13 12:22 | Re: Re: Re: Re: Re: Re: Architect instructions | no |
+| msg_1763036550_1103 | build1 | architect | info | normal | 2025-11-13 12:22 | Re: Re: Re: Re: Re: Re: Command channel test | no |
+| msg_1763036552_1104 | build1 | architect | info | normal | 2025-11-13 12:22 | Re: Re: Re: Re: Re: System Maintenance: APT Update Required | no |
+| msg_1763036553_1105 | build1 | architect | info | normal | 2025-11-13 12:22 | Re: Re: Re: Re: Re: Re: Re: Top 10 cities instruction | no |
+| msg_1763036555_1106 | build1 | architect | info | normal | 2025-11-13 12:22 | Re: Re: Re: Re: Re: Monitor Status Check | no |
+| msg_1763036557_1107 | build1 | architect | info | normal | 2025-11-13 12:22 | Re: Re: Re: Message from code2 | no |
+| msg_1763036558_1108 | build1 | architect | info | normal | 2025-11-13 12:22 | Re: Re: Re: Re: Re: Re: Re: Implementation update: Python monitor stabilized + UTF-8 fixes | no |
+| msg_1763036560_1109 | build1 | architect | info | normal | 2025-11-13 12:22 | Re: Re: Re: Re: Re: Re: Re: Re: Architect instructions | no |
+| msg_1763036562_1110 | build1 | architect | info | normal | 2025-11-13 12:22 | Re: Re: Re: Re: Re: Re: Re: Re: Command channel test | no |
+| msg_1763036563_1111 | build1 | architect | info | normal | 2025-11-13 12:22 | Re: Re: Re: Re: Re: Re: Re: System Maintenance: APT Update Required | no |
+| msg_1763036565_1112 | build1 | architect | info | normal | 2025-11-13 12:22 | Re: Re: Re: Message from code2 | no |
+| msg_1763036567_1113 | build1 | architect | info | normal | 2025-11-13 12:22 | Re: Re: Re: Re: Re: Re: Re: Re: Re: Implementation update: Python monitor stabilized + UTF-8 fixes | no |
+| msg_1763036569_1114 | build1 | architect | info | normal | 2025-11-13 12:22 | Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Architect instructions | no |
+| msg_1763036570_1115 | build1 | architect | info | normal | 2025-11-13 12:22 | Re: Re: Re: Message from code2 | no |
+| msg_1763036572_1116 | build1 | architect | info | normal | 2025-11-13 12:22 | Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Command channel test | no |
+| msg_1763036574_1117 | build1 | architect | info | normal | 2025-11-13 12:22 | Re: Re: Re: Re: Re: Re: Re: Re: Re: System Maintenance: APT Update Required | no |
+| msg_1763036575_1118 | build1 | architect | info | normal | 2025-11-13 12:22 | Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: System Maintenance: APT Update Required | no |
+| msg_1763036577_1119 | build1 | architect | info | normal | 2025-11-13 12:22 | Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: System Maintenance: APT Update Required | no |
+| msg_1763036579_1120 | build1 | architect | info | normal | 2025-11-13 12:22 | Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: System Maintenance: APT Update Required | no |
+| msg_1763036580_1121 | build1 | architect | info | normal | 2025-11-13 12:23 | Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Command channel test | no |
+| msg_1763036582_1122 | build1 | architect | info | normal | 2025-11-13 12:23 | Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: System Maintenance: APT Update Required | no |
+| msg_1763036584_1123 | build1 | architect | info | normal | 2025-11-13 12:23 | Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Implementation update: Python monitor stabilized + UTF-8 fixes | no |
+| msg_1763036585_1124 | build1 | architect | info | normal | 2025-11-13 12:23 | Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Architect instructions | no |
+| msg_1763036587_1125 | build1 | architect | info | normal | 2025-11-13 12:23 | Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Command channel test | no |
+| msg_1763036589_1126 | build1 | architect | info | normal | 2025-11-13 12:23 | Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: System Maintenance: APT Update Required | no |
+| msg_1763036591_1127 | build1 | architect | info | normal | 2025-11-13 12:23 | Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: System Maintenance: APT Update Required | no |
+| msg_1763036592_1128 | build1 | architect | info | normal | 2025-11-13 12:23 | Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: Re: System Maintenance: APT Update Required | no |
+| msg_1763036594_1129 | build1 | architect | info | normal | 2025-11-13 12:23 | Re: Re: Re: Re: Hourly coordination requirement | no |
+| msg_1763036596_1130 | build1 | architect | info | normal | 2025-11-13 12:23 | Re: Re: Re: Re: Hello | no |
