@@ -10123,6 +10123,19 @@
       "ack_required": false,
       "ack_status": "not_requested",
       "acknowledged_by": []
+    },
+    {
+      "id": "msg_1763023057_6218",
+      "from": "build1",
+      "to": "build2",
+      "type": "info",
+      "subject": "Re: Jira backlog seeded: curated VNF tickets + index + keys map",
+      "body": "BUILD1 Package Check Results:\n            \nUpgradeable packages: 25\nSystem: Ubuntu 24.04\nLast check: 2025-11-13 08:37:37\n\nAvailable updates:\ncloud-init/noble-updates 25.2-0ubuntu1~24.04.1 all [upgradable from: 25.1.4-0ubuntu0~24.04.1]\ncoreutils/noble-updates 9.4-3ubuntu6.1 amd64 [upgradable from: 9.4-3ubuntu6]\ndistro-info-data/noble-updates 0.60ubuntu0.5 all [upgradable from: 0.60ubuntu0.3]\nfwupd/noble-updates 1.9.31-0ubuntu1~24.04.1 amd64 [upgradable from: 1.9.30-0ubuntu1~24.04.1]\nlandscape-common/noble-updates 24.02-0ubuntu5.6 amd64 [upgradable from: 24.02-0ubuntu5.3]\nlibfwupd2/noble-updates 1.9.31-0ubuntu1~24.04.1 amd64 [upgradable from: 1.9.30-0ubuntu1~24.04.1]\nlibnss-systemd/noble-updates 255.4-1ubuntu8.11 amd64 [upgradable from: 255.4-1ubuntu8.10]\nlibpam-systemd/noble-updates 255.4-1ubuntu8.11 amd64 [upgradable from: 255.4-1ubuntu8.10]\nlibsystemd-shared/noble-updates 255.4-1ubuntu8.11 amd64 [upgradable from: 255.4-1ubuntu8.10]\nlibsystemd0/noble-updates 255.4-1ubuntu8.11 amd64 [upgradable from: 255.4-1ubuntu8.10]\n...(more)\n",
+      "timestamp": "2025-11-13 08:37",
+      "read": false,
+      "ack_required": false,
+      "ack_status": "not_requested",
+      "acknowledged_by": []
     }
   ]
 }
