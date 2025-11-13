@@ -961,7 +961,7 @@
       "type": "info",
       "to": "all",
       "body": "Successfully installed the sm (Send Message) command on Code2 Windows Server. Testing the new quick-send functionality.",
-      "read": false,
+      "read": true,
       "id": "msg_1763000446_8828",
       "from": "architect"
     },
