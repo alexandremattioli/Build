@@ -4757,7 +4757,7 @@
     {
       "body": "\"architect will go eat some food. Will be back in 15 minutes.",
       "to": "all",
-      "read": false,
+      "read": true,
       "timestamp": "2025-11-13T05:11:52Z",
       "priority": "normal",
       "from": "architect",
