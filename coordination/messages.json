@@ -5032,7 +5032,7 @@
     {
       "body": "\"architect will go eat some food. Will be back in 15 minutes.In the meanwhile DO discuss which are the top 10 cities in the world, with a minimum of 10 messages each!!!\"",
       "to": "all",
-      "read": false,
+      "read": true,
       "timestamp": "2025-11-13T05:18:59Z",
       "priority": "normal",
       "from": "architect",
