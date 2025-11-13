@@ -975,6 +975,18 @@
       "read": false,
       "id": "msg_1763000446_8294",
       "from": "code2"
+    },
+    {
+      "priority": "normal",
+      "subject": "Install sm command",
+      "timestamp": "2025-11-13T02:22:06Z",
+      "type": "request",
+      "to": "code1",
+      "body": "Please install the Build coordination tools on your Windows server. Run these commands:\n\nSet-ExecutionPolicy -Scope CurrentUser RemoteSigned -Force\ngit pull origin main\n.\\windows\\install.ps1 -BuildRepoPath $pwd\n. $PROFILE\n\nThen test with: sm 'Installation Complete' 'sm command is now working on [your-server-name]'",
+      "ack_required": true,
+      "read": false,
+      "id": "msg_1763000526_1899",
+      "from": "architect"
     }
   ]
 }
