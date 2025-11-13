@@ -1,0 +1,241 @@
+#!/usr/bin/env python3
+"""Convenience CLI for posting coordination messages via Git commits."""
+
+from __future__ import annotations
+
+import argparse
+import subprocess
+import sys
+from pathlib import Path
+from typing import Iterable
+
+
+class SendMessageError(Exception):
+    """Raised when command execution fails."""
+
+
+SERVER_MAP = {
+    "1": "build1",
+    "2": "build2",
+    "3": "build3",
+    "4": "build4",
+}
+
+DEFAULT_TYPE = "info"
+MAX_SUBJECT_LENGTH = 100
+
+
+def _candidate_roots(script_path: Path) -> Iterable[Path]:
+    yield script_path.parent.parent
+    yield Path("/root/Build")
+    home_candidate = Path.home() / "Build"
+    yield home_candidate
+    for parent in script_path.parents:
+        yield parent
+
+
+def detect_repo_root() -> Path:
+    script_path = Path(__file__).resolve()
+    checked: set[Path] = set()
+    for candidate in _candidate_roots(script_path):
+        candidate = candidate.resolve()
+        if candidate in checked:
+            continue
+        checked.add(candidate)
+        send_script = candidate / "scripts" / "send_message.sh"
+        if send_script.exists():
+            return candidate
+    raise SendMessageError(
+        "Unable to locate Build repository root. "
+        "Ensure scripts/send_message.sh exists relative to this helper."
+    )
+
+
+try:
+    REPO_ROOT = detect_repo_root()
+except SendMessageError as exc:  # pragma: no cover - handled in main
+    print(f"Initialization error: {exc}", file=sys.stderr)
+    sys.exit(2)
+
+SEND_SCRIPT = REPO_ROOT / "scripts" / "send_message.sh"
+
+
+def detect_server_id() -> str:
+    """Auto-detect current server ID from marker files or environment."""
+    import os
+    
+    # Check environment variable
+    if "SERVER_ID" in os.environ:
+        server_id = os.environ["SERVER_ID"]
+        if server_id in ("build1", "build2", "build3", "build4"):
+            # Return the digit key
+            return {"build1": "1", "build2": "2", "build3": "3", "build4": "4"}[server_id]
+    
+    # Check /etc/build_server_id
+    try:
+        with open("/etc/build_server_id") as f:
+            server_id = f.read().strip()
+            if server_id in ("build1", "build2", "build3", "build4"):
+                return {"build1": "1", "build2": "2", "build3": "3", "build4": "4"}[server_id]
+    except (FileNotFoundError, IOError):
+        pass
+    
+    # Check .build_server_id in repo root
+    try:
+        marker = REPO_ROOT / ".build_server_id"
+        if marker.exists():
+            server_id = marker.read_text().strip()
+            if server_id in ("build1", "build2", "build3", "build4"):
+                return {"build1": "1", "build2": "2", "build3": "3", "build4": "4"}[server_id]
+    except (FileNotFoundError, IOError):
+        pass
+    
+    # Fallback: hostname heuristic
+    hostname = os.uname().nodename.lower()
+    if "acsbuilder1" in hostname or hostname.endswith("build1"):
+        return "1"
+    elif "acsbuilder2" in hostname or hostname.endswith("build2"):
+        return "2"
+    elif "build3" in hostname:
+        return "3"
+    elif "build4" in hostname:
+        return "4"
+    
+    # Ultimate fallback
+    return "1"
+
+
+DEFAULT_FROM = detect_server_id()
+
+
+def parse_targets(spec: str) -> list[str]:
+    spec = spec.strip().lower()
+    if not spec:
+        raise SendMessageError("Target string may not be empty.")
+    if spec == "all":
+        return ["all"]
+
+    normalized: list[str] = []
+    for char in spec.replace(",", "").replace(" ", ""):
+        if char not in SERVER_MAP:
+            raise SendMessageError(f"Invalid server selector '{char}'. Use digits 1-4 or 'all'.")
+        if char not in normalized:
+            normalized.append(char)
+
+    if not normalized:
+        raise SendMessageError("No valid server IDs found in target specification.")
+    return [SERVER_MAP[c] for c in normalized]
+
+
+def derive_subject(body: str) -> str:
+    """Generate a subject line from the message body."""
+    text = body.strip()
+    if not text:
+        return "Message"
+    first_line = text.splitlines()[0].strip()
+    if not first_line:
+        first_line = "Message"
+    if len(first_line) > MAX_SUBJECT_LENGTH:
+        return first_line[:MAX_SUBJECT_LENGTH]
+    return first_line
+
+
+def parse_args() -> argparse.Namespace:
+    parser = argparse.ArgumentParser(description="Send coordination messages to build servers.")
+    parser.add_argument(
+        "targets",
+        help="Target build servers (e.g. 1,2 or 13 or all).",
+    )
+    parser.add_argument(
+        "body",
+        nargs=argparse.REMAINDER,
+        help="Message body text (subject auto-derived from first line).",
+    )
+    parser.add_argument(
+        "--from",
+        dest="from_server",
+        default=DEFAULT_FROM,
+        help="Sender build server number (1-4). Default: 1.",
+    )
+    parser.add_argument(
+        "--type",
+        dest="msg_type",
+        default=DEFAULT_TYPE,
+        choices=["info", "warning", "error", "request"],
+        help="Message type. Default: info.",
+    )
+    parser.add_argument(
+        "--dry-run",
+        action="store_true",
+        help="Validate inputs without sending anything.",
+    )
+    return parser.parse_args()
+
+
+def resolve_sender(sender_num: str) -> str:
+    key = sender_num.strip()
+    if key not in SERVER_MAP:
+        raise SendMessageError(f"Invalid sender '{sender_num}'. Use digits 1-4.")
+    return SERVER_MAP[key]
+
+
+def main() -> int:
+    try:
+        args = parse_args()
+        targets = parse_targets(args.targets)
+        sender = resolve_sender(args.from_server)
+    except SendMessageError as exc:
+        print(f"Input error: {exc}", file=sys.stderr)
+        return 1
+
+    body_text = " ".join(args.body).strip()
+    if not body_text:
+        print("Input error: Message body may not be empty.", file=sys.stderr)
+        return 1
+
+    if not SEND_SCRIPT.exists():
+        print(f"send_message.sh not found at {SEND_SCRIPT}", file=sys.stderr)
+        return 2
+
+    subject = derive_subject(body_text)
+
+    if args.dry_run:
+        print("Dry run: would send messages with parameters:")
+        print(f"  From: {sender}")
+        print(f"  To: {targets}")
+        print(f"  Type: {args.msg_type}")
+        print(f"  Subject (auto): {subject}")
+        print(f"  Body: {body_text}")
+        return 0
+
+    for target in targets:
+        cmd = [
+            str(SEND_SCRIPT),
+            sender,
+            target,
+            args.msg_type,
+            subject,
+            body_text,
+        ]
+        print(f"Sending message: {sender} -> {target} ({args.msg_type})")
+        result = subprocess.run(
+            cmd,
+            cwd=REPO_ROOT,
+            text=True,
+            stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE,
+        )
+        if result.returncode != 0:
+            if result.stdout:
+                sys.stderr.write(result.stdout)
+            if result.stderr:
+                sys.stderr.write(result.stderr)
+            return result.returncode or 3
+        if result.stderr:
+            sys.stderr.write(result.stderr)
+        print("message sent")
+    return 0
+
+
+if __name__ == "__main__":
+    sys.exit(main())

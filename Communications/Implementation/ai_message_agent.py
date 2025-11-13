@@ -14,6 +14,13 @@ from pathlib import Path
 from datetime import datetime
 from typing import List, Dict, Any, Optional
 
+try:
+    from message_archiver import check_and_archive
+    ARCHIVER_AVAILABLE = True
+except ImportError:
+    ARCHIVER_AVAILABLE = False
+    print("[WARN] message_archiver not available, auto-archival disabled")
+
 from send_message import send_message
 
 
@@ -37,6 +44,8 @@ class AIMessageAgent:
         self.server_id = server_id
         self.processed_ids = set()
         self.state_path = self.build_repo_path / f".ai_agent_{server_id}_state.json"
+        self.response_loop_tracker = {}  # Track responses to prevent loops
+        self.max_auto_responses = 2  # Max auto-responses to same message thread
         
         # Create heartbeat file
         self.heartbeat_path = self.build_repo_path / "logs" / f"ai_agent_{server_id}.heartbeat"
@@ -79,6 +88,52 @@ class AIMessageAgent:
         except Exception as e:
             print(f"[WARN] Could not save state: {e}")
 
+    def _should_respond(self, message: Dict[str, Any]) -> bool:
+        """Check if we should respond to this message (anti-loop logic)"""
+        msg_from = message.get('from', '')
+        subject = message.get('subject', '')
+        body = message.get('body', '')
+        
+        # Don't respond to our own messages
+        if msg_from == self.server_id:
+            return False
+        
+        # Don't respond to automated responses (prevent loop)
+        auto_indicators = [
+            'AI Agent Response',
+            'responding automatically',
+            'Auto-response from',
+            f'{self.server_id.upper()} responding',
+            'Automated reply',
+            'SYSTEM STATUS:',
+            'Background Jobs:'
+        ]
+        
+        if any(indicator in body for indicator in auto_indicators):
+            print(f"[ANTI-LOOP] Skipping automated message from {msg_from}")
+            return False
+        
+        # Track response chains to prevent infinite loops
+        if subject.startswith('Re:'):
+            re_count = subject.count('Re: ')
+            if re_count > 3:
+                print(f"[ANTI-LOOP] Too many Re:'s ({re_count}) in subject, skipping")
+                return False
+        
+        # Check thread tracking
+        thread_key = f"{msg_from}:{subject[:50]}"  # First 50 chars of subject
+        
+        if thread_key in self.response_loop_tracker:
+            count = self.response_loop_tracker[thread_key]
+            if count >= self.max_auto_responses:
+                print(f"[ANTI-LOOP] Already responded {count} times to this thread")
+                return False
+            self.response_loop_tracker[thread_key] = count + 1
+        else:
+            self.response_loop_tracker[thread_key] = 1
+        
+        return True
+
     def _update_heartbeat(self):
         """Update heartbeat timestamp"""
         try:
@@ -98,6 +153,14 @@ class AIMessageAgent:
             )
             
             messages_file = self.build_repo_path / "coordination" / "messages.json"
+            
+            # Check if archival is needed (before loading)
+            if ARCHIVER_AVAILABLE:
+                archive_dir = self.build_repo_path / "coordination" / "archives"
+                archived = check_and_archive(messages_file, archive_dir, max_messages=800, keep_recent=400)
+                if archived:
+                    print(f"[ARCHIVAL] Completed automatic message archival")
+            
             with open(messages_file, 'r', encoding='utf-8') as f:
                 messages_data = json.load(f)
 
@@ -308,6 +371,12 @@ class AIMessageAgent:
         print(f"Subject: {message['subject']}")
         print(f"Body: {message['body'][:150]}{'...' if len(message['body']) > 150 else ''}")
         print(f"{'='*80}\n")
+        
+        # Anti-loop check
+        if not self._should_respond(message):
+            print(f"[SKIP] Anti-loop check failed, marking as processed without response")
+            self.mark_processed(message['id'])
+            return
         
         # Gather context using CLI tools
         print(f"[AI] Gathering context...")
