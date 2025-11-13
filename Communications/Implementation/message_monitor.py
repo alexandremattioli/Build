@@ -191,13 +191,18 @@ class MessageMonitor:
         print(f"Body: {body_preview}...")
         
         # Check if auto-response needed
-        body_lower = message.get('body','').lower()
-        keywords = ['reply','respond','ready?','are you','status','report','ack','acknowledge','confirm']
-        auto_response_needed = (
-            any(k in body_lower for k in keywords)
-            or bool(message.get('require_ack'))
-            or bool(message.get('ack_required'))
-        )
+        from_sender = message.get('from', '').lower()
+        if from_sender == self.server_id.lower() or 'CODE2 (LL-CODE2-02) responding automatically' in message.get('body', ''):
+            print('-> Skipping own message or auto-response')
+            auto_response_needed = False
+        else:
+            body_lower = message.get('body','').lower()
+            keywords = ['reply','respond','ready?','are you','status','report','ack','acknowledge','confirm']
+            auto_response_needed = (
+                any(k in body_lower for k in keywords)
+                or bool(message.get('require_ack'))
+                or bool(message.get('ack_required'))
+            )
         if auto_response_needed:
             print("-> AUTO-RESPONDING")
             self.auto_respond(message)
