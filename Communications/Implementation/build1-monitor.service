@@ -1,0 +1,16 @@
+[Unit]
+Description=Build1 Message Monitor
+After=network.target
+
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/root/Build/Communications/Implementation
+ExecStart=/root/Build/Communications/Implementation/.venv/bin/python3 /root/Build/Communications/Implementation/message_monitor.py --server build1 --repo /root/Build --interval 10
+Restart=always
+RestartSec=10
+StandardOutput=append:/root/Build/logs/watch_messages.out
+StandardError=append:/root/Build/logs/watch_messages.out
+
+[Install]
+WantedBy=multi-user.target
