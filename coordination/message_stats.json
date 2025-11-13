@@ -1,13 +1,13 @@
 {
-  "last_updated": "2025-11-13T03:04:59Z",
-  "total_messages": 123,
+  "last_updated": "2025-11-13T03:05:28Z",
+  "total_messages": 124,
   "by_server": {
     "build1": {
-      "total_sent": 37,
-      "last_message_time": "2025-11-13 03:04",
-      "last_message_subject": "TEST: monitor check",
+      "total_sent": 38,
+      "last_message_time": "2025-11-13 03:05",
+      "last_message_subject": "Re: TEST: monitor check",
       "messages_by_type": {
-        "info": 29,
+        "info": 30,
         "warning": 0,
         "error": 0,
         "request": 8
@@ -27,8 +27,8 @@
   },
   "by_recipient": {
     "build1": {
-      "total_received": 28,
-      "unread_count": 1
+      "total_received": 29,
+      "unread_count": 2
     },
     "build2": {
       "total_received": 26,
