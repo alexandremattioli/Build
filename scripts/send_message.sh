@@ -164,7 +164,7 @@ jq --arg id "$MSG_ID" \
        timestamp: $ts,
         read: false,
         ack_required: ($ack_required == "true"),
-        ack_status: ($ack_required == "true" ? "pending" : "not_requested"),
+        ack_status: (if $ack_required == "true" then "pending" else "not_requested" end),
         acknowledged_by: []
    }]' coordination/messages.json > "$TMP_FILE"
 mv "$TMP_FILE" coordination/messages.json
