@@ -7232,7 +7232,7 @@
       "subject": "Test message from build1 - all fields optional!",
       "body": "Test message from build1 - all fields optional!",
       "timestamp": "2025-11-13 07:36",
-      "read": false,
+      "read": true,
       "ack_required": false,
       "ack_status": "not_requested",
       "acknowledged_by": []
