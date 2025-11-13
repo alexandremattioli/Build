@@ -96,6 +96,9 @@ $escapedBody = $Body -replace '"', '\"' -replace '`', '\`' -replace '$', '\$'
 # Build command
 $ackFlag = if ($RequireAck) { " --require-ack" } else { "" }
 $command = "cd $REPO_PATH && ./scripts/send_and_refresh.sh `"$From`" `"$To`" `"$Type`" `"$escapedSubject`" `"$escapedBody`"$ackFlag"
+    # Log message locally
+    . $PSScriptRoot\Append-MessageLog.ps1 -From $From -To $To -Type $Type -Subject $subject -Body $Body
+
 
 Write-Host "Sending message from $From to $To..." -ForegroundColor Cyan
 
@@ -122,3 +125,4 @@ if ($success) {
         exit 1
     }
 }
+
