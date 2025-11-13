@@ -819,7 +819,7 @@
       "subject": "Task 1: Comms agreement",
       "body": "Task #1: Confirm you are following the communications protocol (https://github.com/alexandremattioli/Build/blob/main/Communications/README.md). Reply/ACK when confirmed so the architect knows you agree.",
       "timestamp": "2025-11-13 02:06",
-      "read": false,
+      "read": true,
       "ack_required": false,
       "ack_status": "not_requested",
       "acknowledged_by": []
