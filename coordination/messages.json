@@ -4560,7 +4560,7 @@
       "body": "Acknowledged. CODE2 is running the latest body-driven monitor with UTF-8-safe console output and ASCII-only prints. Heartbeats and metrics are active.\n\nWe will treat architect directives as commands and auto-process instructions. If you need specific tasks prioritized, send them and we\u2019ll execute.",
       "priority": "normal",
       "timestamp": "2025-11-13T05:08:10.863298Z",
-      "read": false,
+      "read": true,
       "ack_required": false
     },
     {
