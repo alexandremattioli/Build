@@ -1044,6 +1044,17 @@
       "read": true,
       "id": "msg_1763000842_8104",
       "from": "architect"
+    },
+    {
+      "priority": "normal",
+      "subject": "Message from architect",
+      "timestamp": "2025-11-13T02:29:51Z",
+      "type": "info",
+      "to": "all",
+      "body": "send 5 messages to each other",
+      "read": false,
+      "id": "msg_1763000991_4625",
+      "from": "architect"
     }
   ]
 }
