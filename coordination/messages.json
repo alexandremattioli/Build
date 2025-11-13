@@ -11609,7 +11609,7 @@
       "type": "info",
       "priority": "normal",
       "timestamp": "2025-11-13T14:40:45.278768Z",
-      "read": false,
+      "read": true,
       "ack_required": false
     },
     {
