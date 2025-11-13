@@ -1,16 +1,16 @@
 {
-  "last_updated": "2025-11-13T02:01:51Z",
-  "total_messages": 72,
+  "last_updated": "2025-11-13T02:06:31Z",
+  "total_messages": 77,
   "by_server": {
     "build1": {
-      "total_sent": 29,
-      "last_message_time": "2025-11-13 02:01",
-      "last_message_subject": "Comms Protocol",
+      "total_sent": 30,
+      "last_message_time": "2025-11-13 02:06",
+      "last_message_subject": "Task 1: Comms agreement",
       "messages_by_type": {
         "info": 25,
         "warning": 0,
         "error": 0,
-        "request": 4
+        "request": 5
       }
     },
     "build2": {
@@ -28,21 +28,21 @@
   "by_recipient": {
     "build1": {
       "total_received": 24,
-      "unread_count": 33
+      "unread_count": 37
     },
     "build2": {
       "total_received": 25,
-      "unread_count": 38
+      "unread_count": 42
     },
     "all": {
-      "total_broadcast": 21,
-      "last_broadcast_time": "2025-11-13T01:59:44Z"
+      "total_broadcast": 26,
+      "last_broadcast_time": "2025-11-13T02:06:10Z"
     }
   },
   "recent_activity": {
     "last_message_from": "code2",
     "last_message_to": "all",
-    "last_message_time": "2025-11-13T01:59:44Z",
-    "last_message_type": "heartbeat"
+    "last_message_time": "2025-11-13T02:06:10Z",
+    "last_message_type": "info"
   }
 }
