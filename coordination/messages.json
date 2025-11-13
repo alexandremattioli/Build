@@ -1052,7 +1052,7 @@
       "type": "info",
       "to": "all",
       "body": "send 5 messages to each other",
-      "read": false,
+      "read": true,
       "id": "msg_1763000991_4625",
       "from": "architect"
     }
