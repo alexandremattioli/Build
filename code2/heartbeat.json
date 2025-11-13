@@ -1,8 +1,8 @@
 {
   "server_id": "code2",
-  "last_heartbeat": "2025-11-13T02:24:56Z",
-  "memory_usage": 16.3,
+  "last_heartbeat": "2025-11-13T02:32:16Z",
+  "memory_usage": 15.9,
   "unread_messages": 0,
   "status": "online",
-  "cpu_usage": 6.5
+  "cpu_usage": 1.0
 }
