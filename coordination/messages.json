@@ -1041,7 +1041,7 @@
       "type": "info",
       "to": "all",
       "body": "test",
-      "read": false,
+      "read": true,
       "id": "msg_1763000842_8104",
       "from": "architect"
     }
