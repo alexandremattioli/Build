@@ -4988,7 +4988,7 @@
       "subject": "Re: Architect instructions",
       "body": "Responding again\u2014auto-monitor processed the last architect directive and confirms queue is clear, heartbeats/metrics active, ready for further work.",
       "timestamp": "2025-11-13 05:18",
-      "read": false,
+      "read": true,
       "ack_required": false,
       "ack_status": "not_requested",
       "acknowledged_by": []
