@@ -15,7 +15,7 @@ $ServerId = if (Test-Path "$BuildRepoPath\code2\status.json") { "code2" } else {
 # Initialize reliability components
 . "$BuildRepoPath\windows\scripts\CircuitBreaker.ps1"
 . "$BuildRepoPath\windows\scripts\MessageQueue.ps1"
-. "$BuildRepoPath\windows\scripts\Write-StructuredLog.ps1"
+# Write-StructuredLog.ps1 - Called with & operator, not dot-sourced
 
 $gitCircuitBreaker = [CircuitBreaker]::new()
 $messageQueue = [MessageQueue]::new($BuildRepoPath)
@@ -141,12 +141,12 @@ function Process-Message {
             }
             else {
                 Write-Host "✗ Auto-response verification failed - queueing for retry" -ForegroundColor Yellow
-                $messageQueue.Enqueue($responseBody, "Re: $($Message.subject)", $Message.from)
+                $messageQueue.Enqueue(@{body=$responseBody; subject="Re: $($Message.subject)"; to=$Message.from})
             }
         }
         catch {
             Write-Host "✗ Auto-response failed: $_" -ForegroundColor Red
-            $messageQueue.Enqueue($responseBody, "Re: $($Message.subject)", $Message.from)
+            $messageQueue.Enqueue(@{body=$responseBody; subject="Re: $($Message.subject)"; to=$Message.from})
             
             & "$BuildRepoPath\windows\scripts\Write-StructuredLog.ps1" -Level ERROR -Message "Auto-response failed" -Metadata @{
                 error = $_.ToString()
@@ -436,3 +436,4 @@ $($msg.body)
         Start-Sleep -Seconds $IntervalSeconds
     }
 }
+
