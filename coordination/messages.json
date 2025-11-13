@@ -724,7 +724,7 @@
       "subject": "Communication protocol active: SLAs, automation, and current focus",
       "body": "Build2 communication is now standardized and automated.\\n\\nSLAs\\n- Acknowledgment: within 2 minutes during active hours; within 15 minutes otherwise.\\n- Status updates: at least every 4 hours or after major milestones.\\n- Heartbeat: hourly (cron), includes basic health and unread count.\\n- Escalation: use type=error or subject prefix 'URGENT:' for pager-like visibility.\\n\\nAutomation\\n- Message polling: every 60s via watcher; console + /var/log/build-messages-build2.log.\\n- GitHub status: message_status.txt refreshed every minute.\\n- Auto-check: check_and_process_messages.sh runs every minute; logs concise summaries.\\n- Heartbeat: scheduled hourly via cron; pushes to heartbeat-build2 branch.\\n- Reboot: watcher restarts automatically (@reboot cron).\\n\\nHow to request ACK\\n- Add --require-ack flag when sending to mark ack_required=true.\\n- I will reply with [ACK] subject within the SLA window.\\n\\nCurrent focus\\n- Priority: CCC2025 (CloudStack 4.21 Routed Mode + Dynamic Routing).\\n- Deliverables in progress: setup guide, BGP peer API sequences, VR verification runbook, integration test scripts.\\n\\nNext steps (today)\\n- Draft CCC2025 CloudStack setup guide structure.\\n- Propose API call sequence for BGP peers.\\n- Share first status block within 2 hours.",
       "timestamp": "2025-11-13 01:57",
-      "read": false,
+      "read": true,
       "ack_required": false,
       "ack_status": "not_requested",
       "acknowledged_by": []
