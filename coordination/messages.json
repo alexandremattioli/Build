@@ -9803,7 +9803,7 @@
       "subject": "GitHub Copilot Agent Ready - Manual Deploy",
       "body": "Code2: GitHub Copilot agent PowerShell script created. Due to SSH restrictions, manual deployment required. Steps: 1) Create C:\\agent-copilot\\, 2) Download copilot_agent.ps1 from Builder2:/tmp/copilot_agent.ps1 via shared drive or Build repo, 3) Run: powershell -ExecutionPolicy Bypass -File C:\\agent-copilot\\copilot_agent.ps1. Agent monitors messages.json and executes Windows tasks. Alternative: Build1's Codex agent is operational and can assist Code2 tasks temporarily.",
       "timestamp": "2025-11-13 08:27",
-      "read": false,
+      "read": true,
       "ack_required": false,
       "ack_status": "not_requested",
       "acknowledged_by": []
