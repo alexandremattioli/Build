@@ -368,7 +368,7 @@
                 <div class="card" id="build1-card">
                     <h2>
                         <span class="status-indicator status-offline" id="build1-indicator"></span>
-                        Server 1 (Codex)
+                        Build1 (10.1.3.175 - Codex)
                     </h2>
                     <div class="server-info" id="build1-info"></div>
                 </div>
@@ -376,9 +376,41 @@
                 <div class="card" id="build2-card">
                     <h2>
                         <span class="status-indicator status-offline" id="build2-indicator"></span>
-                        Server 2 (Copilot)
+                        Build2 (10.1.3.177 - Copilot)
                     </h2>
                     <div class="server-info" id="build2-info"></div>
+                </div>
+
+                <div class="card" id="build3-card">
+                    <h2>
+                        <span class="status-indicator status-offline" id="build3-indicator"></span>
+                        Build3
+                    </h2>
+                    <div class="server-info" id="build3-info"></div>
+                </div>
+
+                <div class="card" id="build4-card">
+                    <h2>
+                        <span class="status-indicator status-offline" id="build4-indicator"></span>
+                        Build4
+                    </h2>
+                    <div class="server-info" id="build4-info"></div>
+                </div>
+
+                <div class="card" id="code1-card">
+                    <h2>
+                        <span class="status-indicator status-offline" id="code1-indicator"></span>
+                        Code1 (10.1.3.75 - Windows)
+                    </h2>
+                    <div class="server-info" id="code1-info"></div>
+                </div>
+
+                <div class="card" id="code2-card">
+                    <h2>
+                        <span class="status-indicator status-offline" id="code2-indicator"></span>
+                        Code2 (10.1.3.76 - Windows)
+                    </h2>
+                    <div class="server-info" id="code2-info"></div>
                 </div>
             </div>
 
@@ -522,24 +554,24 @@
             `;
         }
 
-        function renderHealthMetrics(build1, build2, messages, jobs) {
+        function renderHealthMetrics(servers, messages, jobs) {
             const container = document.getElementById('healthMetrics');
             
-            const build1Online = getStatusClass(build1.status, build1.timestamp) !== 'status-offline';
-            const build2Online = getStatusClass(build2.status, build2.timestamp) !== 'status-offline';
-            const serversOnline = (build1Online ? 1 : 0) + (build2Online ? 1 : 0);
+            const serverList = [servers.build1, servers.build2, servers.build3, servers.build4, servers.code1, servers.code2];
+            const serversOnline = serverList.filter(s => getStatusClass(s.status, s.timestamp) !== 'status-offline').length;
+            const totalServers = serverList.length;
             
-            const avgCpu = ((build1.system?.cpu_usage || 0) + (build2.system?.cpu_usage || 0)) / 2;
-            const totalMemory = (build1.capabilities?.memory_gb || 0) + (build2.capabilities?.memory_gb || 0);
-            const usedMemory = (build1.system?.memory_used_gb || 0) + (build2.system?.memory_used_gb || 0);
+            const totalCpu = serverList.reduce((sum, s) => sum + (s.system?.cpu_usage || 0), 0);
+            const avgCpu = serverList.length > 0 ? totalCpu / serverList.length : 0;
+            const totalMemory = serverList.reduce((sum, s) => sum + (s.capabilities?.memory_gb || 0), 0);
+            const usedMemory = serverList.reduce((sum, s) => sum + (s.system?.memory_used_gb || 0), 0);
             const memoryPercent = totalMemory > 0 ? ((usedMemory / totalMemory) * 100).toFixed(0) : 0;
             
-            const uptime = build1Online && build2Online ? '100%' : 
-                          serversOnline === 1 ? '50%' : '0%';
+            const uptime = totalServers > 0 ? `${Math.round((serversOnline / totalServers) * 100)}%` : '0%';
             
             container.innerHTML = `
                 <div class="metric">
-                    <div class="metric-value ${serversOnline === 2 ? 'success' : 'warning'}">${serversOnline}/2</div>
+                    <div class="metric-value ${serversOnline === totalServers ? 'success' : serversOnline > 0 ? 'warning' : 'error'}">${serversOnline}/${totalServers}</div>
                     <div class="metric-label">Servers Online</div>
                 </div>
                 <div class="metric">
@@ -617,27 +649,29 @@
             `;
         }
 
-        function renderAlerts(build1, build2, messages, jobs) {
+        function renderAlerts(servers, messages, jobs) {
             const alerts = [];
             
-            // Check server health
-            if (getStatusClass(build1.status, build1.timestamp) === 'status-offline') {
-                alerts.push({
-                    type: 'error',
-                    icon: '🔴',
-                    title: 'Server 1 Offline',
-                    time: formatTime(build1.timestamp)
-                });
-            }
+            // Check server health for all servers
+            const serverNames = {
+                build1: 'Build1 (Codex)',
+                build2: 'Build2 (Copilot)',
+                build3: 'Build3',
+                build4: 'Build4',
+                code1: 'Code1 (Windows)',
+                code2: 'Code2 (Windows)'
+            };
             
-            if (getStatusClass(build2.status, build2.timestamp) === 'status-offline') {
-                alerts.push({
-                    type: 'error',
-                    icon: '🔴',
-                    title: 'Server 2 Offline',
-                    time: formatTime(build2.timestamp)
-                });
-            }
+            Object.entries(servers).forEach(([id, data]) => {
+                if (getStatusClass(data.status, data.timestamp) === 'status-offline') {
+                    alerts.push({
+                        type: 'error',
+                        icon: '🔴',
+                        title: `${serverNames[id]} Offline`,
+                        time: formatTime(data.timestamp)
+                    });
+                }
+            });
             
             // Check unread messages
             const unread = messages?.filter(m => !m.read)?.length || 0;
@@ -691,19 +725,29 @@
             contentEl.style.display = 'none';
             
             try {
-                const [build1Status, build2Status, messagesData, jobsData] = await Promise.all([
+                const [build1Status, build2Status, build3Status, build4Status, code1Status, code2Status, messagesData, jobsData] = await Promise.all([
                     fetchFile('build1/status.json').catch(() => ({ status: 'offline', timestamp: null })),
                     fetchFile('build2/status.json').catch(() => ({ status: 'offline', timestamp: null })),
+                    fetchFile('build3/status.json').catch(() => ({ status: 'offline', timestamp: null })),
+                    fetchFile('build4/status.json').catch(() => ({ status: 'offline', timestamp: null })),
+                    fetchFile('code1/status.json').catch(() => ({ status: 'offline', timestamp: null })),
+                    fetchFile('code2/status.json').catch(() => ({ status: 'offline', timestamp: null })),
                     fetchFile('coordination/messages.json').then(d => d.messages || []).catch(() => []),
                     fetchFile('coordination/jobs.json').then(d => d.jobs || []).catch(() => [])
                 ]);
                 
+                const servers = { build1: build1Status, build2: build2Status, build3: build3Status, build4: build4Status, code1: code1Status, code2: code2Status };
+                
                 renderServerInfo('build1', build1Status);
                 renderServerInfo('build2', build2Status);
-                renderHealthMetrics(build1Status, build2Status, messagesData, jobsData);
+                renderServerInfo('build3', build3Status);
+                renderServerInfo('build4', build4Status);
+                renderServerInfo('code1', code1Status);
+                renderServerInfo('code2', code2Status);
+                renderHealthMetrics(servers, messagesData, jobsData);
                 renderMessageMetrics(messagesData);
                 renderJobMetrics(jobsData);
-                renderAlerts(build1Status, build2Status, messagesData, jobsData);
+                renderAlerts(servers, messagesData, jobsData);
                 
                 document.getElementById('lastUpdate').textContent = new Date().toLocaleString();
                 
@@ -729,9 +773,13 @@
     <script>
         async function updateDataDump() {
             try {
-                const [build1, build2, messages, jobs] = await Promise.all([
+                const [build1, build2, build3, build4, code1, code2, messages, jobs] = await Promise.all([
                     fetchFile('build1/status.json').catch(() => ({})),
                     fetchFile('build2/status.json').catch(() => ({})),
+                    fetchFile('build3/status.json').catch(() => ({})),
+                    fetchFile('build4/status.json').catch(() => ({})),
+                    fetchFile('code1/status.json').catch(() => ({})),
+                    fetchFile('code2/status.json').catch(() => ({})),
                     fetchFile('coordination/messages.json').then(d => d.messages || []).catch(() => []),
                     fetchFile('coordination/jobs.json').then(d => d.jobs || []).catch(() => [])
                 ]);
@@ -754,6 +802,52 @@
                             ip: build2.ip,
                             manager: build2.manager,
                             timestamp: build2.timestamp,
+                            current_job: build2.current_job,
+                            last_build: build2.last_build,
+                            system: build2.system,
+                            capabilities: build2.capabilities
+                        },
+                        build3: {
+                            status: build3.status,
+                            ip: build3.ip,
+                            manager: build3.manager,
+                            timestamp: build3.timestamp,
+                            current_job: build3.current_job,
+                            last_build: build3.last_build,
+                            system: build3.system,
+                            capabilities: build3.capabilities
+                        },
+                        build4: {
+                            status: build4.status,
+                            ip: build4.ip,
+                            manager: build4.manager,
+                            timestamp: build4.timestamp,
+                            current_job: build4.current_job,
+                            last_build: build4.last_build,
+                            system: build4.system,
+                            capabilities: build4.capabilities
+                        },
+                        code1: {
+                            status: code1.status,
+                            ip: code1.ip,
+                            manager: code1.manager,
+                            timestamp: code1.timestamp,
+                            current_job: code1.current_job,
+                            last_build: code1.last_build,
+                            system: code1.system,
+                            capabilities: code1.capabilities
+                        },
+                        code2: {
+                            status: code2.status,
+                            ip: code2.ip,
+                            manager: code2.manager,
+                            timestamp: code2.timestamp,
+                            current_job: code2.current_job,
+                            last_build: code2.last_build,
+                            system: code2.system,
+                            capabilities: code2.capabilities
+                        }
+                    },
                             current_job: build2.current_job,
                             last_build: build2.last_build,
                             system: build2.system,
