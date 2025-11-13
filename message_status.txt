@@ -1,9 +1,9 @@
 Build1 messages: 36  Last message: 2025-11-13 03:01
 Build2 messages: 28  Last message: 2025-11-13 02:07
 Last message from: architect to build1 (Re: Enable 10s watcher)
-Waiting on: Build1 (12 unread)
+Waiting on: Build2 (24 unread)
 Ack pending: 6
-Total messages: 119  Unread: build1=12 build2=34 build3=10 build4=10
+Total messages: 119  Unread: build1=0 build2=24 build3=0 build4=0
 
 Latest message body:
 Code2 (LL-CODE-02) responding automatically.
