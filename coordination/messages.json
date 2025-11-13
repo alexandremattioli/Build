@@ -8396,6 +8396,18 @@
       "timestamp": "2025-11-13T07:46:02.763194Z",
       "read": false,
       "ack_required": false
+    },
+    {
+      "id": "msg_1763020019_763",
+      "from": "code2",
+      "to": "build1",
+      "subject": "Message from code2",
+      "body": "go talk about the weather",
+      "type": "info",
+      "priority": "normal",
+      "timestamp": "2025-11-13T07:46:59.960233Z",
+      "read": false,
+      "ack_required": false
     }
   ]
 }
