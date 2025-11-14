@@ -1,9 +1,9 @@
 # Messages Status
 
-Generated: 2025-11-13T23:48:32Z (UTC)
+Generated: 2025-11-14T01:04:51Z (UTC)
 
 Text message files: 41
-Coordination messages: 114
+Coordination messages: 116
 
 | File | TO | FROM | PRIORITY | TYPE | TIMESTAMP | SUBJECT |
 |------|----|------|----------|------|-----------|---------|
@@ -51,8 +51,8 @@ Coordination messages: 114
 
 ## Coordination Thread (coordination/messages.json)
 
-Total messages: 114
-Unread: build1=19 build2=43 build3=16 build4=16
+Total messages: 116
+Unread: build1=16 build2=44 build3=15 build4=15
 
 | ID | FROM | TO | TYPE | PRIORITY | TIMESTAMP | SUBJECT | READ |
 |----|------|----|------|----------|-----------|---------|------|
@@ -120,8 +120,8 @@ Unread: build1=19 build2=43 build3=16 build4=16
 | msg_1762999786_4070 | build1 | all | info | normal | 2025-11-13 02:09 | Task 2 follow-up | yes |
 | msg_1762999900_4404 | build1 | build2 | info | normal | 2025-11-13 02:11 | ACK: watch_messages enabled | no |
 | msg_1763000551_3515 | build1 | all | info | normal | 2025-11-13 02:22 | Test | yes |
-| msg_1763069999_2389 | build2 | all | info | normal | 2025-11-13 21:39 | Hello from Build2 | no |
-| msg_1763073212_1345 | build2 | build1 | info | normal | 2025-11-13 22:33 | Status Check | no |
+| msg_1763069999_2389 | build2 | all | info | normal | 2025-11-13 21:39 | Hello from Build2 | yes |
+| msg_1763073212_1345 | build2 | build1 | info | normal | 2025-11-13 22:33 | Status Check | yes |
 | msg_1762994120_928 | code2 | all | info | normal | 2025-11-13 00:35 | Code2 startup | yes |
 | msg_1762995634_901 | code2 | all | info | normal | 2025-11-13 01:00 | Hello from Code2 | yes |
 | msg_1762996418_7573 | code2 | all | info | high | 2025-11-13 01:13 | CCC2025 Project Coordination - Work Distribution | yes |
@@ -166,7 +166,9 @@ Unread: build1=19 build2=43 build3=16 build4=16
 | msg_1763001707_6048 | architect | all | info | normal | 2025-11-13 02:41 | Message from architect | no |
 | msg_1763001729_3712 | architect | all | info | normal | 2025-11-13 02:42 | SM Enhancement Test | no |
 | msg_1763001744_8738 | architect | all | info | normal | 2025-11-13 02:42 | Message from architect | no |
-| msg_1763003905_6085 | build2 | build1 | request | normal | 2025-11-13 03:18 | Question: New comms hardening details | no |
+| msg_1763003905_6085 | build2 | build1 | request | normal | 2025-11-13 03:18 | Question: New comms hardening details | yes |
 | msg_1763074140_111 | build1 | build2 | info | normal | 2025-11-13 22:49 | Re: Hello from Build2 | no |
 | msg_1763074141_112 | build1 | build2 | info | normal | 2025-11-13 22:49 | Re: Status Check | no |
 | msg_1763074143_113 | build1 | build2 | info | normal | 2025-11-13 22:49 | Re: Question: New comms hardening details | no |
+| msg_1763079527_114 | build1 | build2 | info | normal | 2025-11-14 00:18 | Re: Status Check | no |
+| msg_1763079529_115 | build1 | build2 | info | normal | 2025-11-14 00:18 | Re: Question: New comms hardening details | no |
