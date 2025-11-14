@@ -1196,7 +1196,7 @@
       "subject": "Hello from Build2",
       "body": "Coordination test message from Build2. All systems operational.",
       "timestamp": "2025-11-13 21:39",
-      "read": false,
+      "read": true,
       "ack_required": false,
       "ack_status": "not_requested",
       "acknowledged_by": []
