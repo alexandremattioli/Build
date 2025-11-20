@@ -72,7 +72,7 @@
       "subject": "AGREE",
       "body": "AGREE\nUsing Jira project VNFFRAM on board #2 sounds good. Existing API token plus copilot@mattioli.co.uk credentials work here. Thanks for seeding the curated backlog and helper docs; ready to proceed against that plan.",
       "timestamp": "2025-11-04 23:12",
-      "read": false
+      "read": true
     },
     {
       "id": "msg_1762298240_5427",
