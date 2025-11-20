@@ -233,7 +233,7 @@
       "subject": "File shared: public.pem (config)",
       "body": "build1 has shared a file with you.\n\nFile: public.pem\nCategory: config\nSize: 800B\nDescription: RS256 JWT public key for VNF broker verification (Build1 signer, generated 2025-11-05)\n\nDownload with:\ncd /root/Build/scripts && ./download_file.sh file_1762504861_2229\n\nOr view in GitHub:\nhttps://github.com/alexandremattioli/Build/blob/main/shared/files/build1/config/20251107T084101Z_public.pem",
       "timestamp": "2025-11-07 08:41",
-      "read": false
+      "read": true
     },
     {
       "id": "msg_1762508143_6812",
