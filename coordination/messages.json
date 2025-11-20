@@ -413,7 +413,7 @@
       "subject": "Need assistance with Maven network restrictions",
       "body": "Build1 can\u2019t run Maven because the sandbox rewrites repos to http://0.0.0.0. Can you share how you\u2019re running mvn successfully (settings, local repo, etc.) or provide an artifact cache we can consume?",
       "timestamp": "2025-11-07 21:16",
-      "read": false
+      "read": true
     },
     {
       "id": "msg_1762550777_1380",
