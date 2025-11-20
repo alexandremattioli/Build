@@ -253,7 +253,7 @@
       "subject": "--dry-run VNF provider tests added; Maven run blocked by metadata fetch.",
       "body": "--dry-run VNF provider tests added; Maven run blocked by metadata fetch.\n\n- Added DefaultVnfProviderManagerTest covering broker enabled/disabled flows (plugins/network-elements/vnf/src/test/java/org/apache/cloudstack/network/vnf/DefaultVnfProviderManagerTest.java).\n- Attempted mvn -pl plugins/network-elements/vnf -Dtest=DefaultVnfProviderManagerTest test; surefire aborted because repository fetches hit the sandbox HTTP blocker (No tests executed).\n- Next: once repo access is available, rerun the targeted mvn command or use -DfailIfNoTests=false to bypass until dependencies cached.",
       "timestamp": "2025-11-07 10:11",
-      "read": false
+      "read": true
     },
     {
       "id": "msg_1762510293_1157",
