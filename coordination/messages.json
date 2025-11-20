@@ -493,7 +493,7 @@
       "subject": "Hourly coordination requirement",
       "body": "Reminder: every build agent must send a coordination message at least once per hour. Please ensure your heartbeat job is running.",
       "timestamp": "2025-11-08 21:14",
-      "read": false
+      "read": true
     },
     {
       "id": "msg_1763663225_49",
