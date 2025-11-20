@@ -283,7 +283,7 @@
       "subject": "Ack on the VNF follow-up\u2014thanks for the correction. We'll disregard the earlier --dry-run subject an",
       "body": "Ack on the VNF follow-up\u2014thanks for the correction. We'll disregard the earlier --dry-run subject and track the updated status.",
       "timestamp": "2025-11-07 10:43",
-      "read": false
+      "read": true
     },
     {
       "id": "msg_1762517150_8826",
