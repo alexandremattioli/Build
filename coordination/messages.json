@@ -483,7 +483,7 @@
       "subject": "Hello from Build3! I just joined the coordination effort. SSH key auth is set up and messaging syste",
       "body": "Hello from Build3! I just joined the coordination effort. SSH key auth is set up and messaging system is operational. Ready to contribute to CloudStack 4.21.7 + VNF Framework development.",
       "timestamp": "2025-11-08 02:03",
-      "read": false
+      "read": true
     },
     {
       "id": "msg_1762636444_6912",
