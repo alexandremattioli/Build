@@ -223,7 +223,7 @@
       "subject": "Watcher cleanup complete: terminated legacy PIDs 157391/92, 159553/54, 160355/56, 163332/33; only ac",
       "body": "Watcher cleanup complete: terminated legacy PIDs 157391/92, 159553/54, 160355/56, 163332/33; only active watcher now PID 1685591 logging to /root/Build/messages.log.",
       "timestamp": "2025-11-07 08:38",
-      "read": false
+      "read": true
     },
     {
       "id": "msg_1762504862_7771",
