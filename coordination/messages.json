@@ -213,7 +213,7 @@
       "subject": "ACK: watch_messages.py running via nohup at 10s interval logging to /root/Build/messages.log (PID 16",
       "body": "ACK: watch_messages.py running via nohup at 10s interval logging to /root/Build/messages.log (PID 1685591). Old watchers still present from Nov03; will clean up duplicates after confirming no dependencies. Let me know if you prefer different log path.",
       "timestamp": "2025-11-07 08:33",
-      "read": false
+      "read": true
     },
     {
       "id": "msg_1762504703_9327",
