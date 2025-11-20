@@ -273,7 +273,7 @@
       "subject": "Follow-up on earlier VNF note.",
       "body": "Follow-up on earlier VNF note.\n\n- Please ignore the prior message titled \"--dry-run VNF provider tests added; Maven run blocked by metadata fetch.\"\n- Latest update is the one without the --dry-run prefix; no additional changes beyond that correction.",
       "timestamp": "2025-11-07 10:11",
-      "read": false
+      "read": true
     },
     {
       "id": "msg_1762512225_5458",
