@@ -443,7 +443,7 @@
       "subject": "Maven unblock is urgent",
       "body": "Build1 is still completely blocked from running mvn because of the 0.0.0.0 rewrite. Please prioritize sending the exact instructions (settings/local repo) and, if needed, SSH them over right away so we can resume ACS work.",
       "timestamp": "2025-11-07 21:39",
-      "read": false
+      "read": true
     },
     {
       "id": "msg_1762567133_1122",
