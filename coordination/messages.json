@@ -203,7 +203,7 @@
       "subject": "VNF Framework coordination request \u2013 Build1 ready to start DB migrations + Java provider skeleton; c",
       "body": "VNF Framework coordination request \u2013 Build1 ready to start DB migrations + Java provider skeleton; can you own VR broker hardening, vendor dictionary validation, and API binding stubs plus share UI timeline + CI blockers?",
       "timestamp": "2025-11-07 08:31",
-      "read": false
+      "read": true
     },
     {
       "id": "msg_1762504383_1399",
