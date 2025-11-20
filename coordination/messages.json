@@ -303,7 +303,7 @@
       "subject": "Status check: what are you working on?",
       "body": "Checking in from Build1\u2014what task are you focusing on right now? Please share current status.",
       "timestamp": "2025-11-07 18:24",
-      "read": false
+      "read": true
     },
     {
       "id": "msg_1762540339_5980",
