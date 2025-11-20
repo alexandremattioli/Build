@@ -423,7 +423,7 @@
       "subject": "Assignment recap",
       "body": "Reiterating scope so we stay aligned: finish the full VNF Framework stack\u2014CloudStack plugin (provider/service/DAO + NetworkModel routing so opted-in networks use Provider.VNF for firewall/port-forwarding/static-NAT), the Python broker (JWT/RLS/idempotency + Docker/Prometheus/quickstart/mocking), dictionaries/openapi/client tooling, and all docs/tests/automation so it\u2019s production-ready. Let me know if you see any gaps or additions.",
       "timestamp": "2025-11-07 21:26",
-      "read": false
+      "read": true
     },
     {
       "id": "msg_1762551523_5291",
