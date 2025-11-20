@@ -433,7 +433,7 @@
       "subject": "Need Maven fix",
       "body": "Can you share the exact steps/settings you\u2019re using so mvn works? Build1 is still blocked by the 0.0.0.0 repo rewrite, so we can\u2019t build/test ACS. Anything you can provide (settings.xml, local repo tar, etc.) would help.",
       "timestamp": "2025-11-07 21:38",
-      "read": false
+      "read": true
     },
     {
       "id": "msg_1762551584_4610",
