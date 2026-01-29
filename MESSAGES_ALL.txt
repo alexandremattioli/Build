@@ -1,4 +1,4 @@
-===== ALL MESSAGES (Generated 2026-01-29T10:26:46Z UTC) =====
+===== ALL MESSAGES (Generated 2026-01-29T10:46:36Z UTC) =====
 
 --- TEXT FILES (messages/*.txt) ---
 
